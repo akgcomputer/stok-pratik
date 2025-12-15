@@ -1,0 +1,2 @@
+# stokpratik
+stokpratik.com.tr

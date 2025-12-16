@@ -1,0 +1,368 @@
+---
+// src/pages/blog/online-muhasebe-programi.astro
+// Örnekteki iletişim sayfası gibi import edelim
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+// İç linkler için data (bileşen yoksa doğrudan HTML kullanacağız)
+const internalLinks = [
+  { title: "Muhasebe Yazılımı Seçerken Dikkat Edilmesi Gerekenler", url: "/blog/muhasebe-yazilimi" },
+  { title: "Bulut Tabanlı Muhasebe Sisteminin Avantajları", url: "/blog/bulut-muhasebe-sistemi" },
+  { title: "KOBİ'ler İçin En İyi Muhasebe Çözümleri", url: "/blog/kobi-muhasebe-programi" },
+  { title: "Tam Rehber: ERP Sistemi Nedir?", url: "/blog/erp-sistemi" },
+  { title: "Mağaza Otomasyonu ile Verimliliği Artırın", url: "/blog/magaza-otomasyonu" }
+];
+---
+
+<BaseLayout title="Online Muhasebe Programı | Stok Pratik" description="Online muhasebe programı ile işletmenizin finansal süreçlerini dijitalleştirin. Stok Pratik ile bulut tabanlı muhasebe çözümleri.">
+  
+  <!-- Blog Header -->
+  <section class="blog-hero py-16">
+    <div class="container">
+      <div class="blog-header text-center">
+        <span class="category-badge">Muhasebe Çözümleri</span>
+        <h1>Online Muhasebe Programı: <br>İşletmeniz için Doğru Seçim</h1>
+        <p class="blog-subtitle">Bulut tabanlı muhasebe çözümleri ile iş süreçlerinizi dijitalleştirin ve verimliliğinizi artırın</p>
+        
+        
+      </div>
+    </div>
+  </section>
+
+  <!-- Ana İçerik -->
+  <main class="blog-content">
+    <div class="container">
+      <article class="article-content">
+        
+        <!-- Giriş -->
+        <section class="section-intro">
+          <h2>Neden Online Muhasebe Programı Kullanmalısınız?</h2>
+          <p>Günümüz dijital dünyasında, geleneksel muhasebe yöntemleri işletmeler için yeterli olmamaktadır. <strong>Online muhasebe programı</strong> kullanarak, finansal süreçlerinizi merkezileştirebilir, gerçek zamanlı verilere ulaşabilir ve iş verimliliğinizi önemli ölçüde artırabilirsiniz.</p>
+          
+          <div class="feature-highlight">
+            <h3>💡 Online Muhasebenin Temel Faydaları:</h3>
+            <ul>
+              <li><strong>7/24 Erişim:</strong> İnternet olduğu her yerden erişim imkanı</li>
+              <li><strong>Gerçek Zamanlı Veri:</strong> Anlık finansal durum takibi</li>
+              <li><strong>Otomatik Yedekleme:</strong> Veri kaybı riski olmadan çalışma</li>
+              <li><strong>Düşük Maliyet:</strong> Kurulum ve donanım maliyeti yok</li>
+              <li><strong>Kolay Entegrasyon:</strong> Diğer iş süreçleriyle uyumlu çalışma</li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- Stok Pratik Özellikleri -->
+        <section class="section-features">
+          <h2>Stok Pratik ile Online Muhasebe</h2>
+          <p>Stok Pratik, işletmenizin tüm muhasebe ihtiyaçlarını karşılayan kapsamlı bir <strong>bulut muhasebe sistemi</strong> sunar. İşte size sağladığımız çözümler:</p>
+          
+          <div class="features-grid">
+            <div class="feature-card">
+              <h3>📊 Stok ve Envanter Yönetimi</h3>
+              <p>Gerçek zamanlı stok takibi, otomatik envanter güncelleme ve çoklu depo yönetimi ile stok maliyetlerinizi optimize edin.</p>
+            </div>
+            
+            <div class="feature-card">
+              <h3>🧾 e-Fatura ve e-İrsaliye</h3>
+              <p>Tam entegre e-fatura sistemi ile fatura süreçlerinizi hızlandırın, zaman ve kağıt tasarrufu sağlayın.</p>
+            </div>
+            
+            <div class="feature-card">
+              <h3>💼 Cari Hesap Takibi</h3>
+              <p>Müşteri ve tedarikçi hesaplarınızı düzenli takip edin, vade takibi yapın, tahsilat süreçlerinizi otomatikleştirin.</p>
+            </div>
+            
+            <div class="feature-card">
+              <h3>📱 Mobil Uyumluluk</h3>
+              <p>Akıllı telefon, tablet veya bilgisayarınızdan - her cihazdan sorunsuz erişim ile işinizi her yerden yönetin.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- İç Linkler Bölümü -->
+        <section class="internal-links-section py-12">
+          <div class="container">
+            <h2>📚 İlgili Yazılar</h2>
+            <p>Bu konu hakkında daha fazla bilgi edinmek için diğer yazılarımıza göz atın:</p>
+            
+            <div class="internal-links-grid">
+              {internalLinks.map((link) => (
+                <a href={link.url} class="internal-link-card">
+                  <strong>{link.title}</strong>
+                  <p>Detaylı bilgi için tıklayın</p>
+                </a>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <!-- Sıkça Sorulan Sorular -->
+        <section class="section-faq">
+          <h2>❓ Online Muhasebe Programı Hakkında Sık Sorulan Sorular</h2>
+          
+          <div class="faq-item">
+            <h3>Online muhasebe programı güvenli mi?</h3>
+            <p>Stok Pratik, banka seviyesinde şifreleme ve güvenlik protokolleri kullanır. Verileriniz güvenli bulut sunucularında saklanır ve düzenli olarak yedeklenir.</p>
+          </div>
+          
+          <div class="faq-item">
+            <h3>Teknik bilgim yok, kullanabilir miyim?</h3>
+            <p>Kullanıcı dostu arayüzümüz sayesinde teknik bilgi gerektirmeden kolayca kullanabilirsiniz. Ayrıca 7/24 destek ekibimiz her an yanınızda.</p>
+          </div>
+          
+          <div class="faq-item">
+            <h3>Verilerimi nasıl yedekliyorsunuz?</h3>
+            <p>Otomatik günlük yedekleme sistemimizle verileriniz sürekli olarak korunur. Ekstra yedekleme yapmanıza gerek kalmaz.</p>
+          </div>
+        </section>
+
+        <!-- Çağrı İçin Öneri -->
+        <section class="section-cta">
+          <div class="cta-banner">
+            <h3>🚀 Online Muhasebe Programını Ücretsiz Deneyin!</h3>
+            <p>Stok Pratik'in tüm özelliklerini deneyimlemek için hemen demo talebinde bulunun. İşletmenize özel çözümlerimizi keşfedin.</p>
+            
+            <div class="cta-buttons">
+              <a 
+                href="https://wa.me/+905325000999?text=Merhaba,%20Online%20Muhasebe%20Programı%20demo%20talep%20ediyorum" 
+                class="btn btn-primary btn-whatsapp"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Demo Talep Et
+              </a>
+              
+              <a 
+                href="https://wa.me/+905325000999?text=Merhaba,%20Online%20Muhasebe%20Programı%20fiyat%20teklifi%20alıyorum" 
+                class="btn btn-secondary"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Fiyat Teklifi Al
+              </a>
+            </div>
+            
+            <p class="note"><small>💡 <strong>Not:</strong> Fiyat bilgisi için lütfen WhatsApp üzerinden iletişime geçin. Size özel teklif hazırlayalım.</small></p>
+          </div>
+        </section>
+
+      </article>
+    </div>
+  </main>
+
+  <style>
+    /* Blog Hero */
+    .blog-hero {
+      background: linear-gradient(135deg, var(--primary-red-light) 0%, var(--bg-white) 100%);
+    }
+
+    .blog-header h1 {
+      background: linear-gradient(135deg, var(--primary-red), var(--primary-red-dark));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: var(--spacing-md);
+      font-size: 2.5rem;
+    }
+
+    .blog-subtitle {
+      font-size: 1.25rem;
+      color: var(--text-gray);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .category-badge {
+      display: inline-block;
+      background: var(--primary-red);
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: var(--radius-md);
+      font-weight: 600;
+      margin-bottom: var(--spacing-md);
+    }
+
+    .blog-meta {
+      display: flex;
+      justify-content: center;
+      gap: var(--spacing-lg);
+      color: var(--text-gray);
+      margin-top: var(--spacing-md);
+      flex-wrap: wrap;
+    }
+
+    /* Blog Genel Stilleri */
+    .blog-content {
+      padding: 3rem 0;
+      background: var(--bg-white);
+    }
+    
+    .article-content {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+    
+    /* Bölüm Stilleri */
+    section {
+      margin-bottom: 3rem;
+    }
+    
+    h2 {
+      color: var(--primary-red);
+      margin-bottom: 1.5rem;
+      font-size: 1.8rem;
+    }
+    
+    h3 {
+      color: var(--text-dark);
+      margin: 1.5rem 0 1rem;
+      font-size: 1.4rem;
+    }
+    
+    /* Özellik Vurgusu */
+    .feature-highlight {
+      background: var(--primary-red-light);
+      padding: 1.5rem;
+      border-radius: var(--radius-md);
+      margin: 1.5rem 0;
+    }
+    
+    .feature-highlight ul {
+      margin: 1rem 0;
+      padding-left: 1.5rem;
+    }
+    
+    .feature-highlight li {
+      margin-bottom: 0.5rem;
+    }
+    
+    /* Özellik Grid */
+    .features-grid {
+      display: grid;
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+    
+    @media (min-width: 768px) {
+      .features-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    
+    .feature-card {
+      background: var(--bg-light);
+      padding: 1.5rem;
+      border-radius: var(--radius-md);
+      border-left: 4px solid var(--primary-red);
+    }
+    
+    /* İç Linkler */
+    .internal-links-section {
+      background-color: var(--bg-light);
+    }
+    
+    .internal-links-grid {
+      display: grid;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+    
+    .internal-link-card {
+      background: var(--bg-white);
+      padding: 1.5rem;
+      border-radius: var(--radius-md);
+      text-decoration: none;
+      color: var(--text-dark);
+      border: 1px solid var(--border-color);
+      transition: all 0.3s;
+      display: block;
+    }
+    
+    .internal-link-card:hover {
+      border-color: var(--primary-red);
+      background: var(--primary-red-light);
+      transform: translateY(-3px);
+    }
+    
+    /* FAQ Stilleri */
+    .faq-item {
+      background: var(--bg-white);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    
+    .faq-item h3 {
+      color: var(--primary-red);
+      margin-top: 0;
+    }
+    
+    /* CTA Banner */
+    .cta-banner {
+      background: linear-gradient(135deg, var(--primary-red-light) 0%, var(--bg-white) 100%);
+      padding: 2rem;
+      border-radius: var(--radius-lg);
+      text-align: center;
+      border: 2px solid var(--primary-red);
+    }
+    
+    .cta-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      margin: 2rem 0;
+      flex-wrap: wrap;
+    }
+    
+    .btn-whatsapp {
+      background: linear-gradient(135deg, #25D366, #128C7E);
+      border-color: #25D366;
+      color: white;
+    }
+    
+    .btn-whatsapp:hover {
+      background: linear-gradient(135deg, #128C7E, #075E54);
+      border-color: #128C7E;
+    }
+    
+    .note {
+      margin-top: 1.5rem;
+      padding-top: 1rem;
+      border-top: 1px dashed var(--border-color);
+    }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+      .blog-header h1 {
+        font-size: 2rem;
+      }
+      
+      .blog-meta {
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .cta-buttons {
+        flex-direction: column;
+      }
+      
+      .cta-buttons .btn {
+        width: 100%;
+        text-align: center;
+      }
+      
+      .internal-links-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    @media (min-width: 768px) {
+      .internal-links-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+  </style>
+</BaseLayout>

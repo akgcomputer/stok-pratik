@@ -1,0 +1,529 @@
+---
+// src/pages/index.astro
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const heroImage = "/images/hero-image.jpg";
+const featuresImage = "/images/features.jpg";
+const erpDashboard = "/images/erp-dashboard.jpg";
+const mainImage = "/images/site-foto/Stok-pratik-33.png";
+---
+
+<BaseLayout title="Stok Pratik - İşinizi Büyütün, Şirketinizin Geleceğini Planlayın">
+  <!-- Main Features Section -->
+  <section class="main-features py-16">
+    <div class="container">
+      <div class="features-grid">
+        <div class="features-content">
+          <div class="brand-header">
+            <h2 class="brand-name">Stok Pratik</h2>
+            <h3 class="brand-tagline">Bulut Tabanlı En Hızlı Stok & Muhasebe Yazılımı</h3>
+          </div>
+          
+          <div class="powerful-features">
+            <h4 class="features-title">🎯 Stok Pratik'in Güçlü Yönleri</h4>
+            <ul class="features-list">
+              <li>
+                <span class="feature-icon">🏪</span>
+                <div>
+                  <strong>Mağazacılık</strong>
+                  <p>Mağaza yönetiminizi kolaylaştıran entegre çözüm</p>
+                </div>
+              </li>
+              <li>
+                <span class="feature-icon">🔄</span>
+                <div>
+                  <strong>ERP</strong>
+                  <p>Kurumsal kaynak planlama ile tüm süreçleri yönetin</p>
+                </div>
+              </li>
+              <li>
+                <span class="feature-icon">🛒</span>
+                <div>
+                  <strong>E-Ticaret</strong>
+                  <p>Online satışlarınızı tek platformdan yönetin</p>
+                </div>
+              </li>
+              <li>
+                <span class="feature-icon">☁️</span>
+                <div>
+                  <strong>Bulut Muhasebe</strong>
+                  <p>Her yerden erişilebilir, güvenli muhasebe</p>
+                </div>
+              </li>
+              <li>
+                <span class="feature-icon">📱</span>
+                <div>
+                  <strong>Mobil Uyumlu</strong>
+                  <p>İstediğiniz cihazdan, istediğiniz yerden erişim</p>
+                </div>
+              </li>
+              <li>
+                <span class="feature-icon">📊</span>
+                <div>
+                  <strong>Çok Şube Yönetimi</strong>
+                  <p>Tüm şubelerinizi merkezi olarak yönetin</p>
+                </div>
+              </li>
+              <li>
+                <span class="feature-icon">🏷️</span>
+                <div>
+                  <strong>Barkodlu Çalışma</strong>
+                  <p>Barkod sistemi ile hızlı ve hatasız işlemler</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+          
+          <div class="feature-buttons">
+            <a href="https://wa.me/+905325000999?text=Merhaba,%20Stok%20Pratik%20demo%20talep%20ediyorum" 
+               class="btn btn-primary btn-red">
+              Demo Talep Et
+              <span class="btn-subtext">WhatsApp ile Görüş</span>
+            </a>
+            
+            <a href="https://wa.me/+905325000999?text=Merhaba,%20Stok%20Pratik%20fiyat%20teklifi%20alıyorum" 
+               class="btn btn-secondary btn-green">
+              Fiyat Teklifi Al
+              <span class="btn-subtext">WhatsApp ile Görüş</span>
+            </a>
+          </div>
+        </div>
+        
+        <div class="features-image">
+          <img 
+            src={mainImage} 
+            alt="Stok Pratik Stok ve Muhasebe Yazılımı Ekran Görüntüsü" 
+            width="650" 
+            height="825"
+            loading="lazy"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  
+  
+
+  <!-- CTA Section -->
+  <section class="cta-section py-16">
+    <div class="container text-center">
+      <h2>Hazır mısınız?  <br>Şimdi İşletmenizi Dijitalleştirin!</h2>
+      <p>Stok Pratik Online Muhasebe, Mağazacılık ve ERP ile iş süreçlerinizi optimize edin, zaman ve maliyet tasarrufu sağlayın.</p>
+      <a href="#contact" class="btn btn-primary">Hemen Başlayın</a>
+    </div>
+  </section>
+
+  <!-- Hero Section -->
+  <section class="hero py-16">
+    <div class="container">
+      <div class="hero-content text-center">
+        <h1>İşinizi Büyütün, Şirketinizin Geleceğini Planlayın</h1>
+        <p class="hero-subtitle">
+          Stok Pratik Online Muhasebe, Mağazacılık ve ERP ile üretim süreçlerinizi dijitalleştirin, verimliliğinizi katlayın. 
+          Gerçek zamanlı takip, entegre yönetim ve sınırsız fırsatlarla işletmenizin potansiyelini en üst seviyeye çıkarın.
+        </p>
+        <a href="/iletisim" class="btn btn-primary">Bugün Deneyin, Farkı Yaşayın!</a>
+        
+       
+      </div>
+    </div>
+  </section>
+
+  <style>
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(135deg, var(--primary-red-light) 0%, var(--bg-white) 100%);
+    }
+
+    .hero-content {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .hero h1 {
+      background: linear-gradient(135deg, var(--primary-red), var(--primary-red-dark));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: var(--spacing-md);
+    }
+
+    .hero-subtitle {
+      font-size: 1.25rem;
+      color: var(--text-gray);
+      margin-bottom: var(--spacing-lg);
+    }
+
+    .hero-features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: var(--spacing-lg);
+      margin-top: var(--spacing-xl);
+    }
+
+    .feature-card {
+      background: var(--bg-white);
+      padding: var(--spacing-xl);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-md);
+      text-align: center;
+      transition: transform var(--transition-normal);
+    }
+
+    .feature-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .feature-card .feature-icon {
+      width: 60px;
+      height: 60px;
+      background: var(--primary-red);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto var(--spacing-md);
+      font-size: 1.5rem;
+      color: white;
+    }
+
+    /* Main Features Section */
+    .main-features {
+      background-color: var(--bg-white);
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--spacing-xl);
+      align-items: center;
+    }
+
+    @media (min-width: 992px) {
+      .features-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: var(--spacing-xl);
+      }
+    }
+
+    .brand-header {
+      margin-bottom: var(--spacing-xl);
+    }
+
+    .brand-name {
+      font-size: 3rem;
+      font-weight: 800;
+      color: var(--primary-red);
+      margin-bottom: 0.5rem;
+      line-height: 1;
+    }
+
+    .brand-tagline {
+      font-size: 1.5rem;
+      color: var(--text-dark);
+      font-weight: 600;
+      line-height: 1.3;
+    }
+
+    .features-title {
+      font-size: 1.75rem;
+      color: var(--text-dark);
+      margin-bottom: var(--spacing-lg);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .features-list {
+      list-style: none;
+      margin: var(--spacing-lg) 0;
+    }
+
+    .features-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--spacing-md);
+      padding: var(--spacing-md) 0;
+      border-bottom: 1px solid var(--secondary-light);
+    }
+
+    .features-list li:last-child {
+      border-bottom: none;
+    }
+
+    .features-list .feature-icon {
+      font-size: 1.75rem;
+      flex-shrink: 0;
+      width: 50px;
+      text-align: center;
+    }
+
+    .features-list strong {
+      font-size: 1.1rem;
+      color: var(--text-dark);
+      display: block;
+      margin-bottom: 0.25rem;
+    }
+
+    .features-list p {
+      color: var(--text-gray);
+      font-size: 0.95rem;
+      margin: 0;
+    }
+
+    .feature-buttons {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: var(--spacing-md);
+      margin-top: var(--spacing-xl);
+    }
+
+    .btn {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-red {
+      background: linear-gradient(135deg, #dc2626, #f97316);
+      border-color: #dc2626;
+    }
+
+    .btn-red:hover {
+      background: linear-gradient(135deg, #b91c1c, #ea580c);
+      border-color: #b91c1c;
+    }
+
+    .btn-green {
+      background: linear-gradient(135deg, #059669, #10b981);
+      border-color: #059669;
+    }
+
+    .btn-green:hover {
+      background: linear-gradient(135deg, #047857, #0d9488);
+      border-color: #047857;
+    }
+
+    .btn-subtext {
+      display: block;
+      font-size: 0.85rem;
+      opacity: 0.9;
+      margin-top: 0.25rem;
+      font-weight: normal;
+    }
+
+    .features-image {
+      text-align: center;
+    }
+
+    .features-image img {
+      max-width: 100%;
+      height: auto;
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-lg);
+      border: 8px solid white;
+    }
+
+    @media (min-width: 992px) {
+      .features-image img {
+        max-width: 650px;
+        max-height: 825px;
+      }
+    }
+
+    /* Benefits Section */
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: var(--spacing-xl);
+      align-items: center;
+    }
+
+    .benefits-list {
+      list-style: none;
+      margin: var(--spacing-lg) 0;
+    }
+
+    .benefits-list li {
+      padding: var(--spacing-xs) 0;
+      padding-left: var(--spacing-lg);
+      position: relative;
+    }
+
+    .benefits-list li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: var(--primary-red);
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+
+    .benefits-image {
+      text-align: center;
+    }
+
+    .benefits-image img {
+      max-width: 100%;
+      height: auto;
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: var(--spacing-md);
+      margin-top: var(--spacing-lg);
+    }
+
+    /* Pricing Section */
+    .pricing {
+      background-color: var(--primary-red-light);
+    }
+
+    .pricing-header p {
+      font-size: 1.125rem;
+      margin-bottom: var(--spacing-xl);
+    }
+
+    .pricing-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: var(--spacing-lg);
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .pricing-card {
+      background: var(--bg-white);
+      padding: var(--spacing-xl);
+      border-radius: var(--radius-lg);
+      text-align: center;
+      box-shadow: var(--shadow-md);
+      position: relative;
+      transition: transform var(--transition-normal);
+    }
+
+    .pricing-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .pricing-card.featured {
+      border: 3px solid var(--primary-red);
+    }
+
+    .pricing-card.featured::before {
+      content: "POPÜLER";
+      position: absolute;
+      top: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--primary-red);
+      color: white;
+      padding: 5px 20px;
+      border-radius: var(--radius-full);
+      font-size: 0.875rem;
+      font-weight: 600;
+    }
+
+    .price {
+      font-size: 3rem;
+      font-weight: 800;
+      color: var(--primary-red);
+      margin: var(--spacing-md) 0;
+    }
+
+    .price-features {
+      list-style: none;
+      margin: var(--spacing-lg) 0;
+    }
+
+    .price-features li {
+      padding: var(--spacing-xs) 0;
+      border-bottom: 1px solid var(--secondary-light);
+    }
+
+    .price-features li:last-child {
+      border-bottom: none;
+    }
+
+    /* CTA Section */
+    .cta-section {
+      background: linear-gradient(135deg, var(--secondary-dark), var(--primary-red));
+      color: white;
+    }
+
+    .cta-section h2 {
+      color: white;
+      margin-bottom: var(--spacing-md);
+    }
+
+    .cta-section p {
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 1.125rem;
+      margin-bottom: var(--spacing-lg);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .hero-features {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+      }
+
+      .brand-name {
+        font-size: 2.5rem;
+      }
+
+      .brand-tagline {
+        font-size: 1.25rem;
+      }
+
+      .features-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .features-list li {
+        text-align: left;
+      }
+
+      .benefits-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .pricing-cards {
+        grid-template-columns: 1fr;
+      }
+
+      .cta-buttons,
+      .feature-buttons {
+        flex-direction: column;
+      }
+
+      .feature-buttons {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .feature-card,
+      .pricing-card {
+        padding: var(--spacing-lg);
+      }
+
+      .price {
+        font-size: 2.5rem;
+      }
+
+      .brand-name {
+        font-size: 2rem;
+      }
+
+      .brand-tagline {
+        font-size: 1.1rem;
+      }
+    }
+  </style>
+</BaseLayout>

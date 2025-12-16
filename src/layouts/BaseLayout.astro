@@ -1,0 +1,130 @@
+---
+// src/layouts/BaseLayout.astro
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import WhatsAppFloat from '../components/WhatsAppFloat.astro';
+import '../styles/global.css';
+
+const { title = "Stok Pratik - ERP Çözümleri" } = Astro.props;
+---
+
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Stok Pratik ERP ile stok yönetiminizi kolaylaştırın. İşletmeniz için en iyi stok takip çözümü." />
+    <meta name="keywords" content="stok yönetimi, stok takip, envanter yönetimi, ticari yazılım" />
+    <title>{title}</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/images/site-foto/fav-stok-pratik.png">
+  </head>
+  
+  <body>
+    <!-- Header -->
+    <Header />
+    
+    <!-- Ana içerik -->
+    <main>
+      <slot />
+    </main>
+    
+    <!-- Footer -->
+    <Footer />
+    
+    <!-- WhatsApp Float Button -->
+    <WhatsAppFloat />
+    
+    <!-- Script'i client:load directive ile yükle -->
+    <script client:load>
+      // Mobile menu functionality
+      function initMobileMenu() {
+        const btn = document.getElementById('mobileMenuBtn');
+        const menu = document.getElementById('mobileMenu');
+        const closeBtn = document.getElementById('mobileMenuClose');
+
+        if (!btn || !menu) return;
+
+        function openMenu() {
+          menu.classList.add('active');
+          document.body.style.overflow = 'hidden';
+          btn.setAttribute('aria-expanded', 'true');
+        }
+
+        function closeMenu() {
+          menu.classList.remove('active');
+          document.body.style.overflow = '';
+          btn.setAttribute('aria-expanded', 'false');
+        }
+
+        btn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          const isOpen = menu.classList.contains('active');
+          if (isOpen) {
+            closeMenu();
+          } else {
+            openMenu();
+          }
+        });
+
+        if (closeBtn) {
+          closeBtn.addEventListener('click', closeMenu);
+        }
+
+        // Close on Escape
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape' && menu.classList.contains('active')) {
+            closeMenu();
+          }
+        });
+
+        // Close menu when clicking on a link
+        const mobileLinks = menu.querySelectorAll('.mobile-nav-link');
+        mobileLinks.forEach(link => {
+          link.addEventListener('click', closeMenu);
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+          if (menu.classList.contains('active') && 
+              !menu.contains(e.target) && 
+              e.target !== btn && 
+              !btn.contains(e.target)) {
+            closeMenu();
+          }
+        });
+      }
+
+      // Smooth scrolling for anchor links
+      function initSmoothScroll() {
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+          anchor.addEventListener('click', function (e) {
+            const href = this.getAttribute('href');
+            if (href === '#') return;
+            
+            e.preventDefault();
+            const target = document.querySelector(href);
+            if (target) {
+              target.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+              });
+            }
+          });
+        });
+      }
+
+      // Initialize all scripts when DOM is loaded
+      document.addEventListener('DOMContentLoaded', () => {
+        initMobileMenu();
+        initSmoothScroll();
+      });
+    </script>
+  </body>
+</html>

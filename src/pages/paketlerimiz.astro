@@ -1,0 +1,675 @@
+---
+// src/pages/paketlerimiz.astro
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+// Paketler listesi
+const packages = [
+  {
+    id: "free",
+    name: "Ücretsiz Paket",
+    price: "0",
+    period: "Ömür Boyu Ücretsiz",
+    note: "*Sadece yıllık server/hosting bedeli öder",
+    features: [
+      "📦 Stok Yönetimi – Detaylı stok takibi ve envanter kontrolü",
+      "🔍 Cari Yönetimi – Müşteri ve tedarikçi hesaplarının yönetimi"
+    ],
+    popular: false
+  },
+  {
+    id: "basic",
+    name: "Online Muhasebe+Tek Şube Paketi",
+    price: "999",
+    period: "aylık",
+    features: [
+      "📦 Stok Yönetimi",
+      "🔍 Cari Yönetimi",
+      "🧾 e-Fatura & e-İrsaliye",
+      "💼 Kasa ve Banka Yönetimi",
+      "📱 Mobil Uyumlu"
+    ],
+    popular: true
+  },
+  {
+    id: "pro5",
+    name: "Online Muhasebe+5 Şubeli Mağaza Paketi",
+    price: "4,999",
+    period: "aylık",
+    features: [
+      "Temel Paketin Tüm Özellikleri",
+      "5 Şube Yönetimi",
+      "Çoklu Depo Takibi",
+      "Kullanıcı Yetkilendirme",
+      "Personel Yönetimi"
+    ],
+    popular: false
+  },
+  {
+    id: "pro10",
+    name: "Online Muhasebe+10 Şubeli Mağaza Paketi",
+    price: "8,999",
+    period: "aylık",
+    features: [
+      "5 Şube Paketi Tüm Özellikleri",
+      "10 Şube Yönetimi",
+      "Toplu Stok İşlemleri",
+      "Veri Transferi-Yedekleme",
+      "500 Adet e-Fatura Kontör HEDİYE"
+    ],
+    popular: false
+  },
+  {
+    id: "pro15",
+    name: "Online Muhasebe+15 Şubeli Mağaza Paketi",
+    price: "9,999",
+    period: "aylık",
+    features: [
+      "10 Şube Paketi Tüm Özellikleri",
+      "15 Şube Yönetimi",
+      "Saha/Sıcak Satış Modülü",
+      "Sayım İşlemleri",
+      "7/24 Öncelikli Destek"
+    ],
+    popular: false
+  },
+  {
+    id: "unlimited",
+    name: "Online Muhasebe+Sınırsız Şubeli Mağaza Paketi",
+    price: "19,999",
+    period: "aylık",
+    features: [
+      "15 Şube Paketi Tüm Özellikleri",
+      "Sınırsız Şube Yönetimi",
+      "Web & Android Uygulama",
+      "Depo Yönetimi",
+      "1000 Adet e-Fatura Kontör HEDİYE"
+    ],
+    popular: false
+  },
+  {
+    id: "erp",
+    name: "Online Muhasebe+Mağazacılık+ERP Proje Yönetimi Modülü",
+    price: "49,999",
+    period: "aylık",
+    features: [
+      "Sınırsız Şube Paketi Tüm Özellikleri",
+      "ERP Proje Yönetimi",
+      "Görev Atama ve Takip",
+      "Maliyet ve Süre Raporlama",
+      "Proje Sonlandırma Modülü"
+    ],
+    popular: false
+  },
+  {
+    id: "bi",
+    name: "Online Muhasebe+Mağazacılık+ERP Proje Yönetimi+ERP İş Zekası (BI) Modülü",
+    price: "69,999",
+    period: "aylık",
+    features: [
+      "ERP Proje Yönetimi Tüm Özellikleri",
+      "ERP İş Zekası (BI) Modülü",
+      "Veri Toplama ve Analiz",
+      "Dashboard Tasarımı",
+      "Özelleştirilmiş Raporlama"
+    ],
+    popular: false
+  },
+  {
+    id: "service",
+    name: "Online Muhasebe+Mağazacılık+Teknik Servis Yönetimi Modülü",
+    price: "29,999",
+    period: "aylık",
+    features: [
+      "Sınırsız Şube Paketi Tüm Özellikleri",
+      "Teknik Servis Yönetimi",
+      "Servis Talebi ve Takip",
+      "Faturalandırma Sistemi",
+      "Müşteri Memnuniyeti Analizi"
+    ],
+    popular: false
+  }
+];
+
+// Paket detayları
+const packageDetails = {
+  free: {
+    title: "Ücretsiz Paket Detayları",
+    description: "Temel işletme ihtiyaçlarınız için başlangıç paketi",
+    modules: [
+      "📦 Stok Yönetimi – Detaylı stok takibi ve envanter kontrolü",
+      "🔍 Cari Yönetimi – Müşteri ve tedarikçi hesaplarının yönetimi"
+    ]
+  },
+  magaza: {
+    title: "Mağazacılık Paketi Detayları",
+    description: "Tam entegre mağaza yönetim çözümü",
+    modules: [
+      "📦 Stok Yönetimi – Detaylı stok takibi ve envanter kontrolü",
+      "🔍 Cari Yönetimi – Müşteri ve tedarikçi hesaplarının yönetimi",
+      "🧾 e-Fatura – Tam entegre elektronik fatura çözümü",
+      "📑 e-İrsaliye – Elektronik irsaliye yönetimi",
+      "💼 Kasa – Nakit ve banka hesaplarının detaylı takibi",
+      "🏦 Banka – Banka hesap yönetimi ve takibi",
+      "📋 Çek & Senet – Çek-senet portföy yönetimi ve takibi",
+      "📊 Toplu Stok İşlemleri – Toplu ürün giriş, fiyat güncelleme gibi işlemler",
+      "🔄 Veri Transferi-Yedekleme – Excel/XML ile veri aktarımı ve otomatik yedekleme",
+      "🔐 Kullanıcı Yetkilendirme – Rol bazlı kullanıcı yetkilendirme sistemi",
+      "👥 Personel Yönetimi – Personel bilgileri ve performans takibi",
+      "📄 Özlük Modülü – Personel dosyaları ve belge yönetimi",
+      "📱 Saha/Sıcak Satış – Mobil cihazlarla saha satış işlemleri",
+      "🌐 Web & 📱 Android – Tüm platformlarda sorunsuz çalışma",
+      "🏚️ Depo Yönetimi – Çoklu depo ve depo arası transfer işlemleri",
+      "🧮 Sayım İşlemleri – Periyodik stok sayımı ve fark analizi",
+      "🎁 500 Adet e-Fatura/e-Arşiv Kontör HEDİYE – Yeni başlayanlar için özel avantaj"
+    ]
+  },
+  erp: {
+    title: "ERP Proje Yönetimi Modülü Detayları",
+    description: "Kurumsal proje yönetimi ve takip sistemi",
+    modules: [
+      "• Proje Oluşturma – Proje Adı, Başlangıç-Bitiş Tarihleri, Bütçe Tanımlama, Sorumlu Kişi/Listesi",
+      "• Görev Atama – Görev Tanımlama, Görev Süresi, İlgili Kişiye Atama",
+      "• Görev Takibi – Görev Durumu (Başlamadı, Devam Ediyor, Tamamlandı), İlerleme Yüzdesi, Görev Geçmişi",
+      "• Maliyet ve Süre Raporlama – Gerçekleşen Maliyetler, Planlanan ve Gerçekleşen Süre Karşılaştırması, Bütçe Fark Analizi",
+      "• Proje Sonlandırma – Proje Sonuç Raporu, Performans Değerlendirmesi, Doküman Arşivleme"
+    ]
+  },
+  bi: {
+    title: "ERP İş Zekası (BI) Modülü Detayları",
+    description: "Gelişmiş analiz ve iş zekası çözümleri",
+    modules: [
+      "* Veri Toplama – Üretim Verileri, Satış Verileri, Stok Verileri, Finansal Veriler",
+      "o Görselleştirme – Dashboard Tasarımı, Grafikler (Çubuk, Pasta, Çizgi Grafikleri), Tablolar ve Filtreleme Seçenekleri",
+      "o Analiz – Satış Analizi, Stok Hareketleri Analizi, Maliyet ve Karlılık Analizi, Performans Göstergeleri (KPI'lar)",
+      "o Raporlama – Otomatik Rapor Oluşturma, PDF/Excel Dışa Aktarma, Yöneticiye Gönderilen Haftalık/Aylık Raporlar",
+      "o Özelleştirme – Kullanıcı Bazlı Dashboard Ayarları, Favori Raporlar ve Görseller, Erişim Yetkilendirmesi"
+    ]
+  },
+  service: {
+    title: "Teknik Servis Yönetimi Modülü Detayları",
+    description: "Kapsamlı teknik servis yönetim sistemi",
+    modules: [
+      "• Tanımlamalar (Ayarlar) – Yapılacakları tanımlama, Kontrol Değerleri, İşlem durumu, Cihaz durumu",
+      "• Servis Talebi Oluşturma – Müşteri Bilgisi, Arızalı ürün listesi, Problem Açıklaması, Teknisyen Atama",
+      "• Servis Kaydı ve İzleme – Servis Kaydı Oluşturma/Güncelleme, Yapılan İşlemler Listesi, Tanımlamalar, Aciliyet Derecesi",
+      "• Müşteri Onayı – Kağıt/PDF dökümü, E-Posta Onayı, SMS Onayı",
+      "• Faturalandırma – Servis Ücreti Hesaplama, Fatura Oluşturma, Müşteriye Fatura Gönderme",
+      "• Raporlama – Servis Süreleri, Çözülen Talep Sayısı, Müşteri Memnuniyeti Analizi"
+    ]
+  }
+};
+---
+
+<BaseLayout title="Stok Pratik Paketleri | En Uygun ERP Çözümleri">
+  <!-- Hero Section -->
+  <section class="page-hero py-12">
+    <div class="container">
+      <div class="text-center max-w-3xl mx-auto">
+        <h1 class="page-title">Stok Pratik Paketleri</h1>
+        <p class="page-subtitle">
+          İşletmenizin büyüklüğüne ve ihtiyaçlarına özel hazırlanmış paketlerimizden size en uygun olanı seçin.
+          Ömür boyu lisans avantajı ile kalıcı çözümler sunuyoruz.
+        </p>
+        <div class="info-box mt-8">
+          <p class="info-text">
+            💡 <strong>Önemli Not:</strong> Programı satın aldığınızda ilk yıl server/hosting/bakım/yenileme gibi ödemeleri yapmazsınız, 
+            2. yıldan itibaren her yıl sadece yenileme ücreti talep edilir.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing Cards -->
+  <section class="pricing-section py-12">
+    <div class="container">
+      <h2 class="section-title text-center mb-12">Paketlerimiz</h2>
+      
+      <div class="pricing-grid">
+        {packages.map((pkg) => (
+          <div class={`pricing-card ${pkg.popular ? 'featured' : ''}`}>
+            {pkg.popular && <div class="popular-badge">POPÜLER</div>}
+            
+            <div class="pricing-header">
+              <h3 class="package-name">{pkg.name}</h3>
+              <div class="price-container">
+                <span class="price">{pkg.price}</span>
+                <span class="currency">₺</span>
+                <span class="period">/{pkg.period}</span>
+              </div>
+              {pkg.note && <p class="package-note">{pkg.note}</p>}
+            </div>
+            
+            <ul class="package-features">
+              {pkg.features.slice(0, 5).map((feature) => (
+                <li>{feature}</li>
+              ))}
+            </ul>
+            
+            <div class="pricing-footer">
+              <a 
+                href={`https://wa.me/+905325000999?text=${encodeURIComponent(`${pkg.name} paketini kullanmaya başlamak istiyorum`)}`}
+                class="btn btn-primary w-full"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Şimdi Kullanmaya Başla
+                <span class="btn-subtext">WhatsApp ile Görüş</span>
+              </a>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Package Details -->
+  <section class="details-section py-16 bg-gray-50">
+    <div class="container">
+      <h2 class="section-title text-center mb-12">Paketlerin Detayları</h2>
+      
+      <div class="details-grid">
+        <!-- Ücretsiz Paket -->
+        <div class="detail-card">
+          <div class="detail-header">
+            <h3 class="detail-title">{packageDetails.free.title}</h3>
+            <p class="detail-description">{packageDetails.free.description}</p>
+          </div>
+          <ul class="detail-list">
+            {packageDetails.free.modules.map((module) => (
+              <li>{module}</li>
+            ))}
+          </ul>
+        </div>
+        
+        <!-- Mağazacılık Paketi -->
+        <div class="detail-card">
+          <div class="detail-header">
+            <h3 class="detail-title">{packageDetails.magaza.title}</h3>
+            <p class="detail-description">{packageDetails.magaza.description}</p>
+          </div>
+          <ul class="detail-list">
+            {packageDetails.magaza.modules.map((module) => (
+              <li>{module}</li>
+            ))}
+          </ul>
+        </div>
+        
+        <!-- ERP Proje Yönetimi -->
+        <div class="detail-card">
+          <div class="detail-header">
+            <h3 class="detail-title">{packageDetails.erp.title}</h3>
+            <p class="detail-description">{packageDetails.erp.description}</p>
+          </div>
+          <ul class="detail-list">
+            {packageDetails.erp.modules.map((module) => (
+              <li>{module}</li>
+            ))}
+          </ul>
+        </div>
+        
+        <!-- ERP İş Zekası -->
+        <div class="detail-card">
+          <div class="detail-header">
+            <h3 class="detail-title">{packageDetails.bi.title}</h3>
+            <p class="detail-description">{packageDetails.bi.description}</p>
+          </div>
+          <ul class="detail-list">
+            {packageDetails.bi.modules.map((module) => (
+              <li>{module}</li>
+            ))}
+          </ul>
+        </div>
+        
+        <!-- Teknik Servis Yönetimi -->
+        <div class="detail-card">
+          <div class="detail-header">
+            <h3 class="detail-title">{packageDetails.service.title}</h3>
+            <p class="detail-description">{packageDetails.service.description}</p>
+          </div>
+          <ul class="detail-list">
+            {packageDetails.service.modules.map((module) => (
+              <li>{module}</li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta-section py-16">
+    <div class="container">
+      <div class="cta-content text-center">
+        <h2 class="cta-title">Paketlerimizle İlgili Sorularınız mı Var?</h2>
+        <p class="cta-text">
+          Size en uygun paketi seçmenize yardımcı olalım. Teklif almak veya demo talep etmek için hemen iletişime geçin.
+        </p>
+        <div class="cta-buttons mt-8">
+          <a 
+            href="https://wa.me/+905325000999?text=Merhaba,%20Stok%20Pratik%20paketleri%20hakkında%20bilgi%20almak%20istiyorum"
+            class="btn btn-primary btn-lg"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            WhatsApp'tan Yazın
+          </a>
+          <a href="/iletisim" class="btn btn-outline btn-lg">
+            İletişim
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    /* Page Hero */
+    .page-hero {
+      background: linear-gradient(135deg, var(--primary-red-light) 0%, var(--bg-white) 100%);
+    }
+    
+    .page-title {
+      font-size: 3rem;
+      color: var(--primary-red);
+      margin-bottom: 1rem;
+      font-weight: 800;
+    }
+    
+    .page-subtitle {
+      font-size: 1.25rem;
+      color: var(--text-gray);
+      line-height: 1.6;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .info-box {
+      background: white;
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      box-shadow: var(--shadow-md);
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .info-text {
+      color: var(--text-gray);
+      font-size: 1.1rem;
+      line-height: 1.6;
+      margin: 0;
+    }
+    
+    /* Section Title */
+    .section-title {
+      font-size: 2.5rem;
+      color: var(--text-dark);
+      font-weight: 700;
+    }
+    
+    /* Pricing Cards */
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+    
+    .pricing-card {
+      background: white;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+      transition: all 0.3s ease;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .pricing-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-lg);
+    }
+    
+    .pricing-card.featured {
+      border: 3px solid var(--primary-red);
+    }
+    
+    .popular-badge {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: var(--primary-red);
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 2rem;
+      font-size: 0.875rem;
+      font-weight: 600;
+    }
+    
+    .pricing-header {
+      padding: 2rem 2rem 1rem;
+      text-align: center;
+      border-bottom: 1px solid var(--secondary-light);
+    }
+    
+    .package-name {
+      font-size: 1.25rem;
+      color: var(--text-dark);
+      font-weight: 700;
+      margin-bottom: 1rem;
+      line-height: 1.4;
+    }
+    
+    .price-container {
+      display: flex;
+      align-items: baseline;
+      justify-content: center;
+      gap: 0.25rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .price {
+      font-size: 3rem;
+      font-weight: 800;
+      color: var(--primary-red);
+      line-height: 1;
+    }
+    
+    .currency {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--primary-red);
+    }
+    
+    .period {
+      font-size: 1rem;
+      color: var(--text-gray);
+    }
+    
+    .package-note {
+      color: var(--text-light);
+      font-size: 0.875rem;
+      font-style: italic;
+      margin-top: 0.5rem;
+    }
+    
+    .package-features {
+      list-style: none;
+      padding: 1.5rem 2rem;
+      flex-grow: 1;
+    }
+    
+    .package-features li {
+      padding: 0.5rem 0;
+      color: var(--text-gray);
+      position: relative;
+      padding-left: 1.5rem;
+    }
+    
+    .package-features li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: var(--primary-red);
+      font-weight: bold;
+    }
+    
+    .pricing-footer {
+      padding: 0 2rem 2rem;
+    }
+    
+    /* Package Details */
+    .details-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 2rem;
+    }
+    
+    .detail-card {
+      background: white;
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      box-shadow: var(--shadow-md);
+      transition: transform 0.3s ease;
+    }
+    
+    .detail-card:hover {
+      transform: translateY(-5px);
+    }
+    
+    .detail-header {
+      margin-bottom: 1.5rem;
+      padding-bottom: 1rem;
+      border-bottom: 2px solid var(--primary-red-light);
+    }
+    
+    .detail-title {
+      font-size: 1.5rem;
+      color: var(--primary-red);
+      margin-bottom: 0.5rem;
+      font-weight: 700;
+    }
+    
+    .detail-description {
+      color: var(--text-gray);
+      line-height: 1.5;
+    }
+    
+    .detail-list {
+      list-style: none;
+    }
+    
+    .detail-list li {
+      padding: 0.75rem 0;
+      color: var(--text-gray);
+      border-bottom: 1px solid var(--secondary-light);
+      line-height: 1.5;
+    }
+    
+    .detail-list li:last-child {
+      border-bottom: none;
+    }
+    
+    /* CTA Section */
+    .cta-section {
+      background: linear-gradient(135deg, var(--secondary-dark), var(--primary-red));
+      color: white;
+    }
+    
+    .cta-title {
+      color: white;
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+    
+    .cta-text {
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 1.25rem;
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+    
+    .cta-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    
+    .btn-lg {
+      padding: 0.875rem 2rem;
+      font-size: 1.125rem;
+    }
+    
+    /* Button Subtext */
+    .btn-subtext {
+      display: block;
+      font-size: 0.85rem;
+      opacity: 0.9;
+      margin-top: 0.25rem;
+      font-weight: normal;
+    }
+    
+    /* Buton hover yazı rengi düzeltmesi */
+    .btn-primary:hover {
+      color: #000 !important;
+    }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+      .page-title {
+        font-size: 2.5rem;
+      }
+      
+      .section-title {
+        font-size: 2rem;
+      }
+      
+      .pricing-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .details-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .cta-buttons {
+        flex-direction: column;
+      }
+      
+      .btn-lg {
+        width: 100%;
+      }
+      
+      .price {
+        font-size: 2.5rem;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .page-title {
+        font-size: 2rem;
+      }
+      
+      .page-subtitle {
+        font-size: 1.1rem;
+      }
+      
+      .info-box {
+        padding: 1rem;
+      }
+      
+      .pricing-header,
+      .package-features,
+      .pricing-footer {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+      }
+      
+      .detail-card {
+        padding: 1.5rem;
+      }
+    }
+  </style>
+</BaseLayout>

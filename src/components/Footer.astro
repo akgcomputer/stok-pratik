@@ -1,0 +1,185 @@
+---
+// src/components/Footer.astro
+import SocialMedia from './SocialMedia.astro';
+---
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-content">
+      <!-- Stok Pratik Açıklama -->
+      <div class="footer-section">
+        <h3>Stok Pratik</h3>
+        <p class="footer-description">
+          <strong>Ön Muhasebe Artık Tamamen Ücretsiz</strong><br>
+          Cari hesap, stok, tahsilat ve daha fazlası tek panelde, tamamen ücretsiz.<br>
+          Dilersen Profesyonel Stok Pratik paketleri ile ön muhasebe, mağazacılık, 
+          Erp ve e-Fatura işlemlerini tüm cihazlardan, dilediğin yerden
+          rahatça yönetin.
+        </p>
+        <div class="footer-social">
+          <SocialMedia />
+        </div>
+      </div>
+      
+      <!-- Özellikler 1. Bölüm -->
+      <div class="footer-section">
+        <h4>Özellikler</h4>
+        <ul class="footer-links">
+          <li>Stok Takibi</li>
+          <li>Cari Hesap Takibi</li>
+          <li>e-Ticaret Entegrasyonu</li>
+          <li>e-Fatura</li>
+          <li>Mağazacılık Sistemi</li>
+          <li>Mağazalar Arası Ürün Transferleri</li>
+        </ul>
+      </div>
+      
+      <!-- Özellikler 2. Bölüm -->
+      <div class="footer-section">
+        <h4>&nbsp;</h4>
+        <ul class="footer-links">
+          <li>Mağaza Satış Ekranı (POS)</li>
+          <li>Sanal Pos ile Ödeme Alma</li>
+          <li>Fatura Takibi</li>
+          <li>Banka Entegrasyonları</li>
+          <li>Hatırlatmalar</li>
+          <li>Demirbaş Yönetimi</li>
+        </ul>
+      </div>
+      
+      <!-- Özellikler 3. Bölüm -->
+      <div class="footer-section">
+        <h4>&nbsp;</h4>
+        <ul class="footer-links">
+          <li>Gider Yönetimi</li>
+          <li>Personel Prim Yönetimi</li>
+          <li>Online Satış</li>
+          <li>Sıcak Satış</li>
+          <li>Saha Satış</li>
+          <li>Sipariş Yönetimi</li>
+          <li>Çek ve Senet</li>
+        </ul>
+      </div>
+      
+      <!-- Özellikler 4. Bölüm -->
+      <div class="footer-section">
+        <h4>&nbsp;</h4>
+        <ul class="footer-links">
+          <li>Şube ve Depo Yönetimi</li>
+          <li>Raporlar</li>
+          <li>Pazaryeri Entegrasyonu</li>
+          <li>Online Tahsilat</li>
+          <li>Kargo Entegrasyonu</li>
+          <li>Kullanıcı ve Çalışan Yönetimi</li>
+        </ul>
+      </div>
+      
+      <!-- Politikalar -->
+      <div class="footer-section">
+        <h4>Politikalar</h4>
+        <ul class="footer-links">
+          <li><a href="/partnerlik-programi">Partner ve Partnerlik Programı</a></li>
+          <li><a href="/bilgi-guvenligi-politikamiz">Bilgi Güvenliği Politikamız</a></li>
+          <li><a href="/cerez-politikasi">Çerez Politikası</a></li>
+          <li><a href="/kisisel-veriler-politikasi">Kişisel Veriler Politikası</a></li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>&copy; {new Date().getFullYear()} Stok Pratik. Tüm hakları saklıdır.</p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    background-color: var(--secondary-dark);
+    color: white;
+    padding: var(--spacing-xl) 0 var(--spacing-md);
+  }
+
+  .footer-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+    gap: var(--spacing-xl);
+    margin-bottom: var(--spacing-xl);
+  }
+
+  .footer-section h3,
+  .footer-section h4 {
+    color: white;
+    margin-bottom: var(--spacing-md);
+  }
+
+  .footer-description {
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.6;
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .footer-description strong {
+    color: white;
+    font-size: 1.1rem;
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+
+  .footer-links {
+    list-style: none;
+  }
+
+  .footer-links li {
+    margin-bottom: var(--spacing-xs);
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.9rem;
+  }
+
+  .footer-links a {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+  }
+
+  .footer-links a:hover {
+    color: var(--primary-red);
+  }
+
+  .footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: var(--spacing-md);
+    text-align: center;
+  }
+
+  .footer-bottom p {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.875rem;
+  }
+
+  .footer-social {
+    margin-top: var(--spacing-md);
+  }
+
+  /* Responsive Design */
+  @media (max-width: 1200px) {
+    .footer-content {
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .footer-content {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .footer-content {
+      grid-template-columns: 1fr;
+    }
+    
+    .footer-section h4:empty {
+      display: none;
+    }
+  }
+</style>

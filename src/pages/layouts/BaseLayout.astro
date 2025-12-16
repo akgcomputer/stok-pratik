@@ -1,0 +1,31 @@
+
+---
+// BaseLayout.astro - Default layout used by pages
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import '../../styles/global.css';
+import '../../styles/components.css';
+
+const { title = "Stok Pratik" } = Astro.props;
+---
+
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>{title}</title>
+  </head>
+  <body>
+    <!-- Header -->
+    <Header />
+    
+    <!-- Ana içerik -->
+    <main>
+      <slot />
+    </main>
+    
+    <!-- Footer -->
+    <Footer />
+  </body>
+</html>

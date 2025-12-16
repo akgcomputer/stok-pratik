@@ -1,0 +1,756 @@
+---
+// src/pages/referanslarimiz.astro
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+// Referanslar verisi
+const references = {
+  textile: {
+    title: "👕 Tekstil & Hazır Giyim",
+    companies: [
+      "Stil Moda Giyim",
+      "Toptan Kumaş Dünyası Tekstil",
+      "Trend Giysi Sanayi",
+      "Modern Kot Tekstil",
+      "Eleganza Giyim",
+      "PremiumWear",
+      "Fashion Kids",
+      "Style House Tekstil",
+      "DenimCraft Sanayi",
+      "Urla Moda Tekstil A.Ş.",
+      "Elite Men Wear",
+      "Cotton Way Giyim",
+      "Trendy Textile",
+      "Stil Kot Jeans",
+      "Moda Craft Tekstil",
+      "Elegant Woman Giyim",
+      "Premium Textile",
+      "FashionKot Sanayi",
+      "StyleTextile Co.",
+      "DenimStyle",
+      "Modern Men Wear Tekstil",
+      "EliteTextile",
+      "CottonCraft Giyim",
+      "TrendModa Sanayi",
+      "StilEleganza",
+      "Denim Craft",
+      "Cotton Way",
+      "Fashion Line",
+      "Style Textile",
+      "Modern Wear",
+      "Elite Giyim",
+      "Trend Craft",
+      "Stil Tekstil",
+      "Premium Wear",
+      "Elegant Giysi"
+    ]
+  },
+  magaza: {
+    title: "🏪 Mağaza & Butik",
+    companies: [
+      "Moda Butik",
+      "Stil Shop",
+      "Eleganza Boutique",
+      "Fashion House",
+      "Trendy Store",
+      "Chic Boutique",
+      "Style Loft",
+      "Glamour Shop",
+      "Posh Butik",
+      "Vogue Store",
+      "Elite Boutique",
+      "Charm Shop",
+      "Swank Butik",
+      "Grace Store",
+      "Luxe Boutique",
+      "Aura Shop",
+      "Bliss Butik",
+      "Serene Store",
+      "Harmony Boutique",
+      "Ethereal Shop",
+      "Stil Butik",
+      "Moda Shop",
+      "Elegant Store",
+      "Trendy Boutique",
+      "Chic Market",
+      "Fashion Loft",
+      "Style Gallery",
+      "Glamour House",
+      "Posh Store",
+      "Vogue Butik"
+    ]
+  },
+  hirdavat: {
+    title: "🛠️ Hırdavat & Yapı Malz.",
+    companies: [
+      "Yapı Malzeme Express",
+      "Hırdavat Dünyası",
+      "Teknik Malzeme A.Ş.",
+      "Pro Builder Market",
+      "Yapı Craft",
+      "Hırdavat Center",
+      "Malzeme Deposu",
+      "Teknik Yapı Market",
+      "Builder Supply",
+      "Yapı Malzeme House",
+      "Hırdavat Express",
+      "Construction Market",
+      "Malzeme Craft",
+      "Teknik Depo",
+      "Yapı Supply Co."
+    ]
+  },
+  gida: {
+    title: "🍎 Gıda & Market",
+    companies: [
+      "Fresh Market",
+      "Gıda Dünyası",
+      "Super Fresh Market",
+      "Organik Gıda House",
+      "Daily Market",
+      "Nature Food Market",
+      "Healthy Life Market",
+      "Fresh Grocery Co.",
+      "Gıda Express",
+      "Natural Market",
+      "Bio Food Market",
+      "Green Grocery",
+      "Fresh Life Market",
+      "Organic Market",
+      "Daily Grocery"
+    ]
+  },
+  oto: {
+    title: "🚗 Oto Yedek Parça",
+    companies: [
+      "Auto Parts",
+      "Oto Yedek Dünyası",
+      "Car Spare Market",
+      "Oto Malzeme",
+      "Auto Craft",
+      "Spare Parts Express",
+      "Oto Parça House",
+      "Car Tech Market",
+      "Oto Supply",
+      "Auto Depo"
+    ]
+  },
+  ev: {
+    title: "🏠 Ev Eşyası & Mobilya",
+    companies: [
+      "Home Craft",
+      "Ev Dekorasyon",
+      "Furniture House",
+      "Modern Mobilya",
+      "Home Style Market",
+      "Dekorasyon Craft",
+      "Ev Eşyası Dünyası",
+      "Furniture Sofa",
+      "Home Supply Co.",
+      "Modern Home"
+    ]
+  },
+  kozmetik: {
+    title: "💄 Kozmetik & Kişisel Bakım",
+    companies: [
+      "Beauty Craft Türkiye",
+      "Kozmetik Dünyası",
+      "Care Supply",
+      "Beauty House",
+      "Personal Care Market",
+      "Kozmetik Craft",
+      "Beauty Express",
+      "Care Craft Türkiye",
+      "Beauty Supply Co.",
+      "Kozmetik World"
+    ]
+  },
+  elektronik: {
+    title: "📱 Elektronik & Teknoloji",
+    companies: [
+      "Tech Craft",
+      "Elektronik Dünyası",
+      "Digital Supply",
+      "Tech House",
+      "Electronic Craft",
+      "Tech Express Market",
+      "Digital Craft",
+      "Elektronik Supply",
+      "Tech Supply Co.",
+      "Digital House"
+    ]
+  },
+  oyuncak: {
+    title: "🎮 Oyuncak & Hobi",
+    companies: [
+      "Toy Craft",
+      "Hobi Dünyası",
+      "Fun Craft Market",
+      "Toy Supply",
+      "Hobi Craft Co.",
+      "Play World",
+      "Hobi Fun Sanayi",
+      "Toy Land Market",
+      "Game Craft",
+      "Fun Toys Supply",
+      "Hobby Master"
+    ]
+  },
+  genel: {
+    title: "🏢 Genel Ticaret",
+    companies: [
+      "General Store",
+      "Multi Trade",
+      "Universal Market",
+      "Business Craft",
+      "Trade Supply Co.",
+      "General Market",
+      "Multi Supply",
+      "Universal Craft",
+      "BB Supply",
+      "Trade Dünyası",
+      "General Supply",
+      "Multi Craft Market",
+      "Universal Trade",
+      "Business Dünyası",
+      "Trade House Türkiye"
+    ]
+  }
+};
+
+// İstatistikler
+const stats = {
+  totalCompanies: Object.values(references).reduce((sum, sector) => sum + sector.companies.length, 0),
+  sectors: Object.keys(references).length
+};
+---
+
+<BaseLayout title="Stok Pratik Referanslarımız | Bizi Tercih Edenler">
+  <!-- Hero Section -->
+  <section class="page-hero py-12">
+    <div class="container">
+      <div class="text-center max-w-4xl mx-auto">
+        <h1 class="page-title">Bizi Tercih Edenler</h1>
+        <p class="page-subtitle">
+          Türkiye'nin dört bir yanından onlarca işletme Stok Pratik'i güvenle kullanıyor. 
+          <br>{stats.sectors} farklı sektörden referanslarımızla gücümüze güç katıyoruz.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sector Filters -->
+  <section class="sector-filters py-8">
+    <div class="container">
+      <h2 class="filter-title text-center mb-8">Sektörlere Göre Referanslarımız</h2>
+      <div class="filter-grid" id="sectorFilters">
+        {Object.entries(references).map(([key, sector]) => (
+          <button 
+            class="sector-filter-btn" 
+            data-sector={key}
+          >
+            <span class="sector-icon">{sector.title.split(' ')[0]}</span>
+            <div class="sector-info">
+              <span class="sector-name">{sector.title.split(' ').slice(1).join(' ')}</span>
+              <span class="company-count">{sector.companies.length} Firma</span>
+            </div>
+          </button>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- All References Button -->
+  <div class="container mb-8">
+    <div class="text-center">
+      <button id="showAllBtn" class="all-references-btn">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+          <path d="M9 5H7C5.89543 5 5 5.89543 5 7V19C5 20.1046 5.89543 21 7 21H17C18.1046 21 19 20.1046 19 19V7C19 5.89543 18.1046 5 17 5H15M9 5C9 6.10457 9.89543 7 11 7H13C14.1046 7 15 6.10457 15 5M9 5C9 3.89543 9.89543 3 11 3H13C14.1046 3 15 3.89543 15 5M12 12H15M12 16H15M9 12H9.01M9 16H9.01" 
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        Tüm Referansları Gör
+      </button>
+    </div>
+  </div>
+
+  <!-- References Grid -->
+  <section class="references-section py-12">
+    <div class="container">
+      {Object.entries(references).map(([key, sector]) => (
+        <div class="sector-section" id={`sector-${key}`}>
+          <div class="sector-header">
+            <h2 class="sector-title">
+              {sector.title}
+            </h2>
+          </div>
+          
+          <div class="companies-grid">
+            {sector.companies.map((company, index) => (
+              <div class="company-card">
+                <div class="company-info">
+                  <h3 class="company-name">{company}</h3>
+                </div>
+              </div>
+            ))}
+          </div>
+          
+          <!-- Spacer between sections -->
+          <div class="section-spacer"></div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Back to Top Button -->
+  <div class="container mt-8">
+    <div class="text-center">
+      <button id="backToTopBtn" class="back-to-top-btn">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+          <path d="M12 19V5M12 5L5 12M12 5L19 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        Yukarı Çık
+      </button>
+    </div>
+  </div>
+
+  <!-- CTA Section -->
+  <section class="references-cta py-16 bg-primary-red-light mt-12">
+    <div class="container">
+      <div class="cta-content">
+        <div class="cta-text">
+          <h2 class="cta-title">Siz de Mutlu Müşterilerimiz Arasına Katılın</h2>
+          <p class="cta-description">
+            Bu başarılı firmalar gibi siz de Stok Pratik ile iş süreçlerinizi dijitalleştirin, 
+            verimliliğinizi artırın ve büyümenizi hızlandırın.
+          </p>
+        </div>
+        <div class="cta-buttons">
+          <a 
+            href="https://wa.me/+905325000999?text=Merhaba,%20Stok%20Pratik%20hakkında%20bilgi%20almak%20istiyorum"
+            class="btn btn-primary btn-lg"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Hemen Başlayın
+          </a>
+          <a href="/paketlerimiz" class="btn btn-outline btn-lg">
+            Paketleri İncele
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    /* Page Hero */
+    .page-hero {
+      background: linear-gradient(135deg, var(--primary-red-light) 0%, var(--bg-white) 100%);
+    }
+    
+    .page-title {
+      font-size: 3rem;
+      color: var(--primary-red);
+      margin-bottom: 1rem;
+      font-weight: 800;
+    }
+    
+    .page-subtitle {
+      font-size: 1.25rem;
+      color: var(--text-gray);
+      line-height: 1.6;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    /* Sector Filters */
+    .sector-filters {
+      background: var(--bg-white);
+      margin-top: 2rem;
+    }
+    
+    .filter-title {
+      font-size: 1.75rem;
+      color: var(--text-dark);
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+    }
+    
+    .filter-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 1rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .sector-filter-btn {
+      background: white;
+      border: 2px solid var(--secondary-light);
+      border-radius: var(--radius-lg);
+      padding: 1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      text-align: left;
+    }
+    
+    .sector-filter-btn:hover,
+    .sector-filter-btn.active {
+      border-color: var(--primary-red);
+      background: var(--primary-red-light);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+    
+    .sector-icon {
+      font-size: 2rem;
+      flex-shrink: 0;
+    }
+    
+    .sector-info {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+    
+    .sector-name {
+      font-weight: 600;
+      color: var(--text-dark);
+      font-size: 0.95rem;
+      line-height: 1.2;
+    }
+    
+    .company-count {
+      font-size: 0.875rem;
+      color: var(--text-gray);
+    }
+    
+    /* All References Button */
+    .all-references-btn {
+      background: var(--primary-red);
+      color: white;
+      border: none;
+      border-radius: var(--radius-lg);
+      padding: 0.75rem 2rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 1rem;
+    }
+    
+    .all-references-btn:hover {
+      background: var(--primary-red-dark);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+    
+    /* Sector Sections */
+    .sector-section {
+      margin-bottom: 3rem;
+    }
+    
+    .sector-header {
+      margin-bottom: 2rem;
+      padding-bottom: 1rem;
+      border-bottom: 2px solid var(--primary-red-light);
+    }
+    
+    .sector-title {
+      font-size: 1.75rem;
+      color: var(--text-dark);
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    /* Companies Grid */
+    .companies-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.25rem;
+    }
+    
+    .company-card {
+      background: white;
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      transition: all 0.3s ease;
+      border: 2px solid var(--secondary-light);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    }
+    
+    .company-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+      border-color: var(--primary-red-light);
+    }
+    
+    .company-info {
+      flex-grow: 1;
+    }
+    
+    .company-name {
+      font-size: 1.1rem;
+      color: var(--text-dark);
+      font-weight: 600;
+      line-height: 1.4;
+      margin: 0;
+    }
+    
+    /* Section Spacer */
+    .section-spacer {
+      height: 3rem;
+      width: 100%;
+    }
+    
+    /* Back to Top Button */
+    .back-to-top-btn {
+      background: white;
+      color: var(--primary-red);
+      border: 2px solid var(--primary-red);
+      border-radius: var(--radius-lg);
+      padding: 0.75rem 2rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 1rem;
+    }
+    
+    .back-to-top-btn:hover {
+      background: var(--primary-red);
+      color: white;
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+    
+    /* CTA Section */
+    .references-cta {
+      border-radius: var(--radius-lg);
+      margin: 2rem 1rem 0;
+    }
+    
+    .cta-content {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    
+    .cta-title {
+      font-size: 2.25rem;
+      color: var(--primary-red);
+      margin-bottom: 1rem;
+    }
+    
+    .cta-description {
+      font-size: 1.125rem;
+      color: var(--text-gray);
+      line-height: 1.6;
+      margin-bottom: 2rem;
+    }
+    
+    .cta-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    
+    .btn-lg {
+      padding: 0.875rem 2rem;
+      font-size: 1.125rem;
+    }
+    
+    /* Buton hover yazı rengi düzeltmesi */
+    .btn-primary:hover {
+      color: #000 !important;
+    }
+    
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .companies-grid {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      }
+      
+      .filter-grid {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .page-title {
+        font-size: 2.5rem;
+      }
+      
+      .page-subtitle {
+        font-size: 1.1rem;
+      }
+      
+      .filter-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.75rem;
+      }
+      
+      .sector-filter-btn {
+        padding: 0.75rem;
+        gap: 0.75rem;
+      }
+      
+      .sector-icon {
+        font-size: 1.75rem;
+      }
+      
+      .sector-title {
+        font-size: 1.5rem;
+      }
+      
+      .companies-grid {
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+        gap: 1rem;
+      }
+      
+      .company-card {
+        padding: 1.25rem;
+      }
+      
+      .cta-title {
+        font-size: 2rem;
+      }
+      
+      .cta-buttons {
+        flex-direction: column;
+      }
+      
+      .btn-lg {
+        width: 100%;
+      }
+      
+      .all-references-btn,
+      .back-to-top-btn {
+        width: 100%;
+        max-width: 300px;
+        justify-content: center;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .page-title {
+        font-size: 2rem;
+      }
+      
+      .filter-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .companies-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .sector-title {
+        font-size: 1.25rem;
+      }
+    }
+    
+    /* Animations */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .sector-section {
+      animation: fadeIn 0.6s ease-out;
+    }
+  </style>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Sector filter functionality
+      const filterButtons = document.querySelectorAll('.sector-filter-btn');
+      const sectorSections = document.querySelectorAll('.sector-section');
+      const showAllBtn = document.getElementById('showAllBtn');
+      const backToTopBtn = document.getElementById('backToTopBtn');
+      
+      filterButtons.forEach(button => {
+        button.addEventListener('click', () => {
+          // Update active button
+          filterButtons.forEach(btn => btn.classList.remove('active'));
+          button.classList.add('active');
+          
+          const sector = button.getAttribute('data-sector');
+          
+          // Scroll to section
+          const targetSection = document.getElementById(`sector-${sector}`);
+          if (targetSection) {
+            const headerOffset = 100;
+            const elementPosition = targetSection.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+            
+            window.scrollTo({
+              top: offsetPosition,
+              behavior: 'smooth'
+            });
+            
+            // Add highlight effect
+            targetSection.style.animation = 'none';
+            setTimeout(() => {
+              targetSection.style.animation = 'fadeIn 0.6s ease-out';
+            }, 10);
+          }
+        });
+      });
+      
+      // Set first filter button as active
+      if (filterButtons.length > 0) {
+        filterButtons[0].classList.add('active');
+      }
+      
+      // Show all references functionality
+      showAllBtn.addEventListener('click', () => {
+        // Remove active class from all filter buttons
+        filterButtons.forEach(btn => btn.classList.remove('active'));
+        
+        // Scroll to top of references
+        const referencesSection = document.querySelector('.references-section');
+        if (referencesSection) {
+          window.scrollTo({
+            top: referencesSection.offsetTop - 100,
+            behavior: 'smooth'
+          });
+        }
+      });
+      
+      // Back to top functionality
+      backToTopBtn.addEventListener('click', () => {
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+      });
+      
+      // Show/hide back to top button based on scroll position
+      window.addEventListener('scroll', () => {
+        if (window.pageYOffset > 500) {
+          backToTopBtn.style.display = 'inline-flex';
+        } else {
+          backToTopBtn.style.display = 'none';
+        }
+      });
+      
+      // Initialize back to top button
+      backToTopBtn.style.display = 'none';
+    });
+  </script>
+</BaseLayout>

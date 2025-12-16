@@ -1,0 +1,150 @@
+---
+// src/pages/iletisim.astro
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="İletişim - Stok Pratik ERP">
+  <!-- İletişim Hero Section -->
+  <section class="contact-hero py-16">
+    <div class="container">
+      <div class="contact-header text-center">
+        <h1>Bizimle İletişime Geçin</h1>
+        
+      </div>
+    </div>
+  </section>
+
+  <!-- WhatsApp Butonu -->
+  <section class="whatsapp-section py-16">
+    <div class="container text-center">
+      <div class="whatsapp-card">
+        <div class="whatsapp-icon">
+          <span style="font-size: 4rem;">📱</span>
+        </div>
+        
+        <h2>WhatsApp ile İletişim</h2>
+        <p>Demo talep etmek veya fiyat teklifi almak için WhatsApp'tan bize yazın:</p>
+        
+        <div class="whatsapp-buttons">
+          <a 
+            href="https://wa.me/+905325000999?text=Merhaba,%20Stok%20Pratik%20demo%20talep%20ediyorum" 
+            class="btn btn-primary btn-whatsapp"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Demo Talep Et
+          </a>
+          
+          <a 
+            href="https://wa.me/+905325000999?text=Merhaba,%20Stok%20Pratik%20fiyat%20teklifi%20alıyorum" 
+            class="btn btn-secondary"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Fiyat Teklifi Al
+          </a>
+        </div>
+        
+        <p class="whatsapp-info">
+          <strong>Çalışma Saatleri:</strong> Hafta içi 09:00 - 18:00
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Basit Bilgiler -->
+  <section class="info-section py-16">
+    <div class="container text-center">
+      <h2>Stok Pratik  <br>Online Muhasebe, <br>Mağazacılık ve ERP</h2>
+      <p>
+        Online stok ve muhasebe yazılımı ile işletmenizin tüm süreçlerini tek platformdan yönetin.
+      </p>
+    </div>
+  </section>
+
+  <style>
+    /* İletişim Hero */
+    .contact-hero {
+      background: linear-gradient(135deg, var(--primary-red-light) 0%, var(--bg-white) 100%);
+    }
+
+    .contact-header h1 {
+      background: linear-gradient(135deg, var(--primary-red), var(--primary-red-dark));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: var(--spacing-md);
+    }
+
+    .contact-subtitle {
+      font-size: 1.25rem;
+      color: var(--text-gray);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* WhatsApp Kartı */
+    .whatsapp-card {
+      background: var(--bg-white);
+      padding: var(--spacing-xl);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-lg);
+      max-width: 500px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .whatsapp-icon {
+      margin-bottom: var(--spacing-lg);
+    }
+
+    .whatsapp-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-md);
+      margin: var(--spacing-xl) 0;
+    }
+
+    .btn-whatsapp {
+      background: linear-gradient(135deg, #25D366, #128C7E);
+      border-color: #25D366;
+      color: white;
+    }
+
+    .btn-whatsapp:hover {
+      background: linear-gradient(135deg, #128C7E, #075E54);
+      border-color: #128C7E;
+    }
+
+    .whatsapp-info {
+      background: var(--primary-red-light);
+      padding: var(--spacing-md);
+      border-radius: var(--radius-md);
+      margin-top: var(--spacing-lg);
+      text-align: center;
+    }
+
+    /* Info Section */
+    .info-section {
+      background-color: var(--bg-light);
+    }
+
+    /* Responsive */
+    @media (min-width: 768px) {
+      .whatsapp-buttons {
+        flex-direction: row;
+        justify-content: center;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .whatsapp-card {
+        padding: var(--spacing-lg);
+      }
+      
+      .whatsapp-buttons {
+        flex-direction: column;
+      }
+    }
+  </style>
+</BaseLayout>

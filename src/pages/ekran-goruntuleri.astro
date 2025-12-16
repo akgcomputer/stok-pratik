@@ -1,0 +1,819 @@
+---
+// src/pages/ekran-goruntuleri.astro
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+// Ekran görüntülerinin listesi - verdiğiniz sıraya göre
+const screenshots = [
+  {
+    id: 1,
+    src: "/images/screenshots/Stok-pratik-ekran-1.png",
+    alt: "Stok Pratik Ana Dashboard Ekran Görüntüsü",
+    title: "Ana Kontrol Paneli",
+    description: "Tüm işlemlerinizi tek ekrandan yönetin, özet bilgiler ve hızlı erişim"
+  },
+  {
+    id: 2,
+    src: "/images/screenshots/Stok-pratik-ekran-2.png",
+    alt: "Stok Pratik Detaylı Dashboard Ekranı",
+    title: "Mağazacılık Seçim Ekranı",
+    description: "Stok Pratik ile sınırsız mağaza ile tüm fiziki ve e-ticaret mağazalarınız aynı ekranda"
+  },
+  {
+    id: 3,
+    src: "/images/screenshots/Stok-pratik-ekran-alis.png",
+    alt: "Stok Pratik Alış İşlemleri Ekranı",
+    title: "Alış İşlemleri",
+    description: "Tedarikçilerden ürün alımı, faturalandırma ve takip"
+  },
+  {
+    id: 4,
+    src: "/images/screenshots/Stok-pratik-ekran-cari-giderler.png",
+    alt: "Stok Pratik Cari Giderler Ekranı",
+    title: "Cari Gider Takibi",
+    description: "İşletme giderlerini detaylı takip ve analiz"
+  },
+  {
+    id: 5,
+    src: "/images/screenshots/Stok-pratik-ekran-cari-hesap.png",
+    alt: "Stok Pratik Cari Hesap Yönetimi",
+    title: "Cari Hesap Yönetimi",
+    description: "Müşteri ve tedarikçi hesaplarını yönetin"
+  },
+  {
+    id: 6,
+    src: "/images/screenshots/Stok-pratik-ekran-cari-hizli-satis.png",
+    alt: "Stok Pratik Hızlı Satış Ekranı",
+    title: "Hızlı Satış Modülü",
+    description: "Barkod okutarak saniyeler içinde satış yapın"
+  },
+  {
+    id: 7,
+    src: "/images/screenshots/Stok-pratik-ekran-cari-patron-ekrani.png",
+    alt: "Stok Pratik Patron Ekranı",
+    title: "Patron Ekranı",
+    description: "Hiçbir yerde bulamayacağınız çok PRATİK bir araç, işletme sahibi için özel raporlar ve kontroller"
+  },
+  {
+    id: 8,
+    src: "/images/screenshots/Stok-pratik-ekran-cari-tanimlamalar.png",
+    alt: "Stok Pratik Tanımlamalar Ekranı",
+    title: "Banka Haraeketleri ve Sistem Tanımlamaları",
+    description: "Banka hesabınızdaki hareketleri anlık muhasebeleştirin, EFT/Havale tüm hesap hareketleri, Ürün, müşteri, kullanıcı ve diğer temel tanımlamalar"
+  },
+  {
+    id: 9,
+    src: "/images/screenshots/Stok-pratik-ekran-en-cok-satan-urun.png",
+    alt: "Stok Pratik En Çok Satan Ürünler Raporu",
+    title: "Satış Analizleri",
+    description: "En çok satan ürünler, kategori bazlı analizler"
+  },
+  {
+    id: 10,
+    src: "/images/screenshots/Stok-pratik-ekran-giris.png",
+    alt: "Stok Pratik Giriş Ekranı",
+    title: "Giriş Paneli",
+    description: "Güvenli kullanıcı girişi ve yetkilendirme"
+  },
+  {
+    id: 11,
+    src: "/images/screenshots/Stok-pratik-ekran-hesaplar.png",
+    alt: "Stok Pratik Hesaplar Ekranı",
+    title: "Muhasebe Hesapları",
+    description: "Finansal hesaplar, gelir-gider takibi"
+  },
+  {
+    id: 12,
+    src: "/images/screenshots/Stok-pratik-ekran-magazacilik.png",
+    alt: "Stok Pratik Mağazacılık Modülü",
+    title: "Mağaza Yönetimi",
+    description: "Perakende mağaza operasyonları yönetimi"
+  },
+  {
+    id: 13,
+    src: "/images/screenshots/Stok-pratik-ekran-magaza-satislari.png",
+    alt: "Stok Pratik Mağaza Satışları",
+    title: "Mağaza Satış Raporları",
+    description: "Şube bazlı satış performansı ve analiz"
+  },
+  {
+    id: 14,
+    src: "/images/screenshots/Stok-pratik-ekran-satis.png",
+    alt: "Stok Pratik Satış İşlemleri",
+    title: "Satış Yönetimi",
+    description: "Müşteriye özel fiyatlandırma, kampanyalar"
+  },
+  {
+    id: 15,
+    src: "/images/screenshots/Stok-pratik-ekran-Stok.png",
+    alt: "Stok Pratik Stok Yönetimi",
+    title: "Stok Takip Sistemi",
+    description: "Gerçek zamanlı stok takibi, uyarı sistemi"
+  },
+  {
+    id: 16,
+    src: "/images/screenshots/Stok-pratik-ekran-toptan-satis.png",
+    alt: "Stok Pratik Toptan Satış Ekranı",
+    title: "Toptan Satış Modülü",
+    description: "Büyük miktarlı alımlar için özel fiyatlandırma"
+  },
+  {
+    id: 17,
+    src: "/images/screenshots/Stok-pratik-ekran-Transfer.png",
+    alt: "Stok Pratik Transfer İşlemleri",
+    title: "Stok Transferi",
+    description: "Şubeler arası ürün transferi ve takibi"
+  }
+];
+
+// Kategori etiketleri
+const categories = [
+  { id: 'Stok Pratik', name: 'Stok Pratik', count: screenshots.length },
+  { id: 'Stok Pratik', name: 'Stok Pratik', count: 2 },
+  { id: 'Stok Pratik', name: 'Stok Pratik', count: 2 },
+  { id: 'Stok Pratik', name: 'Stok Pratik', count: 5 },
+  { id: 'Stok Pratik', name: 'Stok Pratik', count: 3 },
+  { id: 'Stok Pratik', name: 'Stok Pratik', count: 2 },
+  { id: 'Stok Pratik', name: 'Stok Pratik', count: 2 },
+  { id: 'Stok Pratik', name: 'Stok Pratik', count: 1 }
+];
+---
+
+<BaseLayout title="Stok Pratik Ekran Görüntüleri | Yazılımın Tüm Modülleri">
+  <!-- Hero Section -->
+  <section class="page-hero py-12">
+    <div class="container">
+      <div class="text-center max-w-3xl mx-auto">
+        <h1 class="page-title">Stok Pratik Ekran Görüntüleri</h1>
+        <p class="page-subtitle">
+          Yazılımımızın tüm özelliklerini ve kullanıcı dostu arayüzünü ekran görüntüleri ile inceleyin.
+          Stok yönetiminden muhasebeye, mağazacılıktan raporlamaya kadar tüm modülleri keşfedin.
+        </p>
+        
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery Filters -->
+  <section class="gallery-filters py-8 bg-gray-50">
+    <div class="container">
+      <div class="filters-wrapper">
+        <div class="filter-categories">
+          {categories.map((category) => (
+            <button 
+              class="filter-btn" 
+              data-filter={category.id}
+              data-count={category.count}
+            >
+              {category.name}
+              <span class="filter-count">({category.count})</span>
+            </button>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery Grid -->
+  <section class="gallery-main py-12">
+    <div class="container">
+      <div class="gallery-grid" id="galleryGrid">
+        {screenshots.map((screenshot) => {
+          // Kategori belirleme
+          let category = 'all';
+          const titleLower = screenshot.title.toLowerCase();
+          
+          if (titleLower.includes('dashboard') || titleLower.includes('kontrol') || titleLower.includes('giriş')) {
+            category = 'Stok Pratik';
+          } else if (titleLower.includes('stok')) {
+            category = 'Stok Pratik';
+          } else if (titleLower.includes('satış') || titleLower.includes('toptan') || titleLower.includes('hızlı')) {
+            category = 'Stok Pratik';
+          } else if (titleLower.includes('muhasebe') || titleLower.includes('hesap') || titleLower.includes('gider')) {
+            category = 'Stok Pratik';
+          } else if (titleLower.includes('rapor') || titleLower.includes('analiz')) {
+            category = 'Stok Pratik';
+          } else if (titleLower.includes('mağaza')) {
+            category = 'Stok Pratik';
+          } else if (titleLower.includes('transfer')) {
+            category = 'Stok Pratik';
+          }
+          
+          return (
+            <article 
+              class="gallery-item" 
+              data-category={category}
+            >
+              <div class="gallery-card">
+                <div class="gallery-image">
+                  <img
+                    src={screenshot.src}
+                    alt={screenshot.alt}
+                    width="800"
+                    height="600"
+                    loading="lazy"
+                    class="gallery-img"
+                  />
+                  <div class="image-overlay">
+                    <button class="zoom-btn" title="Büyüt">
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path d="M15 15L21 21M10 17C6.13401 17 3 13.866 3 10C3 6.13401 6.13401 3 10 3C13.866 3 17 6.13401 17 10C17 13.866 13.866 17 10 17Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M10 7V13M7 10H13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+                <div class="gallery-content">
+                  <div class="gallery-header">
+                    <span class="gallery-badge">{category.toUpperCase()}</span>
+                    <span class="gallery-number">#{String(screenshot.id).padStart(2, '0')}</span>
+                  </div>
+                  <h3 class="gallery-title">{screenshot.title}</h3>
+                  <p class="gallery-description">{screenshot.description}</p>
+                </div>
+              </div>
+            </article>
+          );
+        })}
+      </div>
+      
+      <!-- Lightbox Modal -->
+      <div id="lightboxModal" class="lightbox-modal">
+        <div class="lightbox-content">
+          <button id="lightboxClose" class="lightbox-close" aria-label="Kapat">×</button>
+          <button id="lightboxPrev" class="lightbox-nav prev" aria-label="Önceki">‹</button>
+          <button id="lightboxNext" class="lightbox-nav next" aria-label="Sonraki">›</button>
+          <div class="lightbox-image-container">
+            <img id="lightboxImage" src="" alt="" class="lightbox-image" />
+            <div class="lightbox-info">
+              <h3 id="lightboxTitle"></h3>
+              <p id="lightboxDescription"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="gallery-cta py-16 bg-primary-red-light">
+    <div class="container">
+      <div class="text-center max-w-2xl mx-auto">
+        <h2 class="cta-title">Demo İsteyin, Kendiniz Deneyin!</h2>
+        <p class="cta-text">
+          Ekran görüntüleri yeterli gelmedi mi? Canlı demo talep edin ve Stok Pratik'i 
+          kendi işletmenizde deneyimleyin.
+        </p>
+        <div class="cta-buttons mt-8">
+          <a href="https://wa.me/+905325000999?text=Merhaba,%20Stok%20Pratik%20demo%20talep%20ediyorum" 
+             class="btn btn-primary btn-lg">
+            Demo Talep Et
+          </a>
+          <a href="/paketlerimiz" class="btn btn-outline btn-lg">
+            Paketleri İncele
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    /* Page Hero */
+    .page-hero {
+      background: linear-gradient(135deg, var(--primary-red-light) 0%, var(--bg-white) 100%);
+    }
+    
+    .page-title {
+      font-size: 3rem;
+      color: var(--primary-red);
+      margin-bottom: 1rem;
+      font-weight: 800;
+    }
+    
+    .page-subtitle {
+      font-size: 1.25rem;
+      color: var(--text-gray);
+      line-height: 1.6;
+    }
+    
+    .stats {
+      display: flex;
+      justify-content: center;
+      gap: 3rem;
+      flex-wrap: wrap;
+    }
+    
+    .stat-item {
+      text-align: center;
+    }
+    
+    .stat-number {
+      display: block;
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--primary-red);
+      line-height: 1;
+    }
+    
+    .stat-label {
+      font-size: 1rem;
+      color: var(--text-gray);
+      margin-top: 0.5rem;
+    }
+    
+    /* Gallery Filters */
+    .filters-wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    
+    @media (min-width: 768px) {
+      .filters-wrapper {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+      }
+    }
+    
+    .filter-categories {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      justify-content: center;
+    }
+    
+    .filter-btn {
+      padding: 0.5rem 1rem;
+      background: white;
+      border: 2px solid var(--secondary-light);
+      border-radius: 2rem;
+      color: var(--text-gray);
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+    
+    .filter-btn:hover,
+    .filter-btn.active {
+      background: var(--primary-red);
+      border-color: var(--primary-red);
+      color: white;
+    }
+    
+    .filter-count {
+      font-size: 0.85rem;
+      opacity: 0.8;
+    }
+    
+    /* Gallery Grid */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+    
+    .gallery-item {
+      opacity: 1;
+      transform: translateY(0);
+      transition: all 0.3s ease;
+    }
+    
+    .gallery-item.hidden {
+      opacity: 0;
+      transform: translateY(20px);
+      position: absolute;
+      visibility: hidden;
+    }
+    
+    .gallery-card {
+      background: white;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+      transition: all 0.3s ease;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .gallery-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-lg);
+    }
+    
+    .gallery-image {
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: 16/10;
+      background: #f8fafc;
+    }
+    
+    .gallery-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    
+    .gallery-card:hover .gallery-img {
+      transform: scale(1.05);
+    }
+    
+    .image-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    
+    .gallery-card:hover .image-overlay {
+      opacity: 1;
+    }
+    
+    .zoom-btn {
+      width: 50px;
+      height: 50px;
+      background: white;
+      border: none;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      color: var(--primary-red);
+      transition: all 0.3s ease;
+    }
+    
+    .zoom-btn:hover {
+      background: var(--primary-red);
+      color: white;
+      transform: scale(1.1);
+    }
+    
+    .gallery-content {
+      padding: 1.5rem;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .gallery-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.75rem;
+    }
+    
+    .gallery-badge {
+      background: var(--primary-red-light);
+      color: var(--primary-red);
+      padding: 0.25rem 0.75rem;
+      border-radius: 1rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+    
+    .gallery-number {
+      font-size: 0.875rem;
+      color: var(--text-light);
+      font-weight: 600;
+    }
+    
+    .gallery-title {
+      font-size: 1.25rem;
+      color: var(--text-dark);
+      margin-bottom: 0.5rem;
+      font-weight: 700;
+    }
+    
+    .gallery-description {
+      color: var(--text-gray);
+      font-size: 0.95rem;
+      line-height: 1.5;
+      margin-top: auto;
+    }
+    
+    /* Lightbox Modal */
+    .lightbox-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.9);
+      z-index: 9999;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+    
+    .lightbox-modal.active {
+      display: flex;
+    }
+    
+    .lightbox-content {
+      position: relative;
+      max-width: 90vw;
+      max-height: 90vh;
+    }
+    
+    .lightbox-close {
+      position: absolute;
+      top: -40px;
+      right: 0;
+      background: none;
+      border: none;
+      color: white;
+      font-size: 2.5rem;
+      cursor: pointer;
+      z-index: 10000;
+      padding: 0.5rem;
+      line-height: 1;
+    }
+    
+    .lightbox-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255, 255, 255, 0.2);
+      border: none;
+      color: white;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.3s ease;
+    }
+    
+    .lightbox-nav:hover {
+      background: rgba(255, 255, 255, 0.3);
+    }
+    
+    .lightbox-nav.prev {
+      left: -60px;
+    }
+    
+    .lightbox-nav.next {
+      right: -60px;
+    }
+    
+    .lightbox-image-container {
+      background: white;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      max-height: 80vh;
+    }
+    
+    .lightbox-image {
+      width: 100%;
+      height: auto;
+      max-height: 60vh;
+      object-fit: contain;
+      display: block;
+    }
+    
+    .lightbox-info {
+      padding: 1.5rem;
+      background: white;
+    }
+    
+    .lightbox-info h3 {
+      font-size: 1.5rem;
+      color: var(--text-dark);
+      margin-bottom: 0.5rem;
+    }
+    
+    .lightbox-info p {
+      color: var(--text-gray);
+      line-height: 1.5;
+    }
+    
+    /* CTA Section */
+    .gallery-cta {
+      text-align: center;
+    }
+    
+    .cta-title {
+      font-size: 2.5rem;
+      color: var(--primary-red);
+      margin-bottom: 1rem;
+    }
+    
+    .cta-text {
+      font-size: 1.25rem;
+      color: var(--text-gray);
+      line-height: 1.6;
+    }
+    
+    .cta-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    
+    .btn-lg {
+      padding: 0.875rem 2rem;
+      font-size: 1.125rem;
+    }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+      .page-title {
+        font-size: 2.5rem;
+      }
+      
+      .gallery-grid {
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 1.5rem;
+      }
+      
+      .lightbox-nav.prev {
+        left: 10px;
+      }
+      
+      .lightbox-nav.next {
+        right: 10px;
+      }
+      
+      .lightbox-close {
+        top: 10px;
+        right: 10px;
+      }
+      
+      .stats {
+        gap: 2rem;
+      }
+      
+      .stat-number {
+        font-size: 2rem;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .gallery-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .filter-categories {
+        justify-content: flex-start;
+        overflow-x: auto;
+        padding-bottom: 0.5rem;
+      }
+      
+      .cta-buttons {
+        flex-direction: column;
+      }
+      
+      .btn-lg {
+        width: 100%;
+      }
+    }
+  </style>
+
+  <script>
+    // Filter functionality
+    document.addEventListener('DOMContentLoaded', () => {
+      const filterButtons = document.querySelectorAll('.filter-btn');
+      const galleryItems = document.querySelectorAll('.gallery-item');
+      const lightboxModal = document.getElementById('lightboxModal');
+      const lightboxImage = document.getElementById('lightboxImage');
+      const lightboxTitle = document.getElementById('lightboxTitle');
+      const lightboxDescription = document.getElementById('lightboxDescription');
+      const lightboxClose = document.getElementById('lightboxClose');
+      const lightboxPrev = document.getElementById('lightboxPrev');
+      const lightboxNext = document.getElementById('lightboxNext');
+      const zoomButtons = document.querySelectorAll('.zoom-btn');
+      
+      let currentImageIndex = 0;
+      const images = Array.from(galleryItems);
+      
+      // Filter functionality
+      filterButtons.forEach(button => {
+        button.addEventListener('click', () => {
+          // Update active button
+          filterButtons.forEach(btn => btn.classList.remove('active'));
+          button.classList.add('active');
+          
+          const filterValue = button.getAttribute('data-filter');
+          
+          // Filter items
+          galleryItems.forEach(item => {
+            const itemCategory = item.getAttribute('data-category');
+            
+            if (filterValue === 'all' || itemCategory === filterValue) {
+              item.classList.remove('hidden');
+              setTimeout(() => {
+                item.style.opacity = '1';
+                item.style.transform = 'translateY(0)';
+              }, 10);
+            } else {
+              item.style.opacity = '0';
+              item.style.transform = 'translateY(20px)';
+              setTimeout(() => {
+                item.classList.add('hidden');
+              }, 300);
+            }
+          });
+        });
+      });
+      
+      // Set first filter button as active
+      if (filterButtons.length > 0) {
+        filterButtons[0].classList.add('active');
+      }
+      
+      // Lightbox functionality
+      function openLightbox(index) {
+        const item = images[index];
+        const img = item.querySelector('.gallery-img');
+        const title = item.querySelector('.gallery-title').textContent;
+        const description = item.querySelector('.gallery-description').textContent;
+        
+        lightboxImage.src = img.src;
+        lightboxImage.alt = img.alt;
+        lightboxTitle.textContent = title;
+        lightboxDescription.textContent = description;
+        lightboxModal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        currentImageIndex = index;
+      }
+      
+      function closeLightbox() {
+        lightboxModal.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+      
+      function showNextImage() {
+        currentImageIndex = (currentImageIndex + 1) % images.length;
+        openLightbox(currentImageIndex);
+      }
+      
+      function showPrevImage() {
+        currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+        openLightbox(currentImageIndex);
+      }
+      
+      // Event listeners for zoom buttons
+      zoomButtons.forEach((button, index) => {
+        button.addEventListener('click', (e) => {
+          e.stopPropagation();
+          openLightbox(index);
+        });
+      });
+      
+      // Event listeners for lightbox controls
+      lightboxClose.addEventListener('click', closeLightbox);
+      lightboxPrev.addEventListener('click', showPrevImage);
+      lightboxNext.addEventListener('click', showNextImage);
+      
+      // Close lightbox when clicking outside
+      lightboxModal.addEventListener('click', (e) => {
+        if (e.target === lightboxModal) {
+          closeLightbox();
+        }
+      });
+      
+      // Keyboard navigation
+      document.addEventListener('keydown', (e) => {
+        if (!lightboxModal.classList.contains('active')) return;
+        
+        switch(e.key) {
+          case 'Escape':
+            closeLightbox();
+            break;
+          case 'ArrowLeft':
+            showPrevImage();
+            break;
+          case 'ArrowRight':
+            showNextImage();
+            break;
+        }
+      });
+      
+      // Click on gallery item to open lightbox
+      galleryItems.forEach((item, index) => {
+        item.addEventListener('click', (e) => {
+          if (!e.target.closest('.zoom-btn')) {
+            openLightbox(index);
+          }
+        });
+      });
+    });
+  </script>
+</BaseLayout>

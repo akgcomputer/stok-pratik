@@ -1,0 +1,629 @@
+---
+// src/pages/crm-sistemleri.astro
+import BaseLayout from '../layouts/BaseLayout.astro';
+import '../styles/variables.css';
+import '../styles/global.css';
+import '../styles/components.css';
+
+// İç linkler için data
+const internalLinks = [
+  { 
+    title: "Satış Yönetimi", 
+    url: "/satis-yonetimi",
+    icon: "💰",
+    description: "CRM entegre satış takip sistemi"
+  },
+  { 
+    title: "Müşteri Hizmetleri", 
+    url: "/musteri-hizmetleri",
+    icon: "📞",
+    description: "Müşteri destek ve şikayet yönetimi"
+  },
+  { 
+    title: "Pazarlama Otomasyonu", 
+    url: "/pazarlama-otomasyonu",
+    icon: "🎯",
+    description: "CRM ile entegre pazarlama kampanyaları"
+  },
+  { 
+    title: "E-Ticaret Entegrasyonu", 
+    url: "/e-ticaret-entegrasyonu",
+    icon: "🛒",
+    description: "Online satışların CRM ile senkronizasyonu"
+  },
+  { 
+    title: "Raporlama ve Analiz", 
+    url: "/raporlama-analiz",
+    icon: "📊",
+    description: "Müşteri verileri üzerinden detaylı analiz"
+  }
+];
+
+// CRM modülleri
+const crmModules = [
+  {
+    icon: "👥",
+    title: "Müşteri Veritabanı",
+    description: "Merkezi müşteri kayıtları, iletişim bilgileri, satış geçmişi",
+    benefit: "Müşteri bilgilerine %90 daha hızlı erişim"
+  },
+  {
+    icon: "📞",
+    title: "İletişim Takibi",
+    description: "Görüşme kayıtları, e-posta trafiği, toplantı notları",
+    benefit: "İletişim verimliliği %60 artar"
+  },
+  {
+    icon: "💼",
+    title: "Satış Pipeline",
+    description: "Potansiyel müşteri takibi, fırsat yönetimi, tahmini satış",
+    benefit: "Satış dönüşüm oranı %35 artar"
+  },
+  {
+    icon: "🎯",
+    title: "Pazarlama Otomasyonu",
+    description: "E-posta kampanyaları, SMS pazarlama, lead scoring",
+    benefit: "Pazarlama maliyetleri %40 düşer"
+  },
+  {
+    icon: "📊",
+    title: "Raporlama",
+    description: "Satış performansı, müşteri memnuniyeti, kampanya ROI",
+    benefit: "Karar alma hızı %70 artar"
+  },
+  {
+    icon: "🤝",
+    title: "Müşteri Hizmetleri",
+    description: "Destek talepleri, şikayet yönetimi, SLA takibi",
+    benefit: "Müşteri bağlılığı %50 artar"
+  }
+];
+
+// CRM faydaları
+const crmBenefits = [
+  {
+    category: "Satış Artışı",
+    benefits: ["Satış döngüsü kısalır", "Tekrarlayan satışlar artar", "Çapraz satış imkanı", "Fiyatlandırma optimizasyonu"]
+  },
+  {
+    category: "Müşteri Memnuniyeti",
+    benefits: ["Kişiselleştirilmiş hizmet", "Hızlı sorun çözümü", "Proaktif destek", "Müşteri geri bildirimleri"]
+  },
+  {
+    category: "Operasyonel Verimlilik",
+    benefits: ["Manuel işler azalır", "Ekip işbirliği artar", "Veri giriş hataları düşer", "Raporlama otomatikleşir"]
+  },
+  {
+    category: "Pazarlama Etkinliği",
+    benefits: ["Hedefli kampanyalar", "Lead kalitesi artar", "Kampanya ROI takibi", "Müşteri segmentasyonu"]
+  }
+];
+
+// CRM türleri
+const crmTypes = [
+  {
+    type: "Operasyonel CRM",
+    icon: "⚙️",
+    focus: "Müşteri etkileşimlerinin otomasyonu",
+    features: ["Satış otomasyonu", "Pazarlama otomasyonu", "Servis otomasyonu"],
+    idealFor: "Satış ve pazarlama ekipleri"
+  },
+  {
+    type: "Analitik CRM",
+    icon: "📈",
+    focus: "Müşteri verilerinin analizi",
+    features: ["Veri madenciliği", "Segmentasyon", "Tahmine dayalı analiz"],
+    idealFor: "Strateji ve analiz ekipleri"
+  },
+  {
+    type: "İşbirlikçi CRM",
+    icon: "🤝",
+    focus: "Müşteri bilgilerinin paylaşımı",
+    features: ["İletişim kanalları", "Bilgi paylaşımı", "Ekip işbirliği"],
+    idealFor: "Çok departmanlı organizasyonlar"
+  },
+  {
+    type: "Stratejik CRM",
+    icon: "🎯",
+    focus: "Müşteri ilişkilerinin optimizasyonu",
+    features: ["Müşteri segmentasyonu", "Değer analizi", "İlişki yönetimi"],
+    idealFor: "Üst yönetim ve strateji"
+  }
+];
+
+// CRM süreçleri
+const crmProcesses = [
+  {
+    step: "1",
+    title: "Lead Toplama",
+    description: "Potansiyel müşterilerin belirlenmesi ve kayıt altına alınması"
+  },
+  {
+    step: "2",
+    title: "Niteliklendirme",
+    description: "Leads'lerin değerlendirilmesi ve önceliklendirilmesi"
+  },
+  {
+    step: "3",
+    title: "Satış Süreci",
+    description: "Teklif, görüşme, müzakere ve satışın tamamlanması"
+  },
+  {
+    step: "4",
+    title: "Müşteri İlişkileri",
+    description: "Satış sonrası destek, memnuniyet ölçümü, tekrar satış"
+  }
+];
+
+// Başarı örnekleri
+const successStories = [
+  {
+    company: "Perakende Zinciri",
+    location: "İstanbul",
+    problem: "Müşteri verileri farklı sistemlerde dağınık",
+    solution: "Merkezi CRM + müşteri segmentasyonu",
+    result: "Tekrarlayan satışlar %45 arttı"
+  },
+  {
+    company: "B2B Satış Firması",
+    location: "Ankara",
+    problem: "Satış süreçleri manuel, takip zor",
+    solution: "Satış pipeline + otomatik hatırlatmalar",
+    result: "Satış döngüsü %30 kısaldı"
+  },
+  {
+    company: "Hizmet Sektörü",
+    location: "İzmir",
+    problem: "Müşteri şikayetleri hızlı çözülmüyor",
+    solution: "Servis desk + SLA takip sistemi",
+    result: "Müşteri memnuniyeti %60 arttı"
+  }
+];
+
+// Entegrasyonlar
+const integrations = [
+  {
+    platform: "E-Posta",
+    icon: "📧",
+    features: ["Gmail", "Outlook", "Yandex"],
+    benefit: "Tüm e-posta trafiğinin merkezi takibi"
+  },
+  {
+    platform: "Telefon",
+    icon: "📱",
+    features: ["Sanal PBX", "SMS", "WhatsApp"],
+    benefit: "Çoklu iletişim kanallarının entegrasyonu"
+  },
+  {
+    platform: "Sosyal Medya",
+    icon: "📱",
+    features: ["Facebook", "Instagram", "LinkedIn"],
+    benefit: "Sosyal medya etkileşimlerinin takibi"
+  },
+  {
+    platform: "E-Ticaret",
+    icon: "🛒",
+    features: ["Trendyol", "Hepsiburada", "Shopify"],
+    benefit: "Online satışların otomatik senkronizasyonu"
+  }
+];
+
+// FAQ
+const faqItems = [
+  {
+    question: "CRM sistemi fiyatları ne kadar?",
+    answer: "Stok Pratik CRM paketleri uygun fiyatlardan başlar. Fiyat; kullanıcı sayısı, müşteri kapasitesi ve entegrasyonlara göre değişir. İlk 3 ay %25 indirim imkanı sunuyoruz."
+  },
+  {
+    question: "Mevcut müşteri verilerimizi nasıl aktarırız?",
+    answer: "Excel, CSV veya diğer CRM sistemlerinden otomatik veri aktarımı yapıyoruz. Ücretsiz veri temizleme ve düzenleme hizmeti sunuyoruz."
+  },
+  {
+    question: "Mobil cihazlardan kullanabilir miyiz?",
+    answer: "Evet! iOS ve Android uygulamalarımızla sahada müşteri ziyareti yapabilir, satış kaydı oluşturabilir, raporlara mobilden erişebilirsiniz. Offline mod desteği var."
+  },
+  {
+    question: "Kaç kullanıcı ekleyebiliriz?",
+    answer: "Paketinize göre 5'ten 500'e kadar kullanıcı ekleyebilirsiniz. Her kullanıcı için yetki seviyeleri belirleyebilir, kimin neyi görebileceğini kontrol edebilirsiniz."
+  },
+  {
+    question: "E-posta pazarlama özelliği var mı?",
+    answer: "Evet! Dahili e-posta pazarlama modülümüzle kişiselleştirilmiş kampanyalar oluşturabilir, açılma/tıklanma oranlarını takip edebilir, otomatik follow-up e-postaları ayarlayabilirsiniz."
+  }
+];
+---
+
+<BaseLayout 
+  title="CRM Sistemleri | Stok Pratik - Akıllı Müşteri İlişkileri Yönetimi"
+  description="CRM sistemi ile müşteri ilişkilerinizi güçlendirin. Satış artışı, müşteri memnuniyeti, pazarlama otomasyonu tek sistemde."
+>
+
+  <!-- Hero Section -->
+  <section style="padding: 4rem 0; background: linear-gradient(135deg, #0ea5e9, #3b82f6); color: white;">
+    <div class="container">
+      <div style="text-align: center; max-width: 800px; margin: 0 auto;">
+        <h1 style="color: white; margin-bottom: 1.5rem; font-size: 2.5rem;">
+          CRM Sistemi ile Müşteri İlişkilerinizi Dönüştürün
+        </h1>
+        <p style="font-size: 1.25rem; margin-bottom: 2rem; opacity: 0.9;">
+          Müşterilerinizi daha iyi tanıyın, satışlarınızı artırın, müşteri bağlılığını güçlendirin.
+        </p>
+        <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+          <a 
+            href="https://wa.me/+905325000999?text=Merhaba,%20CRM%20sistemi%20demo%20talep%20ediyorum"
+            class="btn btn-primary"
+            style="min-height: 52px; background: white; color: #0ea5e9; border-color: white;"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            👥 CRM Demo İste
+          </a>
+          <a 
+            href="https://wa.me/+905325000999?text=Merhaba,%20CRM%20ihtiyaç%20analizi%20yaptırmak%20istiyorum"
+            class="btn btn-secondary"
+            style="min-height: 52px; border-color: white; color: white;"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            📊 Ücretsiz İhtiyaç Analizi
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Ana İçerik -->
+  <main style="padding: 3rem 0; background: var(--bg-white);">
+    <div class="container">
+      
+      <!-- CRM Modülleri -->
+      <section style="margin-bottom: 4rem;">
+        <h2 style="text-align: center; color: #0ea5e9; margin-bottom: 2rem;">
+          6 Temel CRM Modülü
+        </h2>
+        
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem;">
+          {crmModules.map((module) => (
+            <div style="background: white; padding: 2rem; border-radius: 1rem; border: 1px solid #bfdbfe; box-shadow: var(--shadow-md); text-align: center;">
+              <div style="font-size: 3rem; margin-bottom: 1rem;">{module.icon}</div>
+              <h3 style="color: #0ea5e9; margin-bottom: 0.75rem; font-size: 1.1rem;">{module.title}</h3>
+              <p style="color: var(--text-gray); margin-bottom: 1rem; font-size: 0.95rem;">{module.description}</p>
+              <div style="background: #dbeafe; padding: 0.5rem; border-radius: 0.5rem; border-left: 3px solid #3b82f6;">
+                <span style="color: #1e40af; font-weight: 600;">{module.benefit}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- CRM Faydaları -->
+      <section style="margin-bottom: 4rem; background: #eff6ff; padding: 3rem; border-radius: 1rem;">
+        <h2 style="text-align: center; color: #0ea5e9; margin-bottom: 2rem;">
+          CRM'nin 4 Ana Faydası
+        </h2>
+        
+        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem;">
+          {crmBenefits.map((benefit) => (
+            <div style="background: white; padding: 2rem; border-radius: 1rem; border: 1px solid #bfdbfe;">
+              <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem;">
+                <div style={`width: 40px; height: 40px; background: #dbeafe; color: #0ea5e9; border-radius: 0.5rem; display: flex; align-items: center; justify-content: center; font-weight: bold;`}>
+                  {benefit.category.includes("Satış") ? "💰" : 
+                   benefit.category.includes("Müşteri") ? "😊" : 
+                   benefit.category.includes("Operasyon") ? "⚡" : "🎯"}
+                </div>
+                <h3 style="color: #0ea5e9; margin: 0; font-size: 1.25rem;">{benefit.category}</h3>
+              </div>
+              
+              <ul style="margin: 0; padding-left: 1.25rem;">
+                {benefit.benefits.map((item) => (
+                  <li style="margin-bottom: 0.75rem; color: var(--text-dark); display: flex; align-items: start; gap: 0.5rem;">
+                    <span style="color: #3b82f6;">✓</span>
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- CRM Türleri -->
+      <section style="margin-bottom: 4rem;">
+        <h2 style="text-align: center; color: #0ea5e9; margin-bottom: 2rem;">
+          4 Farklı CRM Yaklaşımı
+        </h2>
+        
+        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem;">
+          {crmTypes.map((type) => (
+            <div style="background: white; padding: 2rem; border-radius: 1rem; border: 1px solid #bfdbfe; box-shadow: var(--shadow-sm);">
+              <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem;">
+                <div style="font-size: 2.5rem;">{type.icon}</div>
+                <div>
+                  <h3 style="color: #0ea5e9; margin: 0; font-size: 1.25rem;">{type.type}</h3>
+                  <div style="color: var(--text-gray); font-size: 0.9rem;">{type.focus}</div>
+                </div>
+              </div>
+              
+              <div style="margin-bottom: 1.5rem;">
+                <div style="font-weight: 600; color: var(--text-dark); margin-bottom: 0.5rem;">Özellikler:</div>
+                <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
+                  {type.features.map((feature) => (
+                    <span style="background: #dbeafe; color: #1e40af; padding: 0.25rem 0.75rem; border-radius: 1rem; font-size: 0.9rem;">
+                      {feature}
+                    </span>
+                  ))}
+                </div>
+              </div>
+              
+              <div style="background: #eff6ff; padding: 1rem; border-radius: 0.5rem; border-left: 3px solid #0ea5e9;">
+                <div style="font-weight: 600; color: #1e40af;">İdeal Kullanım:</div>
+                <div style="color: var(--text-dark);">{type.idealFor}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- CRM Süreçleri -->
+      <section style="margin-bottom: 4rem;">
+        <h2 style="text-align: center; color: #0ea5e9; margin-bottom: 2rem;">
+          4 Adımda CRM Süreci
+        </h2>
+        
+        <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem;">
+          {crmProcesses.map((process) => (
+            <div style="position: relative; text-align: center;">
+              <div style="position: absolute; top: -1.5rem; left: 50%; transform: translateX(-50%); background: #3b82f6; color: white; width: 3rem; height: 3rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.25rem; z-index: 10;">
+                {process.step}
+              </div>
+              <div style="background: white; padding: 2rem 1.5rem 1.5rem; border-radius: 1rem; border: 2px solid #93c5fd; height: 100%;">
+                <h3 style="color: #0ea5e9; margin-top: 1rem; margin-bottom: 0.75rem; font-size: 1.1rem;">{process.title}</h3>
+                <p style="color: var(--text-gray); margin: 0; font-size: 0.95rem;">{process.description}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- Entegrasyonlar -->
+      <section style="margin-bottom: 4rem; background: #eff6ff; padding: 3rem; border-radius: 1rem;">
+        <h2 style="text-align: center; color: #0ea5e9; margin-bottom: 2rem;">
+          Geniş Entegrasyon Desteği
+        </h2>
+        
+        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem;">
+          {integrations.map((integration) => (
+            <div style="background: white; padding: 2rem; border-radius: 1rem; border: 1px solid #bfdbfe;">
+              <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem;">
+                <div style="font-size: 2.5rem;">{integration.icon}</div>
+                <div>
+                  <h3 style="color: #0ea5e9; margin: 0; font-size: 1.25rem;">{integration.platform}</h3>
+                  <div style="color: var(--text-gray); font-size: 0.9rem;">{integration.benefit}</div>
+                </div>
+              </div>
+              
+              <div>
+                <div style="font-weight: 600; color: var(--text-dark); margin-bottom: 0.5rem;">Entegre Platformlar:</div>
+                <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.5rem;">
+                  {integration.features.map((feature) => (
+                    <div style="display: flex; align-items: center; gap: 0.5rem;">
+                      <div style="color: #3b82f6;">•</div>
+                      <div style="color: var(--text-dark); font-size: 0.95rem;">{feature}</div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- Başarı Hikayeleri -->
+      <section style="margin-bottom: 4rem;">
+        <h2 style="text-align: center; color: #0ea5e9; margin-bottom: 2rem;">
+          CRM ile Başarı Hikayeleri
+        </h2>
+        
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem;">
+          {successStories.map((story) => (
+            <div style="background: white; padding: 2rem; border-radius: 1rem; border: 1px solid #bfdbfe; box-shadow: var(--shadow-md); text-align: center;">
+              <div style="font-size: 2rem; margin-bottom: 1rem;">🏆</div>
+              <h3 style="color: #0ea5e9; margin-bottom: 0.5rem;">{story.company}</h3>
+              <div style="color: var(--text-gray); margin-bottom: 1rem;">📍 {story.location}</div>
+              
+              <div style="margin-bottom: 1rem;">
+                <div style="font-weight: 600; color: var(--text-dark); margin-bottom: 0.25rem;">Problem:</div>
+                <div style="color: #dc2626; background: #fef2f2; padding: 0.5rem; border-radius: 0.5rem; border-left: 3px solid #dc2626;">
+                  {story.problem}
+                </div>
+              </div>
+              
+              <div style="margin-bottom: 1rem;">
+                <div style="font-weight: 600; color: var(--text-dark); margin-bottom: 0.25rem;">Çözüm:</div>
+                <div style="color: var(--text-dark); background: #dbeafe; padding: 0.5rem; border-radius: 0.5rem; border-left: 3px solid #3b82f6;">
+                  {story.solution}
+                </div>
+              </div>
+              
+              <div style="background: linear-gradient(135deg, #3b82f6, #0ea5e9); color: white; padding: 0.75rem; border-radius: 0.5rem;">
+                <div style="font-weight: 600; font-size: 1.1rem;">Sonuç: {story.result}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- İç Linkler -->
+      <section style="margin-bottom: 4rem;">
+        <h2 style="text-align: center; color: #0ea5e9; margin-bottom: 2rem;">
+          CRM ile Entegre Çözümlerimiz
+        </h2>
+        
+        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem;">
+          {internalLinks.map((link) => (
+            <a 
+              href={link.url}
+              style="display: flex; align-items: center; gap: 1rem; background: white; padding: 1.5rem; border-radius: 0.75rem; text-decoration: none; color: var(--text-dark); border: 1px solid #bfdbfe; transition: all 0.3s;"
+            >
+              <div style="font-size: 2rem;">{link.icon}</div>
+              <div>
+                <div style="font-weight: 600; color: #0ea5e9; margin-bottom: 0.25rem;">{link.title}</div>
+                <div style="color: var(--text-gray); font-size: 0.95rem;">{link.description}</div>
+              </div>
+            </a>
+          ))}
+        </div>
+      </section>
+
+      <!-- FAQ -->
+      <section style="margin-bottom: 4rem;">
+        <h2 style="text-align: center; color: #0ea5e9; margin-bottom: 2rem;">
+          CRM Sistemleri Hakkında Sıkça Sorulan Sorular
+        </h2>
+        
+        <div style="max-width: 800px; margin: 0 auto;">
+          {faqItems.map((item, index) => (
+            <div style="background: white; padding: 1.5rem; border-radius: 0.75rem; margin-bottom: 1rem; border: 1px solid #dbeafe; box-shadow: var(--shadow-sm);">
+              <div style="display: flex; gap: 1rem;">
+                <div style="color: #0ea5e9; font-weight: bold;">Q{index + 1}:</div>
+                <div style="flex: 1;">
+                  <h3 style="color: #0ea5e9; margin: 0 0 0.75rem 0; font-size: 1.1rem;">{item.question}</h3>
+                  <p style="margin: 0; color: var(--text-dark); line-height: 1.6;">{item.answer}</p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- CTA -->
+      <section style="background: linear-gradient(135deg, #0ea5e9, #3b82f6); padding: 4rem; border-radius: 1.5rem; text-align: center; color: white;">
+        <h2 style="color: white; margin-bottom: 1rem; font-size: 2rem;">CRM İhtiyaçlarınızı Ücretsiz Analiz Edelim</h2>
+        <p style="margin-bottom: 2rem; font-size: 1.1rem; opacity: 0.9; max-width: 600px; margin-left: auto; margin-right: auto;">
+          CRM uzmanlarımız iş süreçlerinizi analiz edip, size özel CRM çözüm önerisi hazırlasın.
+        </p>
+        
+        <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+          <a 
+            href="https://wa.me/+905325000999?text=Merhaba,%20CRM%20ihtiyaç%20analizi%20için%20görüşmek%20istiyorum"
+            style="display: inline-flex; align-items: center; justify-content: center; padding: 1rem 2rem; background-color: white; color: #0ea5e9; text-decoration: none; border-radius: 0.75rem; font-weight: 600; gap: 0.5rem; border: none; cursor: pointer; font-size: 1.1rem;"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            📋 Ücretsiz CRM Analizi
+          </a>
+          
+          <a 
+            href="https://wa.me/+905325000999?text=Merhaba,%20CRM%20demo%20ve%20fiyat%20teklifi%20almak%20istiyorum"
+            style="display: inline-flex; align-items: center; justify-content: center; padding: 1rem 2rem; background-color: transparent; color: white; text-decoration: none; border-radius: 0.75rem; font-weight: 600; gap: 0.5rem; border: 2px solid white; cursor: pointer; font-size: 1.1rem;"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            👥 Demo + Teknik İnceleme
+          </a>
+        </div>
+        
+        <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; margin-top: 3rem; text-align: center;">
+          <div>
+            <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">👥</div>
+            <div>Sınırsız Müşteri</div>
+          </div>
+          <div>
+            <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">📱</div>
+            <div>Mobil Uygulama</div>
+          </div>
+          <div>
+            <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">🔄</div>
+            <div>Otomatik Entegrasyon</div>
+          </div>
+          <div>
+            <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">👨‍🏫</div>
+            <div>Ücretsiz Eğitim</div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <style>
+    :root {
+      --border-color: #e5e7eb;
+    }
+    
+    h2 {
+      color: #0ea5e9;
+      margin-bottom: 1rem;
+      font-size: 1.8rem;
+    }
+    
+    h3 {
+      color: var(--text-dark);
+      margin-bottom: 0.5rem;
+    }
+    
+    p {
+      color: var(--text-dark);
+      line-height: 1.6;
+    }
+    
+    a:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+      border-color: #3b82f6;
+    }
+    
+    @media (max-width: 1024px) {
+      div[style*="grid-template-columns: repeat(4, 1fr)"] {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    
+    @media (max-width: 768px) {
+      div[style*="grid-template-columns: repeat(3, 1fr)"] {
+        grid-template-columns: 1fr;
+      }
+      
+      div[style*="grid-template-columns: repeat(2, 1fr)"] {
+        grid-template-columns: 1fr;
+      }
+      
+      section {
+        padding-left: 1rem;
+        padding-right: 1rem;
+      }
+      
+      .container > div {
+        padding: 0;
+      }
+      
+      .hero-section {
+        padding: 3rem 1rem;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 2rem !important;
+      }
+      
+      div[style*="grid-template-columns: repeat(4, 1fr)"] {
+        grid-template-columns: 1fr;
+      }
+      
+      .cta-buttons {
+        flex-direction: column;
+      }
+      
+      .cta-buttons a {
+        width: 100%;
+        text-align: center;
+      }
+      
+      .success-stories {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+
+</BaseLayout>

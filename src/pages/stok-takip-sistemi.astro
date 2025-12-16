@@ -1,0 +1,978 @@
+---
+// src/pages/stok-takip-sistemi.astro
+import BaseLayout from '../layouts/BaseLayout.astro';
+import '../styles/variables.css';
+import '../styles/global.css';
+import '../styles/components.css';
+
+// Özellikler
+const features = [
+  {
+    icon: "🏷️",
+    title: "Barkod Sistemi",
+    description: "Barkod okuyucu ile saniyeler içinde stok işlemleri",
+    details: [
+      "Otomatik barkod üretimi",
+      "QR Code desteği",
+      "Barkod yazıcı entegrasyonu",
+      "Toplu barkod basımı"
+    ]
+  },
+  {
+    icon: "📱",
+    title: "Mobil Stok Sayımı",
+    description: "Telefonunuzdan hızlı stok sayımı ve takibi",
+    details: [
+      "Android/iOS uyumlu",
+      "Offline çalışma",
+      "Fotoğraflı ürün kaydı",
+      "Anlık senkronizasyon"
+    ]
+  },
+  {
+    icon: "📦",
+    title: "Çoklu Depo Yönetimi",
+    description: "Sınırsız sayıda depo ve raf takibi",
+    details: [
+      "Depolar arası transfer",
+      "Raf ve konum yönetimi",
+      "Depo bazlı stok raporu",
+      "Merkezi kontrol paneli"
+    ]
+  },
+  {
+    icon: "🔔",
+    title: "Otomatik Stok Alarmı",
+    description: "Kritik seviyelere inince anında uyarı",
+    details: [
+      "Minimum stok uyarısı",
+      "Son kullanma tarihi takibi",
+      "Aşırı stok bildirimi",
+      "SMS/e-posta uyarıları"
+    ]
+  },
+  {
+    icon: "📊",
+    title: "Detaylı Raporlama",
+    description: "100+ farklı stok raporu ve analizi",
+    details: [
+      "Stok hareket raporu",
+      "Kar marjı analizi",
+      "En çok satan ürünler",
+      "Duran stok analizi"
+    ]
+  },
+  {
+    icon: "🤖",
+    title: "Otomatik Süreçler",
+    description: "Stok yönetimini otomatikleştirin",
+    details: [
+      "Otomatik sipariş oluşturma",
+      "Fiyat güncelleme botları",
+      "Stok devir hızı hesaplama",
+      "Trend analizi"
+    ]
+  }
+];
+
+// Sektör çözümleri
+const industrySolutions = [
+  {
+    industry: "Perakende Mağazalar",
+    icon: "🏪",
+    features: [
+      "Barkodlu satış",
+      "Kasa entegrasyonu",
+      "Kampanya yönetimi",
+      "Müşteri takibi"
+    ],
+    benefits: ["%40 hızlı satış", "%60 stok sayım tasarrufu"]
+  },
+  {
+    industry: "Toptancılar",
+    icon: "🚚",
+    features: [
+      "Parti numarası takibi",
+      "Çoklu depo yönetimi",
+      "Vade takip sistemi",
+      "Toplu fiyat güncelleme"
+    ],
+    benefits: ["%30 stok maliyeti azalması", "%50 zaman tasarrufu"]
+  },
+  {
+    industry: "Üretim Firmaları",
+    icon: "🏭",
+    features: [
+      "Hammadde takibi",
+      "Yarı mamül kontrolü",
+      "Fire oranı analizi",
+      "Üretim emri entegrasyonu"
+    ],
+    benefits: ["%25 fire azalması", "%35 verimlilik artışı"]
+  },
+  {
+    industry: "Depo ve Lojistik",
+    icon: "📦",
+    features: [
+      "Konum bazlı takip",
+      "Sevkiyat yönetimi",
+      "İade süreçleri",
+      "Stok yaşlandırma"
+    ],
+    benefits: ["%45 hata azalması", "%60 hızlı sevkiyat"]
+  }
+];
+
+// İstatistikler
+const statistics = [
+  { number: "10.000+", label: "Mutlu Müşteri", icon: "👥" },
+  { number: "%99.9", label: "Sistem Uptime", icon: "⚡" },
+  { number: "7/24", label: "Teknik Destek", icon: "🛠️" },
+  { number: "14", label: "Gün Ücretsiz", icon: "🎁" }
+];
+
+// Paketler
+const packages = [
+  {
+    name: "Başlangıç",
+    price: "₺299",
+    period: "aylık",
+    features: [
+      "500 ürüne kadar",
+      "1 depo yönetimi",
+      "Temel barkod sistemi",
+      "E-posta desteği",
+      "Standart raporlar"
+    ],
+    ctaText: "Başlangıç Paketini Seç",
+    popular: false
+  },
+  {
+    name: "Profesyonel",
+    price: "₺599",
+    period: "aylık",
+    features: [
+      "Sınırsız ürün",
+      "5 depo yönetimi",
+      "Gelişmiş barkod sistemi",
+      "7/24 telefon desteği",
+      "Detaylı analiz raporları",
+      "Mobil uygulama",
+      "API erişimi"
+    ],
+    ctaText: "En Popüler Paket",
+    popular: true
+  },
+  {
+    name: "Kurumsal",
+    price: "₺1.199",
+    period: "aylık",
+    features: [
+      "Sınırsız her şey",
+      "Sınırsız depo",
+      "Özel barkod çözümleri",
+      "Öncelikli destek",
+      "Özel raporlama",
+      "Özel eğitim",
+      "API + Entegrasyon",
+      "Özel geliştirmeler"
+    ],
+    ctaText: "Kurumsal Çözüm",
+    popular: false
+  }
+];
+
+// İç linkler
+const relatedPages = [
+  { title: "Stok Yönetimi", url: "/stok-yonetimi", desc: "Kapsamlı stok yönetim çözümleri" },
+  { title: "Mağaza Otomasyonu", url: "/magaza-otomasyonu", desc: "Satış ve stok entegrasyonu" },
+  { title: "ERP Sistemi", url: "/erp-sistemi", desc: "Tüm iş süreçleri için" },
+  { title: "Online Muhasebe", url: "/online-muhasebe-programi", desc: "Finans ve stok entegrasyonu" }
+];
+---
+
+<BaseLayout 
+  title="Stok Takip Sistemi | Barkodlu Stok Takibi - Stok Pratik" 
+  description="Stok takip sistemi ile barkodlu stok takibi yapın. Mobil stok sayımı, çoklu depo yönetimi ve otomatik stok alarmı ile işinizi kolaylaştırın."
+>
+  
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-text">
+          <span class="hero-badge">Barkodlu Stok Takibi</span>
+          <h1>Stok Takip Sistemi ile <span class="highlight">Stoklarınız Kontrol Altında</span></h1>
+          <p class="hero-subtitle hero-badge highlight">Barkodlu stok takibi, mobil stok sayımı ve otomatik alarmlar ile stok yönetimini kolaylaştırın</p>
+          
+         
+          
+          <div class="hero-buttons">
+            <a 
+              href="https://wa.me/+905325000999?text=Merhaba,%20Stok%20Takip%20Sistemi%20demo%20talep%20ediyorum" 
+              class="btn btn-secondary btn-large"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              🚀 Ücretsiz Demo İste
+            </a>
+            <a 
+              href="tel:+905325000999" 
+              class="btn btn-secondary btn-large"
+            >
+              📞 Hemen Ara: 0532 500 09 99
+            </a>
+          </div>
+        </div>
+        
+        <div class="hero-image">
+          <div class="device-showcase">
+            <div class="desktop-preview">
+              <div class="screen">
+                <div class="screen-header">
+                  <div class="app-name">Stok Takip Paneli</div>
+                  <div class="screen-dots">
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                  </div>
+                </div>
+                <div class="screen-content">
+                  <div class="data-row">
+                    <span class="label">Toplam Ürün:</span>
+                    <span class="value">1,248</span>
+                  </div>
+                  <div class="data-row">
+                    <span class="label">Kritik Stok:</span>
+                    <span class="value warning">12</span>
+                  </div>
+                  <div class="data-row">
+                    <span class="label">Bugünkü Hareket:</span>
+                    <span class="value">48</span>
+                  </div>
+                  <div class="data-row">
+                    <span class="label">Stok Değeri:</span>
+                    <span class="value success">₺245,800</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="mobile-preview">
+              <div class="mobile-screen">
+                <div class="mobile-header">
+                  <div class="mobile-time">14:30</div>
+                  <div class="mobile-battery">🔋 85%</div>
+                </div>
+                <div class="mobile-content">
+                  <div class="mobile-app-name">📱 Stok Takip</div>
+                  <div class="mobile-stats">
+                    <div class="mobile-stat">
+                      <div class="mobile-stat-value">45</div>
+                      <div class="mobile-stat-label">Sayım</div>
+                    </div>
+                    <div class="mobile-stat">
+                      <div class="mobile-stat-value">12</div>
+                      <div class="mobile-stat-label">Uyarı</div>
+                    </div>
+                  </div>
+                  <div class="mobile-scan">🔍 Barkod Tara</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Özellikler -->
+  <section class="features-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Stok Pratik ile Neler Yapabilirsiniz?</h2>
+        <p>İşletmenizin tüm stok ihtiyaçlarını karşılayan kapsamlı çözüm</p>
+      </div>
+      
+      <div class="features-grid">
+        {features.map((feature, index) => (
+          <div class="feature-card" key={index}>
+            <div class="feature-icon">{feature.icon}</div>
+            <h3>{feature.title}</h3>
+            <p class="feature-desc">{feature.description}</p>
+            <ul class="feature-list">
+              {feature.details.map((detail, i) => (
+                <li key={i}>
+                  <span class="checkmark">✓</span>
+                  {detail}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Sektör Çözümleri -->
+  <section class="industry-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Sektörünüze Özel Stok Takip Çözümleri</h2>
+        <p>Her işletmeye özel tasarlanmış stok yönetimi</p>
+      </div>
+      
+      <div class="industry-grid">
+        {industrySolutions.map((solution, index) => (
+          <div class="industry-card" key={index}>
+            <div class="industry-header">
+              <div class="industry-icon">{solution.icon}</div>
+              <h3>{solution.industry}</h3>
+            </div>
+            
+            <div class="industry-features">
+              <h4>Özellikler:</h4>
+              <ul>
+                {solution.features.map((feature, i) => (
+                  <li key={i}>{feature}</li>
+                ))}
+              </ul>
+            </div>
+            
+            <div class="industry-benefits">
+              <h4>Kazançlar:</h4>
+              <div class="benefits-list">
+                {solution.benefits.map((benefit, i) => (
+                  <div class="benefit-item" key={i}>
+                    <span class="benefit-icon">🎯</span>
+                    <span>{benefit}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+            
+            <a 
+              href={`https://wa.me/+905325000999?text=Merhaba,%20${encodeURIComponent(solution.industry)}%20için%20stok%20takip%20sistemi%20hakkında%20bilgi%20almak%20istiyorum`}
+              class="btn btn-industry"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              💬 Bu Sektör İçin Bilgi Al
+            </a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Nasıl Çalışır -->
+  <section class="how-it-works">
+    <div class="container">
+      <div class="section-header">
+        <h2>Stok Takip Sistemi Nasıl Çalışır?</h2>
+        <p>3 adımda stoklarınızı kontrol altına alın</p>
+      </div>
+      
+      <div class="steps">
+        <div class="step">
+          <div class="step-number">1</div>
+          <div class="step-icon">📱</div>
+          <h3>Ürünlerinizi Kaydedin</h3>
+          <p>Ürünlerinizi sisteme ekleyin, barkodlarını oluşturun ve depo konumlarını belirleyin</p>
+          <ul>
+            <li>Toplu ürün ekleme</li>
+            <li>Excel'den aktarma</li>
+            <li>Otomatik barkod</li>
+          </ul>
+        </div>
+        
+        <div class="step">
+          <div class="step-number">2</div>
+          <div class="step-icon">🔍</div>
+          <h3>Stok Hareketlerini Takip Edin</h3>
+          <p>Barkod okuyucu ile stok giriş-çıkışlarını anında kaydedin ve takip edin</p>
+          <ul>
+            <li>Hızlı barkod okuma</li>
+            <li>Mobil stok sayımı</li>
+            <li>Gerçek zamanlı takip</li>
+          </ul>
+        </div>
+        
+        <div class="step">
+          <div class="step-number">3</div>
+          <div class="step-icon">📊</div>
+          <h3>Raporları İnceleyin ve Karar Verin</h3>
+          <p>Detaylı raporlar ile stok performansınızı analiz edin, kararlarınızı verin</p>
+          <ul>
+            <li>Stok devir hızı</li>
+            <li>Kar marjı analizi</li>
+            <li>Trend raporları</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  
+
+  <!-- Neden Biz -->
+  <section class="why-us">
+    <div class="container">
+      <div class="section-header">
+        <h2>Neden Stok Pratik?</h2>
+        <p>Onlarca işletmenin tercihi olmamızın nedenleri</p>
+      </div>
+      
+      <div class="reasons-grid">
+        <div class="reason-card">
+          <div class="reason-icon">🚀</div>
+          <h3>Kolay Kurulum</h3>
+          <p>Aynı gün kurulum ile hemen kullanmaya başlayın.</p>
+        </div>
+        
+        <div class="reason-card">
+          <div class="reason-icon">💯</div>
+          <h3>%100 Yerli</h3>
+          <p>Türk mühendisler tarafından geliştirildi, Türk sunucularında barındırılıyor.</p>
+        </div>
+        
+        <div class="reason-card">
+          <div class="reason-icon">🔒</div>
+          <h3>Güvenli Sistem</h3>
+          <p>Banka seviyesinde şifreleme, günlük yedekleme ve SSL güvenliği.</p>
+        </div>
+        
+        <div class="reason-card">
+          <div class="reason-icon">📱</div>
+          <h3>Mobil Uyumlu</h3>
+          <p>Telefon, tablet ve bilgisayardan - her cihazdan erişim imkanı.</p>
+        </div>
+        
+        <div class="reason-card">
+          <div class="reason-icon">🔄</div>
+          <h3>Sürekli Güncelleme</h3>
+          <p>Yeni özellikler ve iyileştirmelerle sürekli gelişen sistem.</p>
+        </div>
+        
+        <div class="reason-card">
+          <div class="reason-icon">👨‍💼</div>
+          <h3>Uzman Destek</h3>
+          <p>7/24 uzman destek ekibimiz ile her an yanınızdayız.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- İlgili Sayfalar -->
+  <section class="related-pages">
+    <div class="container">
+      <div class="section-header">
+        <h2>Diğer Çözümlerimiz</h2>
+        <p>Stok takip sistemi ile entegre çalışan diğer ürünlerimiz</p>
+      </div>
+      
+      <div class="pages-grid">
+        {relatedPages.map((page, index) => (
+          <a href={page.url} class="page-card" key={index}>
+            <h3>{page.title}</h3>
+            <p>{page.desc}</p>
+            <div class="page-link">
+              <span>İncele</span>
+              <span class="arrow">→</span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Son CTA -->
+  <section class="final-cta">
+    <div class="container">
+      <div class="cta-content">
+        <h2>Stok Takip Sistemini Ücretsiz Deneyin!</h2>
+        <p>Dilerseniz ücretsiz paketi kullanabilirsiniz, memnun kalırsanız devam edin.</p>
+        
+        <div class="cta-buttons">
+          <a 
+            href="https://wa.me/+905325000999?text=Merhaba,%20Stok%20Takip%20Sistemi%20demo%20talep%20ediyorum"
+            class="btn btn-secondary btn-large"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            🚀 WhatsApp'tan Demo İste
+          </a>
+          
+          <a 
+            href="tel:+905325000999"
+            class="btn btn-secondary btn-large"
+          >
+            📞 Hemen Ara: 0532 500 09 99
+          </a>
+        </div>
+        
+        <div class="cta-features">
+          <div class="feature">
+            <span class="feature-icon">🎁</span>
+            <span>Ücretsiz Paket ile başlayın</span>
+          </div>
+          <div class="feature">
+            <span class="feature-icon">👨‍🏫</span>
+            <span>Ücretsiz Eğitim</span>
+          </div>
+          <div class="feature">
+            <span class="feature-icon">🔄</span>
+            <span>Veri Aktarım Desteği</span>
+          </div>
+          <div class="feature">
+            <span class="feature-icon">💯</span>
+            <span>Memnuniyet Garantisi</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  /* Hero Section */
+  .hero-section {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 4rem 0;
+  }
+  
+  .hero-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+  
+  .hero-badge {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+  }
+  
+  .hero-text h1 {
+    font-size: 3rem;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+  }
+  
+  .highlight {
+    color: #ffd700;
+  }
+  
+  .hero-subtitle {
+    font-size: 1.2rem;
+    opacity: 0.9;
+    margin-bottom: 2rem;
+  }
+  
+  .hero-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    margin: 2rem 0;
+  }
+  
+  .stat-item {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 1rem;
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+  }
+  
+  .stat-icon {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .stat-number {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #ffd700;
+    margin-bottom: 0.3rem;
+  }
+  
+  .stat-label {
+    font-size: 0.8rem;
+    opacity: 0.8;
+  }
+  
+  .hero-buttons {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+  
+  .btn-large {
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+  }
+  
+  /* Device Showcase */
+  .device-showcase {
+    position: relative;
+    height: 400px;
+  }
+  
+  .desktop-preview {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 80%;
+    background: #1a1a1a;
+    border-radius: 15px;
+    padding: 1rem;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+    z-index: 2;
+  }
+  
+  .screen {
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  
+  .screen-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #f8f9fa;
+    padding: 0.8rem 1rem;
+    border-bottom: 1px solid #e0e0e0;
+  }
+  
+  .app-name {
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .screen-dots {
+    display: flex;
+    gap: 0.3rem;
+  }
+  
+  .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #ddd;
+  }
+  
+  .screen-content {
+    padding: 1rem;
+  }
+  
+  .data-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #f0f0f0;
+  }
+  
+  .data-row:last-child {
+    border-bottom: none;
+  }
+  
+  .label {
+    color: #666;
+  }
+  
+  .value {
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .value.warning {
+    color: #e74c3c;
+  }
+  
+  .value.success {
+    color: #2ecc71;
+  }
+  
+  .mobile-preview {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 40%;
+    background: #2c3e50;
+    border-radius: 25px;
+    padding: 1.5rem 1rem;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+    z-index: 3;
+  }
+  
+  .mobile-screen {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    height: 250px;
+  }
+  
+  .mobile-header {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem 1rem;
+    background: #f8f9fa;
+    border-bottom: 1px solid #e0e0e0;
+    font-size: 0.8rem;
+  }
+  
+  .mobile-content {
+    padding: 1.5rem 1rem;
+    text-align: center;
+  }
+  
+  .mobile-app-name {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    color: #333;
+  }
+  
+  .mobile-stats {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin: 1.5rem 0;
+  }
+  
+  .mobile-stat {
+    text-align: center;
+  }
+  
+  .mobile-stat-value {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #667eea;
+  }
+  
+  .mobile-stat-label {
+    font-size: 0.8rem;
+    color: #666;
+  }
+  
+  .mobile-scan {
+    background: #667eea;
+    color: white;
+    padding: 0.8rem;
+    border-radius: 10px;
+    font-weight: bold;
+    margin-top: 1rem;
+  }
+  
+  /* Features Section */
+  .features-section {
+    padding: 4rem 0;
+    background: #f8f9fa;
+  }
+  
+  .section-header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+  
+  .section-header h2 {
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 1rem;
+  }
+  
+  .section-header p {
+    color: #666;
+    font-size: 1.1rem;
+  }
+  
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+  
+  .feature-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+  }
+  
+  .feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+  }
+  
+  .feature-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+  
+  .feature-card h3 {
+    color: #333;
+    margin-bottom: 0.5rem;
+    font-size: 1.3rem;
+  }
+  
+  .feature-desc {
+    color: #666;
+    margin-bottom: 1.5rem;
+    font-size: 0.95rem;
+  }
+  
+  .feature-list {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .feature-list li {
+    padding: 0.5rem 0;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .checkmark {
+    color: #2ecc71;
+    font-weight: bold;
+  }
+  
+  /* Industry Section */
+  .industry-section {
+    padding: 4rem 0;
+  }
+  
+  .industry-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+  
+  .industry-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+  }
+  
+  .industry-card:hover {
+    border-color: #667eea;
+    transform: translateY(-3px);
+  }
+  
+  .industry-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #f1f2f6;
+  }
+  
+  .industry-icon {
+    font-size: 2.5rem;
+  }
+  
+  .industry-card h3 {
+    color: #333;
+    margin: 0;
+  }
+  
+  .industry-features h4,
+  .industry-benefits h4 {
+    color: #667eea;
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+  }
+  
+  .industry-features ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 1.5rem;
+  }
+  
+  .industry-features li {
+    padding: 0.3rem 0;
+    position: relative;
+    padding-left: 1.5rem;
+  }
+  
+  .industry-features li:before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: #667eea;
+    font-size: 1.5rem;
+  }
+  
+  .benefits-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .benefit-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: #f8f9ff;
+    padding: 0.5rem;
+    border-radius: 5px;
+  }
+  
+  .benefit-icon {
+    color: #2ecc71;
+  }
+  
+  .btn-industry {
+    display: block;
+    width: 100%;
+    text-align: center;
+    background: #667eea;
+    color: white;
+    padding: 0.8rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    margin-top: 1rem;
+    transition: background 0.3s ease;
+  }
+  
+  .btn-industry:hover {
+    background: #5a6fd8;
+  }
+  
+  /* How It Works */
+  .how-it-works {
+    padding: 4rem 0;
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    color: white;
+  }
+  
+  .how-it-works .section-header h2,
+  .how-it-works .section-header p {
+    color: white;
+  }
+  
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 3rem;
+  }
+  
+  .step {
+    text-align: center;
+    background: rgba(255, 255, 255

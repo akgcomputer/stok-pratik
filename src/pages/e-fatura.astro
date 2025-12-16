@@ -1,0 +1,535 @@
+---
+// src/pages/e-fatura.astro
+import BaseLayout from '../layouts/BaseLayout.astro';
+import '../styles/variables.css';
+import '../styles/global.css';
+import '../styles/components.css';
+
+// İç linkler için data
+const internalLinks = [
+  { 
+    title: "Online Muhasebe Programı", 
+    url: "/online-muhasebe-programi",
+    icon: "🧾",
+    description: "e-Fatura entegre muhasebe çözümü"
+  },
+  { 
+    title: "Muhasebe Yazılımı", 
+    url: "/muhasebe-yazilimi",
+    icon: "📊",
+    description: "e-Fatura ile tam entegre sistem"
+  },
+  { 
+    title: "Stok Takip Sistemi", 
+    url: "/stok-takip-sistemi",
+    icon: "📦",
+    description: "e-Fatura ile otomatik stok güncelleme"
+  },
+  { 
+    title: "Mağaza Yönetim Yazılımı", 
+    url: "/magaza-yonetim-yazilimi",
+    icon: "🏪",
+    description: "POS'tan e-Fatura'ya tek sistem"
+  },
+  { 
+    title: "KOBİ Muhasebe Programı", 
+    url: "/kobi-muhasebe-programi",
+    icon: "💼",
+    description: "KOBİ'ler için e-Fatura çözümü"
+  }
+];
+
+// e-Fatura avantajları
+const efaturaAdvantages = [
+  {
+    icon: "⚡",
+    title: "Hızlı İşlem",
+    description: "Faturalar anında gönderilir, posta veya kargo beklemez",
+    benefit: "Zamandan %90 tasarruf"
+  },
+  {
+    icon: "💰",
+    title: "Maliyet Tasarrufu",
+    description: "Kağıt, baskı, posta, arşivleme maliyetleri sıfırlanır",
+    benefit: "Aylık 500-2000₺ tasarruf"
+  },
+  {
+    icon: "🔐",
+    title: "Güvenlik",
+    description: "Dijital imza ile güvenli, kaybolma veya sahtecilik riski yok",
+    benefit: "%100 güvenli işlem"
+  },
+  {
+    icon: "📁",
+    title: "Kolay Arşivleme",
+    description: "Faturalar dijital ortamda, istediğiniz zaman erişilebilir",
+    benefit: "7 yıl yasal arşivleme"
+  },
+  {
+    icon: "📊",
+    title: "Otomatik Muhasebe",
+    description: "Faturalar otomatik muhasebeleşir, manuel kayıt gerekmez",
+    benefit: "Muhasebe iş yükü %70 azalır"
+  },
+  {
+    icon: "🌍",
+    title: "Erişim Kolaylığı",
+    description: "İnternet olduğu her yerden 7/24 fatura kesebilirsiniz",
+    benefit: "Mobil fatura kesme"
+  }
+];
+
+// e-Fatura süreçleri
+const efaturaProcess = [
+  {
+    step: "1",
+    title: "Müşteri Bilgisi",
+    description: "Müşterinizin e-fatura sistemine kayıtlı olduğundan emin olun"
+  },
+  {
+    step: "2",
+    title: "Fatura Oluşturma",
+    description: "Stok Pratik üzerinden fatura bilgilerini girin"
+  },
+  {
+    step: "3",
+    title: "Dijital İmza",
+    description: "Faturanız otomatik olarak dijital imzalanır"
+  },
+  {
+    step: "4",
+    title: "Gönderim",
+    description: "Fatura müşterinizin e-fatura hesabına anında gönderilir"
+  }
+];
+
+// Zorunluluk bilgileri
+const mandatoryInfo = [
+  {
+    category: "Yıllık cirosu 5 milyon TL ve üzeri",
+    deadline: "01.01.2024'ten itibaren zorunlu",
+    details: "Tüm fatura kesme işlemleri e-fatura ile yapılmalı"
+  },
+  {
+    category: "Yıllık cirosu 1-5 milyon TL",
+    deadline: "01.07.2024'ten itibaren zorunlu",
+    details: "Kademeli geçiş süreci devam ediyor"
+  },
+  {
+    category: "Tüm KDV mükellefleri",
+    deadline: "01.01.2025'ten itibaren zorunlu",
+    details: "KDV beyannamesi veren tüm işletmeler"
+  }
+];
+
+// Özellikler
+const features = [
+  {
+    title: "Tam Entegrasyon",
+    items: ["Muhasebe otomatik güncelleme", "Stok otomatik düşme", "Cari hesap otomatik takip", "Banka entegrasyonu"]
+  },
+  {
+    title: "Gelişmiş Özellikler",
+    items: ["Toplu fatura kesme", "Özel şablonlar", "Otomatik hatırlatma", "E-arsiv fatura", "E-irsaliye"]
+  },
+  {
+    title: "Raporlama",
+    items: ["KDV raporları", "Müşteri bazlı analiz", "Ürün bazlı analiz", "Dönemsel karşılaştırma", "Vergi uyumluluğu"]
+  },
+  {
+    title: "Destek ve Güvenlik",
+    items: ["7/24 teknik destek", "Otomatik yedekleme", "Dijital imza yönetimi", "Güncel mevzuat takibi", "Yedek sunucu"]
+  }
+];
+
+// FAQ
+const faqItems = [
+  {
+    question: "e-Fatura için hangi belgelere ihtiyacım var?",
+    answer: "Vergi levhası, imza sirküleri, ticaret sicil gazetesi ve yetkili kişinin kimlik fotokopisidir. Stok Pratik tüm başvuru süreçlerinde size destek olur."
+  },
+  {
+    question: "e-Fatura maliyeti ne kadar?",
+    answer: "Stok Pratik'te e-fatura ücreti aylık paket içinde dahildir. Ek olarak sadece kontör ücreti ödersiniz (1000 kontör ≈ 500₺). İlk 500 kontör bazı paketlerde hediyedir."
+  },
+  {
+    question: "Mevcut kağıt faturalarım ne olacak?",
+    answer: "Stok Pratik ile mevcut faturalarınızı otomatik e-fatura sistemine aktarabilirsiniz. Geçmiş faturalarınız dijital arşivlenir."
+  },
+  {
+    question: "e-Fatura sistemine geçiş ne kadar sürer?",
+    answer: "Ortalama 3-5 iş günü içinde e-fatura sisteminiz aktif olur. Stok Pratik teknik ekibi tüm süreci yönetir."
+  },
+  {
+    question: "Mobil cihazlardan e-fatura kesebilir miyim?",
+    answer: "Evet! Stok Pratik mobil uygulaması ile telefonunuzdan veya tabletinizden istediğiniz yerden e-fatura kesebilirsiniz."
+  }
+];
+---
+
+<BaseLayout 
+  title="e-Fatura Çözümleri | Stok Pratik - Tam Entegre e-Fatura Sistemi"
+  description="e-Fatura ile faturalarınızı dijitalleştirin. Stok Pratik ile otomatik e-fatura kesme, gönderim ve takip. Ücretsiz demo talep edin."
+>
+
+  <!-- Hero Section -->
+  <section style="padding: 4rem 0; background: linear-gradient(135deg, #dcfce7 0%, var(--bg-white) 100%);">
+    <div class="container">
+      <div style="text-align: center; max-width: 800px; margin: 0 auto;">
+        <h1 style="color: #16a34a; margin-bottom: 1.5rem; font-size: 2.5rem;">
+          e-Fatura ile Faturalarınız Dijitalde
+        </h1>
+        <p style="font-size: 1.25rem; color: var(--text-gray); margin-bottom: 2rem;">
+          Kağıt fatura dönemi bitiyor. Stok Pratik ile e-fatura sistemine kolayca geçin, zaman ve paradan tasarruf edin.
+        </p>
+        <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+          <a 
+            href="https://wa.me/+905325000999?text=Merhaba,%20e-fatura%20sistemi%20demo%20talep%20ediyorum"
+            class="btn btn-primary"
+            style="min-height: 52px; background: linear-gradient(135deg, #16a34a, #22c55e); border-color: #16a34a;"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            🧾 e-Fatura Demo İste
+          </a>
+          <a 
+            href="https://wa.me/+905325000999?text=Merhaba,%20e-fatura%20geçiş%20danışmanlığı%20almak%20istiyorum"
+            class="btn btn-secondary"
+            style="min-height: 52px; border-color: #16a34a; color: #16a34a;"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            🔄 Geçiş Danışmanlığı
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Zorunluluk Bilgisi -->
+  <section style="padding: 3rem 0; background: #fef2f2;">
+    <div class="container">
+      <div style="text-align: center; margin-bottom: 2rem;">
+        <h2 style="color: #dc2626; margin-bottom: 1rem;">⏰ e-Fatura Zorunluluğu Yaklaşıyor!</h2>
+        <p style="color: var(--text-dark); max-width: 800px; margin: 0 auto;">
+          2024-2025 yıllarında kademeli olarak tüm işletmeler e-fatura sistemine geçmek zorunda. 
+          Geç kalmadan hazırlıklarınızı tamamlayın.
+        </p>
+      </div>
+      
+      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;">
+        {mandatoryInfo.map((info) => (
+          <div style="background: white; padding: 1.5rem; border-radius: 1rem; border: 2px solid #fca5a5; text-align: center;">
+            <div style="font-weight: 600; color: #dc2626; margin-bottom: 1rem;">{info.category}</div>
+            <div style="background: #fef2f2; padding: 0.75rem; border-radius: 0.5rem; margin-bottom: 1rem;">
+              <div style="font-size: 0.9rem; color: var(--text-gray); margin-bottom: 0.25rem;">Son Tarih:</div>
+              <div style="font-weight: bold; color: #dc2626;">{info.deadline}</div>
+            </div>
+            <div style="color: var(--text-dark); font-size: 0.95rem;">{info.details}</div>
+          </div>
+        ))}
+      </div>
+      
+      <div style="text-align: center; margin-top: 2rem;">
+        <a 
+          href="https://wa.me/+905325000999?text=Merhaba,%20e-fatura%20zorunluluğu%20hakkında%20bilgi%20almak%20istiyorum"
+          style="display: inline-flex; align-items: center; gap: 0.5rem; color: #dc2626; font-weight: 600; text-decoration: none;"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          📞 Zorunluluk testi yapın →
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Ana İçerik -->
+  <main style="padding: 3rem 0; background: var(--bg-white);">
+    <div class="container">
+      
+      <!-- Avantajlar -->
+      <section style="margin-bottom: 4rem;">
+        <h2 style="text-align: center; color: #16a34a; margin-bottom: 2rem;">
+          e-Fatura'nın 6 Büyük Avantajı
+        </h2>
+        
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem;">
+          {efaturaAdvantages.map((advantage) => (
+            <div style="background: white; padding: 2rem; border-radius: 1rem; border: 1px solid #d1fae5; box-shadow: var(--shadow-md); text-align: center;">
+              <div style="font-size: 3rem; margin-bottom: 1rem;">{advantage.icon}</div>
+              <h3 style="color: #16a34a; margin-bottom: 0.75rem; font-size: 1.1rem;">{advantage.title}</h3>
+              <p style="color: var(--text-gray); margin-bottom: 1rem; font-size: 0.95rem;">{advantage.description}</p>
+              <div style="background: #d1fae5; padding: 0.5rem; border-radius: 0.5rem; border-left: 3px solid #16a34a;">
+                <span style="color: #166534; font-weight: 600;">{advantage.benefit}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- Süreç -->
+      <section style="margin-bottom: 4rem; background: #f0fdf4; padding: 3rem; border-radius: 1rem;">
+        <h2 style="text-align: center; color: #16a34a; margin-bottom: 2rem;">
+          4 Adımda e-Fatura
+        </h2>
+        
+        <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem;">
+          {efaturaProcess.map((step) => (
+            <div style="position: relative; text-align: center;">
+              <div style="position: absolute; top: -1.5rem; left: 50%; transform: translateX(-50%); background: #16a34a; color: white; width: 3rem; height: 3rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.25rem; z-index: 10;">
+                {step.step}
+              </div>
+              <div style="background: white; padding: 2rem 1.5rem 1.5rem; border-radius: 1rem; border: 2px solid #86efac; height: 100%;">
+                <h3 style="color: #16a34a; margin-top: 1rem; margin-bottom: 0.75rem; font-size: 1.1rem;">{step.title}</h3>
+                <p style="color: var(--text-gray); margin: 0; font-size: 0.95rem;">{step.description}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+        
+        <div style="text-align: center; margin-top: 2rem;">
+          <p style="color: var(--text-gray); font-size: 0.95rem;">
+            <strong>Not:</strong> Tüm süreç Stok Pratik tarafından yönetilir, sadece imza yetkisini vermeniz yeterlidir.
+          </p>
+        </div>
+      </section>
+
+      <!-- Özellikler -->
+      <section style="margin-bottom: 4rem;">
+        <h2 style="text-align: center; color: #16a34a; margin-bottom: 2rem;">
+          Stok Pratik e-Fatura Özellikleri
+        </h2>
+        
+        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem;">
+          {features.map((feature) => (
+            <div style="background: white; padding: 2rem; border-radius: 1rem; border: 1px solid var(--border-color); box-shadow: var(--shadow-md);">
+              <h3 style="color: #16a34a; margin-top: 0; margin-bottom: 1rem;">{feature.title}</h3>
+              <ul style="margin: 0; padding-left: 1.25rem;">
+                {feature.items.map((item) => (
+                  <li style="margin-bottom: 0.75rem; color: var(--text-dark); display: flex; align-items: start; gap: 0.5rem;">
+                    <span style="color: #16a34a;">✓</span>
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- Maliyet Karşılaştırması -->
+      <section style="margin-bottom: 4rem; background: #f8fafc; padding: 3rem; border-radius: 1rem;">
+        <h2 style="text-align: center; color: #16a34a; margin-bottom: 2rem;">
+          Kağıt Fatura vs e-Fatura Maliyet Karşılaştırması
+        </h2>
+        
+        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem;">
+          <div style="background: white; padding: 2rem; border-radius: 1rem; border: 2px solid #fca5a5;">
+            <div style="text-align: center; margin-bottom: 1.5rem;">
+              <div style="font-size: 2.5rem;">📄</div>
+              <h3 style="color: #dc2626; margin: 1rem 0;">Kağıt Fatura</h3>
+            </div>
+            
+            <ul style="margin: 0; padding-left: 1.25rem;">
+              <li style="margin-bottom: 0.75rem; color: var(--text-dark);">
+                <strong>Kağıt ve baskı:</strong> Aylık 2200-8800₺
+              </li>
+              <li style="margin-bottom: 0.75rem; color: var(--text-dark);">
+                <strong>Posta/kargo:</strong> Aylık 1100-5500₺
+              </li>
+              <li style="margin-bottom: 0.75rem; color: var(--text-dark);">
+                <strong>Arşivleme:</strong> Aylık 2500-6000₺
+              </li>
+              <li style="margin-bottom: 0.75rem; color: var(--text-dark);">
+                <strong>Zaman kaybı:</strong> Fatura başına 10-30 dakika
+              </li>
+              <li style="color: #dc2626; font-weight: bold;">
+                Ortalama Toplam: Aylık 1350-15000₺ + zaman kaybı
+              </li>
+            </ul>
+          </div>
+          
+          <div style="background: white; padding: 2rem; border-radius: 1rem; border: 2px solid #86efac;">
+            <div style="text-align: center; margin-bottom: 1.5rem;">
+              <div style="font-size: 2.5rem;">🧾</div>
+              <h3 style="color: #16a34a; margin: 1rem 0;">e-Fatura</h3>
+            </div>
+            
+            <ul style="margin: 0; padding-left: 1.25rem;">
+              <li style="margin-bottom: 0.75rem; color: var(--text-dark);">
+                <strong>Kontör maliyeti:</strong> Fatura başına ~0.50₺
+              </li>
+              <li style="margin-bottom: 0.75rem; color: var(--text-dark);">
+                <strong>Yazılım aboneliği:</strong> Paket içinde dahil
+              </li>
+              <li style="margin-bottom: 0.75rem; color: var(--text-dark);">
+                <strong>Arşivleme:</strong> Ücretsiz
+              </li>
+              <li style="margin-bottom: 0.75rem; color: var(--text-dark);">
+                <strong>Zaman kazancı:</strong> Fatura başına 1-2 dakika
+              </li>
+              <li style="color: #16a34a; font-weight: bold;">
+                Toplam: Aylık 100-500₺ + zaman kazancı
+              </li>
+            </ul>
+          </div>
+        </div>
+        
+        <div style="text-align: center; margin-top: 2rem;">
+          <div style="display: inline-block; background: #dcfce7; padding: 1rem 2rem; border-radius: 0.75rem; border: 2px solid #16a34a;">
+            <div style="font-size: 1.5rem; font-weight: bold; color: #166534;">%70'e varan tasarruf</div>
+            <div style="color: var(--text-gray);">e-Fatura ile kağıt faturaya göre</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- İç Linkler -->
+      <section style="margin-bottom: 4rem;">
+        <h2 style="text-align: center; color: #16a34a; margin-bottom: 2rem;">
+          e-Fatura Entegre Çözümlerimiz
+        </h2>
+        
+        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem;">
+          {internalLinks.map((link) => (
+            <a 
+              href={link.url}
+              style="display: flex; align-items: center; gap: 1rem; background: white; padding: 1.5rem; border-radius: 0.75rem; text-decoration: none; color: var(--text-dark); border: 1px solid #d1fae5; transition: all 0.3s;"
+            >
+              <div style="font-size: 2rem;">{link.icon}</div>
+              <div>
+                <div style="font-weight: 600; color: #16a34a; margin-bottom: 0.25rem;">{link.title}</div>
+                <div style="color: var(--text-gray); font-size: 0.95rem;">{link.description}</div>
+              </div>
+            </a>
+          ))}
+        </div>
+      </section>
+
+      <!-- FAQ -->
+      <section style="margin-bottom: 4rem;">
+        <h2 style="text-align: center; color: #16a34a; margin-bottom: 2rem;">
+          e-Fatura Hakkında Sıkça Sorulan Sorular
+        </h2>
+        
+        <div style="max-width: 800px; margin: 0 auto;">
+          {faqItems.map((item) => (
+            <div style="background: white; padding: 1.5rem; border-radius: 0.75rem; margin-bottom: 1rem; border: 1px solid #d1fae5; box-shadow: var(--shadow-sm);">
+              <h3 style="color: #16a34a; margin-top: 0; margin-bottom: 0.75rem;">{item.question}</h3>
+              <p style="margin: 0; color: var(--text-dark); line-height: 1.6;">{item.answer}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- CTA -->
+      <section style="background: linear-gradient(135deg, #16a34a, #22c55e); padding: 3rem; border-radius: 1rem; text-align: center; color: white;">
+        <h2 style="color: white; margin-bottom: 1rem;">e-Fatura Sisteminizi Hemen Kuralım</h2>
+        <p style="margin-bottom: 2rem; opacity: 0.9;">
+          Tüm başvuru süreçlerini biz yönetelim, e-fatura sisteminizi en kısa sürede aktif edelim.
+        </p>
+        
+        <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+          <a 
+            href="https://wa.me/+905325000999?text=Merhaba,%20e-fatura%20başvurusu%20yapmak%20istiyorum"
+            style="display: inline-flex; align-items: center; justify-content: center; padding: 1rem 2rem; background-color: white; color: #16a34a; text-decoration: none; border-radius: 0.75rem; font-weight: 600; gap: 0.5rem; border: none; cursor: pointer;"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            📋 e-Fatura Başvurusu Yap
+          </a>
+          
+          <a 
+            href="https://wa.me/+905325000999?text=Merhaba,%20e-fatura%20demo%20ve%20fiyat%20teklifi%20almak%20istiyorum"
+            style="display: inline-flex; align-items: center; justify-content: center; padding: 1rem 2rem; background-color: transparent; color: white; text-decoration: none; border-radius: 0.75rem; font-weight: 600; gap: 0.5rem; border: 2px solid white; cursor: pointer;"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            🧾 Demo + Fiyat Teklifi Al
+          </a>
+        </div>
+        
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 3rem; text-align: center;">
+          <div>
+            <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">🚀</div>
+            <div>3-5 Günde Aktivasyon</div>
+          </div>
+          <div>
+            <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">👨‍💼</div>
+            <div>Ücretsiz Danışmanlık</div>
+          </div>
+          <div>
+            <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">🎁</div>
+            <div>500 Kontör Hediye</div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <style>
+    :root {
+      --border-color: #e5e7eb;
+    }
+    
+    section {
+      margin-bottom: 3rem;
+    }
+    
+    h2 {
+      font-size: 1.8rem;
+    }
+    
+    h3 {
+      font-size: 1.3rem;
+    }
+    
+    a:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+    
+    @media (max-width: 768px) {
+      div[style*="grid-template-columns: repeat(3, 1fr)"] {
+        grid-template-columns: 1fr;
+      }
+      
+      div[style*="grid-template-columns: repeat(4, 1fr)"] {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
+      div[style*="grid-template-columns: repeat(2, 1fr)"] {
+        grid-template-columns: 1fr;
+      }
+      
+      section {
+        padding-left: 1rem;
+        padding-right: 1rem;
+      }
+      
+      .container > div {
+        padding: 0;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 2rem !important;
+      }
+      
+      div[style*="grid-template-columns: repeat(4, 1fr)"] {
+        grid-template-columns: 1fr;
+      }
+      
+      .cta-buttons {
+        flex-direction: column;
+      }
+      
+      .cta-buttons a {
+        width: 100%;
+        text-align: center;
+      }
+    }
+  </style>
+
+</BaseLayout>

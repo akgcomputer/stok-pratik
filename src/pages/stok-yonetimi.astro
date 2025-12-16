@@ -1,0 +1,1213 @@
+---
+// src/pages/stok-yonetimi.astro
+import BaseLayout from '../layouts/BaseLayout.astro';
+import '../styles/variables.css';
+import '../styles/global.css';
+import '../styles/components.css';
+
+// Özellikler
+const features = [
+  {
+    icon: "🏷️",
+    title: "Barkodlu Stok Takibi",
+    description: "Barkod okuyucu ile hızlı stok giriş-çıkışı",
+    details: [
+      "Tek tıkla barkod oluşturma",
+      "QR Code desteği",
+      "Barkod yazıcı entegrasyonu",
+      "Toplu barkod oluşturma"
+    ]
+  },
+  {
+    icon: "📦",
+    title: "Çoklu Depo Yönetimi",
+    description: "Sınırsız sayıda depo ve raf yönetimi",
+    details: [
+      "Depolar arası transfer",
+      "Raf ve konum takibi",
+      "Depo bazlı stok raporu",
+      "Merkezi depo kontrolü"
+    ]
+  },
+  {
+    icon: "🔔",
+    title: "Otomatik Stok Alarmı",
+    description: "Kritik seviyelere ulaşınca uyarı",
+    details: [
+      "Minimum stok uyarısı",
+      "Son kullanma tarihi takibi",
+      "Aşırı stok uyarısı",
+      "SMS ve e-posta bildirimleri"
+    ]
+  },
+  {
+    icon: "📊",
+    title: "Detaylı Raporlama",
+    description: "100'den fazla stok raporu seçeneği",
+    details: [
+      "Stok hareket raporu",
+      "Kar marjı analizi",
+      "En çok satan ürünler",
+      "Duran stok analizi"
+    ]
+  },
+  {
+    icon: "🔄",
+    title: "Otomatik Sipariş",
+    description: "Stok azalınca otomatik sipariş oluştur",
+    details: [
+      "Otomatik tedarikçi siparişi",
+      "Sipariş takip sistemi",
+      "Teslimat onayı",
+      "Fiyat karşılaştırma"
+    ]
+  },
+  {
+    icon: "📱",
+    title: "Mobil Stok Kontrol",
+    description: "Telefandan stok sayımı ve takibi",
+    details: [
+      "Android/iOS uyumlu",
+      "Offline çalışma",
+      "Fotoğraflı ürün takibi",
+      "Anlık senkronizasyon"
+    ]
+  }
+];
+
+// Sektör çözümleri
+const industrySolutions = [
+  {
+    industry: "Perakende Mağazalar",
+    problems: ["Stok fazlalığı", "Eksik ürün", "Yanlış fiyat"],
+    solutions: ["Barkod sistemi", "Anlık envanter", "Fiyat yönetimi"],
+    icon: "🏬"
+  },
+  {
+    industry: "Üretim Firmaları",
+    problems: ["Hammadde yönetimi", "Yarı mamul takibi", "Fire kontrolü"],
+    solutions: ["Üretim entegrasyonu", "Fire analizi", "Sarf malzeme takibi"],
+    icon: "🏭"
+  },
+  {
+    industry: "Toptancılar",
+    problems: ["Çoklu depo", "Parti takibi", "Vade yönetimi"],
+    solutions: ["Parti numarası takibi", "Çoklu depo entegrasyonu", "Stok yaşlandırma"],
+    icon: "🚚"
+  },
+  {
+    industry: "Hizmet Sektörü",
+    problems: ["Sarf malzeme", "Demirbaş takibi", "Bakım stokları"],
+    solutions: ["Demirbaş yönetimi", "Bakım planlama", "Servis stokları"],
+    icon: "🔧"
+  }
+];
+
+// Faydalar
+const benefits = [
+  { icon: "💰", title: "Stok Maliyetlerinde %30 Tasarruf", desc: "Aşırı stok ve stok eksikliğini önleyin" },
+  { icon: "⏱️", title: "Zaman Tasarrufu", desc: "Stok sayım süresini %70 azaltın" },
+  { icon: "📈", title: "Satış Artışı", desc: "Stokta olan ürün satışlarını %25 artırın" },
+  { icon: "👨‍💼", title: "Personel Verimliliği", desc: "Stok işlemlerinde %40 verimlilik artışı" }
+];
+
+// İç linkler
+const relatedPages = [
+  { title: "Mağaza Otomasyonu", url: "/magaza-otomasyonu", desc: "Satış ve stok entegrasyonu" },
+  { title: "ERP Sistemi", url: "/erp-sistemi", desc: "Tüm iş süreçleriniz için" },
+  { title: "Online Muhasebe", url: "/online-muhasebe-programi", desc: "Finans ve stok entegrasyonu" },
+  { title: "Üretim Yönetimi", url: "/uretim-yonetimi", desc: "Üretim stok kontrolü" }
+];
+---
+
+<BaseLayout 
+  title="Stok Yönetim Sistemi | Stok Pratik" 
+  description="Stok yönetim sistemi ile stoklarınızı kontrol altına alın. Barkodlu takip, çoklu depo yönetimi ve otomatik stok alarmı ile verimliliğinizi artırın."
+>
+  
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-text">
+          <span class="hero-badge">Stok Çözümleri</span>
+          <h1>Stok Yönetim Sistemi ile <span class="highlight">Stok Maliyetlerinizi Düşürün</span></h1>
+          <p class="hero-subtitle hero-badge highlight">Barkodlu stok takibi, çoklu depo yönetimi ve otomatik stok alarmı ile işletmenizin stoklarını akıllı yönetin</p>
+          
+          <div class="hero-stats">
+            <div class="stat-item">
+              <div class="stat-number">%30</div>
+              <div class="stat-label">Stok Maliyeti Azalması</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number">%70</div>
+              <div class="stat-label">Zaman Tasarrufu</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number">%0</div>
+              <div class="stat-label">Stok Eksikliği</div>
+            </div>
+          </div>
+          
+          <div class="hero-buttons">
+            <a 
+              href="#demo-form" 
+              class="btn btn-primary btn-large"
+            >
+              🚀 Ücretsiz Demo İste
+            </a>
+            <a 
+              href="tel:+905325000999" 
+              class="btn btn-secondary btn-large"
+            >
+              📞 Hemen Ara: 0532 500 09 99
+            </a>
+          </div>
+          
+          <div class="trust-badges">
+            <div class="trust-item">
+              <div class="trust-icon">🏆</div>
+              <span>10.000+ Mutlu Müşteri</span>
+            </div>
+            <div class="trust-item">
+              <div class="trust-icon">🔄</div>
+              <span>7/24 Veri Yedekleme</span>
+            </div>
+            <div class="trust-item">
+              <div class="trust-icon">📱</div>
+              <span>Mobil Uygulama</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="hero-image">
+          <div class="dashboard-preview">
+            <div class="dashboard-header">
+              <div class="dashboard-dots">
+                <span class="dot red"></span>
+                <span class="dot yellow"></span>
+                <span class="dot green"></span>
+              </div>
+              <div class="dashboard-title">Stok Yönetim Paneli</div>
+            </div>
+            <div class="dashboard-content">
+              <div class="stock-metric">
+                <div class="metric-icon">📦</div>
+                <div>
+                  <div class="metric-value">1,248</div>
+                  <div class="metric-label">Toplam Ürün</div>
+                </div>
+              </div>
+              <div class="stock-metric">
+                <div class="metric-icon">⚠️</div>
+                <div>
+                  <div class="metric-value">12</div>
+                  <div class="metric-label">Kritik Stok</div>
+                </div>
+              </div>
+              <div class="stock-metric">
+                <div class="metric-icon">📊</div>
+                <div>
+                  <div class="metric-value">₺245,800</div>
+                  <div class="metric-label">Stok Değeri</div>
+                </div>
+              </div>
+              <div class="stock-metric">
+                <div class="metric-icon">🔄</div>
+                <div>
+                  <div class="metric-value">48</div>
+                  <div class="metric-label">Bugünkü Hareket</div>
+                </div>
+              </div>
+            </div>
+            <div class="stock-alerts">
+              <div class="alert-header">
+                <span class="alert-icon">🔔</span>
+                <span>Stok Uyarıları</span>
+              </div>
+              <div class="alert-list">
+                <div class="alert-item">📱 iPhone 13 - Kritik Stok (5 adet)</div>
+                <div class="alert-item">👕 Mavi Tişört - Son 10 Gün</div>
+                <div class="alert-item">💻 Laptop - Aşırı Stok (150 adet)</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Problem Çözüm -->
+  <section class="problem-solution">
+    <div class="container">
+      <div class="section-header">
+        <h2>Stok Problemlerinizi Çözüyoruz</h2>
+        <p>İşletmelerin yaşadığı stok problemlerine akıllı çözümler sunuyoruz</p>
+      </div>
+      
+      <div class="ps-grid">
+        <div class="problem-card">
+          <div class="problem-icon">😫</div>
+          <h3>Stok Eksikliği</h3>
+          <p>Müşteri kaybına neden olan stok eksikliği problemi</p>
+          <ul>
+            <li>Kayıp satış fırsatları</li>
+            <li>Müşteri memnuniyetsizliği</li>
+            <li>Geciken siparişler</li>
+          </ul>
+        </div>
+        
+        <div class="solution-card">
+          <div class="solution-icon">🎯</div>
+          <h3>Çözümümüz</h3>
+          <p>Otomatik stok alarmı ile asla stoksuz kalmayın</p>
+          <ul>
+            <li>Minimum stok seviyesi belirleme</li>
+            <li>Otomatik tedarikçi uyarısı</li>
+            <li>Öngörülü stok planlama</li>
+          </ul>
+        </div>
+        
+        <div class="problem-card">
+          <div class="problem-icon">📊</div>
+          <h3>Aşırı Stok</h3>
+          <p>Nakit akışını bloke eden aşırı stok problemi</p>
+          <ul>
+            <li>Yüksek stok maliyeti</li>
+            <li>Bozulan ürünler</li>
+            <li>Depo alanı sorunları</li>
+          </ul>
+        </div>
+        
+        <div class="solution-card">
+          <div class="solution-icon">📉</div>
+          <h3>Çözümümüz</h3>
+          <p>Akıllı stok optimizasyonu ile maliyetleri düşürün</p>
+          <ul>
+            <li>Stok devir hızı analizi</li>
+            <li>Duran stok uyarısı</li>
+            <li>Otomatik indirim önerileri</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Özellikler -->
+  <section class="features-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Stok Pratik'in Güçlü Özellikleri</h2>
+        <p>İşletmenizin tüm stok ihtiyaçlarını karşılayan kapsamlı çözüm</p>
+      </div>
+      
+      <div class="features-grid">
+        {features.map((feature, index) => (
+          <div class="feature-card" key={index}>
+            <div class="feature-header">
+              <div class="feature-icon">{feature.icon}</div>
+              <h3>{feature.title}</h3>
+            </div>
+            <p class="feature-desc">{feature.description}</p>
+            <ul class="feature-details">
+              {feature.details.map((detail, i) => (
+                <li key={i}>{detail}</li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Sektör Çözümleri -->
+  <section class="industry-solutions">
+    <div class="container">
+      <div class="section-header">
+        <h2>Sektörünüze Özel Stok Çözümleri</h2>
+        <p>Her sektörün ihtiyacına göre özelleştirilmiş stok yönetimi</p>
+      </div>
+      
+      <div class="industry-grid">
+        {industrySolutions.map((solution, index) => (
+          <div class="industry-card" key={index}>
+            <div class="industry-icon">{solution.icon}</div>
+            <h3>{solution.industry}</h3>
+            
+            <div class="problems-section">
+              <h4>💔 Problemler</h4>
+              <ul>
+                {solution.problems.map((problem, i) => (
+                  <li key={i}>{problem}</li>
+                ))}
+              </ul>
+            </div>
+            
+            <div class="solutions-section">
+              <h4>✅ Çözümlerimiz</h4>
+              <ul>
+                {solution.solutions.map((sol, i) => (
+                  <li key={i}>{sol}</li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Faydalar -->
+  <section class="benefits-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Stok Pratik Kullananlar Ne Kazanıyor?</h2>
+        <p>10.000'den fazla işletmenin tercihi olmamızın nedenleri</p>
+      </div>
+      
+      <div class="benefits-grid">
+        {benefits.map((benefit, index) => (
+          <div class="benefit-card" key={index}>
+            <div class="benefit-icon">{benefit.icon}</div>
+            <h3>{benefit.title}</h3>
+            <p>{benefit.desc}</p>
+          </div>
+        ))}
+      </div>
+      
+      <div class="case-study">
+        <div class="case-header">
+          <h3>📈 Başarı Hikayesi: Tekstil Firması</h3>
+          <span class="case-badge">%40 Karlılık Artışı</span>
+        </div>
+        <div class="case-content">
+          <p class="hero-badge highlight">"Stok Pratik ile stok devir hızımızı 45 günden 28 güne düşürdük. Aşırı stok maliyetimiz %35 azaldı ve hiç stoksuz kalmadık. Yıllık karımızda %40 artış sağladık."</p>
+          <div class="case-author">
+            <strong>Ahmet Yılmaz</strong>
+            <span>Karslıoğlu Tekstil, Genel Müdür</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  
+  <!-- İlgili Sayfalar -->
+  <section class="related-pages">
+    <div class="container">
+      <div class="section-header">
+        <h2>İlgili Çözümlerimiz</h2>
+        <p>Stok yönetimi ile entegre çalışan diğer sistemlerimiz</p>
+      </div>
+      
+      <div class="pages-grid">
+        {relatedPages.map((page, index) => (
+          <a href={page.url} class="page-card" key={index}>
+            <h3>{page.title}</h3>
+            <p>{page.desc}</p>
+            <span class="page-link">İncele →</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- SSS -->
+  <section class="faq-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Sıkça Sorulan Sorular</h2>
+        <p>Stok yönetim sistemi hakkında merak edilenler</p>
+      </div>
+      
+      <div class="faq-grid">
+        <div class="faq-item">
+          <h3>📱 Barkod sistemi için ek donanım gerekir mi?</h3>
+          <p>Hayır, temel kullanım için ek donanıma ihtiyacınız yok. Ancak barkod okuyucu, barkod yazıcı gibi donanımlar için destek sağlıyoruz ve kurulumunu yapıyoruz.</p>
+        </div>
+        
+        <div class="faq-item">
+          <h3>🔄 Mevcut verilerimi nasıl aktarırım?</h3>
+          <p>Excel, CSV veya diğer programlardan verilerinizi ücretsiz aktarıyoruz. Özel formatlar için de teknik destek sağlıyoruz.</p>
+        </div>
+        
+        <div class="faq-item">
+          <h3>💾 Verilerim nerede saklanıyor?</h3>
+          <p>Verileriniz Türkiye'deki güvenli bulut sunucularımızda saklanır. Günlük yedekleme ve banka seviyesinde şifreleme kullanıyoruz.</p>
+        </div>
+        
+        <div class="faq-item">
+          <h3>👥 Kaç kullanıcı ekleyebilirim?</h3>
+          <p>Paketinize göre sınırsız kullanıcı ekleyebilirsiniz. Her kullanıcı için farklı yetkiler tanımlayabilirsiniz.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  /* Hero Section */
+  .hero-section {
+    background: linear-gradient(135deg, #1a2980 0%, #26d0ce 100%);
+    color: white;
+    padding: 4rem 0;
+  }
+  
+  .hero-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+  
+  .hero-badge {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+  }
+  
+  .hero-text h1 {
+    font-size: 3rem;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+  }
+  
+  .highlight {
+    color: #ffd700;
+  }
+  
+  .hero-subtitle {
+    font-size: 1.2rem;
+    opacity: 0.9;
+    margin-bottom: 2rem;
+  }
+  
+  .hero-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin: 2rem 0;
+  }
+  
+  .stat-item {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 1rem;
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+  }
+  
+  .stat-number {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #ffd700;
+  }
+  
+  .stat-label {
+    font-size: 0.9rem;
+    opacity: 0.8;
+  }
+  
+  .hero-buttons {
+    display: flex;
+    gap: 1rem;
+    margin: 2rem 0;
+  }
+  
+  .btn-large {
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+  }
+  
+  .trust-badges {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+  
+  .trust-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+  }
+  
+  /* Dashboard Preview */
+  .dashboard-preview {
+    background: white;
+    border-radius: 15px;
+    padding: 1.5rem;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+    color: #333;
+  }
+  
+  .dashboard-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.5rem;
+  }
+  
+  .dashboard-dots {
+    display: flex;
+    gap: 0.5rem;
+    margin-right: 1rem;
+  }
+  
+  .dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+  }
+  
+  .dot.red { background: #ff5f56; }
+  .dot.yellow { background: #ffbd2e; }
+  .dot.green { background: #27ca3f; }
+  
+  .dashboard-title {
+    color: #333;
+    font-weight: bold;
+  }
+  
+  .dashboard-content {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .stock-metric {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background: #f8f9fa;
+    padding: 1rem;
+    border-radius: 8px;
+  }
+  
+  .metric-icon {
+    font-size: 1.5rem;
+  }
+  
+  .metric-value {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #1a2980;
+  }
+  
+  .metric-label {
+    font-size: 0.8rem;
+    color: #666;
+  }
+  
+  .stock-alerts {
+    background: #fff3cd;
+    border: 1px solid #ffeaa7;
+    border-radius: 8px;
+    padding: 1rem;
+  }
+  
+  .alert-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    color: #e67e22;
+  }
+  
+  .alert-list {
+    font-size: 0.9rem;
+  }
+  
+  .alert-item {
+    padding: 0.3rem 0;
+    border-bottom: 1px solid #ffeaa7;
+  }
+  
+  .alert-item:last-child {
+    border-bottom: none;
+  }
+  
+  /* Problem Solution Section */
+  .problem-solution {
+    padding: 4rem 0;
+    background: #f8f9fa;
+  }
+  
+  .section-header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+  
+  .section-header h2 {
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 1rem;
+  }
+  
+  .section-header p {
+    color: #666;
+    font-size: 1.1rem;
+  }
+  
+  .ps-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+  
+  .problem-card, .solution-card {
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  }
+  
+  .problem-card {
+    background: white;
+    border-top: 5px solid #e74c3c;
+  }
+  
+  .solution-card {
+    background: linear-gradient(135deg, #2ecc71, #27ae60);
+    color: white;
+  }
+  
+  .problem-icon, .solution-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+  
+  .problem-card h3, .solution-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .problem-card ul, .solution-card ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 1rem;
+  }
+  
+  .problem-card li, .solution-card li {
+    padding: 0.3rem 0;
+    position: relative;
+    padding-left: 1.5rem;
+  }
+  
+  .problem-card li:before {
+    content: "❌";
+    position: absolute;
+    left: 0;
+  }
+  
+  .solution-card li:before {
+    content: "✅";
+    position: absolute;
+    left: 0;
+  }
+  
+  /* Features Section */
+  .features-section {
+    padding: 4rem 0;
+  }
+  
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+  
+  .feature-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+  }
+  
+  .feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+  }
+  
+  .feature-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+  
+  .feature-icon {
+    font-size: 2.5rem;
+  }
+  
+  .feature-card h3 {
+    color: #333;
+    font-size: 1.3rem;
+  }
+  
+  .feature-desc {
+    color: #666;
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #f1f2f6;
+  }
+  
+  .feature-details {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .feature-details li {
+    padding: 0.5rem 0;
+    position: relative;
+    padding-left: 1.5rem;
+  }
+  
+  .feature-details li:before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: #2ecc71;
+    font-weight: bold;
+  }
+  
+  /* Industry Solutions */
+  .industry-solutions {
+    padding: 4rem 0;
+    background: #f8f9fa;
+  }
+  
+  .industry-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+  
+  .industry-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  }
+  
+  .industry-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+  
+  .industry-card h3 {
+    color: #333;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #f1f2f6;
+  }
+  
+  .problems-section, .solutions-section {
+    margin-bottom: 1.5rem;
+  }
+  
+  .problems-section h4, .solutions-section h4 {
+    color: #e74c3c;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .solutions-section h4 {
+    color: #2ecc71;
+  }
+  
+  .industry-card ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .industry-card li {
+    padding: 0.3rem 0;
+    position: relative;
+    padding-left: 1.5rem;
+  }
+  
+  .problems-section li:before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: #e74c3c;
+    font-size: 1.5rem;
+  }
+  
+  .solutions-section li:before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: #2ecc71;
+    font-weight: bold;
+  }
+  
+  /* Benefits Section */
+  .benefits-section {
+    padding: 4rem 0;
+  }
+  
+  .benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    margin-bottom: 3rem;
+  }
+  
+  .benefit-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    text-align: center;
+  }
+  
+  .benefit-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+  
+  .benefit-card h3 {
+    color: #333;
+    margin-bottom: 0.5rem;
+  }
+  
+  .benefit-card p {
+    color: #666;
+  }
+  
+  .case-study {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 2rem;
+    border-radius: 15px;
+  }
+  
+  .case-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+  
+  .case-header h3 {
+    margin: 0;
+  }
+  
+  .case-badge {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+  }
+  
+  .case-content p {
+    font-style: italic;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+  }
+  
+  .case-author {
+    text-align: right;
+  }
+  
+  .case-author strong {
+    display: block;
+  }
+  
+  .case-author span {
+    font-size: 0.9rem;
+    opacity: 0.8;
+  }
+  
+  /* Demo Section */
+  .demo-section {
+    padding: 4rem 0;
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    color: white;
+  }
+  
+  .demo-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+  }
+  
+  .demo-features {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 2rem;
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+  }
+  
+  .demo-features h3 {
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+  }
+  
+  .demo-features ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 2rem;
+  }
+  
+  .demo-features li {
+    padding: 0.5rem 0;
+    position: relative;
+    padding-left: 2rem;
+  }
+  
+  .demo-features li:before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: #ffd700;
+    font-weight: bold;
+  }
+  
+  .whatsapp-cta {
+    text-align: center;
+    margin-top: 2rem;
+  }
+  
+  .btn-whatsapp {
+    background: #25D366;
+    color: white;
+    border: none;
+  }
+  
+  .btn-whatsapp:hover {
+    background: #128C7E;
+  }
+  
+  .demo-form {
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    color: #333;
+  }
+  
+  .contact-form h3 {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #1a2980;
+  }
+  
+  .form-group {
+    margin-bottom: 1.5rem;
+  }
+  
+  .form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: #333;
+  }
+  
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width: 100%;
+    padding: 0.8rem;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+  }
+  
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    outline: none;
+    border-color: #1a2980;
+  }
+  
+  .btn-full {
+    width: 100%;
+    padding: 1rem;
+    font-size: 1.1rem;
+  }
+  
+  .form-note {
+    text-align: center;
+    margin-top: 1rem;
+    font-size: 0.8rem;
+    color: #666;
+  }
+  
+  /* Related Pages */
+  .related-pages {
+    padding: 4rem 0;
+    background: #f8f9fa;
+  }
+  
+  .pages-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+  
+  .page-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+  }
+  
+  .page-card:hover {
+    transform: translateY(-5px);
+    border-color: #1a2980;
+    box-shadow: 0 10px 20px rgba(26, 41, 128, 0.2);
+  }
+  
+  .page-card h3 {
+    color: #1a2980;
+    margin-bottom: 0.5rem;
+  }
+  
+  .page-card p {
+    color: #666;
+    margin-bottom: 1rem;
+  }
+  
+  .page-link {
+    color: #1a2980;
+    font-weight: bold;
+  }
+  
+  /* FAQ Section */
+  .faq-section {
+    padding: 4rem 0;
+  }
+  
+  .faq-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+  
+  .faq-item {
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  }
+  
+  .faq-item h3 {
+    color: #1a2980;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .faq-item p {
+    color: #666;
+    line-height: 1.6;
+  }
+  
+  /* Responsive Tasarım */
+  @media (max-width: 1200px) {
+    .features-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media (max-width: 992px) {
+    .hero-content,
+    .demo-container {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+    
+    .ps-grid,
+    .industry-grid,
+    .benefits-grid,
+    .pages-grid,
+    .faq-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .features-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .hero-text h1 {
+      font-size: 2rem;
+    }
+    
+    .hero-stats {
+      grid-template-columns: 1fr;
+    }
+    
+    .hero-buttons {
+      flex-direction: column;
+    }
+    
+    .btn-large {
+      width: 100%;
+    }
+    
+    .section-header h2 {
+      font-size: 2rem;
+    }
+    
+    .trust-badges {
+      flex-direction: column;
+      gap: 1rem;
+    }
+  }
+</style>
+
+<script>
+  // Demo form submit handler
+  document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('stockDemoForm');
+    
+    if (form) {
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // Form verilerini al
+        const formData = new FormData(form);
+        const data = Object.fromEntries(formData);
+        
+        // WhatsApp mesajı oluştur
+        const message = `Merhaba, Stok Yönetim Sistemi demo talebim var:\n\n` +
+                       `Ad Soyad: ${data.name}\n` +
+                       `Firma: ${data.company}\n` +
+                       `Telefon: ${data.phone}\n` +
+                       `E-posta: ${data.email}\n` +
+                       `Sektör: ${data.sector}\n` +
+                       `Ürün Sayısı: ${data.product_count || 'Belirtilmedi'}\n` +
+                       `Stok Problemi: ${data.current_problem || 'Belirtilmedi'}`;
+        
+        // WhatsApp URL'si
+        const whatsappUrl = `https://wa.me/+905325000999?text=${encodeURIComponent(message)}`;
+        
+        // WhatsApp'ı aç
+        window.open(whatsappUrl, '_blank');
+        
+        // Formu temizle
+        form.reset();
+        
+        // Teşekkür mesajı göster
+        alert('Demo talebiniz alındı! WhatsApp üzerinden yönlendiriliyorsunuz.');
+      });
+    }
+  });
+</script>

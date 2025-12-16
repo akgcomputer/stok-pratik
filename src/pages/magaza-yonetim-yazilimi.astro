@@ -1,0 +1,420 @@
+---
+// src/pages/magaza-yonetim-yazilimi.astro
+import BaseLayout from '../layouts/BaseLayout.astro';
+import '../styles/variables.css';
+import '../styles/global.css';
+import '../styles/components.css';
+
+// İç linkler için data
+const internalLinks = [
+  { 
+    title: "Stok Takip Sistemi", 
+    url: "/stok-takip-sistemi",
+    icon: "📦",
+    description: "Akıllı stok yönetimi çözümleri"
+  },
+  { 
+    title: "E-Ticaret Yazılımı", 
+    url: "/e-ticaret-yazilimi",
+    icon: "🛒",
+    description: "Online satış platformu entegrasyonları"
+  },
+  { 
+    title: "POS Sistemi", 
+    url: "/pos-sistemi",
+    icon: "💳",
+    description: "Satış noktası yönetim çözümleri"
+  },
+  { 
+    title: "Çok Şubeli Mağaza", 
+    url: "/cok-subeli-magaza-yonetimi",
+    icon: "🏪",
+    description: "Birden fazla şube yönetimi"
+  },
+  { 
+    title: "Barkodlu Satış", 
+    url: "/barkodlu-satis-sistemi",
+    icon: "🏷️",
+    description: "Barkod okuyucu entegrasyonu"
+  }
+];
+
+// Mağaza türlerine göre çözümler
+const storeSolutions = [
+  {
+    type: "Giyim Mağazaları",
+    icon: "👕",
+    features: ["Beden/renk stok", "Sezon takibi", "İndirim yönetimi", "Müşteri tercihleri"],
+    package: "Standart Mağaza Paketi + Özel Stok Modülü"
+  },
+  {
+    type: "Elektronik Mağazaları",
+    icon: "📱",
+    features: ["Seri numarası takip", "Garanti yönetimi", "Teknik servis", "Demo ürün"],
+    package: "Pro Mağaza Paketi + Servis Modülü"
+  },
+  {
+    type: "Market/Süpermarket",
+    icon: "🛒",
+    features: ["Hızlı satış", "Lot takibi", "SKT kontrol", "Promosyon yönetimi"],
+    package: "Premium Mağaza Paketi + Hızlı Satış Modülü"
+  },
+  {
+    type: "Kozmetik Mağazaları",
+    icon: "💄",
+    features: ["Test ürün takibi", "Müşteri cilt tipi", "Özel kampanyalar", "Hediye paketi"],
+    package: "Standart Mağaza Paketi + CRM Modülü"
+  }
+];
+
+// Özellikler listesi
+const features = [
+  {
+    title: "Akıllı Stok Yönetimi",
+    items: ["Otomatik stok takibi", "Minimum stok uyarısı", "Barkodlu envanter", "Çoklu depo"]
+  },
+  {
+    title: "Satış ve Ödeme",
+    items: ["POS entegrasyonu", "E-fatura/e-irsaliye", "Kredi kartı/VPOS", "Mobil ödeme"]
+  },
+  {
+    title: "Müşteri Yönetimi",
+    items: ["Müşteri database", "Puanlama sistemi", "SMS/e-posta", "Özel fiyatlandırma"]
+  },
+  {
+    title: "Rapor ve Analiz",
+    items: ["Günlük satış raporu", "En çok satanlar", "Personel performans", "Kar marjı"]
+  }
+];
+
+// Başarı hikayeleri
+const successStories = [
+  {
+    name: "ModaButik İstanbul",
+    sector: "Giyim Mağazası",
+    result: "Stok kayıpları %80 azaldı",
+    detail: "3 mağazasının stoklarını tek sistemden yönetiyor"
+  },
+  {
+    name: "TechPoint Ankara",
+    sector: "Elektronik Mağazası",
+    result: "Satışlar %45 arttı",
+    detail: "Garanti takibi ve müşteri memnuniyeti otomatikleşti"
+  },
+  {
+    name: "MarketChain İzmir",
+    sector: "Market Zinciri",
+    result: "İsraf %70 düştü",
+    detail: "SKT takibi ile taze ürün yönetimi optimize edildi"
+  }
+];
+
+// FAQ
+const faqItems = [
+  {
+    question: "Mağaza yönetim yazılımı fiyatları ne kadar?",
+    answer: "Stok Pratik mağaza yönetim paketleri uygun fiyatlar ile.. Fiyat; şube sayısı, kullanıcı sayısı ve ek modüllere göre değişir. Size özel teklif için demo talep edebilirsiniz."
+  },
+  {
+    question: "Mevcut kasa makinemle çalışır mı?",
+    answer: "Evet! 50+ farklı POS yazıcısı ve kasa makinesi ile uyumludur. Mevcut ekipmanlarınızı kullanmaya devam edebilirsiniz."
+  },
+  {
+    question: "E-ticaret mağazamla entegre olur mu?",
+    answer: "Trendyol, Hepsiburada, Amazon, N11 gibi tüm pazaryerleri ile otomatik entegrasyon sağlarız. Stoklarınız otomatik senkronize olur."
+  },
+  {
+    question: "Teknik bilgim yok, kullanabilir miyim?",
+    answer: "Kullanıcı dostu arayüzümüz sayesinde teknik bilgi gerektirmez. Ücretsiz eğitim ve 7/24 canlı destek sunuyoruz."
+  }
+];
+---
+
+<BaseLayout 
+  title="Mağaza Yönetim Yazılımı | Stok Pratik - Akıllı Mağaza Çözümleri"
+  description="Mağaza yönetim yazılımı ile satışlarınızı artırın. Stok, satış, müşteri ve raporlama tek sistemde. Ücretsiz demo talep edin."
+>
+
+  <!-- Hero Section -->
+  <section style="padding: 4rem 0; background: linear-gradient(135deg, var(--primary-red-light) 0%, var(--bg-white) 100%);">
+    <div class="container">
+      <div style="text-align: center; max-width: 800px; margin: 0 auto;">
+        <h1 style="color: var(--primary-red); margin-bottom: 1.5rem; font-size: 2.5rem;">
+          Mağaza Yönetim Yazılımı
+        </h1>
+        <p style="font-size: 1.25rem; color: var(--text-gray); margin-bottom: 2rem;">
+          Stok, satış, müşteri ve finans yönetimini tek sistemde birleştirin. Mağazanızı akıllı hale getirin.
+        </p>
+        <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+          <a 
+            href="https://wa.me/+905325000999?text=Merhaba,%20mağaza%20yönetim%20yazılımı%20demo%20talep%20ediyorum"
+            class="btn btn-secondary"
+            style="min-height: 52px;"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            🏪 Demo Talep Et
+          </a>
+          <a 
+            href="https://wa.me/+905325000999?text=Merhaba,%20mağaza%20yönetim%20yazılımı%20fiyat%20teklifi%20alıyorum"
+            class="btn btn-secondary"
+            style="min-height: 52px;"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            💰 Fiyat Teklifi Al
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Ana İçerik -->
+  <main style="padding: 3rem 0; background: var(--bg-white);">
+    <div class="container">
+      
+      <!-- Mağaza Türleri -->
+      <section style="margin-bottom: 4rem;">
+        <h2 style="text-align: center; color: var(--primary-red); margin-bottom: 2rem;">
+          Mağaza Türünüze Özel Çözümler
+        </h2>
+        
+        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem;">
+          {storeSolutions.map((store) => (
+            <div style="background: var(--bg-light); padding: 2rem; border-radius: 1rem; border: 1px solid var(--border-color);">
+              <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem;">
+                <div style="font-size: 2.5rem;">{store.icon}</div>
+                <h3 style="color: var(--primary-red); margin: 0; font-size: 1.25rem;">{store.type}</h3>
+              </div>
+              
+              <div style="margin-bottom: 1.5rem;">
+                <div style="font-weight: 600; color: var(--text-dark); margin-bottom: 0.5rem;">Özellikler:</div>
+                <ul style="margin: 0; padding-left: 1.25rem;">
+                  {store.features.map((feature) => (
+                    <li style="margin-bottom: 0.5rem; color: var(--text-gray);">{feature}</li>
+                  ))}
+                </ul>
+              </div>
+              
+              <div style="background: var(--primary-red-light); padding: 1rem; border-radius: 0.5rem; border-left: 4px solid var(--primary-red);">
+                <div style="font-weight: 600; color: var(--primary-red);">Önerilen Paket:</div>
+                <div style="color: var(--text-dark);">{store.package}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- Özellikler -->
+      <section style="margin-bottom: 4rem;">
+        <h2 style="text-align: center; color: var(--primary-red); margin-bottom: 2rem;">
+          Kapsamlı Mağaza Yönetimi
+        </h2>
+        
+        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem;">
+          {features.map((feature) => (
+            <div style="background: white; padding: 2rem; border-radius: 1rem; border: 1px solid var(--border-color); box-shadow: var(--shadow-md);">
+              <h3 style="color: var(--primary-red); margin-top: 0; margin-bottom: 1rem;">{feature.title}</h3>
+              <ul style="margin: 0; padding-left: 1.25rem;">
+                {feature.items.map((item) => (
+                  <li style="margin-bottom: 0.75rem; color: var(--text-dark); display: flex; align-items: start; gap: 0.5rem;">
+                    <span style="color: var(--primary-red);">✓</span>
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- Başarı Hikayeleri -->
+      <section style="margin-bottom: 4rem; background: var(--bg-light); padding: 3rem; border-radius: 1rem;">
+        <h2 style="text-align: center; color: var(--primary-red); margin-bottom: 2rem;">
+          Başarı Hikayeleri
+        </h2>
+        
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem;">
+          {successStories.map((story) => (
+            <div style="background: white; padding: 2rem; border-radius: 1rem; border: 1px solid var(--border-color); text-align: center;">
+              <div style="font-size: 2rem; margin-bottom: 1rem;">🏆</div>
+              <h3 style="color: var(--primary-red); margin-bottom: 0.5rem;">{story.name}</h3>
+              <div style="color: var(--text-gray); margin-bottom: 1rem;">{story.sector}</div>
+              <div style="font-size: 1.5rem; font-weight: bold; color: var(--primary-red); margin-bottom: 1rem;">
+                {story.result}
+              </div>
+              <p style="color: var(--text-dark); margin: 0;">{story.detail}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- Entegrasyonlar -->
+      <section style="margin-bottom: 4rem;">
+        <h2 style="text-align: center; color: var(--primary-red); margin-bottom: 2rem;">
+          Geniş Entegrasyon Desteği
+        </h2>
+        
+        <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; text-align: center;">
+          <div>
+            <div style="font-size: 2.5rem; margin-bottom: 1rem;">🛒</div>
+            <div style="font-weight: 600; color: var(--primary-red);">Pazaryerleri</div>
+            <div style="color: var(--text-gray); font-size: 0.9rem;">Trendyol, Hepsiburada</div>
+          </div>
+          <div>
+            <div style="font-size: 2.5rem; margin-bottom: 1rem;">🏦</div>
+            <div style="font-weight: 600; color: var(--primary-red);">Bankalar</div>
+            <div style="color: var(--text-gray); font-size: 0.9rem;">Tüm bankalar</div>
+          </div>
+          <div>
+            <div style="font-size: 2.5rem; margin-bottom: 1rem;">🚚</div>
+            <div style="font-weight: 600; color: var(--primary-red);">Kargo</div>
+            <div style="color: var(--text-gray); font-size: 0.9rem;">Aras, Yurtiçi, MNG</div>
+          </div>
+          <div>
+            <div style="font-size: 2.5rem; margin-bottom: 1rem;">🖨️</div>
+            <div style="font-weight: 600; color: var(--primary-red);">POS/Yazıcı</div>
+            <div style="color: var(--text-gray); font-size: 0.9rem;">50+ marka</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- İç Linkler -->
+      <section style="margin-bottom: 4rem;">
+        <h2 style="text-align: center; color: var(--primary-red); margin-bottom: 2rem;">
+          İlgili Çözümlerimiz
+        </h2>
+        
+        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem;">
+          {internalLinks.map((link) => (
+            <a 
+              href={link.url}
+              style="display: flex; align-items: center; gap: 1rem; background: white; padding: 1.5rem; border-radius: 0.75rem; text-decoration: none; color: var(--text-dark); border: 1px solid var(--border-color); transition: all 0.3s;"
+            >
+              <div style="font-size: 2rem;">{link.icon}</div>
+              <div>
+                <div style="font-weight: 600; color: var(--primary-red); margin-bottom: 0.25rem;">{link.title}</div>
+                <div style="color: var(--text-gray); font-size: 0.95rem;">{link.description}</div>
+              </div>
+            </a>
+          ))}
+        </div>
+      </section>
+
+      <!-- FAQ -->
+      <section style="margin-bottom: 4rem;">
+        <h2 style="text-align: center; color: var(--primary-red); margin-bottom: 2rem;">
+          Sıkça Sorulan Sorular
+        </h2>
+        
+        <div style="max-width: 800px; margin: 0 auto;">
+          {faqItems.map((item) => (
+            <div style="background: var(--bg-light); padding: 1.5rem; border-radius: 0.75rem; margin-bottom: 1rem; border: 1px solid var(--border-color);">
+              <h3 style="color: var(--primary-red); margin-top: 0; margin-bottom: 0.75rem;">{item.question}</h3>
+              <p style="margin: 0; color: var(--text-dark);">{item.answer}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- CTA -->
+      <section style="background: var(--primary-red-light); padding: 3rem; border-radius: 1rem; text-align: center;">
+        <h2 style="color: var(--primary-red); margin-bottom: 1rem;">Mağazanızı Ücretsiz Analiz Edelim</h2>
+        <p style="margin-bottom: 2rem; color: var(--text-dark);">
+          Uzman ekibimiz mağazanızı analiz edip, size özel çözüm önerisi sunsun.
+        </p>
+        
+        <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+          <a 
+            href="https://wa.me/+905325000999?text=Merhaba,%20mağaza%20yönetim%20yazılımı%20demo%20talep%20ediyorum"
+            class="btn btn-secondary"
+            style="min-height: 52px;"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            📱 WhatsApp'tan Demo Talep Et
+          </a>
+          
+          <a 
+            href="https://wa.me/+905325000999?text=Merhaba,%20mağaza%20analizi%20için%20görüşmek%20istiyorum"
+            class="btn btn-secondary"
+            style="min-height: 52px;"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            👨‍💼 Ücretsiz Analiz İste
+          </a>
+        </div>
+        
+        <div style="margin-top: 2rem; padding-top: 1.5rem; border-top: 1px dashed var(--border-color);">
+          <p style="margin: 0; color: var(--text-gray); font-size: 0.9rem;">
+            <strong>Avantajlar:</strong> Ücretsiz kurulum • 7/24 destek • İlk ay %25 indirim • Garantili geçiş
+          </p>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <style>
+    :root {
+      --border-color: #e5e7eb;
+    }
+    
+    section {
+      margin-bottom: 3rem;
+    }
+    
+    h2 {
+      font-size: 1.8rem;
+    }
+    
+    h3 {
+      font-size: 1.3rem;
+    }
+    
+    a:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+    
+    @media (max-width: 768px) {
+      div[style*="grid-template-columns: repeat(2, 1fr)"] {
+        grid-template-columns: 1fr;
+      }
+      
+      div[style*="grid-template-columns: repeat(3, 1fr)"] {
+        grid-template-columns: 1fr;
+      }
+      
+      div[style*="grid-template-columns: repeat(4, 1fr)"] {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
+      section {
+        padding-left: 1rem;
+        padding-right: 1rem;
+      }
+      
+      .container > div {
+        padding: 0;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 2rem !important;
+      }
+      
+      .cta-buttons {
+        flex-direction: column;
+      }
+      
+      .cta-buttons .btn {
+        width: 100%;
+        text-align: center;
+      }
+    }
+  </style>
+
+</BaseLayout>

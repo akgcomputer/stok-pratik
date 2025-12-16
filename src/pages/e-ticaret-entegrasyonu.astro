@@ -1,0 +1,1677 @@
+---
+// src/pages/e-ticaret-entegrasyonu.astro
+import BaseLayout from '../layouts/BaseLayout.astro';
+import '../styles/variables.css';
+import '../styles/global.css';
+import '../styles/components.css';
+
+// E-ticaret platformları
+const ecommercePlatforms = [
+  {
+    name: "Trendyol",
+    icon: "🛍️",
+    features: [
+      "Otomatik ürün senkronizasyonu",
+      "Sipariş aktarımı",
+      "Stok güncellemesi",
+      "Kargo entegrasyonu"
+    ],
+    integrationTime: "24 Saat",
+    satisfaction: "%98"
+  },
+  {
+    name: "Hepsiburada",
+    icon: "📦",
+    features: [
+      "API entegrasyonu",
+      "Ürün yönetimi",
+      "Fiyat güncelleme",
+      "Mağaza performansı"
+    ],
+    integrationTime: "48 Saat",
+    satisfaction: "%96"
+  },
+  {
+    name: "n11",
+    icon: "🏪",
+    features: [
+      "Ürün aktarımı",
+      "Sipariş yönetimi",
+      "Müşteri yorumları",
+      "Kampanya yönetimi"
+    ],
+    integrationTime: "24 Saat",
+    satisfaction: "%97"
+  },
+  {
+    name: "Amazon",
+    icon: "📚",
+    features: [
+      "Global satış entegrasyonu",
+      "Çoklu dil desteği",
+      "Kargo takip sistemi",
+      "Vergi hesaplama"
+    ],
+    integrationTime: "72 Saat",
+    satisfaction: "%95"
+  },
+  {
+    name: "ÇiçekSepeti",
+    icon: "🌸",
+    features: [
+      "Özel kategori yönetimi",
+      "Hızlı sipariş işleme",
+      "Özel paketleme",
+      "Taze ürün takibi"
+    ],
+    integrationTime: "24 Saat",
+    satisfaction: "%99"
+  },
+  {
+    name: "Shopify",
+    icon: "🛒",
+    features: [
+      "E-ticaret sitesi entegrasyonu",
+      "Ödeme sistemleri",
+      "Tema yönetimi",
+      "Müşteri portalı"
+    ],
+    integrationTime: "48 Saat",
+    satisfaction: "%97"
+  }
+];
+
+// Özellikler
+const features = [
+  {
+    icon: "🔄",
+    title: "Otomatik Senkronizasyon",
+    description: "Tüm platformlarda ürün, stok ve fiyat senkronizasyonu",
+    details: [
+      "Gerçek zamanlı stok güncelleme",
+      "Otomatik fiyat güncelleme",
+      "Ürün bilgisi senkronizasyonu",
+      "Toplu güncelleme özelliği"
+    ]
+  },
+  {
+    icon: "📦",
+    title: "Sipariş Yönetimi",
+    description: "Tüm siparişlerinizi tek panelden yönetin",
+    details: [
+      "Çoklu platform sipariş takibi",
+      "Otomatik sipariş aktarımı",
+      "Kargo entegrasyonu",
+      "Fatura otomasyonu"
+    ]
+  },
+  {
+    icon: "📊",
+    title: "Analiz ve Raporlama",
+    description: "Tüm satış kanallarınızın performansını tek yerden takip edin",
+    details: [
+      "Platform bazlı satış raporları",
+      "Kar marjı analizi",
+      "En çok satan ürünler",
+      "Müşteri davranış analizi"
+    ]
+  },
+  {
+    icon: "🤖",
+    title: "Akıllı Stok Yönetimi",
+    description: "Çoklu platform stok optimizasyonu",
+    details: [
+      "Otomatik stok alarmları",
+      "Çapraz stok yönetimi",
+      "Minimum stok seviyesi",
+      "Stok devir hızı analizi"
+    ]
+  },
+  {
+    icon: "💳",
+    title: "Ödeme ve Fatura",
+    description: "Tüm ödeme ve fatura işlemlerini otomatikleştirin",
+    details: [
+      "Çoklu ödeme sistemi entegrasyonu",
+      "Otomatik fatura kesme",
+      "Vergi hesaplama",
+      "Müşteri ödeme takibi"
+    ]
+  },
+  {
+    icon: "🚚",
+    title: "Kargo Entegrasyonu",
+    description: "Tüm kargo firmalarıyla entegre çözüm",
+    details: [
+      "Çoklu kargo firması entegrasyonu",
+      "Otomatik kargo etiketi",
+      "Takip numarası yönetimi",
+      "Kargo maliyet analizi"
+    ]
+  }
+];
+
+// İstatistikler
+const statistics = [
+  { number: "%70", label: "Zaman Tasarrufu", icon: "⏱️" },
+  { number: "%60", label: "Hata Azalması", icon: "✅" },
+  { number: "%45", label: "Satış Artışı", icon: "📈" },
+  { number: "24/7", label: "Senkronizasyon", icon: "🔄" }
+];
+
+// Entegrasyon süreci
+const integrationProcess = [
+  {
+    step: 1,
+    title: "Platform Seçimi",
+    description: "Entegre etmek istediğiniz platformları seçin",
+    icon: "🎯"
+  },
+  {
+    step: 2,
+    title: "API Bağlantısı",
+    description: "Platform API'larını sistemimize bağlayalım",
+    icon: "🔗"
+  },
+  {
+    step: 3,
+    title: "Test Süreci",
+    description: "Entegrasyonu test edin ve onaylayın",
+    icon: "🧪"
+  },
+  {
+    step: 4,
+    title: "Canlıya Geçiş",
+    description: "Sisteminizi canlı ortama taşıyalım",
+    icon: "🚀"
+  },
+  {
+    step: 5,
+    title: "Eğitim ve Destek",
+    description: "Ekibinize sistem eğitimi verelim",
+    icon: "👨‍🏫"
+  }
+];
+
+// Başarı hikayeleri
+const successStories = [
+  {
+    company: "Giyim Perakende",
+    platforms: ["Trendyol", "Hepsiburada", "n11"],
+    results: [
+      "Günlük sipariş işleme süresi %80 azaldı",
+      "Stok hataları tamamen ortadan kalktı",
+      "Aylık satışlar %65 arttı"
+    ],
+    quote: "Artık 3 farklı platformdaki 500+ ürünümü tek ekrandan yönetebiliyorum."
+  },
+  {
+    company: "Elektronik Toptan",
+    platforms: ["Amazon", "Shopify", "Trendyol"],
+    results: [
+      "Manuel veri girişi tamamen bitti",
+      "Sipariş işleme hızı 5 kat arttı",
+      "Müşteri memnuniyeti %40 yükseldi"
+    ],
+    quote: "Global satışlarımızı tek sistemden yönetmek işimizi inanılmaz kolaylaştırdı."
+  }
+];
+
+// İç linkler
+const relatedPages = [
+  { title: "Stok Yönetimi", url: "/stok-yonetimi", desc: "E-ticaret stok optimizasyonu" },
+  { title: "Satış Yönetimi", url: "/satis-yonetimi", desc: "Çoklu kanal satış yönetimi" },
+  { title: "Müşteri Hizmetleri", url: "/musteri-hizmetleri", desc: "E-ticaret desteği" },
+  { title: "ERP Sistemi", url: "/erp-sistemi", desc: "Entegre iş yönetimi" }
+];
+---
+
+<BaseLayout 
+  title="E-Ticaret Entegrasyonu | Stok Pratik - Çoklu Platform Yönetimi" 
+  description="E-ticaret entegrasyonu ile Trendyol, Hepsiburada, n11, Amazon ve diğer tüm platformlardaki işlemlerinizi tek sistemden yönetin. Otomatik senkronizasyon, sipariş yönetimi ve stok kontrolü ile e-ticaret işinizi kolaylaştırın."
+>
+  
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-text">
+          <span class="hero-badge">E-Ticaret Çözümü</span>
+          <h1>E-Ticaret Entegrasyonu ile <span class="highlight">Tüm Platformlarınızı Tek Elden Yönetin</span></h1>
+          <p class="hero-subtitle hero-badge highlight">Trendyol, Hepsiburada, n11, Amazon ve diğer tüm e-ticaret platformlarını tek sistemde birleştirin</p>
+          
+          
+          
+          <div class="hero-buttons">
+            <a 
+              href="https://wa.me/+905325000999?text=Merhaba,%20E-Ticaret%20Entegrasyonu%20demo%20talep%20ediyorum" 
+              class="btn btn-secondary btn-large"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              🛒 Ücretsiz Demo İste
+            </a>
+            <a 
+              href="tel:+905325000999" 
+              class="btn btn-secondary btn-large"
+            >
+              📞 E-Ticaret Danışmanı
+            </a>
+          </div>
+          
+          <div class="platform-tags">
+            <div class="platform-tag">
+              <span class="platform-icon">🛍️</span>
+              <span>Trendyol</span>
+            </div>
+            <div class="platform-tag">
+              <span class="platform-icon">📦</span>
+              <span>Hepsiburada</span>
+            </div>
+            <div class="platform-tag">
+              <span class="platform-icon">🏪</span>
+              <span>n11</span>
+            </div>
+            <div class="platform-tag">
+              <span class="platform-icon">📚</span>
+              <span>Amazon</span>
+            </div>
+            <div class="platform-tag">
+              <span class="platform-icon">🛒</span>
+              <span>Shopify</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="hero-image">
+          <div class="ecommerce-dashboard">
+            <div class="dashboard-header">
+              <div class="dashboard-title">
+                <span class="title-icon">📊</span>
+                <span>E-Ticaret Yönetim Paneli</span>
+              </div>
+              <div class="dashboard-refresh">
+                <span class="refresh-icon">🔄</span>
+                <span class="refresh-text">Son Güncelleme: 2 dk önce</span>
+              </div>
+            </div>
+            
+            <div class="platform-stats">
+              <div class="platform-stat">
+                <div class="platform-name">🛍️ Trendyol</div>
+                <div class="platform-orders">12 Sipariş</div>
+                <div class="platform-sales">₺8,450</div>
+              </div>
+              <div class="platform-stat">
+                <div class="platform-name">📦 Hepsiburada</div>
+                <div class="platform-orders">8 Sipariş</div>
+                <div class="platform-sales">₺5,200</div>
+              </div>
+              <div class="platform-stat">
+                <div class="platform-name">🏪 n11</div>
+                <div class="platform-orders">6 Sipariş</div>
+                <div class="platform-sales">₺3,800</div>
+              </div>
+            </div>
+            
+            <div class="order-overview">
+              <div class="section-title">📦 Bugünkü Siparişler</div>
+              <div class="order-list">
+                <div class="order-item">
+                  <div class="order-platform">🛍️ Trendyol</div>
+                  <div class="order-id">#7892</div>
+                  <div class="order-amount">₺450</div>
+                  <div class="order-status shipped">Kargoda</div>
+                </div>
+                <div class="order-item">
+                  <div class="order-platform">📦 Hepsiburada</div>
+                  <div class="order-id">#7891</div>
+                  <div class="order-amount">₺680</div>
+                  <div class="order-status pending">Hazırlanıyor</div>
+                </div>
+                <div class="order-item">
+                  <div class="order-platform">🏪 n11</div>
+                  <div class="order-id">#7890</div>
+                  <div class="order-amount">₺320</div>
+                  <div class="order-status new">Yeni</div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="stock-alert">
+              <div class="alert-icon">⚠️</div>
+              <div class="alert-text">Trendyol'da 3 üründe stok kritik seviyede</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Platformlar -->
+  <section class="platforms-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Desteklediğimiz E-Ticaret Platformları</h2>
+        <p>Tüm popüler e-ticaret platformlarıyla tam entegrasyon</p>
+      </div>
+      
+      <div class="platforms-grid">
+        {ecommercePlatforms.map((platform, index) => (
+          <div class="platform-card" key={index}>
+            <div class="platform-header">
+              <div class="platform-icon">{platform.icon}</div>
+              <h3>{platform.name}</h3>
+            </div>
+            
+            <div class="platform-features">
+              <h4>Entegrasyon Özellikleri:</h4>
+              <ul>
+                {platform.features.map((feature, i) => (
+                  <li key={i}>
+                    <span class="feature-icon">✓</span>
+                    {feature}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            
+            <div class="platform-stats">
+              <div class="stat">
+                <div class="stat-label">Kurulum Süresi</div>
+                <div class="stat-value">{platform.integrationTime}</div>
+              </div>
+              <div class="stat">
+                <div class="stat-label">Memnuniyet Oranı</div>
+                <div class="stat-value success">{platform.satisfaction}</div>
+              </div>
+            </div>
+            
+            <a 
+              href={`https://wa.me/+905325000999?text=Merhaba,%20${encodeURIComponent(platform.name)}%20entegrasyonu%20hakkında%20bilgi%20almak%20istiyorum`}
+              class="btn btn-platform"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              🔗 Bu Platform İçin Entegrasyon İste
+            </a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Problem Çözüm -->
+  <section class="problem-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>E-Ticaret Yönetim Zorluklarını Çözüyoruz</h2>
+        <p>Çoklu platform yönetiminin zorluklarına akıllı çözümler</p>
+      </div>
+      
+      <div class="problem-grid">
+        <div class="problem-card">
+          <div class="problem-icon">😫</div>
+          <h3>Manuel Veri Girişi</h3>
+          <p>Her platforma ayrı ayrı ürün ve stok güncelleme</p>
+          <ul>
+            <li>Zaman kaybı ve hata riski</li>
+            <li>Stok tutarsızlıkları</li>
+            <li>Fiyat güncelleme zorluğu</li>
+          </ul>
+        </div>
+        
+        <div class="solution-card">
+          <div class="solution-icon">✅</div>
+          <h3>Otomatik Senkronizasyon</h3>
+          <p class=" hero-badge highlight">Tüm platformlara otomatik veri aktarımı</p>
+          <ul>
+            <li>Tek tıkla tüm platform güncelleme</li>
+            <li>Gerçek zamanlı stok senkronizasyonu</li>
+            <li>Otomatik fiyat güncelleme</li>
+          </ul>
+        </div>
+        
+        <div class="problem-card">
+          <div class="problem-icon">📉</div>
+          <h3>Dağınık Sipariş Takibi</h3>
+          <p>Farklı platformlardaki siparişleri takip zorluğu</p>
+          <ul>
+            <li>Sipariş kaçırma riski</li>
+            <li>Kargo takibi karmaşası</li>
+            <li>Müşteri iletişim sorunları</li>
+          </ul>
+        </div>
+        
+        <div class="solution-card">
+          <div class="solution-icon">📦</div>
+          <h3>Merkezi Sipariş Yönetimi</h3>
+          <p class=" hero-badge highlight">Tüm platform siparişlerini tek ekranda takip</p>
+          <ul>
+            <li>Tüm siparişler tek panelde</li>
+            <li>Otomatik kargo entegrasyonu</li>
+            <li>Müşteri iletişim merkezi</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Özellikler -->
+  <section class="features-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Stok Pratik E-Ticaret Entegrasyonu Özellikleri</h2>
+        <p>Çoklu platform yönetimi için ihtiyacınız olan tüm araçlar</p>
+      </div>
+      
+      <div class="features-grid">
+        {features.map((feature, index) => (
+          <div class="feature-card" key={index}>
+            <div class="feature-header">
+              <div class="feature-icon">{feature.icon}</div>
+              <div>
+                <h3>{feature.title}</h3>
+                <p class="feature-desc">{feature.description}</p>
+              </div>
+            </div>
+            
+            <ul class="feature-details">
+              {feature.details.map((detail, i) => (
+                <li key={i}>
+                  <span class="detail-check">✓</span>
+                  {detail}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Entegrasyon Süreci -->
+  <section class="process-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>5 Adımda E-Ticaret Entegrasyonu</h2>
+        <p>Hızlı ve sorunsuz entegrasyon sürecimiz</p>
+      </div>
+      
+      <div class="process-timeline">
+        {integrationProcess.map((step, index) => (
+          <div class="process-step" key={index}>
+            <div class="step-number">{step.step}</div>
+            <div class="step-icon">{step.icon}</div>
+            <div class="step-content">
+              <h3>{step.title}</h3>
+              <p>{step.description}</p>
+              <div class="step-duration">
+                {index === 0 && "15 Dakika"}
+                {index === 1 && "2-24 Saat"}
+                {index === 2 && "24 Saat"}
+                {index === 3 && "2 Saat"}
+                {index === 4 && "2 Saat"}
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+      
+      <div class="process-result">
+        <div class="result-icon">🏆</div>
+        <div class="result-content">
+          <h3>Stok Pratik ile Tam Entegrasyon!</h3>
+          <p class=" hero-badge highlight">Stok Pratik ile e-ticaret platformlarınızı hızlıca entegre edin, işinize odaklanın.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Başarı Hikayeleri -->
+  <section class="success-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>E-Ticaret Entegrasyonu ile Büyüyen İşletmeler</h2>
+        <p>Stok Pratik ile çoklu platform yönetimini başaran müşterilerimiz</p>
+      </div>
+      
+      <div class="success-stories">
+        {successStories.map((story, index) => (
+          <div class="story-card" key={index}>
+            <div class="story-header">
+              <div class="story-company">{story.company}</div>
+              <div class="story-platforms">
+                {story.platforms.map((platform, i) => (
+                  <span class="platform-badge" key={i}>{platform}</span>
+                ))}
+              </div>
+            </div>
+            
+            <div class="story-results">
+              <h4>📈 Elde Edilen Sonuçlar</h4>
+              <ul>
+                {story.results.map((result, i) => (
+                  <li key={i}>
+                    <span class="result-icon">🚀</span>
+                    {result}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            
+            <div class="story-quote">
+              <div class="quote-icon">❝</div>
+              <p>{story.quote}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Teknik Özellikler -->
+  <section class="technical-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Teknik Özellikler ve Güvenlik</h2>
+        <p>Profesyonel e-ticaret entegrasyonu için güvenli altyapı</p>
+      </div>
+      
+      <div class="technical-grid">
+        <div class="technical-card">
+          <div class="technical-icon">🔒</div>
+          <h3>Güvenlik</h3>
+          <ul>
+            <li>SSL Şifreleme</li>
+            <li>API Güvenlik Duvarı</li>
+            <li>Veri Yedekleme</li>
+            <li>Rol Tabanlı Erişim</li>
+          </ul>
+        </div>
+        
+        <div class="technical-card">
+          <div class="technical-icon">⚡</div>
+          <h3>Performans</h3>
+          <ul>
+            <li>99.9% Uptime</li>
+            <li>Gerçek Zamanlı Senkronizasyon</li>
+            <li>Hızlı API Yanıtları</li>
+            <li>Ölçeklenebilir Altyapı</li>
+          </ul>
+        </div>
+        
+        <div class="technical-card">
+          <div class="technical-icon">🔄</div>
+          <h3>Senkronizasyon</h3>
+          <ul>
+            <li>5 Dakikada Bir Güncelleme</li>
+            <li>Çoklu API Desteği</li>
+            <li>Hata Yönetimi</li>
+            <li>Otomatik Yeniden Deneme</li>
+          </ul>
+        </div>
+        
+        <div class="technical-card">
+          <div class="technical-icon">📞</div>
+          <h3>Destek</h3>
+          <ul>
+            <li>7/24 Teknik Destek</li>
+            <li>API Dokümantasyonu</li>
+            <li>Video Eğitimler</li>
+            <li>Canlı Yardım</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- İlgili Sayfalar -->
+  <section class="related-pages">
+    <div class="container">
+      <div class="section-header">
+        <h2>E-Ticaret Entegrasyonu ile Tamamlayan Sistemler</h2>
+        <p>E-ticaret işinizi büyütmek için diğer çözümlerimiz</p>
+      </div>
+      
+      <div class="pages-grid">
+        {relatedPages.map((page, index) => (
+          <a href={page.url} class="page-card" key={index}>
+            <h3>{page.title}</h3>
+            <p>{page.desc}</p>
+            <div class="page-link">
+              <span>İncele</span>
+              <span class="arrow">→</span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Son CTA -->
+  <section class="final-cta">
+    <div class="container">
+      <div class="cta-content">
+        <div class="cta-icon">🛒</div>
+        <h2>E-Ticaret Platformlarınızı Tek Elde Birleştirin!</h2>
+        <p>14 gün ücretsiz deneme ile çoklu platform yönetiminin farkını yaşayın.</p>
+        
+        <div class="cta-buttons">
+          <a 
+            href="https://wa.me/+905325000999?text=Merhaba,%20E-Ticaret%20Entegrasyonu%20demo%20talep%20ediyorum"
+            class="btn btn-primary btn-large"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            🚀 Ücretsiz Demo Başlat
+          </a>
+          
+          <a 
+            href="tel:+905325000999"
+            class="btn btn-secondary btn-large"
+          >
+            📞 E-Ticaret Danışmanı
+          </a>
+        </div>
+        
+        <div class="cta-benefits">
+          <div class="benefit">
+            <span class="benefit-icon">🔧</span>
+            <span>Ücretsiz Kurulum</span>
+          </div>
+          <div class="benefit">
+            <span class="benefit-icon">👨‍🏫</span>
+            <span>Platform Eğitimi</span>
+          </div>
+          <div class="benefit">
+            <span class="benefit-icon">🔄</span>
+            <span>Veri Aktarım Desteği</span>
+          </div>
+          <div class="benefit">
+            <span class="benefit-icon">📊</span>
+            <span>Performans Analizi</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  /* Hero Section */
+  .hero-section {
+    background: linear-gradient(135deg, #9b59b6 0%, #8e44ad 100%);
+    color: white;
+    padding: 4rem 0;
+  }
+  
+  .hero-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+  
+  .hero-badge {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+  }
+  
+  .hero-text h1 {
+    font-size: 3rem;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+  }
+  
+  .highlight {
+    color: #ffd700;
+  }
+  
+  .hero-subtitle {
+    font-size: 1.2rem;
+    opacity: 0.9;
+    margin-bottom: 2rem;
+  }
+  
+  .hero-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    margin: 2rem 0;
+  }
+  
+  .stat-item {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 1rem;
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+  }
+  
+  .stat-icon {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .stat-number {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #ffd700;
+    margin-bottom: 0.3rem;
+  }
+  
+  .stat-label {
+    font-size: 0.8rem;
+    opacity: 0.8;
+  }
+  
+  .hero-buttons {
+    display: flex;
+    gap: 1rem;
+    margin: 2rem 0;
+  }
+  
+  .btn-large {
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+  }
+  
+  .platform-tags {
+    display: flex;
+    gap: 0.8rem;
+    flex-wrap: wrap;
+    margin-top: 1.5rem;
+  }
+  
+  .platform-tag {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    backdrop-filter: blur(10px);
+  }
+  
+  .platform-icon {
+    font-size: 1rem;
+  }
+  
+  /* E-commerce Dashboard */
+  .ecommerce-dashboard {
+    background: white;
+    border-radius: 15px;
+    padding: 1.5rem;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+    color: #2c3e50;
+  }
+  
+  .dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #f1f2f6;
+  }
+  
+  .dashboard-title {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: bold;
+    font-size: 1.2rem;
+  }
+  
+  .title-icon {
+    font-size: 1.5rem;
+  }
+  
+  .dashboard-refresh {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    color: #7f8c8d;
+  }
+  
+  .refresh-icon {
+    font-size: 1rem;
+  }
+  
+  .platform-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .platform-stat {
+    background: #f8f9fa;
+    padding: 1rem;
+    border-radius: 10px;
+    text-align: center;
+  }
+  
+  .platform-name {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+  
+  .platform-orders {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #9b59b6;
+    margin-bottom: 0.3rem;
+  }
+  
+  .platform-sales {
+    font-size: 0.9rem;
+    color: #7f8c8d;
+  }
+  
+  .order-overview {
+    margin-bottom: 1.5rem;
+  }
+  
+  .section-title {
+    font-weight: bold;
+    margin-bottom: 0.8rem;
+    color: #2c3e50;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .order-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .order-item {
+    display: grid;
+    grid-template-columns: auto 1fr auto auto;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.8rem;
+    background: #f8f9fa;
+    border-radius: 8px;
+    font-size: 0.9rem;
+  }
+  
+  .order-platform {
+    font-size: 1.2rem;
+  }
+  
+  .order-id {
+    font-weight: bold;
+    color: #2c3e50;
+  }
+  
+  .order-amount {
+    font-weight: bold;
+    color: #9b59b6;
+  }
+  
+  .order-status {
+    padding: 0.3rem 0.8rem;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    font-weight: bold;
+  }
+  
+  .order-status.shipped {
+    background: #d4edda;
+    color: #155724;
+  }
+  
+  .order-status.pending {
+    background: #fff3cd;
+    color: #856404;
+  }
+  
+  .order-status.new {
+    background: #d1ecf1;
+    color: #0c5460;
+  }
+  
+  .stock-alert {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: #fff3cd;
+    border: 1px solid #ffeaa7;
+    color: #856404;
+    padding: 0.8rem;
+    border-radius: 8px;
+    font-size: 0.9rem;
+  }
+  
+  .alert-icon {
+    font-size: 1.2rem;
+  }
+  
+  /* Platforms Section */
+  .platforms-section {
+    padding: 4rem 0;
+    background: #f8f9fa;
+  }
+  
+  .section-header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+  
+  .section-header h2 {
+    font-size: 2.5rem;
+    color: #2c3e50;
+    margin-bottom: 1rem;
+  }
+  
+  .section-header p {
+    color: #7f8c8d;
+    font-size: 1.1rem;
+  }
+  
+  .platforms-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+  
+  .platform-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+  }
+  
+  .platform-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+  }
+  
+  .platform-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #f1f2f6;
+  }
+  
+  .platform-icon {
+    font-size: 2.5rem;
+  }
+  
+  .platform-card h3 {
+    color: #2c3e50;
+    margin: 0;
+  }
+  
+  .platform-features h4 {
+    color: #9b59b6;
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+  }
+  
+  .platform-features ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 1.5rem;
+  }
+  
+  .platform-features li {
+    padding: 0.3rem 0;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .feature-icon {
+    color: #2ecc71;
+    font-weight: bold;
+  }
+  
+  .platform-stats {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .stat {
+    text-align: center;
+    background: #f8f9fa;
+    padding: 0.8rem;
+    border-radius: 8px;
+  }
+  
+  .stat-label {
+    font-size: 0.8rem;
+    color: #7f8c8d;
+    margin-bottom: 0.3rem;
+  }
+  
+  .stat-value {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #9b59b6;
+  }
+  
+  .stat-value.success {
+    color: #2ecc71;
+  }
+  
+  .btn-platform {
+    display: block;
+    width: 100%;
+    text-align: center;
+    background: #9b59b6;
+    color: white;
+    padding: 0.8rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    margin-top: 1rem;
+    transition: background 0.3s ease;
+  }
+  
+  .btn-platform:hover {
+    background: #8e44ad;
+  }
+  
+  /* Problem Section */
+  .problem-section {
+    padding: 4rem 0;
+  }
+  
+  .problem-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+  
+  .problem-card, .solution-card {
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  }
+  
+  .problem-card {
+    background: white;
+    border-top: 5px solid #e74c3c;
+  }
+  
+  .solution-card {
+    background: linear-gradient(135deg, #9b59b6, #8e44ad);
+    color: white;
+  }
+  
+  .problem-icon, .solution-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+  
+  .problem-card h3, .solution-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .problem-card ul, .solution-card ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 1rem;
+  }
+  
+  .problem-card li, .solution-card li {
+    padding: 0.3rem 0;
+    position: relative;
+    padding-left: 1.5rem;
+  }
+  
+  .problem-card li:before {
+    content: "❌";
+    position: absolute;
+    left: 0;
+    color: #e74c3c;
+  }
+  
+  .solution-card li:before {
+    content: "✅";
+    position: absolute;
+    left: 0;
+    color: #ffd700;
+  }
+  
+  /* Features Section */
+  .features-section {
+    padding: 4rem 0;
+    background: #f8f9fa;
+  }
+  
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+  
+  .feature-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+    border: 2px solid transparent;
+  }
+  
+  .feature-card:hover {
+    transform: translateY(-5px);
+    border-color: #9b59b6;
+    box-shadow: 0 10px 20px rgba(155, 89, 182, 0.2);
+  }
+  
+  .feature-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .feature-icon {
+    font-size: 2.5rem;
+    flex-shrink: 0;
+  }
+  
+  .feature-card h3 {
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
+    font-size: 1.3rem;
+  }
+  
+  .feature-desc {
+    color: #7f8c8d;
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+  
+  .feature-details {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 1.5rem;
+  }
+  
+  .feature-details li {
+    padding: 0.5rem 0;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .detail-check {
+    color: #2ecc71;
+    font-weight: bold;
+  }
+  
+  /* Process Section */
+  .process-section {
+    padding: 4rem 0;
+  }
+  
+  .process-timeline {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1rem;
+    margin-bottom: 3rem;
+  }
+  
+  .process-step {
+    text-align: center;
+    position: relative;
+  }
+  
+  .process-step:not(:last-child):after {
+    content: '';
+    position: absolute;
+    top: 25px;
+    left: 60%;
+    right: -40%;
+    height: 2px;
+    background: linear-gradient(90deg, #9b59b6, #8e44ad);
+    z-index: 1;
+  }
+  
+  .step-number {
+    width: 50px;
+    height: 50px;
+    background: #9b59b6;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin: 0 auto 1rem;
+    position: relative;
+    z-index: 2;
+  }
+  
+  .step-icon {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .step-content {
+    background: white;
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+  }
+  
+  .process-step h3 {
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+  }
+  
+  .step-content p {
+    color: #7f8c8d;
+    font-size: 0.8rem;
+    margin-bottom: 0.5rem;
+    line-height: 1.4;
+  }
+  
+  .step-duration {
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: #9b59b6;
+  }
+  
+  .process-result {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    background: linear-gradient(135deg, #2ecc71, #27ae60);
+    color: white;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(46, 204, 113, 0.3);
+  }
+  
+  .result-icon {
+    font-size: 4rem;
+  }
+  
+  .result-content h3 {
+    margin-bottom: 0.5rem;
+    font-size: 1.5rem;
+  }
+  
+  .result-content p {
+    opacity: 0.9;
+  }
+  
+  /* Success Section */
+  .success-section {
+    padding: 4rem 0;
+    background: #f8f9fa;
+  }
+  
+  .success-stories {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+  
+  .story-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  }
+  
+  .story-header {
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #f1f2f6;
+  }
+  
+  .story-company {
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
+  }
+  
+  .story-platforms {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+  
+  .platform-badge {
+    background: #f0f0ff;
+    color: #9b59b6;
+    padding: 0.3rem 0.8rem;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    font-weight: bold;
+  }
+  
+  .story-results {
+    margin-bottom: 1.5rem;
+  }
+  
+  .story-results h4 {
+    color: #9b59b6;
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .story-results ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .story-results li {
+    padding: 0.3rem 0;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+  }
+  
+  .result-icon {
+    color: #2ecc71;
+  }
+  
+  .story-quote {
+    background: #f8f9fa;
+    padding: 1.5rem;
+    border-radius: 10px;
+    position: relative;
+  }
+  
+  .quote-icon {
+    font-size: 3rem;
+    color: #9b59b6;
+    position: absolute;
+    top: -10px;
+    left: 10px;
+  }
+  
+  .story-quote p {
+    font-style: italic;
+    color: #7f8c8d;
+    line-height: 1.6;
+    margin: 0;
+    padding-left: 2rem;
+  }
+  
+  /* Technical Section */
+  .technical-section {
+    padding: 4rem 0;
+  }
+  
+  .technical-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+  }
+  
+  .technical-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    text-align: center;
+    border-top: 4px solid #9b59b6;
+  }
+  
+  .technical-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+  
+  .technical-card h3 {
+    color: #2c3e50;
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+  }
+  
+  .technical-card ul {
+    list-style: none;
+    padding: 0;
+    text-align: left;
+  }
+  
+  .technical-card li {
+    padding: 0.5rem 0;
+    font-size: 0.9rem;
+    color: #7f8c8d;
+    position: relative;
+    padding-left: 1.5rem;
+  }
+  
+  .technical-card li:before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: #9b59b6;
+    font-size: 1.5rem;
+  }
+  
+  /* Related Pages */
+  .related-pages {
+    padding: 4rem 0;
+    background: #f8f9fa;
+  }
+  
+  .pages-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+  
+  .page-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+  }
+  
+  .page-card:hover {
+    transform: translateY(-5px);
+    border-color: #9b59b6;
+    box-shadow: 0 10px 20px rgba(155, 89, 182, 0.2);
+  }
+  
+  .page-card h3 {
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
+  }
+  
+  .page-card p {
+    color: #7f8c8d;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+  }
+  
+  .page-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #9b59b6;
+    font-weight: bold;
+  }
+  
+  .arrow {
+    font-size: 1.2rem;
+  }
+  
+  /* Final CTA */
+  .final-cta {
+    padding: 4rem 0;
+    background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+    color: white;
+    text-align: center;
+  }
+  
+  .cta-content {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .cta-icon {
+    font-size: 4rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .cta-content h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .cta-content p {
+    font-size: 1.2rem;
+    opacity: 0.9;
+    margin-bottom: 2rem;
+  }
+  
+  .cta-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+  
+  .cta-benefits {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+  
+  .benefit {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    justify-content: center;
+    font-size: 0.9rem;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 0.8rem;
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+  }
+  
+  .benefit-icon {
+    font-size: 1.2rem;
+  }
+  
+  /* Responsive Tasarım */
+  @media (max-width: 1200px) {
+    .features-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .platforms-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .technical-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .process-timeline {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+    
+    .process-step:not(:last-child):after {
+      display: none;
+    }
+  }
+  
+  @media (max-width: 992px) {
+    .hero-content {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+    
+    .problem-grid,
+    .success-stories,
+    .pages-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .hero-stats,
+    .cta-benefits {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .platform-stats {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .hero-text h1 {
+      font-size: 2rem;
+    }
+    
+    .hero-buttons,
+    .cta-buttons {
+      flex-direction: column;
+    }
+    
+    .btn-large {
+      width: 100%;
+      text-align: center;
+    }
+    
+    .section-header h2 {
+      font-size: 2rem;
+    }
+    
+    .features-grid,
+    .platforms-grid,
+    .technical-grid,
+    .process-timeline {
+      grid-template-columns: 1fr;
+    }
+    
+    .platform-tags {
+      justify-content: center;
+    }
+    
+    .order-item {
+      grid-template-columns: 1fr;
+      gap: 0.5rem;
+    }
+    
+    .order-status {
+      justify-self: start;
+    }
+  }
+</style>

@@ -1,0 +1,601 @@
+---
+// src/pages/kalite-kontrol-sistemi.astro
+import BaseLayout from '../layouts/BaseLayout.astro';
+import '../styles/variables.css';
+import '../styles/global.css';
+import '../styles/components.css';
+
+// İç linkler için data
+const internalLinks = [
+  { 
+    title: "Üretim Yönetimi", 
+    url: "/uretim-yonetimi",
+    icon: "🏭",
+    description: "Kalite kontrol entegre üretim sistemi"
+  },
+  { 
+    title: "Stok Takip Sistemi", 
+    url: "/stok-takip-sistemi",
+    icon: "📦",
+    description: "Kalite onaylı stok yönetimi"
+  },
+  { 
+    title: "ERP Sistemi", 
+    url: "/erp-sistemi",
+    icon: "🔄",
+    description: "Entegre kalite yönetim modülü"
+  },
+  { 
+    title: "Doküman Yönetimi", 
+    url: "/dokuman-yonetimi",
+    icon: "📄",
+    description: "Kalite dokümanları ve prosedürler"
+  },
+  { 
+    title: "Tedarikçi Yönetimi", 
+    url: "/tedarikci-yonetimi",
+    icon: "🤝",
+    description: "Tedarikçi kalite değerlendirme"
+  }
+];
+
+// Kalite kontrol modülleri
+const qualityModules = [
+  {
+    icon: "📋",
+    title: "Gelen Malzeme Kontrolü",
+    description: "Tedarikçi ürünleri için giriş kalite kontrolü, numune alma",
+    benefit: "Hatalı malzeme girişi %85 azalır"
+  },
+  {
+    icon: "⚙️",
+    title: "Süreç Kontrolü",
+    description: "Üretim sürecinde ara kontroller, istatistiksel proses kontrol",
+    benefit: "Proses varyasyonu %60 düşer"
+  },
+  {
+    icon: "✅",
+    title: "Nihai Ürün Kontrolü",
+    description: "Son ürün kalite testleri, sevkiyat öncesi onay",
+    benefit: "Müşteri şikayetleri %70 azalır"
+  },
+  {
+    icon: "🔍",
+    title: "Numune Alma Planları",
+    description: "AQL seviyeleri, istatistiksel numune alma metodları",
+    benefit: "Kontrol maliyetleri %40 düşer"
+  },
+  {
+    icon: "📊",
+    title: "Kalite Kayıtları",
+    description: "Tüm kalite verilerinin dijital arşivlenmesi, izlenebilirlik",
+    benefit: "Denetim süreleri %75 kısalır"
+  },
+  {
+    icon: "📈",
+    title: "Kalite Raporlama",
+    description: "Pareto analizleri, trend raporları, performans göstergeleri",
+    benefit: "Kalite iyileştirme hızı %50 artar"
+  }
+];
+
+// Kalite standartları desteği
+const qualityStandards = [
+  {
+    standard: "ISO 9001:2015",
+    icon: "🏆",
+    features: ["Süreç yaklaşımı", "Risk bazlı düşünce", "Sürekli iyileştirme"],
+    support: "Tam uyumlu sistem şablonları"
+  },
+  {
+    standard: "ISO 13485",
+    icon: "🏥",
+    features: ["Tıbbi cihaz kalitesi", "Dokümantasyon kontrolü", "İzlenebilirlik"],
+    support: "Medikal sektör özel modül"
+  },
+  {
+    standard: "IATF 16949",
+    icon: "🚗",
+    features: ["Otomotiv kalitesi", "APQP/PPAP", "FMEA yönetimi"],
+    support: "Otomotiv sektörü çözümleri"
+  },
+  {
+    standard: "ISO 22000",
+    icon: "🍎",
+    features: ["Gıda güvenliği", "HACCP planları", "İzlenebilirlik"],
+    support: "Gıda sektörü özel modül"
+  }
+];
+
+// Kalite kontrol süreçleri
+const qualityProcesses = [
+  {
+    step: "1",
+    title: "Planlama",
+    description: "Kontrol planları, numune alma planları, kriterlerin belirlenmesi"
+  },
+  {
+    step: "2",
+    title: "Kontrol",
+    description: "Görsel, fonksiyonel, boyutsal kontroller, test ölçümleri"
+  },
+  {
+    step: "3",
+    title: "Kayıt",
+    description: "Veri girişi, fotoğraf/video ekleme, otomatik raporlama"
+  },
+  {
+    step: "4",
+    title: "Analiz",
+    description: "İstatistiksel analiz, trend takibi, iyileştirme önerileri"
+  }
+];
+
+// Kalite araçları
+const qualityTools = [
+  {
+    tool: "Pareto Analizi",
+    purpose: "Önemli hataların belirlenmesi",
+    benefit: "Kaynakların etkin kullanımı"
+  },
+  {
+    tool: "İstatistiksel Proses Kontrol",
+    purpose: "Süreç varyasyonunun izlenmesi",
+    benefit: "Önleyici faaliyetler"
+  },
+  {
+    tool: "Hata Türü ve Etkileri Analizi",
+    purpose: "Potansiyel hataların önlenmesi",
+    benefit: "Tasarım ve proses iyileştirme"
+  },
+  {
+    tool: "Kontrol Planları",
+    purpose: "Standart kontrol prosedürleri",
+    benefit: "Tutarlılık ve tekrarlanabilirlik"
+  },
+  {
+    tool: "8D Raporlama",
+    purpose: "Hata analizi ve düzeltici faaliyet",
+    benefit: "Kök neden analizi"
+  },
+  {
+    tool: "PUKÖ Döngüsü",
+    purpose: "Sürekli iyileştirme döngüsü",
+    benefit: "Kalite sisteminin gelişimi"
+  }
+];
+
+// Başarı örnekleri
+const successStories = [
+  {
+    company: "Otomotiv Yan Sanayi",
+    location: "Bursa",
+    problem: "Müşteri şikayetleri ayda 25+",
+    solution: "SPC + FMEA + 8D raporlama sistemi",
+    result: "Şikayetler ayda 3'e düştü"
+  },
+  {
+    company: "Medikal Cihaz Üreticisi",
+    location: "İstanbul",
+    problem: "ISO 13485 denetim zorlukları",
+    solution: "Tam uyumlu kalite yönetim sistemi",
+    result: "Denetimler problemsiz geçiyor"
+  },
+  {
+    company: "Elektronik Montaj",
+    location: "İzmir",
+    problem: "Gelen malzeme kalitesi düşük",
+    solution: "Tedarikçi kalite değerlendirme + IQC",
+    result: "Hatalı malzeme %90 azaldı"
+  }
+];
+
+// FAQ
+const faqItems = [
+  {
+    question: "Kalite kontrol yazılımı fiyatları ne kadar?",
+    answer: "Stok Pratik kalite kontrol paketleri 2.999₺/ay'dan başlar. Fiyat; kullanıcı sayısı, kontrol noktası sayısı ve entegrasyonlara göre değişir. ISO standart şablonları ücretsizdir."
+  },
+  {
+    question: "ISO 9001 belgemiz için uygun mudur?",
+    answer: "Evet! ISO 9001:2015 standardının tüm gerekliliklerini karşılayan şablonlar ve raporlar sunarız. Doküman kontrolü, kayıt yönetimi, iç denetim modülleri dahildir."
+  },
+  {
+    question: "Mobil cihazlardan kontrol yapabilir miyiz?",
+    answer: "Evet! Tablet ve akıllı telefonlardan kalite kontrol verisi girebilir, fotoğraf/video ekleyebilir, anında onay verebilirsiniz. Offline modda da çalışabilir."
+  },
+  {
+    question: "İstatistiksel Proses Kontrol (SPC) özelliği var mı?",
+    answer: "Evet! Otomatik kontrol kartları (X-R, X-S, p, np, c, u), histogramlar, proses yetenek analizleri (Cp, Cpk) oluşturur. Gerçek zamanlı uyarı sistemleri mevcuttur."
+  },
+  {
+    question: "Tedarikçi kalite değerlendirmesi yapabilir miyiz?",
+    answer: "Evet! Tedarikçi performans skorlama, kalite puanlama, onay/red geçmişi takibi yapabilirsiniz. Otomatik tedarikçi değerlendirme raporları oluşturur."
+  }
+];
+---
+
+<BaseLayout 
+  title="Kalite Kontrol Sistemi | Stok Pratik - ISO Uyumlu Kalite Yönetimi"
+  description="Kalite kontrol sistemi ile ürün kalitenizi artırın. ISO standartlarına uyum, istatistiksel proses kontrol, raporlama. Ücretsiz demo talep edin."
+>
+
+  <!-- Hero Section -->
+  <section style="padding: 4rem 0; background: linear-gradient(135deg, #059669, #10b981); color: white;">
+    <div class="container">
+      <div style="text-align: center; max-width: 800px; margin: 0 auto;">
+        <h1 style="color: white; margin-bottom: 1.5rem; font-size: 2.5rem;">
+          Kalite Kontrol Sistemi ile Mükemmelliği Yakalayın
+        </h1>
+        <p style="font-size: 1.25rem; margin-bottom: 2rem; opacity: 0.9;">
+          ISO standartlarına uyumlu, istatistiksel verilere dayalı, sürekli iyileştirme odaklı kalite yönetimi.
+        </p>
+        <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+          <a 
+            href="https://wa.me/+905325000999?text=Merhaba,%20kalite%20kontrol%20sistemi%20demo%20talep%20ediyorum"
+            class="btn btn-primary"
+            style="min-height: 52px; background: white; color: #059669; border-color: white;"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            ✅ Kalite Demo İste
+          </a>
+          <a 
+            href="https://wa.me/+905325000999?text=Merhaba,%20ISO%20standardı%20uyumluluğu%20hakkında%20bilgi%20almak%20istiyorum"
+            class="btn btn-secondary"
+            style="min-height: 52px; border-color: white; color: white;"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            🏆 ISO Danışmanlığı
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Ana İçerik -->
+  <main style="padding: 3rem 0; background: var(--bg-white);">
+    <div class="container">
+      
+      <!-- Kalite Modülleri -->
+      <section style="margin-bottom: 4rem;">
+        <h2 style="text-align: center; color: #059669; margin-bottom: 2rem;">
+          6 Temel Kalite Kontrol Modülü
+        </h2>
+        
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem;">
+          {qualityModules.map((module) => (
+            <div style="background: white; padding: 2rem; border-radius: 1rem; border: 1px solid #a7f3d0; box-shadow: var(--shadow-md); text-align: center;">
+              <div style="font-size: 3rem; margin-bottom: 1rem;">{module.icon}</div>
+              <h3 style="color: #059669; margin-bottom: 0.75rem; font-size: 1.1rem;">{module.title}</h3>
+              <p style="color: var(--text-gray); margin-bottom: 1rem; font-size: 0.95rem;">{module.description}</p>
+              <div style="background: #d1fae5; padding: 0.5rem; border-radius: 0.5rem; border-left: 3px solid #10b981;">
+                <span style="color: #065f46; font-weight: 600;">{module.benefit}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- Kalite Standartları -->
+      <section style="margin-bottom: 4rem; background: #ecfdf5; padding: 3rem; border-radius: 1rem;">
+        <h2 style="text-align: center; color: #059669; margin-bottom: 2rem;">
+          ISO Standartlarına Tam Uyum
+        </h2>
+        
+        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem;">
+          {qualityStandards.map((standard) => (
+            <div style="background: white; padding: 2rem; border-radius: 1rem; border: 1px solid #a7f3d0;">
+              <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem;">
+                <div style="font-size: 2.5rem;">{standard.icon}</div>
+                <h3 style="color: #059669; margin: 0; font-size: 1.25rem;">{standard.standard}</h3>
+              </div>
+              
+              <div style="margin-bottom: 1.5rem;">
+                <div style="font-weight: 600; color: var(--text-dark); margin-bottom: 0.5rem;">Özellikler:</div>
+                <ul style="margin: 0; padding-left: 1.25rem;">
+                  {standard.features.map((feature) => (
+                    <li style="margin-bottom: 0.5rem; color: var(--text-gray);">{feature}</li>
+                  ))}
+                </ul>
+              </div>
+              
+              <div style="background: #d1fae5; padding: 1rem; border-radius: 0.5rem; border-left: 4px solid #10b981;">
+                <div style="font-weight: 600; color: #065f46;">Stok Pratik Desteği:</div>
+                <div style="color: var(--text-dark);">{standard.support}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- Kalite Süreçleri -->
+      <section style="margin-bottom: 4rem;">
+        <h2 style="text-align: center; color: #059669; margin-bottom: 2rem;">
+          4 Adımda Kalite Kontrol Süreci
+        </h2>
+        
+        <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem;">
+          {qualityProcesses.map((process) => (
+            <div style="position: relative; text-align: center;">
+              <div style="position: absolute; top: -1.5rem; left: 50%; transform: translateX(-50%); background: #10b981; color: white; width: 3rem; height: 3rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.25rem; z-index: 10;">
+                {process.step}
+              </div>
+              <div style="background: white; padding: 2rem 1.5rem 1.5rem; border-radius: 1rem; border: 2px solid #34d399; height: 100%;">
+                <h3 style="color: #059669; margin-top: 1rem; margin-bottom: 0.75rem; font-size: 1.1rem;">{process.title}</h3>
+                <p style="color: var(--text-gray); margin: 0; font-size: 0.95rem;">{process.description}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- Kalite Araçları -->
+      <section style="margin-bottom: 4rem;">
+        <h2 style="text-align: center; color: #059669; margin-bottom: 2rem;">
+          Modern Kalite Kontrol Araçları
+        </h2>
+        
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem;">
+          {qualityTools.map((tool) => (
+            <div style="background: white; padding: 2rem; border-radius: 1rem; border: 1px solid #d1fae5; box-shadow: var(--shadow-sm);">
+              <h3 style="color: #059669; margin-top: 0; margin-bottom: 0.75rem; font-size: 1.1rem;">{tool.tool}</h3>
+              <div style="margin-bottom: 1rem;">
+                <div style="font-weight: 600; color: var(--text-dark); margin-bottom: 0.25rem;">Amaç:</div>
+                <div style="color: var(--text-gray); font-size: 0.95rem;">{tool.purpose}</div>
+              </div>
+              <div style="background: #ecfdf5; padding: 0.75rem; border-radius: 0.5rem; border-left: 3px solid #10b981;">
+                <div style="font-weight: 600; color: #065f46;">Fayda:</div>
+                <div style="color: var(--text-dark); font-size: 0.95rem;">{tool.benefit}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- SPC Özellikleri -->
+      <section style="margin-bottom: 4rem; background: linear-gradient(135deg, #ecfdf5, #d1fae5); padding: 3rem; border-radius: 1rem;">
+        <h2 style="text-align: center; color: #059669; margin-bottom: 2rem;">
+          İstatistiksel Proses Kontrol (SPC)
+        </h2>
+        
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; text-align: center;">
+          <div style="background: white; padding: 2rem; border-radius: 1rem; border: 2px solid #34d399;">
+            <div style="font-size: 3rem; color: #059669; margin-bottom: 1rem;">📊</div>
+            <div style="font-size: 1.25rem; font-weight: bold; color: #059669; margin-bottom: 0.5rem;">Kontrol Kartları</div>
+            <div style="color: var(--text-gray);">X-R, X-S, p, np, c, u kartları</div>
+            <div style="margin-top: 1rem; font-size: 1rem; color: #065f46;">
+              Gerçek zamanlı uyarı sistemi
+            </div>
+          </div>
+          
+          <div style="background: white; padding: 2rem; border-radius: 1rem; border: 2px solid #34d399;">
+            <div style="font-size: 3rem; color: #059669; margin-bottom: 1rem;">📈</div>
+            <div style="font-size: 1.25rem; font-weight: bold; color: #059669; margin-bottom: 0.5rem;">Proses Yetenek Analizi</div>
+            <div style="color: var(--text-gray);">Cp, Cpk, Pp, Ppk hesaplamaları</div>
+            <div style="margin-top: 1rem; font-size: 1rem; color: #065f46;">
+              Sigma seviyesi takibi
+            </div>
+          </div>
+          
+          <div style="background: white; padding: 2rem; border-radius: 1rem; border: 2px solid #34d399;">
+            <div style="font-size: 3rem; color: #059669; margin-bottom: 1rem;">🔔</div>
+            <div style="font-size: 1.25rem; font-weight: bold; color: #059669; margin-bottom: 0.5rem;">Otomatik Uyarılar</div>
+            <div style="color: var(--text-gray);">Kural ihlallerinde anında bildirim</div>
+            <div style="margin-top: 1rem; font-size: 1rem; color: #065f46;">
+              E-posta, SMS, push notification
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Başarı Hikayeleri -->
+      <section style="margin-bottom: 4rem;">
+        <h2 style="text-align: center; color: #059669; margin-bottom: 2rem;">
+          Kalite ile Başarı Hikayeleri
+        </h2>
+        
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem;">
+          {successStories.map((story) => (
+            <div style="background: white; padding: 2rem; border-radius: 1rem; border: 1px solid #a7f3d0; box-shadow: var(--shadow-md); text-align: center;">
+              <div style="font-size: 2rem; margin-bottom: 1rem;">🏆</div>
+              <h3 style="color: #059669; margin-bottom: 0.5rem;">{story.company}</h3>
+              <div style="color: var(--text-gray); margin-bottom: 1rem;">📍 {story.location}</div>
+              
+              <div style="margin-bottom: 1rem;">
+                <div style="font-weight: 600; color: var(--text-dark); margin-bottom: 0.25rem;">Problem:</div>
+                <div style="color: #dc2626; background: #fef2f2; padding: 0.5rem; border-radius: 0.5rem; border-left: 3px solid #dc2626;">
+                  {story.problem}
+                </div>
+              </div>
+              
+              <div style="margin-bottom: 1rem;">
+                <div style="font-weight: 600; color: var(--text-dark); margin-bottom: 0.25rem;">Çözüm:</div>
+                <div style="color: var(--text-dark); background: #d1fae5; padding: 0.5rem; border-radius: 0.5rem; border-left: 3px solid #10b981;">
+                  {story.solution}
+                </div>
+              </div>
+              
+              <div style="background: linear-gradient(135deg, #10b981, #34d399); color: white; padding: 0.75rem; border-radius: 0.5rem;">
+                <div style="font-weight: 600; font-size: 1.1rem;">Sonuç: {story.result}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- İç Linkler -->
+      <section style="margin-bottom: 4rem;">
+        <h2 style="text-align: center; color: #059669; margin-bottom: 2rem;">
+          Kalite ile Entegre Çözümlerimiz
+        </h2>
+        
+        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem;">
+          {internalLinks.map((link) => (
+            <a 
+              href={link.url}
+              style="display: flex; align-items: center; gap: 1rem; background: white; padding: 1.5rem; border-radius: 0.75rem; text-decoration: none; color: var(--text-dark); border: 1px solid #a7f3d0; transition: all 0.3s;"
+            >
+              <div style="font-size: 2rem;">{link.icon}</div>
+              <div>
+                <div style="font-weight: 600; color: #059669; margin-bottom: 0.25rem;">{link.title}</div>
+                <div style="color: var(--text-gray); font-size: 0.95rem;">{link.description}</div>
+              </div>
+            </a>
+          ))}
+        </div>
+      </section>
+
+      <!-- FAQ -->
+      <section style="margin-bottom: 4rem;">
+        <h2 style="text-align: center; color: #059669; margin-bottom: 2rem;">
+          Kalite Kontrol Sistemi Hakkında Sıkça Sorulan Sorular
+        </h2>
+        
+        <div style="max-width: 800px; margin: 0 auto;">
+          {faqItems.map((item, index) => (
+            <div style="background: white; padding: 1.5rem; border-radius: 0.75rem; margin-bottom: 1rem; border: 1px solid #d1fae5; box-shadow: var(--shadow-sm);">
+              <div style="display: flex; gap: 1rem;">
+                <div style="color: #059669; font-weight: bold;">Q{index + 1}:</div>
+                <div style="flex: 1;">
+                  <h3 style="color: #059669; margin: 0 0 0.75rem 0; font-size: 1.1rem;">{item.question}</h3>
+                  <p style="margin: 0; color: var(--text-dark); line-height: 1.6;">{item.answer}</p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- CTA -->
+      <section style="background: linear-gradient(135deg, #059669, #10b981); padding: 4rem; border-radius: 1.5rem; text-align: center; color: white;">
+        <h2 style="color: white; margin-bottom: 1rem; font-size: 2rem;">Kalite Sisteminizi Ücretsiz Analiz Edelim</h2>
+        <p style="margin-bottom: 2rem; font-size: 1.1rem; opacity: 0.9; max-width: 600px; margin-left: auto; margin-right: auto;">
+          ISO kalite denetçilerimiz sisteminizi analiz edip, size özel kalite yönetim planı hazırlasın.
+        </p>
+        
+        <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+          <a 
+            href="https://wa.me/+905325000999?text=Merhaba,%20kalite%20sistemi%20analizi%20için%20görüşmek%20istiyorum"
+            style="display: inline-flex; align-items: center; justify-content: center; padding: 1rem 2rem; background-color: white; color: #059669; text-decoration: none; border-radius: 0.75rem; font-weight: 600; gap: 0.5rem; border: none; cursor: pointer; font-size: 1.1rem;"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            📋 Ücretsiz Kalite Analizi
+          </a>
+          
+          <a 
+            href="https://wa.me/+905325000999?text=Merhaba,%20ISO%20standardı%20belgelendirme%20süreci%20hakkında%20bilgi%20almak%20istiyorum"
+            style="display: inline-flex; align-items: center; justify-content: center; padding: 1rem 2rem; background-color: transparent; color: white; text-decoration: none; border-radius: 0.75rem; font-weight: 600; gap: 0.5rem; border: 2px solid white; cursor: pointer; font-size: 1.1rem;"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            🏆 ISO Danışmanlık Paketi
+          </a>
+        </div>
+        
+        <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; margin-top: 3rem; text-align: center;">
+          <div>
+            <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">✅</div>
+            <div>ISO Şablonları</div>
+          </div>
+          <div>
+            <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">👨‍🏫</div>
+            <div>Kalite Eğitimi</div>
+          </div>
+          <div>
+            <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">📊</div>
+            <div>SPC Danışmanlığı</div>
+          </div>
+          <div>
+            <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">🔍</div>
+            <div>İç Denetim Desteği</div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <style>
+    :root {
+      --border-color: #e5e7eb;
+    }
+    
+    h2 {
+      color: #059669;
+      margin-bottom: 1rem;
+      font-size: 1.8rem;
+    }
+    
+    h3 {
+      color: var(--text-dark);
+      margin-bottom: 0.5rem;
+    }
+    
+    p {
+      color: var(--text-dark);
+      line-height: 1.6;
+    }
+    
+    a:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+      border-color: #10b981;
+    }
+    
+    @media (max-width: 1024px) {
+      div[style*="grid-template-columns: repeat(4, 1fr)"] {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    
+    @media (max-width: 768px) {
+      div[style*="grid-template-columns: repeat(3, 1fr)"] {
+        grid-template-columns: 1fr;
+      }
+      
+      div[style*="grid-template-columns: repeat(2, 1fr)"] {
+        grid-template-columns: 1fr;
+      }
+      
+      section {
+        padding-left: 1rem;
+        padding-right: 1rem;
+      }
+      
+      .container > div {
+        padding: 0;
+      }
+      
+      .hero-section {
+        padding: 3rem 1rem;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 2rem !important;
+      }
+      
+      div[style*="grid-template-columns: repeat(4, 1fr)"] {
+        grid-template-columns: 1fr;
+      }
+      
+      .cta-buttons {
+        flex-direction: column;
+      }
+      
+      .cta-buttons a {
+        width: 100%;
+        text-align: center;
+      }
+      
+      .success-stories {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+
+</BaseLayout>

@@ -1,0 +1,1389 @@
+---
+// src/pages/is-gucu-planlama.astro
+import BaseLayout from '../layouts/BaseLayout.astro';
+import '../styles/variables.css';
+import '../styles/global.css';
+import '../styles/components.css';
+
+// Özellikler
+const features = [
+  {
+    icon: "📅",
+    title: "Vardiyalı Çalışma Planı",
+    description: "7/24 çalışan işletmeler için esnek vardiya planlama",
+    details: [
+      "Otomatik vardiya oluşturma",
+      "Çalışan tercihleri",
+      "Vardiya değişim talepleri",
+      "Yasal çalışma saatleri kontrolü"
+    ]
+  },
+  {
+    icon: "👥",
+    title: "Personel Yönetimi",
+    description: "Tüm personel bilgilerini tek platformda yönetin",
+    details: [
+      "Personel profilleri",
+      "Yetki ve izin yönetimi",
+      "Performans takibi",
+      "Eğitim ve sertifikalar"
+    ]
+  },
+  {
+    icon: "⏱️",
+    title: "Devam Kontrolü",
+    description: "Otomatik devam-devamsızlık takibi",
+    details: [
+      "Parmak izi/yüz tanıma entegrasyonu",
+      "Mobil check-in/out",
+      "Geç kalma erken çıkma takibi",
+      "Fazla mesai hesaplama"
+    ]
+  },
+  {
+    icon: "📊",
+    title: "Performans Analizi",
+    description: "Çalışan verimliliğini ölçün ve analiz edin",
+    details: [
+      "Verimlilik raporları",
+      "Proje bazlı performans",
+      "Ekip karşılaştırmaları",
+      "Hedef takip sistemi"
+    ]
+  },
+  {
+    icon: "💰",
+    title: "Maaş Bordrosu",
+    description: "Otomatik maaş hesaplama ve bordro yönetimi",
+    details: [
+      "Otomatik maaş hesaplama",
+      "SGK bildirimleri",
+      "Vergi kesintileri",
+      "Avans yönetimi"
+    ]
+  },
+  {
+    icon: "📱",
+    title: "Mobil Uygulama",
+    description: "Çalışanlar için özel mobil uygulama",
+    details: [
+      "Vardiya görüntüleme",
+      "İzin talep etme",
+      "Mobil check-in",
+      "Bildirimler"
+    ]
+  }
+];
+
+// Sektör çözümleri
+const industrySolutions = [
+  {
+    industry: "Üretim Fabrikaları",
+    icon: "🏭",
+    challenges: [
+      "Çoklu vardiya yönetimi",
+      "Makine-personel uyumu",
+      "Üretim hattı planlaması",
+      "Kalifiye personel dağılımı"
+    ],
+    benefits: [
+      "%30 verimlilik artışı",
+      "%25 işgücü maliyeti azalması",
+      "%40 planlama süresi tasarrufu"
+    ]
+  },
+  {
+    industry: "Perakende Zincirleri",
+    icon: "🏬",
+    challenges: [
+      "Çoklu şube personel yönetimi",
+      "Zirve saat personel planlaması",
+      "Part-time çalışan yönetimi",
+      "Mağaza bazlı ihtiyaç planlaması"
+    ],
+    benefits: [
+      "%35 personel optimizasyonu",
+      "%20 fazla mesai azalması",
+      "%45 planlama hatası azalması"
+    ]
+  },
+  {
+    industry: "Sağlık Sektörü",
+    icon: "🏥",
+    challenges: [
+      "7/24 nöbet sistemi",
+      "Uzman dağılımı",
+      "Acil durum planlaması",
+      "Dinlenme süreleri takibi"
+    ],
+    benefits: [
+      "%50 nöbet planlama süresi azalması",
+      "%30 personel memnuniyeti artışı",
+      "%40 yasal uyumluluk"
+    ]
+  },
+  {
+    industry: "Çağrı Merkezleri",
+    icon: "📞",
+    challenges: [
+      "Zirve saat planlaması",
+      "Dil yetenekleri dağılımı",
+      "Mola yönetimi",
+      "Performans bazlı planlama"
+    ],
+    benefits: [
+      "%40 müşteri memnuniyeti artışı",
+      "%25 bekleme süresi azalması",
+      "%35 personel verimliliği artışı"
+    ]
+  }
+];
+
+// İstatistikler
+const statistics = [
+  { number: "%40", label: "Planlama Süresi Tasarrufu", icon: "⏱️" },
+  { number: "%25", label: "Fazla Mesai Azalması", icon: "💰" },
+  { number: "%35", label: "Personel Verimliliği Artışı", icon: "📈" },
+  { number: "7/24", label: "Sistem Erişimi", icon: "🌐" }
+];
+
+// İş gücü planlama adımları
+const planningSteps = [
+  {
+    step: 1,
+    title: "İş Yükü Analizi",
+    description: "Haftalık/aylık iş yükünü analiz edin",
+    icon: "📋"
+  },
+  {
+    step: 2,
+    title: "Personel Yetenek Eşleştirme",
+    description: "İşe uygun personeli otomatik eşleştirin",
+    icon: "👨‍💼"
+  },
+  {
+    step: 3,
+    title: "Vardiya Planı Oluştur",
+    description: "Otomatik vardiya planını oluşturun",
+    icon: "📅"
+  },
+  {
+    step: 4,
+    title: "Onay ve Dağıtım",
+    description: "Planı onaylayıp çalışanlara iletin",
+    icon: "✅"
+  },
+  {
+    step: 5,
+    title: "Gerçek Zamanlı Takip",
+    description: "Planın uygulanmasını anlık takip edin",
+    icon: "👁️"
+  },
+  {
+    step: 6,
+    title: "Performans Değerlendirme",
+    description: "Sonuçları analiz ederek iyileştirin",
+    icon: "📊"
+  }
+];
+
+// İç linkler
+const relatedPages = [
+  { title: "ERP Sistemi", url: "/erp-sistemi", desc: "Tüm iş süreçleriniz için entegre çözüm" },
+  { title: "Stok Yönetimi", url: "/stok-yonetimi", desc: "Üretim ve stok entegrasyonu" },
+  { title: "Üretim Yönetimi", url: "/uretim-yonetimi", desc: "Üretim planlama ve takip" },
+  { title: "Proje Yönetimi", url: "/proje-yonetimi", desc: "Proje bazlı iş gücü planlama" }
+];
+---
+
+<BaseLayout 
+  title="İş Gücü Planlama Sistemi | Personel Yönetimi - Stok Pratik" 
+  description="İş gücü planlama sistemi ile personel yönetiminizi optimize edin. Vardiyalı çalışma planı, performans takibi ve otomatik maaş hesaplama ile verimliliğinizi artırın."
+>
+  
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-text">
+          <span class="hero-badge">İnsan Kaynakları Çözümü</span>
+          <h1>İş Gücü Planlama Sistemi ile <span class="highlight">Personel Verimliliğinizi Artırın</span></h1>
+          <p class="hero-subtitle hero-badge highlight">Vardiyalı çalışma planı, performans takibi ve otomatik maaş hesaplama ile iş gücü yönetiminizi optimize edin</p>
+          
+          <div class="hero-stats">
+            {statistics.map((stat, index) => (
+              <div class="stat-item" key={index}>
+                <div class="stat-icon">{stat.icon}</div>
+                <div class="stat-number">{stat.number}</div>
+                <div class="stat-label">{stat.label}</div>
+              </div>
+            ))}
+          </div>
+          
+          <div class="hero-buttons">
+            <a 
+              href="https://wa.me/+905325000999?text=Merhaba,%20İş%20Gücü%20Planlama%20Sistemi%20demo%20talep%20ediyorum" 
+              class="btn btn-primary btn-large"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              📅 Ücretsiz Demo İste
+            </a>
+            <a 
+              href="tel:+905325000999" 
+              class="btn btn-secondary btn-large"
+            >
+              📞 Hemen Ara: 0532 500 09 99
+            </a>
+          </div>
+          
+          <div class="hero-features">
+            <div class="feature">
+              <span class="feature-icon">🤖</span>
+              <span>Otomatik Planlama</span>
+            </div>
+            <div class="feature">
+              <span class="feature-icon">📱</span>
+              <span>Mobil Uygulama</span>
+            </div>
+            <div class="feature">
+              <span class="feature-icon">🔒</span>
+              <span>SGK Uyumlu</span>
+            </div>
+            <div class="feature">
+              <span class="feature-icon">⚡</span>
+              <span>Gerçek Zamanlı</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="hero-image">
+          <div class="workforce-dashboard">
+            <div class="dashboard-header">
+              <div class="dashboard-title">
+                <span class="title-icon">👥</span>
+                <span>İş Gücü Planlama Paneli</span>
+              </div>
+              <div class="dashboard-period">Bu Hafta: 12-18 Ağustos</div>
+            </div>
+            
+            <div class="shift-overview">
+              <div class="shift-card">
+                <div class="shift-type">Sabah</div>
+                <div class="shift-hours">08:00 - 16:00</div>
+                <div class="shift-count">24 Çalışan</div>
+              </div>
+              <div class="shift-card">
+                <div class="shift-type">Akşam</div>
+                <div class="shift-hours">16:00 - 00:00</div>
+                <div class="shift-count">18 Çalışan</div>
+              </div>
+              <div class="shift-card">
+                <div class="shift-type">Gece</div>
+                <div class="shift-hours">00:00 - 08:00</div>
+                <div class="shift-count">12 Çalışan</div>
+              </div>
+            </div>
+            
+            <div class="personnel-status">
+              <div class="status-item">
+                <div class="status-label">İş Başında</div>
+                <div class="status-value success">42</div>
+              </div>
+              <div class="status-item">
+                <div class="status-label">İzinli</div>
+                <div class="status-value warning">8</div>
+              </div>
+              <div class="status-item">
+                <div class="status-label">Hasta</div>
+                <div class="status-value danger">4</div>
+              </div>
+              <div class="status-item">
+                <div class="status-label">Toplam</div>
+                <div class="status-value">54</div>
+              </div>
+            </div>
+            
+            <div class="urgent-alerts">
+              <div class="alert-icon">⚠️</div>
+              <div class="alert-text">2 vardiyada personel eksikliği var</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Problem Çözüm -->
+  <section class="challenge-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>İş Gücü Planlama Zorluklarını Çözüyoruz</h2>
+        <p>İşletmelerin yaşadığı personel planlama problemlerine akıllı çözümler</p>
+      </div>
+      
+      <div class="challenge-grid">
+        <div class="challenge-card">
+          <div class="challenge-icon">😫</div>
+          <h3>Manuel Planlama</h3>
+          <p>Excel tabloları ile saatler süren manuel planlama</p>
+          <ul>
+            <li>Hatalı planlama riski</li>
+            <li>Zaman kaybı</li>
+            <li>Son dakika değişiklikleri</li>
+          </ul>
+        </div>
+        
+        <div class="solution-card">
+          <div class="solution-icon">🤖</div>
+          <h3>Otomatik Planlama</h3>
+          <p>Akıllı algoritmalar ile dakikalar içinde plan oluşturma</p>
+          <ul>
+            <li>%90 zaman tasarrufu</li>
+            <li>Hatasız planlama</li>
+            <li>Anlık güncelleme</li>
+          </ul>
+        </div>
+        
+        <div class="challenge-card">
+          <div class="challenge-icon">💸</div>
+          <h3>Yüksek Fazla Mesai</h3>
+          <p>Plansızlıktan kaynaklanan yüksek fazla mesai maliyetleri</p>
+          <ul>
+            <li>Bütçe aşımı</li>
+            <li>Personel yorgunluğu</li>
+            <li>Verimlilik kaybı</li>
+          </ul>
+        </div>
+        
+        <div class="solution-card">
+          <div class="solution-icon">📊</div>
+          <h3>Optimize Planlama</h3>
+          <p>İş yükü analizi ile optimal personel dağılımı</p>
+          <ul>
+            <li>%30 fazla mesai azalması</li>
+            <li>Maliyet optimizasyonu</li>
+            <li>Verimlilik artışı</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Özellikler -->
+  <section class="features-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Stok Pratik İş Gücü Planlama Özellikleri</h2>
+        <p>Personel yönetiminizi kolaylaştıran kapsamlı çözümler</p>
+      </div>
+      
+      <div class="features-grid">
+        {features.map((feature, index) => (
+          <div class="feature-card" key={index}>
+            <div class="feature-header">
+              <div class="feature-icon">{feature.icon}</div>
+              <div>
+                <h3>{feature.title}</h3>
+                <p class="feature-desc">{feature.description}</p>
+              </div>
+            </div>
+            
+            <ul class="feature-details">
+              {feature.details.map((detail, i) => (
+                <li key={i}>
+                  <span class="detail-check">✓</span>
+                  {detail}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Sektör Çözümleri -->
+  <section class="industry-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Sektörünüze Özel İş Gücü Çözümleri</h2>
+        <p>Her sektörün ihtiyacına göre özelleştirilmiş planlama</p>
+      </div>
+      
+      <div class="industry-grid">
+        {industrySolutions.map((solution, index) => (
+          <div class="industry-card" key={index}>
+            <div class="industry-header">
+              <div class="industry-icon">{solution.icon}</div>
+              <h3>{solution.industry}</h3>
+            </div>
+            
+            <div class="challenges-section">
+              <h4>🎯 Zorluklar</h4>
+              <ul>
+                {solution.challenges.map((challenge, i) => (
+                  <li key={i}>{challenge}</li>
+                ))}
+              </ul>
+            </div>
+            
+            <div class="benefits-section">
+              <h4>✅ Kazançlar</h4>
+              <div class="benefits-list">
+                {solution.benefits.map((benefit, i) => (
+                  <div class="benefit-item" key={i}>
+                    <span class="benefit-icon">🚀</span>
+                    <span>{benefit}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+            
+            <a 
+              href={`https://wa.me/+905325000999?text=Merhaba,%20${encodeURIComponent(solution.industry)}%20için%20iş%20gücü%20planlama%20sistemi%20hakkında%20bilgi%20almak%20istiyorum`}
+              class="btn btn-industry"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              👥 Bu Sektör İçin Demo İste
+            </a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Planlama Süreci -->
+  <section class="process-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>6 Adımda Akıllı İş Gücü Planlaması</h2>
+        <p>Stok Pratik ile iş gücü planlama süreciniz nasıl işler?</p>
+      </div>
+      
+      <div class="process-timeline">
+        {planningSteps.map((step, index) => (
+          <div class="process-step" key={index}>
+            <div class="step-number">{step.step}</div>
+            <div class="step-content">
+              <div class="step-header">
+                <div class="step-icon">{step.icon}</div>
+                <h3>{step.title}</h3>
+              </div>
+              <p class="step-description">{step.description}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+      
+      <div class="process-result">
+        <div class="result-icon">🎉</div>
+        <div class="result-content">
+          <h3>Optimize Edilmiş İş Gücü ve %40 Verimlilik Artışı!</h3>
+          <p>Stok Pratik ile iş gücü planlamanızı otomatikleştirin, maliyetlerinizi düşürün ve verimliliğinizi artırın.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Entegrasyonlar -->
+  <section class="integration-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Diğer Sistemlerle Tam Entegrasyon</h2>
+        <p>İş gücü planlama sistemimiz diğer sistemlerinizle uyumlu çalışır</p>
+      </div>
+      
+      <div class="integrations-grid">
+        <div class="integration-card">
+          <div class="integration-icon">📦</div>
+          <h3>Stok Yönetimi</h3>
+          <p>Stok seviyelerine göre otomatik personel planlaması</p>
+        </div>
+        
+        <div class="integration-card">
+          <div class="integration-icon">🏭</div>
+          <h3>Üretim Planlama</h3>
+          <p>Üretim planına uygun iş gücü dağılımı</p>
+        </div>
+        
+        <div class="integration-card">
+          <div class="integration-icon">💰</div>
+          <h3>Muhasebe Sistemi</h3>
+          <p>Otomatik maaş hesaplama ve bordro entegrasyonu</p>
+        </div>
+        
+        <div class="integration-card">
+          <div class="integration-icon">🔒</div>
+          <h3>SGK ve Vergi</h3>
+          <p>Yasal bildirimler için otomatik entegrasyon</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- İlgili Sayfalar -->
+  <section class="related-pages">
+    <div class="container">
+      <div class="section-header">
+        <h2>Entegre Çalışan Diğer Çözümlerimiz</h2>
+        <p>İş gücü planlama ile birlikte kullanabileceğiniz sistemler</p>
+      </div>
+      
+      <div class="pages-grid">
+        {relatedPages.map((page, index) => (
+          <a href={page.url} class="page-card" key={index}>
+            <h3>{page.title}</h3>
+            <p>{page.desc}</p>
+            <div class="page-link">
+              <span>İncele</span>
+              <span class="arrow">→</span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Son CTA -->
+  <section class="final-cta">
+    <div class="container">
+      <div class="cta-content">
+        <div class="cta-icon">👥</div>
+        <h2>İş Gücü Planlamanızı Ücretsiz Analiz Edelim</h2>
+        <p class="hero-badge highlight">Uzman ekibimiz işletmenizin iş gücü ihtiyacını analiz edip size özel çözüm sunsun.</p>
+        
+        <div class="cta-buttons">
+          <a 
+            href="https://wa.me/+905325000999?text=Merhaba,%20İş%20Gücü%20Planlama%20analizi%20ve%20demo%20talep%20ediyorum"
+            class="btn btn-secondary btn-large"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            📊 Ücretsiz Analiz İste
+          </a>
+          
+          <a 
+            href="tel:+905325000999"
+            class="btn btn-secondary btn-large"
+          >
+            📞 Canlı Destek Al
+          </a>
+        </div>
+        
+        <div class="cta-benefits">
+          <div class="benefit">
+            <span class="benefit-icon">🎯</span>
+            <span>Ücretsiz İş Gücü Analizi</span>
+          </div>
+          <div class="benefit">
+            <span class="benefit-icon">👨‍🏫</span>
+            <span>Canlı Sistem Eğitimi</span>
+          </div>
+          <div class="benefit">
+            <span class="benefit-icon">🔄</span>
+            <span>Mevcut Veri Aktarımı</span>
+          </div>
+          <div class="benefit">
+            <span class="benefit-icon">💰</span>
+            <span>Maliyet Analizi Raporu</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  /* Hero Section */
+  .hero-section {
+    background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+    color: white;
+    padding: 4rem 0;
+  }
+  
+  .hero-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+  
+  .hero-badge {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+  }
+  
+  .hero-text h1 {
+    font-size: 3rem;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+  }
+  
+  .highlight {
+    color: #f1c40f;
+  }
+  
+  .hero-subtitle {
+    font-size: 1.2rem;
+    opacity: 0.9;
+    margin-bottom: 2rem;
+  }
+  
+  .hero-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    margin: 2rem 0;
+  }
+  
+  .stat-item {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 1rem;
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+  }
+  
+  .stat-icon {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .stat-number {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #f1c40f;
+    margin-bottom: 0.3rem;
+  }
+  
+  .stat-label {
+    font-size: 0.8rem;
+    opacity: 0.8;
+  }
+  
+  .hero-buttons {
+    display: flex;
+    gap: 1rem;
+    margin: 2rem 0;
+  }
+  
+  .btn-large {
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+  }
+  
+  .hero-features {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+  
+  .feature {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+  }
+  
+  .feature-icon {
+    font-size: 1rem;
+  }
+  
+  /* Workforce Dashboard */
+  .workforce-dashboard {
+    background: white;
+    border-radius: 15px;
+    padding: 1.5rem;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+    color: #2c3e50;
+  }
+  
+  .dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #f1f2f6;
+  }
+  
+  .dashboard-title {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: bold;
+    font-size: 1.2rem;
+  }
+  
+  .title-icon {
+    font-size: 1.5rem;
+  }
+  
+  .dashboard-period {
+    font-size: 0.9rem;
+    color: #7f8c8d;
+  }
+  
+  .shift-overview {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .shift-card {
+    background: #f8f9fa;
+    padding: 1rem;
+    border-radius: 10px;
+    text-align: center;
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+  }
+  
+  .shift-card:hover {
+    border-color: #3498db;
+    transform: translateY(-2px);
+  }
+  
+  .shift-type {
+    font-weight: bold;
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
+  }
+  
+  .shift-hours {
+    font-size: 0.9rem;
+    color: #7f8c8d;
+    margin-bottom: 0.5rem;
+  }
+  
+  .shift-count {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #3498db;
+  }
+  
+  .personnel-status {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .status-item {
+    text-align: center;
+    padding: 0.8rem;
+    background: #f8f9fa;
+    border-radius: 8px;
+  }
+  
+  .status-label {
+    font-size: 0.8rem;
+    color: #7f8c8d;
+    margin-bottom: 0.3rem;
+  }
+  
+  .status-value {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  
+  .status-value.success {
+    color: #2ecc71;
+  }
+  
+  .status-value.warning {
+    color: #f39c12;
+  }
+  
+  .status-value.danger {
+    color: #e74c3c;
+  }
+  
+  .urgent-alerts {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: #fff3cd;
+    border: 1px solid #ffeaa7;
+    color: #856404;
+    padding: 0.8rem;
+    border-radius: 8px;
+    font-size: 0.9rem;
+  }
+  
+  .alert-icon {
+    font-size: 1.2rem;
+  }
+  
+  /* Challenge Section */
+  .challenge-section {
+    padding: 4rem 0;
+    background: #f8f9fa;
+  }
+  
+  .section-header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+  
+  .section-header h2 {
+    font-size: 2.5rem;
+    color: #2c3e50;
+    margin-bottom: 1rem;
+  }
+  
+  .section-header p {
+    color: #7f8c8d;
+    font-size: 1.1rem;
+  }
+  
+  .challenge-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+  
+  .challenge-card, .solution-card {
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  }
+  
+  .challenge-card {
+    background: white;
+    border-top: 5px solid #e74c3c;
+  }
+  
+  .solution-card {
+    background: linear-gradient(135deg, #2ecc71, #27ae60);
+    color: white;
+  }
+  
+  .challenge-icon, .solution-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+  
+  .challenge-card h3, .solution-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .challenge-card ul, .solution-card ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 1rem;
+  }
+  
+  .challenge-card li, .solution-card li {
+    padding: 0.3rem 0;
+    position: relative;
+    padding-left: 1.5rem;
+  }
+  
+  .challenge-card li:before {
+    content: "❌";
+    position: absolute;
+    left: 0;
+    color: #e74c3c;
+  }
+  
+  .solution-card li:before {
+    content: "✅";
+    position: absolute;
+    left: 0;
+    color: #f1c40f;
+  }
+  
+  /* Features Section */
+  .features-section {
+    padding: 4rem 0;
+  }
+  
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+  
+  .feature-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+    border: 2px solid transparent;
+  }
+  
+  .feature-card:hover {
+    transform: translateY(-5px);
+    border-color: #3498db;
+    box-shadow: 0 10px 20px rgba(52, 152, 219, 0.2);
+  }
+  
+  .feature-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .feature-icon {
+    font-size: 2.5rem;
+    flex-shrink: 0;
+  }
+  
+  .feature-card h3 {
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
+    font-size: 1.3rem;
+  }
+  
+  .feature-desc {
+    color: #7f8c8d;
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+  
+  .feature-details {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .feature-details li {
+    padding: 0.5rem 0;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .detail-check {
+    color: #2ecc71;
+    font-weight: bold;
+  }
+  
+  /* Industry Section */
+  .industry-section {
+    padding: 4rem 0;
+    background: #f8f9fa;
+  }
+  
+  .industry-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+  
+  .industry-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  }
+  
+  .industry-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #f1f2f6;
+  }
+  
+  .industry-icon {
+    font-size: 2.5rem;
+  }
+  
+  .industry-card h3 {
+    color: #2c3e50;
+    margin: 0;
+  }
+  
+  .challenges-section h4,
+  .benefits-section h4 {
+    color: #3498db;
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .challenges-section ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 1.5rem;
+  }
+  
+  .challenges-section li {
+    padding: 0.3rem 0;
+    position: relative;
+    padding-left: 1.5rem;
+  }
+  
+  .challenges-section li:before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: #3498db;
+    font-size: 1.5rem;
+  }
+  
+  .benefits-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .benefit-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: #f8f9ff;
+    padding: 0.5rem;
+    border-radius: 5px;
+  }
+  
+  .benefit-icon {
+    color: #2ecc71;
+  }
+  
+  .btn-industry {
+    display: block;
+    width: 100%;
+    text-align: center;
+    background: #3498db;
+    color: white;
+    padding: 0.8rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    margin-top: 1rem;
+    transition: background 0.3s ease;
+  }
+  
+  .btn-industry:hover {
+    background: #2980b9;
+  }
+  
+  /* Process Section */
+  .process-section {
+    padding: 4rem 0;
+  }
+  
+  .process-timeline {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-bottom: 3rem;
+  }
+  
+  .process-step {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    position: relative;
+  }
+  
+  .step-number {
+    position: absolute;
+    top: -15px;
+    left: -15px;
+    width: 30px;
+    height: 30px;
+    background: #3498db;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 0.9rem;
+  }
+  
+  .step-content {
+    margin-top: 1rem;
+  }
+  
+  .step-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+  
+  .step-icon {
+    font-size: 2rem;
+  }
+  
+  .process-step h3 {
+    color: #2c3e50;
+    margin: 0;
+    font-size: 1.2rem;
+  }
+  
+  .step-description {
+    color: #7f8c8d;
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+  
+  .process-result {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    background: linear-gradient(135deg, #2ecc71, #27ae60);
+    color: white;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(46, 204, 113, 0.3);
+  }
+  
+  .result-icon {
+    font-size: 4rem;
+  }
+  
+  .result-content h3 {
+    margin-bottom: 0.5rem;
+    font-size: 1.5rem;
+  }
+  
+  .result-content p {
+    opacity: 0.9;
+  }
+  
+  /* Integration Section */
+  .integration-section {
+    padding: 4rem 0;
+    background: #f8f9fa;
+  }
+  
+  .integrations-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+  }
+  
+  .integration-card {
+    text-align: center;
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+  }
+  
+  .integration-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+  }
+  
+  .integration-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+  
+  .integration-card h3 {
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
+  }
+  
+  .integration-card p {
+    color: #7f8c8d;
+    font-size: 0.9rem;
+  }
+  
+  /* Related Pages */
+  .related-pages {
+    padding: 4rem 0;
+  }
+  
+  .pages-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+  
+  .page-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+  }
+  
+  .page-card:hover {
+    transform: translateY(-5px);
+    border-color: #3498db;
+    box-shadow: 0 10px 20px rgba(52, 152, 219, 0.2);
+  }
+  
+  .page-card h3 {
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
+  }
+  
+  .page-card p {
+    color: #7f8c8d;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+  }
+  
+  .page-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #3498db;
+    font-weight: bold;
+  }
+  
+  .arrow {
+    font-size: 1.2rem;
+  }
+  
+  /* Final CTA */
+  .final-cta {
+    padding: 4rem 0;
+    background: linear-gradient(135deg, #9b59b6, #8e44ad);
+    color: white;
+    text-align: center;
+  }
+  
+  .cta-content {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .cta-icon {
+    font-size: 4rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .cta-content h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .cta-content p {
+    font-size: 1.2rem;
+    opacity: 0.9;
+    margin-bottom: 2rem;
+  }
+  
+  .cta-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+  
+  .cta-benefits {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+  
+  .benefit {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    justify-content: center;
+    font-size: 0.9rem;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 0.8rem;
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+  }
+  
+  .benefit-icon {
+    font-size: 1.2rem;
+  }
+  
+  /* Responsive Tasarım */
+  @media (max-width: 1200px) {
+    .features-grid,
+    .integrations-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .process-timeline {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media (max-width: 992px) {
+    .hero-content {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+    
+    .challenge-grid,
+    .industry-grid,
+    .pages-grid,
+    .cta-benefits {
+      grid-template-columns: 1fr;
+    }
+    
+    .hero-stats {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .shift-overview,
+    .personnel-status {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .hero-text h1 {
+      font-size: 2rem;
+    }
+    
+    .hero-buttons,
+    .cta-buttons {
+      flex-direction: column;
+    }
+    
+    .btn-large {
+      width: 100%;
+      text-align: center;
+    }
+    
+    .section-header h2 {
+      font-size: 2rem;
+    }
+    
+    .features-grid,
+    .integrations-grid,
+    .process-timeline {
+      grid-template-columns: 1fr;
+    }
+    
+    .hero-features {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    
+    .process-result {
+      flex-direction: column;
+      text-align: center;
+    }
+  }
+</style>

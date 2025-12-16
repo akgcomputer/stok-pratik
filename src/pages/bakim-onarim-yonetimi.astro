@@ -1,0 +1,651 @@
+---
+// src/pages/bakim-onarim-yonetimi.astro
+import BaseLayout from '../layouts/BaseLayout.astro';
+import '../styles/variables.css';
+import '../styles/global.css';
+import '../styles/components.css';
+
+// İç linkler için data
+const internalLinks = [
+  { 
+    title: "Üretim Yönetimi", 
+    url: "/uretim-yonetimi",
+    icon: "🏭",
+    description: "Bakım planlamalı üretim sistemi"
+  },
+  { 
+    title: "Stok Takip Sistemi", 
+    url: "/stok-takip-sistemi",
+    icon: "📦",
+    description: "Yedek parça ve sarf malzeme yönetimi"
+  },
+  { 
+    title: "Kalite Kontrol Sistemi", 
+    icon: "✅",
+    url: "/kalite-kontrol-sistemi",
+    description: "Bakım sonrası kalite kontrolleri"
+  },
+  { 
+    title: "İş Gücü Planlama", 
+    url: "/is-gucu-planlama",
+    icon: "👷",
+    description: "Teknisyen ve ekip yönetimi"
+  },
+  { 
+    title: "Teknik Servis Yönetimi", 
+    url: "/teknik-servis-yonetimi",
+    icon: "🔧",
+    description: "Müşteri cihaz bakım ve onarım"
+  }
+];
+
+// Bakım yönetimi modülleri
+const maintenanceModules = [
+  {
+    icon: "📅",
+    title: "Planlı Bakım",
+    description: "Zaman veya sayaç bazlı bakım planları, otomatik hatırlatmalar",
+    benefit: "Beklenmeyen arızalar %80 azalır"
+  },
+  {
+    icon: "🔔",
+    title: "Arıza Yönetimi",
+    description: "Arıza kaydı, önceliklendirme, acil müdahale, kök neden analizi",
+    benefit: "Arıza çözüm süresi %60 kısalır"
+  },
+  {
+    icon: "📋",
+    title: "İş Emri Yönetimi",
+    description: "Bakım iş emirleri, malzeme talepleri, onay süreçleri, tamamlanma",
+    benefit: "Bakım verimliliği %40 artar"
+  },
+  {
+    icon: "🛠️",
+    title: "Stok ve Malzeme",
+    description: "Yedek parça envanteri, sarf malzeme takibi, otomatik sipariş",
+    benefit: "Stok maliyetleri %30 düşer"
+  },
+  {
+    icon: "👨‍🔧",
+    title: "Teknisyen Yönetimi",
+    description: "Teknisyen atama, beceri matrisi, iş yükü dengeleme, performans",
+    benefit: "Teknisyen verimliliği %35 artar"
+  },
+  {
+    icon: "📊",
+    title: "Bakım Raporlama",
+    description: "MTBF, MTTR, OEE, maliyet analizleri, performans göstergeleri",
+    benefit: "Bakım kararları veriye dayalı olur"
+  }
+];
+
+// Bakım türleri
+const maintenanceTypes = [
+  {
+    type: "Önleyici Bakım",
+    icon: "🛡️",
+    description: "Arıza oluşmadan önce planlı bakımlar",
+    frequency: "Zaman veya sayaç bazlı",
+    examples: ["Yağ değişimi", "Filtre temizliği", "Conta değişimi"]
+  },
+  {
+    type: "Düzeltici Bakım",
+    icon: "🔧",
+    description: "Arıza sonrası onarım ve tamirat",
+    frequency: "Arıza oluşunca",
+    examples: ["Motor tamiri", "Elektrik arızası", "Mekanik sorun"]
+  },
+  {
+    type: "Durumsal Bakım",
+    icon: "📈",
+    description: "Performans düşüklüğünde yapılan bakımlar",
+    frequency: "Performans verilerine göre",
+    examples: ["Verimlilik düşüşü", "Enerji tüketim artışı", "Kalite problemi"]
+  },
+  {
+    type: "Tahmine Dayalı Bakım",
+    icon: "🔮",
+    description: "Sensör verileriyle arıza tahmini ve bakım",
+    frequency: "Sensör verilerine göre",
+    examples: ["Titreşim analizi", "Termal kamera", "Akustik ölçüm"]
+  }
+];
+
+// Bakım süreç adımları
+const maintenanceSteps = [
+  {
+    step: "1",
+    title: "Planlama",
+    description: "Bakım planı oluşturma, kaynak tahsisi, zamanlama"
+  },
+  {
+    step: "2",
+    title: "Malzeme",
+    description: "Yedek parça temini, sarf malzeme hazırlığı"
+  },
+  {
+    step: "3",
+    title: "Uygulama",
+    description: "Bakım işlemleri, kontrol listeleri, kayıt tutma"
+  },
+  {
+    step: "4",
+    title: "Kontrol",
+    description: "Test ve onay, performans ölçümü, raporlama"
+  }
+];
+
+// Endüstriyel ekipman türleri
+const equipmentTypes = [
+  {
+    category: "Üretim Makineleri",
+    icon: "🏭",
+    equipment: ["CNC Tezgahlar", "Enjeksiyon Makineleri", "Presler", "Konveyörler"],
+    criticality: "Yüksek"
+  },
+  {
+    category: "Enerji Sistemleri",
+    icon: "⚡",
+    equipment: ["Transformatörler", "Jeneratörler", "Kompresörler", "Kazanlar"],
+    criticality: "Kritik"
+  },
+  {
+    category: "İklimlendirme",
+    icon: "❄️",
+    equipment: ["Chiller'lar", "Havalandırma", "Soğutma Kuleleri", "Fanlar"],
+    criticality: "Orta"
+  },
+  {
+    category: "Taşıma Ekipmanları",
+    icon: "🏗️",
+    equipment: ["Vinçler", "Forkliftler", "Asansörler", "Bantlar"],
+    criticality: "Yüksek"
+  }
+];
+
+// Bakım metrikleri
+const maintenanceMetrics = [
+  {
+    metric: "MTBF",
+    title: "Ortalama Arıza Arası Süre",
+    formula: "Toplam çalışma süresi / Arıza sayısı",
+    ideal: "> 500 saat",
+    description: "Ekipmanın ne kadar süre arızasız çalıştığını gösterir"
+  },
+  {
+    metric: "MTTR",
+    title: "Ortalama Onarım Süresi",
+    formula: "Toplam onarım süresi / Onarım sayısı",
+    ideal: "< 4 saat",
+    description: "Arızaların ne kadar sürede çözüldüğünü gösterir"
+  },
+  {
+    metric: "OEE",
+    title: "Toplam Ekipman Etkinliği",
+    formula: "Kullanılabilirlik × Performans × Kalite",
+    ideal: "> %85",
+    description: "Ekipmanın genel verimliliğini ölçer"
+  },
+  {
+    metric: "Bakım Maliyeti",
+    title: "Ekipman Başına Maliyet",
+    formula: "Toplam bakım maliyeti / Ekipman sayısı",
+    ideal: "Üretim değerinin %5'i",
+    description: "Bakım maliyetlerinin optimizasyonunu sağlar"
+  }
+];
+
+// Başarı örnekleri
+const successStories = [
+  {
+    company: "Çelik Üretim Tesisi",
+    location: "Kocaeli",
+    problem: "Aylık 15+ planlanmamış duruş",
+    solution: "Planlı bakım + MTBF takip sistemi",
+    result: "Planlanmamış duruşlar %85 azaldı"
+  },
+  {
+    company: "Tekstil Fabrikası",
+    location: "Denizli",
+    problem: "Yedek parça stok maliyeti yüksek",
+    solution: "Stok optimizasyonu + otomatik sipariş",
+    result: "Stok maliyeti %40 düştü"
+  },
+  {
+    company: "Gıda İşleme Tesisi",
+    location: "Ankara",
+    problem: "Teknisyen verimliliği düşük",
+    solution: "İş yükü dengeleme + performans takip",
+    result: "Teknisyen verimliliği %50 arttı"
+  }
+];
+
+// FAQ
+const faqItems = [
+  {
+    question: "Bakım onarım yönetimi yazılımı fiyatları ne kadar?",
+    answer: "Stok Pratik bakım yönetimi paketleri uygun fiyatlardan başlar. Fiyat; ekipman sayısı, kullanıcı sayısı ve mobil özelliklere göre değişir. Size özel teklif için demo talep edebilirsiniz."
+  },
+  {
+    question: "Mobil cihazlardan bakım kaydı yapabilir miyiz?",
+    answer: "Evet! Android ve iOS uygulamalarımızla sahada bakım kaydı yapabilir, fotoğraf/video ekleyebilir, QR kod tarayabilirsiniz. Offline modda da çalışabilir."
+  },
+  {
+    question: "Mevcut ekipmanlarımızı nasıl sisteme ekleriz?",
+    answer: "Excel veya CSV ile toplu ekipman ekleme, QR kod etiketleme, ekipman ağacı oluşturma özelliklerimiz var. Teknik ekibimiz veri aktarımında destek sağlar."
+  },
+  {
+    question: "Bakım maliyetlerini takip edebilir miyiz?",
+    answer: "Evet! İşçilik, malzeme, dış hizmet maliyetlerini ayrı ayrı takip edebilir, ekipman bazlı maliyet analizleri yapabilirsiniz. Yıllık bakım bütçesi oluşturabilirsiniz."
+  },
+  {
+    question: "Sensör entegrasyonu mümkün mü?",
+    answer: "Evet! IoT sensörleri, PLC sistemleri, SCADA ile entegrasyon sağlayabiliriz. Gerçek zamanlı veri alarak tahmine dayalı bakım yapabilirsiniz."
+  }
+];
+---
+
+<BaseLayout 
+  title="Bakım Onarım Yönetimi | Stok Pratik - Akıllı Bakım Çözümleri"
+  description="Bakım onarım yönetimi sistemi ile ekipman verimliliğini artırın. Planlı bakım, arıza yönetimi, stok kontrolü tek sistemde."
+>
+
+  <!-- Hero Section -->
+  <section style="padding: 4rem 0; background: linear-gradient(135deg, #7c3aed, #8b5cf6); color: white;">
+    <div class="container">
+      <div style="text-align: center; max-width: 800px; margin: 0 auto;">
+        <h1 style="color: white; margin-bottom: 1.5rem; font-size: 2.5rem;">
+          Akıllı Bakım Onarım Yönetimi ile Kesintisiz Üretim
+        </h1>
+        <p style="font-size: 1.25rem; margin-bottom: 2rem; opacity: 0.9;">
+          Planlı bakımla arızaları önleyin, ekipman ömrünü uzatın, üretim verimliliğini maksimize edin.
+        </p>
+        <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+          <a 
+            href="https://wa.me/+905325000999?text=Merhaba,%20bakım%20onarım%20yönetimi%20demo%20talep%20ediyorum"
+            class="btn btn-primary"
+            style="min-height: 52px; background: white; color: #7c3aed; border-color: white;"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            🔧 Bakım Demo İste
+          </a>
+          <a 
+            href="https://wa.me/+905325000999?text=Merhaba,%20bakım%20maliyet%20analizi%20yaptırmak%20istiyorum"
+            class="btn btn-secondary"
+            style="min-height: 52px; border-color: white; color: white;"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            💰 Ücretsiz Maliyet Analizi
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Ana İçerik -->
+  <main style="padding: 3rem 0; background: var(--bg-white);">
+    <div class="container">
+      
+      <!-- Bakım Modülleri -->
+      <section style="margin-bottom: 4rem;">
+        <h2 style="text-align: center; color: #7c3aed; margin-bottom: 2rem;">
+          6 Temel Bakım Yönetimi Modülü
+        </h2>
+        
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem;">
+          {maintenanceModules.map((module) => (
+            <div style="background: white; padding: 2rem; border-radius: 1rem; border: 1px solid #ddd6fe; box-shadow: var(--shadow-md); text-align: center;">
+              <div style="font-size: 3rem; margin-bottom: 1rem;">{module.icon}</div>
+              <h3 style="color: #7c3aed; margin-bottom: 0.75rem; font-size: 1.1rem;">{module.title}</h3>
+              <p style="color: var(--text-gray); margin-bottom: 1rem; font-size: 0.95rem;">{module.description}</p>
+              <div style="background: #ede9fe; padding: 0.5rem; border-radius: 0.5rem; border-left: 3px solid #8b5cf6;">
+                <span style="color: #5b21b6; font-weight: 600;">{module.benefit}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- Bakım Türleri -->
+      <section style="margin-bottom: 4rem; background: #f5f3ff; padding: 3rem; border-radius: 1rem;">
+        <h2 style="text-align: center; color: #7c3aed; margin-bottom: 2rem;">
+          4 Tür Bakım Stratejisi
+        </h2>
+        
+        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem;">
+          {maintenanceTypes.map((type) => (
+            <div style="background: white; padding: 2rem; border-radius: 1rem; border: 1px solid #ddd6fe;">
+              <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem;">
+                <div style="font-size: 2.5rem;">{type.icon}</div>
+                <div>
+                  <h3 style="color: #7c3aed; margin: 0; font-size: 1.25rem;">{type.type}</h3>
+                  <div style="color: var(--text-gray); font-size: 0.9rem;">{type.description}</div>
+                </div>
+              </div>
+              
+              <div style="margin-bottom: 1.5rem;">
+                <div style="font-weight: 600; color: var(--text-dark); margin-bottom: 0.5rem;">Sıklık:</div>
+                <div style="background: #ede9fe; color: #5b21b6; padding: 0.5rem; border-radius: 0.5rem; text-align: center; font-weight: 600;">
+                  {type.frequency}
+                </div>
+              </div>
+              
+              <div>
+                <div style="font-weight: 600; color: var(--text-dark); margin-bottom: 0.5rem;">Örnekler:</div>
+                <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
+                  {type.examples.map((example) => (
+                    <span style="background: #f5f3ff; color: #5b21b6; padding: 0.25rem 0.75rem; border-radius: 1rem; font-size: 0.9rem;">
+                      {example}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- Bakım Süreçleri -->
+      <section style="margin-bottom: 4rem;">
+        <h2 style="text-align: center; color: #7c3aed; margin-bottom: 2rem;">
+          4 Adımda Profesyonel Bakım
+        </h2>
+        
+        <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem;">
+          {maintenanceSteps.map((step) => (
+            <div style="position: relative; text-align: center;">
+              <div style="position: absolute; top: -1.5rem; left: 50%; transform: translateX(-50%); background: #8b5cf6; color: white; width: 3rem; height: 3rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.25rem; z-index: 10;">
+                {step.step}
+              </div>
+              <div style="background: white; padding: 2rem 1.5rem 1.5rem; border-radius: 1rem; border: 2px solid #c4b5fd; height: 100%;">
+                <h3 style="color: #7c3aed; margin-top: 1rem; margin-bottom: 0.75rem; font-size: 1.1rem;">{step.title}</h3>
+                <p style="color: var(--text-gray); margin: 0; font-size: 0.95rem;">{step.description}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- Ekipman Türleri -->
+      <section style="margin-bottom: 4rem;">
+        <h2 style="text-align: center; color: #7c3aed; margin-bottom: 2rem;">
+          Endüstriyel Ekipman Bakımı
+        </h2>
+        
+        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem;">
+          {equipmentTypes.map((equipment) => (
+            <div style="background: white; padding: 2rem; border-radius: 1rem; border: 1px solid var(--border-color); box-shadow: var(--shadow-md);">
+              <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem;">
+                <div style="font-size: 2.5rem;">{equipment.icon}</div>
+                <div>
+                  <h3 style="color: #7c3aed; margin: 0; font-size: 1.25rem;">{equipment.category}</h3>
+                  <div style="display: flex; align-items: center; gap: 0.5rem; margin-top: 0.25rem;">
+                    <div style="font-weight: 600; color: var(--text-dark);">Kritiklik:</div>
+                    <div style={`padding: 0.25rem 0.75rem; border-radius: 1rem; font-size: 0.9rem; font-weight: 600; ${equipment.criticality === 'Kritik' ? 'background: #fef2f2; color: #dc2626;' : equipment.criticality === 'Yüksek' ? 'background: #ffedd5; color: #ea580c;' : 'background: #f0f9ff; color: #0ea5e9;'}`}>
+                      {equipment.criticality}
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <div>
+                <div style="font-weight: 600; color: var(--text-dark); margin-bottom: 0.5rem;">Ekipmanlar:</div>
+                <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.5rem;">
+                  {equipment.equipment.map((item) => (
+                    <div style="display: flex; align-items: center; gap: 0.5rem;">
+                      <div style="color: #7c3aed;">•</div>
+                      <div style="color: var(--text-dark); font-size: 0.95rem;">{item}</div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- Bakım Metrikleri -->
+      <section style="margin-bottom: 4rem; background: #f5f3ff; padding: 3rem; border-radius: 1rem;">
+        <h2 style="text-align: center; color: #7c3aed; margin-bottom: 2rem;">
+          Bakım Performans Metrikleri
+        </h2>
+        
+        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem;">
+          {maintenanceMetrics.map((metric) => (
+            <div style="background: white; padding: 2rem; border-radius: 1rem; border: 1px solid #ddd6fe;">
+              <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 1rem;">
+                <div>
+                  <div style="font-size: 2rem; font-weight: bold; color: #7c3aed;">{metric.metric}</div>
+                  <div style="font-weight: 600; color: var(--text-dark); margin-top: 0.25rem;">{metric.title}</div>
+                </div>
+                <div style="background: #ede9fe; color: #5b21b6; padding: 0.5rem 1rem; border-radius: 0.5rem; font-weight: 600;">
+                  {metric.ideal}
+                </div>
+              </div>
+              
+              <div style="margin-bottom: 1rem;">
+                <div style="font-weight: 600; color: var(--text-dark); margin-bottom: 0.25rem;">Formül:</div>
+                <div style="background: #f5f3ff; padding: 0.75rem; border-radius: 0.5rem; font-family: monospace; color: #5b21b6;">
+                  {metric.formula}
+                </div>
+              </div>
+              
+              <div style="color: var(--text-gray); font-size: 0.95rem;">
+                {metric.description}
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- Başarı Hikayeleri -->
+      <section style="margin-bottom: 4rem;">
+        <h2 style="text-align: center; color: #7c3aed; margin-bottom: 2rem;">
+          Bakımda Başarı Hikayeleri
+        </h2>
+        
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem;">
+          {successStories.map((story) => (
+            <div style="background: white; padding: 2rem; border-radius: 1rem; border: 1px solid #ddd6fe; box-shadow: var(--shadow-md); text-align: center;">
+              <div style="font-size: 2rem; margin-bottom: 1rem;">🏭</div>
+              <h3 style="color: #7c3aed; margin-bottom: 0.5rem;">{story.company}</h3>
+              <div style="color: var(--text-gray); margin-bottom: 1rem;">📍 {story.location}</div>
+              
+              <div style="margin-bottom: 1rem;">
+                <div style="font-weight: 600; color: var(--text-dark); margin-bottom: 0.25rem;">Problem:</div>
+                <div style="color: #dc2626; background: #fef2f2; padding: 0.5rem; border-radius: 0.5rem; border-left: 3px solid #dc2626;">
+                  {story.problem}
+                </div>
+              </div>
+              
+              <div style="margin-bottom: 1rem;">
+                <div style="font-weight: 600; color: var(--text-dark); margin-bottom: 0.25rem;">Çözüm:</div>
+                <div style="color: var(--text-dark); background: #ede9fe; padding: 0.5rem; border-radius: 0.5rem; border-left: 3px solid #8b5cf6;">
+                  {story.solution}
+                </div>
+              </div>
+              
+              <div style="background: linear-gradient(135deg, #8b5cf6, #7c3aed); color: white; padding: 0.75rem; border-radius: 0.5rem;">
+                <div style="font-weight: 600; font-size: 1.1rem;">Sonuç: {story.result}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- İç Linkler -->
+      <section style="margin-bottom: 4rem;">
+        <h2 style="text-align: center; color: #7c3aed; margin-bottom: 2rem;">
+          Bakım ile Entegre Çözümlerimiz
+        </h2>
+        
+        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem;">
+          {internalLinks.map((link) => (
+            <a 
+              href={link.url}
+              style="display: flex; align-items: center; gap: 1rem; background: white; padding: 1.5rem; border-radius: 0.75rem; text-decoration: none; color: var(--text-dark); border: 1px solid #ddd6fe; transition: all 0.3s;"
+            >
+              <div style="font-size: 2rem;">{link.icon}</div>
+              <div>
+                <div style="font-weight: 600; color: #7c3aed; margin-bottom: 0.25rem;">{link.title}</div>
+                <div style="color: var(--text-gray); font-size: 0.95rem;">{link.description}</div>
+              </div>
+            </a>
+          ))}
+        </div>
+      </section>
+
+      <!-- FAQ -->
+      <section style="margin-bottom: 4rem;">
+        <h2 style="text-align: center; color: #7c3aed; margin-bottom: 2rem;">
+          Bakım Onarım Yönetimi Hakkında Sıkça Sorulan Sorular
+        </h2>
+        
+        <div style="max-width: 800px; margin: 0 auto;">
+          {faqItems.map((item, index) => (
+            <div style="background: white; padding: 1.5rem; border-radius: 0.75rem; margin-bottom: 1rem; border: 1px solid #ddd6fe; box-shadow: var(--shadow-sm);">
+              <div style="display: flex; gap: 1rem;">
+                <div style="color: #7c3aed; font-weight: bold;">Q{index + 1}:</div>
+                <div style="flex: 1;">
+                  <h3 style="color: #7c3aed; margin: 0 0 0.75rem 0; font-size: 1.1rem;">{item.question}</h3>
+                  <p style="margin: 0; color: var(--text-dark); line-height: 1.6;">{item.answer}</p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- CTA -->
+      <section style="background: linear-gradient(135deg, #7c3aed, #8b5cf6); padding: 4rem; border-radius: 1.5rem; text-align: center; color: white;">
+        <h2 style="color: white; margin-bottom: 1rem; font-size: 2rem;">Bakım Sisteminizi Ücretsiz Analiz Edelim</h2>
+        <p style="margin-bottom: 2rem; font-size: 1.1rem; opacity: 0.9; max-width: 600px; margin-left: auto; margin-right: auto;">
+          Bakım mühendislerimiz ekipmanlarınızı analiz edip, size özel bakım optimizasyon planı hazırlasın.
+        </p>
+        
+        <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+          <a 
+            href="https://wa.me/+905325000999?text=Merhaba,%20bakım%20sistemi%20analizi%20için%20görüşmek%20istiyorum"
+            style="display: inline-flex; align-items: center; justify-content: center; padding: 1rem 2rem; background-color: white; color: #7c3aed; text-decoration: none; border-radius: 0.75rem; font-weight: 600; gap: 0.5rem; border: none; cursor: pointer; font-size: 1.1rem;"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            🔧 Ücretsiz Bakım Analizi
+          </a>
+          
+          <a 
+            href="https://wa.me/+905325000999?text=Merhaba,%20bakım%20yönetimi%20demo%20ve%20fiyat%20teklifi%20almak%20istiyorum"
+            style="display: inline-flex; align-items: center; justify-content: center; padding: 1rem 2rem; background-color: transparent; color: white; text-decoration: none; border-radius: 0.75rem; font-weight: 600; gap: 0.5rem; border: 2px solid white; cursor: pointer; font-size: 1.1rem;"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            📊 Demo + Teknik İnceleme
+          </a>
+        </div>
+        
+        <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; margin-top: 3rem; text-align: center;">
+          <div>
+            <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">📅</div>
+            <div>Planlı Bakım</div>
+          </div>
+          <div>
+            <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">📱</div>
+            <div>Mobil Uygulama</div>
+          </div>
+          <div>
+            <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">📊</div>
+            <div>MTBF/MTTR Takip</div>
+          </div>
+          <div>
+            <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">🔧</div>
+            <div>Saha Desteği</div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <style>
+    :root {
+      --border-color: #e5e7eb;
+    }
+    
+    h2 {
+      color: #7c3aed;
+      margin-bottom: 1rem;
+      font-size: 1.8rem;
+    }
+    
+    h3 {
+      color: var(--text-dark);
+      margin-bottom: 0.5rem;
+    }
+    
+    p {
+      color: var(--text-dark);
+      line-height: 1.6;
+    }
+    
+    a:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+      border-color: #8b5cf6;
+    }
+    
+    @media (max-width: 1024px) {
+      div[style*="grid-template-columns: repeat(4, 1fr)"] {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    
+    @media (max-width: 768px) {
+      div[style*="grid-template-columns: repeat(3, 1fr)"] {
+        grid-template-columns: 1fr;
+      }
+      
+      div[style*="grid-template-columns: repeat(2, 1fr)"] {
+        grid-template-columns: 1fr;
+      }
+      
+      section {
+        padding-left: 1rem;
+        padding-right: 1rem;
+      }
+      
+      .container > div {
+        padding: 0;
+      }
+      
+      .hero-section {
+        padding: 3rem 1rem;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 2rem !important;
+      }
+      
+      div[style*="grid-template-columns: repeat(4, 1fr)"] {
+        grid-template-columns: 1fr;
+      }
+      
+      .cta-buttons {
+        flex-direction: column;
+      }
+      
+      .cta-buttons a {
+        width: 100%;
+        text-align: center;
+      }
+      
+      .success-stories {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+
+</BaseLayout>

@@ -1,0 +1,559 @@
+---
+// src/pages/sitemap.astro
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Site Haritası - Stok Pratik Online Muhasebe, Mağazacılık ve ERP">
+  <!-- Hero Section -->
+  <section class="hero-section py-12 bg-gradient-to-br from-gray-50 to-white">
+    <div class="container">
+      <div class="text-center max-w-4xl mx-auto">
+        <h1 class="text-3xl md:text-4xl font-bold mb-4 text-gray-800">
+          Site Haritası
+        </h1>
+        <p class="text-lg text-gray-600 mb-6">
+          Stok Pratik Online Muhasebe, Mağazacılık ve ERP'nin tüm sayfalarına buradan kolayca ulaşabilirsiniz.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Site Haritası İçerik -->
+  <section class="sitemap-content py-12 bg-white">
+    <div class="container">
+      <!-- Ana Sayfalar -->
+      <div class="mb-12">
+        
+        <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <li>
+            <a href="/" class="sitemap-link">
+              <span class="mr-2">🏠</span>
+              Ana Sayfa
+            </a>
+          </li>
+          <li>
+            <a href="/iletisim" class="sitemap-link">
+              <span class="mr-2">📞</span>
+              İletişim
+            </a>
+          </li>
+          <li>
+            <a href="/referanslarimiz" class="sitemap-link">
+              <span class="mr-2">⭐</span>
+              Referanslarımız
+            </a>
+          </li>
+          <li>
+            <a href="/neden-stok-pratik" class="sitemap-link">
+              <span class="mr-2">❓</span>
+              Neden Stok Pratik?
+            </a>
+          </li>
+          <li>
+            <a href="/ozelliklerimiz" class="sitemap-link">
+              <span class="mr-2">✨</span>
+              Özelliklerimiz
+            </a>
+          </li>
+          <li>
+            <a href="/paketlerimiz" class="sitemap-link">
+              <span class="mr-2">📦</span>
+              Paketlerimiz
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- ERP ve Çekirdek Sistemler -->
+      <div class="mb-12">
+        <h2 class="text-2xl font-bold mb-6 pb-3 border-b border-gray-200 text-gray-800">
+          ERP ve Çekirdek Sistemler
+        </h2>
+        <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <li>
+            <a href="/erp-sistemi" class="sitemap-link">
+              <span class="mr-2">🏢</span>
+              ERP Sistemi
+            </a>
+          </li>
+          <li>
+            <a href="/stok-yonetimi" class="sitemap-link">
+              <span class="mr-2">📦</span>
+              Stok Yönetimi
+            </a>
+          </li>
+          <li>
+            <a href="/stok-takip-sistemi" class="sitemap-link">
+              <span class="mr-2">🔍</span>
+              Stok Takip Sistemi
+            </a>
+          </li>
+          <li>
+            <a href="/muhasebe-yazilimi" class="sitemap-link">
+              <span class="mr-2">📒</span>
+              Muhasebe Yazılımı
+            </a>
+          </li>
+          <li>
+            <a href="/bulut-muhasebe-sistemi" class="sitemap-link">
+              <span class="mr-2">☁️</span>
+              Bulut Muhasebe Sistemi
+            </a>
+          </li>
+          <li>
+            <a href="/kobi-muhasebe-programi" class="sitemap-link">
+              <span class="mr-2">🏪</span>
+              KOBİ Muhasebe Programı
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- CRM ve Müşteri Yönetimi -->
+      <div class="mb-12">
+        <h2 class="text-2xl font-bold mb-6 pb-3 border-b border-gray-200 text-gray-800">
+          CRM ve Müşteri Yönetimi
+        </h2>
+        <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <li>
+            <a href="/crm" class="sitemap-link">
+              <span class="mr-2">📇</span>
+              CRM
+            </a>
+          </li>
+          <li>
+            <a href="/crm-sistemleri" class="sitemap-link">
+              <span class="mr-2">🤝</span>
+              CRM Sistemleri
+            </a>
+          </li>
+          <li>
+            <a href="/musteri-hizmetleri" class="sitemap-link">
+              <span class="mr-2">👩‍💼</span>
+              Müşteri Hizmetleri
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Üretim ve Proje Yönetimi -->
+      <div class="mb-12">
+        <h2 class="text-2xl font-bold mb-6 pb-3 border-b border-gray-200 text-gray-800">
+          Üretim ve Proje Yönetimi
+        </h2>
+        <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <li>
+            <a href="/uretim-yonetimi" class="sitemap-link">
+              <span class="mr-2">🏭</span>
+              Üretim Yönetimi
+            </a>
+          </li>
+          <li>
+            <a href="/proje-yonetimi" class="sitemap-link">
+              <span class="mr-2">📋</span>
+              Proje Yönetimi
+            </a>
+          </li>
+          <li>
+            <a href="/kalite-kontrol-sistemi" class="sitemap-link">
+              <span class="mr-2">✅</span>
+              Kalite Kontrol Sistemi
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Satış ve Mağaza Yönetimi -->
+      <div class="mb-12">
+        <h2 class="text-2xl font-bold mb-6 pb-3 border-b border-gray-200 text-gray-800">
+          Satış ve Mağaza Yönetimi
+        </h2>
+        <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <li>
+            <a href="/satis-yonetimi" class="sitemap-link">
+              <span class="mr-2">💰</span>
+              Satış Yönetimi
+            </a>
+          </li>
+          <li>
+            <a href="/magaza-otomasyonu" class="sitemap-link">
+              <span class="mr-2">🏪</span>
+              Mağaza Otomasyonu
+            </a>
+          </li>
+          <li>
+            <a href="/magaza-yonetim-yazilimi" class="sitemap-link">
+              <span class="mr-2">👨‍💼</span>
+              Mağaza Yönetim Yazılımı
+            </a>
+          </li>
+          <li>
+            <a href="/e-ticaret-entegrasyonu" class="sitemap-link">
+              <span class="mr-2">🛒</span>
+              E-Ticaret Entegrasyonu
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Muhasebe Çözümleri -->
+      <div class="mb-12">
+        <h2 class="text-2xl font-bold mb-6 pb-3 border-b border-gray-200 text-gray-800">
+          Muhasebe Çözümleri
+        </h2>
+        <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <li>
+            <a href="/online-muhasebe-programi" class="sitemap-link">
+              <span class="mr-2">💻</span>
+              Online Muhasebe Programı
+            </a>
+          </li>
+          <li>
+            <a href="/otomatik-muhasebe-yazilimi" class="sitemap-link">
+              <span class="mr-2">⚡</span>
+              Otomatik Muhasebe Yazılımı
+            </a>
+          </li>
+          <li>
+            <a href="/e-fatura" class="sitemap-link">
+              <span class="mr-2">🧾</span>
+              E-Fatura
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Mobil ve Saha Çözümleri -->
+      <div class="mb-12">
+        <h2 class="text-2xl font-bold mb-6 pb-3 border-b border-gray-200 text-gray-800">
+          Mobil ve Saha Çözümleri
+        </h2>
+        <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <li>
+            <a href="/mobil-saha-uygulamasi" class="sitemap-link">
+              <span class="mr-2">📱</span>
+              Mobil Saha Uygulaması
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Bakım ve Teknik Servis -->
+      <div class="mb-12">
+        <h2 class="text-2xl font-bold mb-6 pb-3 border-b border-gray-200 text-gray-800">
+          Bakım ve Teknik Servis
+        </h2>
+        <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <li>
+            <a href="/bakim-onarim-yonetimi" class="sitemap-link">
+              <span class="mr-2">🔧</span>
+              Bakım Onarım Yönetimi
+            </a>
+          </li>
+          <li>
+            <a href="/teknik-servis-yonetimi" class="sitemap-link">
+              <span class="mr-2">🛠️</span>
+              Teknik Servis Yönetimi
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- İnsan Kaynakları ve İş Gücü -->
+      <div class="mb-12">
+        <h2 class="text-2xl font-bold mb-6 pb-3 border-b border-gray-200 text-gray-800">
+          İnsan Kaynakları ve İş Gücü
+        </h2>
+        <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <li>
+            <a href="/is-gucu-planlama" class="sitemap-link">
+              <span class="mr-2">👷</span>
+              İş Gücü Planlama
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Pazarlama ve Otomasyon -->
+      <div class="mb-12">
+        <h2 class="text-2xl font-bold mb-6 pb-3 border-b border-gray-200 text-gray-800">
+          Pazarlama ve Otomasyon
+        </h2>
+        <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <li>
+            <a href="/pazarlama-otomasyonu" class="sitemap-link">
+              <span class="mr-2">📣</span>
+              Pazarlama Otomasyonu
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Raporlama ve Analiz -->
+      <div class="mb-12">
+        <h2 class="text-2xl font-bold mb-6 pb-3 border-b border-gray-200 text-gray-800">
+          Raporlama ve Analiz
+        </h2>
+        <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <li>
+            <a href="/raporlama-analiz" class="sitemap-link">
+              <span class="mr-2">📊</span>
+              Raporlama & Analiz
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Demo ve Ekran Görüntüleri -->
+      <div class="mb-12">
+        <h2 class="text-2xl font-bold mb-6 pb-3 border-b border-gray-200 text-gray-800">
+          Demo ve Ekran Görüntüleri
+        </h2>
+        <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <li>
+            <a href="/ekran-goruntuleri" class="sitemap-link">
+              <span class="mr-2">🖼️</span>
+              Ekran Görüntüleri
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Partnerlik ve İş Birlikleri -->
+      <div class="mb-12">
+        <h2 class="text-2xl font-bold mb-6 pb-3 border-b border-gray-200 text-gray-800">
+          Partnerlik ve İş Birlikleri
+        </h2>
+        <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <li>
+            <a href="/partnerlik-programi" class="sitemap-link">
+              <span class="mr-2">🤝</span>
+              Partnerlik Programı
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Politikalar -->
+      <div class="mb-12">
+        <h2 class="text-2xl font-bold mb-6 pb-3 border-b border-gray-200 text-gray-800">
+          Politikalar
+        </h2>
+        <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <li>
+            <a href="/bilgi-guvenligi-politikamiz" class="sitemap-link">
+              <span class="mr-2">🔒</span>
+              Bilgi Güvenliği Politikamız
+            </a>
+          </li>
+          <li>
+            <a href="/cerez-politikasi" class="sitemap-link">
+              <span class="mr-2">🍪</span>
+              Çerez Politikası
+            </a>
+          </li>
+          <li>
+            <a href="/kisisel-veriler-politikasi" class="sitemap-link">
+              <span class="mr-2">📝</span>
+              Kişisel Veriler Politikası
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Yardım Bölümü -->
+  <section class="help-section py-12 bg-gray-50">
+    <div class="container">
+      <div class="max-w-3xl mx-auto text-center">
+        <h2 class="text-2xl font-bold mb-6 text-gray-800">Eksik Bir Sayfa mı Var?</h2>
+        <p class="text-gray-600 mb-8">
+          Listede göremediğiniz bir sayfa varsa veya yardıma ihtiyacınız olursa bizimle iletişime geçin.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a 
+            href="/iletisim" 
+            class="btn btn-primary"
+          >
+            <span class="mr-2">📧</span>
+            İletişim Sayfasına Git
+          </a>
+          <a 
+            href="tel:+905325000999" 
+            class="btn btn-secondary"
+          >
+            <span class="mr-2">📞</span>
+            Hemen Ara: 0532 500 09 99
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    :global(body) {
+      scroll-behavior: smooth;
+    }
+
+    /* Container */
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+
+    /* Site Haritası Linkleri */
+    .sitemap-link {
+      display: flex;
+      align-items: center;
+      padding: 0.75rem 1rem;
+      background-color: white;
+      border: 1px solid #e5e7eb;
+      border-radius: 0.5rem;
+      color: #374151;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      font-weight: 500;
+      min-height: 48px;
+    }
+
+    .sitemap-link:hover {
+      background-color: #f3f4f6;
+      border-color: #d1d5db;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      color: #111827;
+    }
+
+    .sitemap-link:focus {
+      outline: 2px solid #10b981;
+      outline-offset: 2px;
+    }
+
+    /* Butonlar */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.75rem 1.5rem;
+      border-radius: 0.5rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      border: 2px solid transparent;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background-color: #10b981;
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background-color: #059669;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(16, 185, 129, 0.2);
+    }
+
+    .btn-secondary {
+      background-color: white;
+      color: #374151;
+      border: 2px solid #d1d5db;
+    }
+
+    .btn-secondary:hover {
+      background-color: #f9fafb;
+      border-color: #9ca3af;
+      transform: translateY(-2px);
+    }
+
+    /* Utility Classes */
+    .py-12 { padding-top: 3rem; padding-bottom: 3rem; }
+    .mb-4 { margin-bottom: 1rem; }
+    .mb-6 { margin-bottom: 1.5rem; }
+    .mb-8 { margin-bottom: 2rem; }
+    .mb-12 { margin-bottom: 3rem; }
+    .mr-2 { margin-right: 0.5rem; }
+    .text-center { text-align: center; }
+    .text-lg { font-size: 1.125rem; line-height: 1.75rem; }
+    .text-xl { font-size: 1.25rem; line-height: 1.75rem; }
+    .text-2xl { font-size: 1.5rem; line-height: 2rem; }
+    .text-3xl { font-size: 1.875rem; line-height: 2.25rem; }
+    .text-4xl { font-size: 2.25rem; line-height: 2.5rem; }
+    .font-bold { font-weight: 700; }
+    .rounded-lg { border-radius: 0.5rem; }
+    .bg-white { background-color: white; }
+    .bg-gray-50 { background-color: #f9fafb; }
+    .from-gray-50 { --tw-gradient-from: #f9fafb; }
+    .to-white { --tw-gradient-to: white; }
+    .text-gray-800 { color: #1f2937; }
+    .text-gray-600 { color: #4b5563; }
+    .border-b { border-bottom-width: 1px; }
+    .border-gray-200 { border-color: #e5e7eb; }
+    .flex { display: flex; }
+    .flex-col { flex-direction: column; }
+    .items-center { align-items: center; }
+    .justify-center { justify-content: center; }
+    .mx-auto { margin-left: auto; margin-right: auto; }
+    .max-w-3xl { max-width: 48rem; }
+    .max-w-4xl { max-width: 56rem; }
+    .gap-4 { gap: 1rem; }
+
+    /* Grid */
+    .grid { display: grid; }
+    .grid-cols-1 { grid-template-columns: repeat(1, minmax(0, 1fr)); }
+    .gap-4 { gap: 1rem; }
+
+    /* Background Gradients */
+    .bg-gradient-to-br { background-image: linear-gradient(to bottom right, var(--tw-gradient-stops)); }
+    .bg-clip-text { -webkit-background-clip: text; background-clip: text; }
+    .text-transparent { color: transparent; }
+
+    /* Responsive */
+    @media (min-width: 768px) {
+      .md\:grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .md\:grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    }
+
+    @media (min-width: 1024px) {
+      .lg\:grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    }
+
+    @media (max-width: 640px) {
+      .hero-section h1 {
+        font-size: 2rem;
+      }
+      
+      .help-section .flex {
+        flex-direction: column;
+      }
+    }
+
+    /* Scroll Animasyon */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .sitemap-link {
+      animation: fadeIn 0.3s ease-out forwards;
+      opacity: 0;
+    }
+
+    /* Her bölüm için farklı animasyon gecikmeleri */
+    .mb-12:nth-child(1) .sitemap-link:nth-child(1) { animation-delay: 0.1s; }
+    .mb-12:nth-child(1) .sitemap-link:nth-child(2) { animation-delay: 0.2s; }
+    .mb-12:nth-child(1) .sitemap-link:nth-child(3) { animation-delay: 0.3s; }
+    .mb-12:nth-child(1) .sitemap-link:nth-child(4) { animation-delay: 0.4s; }
+    .mb-12:nth-child(1) .sitemap-link:nth-child(5) { animation-delay: 0.5s; }
+    .mb-12:nth-child(1) .sitemap-link:nth-child(6) { animation-delay: 0.6s; }
+  </style>
+</BaseLayout>

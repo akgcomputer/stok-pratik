@@ -1,0 +1,869 @@
+---
+// src/pages/magaza-otomasyonu.astro
+import BaseLayout from '../layouts/BaseLayout.astro';
+import '../styles/variables.css';
+import '../styles/global.css';
+import '../styles/components.css';
+
+// İç linkler için data
+const relatedServices = [
+  { 
+    title: "ERP Sistemi", 
+    url: "/erp-sistemi",
+    description: "Tüm iş süreçlerinizi entegre edin"
+  },
+  { 
+    title: "Online Muhasebe", 
+    url: "/online-muhasebe-programi",
+    description: "Finansal süreçlerinizi dijitalleştirin"
+  },
+  { 
+    title: "Stok Yönetimi", 
+    url: "/stok-yonetimi",
+    description: "Stoklarınızı akıllı yönetin"
+  },
+  { 
+    title: "E-Fatura Çözümü", 
+    url: "/e-fatura",
+    description: "e-Fatura ve e-İrsaliye sistemleri"
+  }
+];
+
+const features = [
+  {
+    icon: "📦",
+    title: "Stok Takip Otomasyonu",
+    items: [
+      "Barkodlu stok takibi",
+      "Otomatik envanter güncelleme",
+      "Çoklu depo yönetimi",
+      "Stok uyarı sistemi"
+    ]
+  },
+  {
+    icon: "🧾",
+    title: "Satış Yönetimi",
+    items: [
+      "POS entegrasyonu",
+      "Fiş ve fatura basımı",
+      "Kampanya yönetimi",
+      "Müşteri takibi"
+    ]
+  },
+  {
+    icon: "📊",
+    title: "Raporlama ve Analiz",
+    items: [
+      "Günlük satış raporları",
+      "Kar marjı analizi",
+      "En çok satan ürünler",
+      "Müşteri alışkanlıkları"
+    ]
+  },
+  {
+    icon: "🤖",
+    title: "Otomatik Süreçler",
+    items: [
+      "Otomatik sipariş oluşturma",
+      "Fiyat güncelleme botları",
+      "Stok alarm sistemi",
+      "Raporlama otomasyonu"
+    ]
+  }
+];
+---
+
+<BaseLayout 
+  title="Mağaza Otomasyon Sistemi | Stok Pratik" 
+  description="Mağaza otomasyon sistemi ile satış, stok ve müşteri yönetimini tek platformda birleştirin. Perakende işletmenizi dijitalleştirin."
+>
+  
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-text">
+          <span class="hero-badge">Perakende Çözümleri</span>
+          <h1>Mağaza Otomasyon Sistemi ile <span class="highlight">Satışlarınızı Artırın</span></h1>
+          <p class="hero-subtitle hero-badge highlight">Stok Pratik mağaza otomasyonu ile satış, stok, müşteri ve muhasebe işlemlerinizi tek platformda yönetin</p>
+          
+          <div class="hero-stats">
+            <div class="stat-item">
+              <div class="stat-number">%40</div>
+              <div class="stat-label">Verimlilik Artışı</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number">%30</div>
+              <div class="stat-label">Stok Maliyeti Azalması</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number">7/24</div>
+              <div class="stat-label">Kesintisiz Erişim</div>
+            </div>
+          </div>
+          
+          <div class="hero-buttons">
+            <a 
+              href="#demo-form" 
+              class="btn btn-primary btn-large"
+            >
+              🔥 Ücretsiz Demo İste
+            </a>
+            <a 
+              href="https://wa.me/+905325000999?text=Merhaba,%20Mağaza%20Otomasyonu%20hakkında%20bilgi%20almak%20istiyorum" 
+              class="btn btn-secondary btn-large"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              💬 WhatsApp'tan Yaz
+            </a>
+          </div>
+          
+          <div class="trust-badges">
+            <div class="trust-item">
+              <div class="trust-icon">✅</div>
+              <span>14 Gün Ücretsiz Deneme</span>
+            </div>
+            <div class="trust-item">
+              <div class="trust-icon">🛡️</div>
+              <span>SSL Güvenli</span>
+            </div>
+            <div class="trust-item">
+              <div class="trust-icon">📱</div>
+              <span>Mobil Uyumlu</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="hero-image">
+          <div class="dashboard-preview">
+            <div class="dashboard-header">
+              <div class="dashboard-dots">
+                <span class="dot red"></span>
+                <span class="dot yellow"></span>
+                <span class="dot green"></span>
+              </div>
+              <div class="dashboard-title">Mağaza Otomasyon Paneli</div>
+            </div>
+            <div class="dashboard-content">
+              <div class="metric-card">
+                <div class="metric-value">₺12,450</div>
+                <div class="metric-label">Bugünkü Ciro</div>
+              </div>
+              <div class="metric-card">
+                <div class="metric-value">48</div>
+                <div class="metric-label">Satış Adeti</div>
+              </div>
+              <div class="metric-card">
+                <div class="metric-value">12</div>
+                <div class="metric-label">Stok Uyarısı</div>
+              </div>
+              <div class="metric-card">
+                <div class="metric-value">94%</div>
+                <div class="metric-label">Memnuniyet</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Grid -->
+  <section class="features-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Neden Stok Pratik Mağaza Otomasyonu?</h2>
+        <p>İşletmeniz için özel tasarlanmış çözümler</p>
+      </div>
+      
+      <div class="features-grid">
+        {features.map((feature, index) => (
+          <div class="feature-card" key={index}>
+            <div class="feature-icon">{feature.icon}</div>
+            <h3>{feature.title}</h3>
+            <ul class="feature-list">
+              {feature.items.map((item, i) => (
+                <li key={i}>{item}</li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Perakende Sektörleri -->
+  <section class="sectors-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Hangi Mağazalar İçin Uygun?</h2>
+        <p>Tüm perakende sektörlerine özel çözümler</p>
+      </div>
+      
+      <div class="sectors-grid">
+        <div class="sector-card">
+          <div class="sector-icon">👕</div>
+          <h3>Giyim Mağazaları</h3>
+          <p>Beden, renk, model takibi ile giyim sektörüne özel çözüm</p>
+        </div>
+        
+        <div class="sector-card">
+          <div class="sector-icon">🥦</div>
+          <h3>Market & Bakkal</h3>
+          <p>Son kullanma tarihi takibi, taze ürün yönetimi</p>
+        </div>
+        
+        <div class="sector-card">
+          <div class="sector-icon">🏬</div>
+          <h3>Market Zincirleri</h3>
+          <p>Çoklu şube yönetimi, merkezi kontrol</p>
+        </div>
+        
+        <div class="sector-card">
+          <div class="sector-icon">📱</div>
+          <h3>Teknoloji Mağazaları</h3>
+          <p>Seri numarası takibi, garanti yönetimi</p>
+        </div>
+        
+        <div class="sector-card">
+          <div class="sector-icon">💊</div>
+          <h3>Eczaneler</h3>
+          <p>İlaç takip sistemi, reçete yönetimi</p>
+        </div>
+        
+        <div class="sector-card">
+          <div class="sector-icon">🎁</div>
+          <h3>Hediyelik Eşya</h3>
+          <p>Hediye paketleme, özel ürün takibi</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  
+
+  <!-- Related Services -->
+  <section class="related-services">
+    <div class="container">
+      <div class="section-header">
+        <h2>Diğer Çözümlerimiz</h2>
+        <p>İşletmeniz için tam entegre sistemler</p>
+      </div>
+      
+      <div class="services-grid">
+        {relatedServices.map((service, index) => (
+          <a href={service.url} class="service-card" key={index}>
+            <h3>{service.title}</h3>
+            <p>{service.description}</p>
+            <span class="service-link">Detaylı Bilgi →</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Sıkça Sorulan Sorular</h2>
+        <p>Mağaza otomasyonu hakkında merak edilenler</p>
+      </div>
+      
+      <div class="faq-grid">
+        <div class="faq-item">
+          <h3>Mağaza otomasyonu maliyeti ne kadar?</h3>
+          <p>Maliyet işletmenizin büyüklüğüne, kullanacağınız modüllere ve kullanıcı sayısına göre değişir. Aylık abonelik modeli ile başlayabilir, ihtiyacınız arttıkça ölçeklendirebilirsiniz.</p>
+        </div>
+        
+        <div class="faq-item">
+          <h3>Mevcut verilerimi aktarabilir miyim?</h3>
+          <p>Evet, mevcut stok, müşteri ve satış verilerinizi excel veya diğer programlardan sistemimize aktarıyoruz. Ücretsiz veri aktarım desteği sağlıyoruz.</p>
+        </div>
+        
+        <div class="faq-item">
+          <h3>POS cihazı ile entegre çalışır mı?</h3>
+          <p>Evet, tüm popüler POS cihazları ile entegre çalışır. Barkod okuyucu, yazıcı ve diğer donanımlarla uyumludur.</p>
+        </div>
+        
+        <div class="faq-item">
+          <h3>Eğitim desteği veriyor musunuz?</h3>
+          <p>Evet, ücretsiz canlı eğitim ve video dersler sunuyoruz. Personellerinizin sistemi etkin kullanması için tam destek sağlıyoruz.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="final-cta">
+    <div class="container">
+      <div class="cta-content">
+        <h2>Mağazanızı Dijitalleştirmeye Hazır mısınız?</h2>
+        <p class="hero-badge highlight">Stok Pratik ile satışlarınızı artırın, stok maliyetlerinizi düşürün, müşterilerinizi mutlu edin.</p>
+        
+        <div class="cta-buttons">
+          <a 
+            href="#demo-form" 
+            class="btn btn-secondary btn-large"
+          >
+            🚀 Ücretsiz Başla
+          </a>
+          
+          <a 
+            href="tel:+905325000999" 
+            class="btn btn-outline btn-large"
+          >
+            📞 Hemen Ara: 0532 500 09 99
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  /* Hero Section */
+  .hero-section {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 4rem 0;
+  }
+  
+  .hero-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+  
+  .hero-badge {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+  }
+  
+  .hero-text h1 {
+    font-size: 3rem;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+  }
+  
+  .highlight {
+    color: #ffd700;
+  }
+  
+  .hero-subtitle {
+    font-size: 1.2rem;
+    opacity: 0.9;
+    margin-bottom: 2rem;
+  }
+  
+  .hero-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin: 2rem 0;
+  }
+  
+  .stat-item {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 1rem;
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+  }
+  
+  .stat-number {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #ffd700;
+  }
+  
+  .stat-label {
+    font-size: 0.9rem;
+    opacity: 0.8;
+  }
+  
+  .hero-buttons {
+    display: flex;
+    gap: 1rem;
+    margin: 2rem 0;
+  }
+  
+  .btn-large {
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+  }
+  
+  .trust-badges {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+  
+  .trust-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+  }
+  
+  /* Dashboard Preview */
+  .dashboard-preview {
+    background: white;
+    border-radius: 15px;
+    padding: 1.5rem;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+  }
+  
+  .dashboard-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.5rem;
+  }
+  
+  .dashboard-dots {
+    display: flex;
+    gap: 0.5rem;
+    margin-right: 1rem;
+  }
+  
+  .dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+  }
+  
+  .dot.red { background: #ff5f56; }
+  .dot.yellow { background: #ffbd2e; }
+  .dot.green { background: #27ca3f; }
+  
+  .dashboard-title {
+    color: #333;
+    font-weight: bold;
+  }
+  
+  .dashboard-content {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+  
+  .metric-card {
+    background: #f8f9fa;
+    padding: 1rem;
+    border-radius: 8px;
+    text-align: center;
+  }
+  
+  .metric-value {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #667eea;
+    margin-bottom: 0.5rem;
+  }
+  
+  .metric-label {
+    font-size: 0.8rem;
+    color: #666;
+  }
+  
+  /* Features Section */
+  .features-section {
+    padding: 4rem 0;
+    background: #f8f9fa;
+  }
+  
+  .section-header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+  
+  .section-header h2 {
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 1rem;
+  }
+  
+  .section-header p {
+    color: #666;
+    font-size: 1.1rem;
+  }
+  
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+  
+  .feature-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+  }
+  
+  .feature-card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .feature-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .feature-card h3 {
+    color: #333;
+    margin-bottom: 1rem;
+  }
+  
+  .feature-list {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .feature-list li {
+    padding: 0.3rem 0;
+    position: relative;
+    padding-left: 1.5rem;
+  }
+  
+  .feature-list li:before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: #667eea;
+    font-weight: bold;
+  }
+  
+  /* Sectors Section */
+  .sectors-section {
+    padding: 4rem 0;
+  }
+  
+  .sectors-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+  
+  .sector-card {
+    text-align: center;
+    padding: 2rem;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+  }
+  
+  .sector-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+  }
+  
+  .sector-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+  
+  .sector-card h3 {
+    color: #333;
+    margin-bottom: 0.5rem;
+  }
+  
+  .sector-card p {
+    color: #666;
+    font-size: 0.9rem;
+  }
+  
+  /* Demo Section */
+  .demo-section {
+    padding: 4rem 0;
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    color: white;
+  }
+  
+  .demo-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+  
+  .demo-text h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .demo-benefits {
+    margin-top: 2rem;
+  }
+  
+  .benefit-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .benefit-icon {
+    font-size: 2rem;
+  }
+  
+  .benefit-item h4 {
+    margin-bottom: 0.3rem;
+  }
+  
+  .demo-form {
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    color: #333;
+  }
+  
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+  }
+  
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width: 100%;
+    padding: 0.8rem;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+  }
+  
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    outline: none;
+    border-color: #667eea;
+  }
+  
+  .btn-full {
+    width: 100%;
+    margin-top: 1rem;
+  }
+  
+  .form-note {
+    font-size: 0.8rem;
+    color: #666;
+    text-align: center;
+    margin-top: 1rem;
+  }
+  
+  /* Related Services */
+  .related-services {
+    padding: 4rem 0;
+    background: #f8f9fa;
+  }
+  
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+  
+  .service-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+  }
+  
+  .service-card:hover {
+    transform: translateY(-5px);
+    border-color: #667eea;
+    box-shadow: 0 10px 20px rgba(102, 126, 234, 0.2);
+  }
+  
+  .service-card h3 {
+    color: #333;
+    margin-bottom: 0.5rem;
+  }
+  
+  .service-card p {
+    color: #666;
+    margin-bottom: 1rem;
+  }
+  
+  .service-link {
+    color: #667eea;
+    font-weight: bold;
+  }
+  
+  /* FAQ Section */
+  .faq-section {
+    padding: 4rem 0;
+  }
+  
+  .faq-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+  
+  .faq-item {
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  }
+  
+  .faq-item h3 {
+    color: #333;
+    margin-bottom: 1rem;
+  }
+  
+  .faq-item p {
+    color: #666;
+    line-height: 1.6;
+  }
+  
+  /* Final CTA */
+  .final-cta {
+    padding: 4rem 0;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    text-align: center;
+  }
+  
+  .cta-content h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .cta-content p {
+    font-size: 1.2rem;
+    opacity: 0.9;
+    margin-bottom: 2rem;
+  }
+  
+  .cta-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  
+  .btn-outline {
+    background: transparent;
+    border: 2px solid white;
+    color: white;
+  }
+  
+  .btn-outline:hover {
+    background: white;
+    color: #667eea;
+  }
+  
+  /* Responsive Tasarım */
+  @media (max-width: 1024px) {
+    .hero-content,
+    .demo-container {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+    
+    .hero-text {
+      text-align: center;
+    }
+    
+    .trust-badges,
+    .hero-buttons {
+      justify-content: center;
+    }
+    
+    .features-grid,
+    .sectors-grid,
+    .faq-grid,
+    .services-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .hero-text h1 {
+      font-size: 2rem;
+    }
+    
+    .hero-stats {
+      grid-template-columns: 1fr;
+    }
+    
+    .hero-buttons {
+      flex-direction: column;
+    }
+    
+    .btn-large {
+      width: 100%;
+      text-align: center;
+    }
+    
+    .cta-buttons {
+      flex-direction: column;
+    }
+    
+    .dashboard-preview {
+      display: none;
+    }
+  }
+</style>
+
+<script>
+  // Demo form submit handler
+  document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('demoRequestForm');
+    
+    if (form) {
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // Form verilerini al
+        const formData = new FormData(form);
+        const data = Object.fromEntries(formData);
+        
+        // WhatsApp mesajı oluştur
+        const message = `Merhaba, Mağaza Otomasyonu demo talebim var:\n\n` +
+                       `Ad Soyad: ${data.name}\n` +
+                       `Telefon: ${data.phone}\n` +
+                       `E-posta: ${data.email}\n` +
+                       `İşletme Türü: ${data.business}\n` +
+                       `Ek Notlar: ${data.message || 'Yok'}`;
+        
+        // WhatsApp URL'si
+        const whatsappUrl = `https://wa.me/+905325000999?text=${encodeURIComponent(message)}`;
+        
+        // WhatsApp'ı aç
+        window.open(whatsappUrl, '_blank');
+        
+        // Formu temizle
+        form.reset();
+        
+        // Teşekkür mesajı göster
+        alert('Demo talebiniz alındı! WhatsApp üzerinden yönlendiriliyorsunuz.');
+      });
+    }
+  });
+</script>

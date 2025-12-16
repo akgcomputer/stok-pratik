@@ -1,0 +1,592 @@
+---
+// src/pages/uretim-yonetimi.astro
+import BaseLayout from '../layouts/BaseLayout.astro';
+import '../styles/variables.css';
+import '../styles/global.css';
+import '../styles/components.css';
+
+// İç linkler için data
+const internalLinks = [
+  { 
+    title: "ERP Sistemi", 
+    url: "/erp-sistemi",
+    icon: "🔄",
+    description: "Entegre üretim ve iş süreçleri"
+  },
+  { 
+    title: "Stok Takip Sistemi", 
+    url: "/stok-takip-sistemi",
+    icon: "📦",
+    description: "Hammadde ve ürün stok yönetimi"
+  },
+  { 
+    title: "Kalite Kontrol Sistemi", 
+    url: "/kalite-kontrol-sistemi",
+    icon: "✅",
+    description: "Üretim kalite takip ve raporlama"
+  },
+  { 
+    title: "Bakım Onarım Yönetimi", 
+    url: "/bakim-onarim-yonetimi",
+    icon: "🔧",
+    description: "Makine bakım planlama ve takip"
+  },
+  { 
+    title: "İş Gücü Planlama", 
+    url: "/is-gucu-planlama",
+    icon: "👷",
+    description: "Personel ve vardiya yönetimi"
+  }
+];
+
+// Üretim yönetimi modülleri
+const productionModules = [
+  {
+    icon: "📋",
+    title: "Üretim Planlama",
+    description: "Kapasite planlaması, iş emri oluşturma, makine yükleme",
+    benefit: "Kapasite kullanımı %35 artar"
+  },
+  {
+    icon: "⚙️",
+    title: "İş Emri Yönetimi",
+    description: "İş emri takibi, süre kontrolü, durum raporlama",
+    benefit: "Üretim süreleri %25 kısalır"
+  },
+  {
+    icon: "🧪",
+    title: "Reçete Yönetimi",
+    description: "Reçete oluşturma, versiyon kontrolü, maliyet hesaplama",
+    benefit: "Hammadde maliyeti %15 düşer"
+  },
+  {
+    icon: "📊",
+    title: "Üretim Takibi",
+    description: "Gerçek zamanlı takip, fire oranları, verimlilik analizi",
+    benefit: "Fire oranları %40 azalır"
+  },
+  {
+    icon: "🏭",
+    title: "Süreç Yönetimi",
+    description: "Üretim hatları, iş istasyonları, akış kontrolü",
+    benefit: "Verimlilik %30 artar"
+  },
+  {
+    icon: "📈",
+    title: "Performans Analizi",
+    description: "OEE hesaplama, makine verimliliği, KPI takibi",
+    benefit: "OEE oranı %20 artar"
+  }
+];
+
+// Üretim sektörlerine göre çözümler
+const industrySolutions = [
+  {
+    sector: "İmalat Sanayi",
+    icon: "🏭",
+    challenges: ["Çoklu proses", "Makine bakımı", "Kalite kontrol", "Personel planlaması"],
+    solution: "Tam entegre üretim yönetimi + bakım modülü"
+  },
+  {
+    sector: "Gıda Üretimi",
+    icon: "🍞",
+    challenges: ["SKT takibi", "Parti takip", "Hijyen kontrol", "Reçete yönetimi"],
+    solution: "Gıda uyumlu üretim + kalite kontrol modülü"
+  },
+  {
+    sector: "Tekstil ve Konfeksiyon",
+    icon: "👕",
+    challenges: ["Kesim planlama", "İplik takibi", "Kalıp yönetimi", "Renk eşleme"],
+    solution: "Tekstil özel üretim + stok yönetimi"
+  },
+  {
+    sector: "Kimya ve Plastik",
+    icon: "🧪",
+    challenges: ["Reçete hassasiyeti", "Parti takibi", "Kalite test", "Güvenlik prosedürleri"],
+    solution: "Kimya uyumlu üretim + kalite modülü"
+  }
+];
+
+// Üretim süreç adımları
+const productionSteps = [
+  {
+    step: "1",
+    title: "Planlama",
+    description: "Kapasite planlaması, iş emri oluşturma, makine atama"
+  },
+  {
+    step: "2",
+    title: "Hammadde",
+    description: "Reçete kontrolü, stok rezervasyonu, malzeme çekme"
+  },
+  {
+    step: "3",
+    title: "Üretim",
+    description: "İş emri takibi, fire kontrolü, kalite testleri"
+  },
+  {
+    step: "4",
+    title: "Çıktı",
+    description: "Ürün stok kaydı, kalite onayı, sevkiyat hazırlığı"
+  }
+];
+
+// Başarı örnekleri
+const successStories = [
+  {
+    company: "Metal İşleme Fabrikası",
+    location: "Bursa",
+    problem: "Makine kapasite kullanımı %65",
+    solution: "Üretim planlama + makine yükleme modülü",
+    result: "Kapasite %92'ye çıktı"
+  },
+  {
+    company: "Plastik Enjeksiyon",
+    location: "İstanbul",
+    problem: "Fire oranı %8",
+    solution: "Reçete optimizasyonu + kalite kontrol",
+    result: "Fire %3'e düştü"
+  },
+  {
+    company: "Gıda İşleme Tesisi",
+    location: "İzmir",
+    problem: "Parti takibinde karışıklık",
+    solution: "Parti bazlı üretim takip sistemi",
+    result: "İzlenebilirlik %100 sağlandı"
+  }
+];
+
+// Teknik özellikler
+const technicalFeatures = [
+  {
+    category: "Planlama ve Programlama",
+    features: ["MRP (Malzeme İhtiyaç Planlama)", "CRP (Kapasite İhtiyaç Planlama)", "İş yükü dengeleme", "Makine yükleme optimizasyonu"]
+  },
+  {
+    category: "Üretim Takip",
+    features: ["Gerçek zamanlı takip", "Fire ve verimlilik analizi", "OEE (Toplam Ekipman Etkinliği)", "Kalite kontrol noktaları"]
+  },
+  {
+    category: "Maliyet Yönetimi",
+    features: ["Reçete maliyet hesaplama", "İşçilik maliyetleri", "Makine amortismanı", "Genel gider dağıtımı"]
+  },
+  {
+    category: "Entegrasyonlar",
+    features: ["Stok yönetimi entegrasyonu", "Muhasebe sistemi entegrasyonu", "Kalite yönetimi", "Bakım yönetimi"]
+  }
+];
+
+// FAQ
+const faqItems = [
+  {
+    question: "Üretim yönetimi yazılımı fiyatları ne kadar?",
+    answer: "Stok Pratik üretim yönetimi paketleri 4.999₺/ay'dan başlar. Fiyat; kullanıcı sayısı, makine sayısı ve ek modüllere göre değişir. Size özel teklif için demo talep edebilirsiniz."
+  },
+  {
+    question: "Mevcut makine parkımızla entegre olur mu?",
+    answer: "Evet! PLC, SCADA, MES sistemleri ile entegrasyon sağlıyoruz. Makinelerinizden veri alarak gerçek zamanlı üretim takibi yapabilirsiniz."
+  },
+  {
+    question: "OEE (Toplam Ekipman Etkinliği) hesaplaması yapar mı?",
+    answer: "Evet! Otomatik olarak kullanılabilirlik, performans ve kalite oranlarını hesaplayarak OEE raporları oluşturur. Makine verimliliğinizi sürekli izleyebilirsiniz."
+  },
+  {
+    question: "Çoklu üretim hattı yönetimi yapabilir miyiz?",
+    answer: "Evet! Sınırsız sayıda üretim hattı, iş istasyonu ve makine tanımlayabilirsiniz. Her birini ayrı ayrı izleyip analiz edebilirsiniz."
+  },
+  {
+    question: "Reçete versiyon kontrolü var mı?",
+    answer: "Evet! Reçetelerinizin tüm versiyonlarını saklar, değişiklik geçmişini tutar. Hangi reçetenin ne zaman kullanıldığını takip edebilirsiniz."
+  }
+];
+---
+
+<BaseLayout 
+  title="Üretim Yönetimi Sistemi | Stok Pratik - Akıllı Üretim Çözümleri"
+  description="Üretim yönetimi sistemi ile üretim süreçlerinizi optimize edin. Planlama, takip, maliyet kontrolü ve verimlilik artışı tek sistemde."
+>
+
+  <!-- Hero Section -->
+  <section style="padding: 4rem 0; background: linear-gradient(135deg, #1e40af, #3b82f6); color: white;">
+    <div class="container">
+      <div style="text-align: center; max-width: 800px; margin: 0 auto;">
+        <h1 style="color: white; margin-bottom: 1.5rem; font-size: 2.5rem;">
+          Akıllı Üretim Yönetimi ile Verimliliğinizi Artırın
+        </h1>
+        <p style="font-size: 1.25rem; margin-bottom: 2rem; opacity: 0.9;">
+          Üretim planlamadan kalite kontrole, tüm süreçlerinizi tek sistemde yönetin. Fireleri azaltın, verimliliği artırın.
+        </p>
+        <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+          <a 
+            href="https://wa.me/+905325000999?text=Merhaba,%20üretim%20yönetimi%20sistemi%20demo%20talep%20ediyorum"
+            class="btn btn-primary"
+            style="min-height: 52px; background: white; color: #1e40af; border-color: white;"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            🏭 Üretim Demo İste
+          </a>
+          <a 
+            href="https://wa.me/+905325000999?text=Merhaba,%20üretim%20analizi%20ve%20çözüm%20önerisi%20almak%20istiyorum"
+            class="btn btn-secondary"
+            style="min-height: 52px; border-color: white; color: white;"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            📊 Ücretsiz Analiz
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Ana İçerik -->
+  <main style="padding: 3rem 0; background: var(--bg-white);">
+    <div class="container">
+      
+      <!-- Üretim Modülleri -->
+      <section style="margin-bottom: 4rem;">
+        <h2 style="text-align: center; color: #1e40af; margin-bottom: 2rem;">
+          6 Temel Üretim Yönetimi Modülü
+        </h2>
+        
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem;">
+          {productionModules.map((module) => (
+            <div style="background: white; padding: 2rem; border-radius: 1rem; border: 1px solid #dbeafe; box-shadow: var(--shadow-md); text-align: center;">
+              <div style="font-size: 3rem; margin-bottom: 1rem;">{module.icon}</div>
+              <h3 style="color: #1e40af; margin-bottom: 0.75rem; font-size: 1.1rem;">{module.title}</h3>
+              <p style="color: var(--text-gray); margin-bottom: 1rem; font-size: 0.95rem;">{module.description}</p>
+              <div style="background: #dbeafe; padding: 0.5rem; border-radius: 0.5rem; border-left: 3px solid #3b82f6;">
+                <span style="color: #1e40af; font-weight: 600;">{module.benefit}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- Sektörel Çözümler -->
+      <section style="margin-bottom: 4rem; background: #eff6ff; padding: 3rem; border-radius: 1rem;">
+        <h2 style="text-align: center; color: #1e40af; margin-bottom: 2rem;">
+          Sektörünüze Özel Üretim Çözümleri
+        </h2>
+        
+        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem;">
+          {industrySolutions.map((industry) => (
+            <div style="background: white; padding: 2rem; border-radius: 1rem; border: 1px solid #dbeafe;">
+              <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem;">
+                <div style="font-size: 2.5rem;">{industry.icon}</div>
+                <h3 style="color: #1e40af; margin: 0; font-size: 1.25rem;">{industry.sector}</h3>
+              </div>
+              
+              <div style="margin-bottom: 1.5rem;">
+                <div style="font-weight: 600; color: var(--text-dark); margin-bottom: 0.5rem;">Zorluklar:</div>
+                <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
+                  {industry.challenges.map((challenge) => (
+                    <span style="background: #dbeafe; color: #1e40af; padding: 0.25rem 0.75rem; border-radius: 1rem; font-size: 0.9rem;">
+                      {challenge}
+                    </span>
+                  ))}
+                </div>
+              </div>
+              
+              <div>
+                <div style="font-weight: 600; color: var(--text-dark); margin-bottom: 0.5rem;">Stok Pratik Çözümü:</div>
+                <div style="background: #dbeafe; padding: 1rem; border-radius: 0.5rem; border-left: 3px solid #3b82f6;">
+                  <span style="color: #1e40af; font-weight: 600;">{industry.solution}</span>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- Üretim Süreçleri -->
+      <section style="margin-bottom: 4rem;">
+        <h2 style="text-align: center; color: #1e40af; margin-bottom: 2rem;">
+          4 Adımda Dijital Üretim
+        </h2>
+        
+        <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem;">
+          {productionSteps.map((step) => (
+            <div style="position: relative; text-align: center;">
+              <div style="position: absolute; top: -1.5rem; left: 50%; transform: translateX(-50%); background: #3b82f6; color: white; width: 3rem; height: 3rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.25rem; z-index: 10;">
+                {step.step}
+              </div>
+              <div style="background: white; padding: 2rem 1.5rem 1.5rem; border-radius: 1rem; border: 2px solid #93c5fd; height: 100%;">
+                <h3 style="color: #1e40af; margin-top: 1rem; margin-bottom: 0.75rem; font-size: 1.1rem;">{step.title}</h3>
+                <p style="color: var(--text-gray); margin: 0; font-size: 0.95rem;">{step.description}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- Teknik Özellikler -->
+      <section style="margin-bottom: 4rem;">
+        <h2 style="text-align: center; color: #1e40af; margin-bottom: 2rem;">
+          Teknik Özellikler ve Yetenekler
+        </h2>
+        
+        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem;">
+          {technicalFeatures.map((feature) => (
+            <div style="background: white; padding: 2rem; border-radius: 1rem; border: 1px solid var(--border-color); box-shadow: var(--shadow-md);">
+              <h3 style="color: #1e40af; margin-top: 0; margin-bottom: 1rem;">{feature.category}</h3>
+              <ul style="margin: 0; padding-left: 1.25rem;">
+                {feature.features.map((item) => (
+                  <li style="margin-bottom: 0.75rem; color: var(--text-dark); display: flex; align-items: start; gap: 0.5rem;">
+                    <span style="color: #3b82f6;">⚙️</span>
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- Başarı Hikayeleri -->
+      <section style="margin-bottom: 4rem; background: #eff6ff; padding: 3rem; border-radius: 1rem;">
+        <h2 style="text-align: center; color: #1e40af; margin-bottom: 2rem;">
+          Üretimde Başarı Hikayeleri
+        </h2>
+        
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem;">
+          {successStories.map((story) => (
+            <div style="background: white; padding: 2rem; border-radius: 1rem; border: 1px solid #dbeafe; text-align: center;">
+              <div style="font-size: 2rem; margin-bottom: 1rem;">🏭</div>
+              <h3 style="color: #1e40af; margin-bottom: 0.5rem;">{story.company}</h3>
+              <div style="color: var(--text-gray); margin-bottom: 1rem;">📍 {story.location}</div>
+              
+              <div style="margin-bottom: 1rem;">
+                <div style="font-weight: 600; color: var(--text-dark); margin-bottom: 0.25rem;">Problem:</div>
+                <div style="color: #ef4444; background: #fef2f2; padding: 0.5rem; border-radius: 0.5rem; border-left: 3px solid #dc2626;">
+                  {story.problem}
+                </div>
+              </div>
+              
+              <div style="margin-bottom: 1rem;">
+                <div style="font-weight: 600; color: var(--text-dark); margin-bottom: 0.25rem;">Çözüm:</div>
+                <div style="color: var(--text-dark); background: #dbeafe; padding: 0.5rem; border-radius: 0.5rem; border-left: 3px solid #3b82f6;">
+                  {story.solution}
+                </div>
+              </div>
+              
+              <div style="background: #dcfce7; padding: 0.75rem; border-radius: 0.5rem; border-left: 3px solid #16a34a;">
+                <div style="font-weight: 600; color: #166534;">Sonuç: {story.result}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- OEE Hesaplama -->
+      <section style="margin-bottom: 4rem;">
+        <h2 style="text-align: center; color: #1e40af; margin-bottom: 2rem;">
+          OEE (Toplam Ekipman Etkinliği) Takibi
+        </h2>
+        
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; text-align: center;">
+          <div style="background: white; padding: 2rem; border-radius: 1rem; border: 2px solid #60a5fa;">
+            <div style="font-size: 3rem; color: #3b82f6; margin-bottom: 1rem;">⏱️</div>
+            <div style="font-size: 1.5rem; font-weight: bold; color: #1e40af; margin-bottom: 0.5rem;">Kullanılabilirlik</div>
+            <div style="color: var(--text-gray);">Planlanan sürede çalışma oranı</div>
+            <div style="margin-top: 1rem; font-size: 2rem; font-weight: bold; color: #3b82f6;">%92</div>
+          </div>
+          
+          <div style="background: white; padding: 2rem; border-radius: 1rem; border: 2px solid #60a5fa;">
+            <div style="font-size: 3rem; color: #3b82f6; margin-bottom: 1rem;">🚀</div>
+            <div style="font-size: 1.5rem; font-weight: bold; color: #1e40af; margin-bottom: 0.5rem;">Performans</div>
+            <div style="color: var(--text-gray);">Ideal hıza göre çalışma oranı</div>
+            <div style="margin-top: 1rem; font-size: 2rem; font-weight: bold; color: #3b82f6;">%85</div>
+          </div>
+          
+          <div style="background: white; padding: 2rem; border-radius: 1rem; border: 2px solid #60a5fa;">
+            <div style="font-size: 3rem; color: #3b82f6; margin-bottom: 1rem;">✅</div>
+            <div style="font-size: 1.5rem; font-weight: bold; color: #1e40af; margin-bottom: 0.5rem;">Kalite</div>
+            <div style="color: var(--text-gray);">Kaliteli ürün üretme oranı</div>
+            <div style="margin-top: 1rem; font-size: 2rem; font-weight: bold; color: #3b82f6;">%97</div>
+          </div>
+        </div>
+        
+        <div style="text-align: center; margin-top: 2rem;">
+          <div style="display: inline-block; background: linear-gradient(135deg, #1e40af, #3b82f6); color: white; padding: 1rem 2rem; border-radius: 0.75rem;">
+            <div style="font-size: 1.5rem; font-weight: bold;">OEE: %76</div>
+            <div style="font-size: 0.9rem;">Ortalama üretim verimliliği</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- İç Linkler -->
+      <section style="margin-bottom: 4rem;">
+        <h2 style="text-align: center; color: #1e40af; margin-bottom: 2rem;">
+          Üretim ile Entegre Çözümlerimiz
+        </h2>
+        
+        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem;">
+          {internalLinks.map((link) => (
+            <a 
+              href={link.url}
+              style="display: flex; align-items: center; gap: 1rem; background: white; padding: 1.5rem; border-radius: 0.75rem; text-decoration: none; color: var(--text-dark); border: 1px solid #dbeafe; transition: all 0.3s;"
+            >
+              <div style="font-size: 2rem;">{link.icon}</div>
+              <div>
+                <div style="font-weight: 600; color: #1e40af; margin-bottom: 0.25rem;">{link.title}</div>
+                <div style="color: var(--text-gray); font-size: 0.95rem;">{link.description}</div>
+              </div>
+            </a>
+          ))}
+        </div>
+      </section>
+
+      <!-- FAQ -->
+      <section style="margin-bottom: 4rem;">
+        <h2 style="text-align: center; color: #1e40af; margin-bottom: 2rem;">
+          Üretim Yönetimi Hakkında Sıkça Sorulan Sorular
+        </h2>
+        
+        <div style="max-width: 800px; margin: 0 auto;">
+          {faqItems.map((item, index) => (
+            <div style="background: white; padding: 1.5rem; border-radius: 0.75rem; margin-bottom: 1rem; border: 1px solid #dbeafe; box-shadow: var(--shadow-sm);">
+              <div style="display: flex; gap: 1rem;">
+                <div style="color: #1e40af; font-weight: bold;">Q{index + 1}:</div>
+                <div style="flex: 1;">
+                  <h3 style="color: #1e40af; margin: 0 0 0.75rem 0; font-size: 1.1rem;">{item.question}</h3>
+                  <p style="margin: 0; color: var(--text-dark); line-height: 1.6;">{item.answer}</p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- CTA -->
+      <section style="background: linear-gradient(135deg, #1e40af, #3b82f6); padding: 4rem; border-radius: 1.5rem; text-align: center; color: white;">
+        <h2 style="color: white; margin-bottom: 1rem; font-size: 2rem;">Üretim Tesisinizi Ücretsiz Analiz Edelim</h2>
+        <p style="margin-bottom: 2rem; font-size: 1.1rem; opacity: 0.9; max-width: 600px; margin-left: auto; margin-right: auto;">
+          Uzman üretim mühendislerimiz tesisinizi analiz edip, size özel verimlilik artışı planı hazırlasın.
+        </p>
+        
+        <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+          <a 
+            href="https://wa.me/+905325000999?text=Merhaba,%20üretim%20tesisi%20analizi%20için%20görüşmek%20istiyorum"
+            style="display: inline-flex; align-items: center; justify-content: center; padding: 1rem 2rem; background-color: white; color: #1e40af; text-decoration: none; border-radius: 0.75rem; font-weight: 600; gap: 0.5rem; border: none; cursor: pointer; font-size: 1.1rem;"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            🏭 Ücretsiz Tesis Analizi
+          </a>
+          
+          <a 
+            href="https://wa.me/+905325000999?text=Merhaba,%20üretim%20yönetimi%20demo%20ve%20fiyat%20teklifi%20almak%20istiyorum"
+            style="display: inline-flex; align-items: center; justify-content: center; padding: 1rem 2rem; background-color: transparent; color: white; text-decoration: none; border-radius: 0.75rem; font-weight: 600; gap: 0.5rem; border: 2px solid white; cursor: pointer; font-size: 1.1rem;"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            ⚙️ Demo + Teknik İnceleme
+          </a>
+        </div>
+        
+        <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; margin-top: 3rem; text-align: center;">
+          <div>
+            <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">📈</div>
+            <div>OEE Artış Garantisi</div>
+          </div>
+          <div>
+            <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">🔧</div>
+            <div>Teknik Danışmanlık</div>
+          </div>
+          <div>
+            <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">👨‍🔧</div>
+            <div>Saha Kurulum Desteği</div>
+          </div>
+          <div>
+            <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">📚</div>
+            <div>Personel Eğitimi</div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <style>
+    :root {
+      --border-color: #e5e7eb;
+    }
+    
+    h2 {
+      color: #1e40af;
+      margin-bottom: 1rem;
+      font-size: 1.8rem;
+    }
+    
+    h3 {
+      color: var(--text-dark);
+      margin-bottom: 0.5rem;
+    }
+    
+    p {
+      color: var(--text-dark);
+      line-height: 1.6;
+    }
+    
+    a:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+      border-color: #3b82f6;
+    }
+    
+    @media (max-width: 1024px) {
+      div[style*="grid-template-columns: repeat(4, 1fr)"] {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    
+    @media (max-width: 768px) {
+      div[style*="grid-template-columns: repeat(3, 1fr)"] {
+        grid-template-columns: 1fr;
+      }
+      
+      div[style*="grid-template-columns: repeat(2, 1fr)"] {
+        grid-template-columns: 1fr;
+      }
+      
+      section {
+        padding-left: 1rem;
+        padding-right: 1rem;
+      }
+      
+      .container > div {
+        padding: 0;
+      }
+      
+      .hero-section {
+        padding: 3rem 1rem;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 2rem !important;
+      }
+      
+      div[style*="grid-template-columns: repeat(4, 1fr)"] {
+        grid-template-columns: 1fr;
+      }
+      
+      .cta-buttons {
+        flex-direction: column;
+      }
+      
+      .cta-buttons a {
+        width: 100%;
+        text-align: center;
+      }
+      
+      .success-stories {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+
+</BaseLayout>

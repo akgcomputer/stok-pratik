@@ -1,0 +1,651 @@
+---
+// src/pages/raporlama-analiz.astro
+import BaseLayout from '../layouts/BaseLayout.astro';
+import '../styles/variables.css';
+import '../styles/global.css';
+import '../styles/components.css';
+
+// İç linkler için data
+const internalLinks = [
+  { 
+    title: "ERP Sistemi", 
+    url: "/erp-sistemi",
+    icon: "🔄",
+    description: "Entegre raporlama ve analiz modülleri"
+  },
+  { 
+    title: "Stok Takip Sistemi", 
+    url: "/stok-takip-sistemi",
+    icon: "📦",
+    description: "Stok hareketleri ve envanter analizleri"
+  },
+  { 
+    title: "Satış Yönetimi", 
+    url: "/satis-yonetimi",
+    icon: "💰",
+    description: "Satış performansı ve müşteri analizleri"
+  },
+  { 
+    title: "Finans Yönetimi", 
+    url: "/finans-yonetimi",
+    icon: "💹",
+    description: "Finansal raporlar ve bütçe analizleri"
+  },
+  { 
+    title: "Dashboard", 
+    url: "/dashboard",
+    icon: "📊",
+    description: "Özelleştirilebilir yönetici paneli"
+  }
+];
+
+// Rapor türleri
+const reportTypes = [
+  {
+    icon: "📈",
+    title: "Finansal Raporlar",
+    reports: ["Gelir Tablosu", "Bilanço", "Nakit Akış", "Kar/Zarar", "Bütçe Analizi"],
+    frequency: "Günlük/Haftalık/Aylık"
+  },
+  {
+    icon: "📦",
+    title: "Stok Raporları",
+    reports: ["Stok Durumu", "En Çok Satanlar", "Slow-Moving", "ABC Analizi", "Stok Devir Hızı"],
+    frequency: "Anlık/Günlük"
+  },
+  {
+    icon: "💰",
+    title: "Satış Raporları",
+    reports: ["Satış Performansı", "Müşteri Segmentasyonu", "Bölgesel Analiz", "Kampanya ROI", "Satış Tahmini"],
+    frequency: "Anlık/Günlük"
+  },
+  {
+    icon: "👥",
+    title: "Müşteri Raporları",
+    reports: ["Müşteri Segmentasyonu", "CLV Analizi", "Şikayet Analizi", "Memnuniyet Raporu", "Tekrar Satış Oranı"],
+    frequency: "Haftalık/Aylık"
+  },
+  {
+    icon: "👷",
+    title: "Personel Raporları",
+    reports: ["Performans Analizi", "İş Yükü Dağılımı", "Prim Hesaplama", "Eğitim İhtiyacı", "Başarı Oranları"],
+    frequency: "Aylık/Çeyrek"
+  },
+  {
+    icon: "🏭",
+    title: "Üretim Raporları",
+    reports: ["OEE Raporları", "Fire Analizi", "Kapasite Kullanımı", "Maliyet Analizi", "Verimlilik Raporu"],
+    frequency: "Vardiya/Günlük"
+  }
+];
+
+// Analiz araçları
+const analysisTools = [
+  {
+    tool: "Pareto Analizi",
+    description: "Önemli azınlığın belirlenmesi (80/20 kuralı)",
+    application: "En çok satan ürünler, en önemli müşteriler"
+  },
+  {
+    tool: "Trend Analizi",
+    description: "Zaman içindeki değişimlerin izlenmesi",
+    application: "Satış trendleri, mevsimsellik analizi"
+  },
+  {
+    tool: "Karşılaştırmalı Analiz",
+    description: "Farklı dönemlerin karşılaştırılması",
+    application: "Yıllık büyüme, hedef gerçekleşme"
+  },
+  {
+    tool: "Segmentasyon Analizi",
+    description: "Verilerin gruplara ayrılması",
+    application: "Müşteri segmentasyonu, ürün kategorileri"
+  },
+  {
+    tool: "Regresyon Analizi",
+    description: "Değişkenler arası ilişki analizi",
+    application: "Satış tahmini, fiyat esnekliği"
+  },
+  {
+    tool: "Dashboard Analizi",
+    description: "Anlık performans göstergeleri",
+    application: "Yönetici paneli, KPI takibi"
+  }
+];
+
+// Raporlama süreçleri
+const reportingProcess = [
+  {
+    step: "1",
+    title: "Veri Toplama",
+    description: "Tüm sistemlerden otomatik veri toplama"
+  },
+  {
+    step: "2",
+    title: "Veri Temizleme",
+    description: "Hatalı ve eksik verilerin düzeltilmesi"
+  },
+  {
+    step: "3",
+    title: "Analiz ve İşleme",
+    description: "İstatistiksel analiz ve rapor oluşturma"
+  },
+  {
+    step: "4",
+    title: "Görselleştirme",
+    description: "Grafikler, tablolar ve dashboard'lar"
+  },
+  {
+    step: "5",
+    title: "Dağıtım",
+    description: "Otomatik rapor dağıtımı ve paylaşımı"
+  }
+];
+
+// KPI örnekleri
+const kpiExamples = [
+  {
+    category: "Finansal KPI'lar",
+    kpis: ["Net Kar Marjı", "ROI (Yatırım Getirisi)", "Ciro Büyüme Oranı", "Nakit Dönüşüm Süresi", "Borç/Özkaynak Oranı"],
+    frequency: "Aylık"
+  },
+  {
+    category: "Operasyonel KPI'lar",
+    kpis: ["Üretim Verimliliği", "Stok Devir Hızı", "Teslimat Doğruluk Oranı", "Makine Kullanım Oranı", "Fire Oranı"],
+    frequency: "Günlük"
+  },
+  {
+    category: "Müşteri KPI'lar",
+    kpis: ["Müşteri Memnuniyet Skoru", "Müşteri Edinme Maliyeti", "Müşteri Yaşam Boyu Değeri", "Müşteri Kaybetme Oranı", "Net Promoter Skoru"],
+    frequency: "Aylık"
+  },
+  {
+    category: "Satış KPI'lar",
+    kpis: ["Satış Büyüme Oranı", "Ortalama Sipariş Değeri", "Satış Dönüşüm Oranı", "Satış Döngüsü Süresi", "Müşteri Başına Gelir"],
+    frequency: "Haftalık"
+  }
+];
+
+// Dashboard özellikleri
+const dashboardFeatures = [
+  {
+    feature: "Gerçek Zamanlı Veri",
+    description: "Anlık veri güncellemeleri",
+    benefit: "Anında karar alma"
+  },
+  {
+    feature: "Özelleştirilebilir Widget'lar",
+    description: "İhtiyaca göre dashboard düzenleme",
+    benefit: "Kişiselleştirilmiş görünüm"
+  },
+  {
+    feature: "Çoklu Kullanıcı Desteği",
+    description: "Farklı yetkilere göre dashboard'lar",
+    benefit: "Rol bazlı erişim"
+  },
+  {
+    feature: "Mobil Uyumluluk",
+    description: "Telefon ve tabletlerden erişim",
+    benefit: "Her yerden takip"
+  },
+  {
+    feature: "Otomatik Uyarılar",
+    description: "KPI limit aşımlarında bildirim",
+    benefit: "Proaktif yönetim"
+  },
+  {
+    feature: "Veri Dışa Aktarma",
+    description: "PDF, Excel, CSV formatlarında çıktı",
+    benefit: "Kolay paylaşım"
+  }
+];
+
+// Başarı örnekleri
+const successStories = [
+  {
+    company: "Perakende Zinciri",
+    location: "İstanbul",
+    problem: "Aylık raporlar 5 gün sürüyordu",
+    solution: "Otomatik raporlama + dashboard sistemi",
+    result: "Rapor süresi 2 saate düştü"
+  },
+  {
+    company: "Üretim Firması",
+    location: "Bursa",
+    problem: "Fire oranları yüksek, sebebi bilinmiyor",
+    solution: "Detaylı üretim analiz raporları",
+    result: "Fire oranı %40 azaldı"
+  },
+  {
+    company: "Hizmet Şirketi",
+    location: "Ankara",
+    problem: "Karar almak için yeterli veri yok",
+    solution: "KPI dashboard'ları + trend analizi",
+    result: "Karar alma hızı %70 arttı"
+  }
+];
+
+// FAQ
+const faqItems = [
+  {
+    question: "Raporlama ve analiz yazılımı fiyatları ne kadar?",
+    answer: "Stok Pratik raporlama paketleri 1.999₺/ay'dan başlar. Fiyat; rapor sayısı, kullanıcı sayısı ve veri kaynağı entegrasyonlarına göre değişir. İlk ay ücretsiz deneme imkanı sunuyoruz."
+  },
+  {
+    question: "Mevcut sistemlerimizden veri alabilir mi?",
+    answer: "Evet! Excel, CSV, SQL, API ve diğer ERP/Muhasebe sistemlerinden otomatik veri alımı yapıyoruz. ETL (Extract-Transform-Load) süreçleri ile verilerinizi entegre ediyoruz."
+  },
+  {
+    question: "Özel raporlar oluşturabilir miyiz?",
+    answer: "Evet! Sürükle-bırak rapor tasarımcımız ile kendi raporlarınızı oluşturabilirsiniz. Ayrıca uzman ekibimiz ihtiyaçlarınıza özel rapor şablonları hazırlar."
+  },
+  {
+    question: "Mobil cihazlardan raporlara erişebilir miyiz?",
+    answer: "Evet! iOS ve Android uygulamalarımızla anlık raporlara erişebilir, dashboard'ları görüntüleyebilir, PDF/Excel olarak indirebilirsiniz. Push notification ile kritik rapor alarmları alabilirsiniz."
+  },
+  {
+    question: "Veri güvenliği nasıl sağlanıyor?",
+    answer: "256-bit SSL şifreleme, role-based erişim kontrolleri, veri şifreleme ve GDPR/KVKK uyumlu veri yönetimi ile maksimum güvenlik sağlıyoruz. Her kullanıcının görebileceği verileri sınırlandırabilirsiniz."
+  }
+];
+---
+
+<BaseLayout 
+  title="Raporlama ve Analiz | Stok Pratik - İş Zekası Çözümleri"
+  description="Raporlama ve analiz sistemi ile verilerinizi anlamlandırın. Gerçek zamanlı dashboard'lar, KPI takibi, detaylı analiz raporları."
+>
+
+  <!-- Hero Section -->
+  <section style="padding: 4rem 0; background: linear-gradient(135deg, #6366f1, #8b5cf6); color: white;">
+    <div class="container">
+      <div style="text-align: center; max-width: 800px; margin: 0 auto;">
+        <h1 style="color: white; margin-bottom: 1.5rem; font-size: 2.5rem;">
+          Verilerinizle Akıllı Kararlar Alın
+        </h1>
+        <p style="font-size: 1.25rem; margin-bottom: 2rem; opacity: 0.9;">
+          Gerçek zamanlı raporlama, derin analizler ve öngörülü dashboard'lar ile işinizi veriye dayalı yönetin.
+        </p>
+        <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+          <a 
+            href="https://wa.me/+905325000999?text=Merhaba,%20raporlama%20ve%20analiz%20demo%20talep%20ediyorum"
+            class="btn btn-primary"
+            style="min-height: 52px; background: white; color: #6366f1; border-color: white;"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            📊 Demo İste
+          </a>
+          <a 
+            href="https://wa.me/+905325000999?text=Merhaba,%20KPI%20analizi%20yaptırmak%20istiyorum"
+            class="btn btn-secondary"
+            style="min-height: 52px; border-color: white; color: white;"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            📈 Ücretsiz KPI Analizi
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Ana İçerik -->
+  <main style="padding: 3rem 0; background: var(--bg-white);">
+    <div class="container">
+      
+      <!-- Rapor Türleri -->
+      <section style="margin-bottom: 4rem;">
+        <h2 style="text-align: center; color: #6366f1; margin-bottom: 2rem;">
+          6 Kategori 30+ Hazır Rapor
+        </h2>
+        
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem;">
+          {reportTypes.map((type) => (
+            <div style="background: white; padding: 2rem; border-radius: 1rem; border: 1px solid #c7d2fe; box-shadow: var(--shadow-md);">
+              <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem;">
+                <div style="font-size: 2.5rem;">{type.icon}</div>
+                <div>
+                  <h3 style="color: #6366f1; margin: 0; font-size: 1.25rem;">{type.title}</h3>
+                  <div style="color: var(--text-gray); font-size: 0.9rem;">Sıklık: {type.frequency}</div>
+                </div>
+              </div>
+              
+              <div>
+                <div style="font-weight: 600; color: var(--text-dark); margin-bottom: 0.5rem;">Raporlar:</div>
+                <div style="display: grid; grid-template-columns: 1fr; gap: 0.5rem;">
+                  {type.reports.map((report) => (
+                    <div style="display: flex; align-items: center; gap: 0.5rem;">
+                      <div style="color: #6366f1;">•</div>
+                      <div style="color: var(--text-dark); font-size: 0.95rem;">{report}</div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- Analiz Araçları -->
+      <section style="margin-bottom: 4rem; background: #eef2ff; padding: 3rem; border-radius: 1rem;">
+        <h2 style="text-align: center; color: #6366f1; margin-bottom: 2rem;">
+          Güçlü Analiz Araçları
+        </h2>
+        
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem;">
+          {analysisTools.map((tool) => (
+            <div style="background: white; padding: 2rem; border-radius: 1rem; border: 1px solid #c7d2fe;">
+              <h3 style="color: #6366f1; margin-top: 0; margin-bottom: 0.75rem; font-size: 1.1rem;">{tool.tool}</h3>
+              
+              <div style="margin-bottom: 1rem;">
+                <div style="font-weight: 600; color: var(--text-dark); margin-bottom: 0.25rem;">Açıklama:</div>
+                <div style="color: var(--text-gray); font-size: 0.95rem;">{tool.description}</div>
+              </div>
+              
+              <div>
+                <div style="font-weight: 600; color: var(--text-dark); margin-bottom: 0.25rem;">Uygulama:</div>
+                <div style="color: var(--text-dark); font-size: 0.95rem;">{tool.application}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- Raporlama Süreçleri -->
+      <section style="margin-bottom: 4rem;">
+        <h2 style="text-align: center; color: #6366f1; margin-bottom: 2rem;">
+          5 Adımda Otomatik Raporlama
+        </h2>
+        
+        <div style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 1.5rem;">
+          {reportingProcess.map((process) => (
+            <div style="position: relative; text-align: center;">
+              <div style="position: absolute; top: -1.5rem; left: 50%; transform: translateX(-50%); background: #8b5cf6; color: white; width: 3rem; height: 3rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.25rem; z-index: 10;">
+                {process.step}
+              </div>
+              <div style="background: white; padding: 2rem 1.5rem 1.5rem; border-radius: 1rem; border: 2px solid #a78bfa; height: 100%;">
+                <h3 style="color: #6366f1; margin-top: 1rem; margin-bottom: 0.75rem; font-size: 1.1rem;">{process.title}</h3>
+                <p style="color: var(--text-gray); margin: 0; font-size: 0.95rem;">{process.description}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- KPI Örnekleri -->
+      <section style="margin-bottom: 4rem;">
+        <h2 style="text-align: center; color: #6366f1; margin-bottom: 2rem;">
+          Kritik Performans Göstergeleri (KPI)
+        </h2>
+        
+        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem;">
+          {kpiExamples.map((category) => (
+            <div style="background: white; padding: 2rem; border-radius: 1rem; border: 1px solid #c7d2fe; box-shadow: var(--shadow-sm);">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+                <h3 style="color: #6366f1; margin: 0; font-size: 1.25rem;">{category.category}</h3>
+                <div style="background: #eef2ff; color: #6366f1; padding: 0.25rem 0.75rem; border-radius: 1rem; font-size: 0.9rem; font-weight: 600;">
+                  {category.frequency}
+                </div>
+              </div>
+              
+              <div style="display: grid; grid-template-columns: 1fr; gap: 0.75rem;">
+                {category.kpis.map((kpi) => (
+                  <div style="display: flex; align-items: center; gap: 0.75rem;">
+                    <div style="width: 8px; height: 8px; background: #6366f1; border-radius: 50%;"></div>
+                    <div style="color: var(--text-dark); font-size: 0.95rem;">{kpi}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- Dashboard Özellikleri -->
+      <section style="margin-bottom: 4rem; background: #eef2ff; padding: 3rem; border-radius: 1rem;">
+        <h2 style="text-align: center; color: #6366f1; margin-bottom: 2rem;">
+          Akıllı Dashboard Özellikleri
+        </h2>
+        
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem;">
+          {dashboardFeatures.map((feature) => (
+            <div style="background: white; padding: 2rem; border-radius: 1rem; border: 1px solid #c7d2fe;">
+              <h3 style="color: #6366f1; margin-top: 0; margin-bottom: 0.75rem; font-size: 1.1rem;">{feature.feature}</h3>
+              
+              <div style="margin-bottom: 1rem;">
+                <div style="font-weight: 600; color: var(--text-dark); margin-bottom: 0.25rem;">Açıklama:</div>
+                <div style="color: var(--text-gray); font-size: 0.95rem;">{feature.description}</div>
+              </div>
+              
+              <div style="background: #eef2ff; padding: 0.75rem; border-radius: 0.5rem; border-left: 3px solid #6366f1;">
+                <div style="font-weight: 600; color: #4f46e5;">Fayda: {feature.benefit}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+        
+        <div style="text-align: center; margin-top: 2rem;">
+          <div style="display: inline-block; background: #6366f1; color: white; padding: 1rem 2rem; border-radius: 0.75rem;">
+            <div style="font-size: 1.25rem; font-weight: bold;">%90 Daha Hızlı Karar Alma</div>
+            <div style="font-size: 0.9rem;">Dashboard kullanan şirketlerin ortalama iyileşmesi</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Başarı Hikayeleri -->
+      <section style="margin-bottom: 4rem;">
+        <h2 style="text-align: center; color: #6366f1; margin-bottom: 2rem;">
+          Raporlama ile Başarı Hikayeleri
+        </h2>
+        
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem;">
+          {successStories.map((story) => (
+            <div style="background: white; padding: 2rem; border-radius: 1rem; border: 1px solid #c7d2fe; box-shadow: var(--shadow-md); text-align: center;">
+              <div style="font-size: 2rem; margin-bottom: 1rem;">📈</div>
+              <h3 style="color: #6366f1; margin-bottom: 0.5rem;">{story.company}</h3>
+              <div style="color: var(--text-gray); margin-bottom: 1rem;">📍 {story.location}</div>
+              
+              <div style="margin-bottom: 1rem;">
+                <div style="font-weight: 600; color: var(--text-dark); margin-bottom: 0.25rem;">Problem:</div>
+                <div style="color: #dc2626; background: #fef2f2; padding: 0.5rem; border-radius: 0.5rem; border-left: 3px solid #dc2626;">
+                  {story.problem}
+                </div>
+              </div>
+              
+              <div style="margin-bottom: 1rem;">
+                <div style="font-weight: 600; color: var(--text-dark); margin-bottom: 0.25rem;">Çözüm:</div>
+                <div style="color: var(--text-dark); background: #eef2ff; padding: 0.5rem; border-radius: 0.5rem; border-left: 3px solid #6366f1;">
+                  {story.solution}
+                </div>
+              </div>
+              
+              <div style="background: linear-gradient(135deg, #6366f1, #8b5cf6); color: white; padding: 0.75rem; border-radius: 0.5rem;">
+                <div style="font-weight: 600; font-size: 1.1rem;">Sonuç: {story.result}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- İç Linkler -->
+      <section style="margin-bottom: 4rem;">
+        <h2 style="text-align: center; color: #6366f1; margin-bottom: 2rem;">
+          Raporlama ile Entegre Çözümlerimiz
+        </h2>
+        
+        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem;">
+          {internalLinks.map((link) => (
+            <a 
+              href={link.url}
+              style="display: flex; align-items: center; gap: 1rem; background: white; padding: 1.5rem; border-radius: 0.75rem; text-decoration: none; color: var(--text-dark); border: 1px solid #c7d2fe; transition: all 0.3s;"
+            >
+              <div style="font-size: 2rem;">{link.icon}</div>
+              <div>
+                <div style="font-weight: 600; color: #6366f1; margin-bottom: 0.25rem;">{link.title}</div>
+                <div style="color: var(--text-gray); font-size: 0.95rem;">{link.description}</div>
+              </div>
+            </a>
+          ))}
+        </div>
+      </section>
+
+      <!-- FAQ -->
+      <section style="margin-bottom: 4rem;">
+        <h2 style="text-align: center; color: #6366f1; margin-bottom: 2rem;">
+          Raporlama ve Analiz Hakkında Sıkça Sorulan Sorular
+        </h2>
+        
+        <div style="max-width: 800px; margin: 0 auto;">
+          {faqItems.map((item, index) => (
+            <div style="background: white; padding: 1.5rem; border-radius: 0.75rem; margin-bottom: 1rem; border: 1px solid #c7d2fe; box-shadow: var(--shadow-sm);">
+              <div style="display: flex; gap: 1rem;">
+                <div style="color: #6366f1; font-weight: bold;">Q{index + 1}:</div>
+                <div style="flex: 1;">
+                  <h3 style="color: #6366f1; margin: 0 0 0.75rem 0; font-size: 1.1rem;">{item.question}</h3>
+                  <p style="margin: 0; color: var(--text-dark); line-height: 1.6;">{item.answer}</p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- CTA -->
+      <section style="background: linear-gradient(135deg, #6366f1, #8b5cf6); padding: 4rem; border-radius: 1.5rem; text-align: center; color: white;">
+        <h2 style="color: white; margin-bottom: 1rem; font-size: 2rem;">Raporlama Sisteminizi Ücretsiz Analiz Edelim</h2>
+        <p style="margin-bottom: 2rem; font-size: 1.1rem; opacity: 0.9; max-width: 600px; margin-left: auto; margin-right: auto;">
+          Veri analisti ekibimiz mevcut raporlama sisteminizi analiz edip, size özel iyileştirme planı hazırlasın.
+        </p>
+        
+        <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+          <a 
+            href="https://wa.me/+905325000999?text=Merhaba,%20raporlama%20sistemi%20analizi%20için%20görüşmek%20istiyorum"
+            style="display: inline-flex; align-items: center; justify-content: center; padding: 1rem 2rem; background-color: white; color: #6366f1; text-decoration: none; border-radius: 0.75rem; font-weight: 600; gap: 0.5rem; border: none; cursor: pointer; font-size: 1.1rem;"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            📊 Ücretsiz Raporlama Analizi
+          </a>
+          
+          <a 
+            href="https://wa.me/+905325000999?text=Merhaba,%20dashboard%20ve%20KPI%20demo%20almak%20istiyorum"
+            style="display: inline-flex; align-items: center; justify-content: center; padding: 1rem 2rem; background-color: transparent; color: white; text-decoration: none; border-radius: 0.75rem; font-weight: 600; gap: 0.5rem; border: 2px solid white; cursor: pointer; font-size: 1.1rem;"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            📈 Dashboard + KPI Demo
+          </a>
+        </div>
+        
+        <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; margin-top: 3rem; text-align: center;">
+          <div>
+            <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">📊</div>
+            <div>100+ Hazır Rapor</div>
+          </div>
+          <div>
+            <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">📱</div>
+            <div>Mobil Dashboard</div>
+          </div>
+          <div>
+            <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">🔄</div>
+            <div>Otomatik Güncelleme</div>
+          </div>
+          <div>
+            <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">🔔</div>
+            <div>Akıllı Uyarılar</div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <style>
+    :root {
+      --border-color: #e5e7eb;
+    }
+    
+    h2 {
+      color: #6366f1;
+      margin-bottom: 1rem;
+      font-size: 1.8rem;
+    }
+    
+    h3 {
+      color: var(--text-dark);
+      margin-bottom: 0.5rem;
+    }
+    
+    p {
+      color: var(--text-dark);
+      line-height: 1.6;
+    }
+    
+    a:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+      border-color: #8b5cf6;
+    }
+    
+    @media (max-width: 1024px) {
+      div[style*="grid-template-columns: repeat(5, 1fr)"] {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      
+      div[style*="grid-template-columns: repeat(4, 1fr)"] {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    
+    @media (max-width: 768px) {
+      div[style*="grid-template-columns: repeat(3, 1fr)"] {
+        grid-template-columns: 1fr;
+      }
+      
+      div[style*="grid-template-columns: repeat(2, 1fr)"] {
+        grid-template-columns: 1fr;
+      }
+      
+      div[style*="grid-template-columns: repeat(5, 1fr)"] {
+        grid-template-columns: 1fr;
+      }
+      
+      section {
+        padding-left: 1rem;
+        padding-right: 1rem;
+      }
+      
+      .container > div {
+        padding: 0;
+      }
+      
+      .hero-section {
+        padding: 3rem 1rem;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 2rem !important;
+      }
+      
+      div[style*="grid-template-columns: repeat(4, 1fr)"] {
+        grid-template-columns: 1fr;
+      }
+      
+      .cta-buttons {
+        flex-direction: column;
+      }
+      
+      .cta-buttons a {
+        width: 100%;
+        text-align: center;
+      }
+      
+      .success-stories {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+
+</BaseLayout>

@@ -1,0 +1,589 @@
+---
+// src/pages/pazarlama-otomasyonu.astro
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Pazarlama Otomasyonu - Stok Pratik ERP">
+  <!-- Hero Section -->
+  <section class="hero-section py-16 bg-gradient-to-br from-blue-50 to-white">
+    <div class="container">
+      <div class="text-center max-w-4xl mx-auto">
+        <h1 class="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+          Pazarlama Otomasyonu
+        </h1>
+        <p class="text-xl text-gray-600 mb-8">
+          Müşterilerinizle doğru zamanda, doğru kanaldan ve kişiselleştirilmiş mesajlarla iletişim kurun. 
+          Satışlarınızı otomatikleştirin, verimliliğinizi artırın.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a 
+            href="https://wa.me/+905325000999?text=Merhaba,%20Pazarlama%20Otomasyonu%20demo%20talep%20ediyorum" 
+            class="btn btn-primary"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <span class="mr-2">🚀</span>
+            Ücretsiz Demo İste
+          </a>
+          <a 
+            href="#ozellikler" 
+            class="btn btn-secondary"
+          >
+            <span class="mr-2">✨</span>
+            Özellikleri Keşfet
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Neden Pazarlama Otomasyonu -->
+  <section class="why-section py-16 bg-white">
+    <div class="container">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold mb-4 text-gray-800">Neden Pazarlama Otomasyonu?</h2>
+        <p class="text-gray-600 max-w-2xl mx-auto">
+          İşletmeniz için pazarlama otomasyonunun kritik önemi
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="text-center p-6 rounded-lg border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
+          <div class="text-4xl mb-4">⏱️</div>
+          <h3 class="text-xl font-semibold mb-3">Zaman Tasarrufu</h3>
+          <p class="text-gray-600">
+            Tekrarlayan pazarlama görevlerini otomatikleştirerek, ekibiniz değerli zamanını daha stratejik işlere ayırabilir.
+          </p>
+        </div>
+
+        <div class="text-center p-6 rounded-lg border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
+          <div class="text-4xl mb-4">🎯</div>
+          <h3 class="text-xl font-semibold mb-3">Hedefli Pazarlama</h3>
+          <p class="text-gray-600">
+            Müşteri segmentlerinize göre kişiselleştirilmiş kampanyalar oluşturun, dönüşüm oranlarınızı artırın.
+          </p>
+        </div>
+
+        <div class="text-center p-6 rounded-lg border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
+          <div class="text-4xl mb-4">📈</div>
+          <h3 class="text-xl font-semibold mb-3">ROI Artışı</h3>
+          <p class="text-gray-600">
+            Otomatikleştirilmiş pazarlama ile satış maliyetlerinizi düşürün, yatırım getirinizi maksimize edin.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Özellikler -->
+  <section id="ozellikler" class="features-section py-16 bg-gray-50">
+    <div class="container">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold mb-4 text-gray-800">Pazarlama Otomasyonu Özellikleri</h2>
+        <p class="text-gray-600 max-w-2xl mx-auto">
+          İşletmenizin büyümesini hızlandıracak kapsamlı özellikler
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Özellik 1 -->
+        <div class="feature-card bg-white p-6 rounded-lg shadow-md border border-gray-100">
+          <div class="feature-icon mb-4 text-blue-600 text-3xl">
+            📧
+          </div>
+          <h3 class="text-xl font-semibold mb-3">E-posta Otomasyonu</h3>
+          <ul class="space-y-2 text-gray-600">
+            <li class="flex items-start">
+              <span class="text-green-500 mr-2 mt-1 flex-shrink-0">✓</span>
+              <span>Hoş geldin e-posta serileri</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-green-500 mr-2 mt-1 flex-shrink-0">✓</span>
+              <span>Davranış tetikleyicili e-postalar</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-green-500 mr-2 mt-1 flex-shrink-0">✓</span>
+              <span>Otomatik takip mesajları</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-green-500 mr-2 mt-1 flex-shrink-0">✓</span>
+              <span>Kişiselleştirilmiş içerik</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Özellik 2 -->
+        <div class="feature-card bg-white p-6 rounded-lg shadow-md border border-gray-100">
+          <div class="feature-icon mb-4 text-blue-600 text-3xl">
+            💬
+          </div>
+          <h3 class="text-xl font-semibold mb-3">SMS & WhatsApp</h3>
+          <ul class="space-y-2 text-gray-600">
+            <li class="flex items-start">
+              <span class="text-green-500 mr-2 mt-1 flex-shrink-0">✓</span>
+              <span>Otomatik hatırlatma SMS'leri</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-green-500 mr-2 mt-1 flex-shrink-0">✓</span>
+              <span>WhatsApp pazarlama kampanyaları</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-green-500 mr-2 mt-1 flex-shrink-0">✓</span>
+              <span>Doğum günü tebrikleri</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-green-500 mr-2 mt-1 flex-shrink-0">✓</span>
+              <span>Özel teklif bildirimleri</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Özellik 3 -->
+        <div class="feature-card bg-white p-6 rounded-lg shadow-md border border-gray-100">
+          <div class="feature-icon mb-4 text-blue-600 text-3xl">
+            🎭
+          </div>
+          <h3 class="text-xl font-semibold mb-3">Müşteri Segmentasyonu</h3>
+          <ul class="space-y-2 text-gray-600">
+            <li class="flex items-start">
+              <span class="text-green-500 mr-2 mt-1 flex-shrink-0">✓</span>
+              <span>Demografik segmentasyon</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-green-500 mr-2 mt-1 flex-shrink-0">✓</span>
+              <span>Satın alma davranışlarına göre</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-green-500 mr-2 mt-1 flex-shrink-0">✓</span>
+              <span>İlgilenme düzeyine göre</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-green-500 mr-2 mt-1 flex-shrink-0">✓</span>
+              <span>Otomatik segment oluşturma</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Özellik 4 -->
+        <div class="feature-card bg-white p-6 rounded-lg shadow-md border border-gray-100">
+          <div class="feature-icon mb-4 text-blue-600 text-3xl">
+            📊
+          </div>
+          <h3 class="text-xl font-semibold mb-3">Analiz & Raporlama</h3>
+          <ul class="space-y-2 text-gray-600">
+            <li class="flex items-start">
+              <span class="text-green-500 mr-2 mt-1 flex-shrink-0">✓</span>
+              <span>Kampanya performans analizi</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-green-500 mr-2 mt-1 flex-shrink-0">✓</span>
+              <span>ROI hesaplama</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-green-500 mr-2 mt-1 flex-shrink-0">✓</span>
+              <span>Gerçek zamanlı takip</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-green-500 mr-2 mt-1 flex-shrink-0">✓</span>
+              <span>Özelleştirilebilir raporlar</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Özellik 5 -->
+        <div class="feature-card bg-white p-6 rounded-lg shadow-md border border-gray-100">
+          <div class="feature-icon mb-4 text-blue-600 text-3xl">
+            🤖
+          </div>
+          <h3 class="text-xl font-semibold mb-3">Akıllı İş Akışları</h3>
+          <ul class="space-y-2 text-gray-600">
+            <li class="flex items-start">
+              <span class="text-green-500 mr-2 mt-1 flex-shrink-0">✓</span>
+              <span>Görsel iş akışı tasarımcısı</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-green-500 mr-2 mt-1 flex-shrink-0">✓</span>
+              <span>Çoklu kanal entegrasyonu</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-green-500 mr-2 mt-1 flex-shrink-0">✓</span>
+              <span>Koşullu dallanma</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-green-500 mr-2 mt-1 flex-shrink-0">✓</span>
+              <span>Zamanlayıcı tetikleyiciler</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Özellik 6 -->
+        <div class="feature-card bg-white p-6 rounded-lg shadow-md border border-gray-100">
+          <div class="feature-icon mb-4 text-blue-600 text-3xl">
+            🔄
+          </div>
+          <h3 class="text-xl font-semibold mb-3">Entegrasyonlar</h3>
+          <ul class="space-y-2 text-gray-600">
+            <li class="flex items-start">
+              <span class="text-green-500 mr-2 mt-1 flex-shrink-0">✓</span>
+              <span>CRM entegrasyonu</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-green-500 mr-2 mt-1 flex-shrink-0">✓</span>
+              <span>E-ticaret bağlantısı</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-green-500 mr-2 mt-1 flex-shrink-0">✓</span>
+              <span>Sosyal medya bağlantıları</span>
+            </li>
+            <li class="flex items-start">
+              <span class="text-green-500 mr-2 mt-1 flex-shrink-0">✓</span>
+              <span>API entegrasyonları</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- İş Süreçleri -->
+  <section class="workflow-section py-16 bg-white">
+    <div class="container">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold mb-4 text-gray-800">Otomatik İş Süreçleri</h2>
+        <p class="text-gray-600 max-w-2xl mx-auto">
+          Müşteri yolculuğunu otomatikleştirin, satışları artırın
+        </p>
+      </div>
+
+      <div class="space-y-12 max-w-4xl mx-auto">
+        <!-- Süreç 1 -->
+        <div class="process-item flex flex-col md:flex-row items-center gap-8">
+          <div class="process-number flex-shrink-0 w-16 h-16 bg-blue-600 text-white rounded-full flex items-center justify-center text-2xl font-bold">
+            1
+          </div>
+          <div class="process-content flex-1">
+            <h3 class="text-xl font-semibold mb-3 text-gray-800">Potansiyel Müşteri Yakalama</h3>
+            <p class="text-gray-600">
+              Web siteniz, sosyal medya veya formlar aracılığıyla gelen potansiyel müşterileri otomatik olarak CRM'inize kaydedin. 
+              Anında hoş geldin e-postası gönderin ve ilk etkileşimi başlatın.
+            </p>
+          </div>
+        </div>
+
+        <!-- Süreç 2 -->
+        <div class="process-item flex flex-col md:flex-row items-center gap-8">
+          <div class="process-number flex-shrink-0 w-16 h-16 bg-blue-600 text-white rounded-full flex items-center justify-center text-2xl font-bold">
+            2
+          </div>
+          <div class="process-content flex-1">
+            <h3 class="text-xl font-semibold mb-3 text-gray-800">Eğitim & Isıtma</h3>
+            <p class="text-gray-600">
+              Otomatik e-posta serileri ile müşterilerinizi eğitin, güven oluşturun. 
+              İçerik paylaşımı, ürün tanıtımları ve değer teklifleri ile ilişkiyi güçlendirin.
+            </p>
+          </div>
+        </div>
+
+        <!-- Süreç 3 -->
+        <div class="process-item flex flex-col md:flex-row items-center gap-8">
+          <div class="process-number flex-shrink-0 w-16 h-16 bg-blue-600 text-white rounded-full flex items-center justify-center text-2xl font-bold">
+            3
+          </div>
+          <div class="process-content flex-1">
+            <h3 class="text-xl font-semibold mb-3 text-gray-800">Satışa Hazırlama</h3>
+            <p class="text-gray-600">
+              Davranışlarına göre müşterileri segmentlere ayırın. 
+              Hazır olduklarında otomatik teklif e-postaları, demo davetleri veya özel indirimler gönderin.
+            </p>
+          </div>
+        </div>
+
+        <!-- Süreç 4 -->
+        <div class="process-item flex flex-col md:flex-row items-center gap-8">
+          <div class="process-number flex-shrink-0 w-16 h-16 bg-blue-600 text-white rounded-full flex items-center justify-center text-2xl font-bold">
+            4
+          </div>
+          <div class="process-content flex-1">
+            <h3 class="text-xl font-semibold mb-3 text-gray-800">Satış Sonrası İlişki</h3>
+            <p class="text-gray-600">
+              Satış sonrası otomatik teşekkür mesajları, kullanım kılavuzları, 
+              destek bilgileri ve sadakat programı davetleri ile müşteri memnuniyetini artırın.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- İstatistikler -->
+  <section class="stats-section py-16 bg-gradient-to-r from-blue-600 to-purple-600 text-white">
+    <div class="container">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold mb-4">Pazarlama Otomasyonunun Etkisi</h2>
+        <p class="text-xl opacity-90 max-w-2xl mx-auto">
+          İşletmeler pazarlama otomasyonu ile ne kadar büyüyor?
+        </p>
+      </div>
+
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+        <div class="stat-item">
+          <div class="text-4xl font-bold mb-2">451%</div>
+          <p class="opacity-90">Nitelikli Potansiyel Müşteri Artışı</p>
+        </div>
+        <div class="stat-item">
+          <div class="text-4xl font-bold mb-2">34%</div>
+          <p class="opacity-90">Pazarlama Maliyetinde Düşüş</p>
+        </div>
+        <div class="stat-item">
+          <div class="text-4xl font-bold mb-2">53%</div>
+          <p class="opacity-90">Satış Dönüşüm Oranı Artışı</p>
+        </div>
+        <div class="stat-item">
+          <div class="text-4xl font-bold mb-2">14.5%</div>
+          <p class="opacity-90">Verimlilik Artışı</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta-section py-16 bg-white">
+    <div class="container">
+      <div class="max-w-3xl mx-auto text-center bg-gradient-to-br from-blue-50 to-purple-50 p-8 md:p-12 rounded-2xl border border-blue-100">
+        <h2 class="text-3xl font-bold mb-6 text-gray-800">Pazarlama Otomasyonuna Hazır mısınız?</h2>
+        <p class="text-xl text-gray-600 mb-8">
+          Satışlarınızı artırmak, müşteri ilişkilerinizi güçlendirmek ve pazarlama süreçlerinizi otomatikleştirmek için bugün başlayın.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a 
+            href="https://wa.me/+905325000999?text=Merhaba,%20Pazarlama%20Otomasyonu%20demo%20talep%20ediyorum" 
+            class="btn bg-gradient-to-r from-blue-600 to-purple-600 text-white hover:from-blue-700 hover:to-purple-700 flex items-center justify-center"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <span class="mr-2">💬</span>
+            WhatsApp'tan Demo İste
+          </a>
+          <a 
+            href="tel:+905325000999" 
+            class="btn bg-white text-blue-600 border-2 border-blue-600 hover:bg-blue-50"
+          >
+            <span class="mr-2">📞</span>
+            0532 500 09 99
+          </a>
+        </div>
+        <p class="text-gray-500 text-sm mt-6">
+          *Demo talepleriniz 24 saat içinde yanıtlanacaktır.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    :global(body) {
+      scroll-behavior: smooth;
+    }
+
+    /* Container */
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+
+    /* Butonlar */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.75rem 1.5rem;
+      border-radius: 0.5rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      border: 2px solid transparent;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #2563eb, #7c3aed);
+      color: white;
+      border-color: #2563eb;
+    }
+
+    .btn-primary:hover {
+      background: linear-gradient(135deg, #1d4ed8, #6d28d9);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(37, 99, 235, 0.2);
+    }
+
+    .btn-secondary {
+      background: white;
+      color: #2563eb;
+      border: 2px solid #2563eb;
+    }
+
+    .btn-secondary:hover {
+      background: #eff6ff;
+      transform: translateY(-2px);
+    }
+
+    /* Feature Cards */
+    .feature-card {
+      transition: all 0.3s ease;
+      height: 100%;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+      border-color: #93c5fd;
+    }
+
+    /* Process Items */
+    .process-item {
+      transition: transform 0.3s ease;
+    }
+
+    .process-item:hover {
+      transform: translateX(10px);
+    }
+
+    /* Stats Section */
+    .stat-item {
+      padding: 1.5rem;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 1rem;
+      backdrop-filter: blur(10px);
+    }
+
+    /* Utility Classes */
+    .py-16 { padding-top: 4rem; padding-bottom: 4rem; }
+    .p-6 { padding: 1.5rem; }
+    .p-8 { padding: 2rem; }
+    .p-12 { padding: 3rem; }
+    .mb-3 { margin-bottom: 0.75rem; }
+    .mb-4 { margin-bottom: 1rem; }
+    .mb-6 { margin-bottom: 1.5rem; }
+    .mb-8 { margin-bottom: 2rem; }
+    .mb-12 { margin-bottom: 3rem; }
+    .mt-6 { margin-top: 1.5rem; }
+    .mt-1 { margin-top: 0.25rem; }
+    .mr-2 { margin-right: 0.5rem; }
+    .text-center { text-align: center; }
+    .text-3xl { font-size: 1.875rem; line-height: 2.25rem; }
+    .text-4xl { font-size: 2.25rem; line-height: 2.5rem; }
+    .text-5xl { font-size: 3rem; line-height: 1; }
+    .text-xl { font-size: 1.25rem; line-height: 1.75rem; }
+    .text-2xl { font-size: 1.5rem; line-height: 2rem; }
+    .text-sm { font-size: 0.875rem; line-height: 1.25rem; }
+    .font-bold { font-weight: 700; }
+    .font-semibold { font-weight: 600; }
+    .rounded-lg { border-radius: 0.5rem; }
+    .rounded-2xl { border-radius: 1rem; }
+    .rounded-full { border-radius: 9999px; }
+    .shadow-sm { box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06); }
+    .shadow-md { box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); }
+    .bg-white { background-color: white; }
+    .bg-gray-50 { background-color: #f9fafb; }
+    .bg-blue-50 { background-color: #eff6ff; }
+    .bg-blue-600 { background-color: #2563eb; }
+    .bg-blue-100 { background-color: #dbeafe; }
+    .from-blue-50 { --tw-gradient-from: #eff6ff; }
+    .to-white { --tw-gradient-to: white; }
+    .to-purple-50 { --tw-gradient-to: #faf5ff; }
+    .from-blue-600 { --tw-gradient-from: #2563eb; }
+    .to-purple-600 { --tw-gradient-to: #7c3aed; }
+    .text-blue-600 { color: #2563eb; }
+    .text-gray-800 { color: #1f2937; }
+    .text-gray-600 { color: #4b5563; }
+    .text-gray-500 { color: #6b7280; }
+    .text-white { color: white; }
+    .text-green-500 { color: #10b981; }
+    .border { border-width: 1px; }
+    .border-2 { border-width: 2px; }
+    .border-gray-100 { border-color: #f3f4f6; }
+    .border-blue-100 { border-color: #dbeafe; }
+    .border-blue-600 { border-color: #2563eb; }
+    .flex { display: flex; }
+    .flex-col { flex-direction: column; }
+    .flex-row { flex-direction: row; }
+    .flex-col-reverse { flex-direction: column-reverse; }
+    .flex-wrap { flex-wrap: wrap; }
+    .items-center { align-items: center; }
+    .items-start { align-items: flex-start; }
+    .justify-center { justify-content: center; }
+    .flex-shrink-0 { flex-shrink: 0; }
+    .flex-1 { flex: 1 1 0%; }
+    .mx-auto { margin-left: auto; margin-right: auto; }
+    .max-w-2xl { max-width: 42rem; }
+    .max-w-3xl { max-width: 48rem; }
+    .max-w-4xl { max-width: 56rem; }
+    .gap-4 { gap: 1rem; }
+    .gap-8 { gap: 2rem; }
+    .space-y-2 > * + * { margin-top: 0.5rem; }
+    .space-y-12 > * + * { margin-top: 3rem; }
+    .opacity-90 { opacity: 0.9; }
+    .transition-shadow { transition: box-shadow 0.3s ease; }
+    .transition-all { transition: all 0.3s ease; }
+
+    /* Grid */
+    .grid { display: grid; }
+    .grid-cols-1 { grid-template-columns: repeat(1, minmax(0, 1fr)); }
+    .grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .gap-8 { gap: 2rem; }
+
+    /* Background Gradients */
+    .bg-gradient-to-br { background-image: linear-gradient(to bottom right, var(--tw-gradient-stops)); }
+    .bg-gradient-to-r { background-image: linear-gradient(to right, var(--tw-gradient-stops)); }
+    .bg-clip-text { -webkit-background-clip: text; background-clip: text; }
+    .text-transparent { color: transparent; }
+
+    /* Responsive */
+    @media (min-width: 640px) {
+      .sm\:flex-row { flex-direction: row; }
+    }
+
+    @media (min-width: 768px) {
+      .md\:grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .md\:grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .md\:flex-row { flex-direction: row; }
+      .md\:p-12 { padding: 3rem; }
+    }
+
+    @media (min-width: 1024px) {
+      .lg\:grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .md\:grid-cols-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    }
+
+    @media (max-width: 768px) {
+      .hero-section h1 {
+        font-size: 2.5rem;
+      }
+      
+      .process-item {
+        text-align: center;
+      }
+      
+      .process-number {
+        margin: 0 auto 1rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero-section h1 {
+        font-size: 2rem;
+      }
+      
+      .cta-section .flex {
+        flex-direction: column;
+      }
+      
+      .stats-section .grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+    }
+  </style>
+</BaseLayout>

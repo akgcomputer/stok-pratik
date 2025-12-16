@@ -1,0 +1,1613 @@
+---
+// src/pages/satis-yonetimi.astro
+import BaseLayout from '../layouts/BaseLayout.astro';
+import '../styles/variables.css';
+import '../styles/global.css';
+import '../styles/components.css';
+
+// Özellikler
+const features = [
+  {
+    icon: "🎯",
+    title: "Müşteri Yönetimi",
+    description: "Tüm müşterilerinizi tek platformda yönetin",
+    details: [
+      "Müşteri profilleri ve geçmişi",
+      "İletişim geçmişi takibi",
+      "Satın alma alışkanlıkları",
+      "Segmentasyon ve etiketleme"
+    ]
+  },
+  {
+    icon: "📊",
+    title: "Satış Analizi",
+    description: "Detaylı satış raporları ve performans analizi",
+    details: [
+      "Gerçek zamanlı satış dashboard",
+      "Ürün bazlı performans",
+      "Bölgesel satış analizi",
+      "Kar marjı hesaplama"
+    ]
+  },
+  {
+    icon: "📈",
+    title: "Satış Tahminleme",
+    description: "Yapay zeka destekli satış tahminleri",
+    details: [
+      "AI destekli tahminleme",
+      "Trend analizi",
+      "Sezonluk tahminler",
+      "Stok planlama önerileri"
+    ]
+  },
+  {
+    icon: "🔄",
+    title: "Satış Süreçleri",
+    description: "Satış süreçlerinizi otomatikleştirin",
+    details: [
+      "Teklif ve fiyatlandırma",
+      "Sipariş takip sistemi",
+      "Otomatik hatırlatmalar",
+      "Ödeme takibi"
+    ]
+  },
+  {
+    icon: "🤝",
+    title: "Müşteri İlişkileri",
+    description: "Müşterilerinizle ilişkilerinizi güçlendirin",
+    details: [
+      "Otomatik e-posta kampanyaları",
+      "Doğum günü hatırlatmaları",
+      "Sadakat programı",
+      "Müşteri geri bildirimleri"
+    ]
+  },
+  {
+    icon: "📱",
+    title: "Mobil Satış",
+    description: "Mobil cihazlardan satış yapın ve takip edin",
+    details: [
+      "Mobil satış uygulaması",
+      "Offline çalışma",
+      "Anlık senkronizasyon",
+      "Fotoğraflı ürün gösterimi"
+    ]
+  }
+];
+
+// Satış kanalları
+const salesChannels = [
+  {
+    channel: "Mağaza Satışları",
+    icon: "🏬",
+    features: [
+      "POS entegrasyonu",
+      "Fiş ve fatura basımı",
+      "Stok anlık güncelleme",
+      "Kampanya yönetimi"
+    ],
+    benefits: ["%30 daha hızlı satış", "%40 daha az hata"]
+  },
+  {
+    channel: "E-Ticaret",
+    icon: "🛒",
+    features: [
+      "E-ticaret entegrasyonu",
+      "Otomatik sipariş aktarımı",
+      "Stok senkronizasyonu",
+      "Müşteri veri aktarımı"
+    ],
+    benefits: ["%50 zaman tasarrufu", "%100 doğru sipariş"]
+  },
+  {
+    channel: "Saha Satışları",
+    icon: "🚗",
+    features: [
+      "Mobil satış uygulaması",
+      "Offline sipariş alma",
+      "Müşteri ziyaret planlama",
+      "GPS konum takibi"
+    ],
+    benefits: ["%60 daha fazla ziyaret", "%35 satış artışı"]
+  },
+  {
+    channel: "Telefon Satışları",
+    icon: "📞",
+    features: [
+      "Çağrı merkezi entegrasyonu",
+      "Otomatik müşteri kaydı",
+      "Konuşma kayıtları",
+      "Performans analizi"
+    ],
+    benefits: ["%45 daha fazla çağrı", "%25 başarı oranı artışı"]
+  }
+];
+
+// İstatistikler
+const statistics = [
+  { number: "%35", label: "Satış Artışı", icon: "📈" },
+  { number: "%50", label: "Zaman Tasarrufu", icon: "⏱️" },
+  { number: "%40", label: "Müşteri Memnuniyeti", icon: "😊" },
+  { number: "%60", label: "Satış Verimliliği", icon: "⚡" }
+];
+
+// Satış süreç adımları
+const salesProcess = [
+  {
+    step: 1,
+    title: "Potansiyel Müşteri",
+    description: "Yeni müşteri adayları bulun ve kaydedin",
+    icon: "🔍"
+  },
+  {
+    step: 2,
+    title: "Değerlendirme",
+    description: "Müşteri ihtiyaçlarını analiz edin",
+    icon: "📋"
+  },
+  {
+    step: 3,
+    title: "Teklif",
+    description: "Özelleştirilmiş teklif hazırlayın",
+    icon: "💼"
+  },
+  {
+    step: 4,
+    title: "Görüşme",
+    description: "Müşteri ile detaylı görüşme yapın",
+    icon: "🤝"
+  },
+  {
+    step: 5,
+    title: "Satış",
+    description: "Satışı tamamlayın ve sipariş oluşturun",
+    icon: "💰"
+  },
+  {
+    step: 6,
+    title: "Takip",
+    description: "Satış sonrası hizmet ve takip",
+    icon: "📞"
+  }
+];
+
+// Başarı hikayeleri
+const successStories = [
+  {
+    company: "Tekstil Perakende",
+    result: "%45 Satış Artışı",
+    quote: "Stok Pratik ile satış ekibimizin verimliliği %60 arttı. Müşteri takibimiz artık çok daha kolay.",
+    author: "Ahmet Yılmaz",
+    position: "Satış Müdürü"
+  },
+  {
+    company: "Elektronik Toptancı",
+    result: "%30 Karlılık Artışı",
+    quote: "Satış tahminleme özelliği ile stok optimizasyonu yaparak kar marjımızı önemli ölçüde artırdık.",
+    author: "Mehmet Kaya",
+    position: "Genel Müdür"
+  }
+];
+
+// İç linkler
+const relatedPages = [
+  { title: "CRM Sistemi", url: "/crm", desc: "Müşteri ilişkileri yönetimi" },
+  { title: "Stok Yönetimi", url: "/stok-yonetimi", desc: "Satış ve stok entegrasyonu" },
+  { title: "Proje Yönetimi", url: "/proje-yonetimi", desc: "Satış projeleri takibi" },
+  { title: "ERP Sistemi", url: "/erp-sistemi", desc: "Entegre iş yönetimi" }
+];
+---
+
+<BaseLayout 
+  title="Satış Yönetim Sistemi | Stok Pratik - Satışları Artırın" 
+  description="Satış yönetim sistemi ile satışlarınızı artırın, müşteri ilişkilerinizi güçlendirin. Satış analizi, müşteri takibi ve satış tahminleme ile işinizi büyütün."
+>
+  
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-text">
+          <span class="hero-badge">Satış Çözümleri</span>
+          <h1>Satış Yönetim Sistemi ile <span class="highlight">Satışlarınızı Artırın</span></h1>
+          <p class="hero-subtitle">Müşteri takibi, satış analizi ve satış tahminleme ile satış ekibinizin performansını maksimize edin</p>
+          
+          <div class="hero-stats">
+            {statistics.map((stat, index) => (
+              <div class="stat-item" key={index}>
+                <div class="stat-icon">{stat.icon}</div>
+                <div class="stat-number">{stat.number}</div>
+                <div class="stat-label">{stat.label}</div>
+              </div>
+            ))}
+          </div>
+          
+          <div class="hero-buttons">
+            <a 
+              href="https://wa.me/+905325000999?text=Merhaba,%20Satış%20Yönetim%20Sistemi%20demo%20talep%20ediyorum" 
+              class="btn btn-secondary btn-large"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              🚀 Ücretsiz Demo İste
+            </a>
+            <a 
+              href="tel:+905325000999" 
+              class="btn btn-secondary btn-large"
+            >
+              📞 Satış Danışmanıyla Görüş
+            </a>
+          </div>
+          
+          <div class="sales-channels">
+            <div class="channel-tag">
+              <span class="channel-icon">🏬</span>
+              <span>Mağaza Satışı</span>
+            </div>
+            <div class="channel-tag">
+              <span class="channel-icon">🛒</span>
+              <span>E-Ticaret</span>
+            </div>
+            <div class="channel-tag">
+              <span class="channel-icon">🚗</span>
+              <span>Saha Satışı</span>
+            </div>
+            <div class="channel-tag">
+              <span class="channel-icon">📞</span>
+              <span>Telefon Satışı</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="hero-image">
+          <div class="sales-dashboard">
+            <div class="dashboard-header">
+              <div class="dashboard-title">
+                <span class="title-icon">📊</span>
+                <span>Satış Performans Paneli</span>
+              </div>
+              <div class="dashboard-period">Ağustos 2024</div>
+            </div>
+            
+            <div class="sales-overview">
+              <div class="sales-metric">
+                <div class="metric-label">Toplam Ciro</div>
+                <div class="metric-value">₺245,800</div>
+                <div class="metric-change positive">↑ %12.5</div>
+              </div>
+              
+              <div class="sales-metric">
+                <div class="metric-label">Satış Adeti</div>
+                <div class="metric-value">148</div>
+                <div class="metric-change positive">↑ %8.3</div>
+              </div>
+              
+              <div class="sales-metric">
+                <div class="metric-label">Ort. Sepet Tutarı</div>
+                <div class="metric-value">₺1,660</div>
+                <div class="metric-change positive">↑ %3.9</div>
+              </div>
+              
+              <div class="sales-metric">
+                <div class="metric-label">Yeni Müşteri</div>
+                <div class="metric-value">45</div>
+                <div class="metric-change positive">↑ %15.2</div>
+              </div>
+            </div>
+            
+            <div class="top-salespeople">
+              <div class="section-title">🏆 En İyi Satış Temsilcileri</div>
+              <div class="salesperson">
+                <div class="salesperson-name">Ahmet Yılmaz</div>
+                <div class="salesperson-sales">₺48,500</div>
+              </div>
+              <div class="salesperson">
+                <div class="salesperson-name">Ayşe Demir</div>
+                <div class="salesperson-sales">₺42,300</div>
+              </div>
+              <div class="salesperson">
+                <div class="salesperson-name">Mehmet Kaya</div>
+                <div class="salesperson-sales">₺38,700</div>
+              </div>
+            </div>
+            
+            <div class="sales-target">
+              <div class="target-label">Aylık Hedef: ₺300,000</div>
+              <div class="target-progress">
+                <div class="progress-bar">
+                  <div class="progress-fill" style="width: 82%"></div>
+                </div>
+                <div class="target-percent">%82</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Problem Çözüm -->
+  <section class="problem-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Satış Yönetimi Zorluklarını Çözüyoruz</h2>
+        <p>İşletmelerin yaşadığı satış yönetimi problemlerine akıllı çözümler</p>
+      </div>
+      
+      <div class="problem-grid">
+        <div class="problem-card">
+          <div class="problem-icon">😫</div>
+          <h3>Müşteri Takip Zorluğu</h3>
+          <p>Excel tabloları ile müşteri takibi, veri kaybı riski</p>
+          <ul>
+            <li>Müşteri geçmişi takipsizliği</li>
+            <li>İletişim kayıtları dağınık</li>
+            <li>Satış fırsatları kaçırma</li>
+          </ul>
+        </div>
+        
+        <div class="solution-card">
+          <div class="solution-icon">✅</div>
+          <h3>Merkezi Müşteri Veritabanı</h3>
+          <p>Tüm müşteri bilgileri tek platformda güvenli saklama</p>
+          <ul>
+            <li>Tam müşteri geçmişi</li>
+            <li>Tüm iletişim kayıtları</li>
+            <li>Otomatik takip sistemi</li>
+          </ul>
+        </div>
+        
+        <div class="problem-card">
+          <div class="problem-icon">📉</div>
+          <h3>Satış Performans Analizi</h3>
+          <p>Satış performansını ölçememe, hedef takip zorluğu</p>
+          <ul>
+            <li>Satış raporları manuel</li>
+            <li>Performans karşılaştırması yok</li>
+            <li>Hedef takibi zor</li>
+          </ul>
+        </div>
+        
+        <div class="solution-card">
+          <div class="solution-icon">📊</div>
+          <h3>Gerçek Zamanlı Satış Dashboard</h3>
+          <p>Anlık satış performansı ve detaylı analiz raporları</p>
+          <ul>
+            <li>Anlık satış verileri</li>
+            <li>Ekip performans analizi</li>
+            <li>Otomatik hedef takibi</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Özellikler -->
+  <section class="features-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Stok Pratik Satış Yönetimi Özellikleri</h2>
+        <p>Satış ekibinizin ihtiyaç duyduğu tüm araçlar tek platformda</p>
+      </div>
+      
+      <div class="features-grid">
+        {features.map((feature, index) => (
+          <div class="feature-card" key={index}>
+            <div class="feature-header">
+              <div class="feature-icon">{feature.icon}</div>
+              <div>
+                <h3>{feature.title}</h3>
+                <p class="feature-desc">{feature.description}</p>
+              </div>
+            </div>
+            
+            <ul class="feature-details">
+              {feature.details.map((detail, i) => (
+                <li key={i}>
+                  <span class="detail-check">✓</span>
+                  {detail}
+                </li>
+              ))}
+            </ul>
+            
+            <div class="feature-cta">
+              <a 
+                href={`https://wa.me/+905325000999?text=Merhaba,%20${encodeURIComponent(feature.title)}%20özelliği%20hakkında%20bilgi%20almak%20istiyorum`}
+                class="btn-feature"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Bu Özellik Hakkında Bilgi Al
+              </a>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Satış Kanalları -->
+  <section class="channels-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Tüm Satış Kanallarınız İçin Tek Çözüm</h2>
+        <p>Hangi kanaldan satış yaparsanız yapın, tüm veriler tek merkezde</p>
+      </div>
+      
+      <div class="channels-grid">
+        {salesChannels.map((channel, index) => (
+          <div class="channel-card" key={index}>
+            <div class="channel-header">
+              <div class="channel-icon">{channel.icon}</div>
+              <h3>{channel.channel}</h3>
+            </div>
+            
+            <div class="channel-features">
+              <h4>Özellikler:</h4>
+              <ul>
+                {channel.features.map((feature, i) => (
+                  <li key={i}>
+                    <span class="feature-icon">✨</span>
+                    {feature}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            
+            <div class="channel-benefits">
+              <h4>Kazançlar:</h4>
+              <div class="benefits-list">
+                {channel.benefits.map((benefit, i) => (
+                  <div class="benefit-item" key={i}>
+                    <span class="benefit-icon">🚀</span>
+                    <span>{benefit}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+            
+            <a 
+              href={`https://wa.me/+905325000999?text=Merhaba,%20${encodeURIComponent(channel.channel)}%20için%20satış%20yönetim%20sistemi%20demo%20talep%20ediyorum`}
+              class="btn btn-channel"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              🎯 Bu Kanal İçin Demo İste
+            </a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Satış Süreci -->
+  <section class="process-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>6 Adımda Mükemmel Satış Süreci</h2>
+        <p>Stok Pratik ile satış süreçlerinizi standartlaştırın ve optimize edin</p>
+      </div>
+      
+      <div class="process-timeline">
+        {salesProcess.map((step, index) => (
+          <div class="process-step" key={index}>
+            <div class="step-number">{step.step}</div>
+            <div class="step-icon">{step.icon}</div>
+            <div class="step-content">
+              <h3>{step.title}</h3>
+              <p>{step.description}</p>
+              <div class="step-tools">
+                {index === 0 && (
+                  <>
+                    <span class="tool">📱 Müşteri Kayıt</span>
+                    <span class="tool">📋 İhtiyaç Analizi</span>
+                  </>
+                )}
+                {index === 2 && (
+                  <>
+                    <span class="tool">💼 Teklif Hazırlama</span>
+                    <span class="tool">💰 Fiyatlandırma</span>
+                  </>
+                )}
+                {index === 4 && (
+                  <>
+                    <span class="tool">📝 Sipariş Oluşturma</span>
+                    <span class="tool">✅ Ödeme Takibi</span>
+                  </>
+                )}
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+      
+      <div class="process-result">
+        <div class="result-icon">🏆</div>
+        <div class="result-content">
+          <h3>%35 Daha Fazla Satış ve Mutlu Müşteriler!</h3>
+          <p>Stok Pratik ile satış süreçlerinizi otomatikleştirin, müşteri memnuniyetinizi artırın ve satışlarınızı büyütün.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Başarı Hikayeleri -->
+  <section class="success-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Stok Pratik ile Büyüyen İşletmeler</h2>
+        <p>Satış yönetim sistemimizi kullanan işletmelerin başarı hikayeleri</p>
+      </div>
+      
+      <div class="success-stories">
+        {successStories.map((story, index) => (
+          <div class="story-card" key={index}>
+            <div class="story-header">
+              <div class="story-company">{story.company}</div>
+              <div class="story-result">{story.result}</div>
+            </div>
+            
+            <div class="story-quote">
+              <div class="quote-icon">❝</div>
+              <p>{story.quote}</p>
+            </div>
+            
+            <div class="story-author">
+              <div class="author-name">{story.author}</div>
+              <div class="author-position">{story.position}</div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Entegrasyonlar -->
+  <section class="integrations-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Popüler Platformlarla Tam Entegrasyon</h2>
+        <p>Mevcut sistemlerinizle sorunsuz çalışır</p>
+      </div>
+      
+      <div class="integrations-grid">
+        <div class="integration-card">
+          <div class="integration-icon">📧</div>
+          <h4>E-Posta</h4>
+          <p>Gmail, Outlook entegrasyonu</p>
+        </div>
+        
+        <div class="integration-card">
+          <div class="integration-icon">💬</div>
+          <h4>WhatsApp</h4>
+          <p>WhatsApp Business API</p>
+        </div>
+        
+        <div class="integration-card">
+          <div class="integration-icon">🏬</div>
+          <h4>POS Sistemleri</h4>
+          <p>Tüm POS cihazları</p>
+        </div>
+        
+        <div class="integration-card">
+          <div class="integration-icon">🛒</div>
+          <h4>E-Ticaret</h4>
+          <p>Trendyol, Hepsiburada, n11</p>
+        </div>
+        
+        <div class="integration-card">
+          <div class="integration-icon">📊</div>
+          <h4>Analiz Araçları</h4>
+          <p>Google Analytics entegrasyonu</p>
+        </div>
+        
+        <div class="integration-card">
+          <div class="integration-icon">💳</div>
+          <h4>Ödeme Sistemleri</h4>
+          <p>İyzico, PayTR, Stripe</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- İlgili Sayfalar -->
+  <section class="related-pages">
+    <div class="container">
+      <div class="section-header">
+        <h2>Satış Yönetimi ile Entegre Çalışan Diğer Sistemler</h2>
+        <p>İş süreçlerinizi tamamlayan çözümlerimiz</p>
+      </div>
+      
+      <div class="pages-grid">
+        {relatedPages.map((page, index) => (
+          <a href={page.url} class="page-card" key={index}>
+            <h3>{page.title}</h3>
+            <p>{page.desc}</p>
+            <div class="page-link">
+              <span>İncele</span>
+              <span class="arrow">→</span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Son CTA -->
+  <section class="final-cta">
+    <div class="container">
+      <div class="cta-content">
+        <div class="cta-icon">💰</div>
+        <h2>Satışlarınızı Artırmaya Hazır mısınız?</h2>
+        <p class="hero-badge highlight">Satış yönetim sistemimizi keşfedin, satış ekibinizin performansını artırın.</p>
+        
+        <div class="cta-buttons">
+          <a 
+            href="https://wa.me/+905325000999?text=Merhaba,%20Satış%20Yönetim%20Sistemi%20demo%20talep%20ediyorum"
+            class="btn btn-secondary btn-large"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            🚀 Ücretsiz Demo Başlat
+          </a>
+          
+          <a 
+            href="tel:+905325000999"
+            class="btn btn-secondary btn-large"
+          >
+            📞 Satış Danışmanıyla Görüş
+          </a>
+        </div>
+        
+        <div class="cta-benefits">
+          <div class="benefit">
+            <span class="benefit-icon">📈</span>
+            <span>Ücretsiz Satış Analizi</span>
+          </div>
+          <div class="benefit">
+            <span class="benefit-icon">👨‍🏫</span>
+            <span>Satış Ekibi Eğitimi</span>
+          </div>
+          <div class="benefit">
+            <span class="benefit-icon">🔄</span>
+            <span>Mevcut Veri Aktarımı</span>
+          </div>
+          <div class="benefit">
+            <span class="benefit-icon">🎯</span>
+            <span>Satış Hedef Planlaması</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  /* Hero Section */
+  .hero-section {
+    background: linear-gradient(135deg, #2c3e50 0%, #e74c3c 100%);
+    color: white;
+    padding: 4rem 0;
+  }
+  
+  .hero-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+  
+  .hero-badge {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+  }
+  
+  .hero-text h1 {
+    font-size: 3rem;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+  }
+  
+  .highlight {
+    color: #ffd700;
+  }
+  
+  .hero-subtitle {
+    font-size: 1.2rem;
+    opacity: 0.9;
+    margin-bottom: 2rem;
+  }
+  
+  .hero-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    margin: 2rem 0;
+  }
+  
+  .stat-item {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 1rem;
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+  }
+  
+  .stat-icon {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .stat-number {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #ffd700;
+    margin-bottom: 0.3rem;
+  }
+  
+  .stat-label {
+    font-size: 0.8rem;
+    opacity: 0.8;
+  }
+  
+  .hero-buttons {
+    display: flex;
+    gap: 1rem;
+    margin: 2rem 0;
+  }
+  
+  .btn-large {
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+  }
+  
+  .sales-channels {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-top: 1.5rem;
+  }
+  
+  .channel-tag {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    backdrop-filter: blur(10px);
+  }
+  
+  .channel-icon {
+    font-size: 1rem;
+  }
+  
+  /* Sales Dashboard */
+  .sales-dashboard {
+    background: white;
+    border-radius: 15px;
+    padding: 1.5rem;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+    color: #2c3e50;
+  }
+  
+  .dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #f1f2f6;
+  }
+  
+  .dashboard-title {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: bold;
+    font-size: 1.2rem;
+  }
+  
+  .title-icon {
+    font-size: 1.5rem;
+  }
+  
+  .dashboard-period {
+    font-size: 0.9rem;
+    color: #7f8c8d;
+  }
+  
+  .sales-overview {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .sales-metric {
+    background: #f8f9fa;
+    padding: 1rem;
+    border-radius: 10px;
+    text-align: center;
+  }
+  
+  .metric-label {
+    font-size: 0.8rem;
+    color: #7f8c8d;
+    margin-bottom: 0.5rem;
+  }
+  
+  .metric-value {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #e74c3c;
+    margin-bottom: 0.3rem;
+  }
+  
+  .metric-change {
+    font-size: 0.8rem;
+    font-weight: bold;
+  }
+  
+  .metric-change.positive {
+    color: #2ecc71;
+  }
+  
+  .top-salespeople {
+    margin-bottom: 1.5rem;
+  }
+  
+  .section-title {
+    font-weight: bold;
+    margin-bottom: 0.8rem;
+    color: #2c3e50;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .salesperson {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem;
+    background: #f8f9fa;
+    margin-bottom: 0.5rem;
+    border-radius: 5px;
+  }
+  
+  .salesperson-name {
+    font-weight: 500;
+  }
+  
+  .salesperson-sales {
+    font-weight: bold;
+    color: #e74c3c;
+  }
+  
+  .sales-target {
+    background: #f8f9fa;
+    padding: 1rem;
+    border-radius: 10px;
+  }
+  
+  .target-label {
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+    color: #2c3e50;
+  }
+  
+  .target-progress {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  .progress-bar {
+    flex: 1;
+    height: 8px;
+    background: #e0e0e0;
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  
+  .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #e74c3c, #c0392b);
+    border-radius: 4px;
+  }
+  
+  .target-percent {
+    font-weight: bold;
+    color: #e74c3c;
+    font-size: 1.1rem;
+  }
+  
+  /* Problem Section */
+  .problem-section {
+    padding: 4rem 0;
+    background: #f8f9fa;
+  }
+  
+  .section-header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+  
+  .section-header h2 {
+    font-size: 2.5rem;
+    color: #2c3e50;
+    margin-bottom: 1rem;
+  }
+  
+  .section-header p {
+    color: #7f8c8d;
+    font-size: 1.1rem;
+  }
+  
+  .problem-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+  
+  .problem-card, .solution-card {
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  }
+  
+  .problem-card {
+    background: white;
+    border-top: 5px solid #e74c3c;
+  }
+  
+  .solution-card {
+    background: linear-gradient(135deg, #2ecc71, #27ae60);
+    color: white;
+  }
+  
+  .problem-icon, .solution-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+  
+  .problem-card h3, .solution-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .problem-card ul, .solution-card ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 1rem;
+  }
+  
+  .problem-card li, .solution-card li {
+    padding: 0.3rem 0;
+    position: relative;
+    padding-left: 1.5rem;
+  }
+  
+  .problem-card li:before {
+    content: "❌";
+    position: absolute;
+    left: 0;
+    color: #e74c3c;
+  }
+  
+  .solution-card li:before {
+    content: "✅";
+    position: absolute;
+    left: 0;
+    color: #ffd700;
+  }
+  
+  /* Features Section */
+  .features-section {
+    padding: 4rem 0;
+  }
+  
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+  
+  .feature-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+    border: 2px solid transparent;
+  }
+  
+  .feature-card:hover {
+    transform: translateY(-5px);
+    border-color: #e74c3c;
+    box-shadow: 0 10px 20px rgba(231, 76, 60, 0.2);
+  }
+  
+  .feature-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .feature-icon {
+    font-size: 2.5rem;
+    flex-shrink: 0;
+  }
+  
+  .feature-card h3 {
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
+    font-size: 1.3rem;
+  }
+  
+  .feature-desc {
+    color: #7f8c8d;
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+  
+  .feature-details {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 1.5rem;
+  }
+  
+  .feature-details li {
+    padding: 0.5rem 0;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .detail-check {
+    color: #2ecc71;
+    font-weight: bold;
+  }
+  
+  .feature-cta {
+    text-align: center;
+  }
+  
+  .btn-feature {
+    display: inline-block;
+    background: #e74c3c;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: bold;
+    transition: background 0.3s ease;
+  }
+  
+  .btn-feature:hover {
+    background: #c0392b;
+  }
+  
+  /* Channels Section */
+  .channels-section {
+    padding: 4rem 0;
+    background: #f8f9fa;
+  }
+  
+  .channels-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+  
+  .channel-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  }
+  
+  .channel-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #f1f2f6;
+  }
+  
+  .channel-icon {
+    font-size: 2.5rem;
+  }
+  
+  .channel-card h3 {
+    color: #2c3e50;
+    margin: 0;
+  }
+  
+  .channel-features h4,
+  .channel-benefits h4 {
+    color: #e74c3c;
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+  }
+  
+  .channel-features ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 1.5rem;
+  }
+  
+  .channel-features li {
+    padding: 0.3rem 0;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .feature-icon {
+    color: #e74c3c;
+  }
+  
+  .benefits-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .benefit-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: #fff5f5;
+    padding: 0.5rem;
+    border-radius: 5px;
+  }
+  
+  .benefit-icon {
+    color: #2ecc71;
+  }
+  
+  .btn-channel {
+    display: block;
+    width: 100%;
+    text-align: center;
+    background: #e74c3c;
+    color: white;
+    padding: 0.8rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    margin-top: 1rem;
+    transition: background 0.3s ease;
+  }
+  
+  .btn-channel:hover {
+    background: #c0392b;
+  }
+  
+  /* Process Section */
+  .process-section {
+    padding: 4rem 0;
+  }
+  
+  .process-timeline {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 1rem;
+    margin-bottom: 3rem;
+  }
+  
+  .process-step {
+    text-align: center;
+    position: relative;
+  }
+  
+  .process-step:not(:last-child):after {
+    content: '';
+    position: absolute;
+    top: 25px;
+    left: 60%;
+    right: -40%;
+    height: 2px;
+    background: linear-gradient(90deg, #e74c3c, #c0392b);
+    z-index: 1;
+  }
+  
+  .step-number {
+    width: 50px;
+    height: 50px;
+    background: #e74c3c;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin: 0 auto 1rem;
+    position: relative;
+    z-index: 2;
+  }
+  
+  .step-icon {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .step-content {
+    background: white;
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+  }
+  
+  .process-step h3 {
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+  }
+  
+  .step-content p {
+    color: #7f8c8d;
+    font-size: 0.8rem;
+    margin-bottom: 0.5rem;
+    line-height: 1.4;
+  }
+  
+  .step-tools {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+  
+  .tool {
+    font-size: 0.7rem;
+    background: #f8f9fa;
+    padding: 0.3rem;
+    border-radius: 3px;
+    color: #e74c3c;
+  }
+  
+  .process-result {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    background: linear-gradient(135deg, #e74c3c, #c0392b);
+    color: white;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(231, 76, 60, 0.3);
+  }
+  
+  .result-icon {
+    font-size: 4rem;
+  }
+  
+  .result-content h3 {
+    margin-bottom: 0.5rem;
+    font-size: 1.5rem;
+  }
+  
+  .result-content p {
+    opacity: 0.9;
+  }
+  
+  /* Success Section */
+  .success-section {
+    padding: 4rem 0;
+    background: #f8f9fa;
+  }
+  
+  .success-stories {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+  
+  .story-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  }
+  
+  .story-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #f1f2f6;
+  }
+  
+  .story-company {
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: #2c3e50;
+  }
+  
+  .story-result {
+    background: #2ecc71;
+    color: white;
+    padding: 0.3rem 0.8rem;
+    border-radius: 15px;
+    font-weight: bold;
+    font-size: 0.9rem;
+  }
+  
+  .story-quote {
+    margin-bottom: 1.5rem;
+    position: relative;
+  }
+  
+  .quote-icon {
+    font-size: 3rem;
+    color: #e74c3c;
+    margin-bottom: -1rem;
+  }
+  
+  .story-quote p {
+    font-style: italic;
+    color: #7f8c8d;
+    line-height: 1.6;
+    font-size: 1rem;
+  }
+  
+  .story-author {
+    text-align: right;
+  }
+  
+  .author-name {
+    font-weight: bold;
+    color: #2c3e50;
+  }
+  
+  .author-position {
+    color: #7f8c8d;
+    font-size: 0.9rem;
+  }
+  
+  /* Integrations Section */
+  .integrations-section {
+    padding: 4rem 0;
+  }
+  
+  .integrations-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 1.5rem;
+  }
+  
+  .integration-card {
+    text-align: center;
+    background: white;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+    border: 2px solid transparent;
+  }
+  
+  .integration-card:hover {
+    transform: translateY(-3px);
+    border-color: #e74c3c;
+    box-shadow: 0 5px 15px rgba(231, 76, 60, 0.2);
+  }
+  
+  .integration-icon {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .integration-card h4 {
+    color: #2c3e50;
+    margin-bottom: 0.3rem;
+    font-size: 1rem;
+  }
+  
+  .integration-card p {
+    color: #7f8c8d;
+    font-size: 0.8rem;
+    margin: 0;
+  }
+  
+  /* Related Pages */
+  .related-pages {
+    padding: 4rem 0;
+    background: #f8f9fa;
+  }
+  
+  .pages-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+  
+  .page-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+  }
+  
+  .page-card:hover {
+    transform: translateY(-5px);
+    border-color: #e74c3c;
+    box-shadow: 0 10px 20px rgba(231, 76, 60, 0.2);
+  }
+  
+  .page-card h3 {
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
+  }
+  
+  .page-card p {
+    color: #7f8c8d;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+  }
+  
+  .page-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #e74c3c;
+    font-weight: bold;
+  }
+  
+  .arrow {
+    font-size: 1.2rem;
+  }
+  
+  /* Final CTA */
+  .final-cta {
+    padding: 4rem 0;
+    background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+    color: white;
+    text-align: center;
+  }
+  
+  .cta-content {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .cta-icon {
+    font-size: 4rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .cta-content h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .cta-content p {
+    font-size: 1.2rem;
+    opacity: 0.9;
+    margin-bottom: 2rem;
+  }
+  
+  .cta-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+  
+  .cta-benefits {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+  
+  .benefit {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    justify-content: center;
+    font-size: 0.9rem;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 0.8rem;
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+  }
+  
+  .benefit-icon {
+    font-size: 1.2rem;
+  }
+  
+  /* Responsive Tasarım */
+  @media (max-width: 1200px) {
+    .features-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .integrations-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .process-timeline {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+    
+    .process-step:not(:last-child):after {
+      display: none;
+    }
+  }
+  
+  @media (max-width: 992px) {
+    .hero-content {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+    
+    .problem-grid,
+    .channels-grid,
+    .success-stories,
+    .pages-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .hero-stats,
+    .cta-benefits {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .sales-overview {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .hero-text h1 {
+      font-size: 2rem;
+    }
+    
+    .hero-buttons,
+    .cta-buttons {
+      flex-direction: column;
+    }
+    
+    .btn-large {
+      width: 100%;
+      text-align: center;
+    }
+    
+    .section-header h2 {
+      font-size: 2rem;
+    }
+    
+    .features-grid,
+    .integrations-grid,
+    .process-timeline {
+      grid-template-columns: 1fr;
+    }
+    
+    .sales-channels {
+      justify-content: center;
+    }
+    
+    .process-result {
+      flex-direction: column;
+      text-align: center;
+    }
+  }
+</style>

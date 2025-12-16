@@ -1,0 +1,1581 @@
+---
+// src/pages/proje-yonetimi.astro
+import BaseLayout from '../layouts/BaseLayout.astro';
+import '../styles/variables.css';
+import '../styles/global.css';
+import '../styles/components.css';
+
+// Özellikler
+const features = [
+  {
+    icon: "📋",
+    title: "Proje Planlama",
+    description: "Gantt chart ile detaylı proje planlama ve takvim yönetimi",
+    details: [
+      "Görev dağılımı ve zaman planlaması",
+      "Milestone takibi",
+      "Bağımlılık yönetimi",
+      "Otomatik zaman çizelgesi"
+    ]
+  },
+  {
+    icon: "👥",
+    title: "Ekip Yönetimi",
+    description: "Proje ekiplerini organize edin, görev dağılımı yapın",
+    details: [
+      "Ekip üye yönetimi",
+      "Rol ve yetki dağılımı",
+      "İş yükü dengeleme",
+      "Ekip performans analizi"
+    ]
+  },
+  {
+    icon: "💰",
+    title: "Bütçe Yönetimi",
+    description: "Proje bütçesini kontrol edin, maliyetleri takip edin",
+    details: [
+      "Gerçek zamanlı bütçe takibi",
+      "Maliyet tahminleme",
+      "Harcama raporları",
+      "ROI analizi"
+    ]
+  },
+  {
+    icon: "📊",
+    title: "İlerleme Takibi",
+    description: "Proje ilerlemesini anlık olarak takip edin",
+    details: [
+      "Gerçek zamanlı dashboard",
+      "Yüzde tamamlanma oranı",
+      "Risk analizi",
+      "Performans metrikleri"
+    ]
+  },
+  {
+    icon: "📁",
+    title: "Doküman Yönetimi",
+    description: "Tüm proje dokümanlarını merkezi olarak yönetin",
+    details: [
+      "Versiyon kontrolü",
+      "Doküman paylaşımı",
+      "Onay süreçleri",
+      "Bulut depolama"
+    ]
+  },
+  {
+    icon: "🤝",
+    title: "Müşteri İlişkileri",
+    description: "Müşterilerle proje sürecini paylaşın",
+    details: [
+      "Müşteri portalı",
+      "Otomatik raporlama",
+      "Onay süreçleri",
+      "Fatura yönetimi"
+    ]
+  }
+];
+
+// Sektör çözümleri
+const industrySolutions = [
+  {
+    industry: "Yazılım Geliştirme",
+    icon: "💻",
+    challenges: [
+      "Agile/Scrum yönetimi",
+      "Sprint planlaması",
+      "Kod versiyon kontrolü",
+      "Test süreçleri"
+    ],
+    features: [
+      "Sprint board",
+      "Git entegrasyonu",
+      "Hata takip sistemi",
+      "Deployment planlama"
+    ]
+  },
+  {
+    industry: "İnşaat ve Mühendislik",
+    icon: "🏗️",
+    challenges: [
+      "Şantiye yönetimi",
+      "Malzeme planlaması",
+      "Alt yüklenici koordinasyonu",
+      "İlerleme raporları"
+    ],
+    features: [
+      "Şantiye takip",
+      "Malzeme envanteri",
+      "İş programı",
+      "Saha fotoğraf takibi"
+    ]
+  },
+  {
+    industry: "Pazarlama Ajansları",
+    icon: "🎯",
+    challenges: [
+      "Kampanya yönetimi",
+      "Çoklu proje takibi",
+      "Müşteri onay süreçleri",
+      "Kreatif süreçler"
+    ],
+    features: [
+      "Kampanya takvimi",
+      "Onay workflow'ları",
+      "Tasarım yönetimi",
+      "Sosyal medya entegrasyonu"
+    ]
+  },
+  {
+    industry: "Danışmanlık Firmaları",
+    icon: "📈",
+    challenges: [
+      "Çoklu müşteri yönetimi",
+      "Fatura takibi",
+      "Raporlama süreçleri",
+      "Kaynak planlaması"
+    ],
+    features: [
+      "Timesheet yönetimi",
+      "Fatura otomasyonu",
+      "Müşteri portalı",
+      "Performans raporları"
+    ]
+  }
+];
+
+// İstatistikler
+const statistics = [
+  { number: "%40", label: "Proje Tamamlama Hızı Artışı", icon: "⚡" },
+  { number: "%30", label: "Maliyet Tasarrufu", icon: "💰" },
+  { number: "%50", label: "Zaman Tasarrufu", icon: "⏱️" },
+  { number: "%60", label: "Müşteri Memnuniyeti Artışı", icon: "😊" }
+];
+
+// Proje yönetimi metodolojileri
+const methodologies = [
+  {
+    name: "Waterfall",
+    icon: "🌊",
+    description: "Aşamalı ve sıralı proje yönetimi",
+    bestFor: "Kapsamı net tanımlanmış projeler"
+  },
+  {
+    name: "Agile",
+    icon: "🔄",
+    description: "Esnek ve iteratif proje geliştirme",
+    bestFor: "Hızla değişen gereksinimler"
+  },
+  {
+    name: "Scrum",
+    icon: "🏈",
+    description: "Sprintler halinde çalışan Agile framework'ü",
+    bestFor: "Yazılım ve ürün geliştirme"
+  },
+  {
+    name: "Kanban",
+    icon: "📋",
+    description: "Görsel iş yönetimi sistemi",
+    bestFor: "Sürekli iş akışı gerektiren projeler"
+  }
+];
+
+// Entegrasyonlar
+const integrations = [
+  { name: "Microsoft Teams", icon: "💬", desc: "Takım iletişimi" },
+  { name: "Slack", icon: "⚡", desc: "Anlık mesajlaşma" },
+  { name: "Google Drive", icon: "☁️", desc: "Dosya paylaşımı" },
+  { name: "GitHub", icon: "🐙", desc: "Kod yönetimi" },
+  { name: "Jira", icon: "🎫", desc: "Görev takibi" },
+  { name: "QuickBooks", icon: "📊", desc: "Muhasebe" }
+];
+
+// İç linkler
+const relatedPages = [
+  { title: "İş Gücü Planlama", url: "/is-gucu-planlama", desc: "Proje ekipleri için kaynak planlama" },
+  { title: "ERP Sistemi", url: "/erp-sistemi", desc: "Kurumsal kaynak yönetimi" },
+  { title: "Stok Yönetimi", url: "/stok-yonetimi", desc: "Proje malzemeleri yönetimi" },
+  { title: "Müşteri İlişkileri", url: "/crm", desc: "Müşteri ve proje ilişkileri" }
+];
+---
+
+<BaseLayout 
+  title="Proje Yönetim Sistemi | Stok Pratik - Profesyonel Proje Takip" 
+  description="Proje yönetim sistemi ile tüm projelerinizi tek platformda yönetin. Görev takibi, bütçe kontrolü, ekip yönetimi ve ilerleme raporlaması ile projelerinizi başarıyla tamamlayın."
+>
+  
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-text">
+          <span class="hero-badge">Profesyonel Proje Çözümü</span>
+          <h1>Proje Yönetim Sistemi ile <span class="highlight">Projelerinizi Kontrol Altına Alın</span></h1>
+          <p class="hero-subtitle hero-badge highlight">Görev takibi, bütçe kontrolü, ekip yönetimi ve ilerleme raporlaması ile projelerinizi başarıyla yönetin</p>
+          
+          
+          
+          <div class="hero-buttons">
+            <a 
+              href="https://wa.me/+905325000999?text=Merhaba,%20Proje%20Yönetim%20Sistemi%20demo%20talep%20ediyorum" 
+              class="btn btn-primary btn-large"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              🚀 Ücretsiz Demo İste
+            </a>
+            <a 
+              href="tel:+905325000999" 
+              class="btn btn-secondary btn-large"
+            >
+              📞 Hemen Ara: 0532 500 09 99
+            </a>
+          </div>
+          
+          <div class="methodology-tags">
+            {methodologies.map((method, index) => (
+              <span class="method-tag" key={index}>
+                <span class="method-icon">{method.icon}</span>
+                {method.name}
+              </span>
+            ))}
+          </div>
+        </div>
+        
+        <div class="hero-image">
+          <div class="project-dashboard">
+            <div class="dashboard-header">
+              <div class="dashboard-title">
+                <span class="title-icon">📊</span>
+                <span>Proje Yönetim Paneli</span>
+              </div>
+              <div class="dashboard-filter">
+                <span class="filter-active">Aktif Projeler</span>
+                <span>Tümü</span>
+                <span>Tamamlanan</span>
+              </div>
+            </div>
+            
+            <div class="project-list">
+              <div class="project-item active">
+                <div class="project-name">E-Ticaret Sitesi Geliştirme</div>
+                <div class="project-progress">
+                  <div class="progress-bar">
+                    <div class="progress-fill" style="width: 75%"></div>
+                  </div>
+                  <span class="progress-text">%75</span>
+                </div>
+                <div class="project-meta">
+                  <span class="meta-item">⏱️ 15 gün kaldı</span>
+                  <span class="meta-item">👥 8 kişi</span>
+                  <span class="meta-item">💰 ₺120.000</span>
+                </div>
+              </div>
+              
+              <div class="project-item">
+                <div class="project-name">Mobil Uygulama Tasarımı</div>
+                <div class="project-progress">
+                  <div class="progress-bar">
+                    <div class="progress-fill" style="width: 45%"></div>
+                  </div>
+                  <span class="progress-text">%45</span>
+                </div>
+                <div class="project-meta">
+                  <span class="meta-item">⏱️ 30 gün kaldı</span>
+                  <span class="meta-item">👥 5 kişi</span>
+                  <span class="meta-item">💰 ₺85.000</span>
+                </div>
+              </div>
+              
+              <div class="project-item">
+                <div class="project-name">Kurumsal Web Sitesi</div>
+                <div class="project-progress">
+                  <div class="progress-bar">
+                    <div class="progress-fill" style="width: 90%"></div>
+                  </div>
+                  <span class="progress-text">%90</span>
+                </div>
+                <div class="project-meta">
+                  <span class="meta-item">⏱️ 5 gün kaldı</span>
+                  <span class="meta-item">👥 3 kişi</span>
+                  <span class="meta-item">💰 ₺45.000</span>
+                </div>
+              </div>
+            </div>
+            
+            <div class="quick-stats">
+              <div class="stat-box">
+                <div class="stat-value">12</div>
+                <div class="stat-label">Aktif Proje</div>
+              </div>
+              <div class="stat-box">
+                <div class="stat-value">3</div>
+                <div class="stat-label">Riskli</div>
+              </div>
+              <div class="stat-box">
+                <div class="stat-value">₺450K</div>
+                <div class="stat-label">Toplam Bütçe</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Özellikler -->
+  <section class="features-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Stok Pratik Proje Yönetimi ile Neler Yapabilirsiniz?</h2>
+        <p>Profesyonel proje yönetimi için ihtiyacınız olan tüm araçlar</p>
+      </div>
+      
+      <div class="features-grid">
+        {features.map((feature, index) => (
+          <div class="feature-card" key={index}>
+            <div class="feature-icon">{feature.icon}</div>
+            <h3>{feature.title}</h3>
+            <p class="feature-desc">{feature.description}</p>
+            <ul class="feature-list">
+              {feature.details.map((detail, i) => (
+                <li key={i}>
+                  <span class="list-icon">✓</span>
+                  {detail}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Metodolojiler -->
+  <section class="methodologies-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Desteklediğimiz Proje Yönetim Metodolojileri</h2>
+        <p>İhtiyacınıza en uygun metodolojiyi seçin, biz size uyum sağlayalım</p>
+      </div>
+      
+      <div class="methodologies-grid">
+        {methodologies.map((method, index) => (
+          <div class="method-card" key={index}>
+            <div class="method-header">
+              <div class="method-icon-large">{method.icon}</div>
+              <h3>{method.name}</h3>
+            </div>
+            <p class="method-desc">{method.description}</p>
+            <div class="method-best">
+              <strong>En İyi Kullanım:</strong>
+              <p>{method.bestFor}</p>
+            </div>
+            <div class="method-features">
+              <div class="feature">📅 Zaman Çizelgesi</div>
+              <div class="feature">👥 Ekip Yönetimi</div>
+              <div class="feature">📊 Raporlama</div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Sektör Çözümleri -->
+  <section class="industry-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Sektörünüze Özel Proje Yönetim Çözümleri</h2>
+        <p>Her sektörün ihtiyacına göre özelleştirilmiş proje yönetimi</p>
+      </div>
+      
+      <div class="industry-grid">
+        {industrySolutions.map((solution, index) => (
+          <div class="industry-card" key={index}>
+            <div class="industry-header">
+              <div class="industry-icon">{solution.icon}</div>
+              <h3>{solution.industry}</h3>
+            </div>
+            
+            <div class="challenges-section">
+              <h4>🎯 Zorluklar</h4>
+              <ul>
+                {solution.challenges.map((challenge, i) => (
+                  <li key={i}>{challenge}</li>
+                ))}
+              </ul>
+            </div>
+            
+            <div class="features-section">
+              <h4>✨ Çözümlerimiz</h4>
+              <div class="features-list">
+                {solution.features.map((feature, i) => (
+                  <div class="feature-item" key={i}>
+                    <span class="feature-check">✓</span>
+                    <span>{feature}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+            
+            <a 
+              href={`https://wa.me/+905325000999?text=Merhaba,%20${encodeURIComponent(solution.industry)}%20sektörü%20için%20proje%20yönetim%20sistemi%20demo%20talep%20ediyorum`}
+              class="btn btn-industry"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              💼 Bu Sektör İçin Demo İste
+            </a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Proje Süreci -->
+  <section class="project-process">
+    <div class="container">
+      <div class="section-header">
+        <h2>Proje Yönetim Süreciniz Nasıl İyileşir?</h2>
+        <p>Stok Pratik ile proje yönetimi süreçlerinizi optimize edin</p>
+      </div>
+      
+      <div class="process-flow">
+        <div class="process-step">
+          <div class="step-number">1</div>
+          <div class="step-content">
+            <h3>Planlama</h3>
+            <p>Proje kapsamını, zaman çizelgesini ve bütçeyi belirleyin</p>
+            <ul>
+              <li>Görev dağılımı</li>
+              <li>Kaynak planlama</li>
+              <li>Risk analizi</li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="process-step">
+          <div class="step-number">2</div>
+          <div class="step-content">
+            <h3>Yürütme</h3>
+            <p>Projeyi başlatın, ekipleri yönetin, görevleri takip edin</p>
+            <ul>
+              <li>Ekip koordinasyonu</li>
+              <li>Görev takibi</li>
+              <li>İletişim yönetimi</li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="process-step">
+          <div class="step-number">3</div>
+          <div class="step-content">
+            <h3>İzleme</h3>
+            <p>Proje ilerlemesini anlık takip edin, performansı ölçün</p>
+            <ul>
+              <li>İlerleme raporları</li>
+              <li>Bütçe takibi</li>
+              <li>Kalite kontrol</li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="process-step">
+          <div class="step-number">4</div>
+          <div class="step-content">
+            <h3>Kontrol</h3>
+            <p>Projeyi kontrol altında tutun, gerekli düzenlemeleri yapın</p>
+            <ul>
+              <li>Değişiklik yönetimi</li>
+              <li>Risk yönetimi</li>
+              <li>Performans iyileştirme</li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="process-step">
+          <div class="step-number">5</div>
+          <div class="step-content">
+            <h3>Kapanış</h3>
+            <p>Projeyi başarıyla tamamlayın, dersleri çıkarın, raporlayın</p>
+            <ul>
+              <li>Sonuç raporlaması</li>
+              <li>Müşteri teslimi</li>
+              <li>Proje değerlendirmesi</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Entegrasyonlar -->
+  <section class="integrations-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Popüler Araçlarla Tam Entegrasyon</h2>
+        <p>Mevcut araçlarınızla sorunsuz çalışır</p>
+      </div>
+      
+      <div class="integrations-grid">
+        {integrations.map((integration, index) => (
+          <div class="integration-card" key={index}>
+            <div class="integration-icon">{integration.icon}</div>
+            <h4>{integration.name}</h4>
+            <p>{integration.desc}</p>
+          </div>
+        ))}
+      </div>
+      
+      <div class="integration-cta">
+        <p>💡 Mevcut araçlarınızı entegre etmek için bize ulaşın!</p>
+        <a 
+          href="https://wa.me/+905325000999?text=Merhaba,%20mevcut%20araçlarımı%20proje%20yönetim%20sistemine%20entegre%20etmek%20istiyorum"
+          class="btn btn-secondary"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          🔗 Entegrasyon Talebi Gönder
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Proje Türleri -->
+  <section class="project-types">
+    <div class="container">
+      <div class="section-header">
+        <h2>Hangi Tür Projeler İçin Uygun?</h2>
+        <p>Tüm proje türlerini yönetmek için kapsamlı çözüm</p>
+      </div>
+      
+      <div class="types-grid">
+        <div class="type-card">
+          <div class="type-icon">💻</div>
+          <h3>Yazılım Projeleri</h3>
+          <p>Web sitesi, mobil uygulama, yazılım geliştirme</p>
+          <div class="type-features">
+            <span>Sprint Yönetimi</span>
+            <span>Kod Takibi</span>
+            <span>Test Süreçleri</span>
+          </div>
+        </div>
+        
+        <div class="type-card">
+          <div class="type-icon">🏗️</div>
+          <h3>İnşaat Projeleri</h3>
+          <p>Bina, altyapı, tadilat, mühendislik projeleri</p>
+          <div class="type-features">
+            <span>Şantiye Yönetimi</span>
+            <span>Malzeme Takibi</span>
+            <span>İş Programı</span>
+          </div>
+        </div>
+        
+        <div class="type-card">
+          <div class="type-icon">🎯</div>
+          <h3>Pazarlama Projeleri</h3>
+          <p>Kampanya, etkinlik, dijital pazarlama projeleri</p>
+          <div class="type-features">
+            <span>Kampanya Takibi</span>
+            <span>İçerik Yönetimi</span>
+            <span>ROI Analizi</span>
+          </div>
+        </div>
+        
+        <div class="type-card">
+          <div class="type-icon">📈</div>
+          <h3>Danışmanlık Projeleri</h3>
+          <p>Analiz, danışmanlık, eğitim projeleri</p>
+          <div class="type-features">
+            <span>Timesheet</span>
+            <span>Raporlama</span>
+            <span>Fatura Yönetimi</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- İlgili Sayfalar -->
+  <section class="related-pages">
+    <div class="container">
+      <div class="section-header">
+        <h2>Entegre Çalışan Diğer Çözümlerimiz</h2>
+        <p>Proje yönetimi ile birlikte kullanabileceğiniz sistemler</p>
+      </div>
+      
+      <div class="pages-grid">
+        {relatedPages.map((page, index) => (
+          <a href={page.url} class="page-card" key={index}>
+            <h3>{page.title}</h3>
+            <p>{page.desc}</p>
+            <div class="page-link">
+              <span>İncele</span>
+              <span class="arrow">→</span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Son CTA -->
+  <section class="final-cta">
+    <div class="container">
+      <div class="cta-content">
+        <div class="cta-icon">🎯</div>
+        <h2>Proje Yönetim Sistemini Ücretsiz Deneyin!</h2>
+         
+        <div class="cta-buttons">
+          <a 
+            href="https://wa.me/+905325000999?text=Merhaba,%20Proje%20Yönetim%20Sistemi%20demo%20talep%20ediyorum"
+            class="btn btn-secondary btn-large"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            🚀 Ücretsiz Demo İste
+          </a>
+          
+          <a 
+            href="tel:+905325000999"
+            class="btn btn-secondary btn-large"
+          >
+            📞 Proje Danışmanlığı Al
+          </a>
+        </div>
+        
+        <div class="cta-benefits">
+          <div class="benefit">
+            <span class="benefit-icon">🎁</span>
+            <span>Ücretsiz Paketi ile başlayabilirsiniz</span>
+          </div>
+          <div class="benefit">
+            <span class="benefit-icon">👨‍🏫</span>
+            <span>Ücretsiz Eğitim</span>
+          </div>
+          <div class="benefit">
+            <span class="benefit-icon">🔗</span>
+            <span>Entegrasyon Desteği</span>
+          </div>
+          <div class="benefit">
+            <span class="benefit-icon">📊</span>
+            <span>Proje Analizi</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  /* Hero Section */
+  .hero-section {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 4rem 0;
+  }
+  
+  .hero-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+  
+  .hero-badge {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+  }
+  
+  .hero-text h1 {
+    font-size: 3rem;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+  }
+  
+  .highlight {
+    color: #ffd700;
+  }
+  
+  .hero-subtitle {
+    font-size: 1.2rem;
+    opacity: 0.9;
+    margin-bottom: 2rem;
+  }
+  
+  .hero-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    margin: 2rem 0;
+  }
+  
+  .stat-item {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 1rem;
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+  }
+  
+  .stat-icon {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .stat-number {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #ffd700;
+    margin-bottom: 0.3rem;
+  }
+  
+  .stat-label {
+    font-size: 0.8rem;
+    opacity: 0.8;
+  }
+  
+  .hero-buttons {
+    display: flex;
+    gap: 1rem;
+    margin: 2rem 0;
+  }
+  
+  .btn-large {
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+  }
+  
+  .methodology-tags {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-top: 1.5rem;
+  }
+  
+  .method-tag {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    backdrop-filter: blur(10px);
+  }
+  
+  .method-icon {
+    font-size: 1rem;
+  }
+  
+  /* Project Dashboard */
+  .project-dashboard {
+    background: white;
+    border-radius: 15px;
+    padding: 1.5rem;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+    color: #2c3e50;
+  }
+  
+  .dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #f1f2f6;
+  }
+  
+  .dashboard-title {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: bold;
+    font-size: 1.2rem;
+  }
+  
+  .title-icon {
+    font-size: 1.5rem;
+  }
+  
+  .dashboard-filter {
+    display: flex;
+    gap: 1rem;
+    font-size: 0.9rem;
+  }
+  
+  .dashboard-filter span {
+    cursor: pointer;
+    padding: 0.3rem 0.8rem;
+    border-radius: 15px;
+    transition: all 0.3s ease;
+  }
+  
+  .dashboard-filter span:hover {
+    background: #f1f2f6;
+  }
+  
+  .filter-active {
+    background: #667eea;
+    color: white;
+  }
+  
+  .project-list {
+    margin-bottom: 1.5rem;
+  }
+  
+  .project-item {
+    background: #f8f9fa;
+    padding: 1rem;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+    border-left: 4px solid #667eea;
+  }
+  
+  .project-item.active {
+    border-left-color: #2ecc71;
+    background: #f8fff9;
+  }
+  
+  .project-name {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    color: #2c3e50;
+  }
+  
+  .project-progress {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .progress-bar {
+    flex: 1;
+    height: 8px;
+    background: #e0e0e0;
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  
+  .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #667eea, #764ba2);
+    border-radius: 4px;
+  }
+  
+  .project-item.active .progress-fill {
+    background: linear-gradient(90deg, #2ecc71, #27ae60);
+  }
+  
+  .progress-text {
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: #667eea;
+  }
+  
+  .project-item.active .progress-text {
+    color: #2ecc71;
+  }
+  
+  .project-meta {
+    display: flex;
+    gap: 1rem;
+    font-size: 0.8rem;
+    color: #7f8c8d;
+  }
+  
+  .meta-item {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+  }
+  
+  .quick-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    padding-top: 1rem;
+    border-top: 2px solid #f1f2f6;
+  }
+  
+  .stat-box {
+    text-align: center;
+    padding: 0.8rem;
+    background: #f8f9fa;
+    border-radius: 8px;
+  }
+  
+  .stat-value {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #667eea;
+    margin-bottom: 0.3rem;
+  }
+  
+  .stat-label {
+    font-size: 0.8rem;
+    color: #7f8c8d;
+  }
+  
+  /* Features Section */
+  .features-section {
+    padding: 4rem 0;
+    background: #f8f9fa;
+  }
+  
+  .section-header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+  
+  .section-header h2 {
+    font-size: 2.5rem;
+    color: #2c3e50;
+    margin-bottom: 1rem;
+  }
+  
+  .section-header p {
+    color: #7f8c8d;
+    font-size: 1.1rem;
+  }
+  
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+  
+  .feature-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+    border: 2px solid transparent;
+  }
+  
+  .feature-card:hover {
+    transform: translateY(-5px);
+    border-color: #667eea;
+    box-shadow: 0 10px 20px rgba(102, 126, 234, 0.2);
+  }
+  
+  .feature-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+  
+  .feature-card h3 {
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
+    font-size: 1.3rem;
+  }
+  
+  .feature-desc {
+    color: #7f8c8d;
+    margin-bottom: 1.5rem;
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+  
+  .feature-list {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .feature-list li {
+    padding: 0.5rem 0;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .list-icon {
+    color: #2ecc71;
+    font-weight: bold;
+  }
+  
+  /* Methodologies Section */
+  .methodologies-section {
+    padding: 4rem 0;
+  }
+  
+  .methodologies-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+  }
+  
+  .method-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    text-align: center;
+    border-top: 4px solid #667eea;
+    transition: transform 0.3s ease;
+  }
+  
+  .method-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+  }
+  
+  .method-header {
+    margin-bottom: 1rem;
+  }
+  
+  .method-icon-large {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .method-card h3 {
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
+  }
+  
+  .method-desc {
+    color: #7f8c8d;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+    line-height: 1.5;
+  }
+  
+  .method-best {
+    background: #f8f9fa;
+    padding: 0.8rem;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+  }
+  
+  .method-best strong {
+    color: #667eea;
+    display: block;
+    margin-bottom: 0.3rem;
+  }
+  
+  .method-best p {
+    color: #7f8c8d;
+    font-size: 0.9rem;
+    margin: 0;
+  }
+  
+  .method-features {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .method-features .feature {
+    background: #f8f9ff;
+    padding: 0.5rem;
+    border-radius: 5px;
+    font-size: 0.8rem;
+    color: #667eea;
+  }
+  
+  /* Industry Section */
+  .industry-section {
+    padding: 4rem 0;
+    background: #f8f9fa;
+  }
+  
+  .industry-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+  
+  .industry-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  }
+  
+  .industry-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #f1f2f6;
+  }
+  
+  .industry-icon {
+    font-size: 2.5rem;
+  }
+  
+  .industry-card h3 {
+    color: #2c3e50;
+    margin: 0;
+  }
+  
+  .challenges-section h4,
+  .features-section h4 {
+    color: #667eea;
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .challenges-section ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 1.5rem;
+  }
+  
+  .challenges-section li {
+    padding: 0.3rem 0;
+    position: relative;
+    padding-left: 1.5rem;
+  }
+  
+  .challenges-section li:before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: #667eea;
+    font-size: 1.5rem;
+  }
+  
+  .features-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .feature-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: #f8f9ff;
+    padding: 0.5rem;
+    border-radius: 5px;
+  }
+  
+  .feature-check {
+    color: #2ecc71;
+    font-weight: bold;
+  }
+  
+  .btn-industry {
+    display: block;
+    width: 100%;
+    text-align: center;
+    background: #667eea;
+    color: white;
+    padding: 0.8rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    margin-top: 1rem;
+    transition: background 0.3s ease;
+  }
+  
+  .btn-industry:hover {
+    background: #5a6fd8;
+  }
+  
+  /* Project Process */
+  .project-process {
+    padding: 4rem 0;
+  }
+  
+  .process-flow {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1.5rem;
+    position: relative;
+  }
+  
+  .process-flow:before {
+    content: '';
+    position: absolute;
+    top: 50px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #667eea, #764ba2);
+    z-index: 1;
+  }
+  
+  .process-step {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+  }
+  
+  .step-number {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: 0 auto 1rem;
+    position: relative;
+  }
+  
+  .step-content {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  }
+  
+  .process-step h3 {
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
+  }
+  
+  .step-content p {
+    color: #7f8c8d;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+    line-height: 1.5;
+  }
+  
+  .step-content ul {
+    list-style: none;
+    padding: 0;
+    text-align: left;
+  }
+  
+  .step-content li {
+    padding: 0.3rem 0;
+    font-size: 0.9rem;
+    color: #667eea;
+    position: relative;
+    padding-left: 1.2rem;
+  }
+  
+  .step-content li:before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: #667eea;
+  }
+  
+  /* Integrations Section */
+  .integrations-section {
+    padding: 4rem 0;
+    background: #f8f9fa;
+  }
+  
+  .integrations-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+  
+  .integration-card {
+    text-align: center;
+    background: white;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+  }
+  
+  .integration-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+  }
+  
+  .integration-icon {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .integration-card h4 {
+    color: #2c3e50;
+    margin-bottom: 0.3rem;
+    font-size: 1rem;
+  }
+  
+  .integration-card p {
+    color: #7f8c8d;
+    font-size: 0.8rem;
+    margin: 0;
+  }
+  
+  .integration-cta {
+    text-align: center;
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  }
+  
+  .integration-cta p {
+    color: #2c3e50;
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+  }
+  
+  /* Project Types */
+  .project-types {
+    padding: 4rem 0;
+  }
+  
+  .types-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+  }
+  
+  .type-card {
+    text-align: center;
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+  }
+  
+  .type-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+  }
+  
+  .type-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+  
+  .type-card h3 {
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
+  }
+  
+  .type-card p {
+    color: #7f8c8d;
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.5;
+  }
+  
+  .type-features {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .type-features span {
+    background: #f8f9fa;
+    padding: 0.5rem;
+    border-radius: 5px;
+    font-size: 0.8rem;
+    color: #667eea;
+  }
+  
+  /* Related Pages */
+  .related-pages {
+    padding: 4rem 0;
+    background: #f8f9fa;
+  }
+  
+  .pages-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+  
+  .page-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+  }
+  
+  .page-card:hover {
+    transform: translateY(-5px);
+    border-color: #667eea;
+    box-shadow: 0 10px 20px rgba(102, 126, 234, 0.2);
+  }
+  
+  .page-card h3 {
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
+  }
+  
+  .page-card p {
+    color: #7f8c8d;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+  }
+  
+  .page-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #667eea;
+    font-weight: bold;
+  }
+  
+  .arrow {
+    font-size: 1.2rem;
+  }
+  
+  /* Final CTA */
+  .final-cta {
+    padding: 4rem 0;
+    background: linear-gradient(135deg, #9b59b6, #8e44ad);
+    color: white;
+    text-align: center;
+  }
+  
+  .cta-content {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .cta-icon {
+    font-size: 4rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .cta-content h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .cta-content p {
+    font-size: 1.2rem;
+    opacity: 0.9;
+    margin-bottom: 2rem;
+  }
+  
+  .cta-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+  
+  .cta-benefits {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+  
+  .benefit {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    justify-content: center;
+    font-size: 0.9rem;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 0.8rem;
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+  }
+  
+  .benefit-icon {
+    font-size: 1.2rem;
+  }
+  
+  /* Responsive Tasarım */
+  @media (max-width: 1200px) {
+    .features-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .methodologies-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .integrations-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .types-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .process-flow {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+    
+    .process-flow:before {
+      display: none;
+    }
+  }
+  
+  @media (max-width: 992px) {
+    .hero-content {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+    
+    .industry-grid,
+    .pages-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .hero-stats,
+    .cta-benefits {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .hero-text h1 {
+      font-size: 2rem;
+    }
+    
+    .hero-buttons,
+    .cta-buttons {
+      flex-direction: column;
+    }
+    
+    .btn-large {
+      width: 100%;
+      text-align: center;
+    }
+    
+    .section-header h2 {
+      font-size: 2rem;
+    }
+    
+    .features-grid,
+    .methodologies-grid,
+    .integrations-grid,
+    .types-grid,
+    .process-flow {
+      grid-template-columns: 1fr;
+    }
+    
+    .quick-stats,
+    .dashboard-filter {
+      flex-wrap: wrap;
+    }
+    
+    .methodology-tags {
+      justify-content: center;
+    }
+  }
+</style>

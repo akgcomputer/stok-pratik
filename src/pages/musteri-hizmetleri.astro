@@ -1,0 +1,1781 @@
+---
+// src/pages/musteri-hizmetleri.astro
+import BaseLayout from '../layouts/BaseLayout.astro';
+import '../styles/variables.css';
+import '../styles/global.css';
+import '../styles/components.css';
+
+// Özellikler
+const features = [
+  {
+    icon: "📞",
+    title: "Çoklu İletişim Kanalı",
+    description: "Müşterilerinizle her kanaldan iletişim kurun",
+    details: [
+      "WhatsApp Business entegrasyonu",
+      "E-posta yönetimi",
+      "Telefon görüşme kayıtları",
+      "Canlı destek chat sistemi"
+    ]
+  },
+  {
+    icon: "🎯",
+    title: "Otomatik Yanıtlama",
+    description: "Sık sorulan sorulara otomatik yanıt verin",
+    details: [
+      "AI destekli chatbot",
+      "Soru-cevap veritabanı",
+      "Otomatik yönlendirme",
+      "7/24 destek sağlama"
+    ]
+  },
+  {
+    icon: "📊",
+    title: "Performans Analizi",
+    description: "Müşteri hizmetleri performansınızı ölçün",
+    details: [
+      "Çağrı istatistikleri",
+      "Memnuniyet anketleri",
+      "Çözüm süreleri",
+      "Ekip performans raporları"
+    ]
+  },
+  {
+    icon: "📋",
+    title: "Talep Yönetimi",
+    description: "Tüm müşteri taleplerini sistematik yönetin",
+    details: [
+      "Talep takip sistemi",
+      "Öncelik sıralaması",
+      "Otomatik atama",
+      "SLA (Hizmet Seviyesi Anlaşması) takibi"
+    ]
+  },
+  {
+    icon: "🤝",
+    title: "Müşteri Deneyimi",
+    description: "Müşteri deneyimini kişiselleştirin",
+    details: [
+      "Müşteri geçmişi görüntüleme",
+      "Kişiselleştirilmiş çözümler",
+      "Proaktif destek",
+      "Sadakat programı yönetimi"
+    ]
+  },
+  {
+    icon: "📱",
+    title: "Mobil Uygulama",
+    description: "Mobil cihazlardan müşteri desteği sağlayın",
+    details: [
+      "Mobil destek uygulaması",
+      "Anında bildirimler",
+      "Fotoğraf/video paylaşımı",
+      "Konum bazlı destek"
+    ]
+  }
+];
+
+// Destek kanalları
+const supportChannels = [
+  {
+    channel: "WhatsApp Destek",
+    icon: "💬",
+    features: [
+      "Anlık mesajlaşma",
+      "Dosya paylaşımı",
+      "Otomatik yanıtlar",
+      "Çoklu kullanıcı"
+    ],
+    responseTime: "2 Dakika",
+    satisfaction: "%95"
+  },
+  {
+    channel: "Telefon Destek",
+    icon: "📞",
+    features: [
+      "Çağrı kayıtları",
+      "Bekleme süresi takibi",
+      "IVR (Sesli Yanıt Sistemi)",
+      "Çağrı yönlendirme"
+    ],
+    responseTime: "30 Saniye",
+    satisfaction: "%92"
+  },
+  {
+    channel: "E-posta Destek",
+    icon: "📧",
+    features: [
+      "Otomatik yanıtlama",
+      "Şablon e-postalar",
+      "Dosya ekleri",
+      "Takip sistematiği"
+    ],
+    responseTime: "2 Saat",
+    satisfaction: "%90"
+  },
+  {
+    channel: "Canlı Chat",
+    icon: "💻",
+    features: [
+      "Gerçek zamanlı sohbet",
+      "Ekran paylaşımı",
+      "Co-browsing",
+      "Anket ve değerlendirme"
+    ],
+    responseTime: "1 Dakika",
+    satisfaction: "%94"
+  }
+];
+
+// İstatistikler
+const statistics = [
+  { number: "%40", label: "Müşteri Memnuniyeti Artışı", icon: "😊" },
+  { number: "%50", label: "Yanıt Süresi Azalması", icon: "⚡" },
+  { number: "%35", label: "Operasyon Maliyeti Düşüşü", icon: "💰" },
+  { number: "7/24", label: "Kesintisiz Destek", icon: "🌙" }
+];
+
+// Müşteri hizmetleri metrikleri
+const serviceMetrics = [
+  {
+    metric: "İlk Yanıt Süresi",
+    target: "< 5 Dakika",
+    importance: "Müşteri sabrı ve memnuniyeti"
+  },
+  {
+    metric: "Çözüm Süresi",
+    target: "< 24 Saat",
+    importance: "Sorun çözme hızı"
+  },
+  {
+    metric: "Müşteri Memnuniyeti",
+    target: "> %90",
+    importance: "Hizmet kalitesi"
+  },
+  {
+    metric: "Tekrar Çağrı Oranı",
+    target: "< %10",
+    importance: "Kalıcı çözümler"
+  }
+];
+
+// Başarı hikayeleri
+const successStories = [
+  {
+    company: "E-Ticaret Şirketi",
+    challenge: "Günlük 500+ müşteri talebi",
+    solution: "Otomatik yanıt ve chatbot sistemi",
+    results: [
+      "Yanıt süresi %60 azaldı",
+      "Müşteri memnuniyeti %45 arttı",
+      "İnsan kaynağı ihtiyacı %30 düştü"
+    ]
+  },
+  {
+    company: "Finans Kurumu",
+    challenge: "Karmaşık ürün sorguları",
+    solution: "Bilgi bankası ve eğitimli ekip",
+    results: [
+      "Doğru yanıt oranı %95'e çıktı",
+      "Ekip verimliliği %40 arttı",
+      "Şikayet oranı %70 azaldı"
+    ]
+  }
+];
+
+// İç linkler
+const relatedPages = [
+  { title: "CRM Sistemi", url: "/crm", desc: "Müşteri ilişkileri yönetimi" },
+  { title: "Satış Yönetimi", url: "/satis-yonetimi", desc: "Satış ve destek entegrasyonu" },
+  { title: "ERP Sistemi", url: "/erp-sistemi", desc: "Entegre iş yönetimi" },
+  { title: "Proje Yönetimi", url: "/proje-yonetimi", desc: "Destek projeleri takibi" }
+];
+---
+
+<BaseLayout 
+  title="Müşteri Hizmetleri Yönetimi | Stok Pratik - Müşteri Memnuniyeti" 
+  description="Müşteri hizmetleri yönetim sistemi ile müşteri memnuniyetinizi artırın. Çoklu iletişim kanalları, otomatik yanıtlama ve performans analizi ile müşteri desteğinizi profesyonelleştirin."
+>
+  
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-text">
+          <span class="hero-badge">Müşteri Deneyimi Çözümü</span>
+          <h1>Müşteri Hizmetleri ile <span class="highlight">Müşteri Memnuniyetinizi Artırın</span></h1>
+          <p class="hero-subtitle hero-badge highlight">Çoklu iletişim kanalları, otomatik yanıtlama ve performans analizi ile müşteri desteğinizi profesyonelleştirin</p>
+          
+          
+          
+          <div class="hero-buttons">
+            <a 
+              href="https://wa.me/+905325000999?text=Merhaba,%20Müşteri%20Hizmetleri%20Sistemi%20demo%20talep%20ediyorum" 
+              class="btn btn-secondary btn-large"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              🤝 Ücretsiz Demo İste
+            </a>
+            <a 
+              href="tel:+905325000999" 
+              class="btn btn-secondary btn-large"
+            >
+              📞 Müşteri Hizmetleri Danışmanı
+            </a>
+          </div>
+          
+          <div class="support-channels">
+            <div class="channel-tag">
+              <span class="channel-icon">💬</span>
+              <span>WhatsApp Destek</span>
+            </div>
+            <div class="channel-tag">
+              <span class="channel-icon">📞</span>
+              <span>Telefon Destek</span>
+            </div>
+            <div class="channel-tag">
+              <span class="channel-icon">📧</span>
+              <span>E-posta Destek</span>
+            </div>
+            <div class="channel-tag">
+              <span class="channel-icon">💻</span>
+              <span>Canlı Chat</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="hero-image">
+          <div class="support-dashboard">
+            <div class="dashboard-header">
+              <div class="dashboard-title">
+                <span class="title-icon">📊</span>
+                <span>Müşteri Desteği Paneli</span>
+              </div>
+              <div class="dashboard-status">
+                <span class="status-indicator online"></span>
+                <span class="status-text">Çevrimiçi</span>
+              </div>
+            </div>
+            
+            <div class="active-tickets">
+              <div class="section-title">🎫 Aktif Destek Talepleri</div>
+              <div class="ticket-list">
+                <div class="ticket-item high">
+                  <div class="ticket-id">#7892</div>
+                  <div class="ticket-subject">Ürün İade Talebi</div>
+                  <div class="ticket-time">4 dakika önce</div>
+                </div>
+                <div class="ticket-item medium">
+                  <div class="ticket-id">#7891</div>
+                  <div class="ticket-subject">Teknik Destek</div>
+                  <div class="ticket-time">12 dakika önce</div>
+                </div>
+                <div class="ticket-item low">
+                  <div class="ticket-id">#7890</div>
+                  <div class="ticket-subject">Bilgi Talebi</div>
+                  <div class="ticket-time">25 dakika önce</div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="support-metrics">
+              <div class="metric">
+                <div class="metric-label">Bugünkü Talepler</div>
+                <div class="metric-value">42</div>
+              </div>
+              <div class="metric">
+                <div class="metric-label">Ort. Yanıt Süresi</div>
+                <div class="metric-value">3.2 dk</div>
+              </div>
+              <div class="metric">
+                <div class="metric-label">Çözüm Oranı</div>
+                <div class="metric-value success">%94</div>
+              </div>
+            </div>
+            
+            <div class="live-chat-preview">
+              <div class="chat-header">💬 Canlı Sohbet</div>
+              <div class="chat-messages">
+                <div class="message customer">
+                  <div class="message-text">Ürünüm henüz gelmedi, takip edebilir misiniz?</div>
+                  <div class="message-time">14:32</div>
+                </div>
+                <div class="message agent">
+                  <div class="message-text">Tabii ki, kargo numaranızı kontrol ediyorum...</div>
+                  <div class="message-time">14:33</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Problem Çözüm -->
+  <section class="problem-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Müşteri Hizmetleri Zorluklarını Çözüyoruz</h2>
+        <p>İşletmelerin yaşadığı müşteri desteği problemlerine profesyonel çözümler</p>
+      </div>
+      
+      <div class="problem-grid">
+        <div class="problem-card">
+          <div class="problem-icon">😫</div>
+          <h3>Dağınık İletişim</h3>
+          <p>Farklı kanallardan gelen mesajların takip zorluğu</p>
+          <ul>
+            <li>WhatsApp, e-posta, telefon karışıklığı</li>
+            <li>Müşteri geçmişi takipsizliği</li>
+            <li>Yanıtların gecikmesi</li>
+          </ul>
+        </div>
+        
+        <div class="solution-card">
+          <div class="solution-icon">✅</div>
+          <h3>Merkezi İletişim Paneli</h3>
+          <p>Tüm iletişim kanallarını tek platformda birleştirme</p>
+          <ul>
+            <li>Tüm kanallar tek ekranda</li>
+            <li>Tam müşteri geçmişi</li>
+            <li>Anlık yanıt ve takip</li>
+          </ul>
+        </div>
+        
+        <div class="problem-card">
+          <div class="problem-icon">📉</div>
+          <h3>Yavaş Yanıt Süreleri</h3>
+          <p>Müşteri taleplerine geç yanıt verme sorunu</p>
+          <ul>
+            <li>Uzun bekleme süreleri</li>
+            <li>Müşteri memnuniyetsizliği</li>
+            <li>Kayıp satış fırsatları</li>
+          </ul>
+        </div>
+        
+        <div class="solution-card">
+          <div class="solution-icon">⚡</div>
+          <h3>Otomatik Yanıt Sistemi</h3>
+          <p>Sık sorulan sorulara anında otomatik yanıt verme</p>
+          <ul>
+            <li>AI destekli chatbot</li>
+            <li>7/24 otomatik destek</li>
+            <li>İnsan kaynağı optimizasyonu</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Özellikler -->
+  <section class="features-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Stok Pratik Müşteri Hizmetleri Özellikleri</h2>
+        <p>Müşteri memnuniyeti için ihtiyacınız olan tüm araçlar</p>
+      </div>
+      
+      <div class="features-grid">
+        {features.map((feature, index) => (
+          <div class="feature-card" key={index}>
+            <div class="feature-header">
+              <div class="feature-icon">{feature.icon}</div>
+              <div>
+                <h3>{feature.title}</h3>
+                <p class="feature-desc">{feature.description}</p>
+              </div>
+            </div>
+            
+            <ul class="feature-details">
+              {feature.details.map((detail, i) => (
+                <li key={i}>
+                  <span class="detail-check">✓</span>
+                  {detail}
+                </li>
+              ))}
+            </ul>
+            
+            <div class="feature-cta">
+              <a 
+                href={`https://wa.me/+905325000999?text=Merhaba,%20${encodeURIComponent(feature.title)}%20özelliği%20hakkında%20bilgi%20almak%20istiyorum`}
+                class="btn-feature"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Bu Özellik Hakkında Bilgi Al
+              </a>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Destek Kanalları -->
+  <section class="channels-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Tüm İletişim Kanallarında Mükemmel Destek</h2>
+        <p>Müşterilerinizin tercih ettiği her kanalda profesyonel destek sağlayın</p>
+      </div>
+      
+      <div class="channels-grid">
+        {supportChannels.map((channel, index) => (
+          <div class="channel-card" key={index}>
+            <div class="channel-header">
+              <div class="channel-icon">{channel.icon}</div>
+              <h3>{channel.channel}</h3>
+            </div>
+            
+            <div class="channel-features">
+              <h4>Özellikler:</h4>
+              <ul>
+                {channel.features.map((feature, i) => (
+                  <li key={i}>
+                    <span class="feature-icon">✨</span>
+                    {feature}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            
+            <div class="channel-stats">
+              <div class="stat">
+                <div class="stat-label">Ort. Yanıt Süresi</div>
+                <div class="stat-value">{channel.responseTime}</div>
+              </div>
+              <div class="stat">
+                <div class="stat-label">Memnuniyet Oranı</div>
+                <div class="stat-value success">{channel.satisfaction}</div>
+              </div>
+            </div>
+            
+            <a 
+              href={`https://wa.me/+905325000999?text=Merhaba,%20${encodeURIComponent(channel.channel)}%20için%20müşteri%20hizmetleri%20demo%20talep%20ediyorum`}
+              class="btn btn-channel"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              📞 Bu Kanal İçin Demo İste
+            </a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Hizmet Metrikleri -->
+  <section class="metrics-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Müşteri Hizmetleri Performans Metrikleri</h2>
+        <p>Başarılı müşteri hizmetleri için izlemeniz gereken kritik metrikler</p>
+      </div>
+      
+      <div class="metrics-grid">
+        {serviceMetrics.map((metric, index) => (
+          <div class="metric-card" key={index}>
+            <div class="metric-header">
+              <h3>{metric.metric}</h3>
+              <div class="metric-target">{metric.target}</div>
+            </div>
+            <p class="metric-importance">{metric.importance}</p>
+            <div class="metric-tools">
+              <div class="tool">📊 Raporlama</div>
+              <div class="tool">🔔 Uyarı Sistemi</div>
+              <div class="tool">📈 Performans Analizi</div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Destek Süreci -->
+  <section class="process-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>5 Adımda Mükemmel Müşteri Desteği</h2>
+        <p>Stok Pratik ile müşteri destek süreçlerinizi standartlaştırın</p>
+      </div>
+      
+      <div class="process-flow">
+        <div class="process-step">
+          <div class="step-number">1</div>
+          <div class="step-content">
+            <h3>Talep Alma</h3>
+            <p>Müşteri talebini herhangi bir kanaldan alın</p>
+            <div class="step-channels">
+              <span class="channel">💬 WhatsApp</span>
+              <span class="channel">📞 Telefon</span>
+              <span class="channel">📧 E-posta</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="process-step">
+          <div class="step-number">2</div>
+          <div class="step-content">
+            <h3>Önceliklendirme</h3>
+            <p>Talebi aciliyetine göre önceliklendirin</p>
+            <div class="step-priorities">
+              <span class="priority high">Yüksek</span>
+              <span class="priority medium">Orta</span>
+              <span class="priority low">Düşük</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="process-step">
+          <div class="step-number">3</div>
+          <div class="step-content">
+            <h3>Çözüm Üretme</h3>
+            <p>Uygun çözümü bulun ve müşteriye sunun</p>
+            <div class="step-solutions">
+              <span class="solution">📋 Bilgi Bankası</span>
+              <span class="solution">👨‍💻 Uzman Destek</span>
+              <span class="solution">🔧 Teknik Çözüm</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="process-step">
+          <div class="step-number">4</div>
+          <div class="step-content">
+            <h3>Takip ve İletişim</h3>
+            <p>Çözüm sürecini takip edin, müşteriyi bilgilendirin</p>
+            <div class="step-tracking">
+              <span class="track">⏱️ Süre Takibi</span>
+              <span class="track">📞 Geri Bildirim</span>
+              <span class="track">✅ Onay Alma</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="process-step">
+          <div class="step-number">5</div>
+          <div class="step-content">
+            <h3>Değerlendirme</h3>
+            <p>Süreci analiz edin, iyileştirme yapın</p>
+            <div class="step-evaluation">
+              <span class="eval">📊 Performans Analizi</span>
+              <span class="eval">😊 Memnuniyet Anketi</span>
+              <span class="eval">🔄 Süreç İyileştirme</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Başarı Hikayeleri -->
+  <section class="success-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Müşteri Hizmetlerinde Başarı Hikayeleri</h2>
+        <p>Stok Pratik ile müşteri memnuniyetini artıran işletmeler</p>
+      </div>
+      
+      <div class="success-stories">
+        {successStories.map((story, index) => (
+          <div class="story-card" key={index}>
+            <div class="story-header">
+              <div class="story-company">{story.company}</div>
+              <div class="story-challenge">
+                <strong>Zorluk:</strong> {story.challenge}
+              </div>
+            </div>
+            
+            <div class="story-solution">
+              <h4>✨ Çözümümüz</h4>
+              <p>{story.solution}</p>
+            </div>
+            
+            <div class="story-results">
+              <h4>📈 Elde Edilen Sonuçlar</h4>
+              <ul>
+                {story.results.map((result, i) => (
+                  <li key={i}>
+                    <span class="result-icon">✅</span>
+                    {result}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Entegrasyonlar -->
+  <section class="integrations-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Mevcut Sistemlerinizle Tam Entegrasyon</h2>
+        <p>Müşteri hizmetleri sistemimiz diğer araçlarınızla uyumlu çalışır</p>
+      </div>
+      
+      <div class="integrations-grid">
+        <div class="integration-card">
+          <div class="integration-icon">📦</div>
+          <h4>Stok Yönetimi</h4>
+          <p>Stok bilgileri anlık erişim</p>
+        </div>
+        
+        <div class="integration-card">
+          <div class="integration-icon">💰</div>
+          <h4>Muhasebe Sistemi</h4>
+          <p>Fatura ve ödeme bilgileri</p>
+        </div>
+        
+        <div class="integration-card">
+          <div class="integration-icon">📊</div>
+          <h4>CRM Sistemi</h4>
+          <p>Müşteri verileri senkronizasyonu</p>
+        </div>
+        
+        <div class="integration-card">
+          <div class="integration-icon">🛒</div>
+          <h4>E-Ticaret</h4>
+          <p>Sipariş ve kargo takibi</p>
+        </div>
+        
+        <div class="integration-card">
+          <div class="integration-icon">📅</div>
+          <h4>Takvim Sistemleri</h4>
+          <p>Randevu ve takip planlaması</p>
+        </div>
+        
+        <div class="integration-card">
+          <div class="integration-icon">🤖</div>
+          <h4>AI Asistanlar</h4>
+          <p>Yapay zeka destekli çözümler</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- İlgili Sayfalar -->
+  <section class="related-pages">
+    <div class="container">
+      <div class="section-header">
+        <h2>Müşteri Hizmetleri ile Entegre Çalışan Sistemler</h2>
+        <p>Müşteri deneyiminizi tamamlayan diğer çözümlerimiz</p>
+      </div>
+      
+      <div class="pages-grid">
+        {relatedPages.map((page, index) => (
+          <a href={page.url} class="page-card" key={index}>
+            <h3>{page.title}</h3>
+            <p>{page.desc}</p>
+            <div class="page-link">
+              <span>İncele</span>
+              <span class="arrow">→</span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Son CTA -->
+  <section class="final-cta">
+    <div class="container">
+      <div class="cta-content">
+        <div class="cta-icon">🤝</div>
+        <h2>Müşteri Hizmetlerinizi Profesyonelleştirin!</h2>
+        <p>14 gün ücretsiz deneme ile müşteri desteğinizi dönüştürün, müşteri memnuniyetinizi artırın.</p>
+        
+        <div class="cta-buttons">
+          <a 
+            href="https://wa.me/+905325000999?text=Merhaba,%20Müşteri%20Hizmetleri%20Sistemi%20demo%20talep%20ediyorum"
+            class="btn btn-primary btn-large"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            🚀 Ücretsiz Demo Başlat
+          </a>
+          
+          <a 
+            href="tel:+905325000999"
+            class="btn btn-secondary btn-large"
+          >
+            📞 Müşteri Hizmetleri Danışmanı
+          </a>
+        </div>
+        
+        <div class="cta-benefits">
+          <div class="benefit">
+            <span class="benefit-icon">📊</span>
+            <span>Ücretsiz İhtiyaç Analizi</span>
+          </div>
+          <div class="benefit">
+            <span class="benefit-icon">👨‍🏫</span>
+            <span>Ekip Eğitimi</span>
+          </div>
+          <div class="benefit">
+            <span class="benefit-icon">🔧</span>
+            <span>Teknik Kurulum Desteği</span>
+          </div>
+          <div class="benefit">
+            <span class="benefit-icon">📈</span>
+            <span>Performans Raporlaması</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  /* Hero Section */
+  .hero-section {
+    background: linear-gradient(135deg, #3498db 0%, #2c3e50 100%);
+    color: white;
+    padding: 4rem 0;
+  }
+  
+  .hero-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+  
+  .hero-badge {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+  }
+  
+  .hero-text h1 {
+    font-size: 3rem;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+  }
+  
+  .highlight {
+    color: #ffd700;
+  }
+  
+  .hero-subtitle {
+    font-size: 1.2rem;
+    opacity: 0.9;
+    margin-bottom: 2rem;
+  }
+  
+  .hero-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    margin: 2rem 0;
+  }
+  
+  .stat-item {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 1rem;
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+  }
+  
+  .stat-icon {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .stat-number {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #ffd700;
+    margin-bottom: 0.3rem;
+  }
+  
+  .stat-label {
+    font-size: 0.8rem;
+    opacity: 0.8;
+  }
+  
+  .hero-buttons {
+    display: flex;
+    gap: 1rem;
+    margin: 2rem 0;
+  }
+  
+  .btn-large {
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+  }
+  
+  .support-channels {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-top: 1.5rem;
+  }
+  
+  .channel-tag {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    backdrop-filter: blur(10px);
+  }
+  
+  .channel-icon {
+    font-size: 1rem;
+  }
+  
+  /* Support Dashboard */
+  .support-dashboard {
+    background: white;
+    border-radius: 15px;
+    padding: 1.5rem;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+    color: #2c3e50;
+  }
+  
+  .dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #f1f2f6;
+  }
+  
+  .dashboard-title {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: bold;
+    font-size: 1.2rem;
+  }
+  
+  .title-icon {
+    font-size: 1.5rem;
+  }
+  
+  .dashboard-status {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+  }
+  
+  .status-indicator {
+    width: 10px;
+    height: 10px;
+    background: #2ecc71;
+    border-radius: 50%;
+  }
+  
+  .status-indicator.online {
+    background: #2ecc71;
+  }
+  
+  .active-tickets {
+    margin-bottom: 1.5rem;
+  }
+  
+  .section-title {
+    font-weight: bold;
+    margin-bottom: 0.8rem;
+    color: #2c3e50;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .ticket-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .ticket-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.8rem;
+    border-radius: 8px;
+    font-size: 0.9rem;
+  }
+  
+  .ticket-item.high {
+    background: #ffeaea;
+    border-left: 4px solid #e74c3c;
+  }
+  
+  .ticket-item.medium {
+    background: #fff4e6;
+    border-left: 4px solid #f39c12;
+  }
+  
+  .ticket-item.low {
+    background: #f0f9ff;
+    border-left: 4px solid #3498db;
+  }
+  
+  .ticket-id {
+    font-weight: bold;
+    color: #2c3e50;
+  }
+  
+  .ticket-subject {
+    flex: 1;
+    margin: 0 1rem;
+  }
+  
+  .ticket-time {
+    color: #7f8c8d;
+    font-size: 0.8rem;
+  }
+  
+  .support-metrics {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .metric {
+    text-align: center;
+    background: #f8f9fa;
+    padding: 1rem;
+    border-radius: 8px;
+  }
+  
+  .metric-label {
+    font-size: 0.8rem;
+    color: #7f8c8d;
+    margin-bottom: 0.5rem;
+  }
+  
+  .metric-value {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #3498db;
+  }
+  
+  .metric-value.success {
+    color: #2ecc71;
+  }
+  
+  .live-chat-preview {
+    background: #f8f9fa;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  
+  .chat-header {
+    background: #3498db;
+    color: white;
+    padding: 0.8rem;
+    font-weight: bold;
+    text-align: center;
+  }
+  
+  .chat-messages {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+  
+  .message {
+    max-width: 80%;
+    padding: 0.8rem;
+    border-radius: 12px;
+    font-size: 0.9rem;
+    position: relative;
+  }
+  
+  .message.customer {
+    align-self: flex-start;
+    background: white;
+    border: 1px solid #e0e0e0;
+  }
+  
+  .message.agent {
+    align-self: flex-end;
+    background: #3498db;
+    color: white;
+  }
+  
+  .message-time {
+    font-size: 0.7rem;
+    color: #7f8c8d;
+    text-align: right;
+    margin-top: 0.3rem;
+  }
+  
+  .message.agent .message-time {
+    color: rgba(255, 255, 255, 0.8);
+  }
+  
+  /* Problem Section */
+  .problem-section {
+    padding: 4rem 0;
+    background: #f8f9fa;
+  }
+  
+  .section-header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+  
+  .section-header h2 {
+    font-size: 2.5rem;
+    color: #2c3e50;
+    margin-bottom: 1rem;
+  }
+  
+  .section-header p {
+    color: #7f8c8d;
+    font-size: 1.1rem;
+  }
+  
+  .problem-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+  
+  .problem-card, .solution-card {
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  }
+  
+  .problem-card {
+    background: white;
+    border-top: 5px solid #e74c3c;
+  }
+  
+  .solution-card {
+    background: linear-gradient(135deg, #3498db, #2980b9);
+    color: white;
+  }
+  
+  .problem-icon, .solution-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+  
+  .problem-card h3, .solution-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .problem-card ul, .solution-card ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 1rem;
+  }
+  
+  .problem-card li, .solution-card li {
+    padding: 0.3rem 0;
+    position: relative;
+    padding-left: 1.5rem;
+  }
+  
+  .problem-card li:before {
+    content: "❌";
+    position: absolute;
+    left: 0;
+    color: #e74c3c;
+  }
+  
+  .solution-card li:before {
+    content: "✅";
+    position: absolute;
+    left: 0;
+    color: #ffd700;
+  }
+  
+  /* Features Section */
+  .features-section {
+    padding: 4rem 0;
+  }
+  
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+  
+  .feature-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+    border: 2px solid transparent;
+  }
+  
+  .feature-card:hover {
+    transform: translateY(-5px);
+    border-color: #3498db;
+    box-shadow: 0 10px 20px rgba(52, 152, 219, 0.2);
+  }
+  
+  .feature-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .feature-icon {
+    font-size: 2.5rem;
+    flex-shrink: 0;
+  }
+  
+  .feature-card h3 {
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
+    font-size: 1.3rem;
+  }
+  
+  .feature-desc {
+    color: #7f8c8d;
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+  
+  .feature-details {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 1.5rem;
+  }
+  
+  .feature-details li {
+    padding: 0.5rem 0;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .detail-check {
+    color: #2ecc71;
+    font-weight: bold;
+  }
+  
+  .feature-cta {
+    text-align: center;
+  }
+  
+  .btn-feature {
+    display: inline-block;
+    background: #3498db;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: bold;
+    transition: background 0.3s ease;
+  }
+  
+  .btn-feature:hover {
+    background: #2980b9;
+  }
+  
+  /* Channels Section */
+  .channels-section {
+    padding: 4rem 0;
+    background: #f8f9fa;
+  }
+  
+  .channels-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+  
+  .channel-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  }
+  
+  .channel-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #f1f2f6;
+  }
+  
+  .channel-icon {
+    font-size: 2.5rem;
+  }
+  
+  .channel-card h3 {
+    color: #2c3e50;
+    margin: 0;
+  }
+  
+  .channel-features h4 {
+    color: #3498db;
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+  }
+  
+  .channel-features ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 1.5rem;
+  }
+  
+  .channel-features li {
+    padding: 0.3rem 0;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .feature-icon {
+    color: #3498db;
+  }
+  
+  .channel-stats {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .stat {
+    text-align: center;
+    background: #f8f9fa;
+    padding: 0.8rem;
+    border-radius: 8px;
+  }
+  
+  .stat-label {
+    font-size: 0.8rem;
+    color: #7f8c8d;
+    margin-bottom: 0.3rem;
+  }
+  
+  .stat-value {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #3498db;
+  }
+  
+  .stat-value.success {
+    color: #2ecc71;
+  }
+  
+  .btn-channel {
+    display: block;
+    width: 100%;
+    text-align: center;
+    background: #3498db;
+    color: white;
+    padding: 0.8rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    margin-top: 1rem;
+    transition: background 0.3s ease;
+  }
+  
+  .btn-channel:hover {
+    background: #2980b9;
+  }
+  
+  /* Metrics Section */
+  .metrics-section {
+    padding: 4rem 0;
+  }
+  
+  .metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+  }
+  
+  .metric-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    text-align: center;
+    border-top: 4px solid #3498db;
+  }
+  
+  .metric-header {
+    margin-bottom: 1rem;
+  }
+  
+  .metric-card h3 {
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+  }
+  
+  .metric-target {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #3498db;
+  }
+  
+  .metric-importance {
+    color: #7f8c8d;
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.5;
+  }
+  
+  .metric-tools {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .tool {
+    font-size: 0.8rem;
+    background: #f8f9fa;
+    padding: 0.5rem;
+    border-radius: 5px;
+    color: #3498db;
+  }
+  
+  /* Process Section */
+  .process-section {
+    padding: 4rem 0;
+    background: #f8f9fa;
+  }
+  
+  .process-flow {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1rem;
+  }
+  
+  .process-step {
+    text-align: center;
+    position: relative;
+  }
+  
+  .process-step:not(:last-child):after {
+    content: '';
+    position: absolute;
+    top: 40px;
+    left: 60%;
+    right: -40%;
+    height: 2px;
+    background: linear-gradient(90deg, #3498db, #2980b9);
+    z-index: 1;
+  }
+  
+  .step-number {
+    width: 50px;
+    height: 50px;
+    background: #3498db;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin: 0 auto 1rem;
+    position: relative;
+    z-index: 2;
+  }
+  
+  .step-content {
+    background: white;
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+  }
+  
+  .process-step h3 {
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+  }
+  
+  .step-content p {
+    color: #7f8c8d;
+    font-size: 0.8rem;
+    margin-bottom: 0.8rem;
+    line-height: 1.4;
+  }
+  
+  .step-channels,
+  .step-priorities,
+  .step-solutions,
+  .step-tracking,
+  .step-evaluation {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+  
+  .channel,
+  .priority,
+  .solution,
+  .track,
+  .eval {
+    font-size: 0.7rem;
+    background: #f8f9fa;
+    padding: 0.3rem;
+    border-radius: 3px;
+    color: #3498db;
+  }
+  
+  .priority.high {
+    background: #ffeaea;
+    color: #e74c3c;
+  }
+  
+  .priority.medium {
+    background: #fff4e6;
+    color: #f39c12;
+  }
+  
+  .priority.low {
+    background: #f0f9ff;
+    color: #3498db;
+  }
+  
+  /* Success Section */
+  .success-section {
+    padding: 4rem 0;
+  }
+  
+  .success-stories {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+  
+  .story-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  }
+  
+  .story-header {
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #f1f2f6;
+  }
+  
+  .story-company {
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
+  }
+  
+  .story-challenge {
+    color: #7f8c8d;
+    font-size: 0.9rem;
+  }
+  
+  .story-solution {
+    margin-bottom: 1.5rem;
+  }
+  
+  .story-solution h4 {
+    color: #3498db;
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .story-solution p {
+    color: #7f8c8d;
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+  
+  .story-results h4 {
+    color: #2ecc71;
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+  }
+  
+  .story-results ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .story-results li {
+    padding: 0.3rem 0;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+  }
+  
+  .result-icon {
+    color: #2ecc71;
+  }
+  
+  /* Integrations Section */
+  .integrations-section {
+    padding: 4rem 0;
+    background: #f8f9fa;
+  }
+  
+  .integrations-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 1.5rem;
+  }
+  
+  .integration-card {
+    text-align: center;
+    background: white;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+    border: 2px solid transparent;
+  }
+  
+  .integration-card:hover {
+    transform: translateY(-3px);
+    border-color: #3498db;
+    box-shadow: 0 5px 15px rgba(52, 152, 219, 0.2);
+  }
+  
+  .integration-icon {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .integration-card h4 {
+    color: #2c3e50;
+    margin-bottom: 0.3rem;
+    font-size: 1rem;
+  }
+  
+  .integration-card p {
+    color: #7f8c8d;
+    font-size: 0.8rem;
+    margin: 0;
+  }
+  
+  /* Related Pages */
+  .related-pages {
+    padding: 4rem 0;
+  }
+  
+  .pages-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+  
+  .page-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+  }
+  
+  .page-card:hover {
+    transform: translateY(-5px);
+    border-color: #3498db;
+    box-shadow: 0 10px 20px rgba(52, 152, 219, 0.2);
+  }
+  
+  .page-card h3 {
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
+  }
+  
+  .page-card p {
+    color: #7f8c8d;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+  }
+  
+  .page-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #3498db;
+    font-weight: bold;
+  }
+  
+  .arrow {
+    font-size: 1.2rem;
+  }
+  
+  /* Final CTA */
+  .final-cta {
+    padding: 4rem 0;
+    background: linear-gradient(135deg, #9b59b6, #8e44ad);
+    color: white;
+    text-align: center;
+  }
+  
+  .cta-content {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .cta-icon {
+    font-size: 4rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .cta-content h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .cta-content p {
+    font-size: 1.2rem;
+    opacity: 0.9;
+    margin-bottom: 2rem;
+  }
+  
+  .cta-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+  
+  .cta-benefits {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+  
+  .benefit {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    justify-content: center;
+    font-size: 0.9rem;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 0.8rem;
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+  }
+  
+  .benefit-icon {
+    font-size: 1.2rem;
+  }
+  
+  /* Responsive Tasarım */
+  @media (max-width: 1200px) {
+    .features-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .integrations-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .metrics-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .process-flow {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+    
+    .process-step:not(:last-child):after {
+      display: none;
+    }
+  }
+  
+  @media (max-width: 992px) {
+    .hero-content {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+    
+    .problem-grid,
+    .channels-grid,
+    .success-stories,
+    .pages-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .hero-stats,
+    .cta-benefits {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .support-metrics {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .hero-text h1 {
+      font-size: 2rem;
+    }
+    
+    .hero-buttons,
+    .cta-buttons {
+      flex-direction: column;
+    }
+    
+    .btn-large {
+      width: 100%;
+      text-align: center;
+    }
+    
+    .section-header h2 {
+      font-size: 2rem;
+    }
+    
+    .features-grid,
+    .integrations-grid,
+    .metrics-grid,
+    .process-flow {
+      grid-template-columns: 1fr;
+    }
+    
+    .support-channels {
+      justify-content: center;
+    }
+    
+    .ticket-item {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.5rem;
+    }
+    
+    .ticket-subject {
+      margin: 0;
+    }
+  }
+</style>

@@ -1,0 +1,383 @@
+---
+// src/pages/on-muhasebe.astro
+import BaseLayout from '../layouts/BaseLayout.astro';
+import '../styles/variables.css';
+import '../styles/global.css';
+import '../styles/components.css';
+
+// İç linkler (diğer ön muhasebe sayfalarına bağlantılar)
+const internalLinks = [
+  { title: "Ön Muhasebe Nedir?", url: "/on-muhasebe-nedir", description: "Ön muhasebenin temelleri ve önemi hakkında detaylı rehber" },
+  { title: "Ön Muhasebe Programları", url: "/on-muhasebe-programlari", description: "En iyi ön muhasebe yazılımları karşılaştırması" },
+  { title: "Bulut Tabanlı Ön Muhasebe", url: "/bulut-tabanli-on-muhasebe", description: "Cloud tabanlı çözümlerin avantajları" },
+  { title: "Online Ön Muhasebe", url: "/online-on-muhasebe", description: "İnternet üzerinden muhasebe yönetimi" },
+  { title: "Ön Muhasebe Eğitimi", url: "/on-muhasebe-egitimi", description: "Ücretsiz eğitim kaynakları ve dersler" },
+  { title: "LOGO Ön Muhasebe", url: "/logo-on-muhasebe", description: "LOGO yazılımı incelemesi ve kullanımı" }
+];
+
+// Özellikler
+const features = [
+  {
+    icon: "🧾",
+    title: "e-Fatura & e-İrsaliye",
+    description: "Tam entegre e-fatura sistemi ile fatura süreçlerinizi otomatikleştirin",
+    details: [
+      "Otomatik e-fatura gönderimi",
+      "e-İrsaliye entegrasyonu",
+      "E-Arşiv fatura",
+      "XML ve PDF formatları"
+    ]
+  },
+  {
+    icon: "💼",
+    title: "Cari Hesap Takibi",
+    description: "Müşteri ve tedarikçi hesaplarınızı detaylı takip edin",
+    details: [
+      "Vade takip sistemi",
+      "Tahsilat ve ödeme planı",
+      "Cari hesap ekstresi",
+      "Risk analizi raporları"
+    ]
+  },
+  {
+    icon: "📦",
+    title: "Stok Yönetimi",
+    description: "Entegre stok takibi ile ürünlerinizi kontrol altında tutun",
+    details: [
+      "Barkodlu stok takibi",
+      "Çoklu depo yönetimi",
+      "Stok alarm sistemi",
+      "Devir hızı analizi"
+    ]
+  },
+  {
+    icon: "🏦",
+    title: "Banka Entegrasyonu",
+    description: "Bankalarınızla otomatik entegrasyon",
+    details: [
+      "Otomatik banka mutabakatı",
+      "Havale/Eft takibi",
+      "Çek/Senet yönetimi",
+      "POS işlem entegrasyonu"
+    ]
+  },
+  {
+    icon: "📊",
+    title: "Detaylı Raporlama",
+    description: "100+ farklı muhasebe ve finans raporu",
+    details: [
+      "Gelir-Gider raporları",
+      "Kâr/Zarar analizi",
+      "Bütçe takip raporları",
+      "Vergi beyanname hazırlığı"
+    ]
+  },
+  {
+    icon: "📱",
+    title: "Mobil Uygulama",
+    description: "Her yerden muhasebe yönetimi",
+    details: [
+      "iOS ve Android uygulamalar",
+      "Offline çalışma",
+      "Anlık bildirimler",
+      "Mobil imza ile onay"
+    ]
+  }
+];
+
+// Neden Biz
+const reasons = [
+  { icon: "🚀", title: "Hızlı Kurulum", desc: "15 dakikada kullanıma hazır" },
+  { icon: "💯", title: "Yerli Yazılım", desc: "Türk mühendisler tarafından geliştirildi" },
+  { icon: "🔒", title: "Güvenli Sistem", desc: "Banka seviyesinde şifreleme" },
+  { icon: "👨‍💼", title: "7/24 Destek", desc: "Uzman ekip her an yanınızda" },
+  { icon: "🔄", title: "Sürekli Güncelleme", desc: "Yeni özelliklerle gelişen sistem" },
+  { icon: "💰", title: "Uygun Fiyat", desc: "KOBİ'lere özel ekonomik paketler" }
+];
+---
+
+<BaseLayout 
+  title="Ön Muhasebe Çözümleri | İşletmeniz için Tam Rehber - Stok Pratik" 
+  description="Ön muhasebe nedir? En iyi ön muhasebe programları, online çözümler, eğitimler ve iş ilanları. Stok Pratik ile işletmenizin finans yönetimi."
+>
+  
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-text">
+          <span class="hero-badge">İşletme Finans Yönetimi</span>
+          <h1>Ön Muhasebe Eğitimi ile <span class="highlight">Finansal Kontrol</span> Elinizde</h1>
+          <p class="highlight">e-Fatura, cari takip, stok yönetimi ve banka entegrasyonu ile işletmenizin tüm finansal süreçlerini tek platformda yönetin</p>
+          
+          <div class="hero-stats">
+            <div class="stat-item">
+              <div class="stat-icon">🏢</div>
+              <div class="stat-number">Onlarca</div>
+              <div class="stat-label">İşletme</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-icon">⚡</div>
+              <div class="stat-number">%99.9</div>
+              <div class="stat-label">Uptime</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-icon">🛠️</div>
+              <div class="stat-number">7/24</div>
+              <div class="stat-label">Destek</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-icon">🎁</div>
+              <div class="stat-number">Ücretsiz</div>
+              <div class="stat-label">Kullan</div>
+            </div>
+          </div>
+          
+          <div class="hero-buttons">
+            <a 
+              href="https://wa.me/+905325000999?text=Merhaba,%20Ön%20Muhasebe%20programı%20demo%20talep%20ediyorum" 
+              class="btn btn-secondary btn-large"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              🚀 Ücretsiz Demo İste
+            </a>
+            <a 
+              href="tel:+905325000999" 
+              class="btn btn-secondary btn-large"
+            >
+              📞 Hemen Ara: 0532 500 09 99
+            </a>
+          </div>
+        </div>
+        
+        <div class="hero-image">
+          <div class="device-showcase">
+            <div class="desktop-preview">
+              <div class="screen">
+                <div class="screen-header">
+                  <div class="app-name">Ön Muhasebe Paneli</div>
+                  <div class="screen-dots">
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                  </div>
+                </div>
+                <div class="screen-content">
+                  <div class="data-row">
+                    <span class="label">Toplam Cari:</span>
+                    <span class="value">248</span>
+                  </div>
+                  <div class="data-row">
+                    <span class="label">Bekleyen Fatura:</span>
+                    <span class="value warning">18</span>
+                  </div>
+                  <div class="data-row">
+                    <span class="label">Bugünkü Gelir:</span>
+                    <span class="value">₺45,800</span>
+                  </div>
+                  <div class="data-row">
+                    <span class="label">Stok Değeri:</span>
+                    <span class="value success">₺189,500</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="mobile-preview">
+              <div class="mobile-screen">
+                <div class="mobile-header">
+                  <div class="mobile-time">14:30</div>
+                  <div class="mobile-battery">🔋 85%</div>
+                </div>
+                <div class="mobile-content">
+                  <div class="mobile-app-name">📱 Muhasebe</div>
+                  <div class="mobile-stats">
+                    <div class="mobile-stat">
+                      <div class="mobile-stat-value">12</div>
+                      <div class="mobile-stat-label">Fatura</div>
+                    </div>
+                    <div class="mobile-stat">
+                      <div class="mobile-stat-value">5</div>
+                      <div class="mobile-stat-label">Ödeme</div>
+                    </div>
+                  </div>
+                  <div class="mobile-scan">📷 Fatura Tara</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Özellikler -->
+  <section class="features-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Stok Pratik Ön Muhasebe ile Neler Yapabilirsiniz?</h2>
+        <p>İşletmenizin tüm finans ve muhasebe ihtiyaçlarını karşılayan kapsamlı çözüm</p>
+      </div>
+      
+      <div class="features-grid">
+        {features.map((feature, index) => (
+          <div class="feature-card" key={index}>
+            <div class="feature-icon">{feature.icon}</div>
+            <h3>{feature.title}</h3>
+            <p class="feature-desc">{feature.description}</p>
+            <ul class="feature-list">
+              {feature.details.map((detail, i) => (
+                <li key={i}>
+                  <span class="checkmark">✓</span>
+                  {detail}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Nasıl Çalışır -->
+  <section class="how-it-works">
+    <div class="container">
+      <div class="section-header">
+        <h2>Ön Muhasebe Sistemimiz Nasıl Çalışır?</h2>
+        <p>3 basit adımda muhasebenizi dijitalleştirin</p>
+      </div>
+      
+      <div class="steps">
+        <div class="step">
+          <div class="step-number">1</div>
+          <div class="step-icon">📝</div>
+          <h3>Hesabınızı Oluşturun</h3>
+          <p class="highlight">Ücretsiz kayıt olun, işletme bilgilerinizi girin ve sistemimizi keşfedin</p>
+          <ul>
+            <li>5 dakikada kayıt</li>
+            <li>Ücretsiz deneme</li>
+            <li>Kişiselleştirme</li>
+          </ul>
+        </div>
+        
+        <div class="step">
+          <div class="step-number">2</div>
+          <div class="step-icon">⚙️</div>
+          <h3>Sisteminizi Kurun</h3>
+          <p class="highlight">Cari hesaplarınızı, ürünlerinizi ve vergi bilgilerinizi ekleyin</p>
+          <ul>
+            <li>Excel'den aktarma</li>
+            <li>Otomatik entegrasyon</li>
+            <li>Banka bağlantısı</li>
+          </ul>
+        </div>
+        
+        <div class="step">
+          <div class="step-number">3</div>
+          <div class="step-icon">🚀</div>
+          <h3>Kullanmaya Başlayın</h3>
+          <p class="highlight">Faturalarınızı kesin, ödemelerinizi takip edin, raporlarınızı alın</p>
+          <ul>
+            <li>e-Fatura gönderimi</li>
+            <li>Otomatik takip</li>
+            <li>Anlık raporlama</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Neden Biz -->
+  <section class="why-us">
+    <div class="container">
+      <div class="section-header">
+        <h2>Neden Stok Pratik Ön Muhasebe?</h2>
+        <p>Binlerce işletmenin tercihi olmamızın nedenleri</p>
+      </div>
+      
+      <div class="reasons-grid">
+        {reasons.map((reason, index) => (
+          <div class="reason-card" key={index}>
+            <div class="reason-icon">{reason.icon}</div>
+            <h3>{reason.title}</h3>
+            <p>{reason.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- İç Linkler Grid -->
+  <section class="related-pages">
+    <div class="container">
+      <div class="section-header">
+        <h2>Ön Muhasebe Konuları</h2>
+        <p>Detaylı bilgi almak için diğer konularımıza göz atın</p>
+      </div>
+      
+      <div class="pages-grid">
+        {internalLinks.map((page, index) => (
+          <a href={page.url} class="page-card" key={index}>
+            <div class="page-icon">{index + 1}</div>
+            <h3>{page.title}</h3>
+            <p>{page.description}</p>
+            <div class="page-link">
+              <span>Detaylı Bilgi</span>
+              <span class="arrow">→</span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="final-cta">
+    <div class="container">
+      <div class="cta-content">
+        <h2>Ön Muhasebe Programını Ücretsiz Deneyin!</h2>
+        <p class="highlight">Tüm özellikleri ücretsiz kullanın, memnun kalırsanız devam edin</p>
+        
+        <div class="cta-buttons">
+          <a 
+            href="https://wa.me/+905325000999?text=Merhaba,%20Ön%20Muhasebe%20programı%20demo%20talep%20ediyorum"
+            class="btn btn-secondary btn-large"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            🚀 WhatsApp'tan Demo İste
+          </a>
+          
+          <a 
+            href="tel:+905325000999"
+            class="btn btn-secondary btn-large"
+          >
+            📞 Hemen Ara: 0532 500 09 99
+          </a>
+        </div>
+        
+        <div class="cta-features">
+          <div class="feature">
+            <span class="feature-icon">🎁</span>
+            <span>Ücretsiz Paket</span>
+          </div>
+          <div class="feature">
+            <span class="feature-icon">👨‍🏫</span>
+            <span>Ücretsiz Eğitim</span>
+          </div>
+          <div class="feature">
+            <span class="feature-icon">🔄</span>
+            <span>Veri Aktarım Desteği</span>
+          </div>
+          <div class="feature">
+            <span class="feature-icon">💯</span>
+            <span>Memnuniyet Garantisi</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+

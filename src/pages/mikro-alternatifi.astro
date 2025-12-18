@@ -1,0 +1,542 @@
+---
+// src/pages/muhasebe-yazilimi.astro
+import BaseLayout from '../layouts/BaseLayout.astro';
+import '../styles/variables.css';
+import '../styles/global.css';
+import '../styles/components.css';
+
+// İç linkler için data
+const internalLinks = [
+  { 
+    title: "Online Muhasebe Programı ile İş Süreçlerinizi Dijitalleştirin", 
+    url: "/online-muhasebe-programi",
+    description: "Bulut tabanlı muhasebe çözümlerinin avantajlarını keşfedin"
+  },
+  { 
+    title: "KOBİ'ler İçin En İyi Muhasebe Çözümleri", 
+    url: "/kobi-muhasebe-programi",
+    description: "Küçük ve orta ölçekli işletmelere özel rehber"
+  },
+  { 
+    title: "Bulut Tabanlı Muhasebe Sisteminin 10 Avantajı", 
+    url: "/bulut-muhasebe-sistemi",
+    description: "Bulut teknolojisi ile muhasebe yönetimi"
+  },
+  { 
+    title: "ERP Sistemi: Kurumsal Kaynak Planlama Rehberi", 
+    url: "/erp-sistemi",
+    description: "Tüm iş süreçlerinizi entegre yönetin"
+  },
+  { 
+    title: "Otomatik Muhasebe Yazılımı ile Zaman Kazanın", 
+    url: "/otomatik-muhasebe-yazilimi",
+    description: "Otomasyon ile muhasebe iş yükünüzü azaltın"
+  }
+];
+
+// Karşılaştırma tablosu verisi
+const comparisonTable = [
+  {
+    feature: "Bulut Tabanlı Çalışma",
+    traditional: "❌ Yok",
+    stokPratik: "✅ Var",
+    benefit: "İnternet olduğu her yerden erişim"
+  },
+  {
+    feature: "E-Fatura Entegrasyonu",
+    traditional: "⏳ Manuel",
+    stokPratik: "✅ Otomatik",
+    benefit: "Zamandan %70 tasarruf"
+  },
+  {
+    feature: "Mobil Uyumluluk",
+    traditional: "❌ Yok",
+    stokPratik: "✅ Var",
+    benefit: "7/24 her cihazdan erişim"
+  },
+  {
+    feature: "Otomatik Yedekleme",
+    traditional: "⏳ Manuel",
+    stokPratik: "✅ Otomatik",
+    benefit: "Veri kaybı riski yok"
+  },
+  {
+    feature: "Gerçek Zamanlı Raporlama",
+    traditional: "⏳ Gecikmeli",
+    stokPratik: "✅ Anlık",
+    benefit: "Anında karar alma"
+  }
+];
+
+// Özellikler listesi
+const features = [
+  {
+    icon: "☁️",
+    title: "Bulut Tabanlı Muhasebe",
+    description: "İnternet olduğu her yerden 7/24 erişim. Kurulum gerektirmez, tarayıcınızdan hemen başlayın."
+  },
+  {
+    icon: "🧾",
+    title: "Tam Entegre e-Fatura",
+    description: "E-fatura, e-arsiv, e-irsaliye işlemleriniz otomatik. Vergi düzenlemelerine otomatik uyum."
+  },
+  {
+    icon: "📱",
+    title: "Mobil Uyumluluk",
+    description: "Telefon, tablet, bilgisayar - tüm cihazlardan sorunsuz çalışma. Android ve iOS uyumlu."
+  },
+  {
+    icon: "🔐",
+    title: "Banka Güvenliğinde Şifreleme",
+    description: "256-bit SSL şifreleme ile verileriniz güvende. Otomatik yedekleme ve felaket kurtarma."
+  },
+  {
+    icon: "📊",
+    title: "Detaylı Raporlama",
+    description: "100+ hazır rapor şablonu. Özelleştirilebilir dashboard ile işletmenizin nabzını tutun."
+  },
+  {
+    icon: "🔄",
+    title: "Otomatik Entegrasyon",
+    description: "Banka, kargo, pazaryeri entegrasyonları. Tüm iş süreçleriniz tek platformda."
+  }
+];
+
+// FAQ soruları
+const faqItems = [
+  {
+    question: "Muhasebe yazılımı seçerken nelere dikkat etmeliyim?",
+    answer: "5 kritik faktöre dikkat edin: 1) Kullanıcı dostu arayüz, 2) Bulut tabanlı çalışma, 3) E-fatura entegrasyonu, 4) Mobil uyumluluk, 5) 7/24 teknik destek. Stok Pratik tüm bu özellikleri bir arada sunar."
+  },
+  {
+    question: "Muhasebe yazılımı maliyetleri nasıl hesaplanır?",
+    answer: "Geleneksel yazılımlarda lisans, donanım, bakım, güncelleme gibi ek maliyetler varken, Stok Pratik'te sadece aylık/ücretli paket seçeneği ile tüm özelliklere sahip olursunuz. Ek maliyet yoktur."
+  },
+  {
+    question: "Teknik bilgim yok, muhasebe yazılımını kullanabilir miyim?",
+    answer: "Stok Pratik, kullanıcı dostu arayüzü sayesinde teknik bilgi gerektirmez. Ayrıca video eğitimler, canlı destek ve 7/24 WhatsApp desteği ile her konuda yardım alabilirsiniz."
+  },
+  {
+    question: "Veri güvenliği nasıl sağlanıyor?",
+    answer: "Banka seviyesinde 256-bit SSL şifreleme, günlük otomatik yedekleme, 3 farklı lokasyonda veri saklama ve ISO 27001 güvenlik sertifikası ile verileriniz maksimum güvenlikte."
+  },
+  {
+    question: "Diğer programlarla entegrasyon mümkün mü?",
+    answer: "Evet! Stok Pratik, bankalarınız, e-ticaret platformlarınız (Trendyol, Hepsiburada, Amazon), kargo firmaları ve pazaryerleri ile tam entegre çalışır. Tüm entegrasyonlar sürekli güncellenir."
+  }
+];
+
+// SEO için meta bilgileri
+const seoTitle = "Muhasebe Yazılımı | Stok Pratik - En İyi Çözüm Rehberi";
+const seoDescription = "Doğru muhasebe yazılımı seçimi için kapsamlı rehber. Stok Pratik ile işletmenizin finansal süreçlerini optimize edin, zaman ve maliyet tasarrufu sağlayın.";
+const seoKeywords = "muhasebe yazılımı, online muhasebe, muhasebe programı, bulut muhasebe, e-fatura, stok takip";
+---
+
+<BaseLayout 
+  title={seoTitle}
+  description={seoDescription}
+  keywords={seoKeywords}
+>
+  
+  <!-- Blog Hero Section -->
+  <section class="blog-hero py-16" style="background: linear-gradient(135deg, var(--primary-red-light) 0%, var(--bg-white) 100%);">
+    <div class="container">
+      <div class="text-center">
+        <span class="category-badge" style="display: inline-block; background: var(--primary-red); color: white; padding: var(--spacing-xs) var(--spacing-md); border-radius: var(--radius-md); font-weight: 600; margin-bottom: var(--spacing-md);">
+          📊 Muhasebe Çözümleri
+        </span>
+        <h1 style="background: linear-gradient(135deg, var(--primary-red), var(--primary-red-dark)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: var(--spacing-md);">
+          En İyi Muhasebe Programı
+        </h1>
+        <p class="blog-subtitle" style="font-size: 1.25rem; color: var(--text-gray); max-width: 800px; margin: 0 auto var(--spacing-md); line-height: 1.6;">
+          Her yazılımın iyi yada kötü yanları olabilir,mikro yada farklı ürünlerden memnun değilseniz alternatiflere bakabilirsiniz,
+          <br>En iyi muhasebe yazılımı nasıl seçilir? Kapsamlı karşılaştırma, özellik analizi ve işletmenize özel çözüm önerileri.
+        </p>
+        
+        
+      </div>
+    </div>
+  </section>
+
+  <!-- Ana İçerik -->
+  <main class="blog-content" style="padding: var(--spacing-xl) 0; background: var(--bg-white);">
+    <div class="container">
+      <article class="article-content" style="max-width: 1000px; margin: 0 auto; padding: 0 1rem;">
+        
+        <!-- Giriş -->
+        <section class="section-intro" style="margin-bottom: var(--spacing-xl);">
+          <h2>Neden Modern Bir Muhasebe Yazılımına İhtiyacınız Var?</h2>
+          <p>Geleneksel muhasebe yöntemleri, dijital dönüşüm çağında işletmelerin ihtiyaçlarını karşılamaktan uzak kalıyor. <strong>Modern muhasebe yazılımı</strong> kullanarak sadece finansal işlemlerinizi değil, tüm iş süreçlerinizi optimize edebilirsiniz.</p>
+          
+          <div class="statistics-grid" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--spacing-md); margin: var(--spacing-lg) 0;">
+            <div class="stat-card" style="background: var(--primary-red-light); padding: var(--spacing-md); border-radius: var(--radius-md); text-align: center;">
+              <div style="font-size: 2rem; font-weight: bold; color: var(--primary-red);">%70</div>
+              <div style="color: var(--text-dark);">Zaman Tasarrufu</div>
+            </div>
+            <div class="stat-card" style="background: var(--primary-red-light); padding: var(--spacing-md); border-radius: var(--radius-md); text-align: center;">
+              <div style="font-size: 2rem; font-weight: bold; color: var(--primary-red);">%90</div>
+              <div style="color: var(--text-dark);">Hata Oranı Azalması</div>
+            </div>
+            <div class="stat-card" style="background: var(--primary-red-light); padding: var(--spacing-md); border-radius: var(--radius-md); text-align: center;">
+              <div style="font-size: 2rem; font-weight: bold; color: var(--primary-red);">%40</div>
+              <div style="color: var(--text-dark);">Operasyonel Maliyet Düşüşü</div>
+            </div>
+            <div class="stat-card" style="background: var(--primary-red-light); padding: var(--spacing-md); border-radius: var(--radius-md); text-align: center;">
+              <div style="font-size: 2rem; font-weight: bold; color: var(--primary-red);">24/7</div>
+              <div style="color: var(--text-dark);">Erişim İmkanı</div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Karşılaştırma Tablosu -->
+        <section class="section-comparison" style="margin-bottom: var(--spacing-xl);">
+          <h2>📊 Geleneksel vs Modern Muhasebe Yazılımı Karşılaştırması</h2>
+          <p>Hangi özellikler işletmeniz için kritik öneme sahip?</p>
+          
+          <div class="comparison-table" style="overflow-x: auto; margin: var(--spacing-lg) 0;">
+            <table style="width: 100%; border-collapse: collapse; min-width: 600px;">
+              <thead>
+                <tr style="background: var(--primary-red); color: white;">
+                  <th style="padding: var(--spacing-md); text-align: left; border-radius: var(--radius-sm) 0 0 0;">Özellik</th>
+                  <th style="padding: var(--spacing-md); text-align: center;">Geleneksel Sistem</th>
+                  <th style="padding: var(--spacing-md); text-align: center;">Stok Pratik</th>
+                  <th style="padding: var(--spacing-md); text-align: left; border-radius: 0 var(--radius-sm) 0 0;">Fayda</th>
+                </tr>
+              </thead>
+              <tbody>
+                {comparisonTable.map((row, index) => (
+                  <tr style={index % 2 === 0 ? 'background: var(--bg-light);' : ''}>
+                    <td style="padding: var(--spacing-md); border-bottom: 1px solid var(--border-color); font-weight: 600;">{row.feature}</td>
+                    <td style="padding: var(--spacing-md); border-bottom: 1px solid var(--border-color); text-align: center;">{row.traditional}</td>
+                    <td style="padding: var(--spacing-md); border-bottom: 1px solid var(--border-color); text-align: center; color: var(--primary-red); font-weight: 600;">{row.stokPratik}</td>
+                    <td style="padding: var(--spacing-md); border-bottom: 1px solid var(--border-color);">{row.benefit}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- Stok Pratik Özellikleri -->
+        <section class="section-features" style="margin-bottom: var(--spacing-xl);">
+          <h2>🚀 Stok Pratik ile Modern Muhasebe Deneyimi</h2>
+          <p>Stok Pratik, işletmenizin tüm muhasebe ihtiyaçlarını karşılayan kapsamlı bir <strong>bulut tabanlı muhasebe sistemi</strong> sunar:</p>
+          
+          <div class="features-grid" style="display: grid; gap: var(--spacing-md); margin: var(--spacing-lg) 0;">
+            {features.map((feature) => (
+              <div class="feature-card" style="background: var(--bg-light); padding: var(--spacing-lg); border-radius: var(--radius-lg); border: 1px solid var(--border-color); transition: all 0.3s;">
+                <div style="font-size: 2.5rem; margin-bottom: var(--spacing-md);">{feature.icon}</div>
+                <h3 style="color: var(--primary-red); margin-bottom: var(--spacing-sm);">{feature.title}</h3>
+                <p style="color: var(--text-dark);">{feature.description}</p>
+              </div>
+            ))}
+          </div>
+          
+          <style>
+            @media (min-width: 768px) {
+              .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+              }
+            }
+            
+            .feature-card:hover {
+              transform: translateY(-5px);
+              box-shadow: var(--shadow-lg);
+              border-color: var(--primary-red);
+            }
+          </style>
+        </section>
+
+        <!-- Kimler Kullanmalı? -->
+        <section class="section-target" style="margin-bottom: var(--spacing-xl); background: var(--primary-red-light); padding: var(--spacing-xl); border-radius: var(--radius-lg);">
+          <h2>👥 Stok Pratik Kimler İçin İdeal?</h2>
+          <p style="margin-bottom: var(--spacing-lg);">Aşağıdaki işletme profillerinden birine uyuyorsanız, doğru adrestesiniz:</p>
+          
+          <div class="target-list" style="display: grid; gap: var(--spacing-md);">
+            <div style="display: flex; align-items: start; gap: var(--spacing-md);">
+              <div style="background: white; padding: var(--spacing-sm); border-radius: var(--radius-full);">🏪</div>
+              <div>
+                <h3 style="margin-bottom: var(--spacing-xs);">Toptan ve Perakende Mağazalar</h3>
+                <p>Fiziksel mağazası olan, stok takibi ve günlük nakit akışı yönetimi ihtiyacı olan işletmeler.</p>
+              </div>
+            </div>
+            
+            <div style="display: flex; align-items: start; gap: var(--spacing-md);">
+              <div style="background: white; padding: var(--spacing-sm); border-radius: var(--radius-full);">🛒</div>
+              <div>
+                <h3 style="margin-bottom: var(--spacing-xs);">E-Ticaret İşletmeleri</h3>
+                <p>Online satış yapan, çoklu kanal entegrasyonu ve otomatik stok yönetimi ihtiyacı olan firmalar.</p>
+              </div>
+            </div>
+            
+            <div style="display: flex; align-items: start; gap: var(--spacing-md);">
+              <div style="background: white; padding: var(--spacing-sm); border-radius: var(--radius-full);">🏭</div>
+              <div>
+                <h3 style="margin-bottom: var(--spacing-xs);">Üretici ve İmalatçılar</h3>
+                <p>Hammadde stok takibi, üretim maliyet hesaplama ve tedarik zinciri yönetimi gereken firmalar.</p>
+              </div>
+            </div>
+            
+            <div style="display: flex; align-items: start; gap: var(--spacing-md);">
+              <div style="background: white; padding: var(--spacing-sm); border-radius: var(--radius-full);">💼</div>
+              <div>
+                <h3 style="margin-bottom: var(--spacing-xs);">Hizmet Sektörü</h3>
+                <p>Fatura takibi, müşteri yönetimi ve proje bazlı muhasebe ihtiyacı olan profesyonel hizmet firmaları.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- İç Linkler Bölümü -->
+        <section class="internal-links-section" style="background-color: var(--bg-light); padding: var(--spacing-xl) 0; margin: var(--spacing-xl) 0; border-radius: var(--radius-lg);">
+          <div class="container">
+            <h2>📚 Muhasebe Konusunda Diğer Rehberlerimiz</h2>
+            <p style="margin-bottom: var(--spacing-lg);">Muhasebe ve iş yönetimi konusunda daha fazla bilgi edinmek için diğer yazılarımıza göz atın:</p>
+            
+            <div class="internal-links-grid" style="display: grid; gap: var(--spacing-md);">
+              {internalLinks.map((link) => (
+                <a 
+                  href={link.url} 
+                  class="internal-link-card"
+                  style="display: block; background: var(--bg-white); padding: var(--spacing-lg); border-radius: var(--radius-md); text-decoration: none; color: var(--text-dark); border: 1px solid var(--border-color); transition: all 0.3s;"
+                >
+                  <strong style="display: block; margin-bottom: var(--spacing-xs); color: var(--primary-red);">{link.title}</strong>
+                  <p style="color: var(--text-gray);">{link.description}</p>
+                </a>
+              ))}
+            </div>
+          </div>
+          
+          <style>
+            .internal-link-card:hover {
+              border-color: var(--primary-red);
+              background: var(--primary-red-light);
+              transform: translateY(-3px);
+              box-shadow: var(--shadow-md);
+            }
+            
+            @media (min-width: 768px) {
+              .internal-links-grid {
+                grid-template-columns: repeat(2, 1fr);
+              }
+            }
+          </style>
+        </section>
+
+        <!-- Sıkça Sorulan Sorular -->
+        <section class="section-faq" style="margin-bottom: var(--spacing-xl);">
+          <h2>❓ Muhasebe Yazılımı Hakkında Sık Sorulan Sorular</h2>
+          <p>İşletme sahiplerinin en çok merak ettiği sorular ve detaylı cevapları:</p>
+          
+          <div class="faq-grid" style="display: grid; gap: var(--spacing-md); margin-top: var(--spacing-lg);">
+            {faqItems.map((item) => (
+              <div class="faq-item" style="background: var(--bg-white); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: var(--spacing-lg);">
+                <h3 style="color: var(--primary-red); margin-top: 0; margin-bottom: var(--spacing-sm);">{item.question}</h3>
+                <p style="margin: 0;">{item.answer}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <!-- Çağrı İçin Öneri -->
+        <section class="section-cta" style="margin: var(--spacing-xl) 0;">
+          <div class="cta-banner" style="background: linear-gradient(135deg, var(--primary-red-light) 0%, var(--bg-white) 100%); padding: var(--spacing-xl); border-radius: var(--radius-lg); text-align: center; border: 2px solid var(--primary-red);">
+            <h2 style="margin-bottom: var(--spacing-md);">🚀 Stok Pratik'i Ücretsiz Deneyin!</h2>
+            <p style="font-size: 1.1rem; margin-bottom: var(--spacing-lg); max-width: 600px; margin-left: auto; margin-right: auto;">
+              İşletmenize uygun muhasebe çözümünü keşfetmek için demo talep edin. Uzman ekibimiz size özel çözüm önerileri sunsun.
+            </p>
+            
+            <div class="cta-buttons" style="display: flex; gap: var(--spacing-md); justify-content: center; margin: var(--spacing-lg) 0; flex-wrap: wrap;">
+              <a 
+                href="https://wa.me/+905325000999?text=Merhaba,%20Muhasebe%20Yazılımı%20demo%20talep%20ediyorum" 
+                class="btn btn-whatsapp"
+                style="display: inline-flex; align-items: center; justify-content: center; padding: var(--space-3) var(--space-6); border-radius: var(--radius-md); font-weight: var(--font-weight-medium); background-color: #25D366; color: white; text-decoration: none; border: none; cursor: pointer; min-height: 52px; gap: var(--space-2);"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                📱 WhatsApp'tan Demo Talep Et
+              </a>
+              
+              <a 
+                href="https://wa.me/+905325000999?text=Merhaba,%20Muhasebe%20Yazılımı%20fiyat%20teklifi%20alıyorum" 
+                class="btn btn-secondary"
+                style="display: inline-flex; align-items: center; justify-content: center; padding: var(--space-3) var(--space-6); border-radius: var(--radius-md); font-weight: var(--font-weight-medium); background-color: transparent; color: var(--primary-red); text-decoration: none; border: 2px solid var(--primary-red); cursor: pointer; min-height: 52px; gap: var(--space-2);"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                💰 Size Özel Fiyat Teklifi Alın
+              </a>
+            </div>
+            
+            <div class="cta-benefits" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--spacing-md); margin-top: var(--spacing-xl);">
+              <div style="text-align: center;">
+                <div style="font-size: 2rem; margin-bottom: var(--spacing-xs);">🎯</div>
+                <div style="font-weight: 600;">İşinize Özel Çözüm</div>
+              </div>
+              <div style="text-align: center;">
+                <div style="font-size: 2rem; margin-bottom: var(--spacing-xs);">⏱️</div>
+                <div style="font-weight: 600;">30 Dakikada Kurulum</div>
+              </div>
+              <div style="text-align: center;">
+                <div style="font-size: 2rem; margin-bottom: var(--spacing-xs);">👨‍💼</div>
+                <div style="font-weight: 600;">7/24 Destek</div>
+              </div>
+              <div style="text-align: center;">
+                <div style="font-size: 2rem; margin-bottom: var(--spacing-xs);">📊</div>
+                <div style="font-weight: 600;">Ücretsiz Eğitim</div>
+              </div>
+            </div>
+            
+            <p class="note" style="margin-top: var(--spacing-xl); padding-top: var(--spacing-md); border-top: 1px dashed var(--border-color); color: var(--text-gray); font-size: 0.9rem;">
+              <strong>💡 Önemli Not:</strong> Tüm görüşmelerimiz ücretsizdir. Size özel çözüm önerisi ve fiyat teklifi için WhatsApp üzerinden iletişime geçin.
+            </p>
+          </div>
+          
+          <style>
+            .btn-whatsapp:hover {
+              background-color: #128C7E;
+              transform: translateY(-2px);
+              box-shadow: 0 4px 14px rgba(37, 211, 102, 0.25);
+            }
+            
+            .btn-secondary:hover {
+              background-color: var(--primary-red-light);
+              transform: translateY(-2px);
+            }
+            
+            @media (min-width: 768px) {
+              .cta-benefits {
+                grid-template-columns: repeat(4, 1fr);
+              }
+            }
+            
+            @media (max-width: 480px) {
+              .cta-buttons {
+                flex-direction: column;
+              }
+              
+              .cta-buttons .btn {
+                width: 100%;
+                text-align: center;
+              }
+              
+              .cta-benefits {
+                grid-template-columns: 1fr;
+              }
+            }
+          </style>
+        </section>
+
+      </article>
+    </div>
+  </main>
+
+  <!-- Ek Blog Stilleri -->
+  <style>
+    /* Border color değişkeni ekleme */
+    :root {
+      --border-color: #e5e7eb;
+    }
+    
+    /* Blog içeriği responsive ayarları */
+    .article-content h2 {
+      color: var(--primary-red);
+      margin-bottom: var(--spacing-md);
+      font-size: 1.8rem;
+      border-bottom: 2px solid var(--primary-red-light);
+      padding-bottom: 0.5rem;
+    }
+    
+    .article-content h3 {
+      color: var(--text-dark);
+      margin: var(--spacing-lg) 0 var(--spacing-md);
+      font-size: 1.4rem;
+    }
+    
+    .article-content p {
+      color: var(--text-dark);
+      margin-bottom: var(--spacing-md);
+      line-height: 1.7;
+    }
+    
+    /* Tablo stilleri */
+    table {
+      border: 1px solid var(--border-color);
+    }
+    
+    th {
+      font-weight: 600;
+    }
+    
+    td, th {
+      border: 1px solid var(--border-color);
+    }
+    
+    /* Mobil için optimize edilmiş stiller */
+    @media (max-width: 768px) {
+      .blog-hero h1 {
+        font-size: 2rem;
+      }
+      
+      .blog-subtitle {
+        font-size: 1.1rem;
+      }
+      
+      .blog-meta {
+        flex-direction: column;
+        gap: var(--spacing-sm);
+      }
+      
+      .statistics-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .comparison-table {
+        font-size: 0.9rem;
+      }
+      
+      .feature-card {
+        padding: var(--spacing-md);
+      }
+      
+      .cta-banner {
+        padding: var(--spacing-lg);
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .article-content {
+        padding: 0;
+      }
+      
+      .internal-links-grid {
+        grid-template-columns: 1fr !important;
+      }
+    }
+    
+    /* Animasyonlar */
+    .feature-card, .internal-link-card, .faq-item {
+      animation: fadeInUp 0.6s ease-out;
+      animation-fill-mode: both;
+    }
+    
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    /* Gecikmeli animasyonlar */
+    .feature-card:nth-child(1) { animation-delay: 0.1s; }
+    .feature-card:nth-child(2) { animation-delay: 0.2s; }
+    .feature-card:nth-child(3) { animation-delay: 0.3s; }
+    .feature-card:nth-child(4) { animation-delay: 0.4s; }
+    .feature-card:nth-child(5) { animation-delay: 0.5s; }
+    .feature-card:nth-child(6) { animation-delay: 0.6s; }
+  </style>
+</BaseLayout>

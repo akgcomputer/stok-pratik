@@ -1,0 +1,409 @@
+---
+// src/pages/kobi-muhasebe-programi.astro
+import BaseLayout from '../layouts/BaseLayout.astro';
+import '../styles/variables.css';
+import '../styles/global.css';
+import '../styles/components.css';
+
+// İç linkler için data
+const internalLinks = [
+  { 
+    title: "Online Muhasebe Programı", 
+    url: "/online-muhasebe-programi",
+    description: "Bulut tabanlı muhasebe çözümleri ile tanışın"
+  },
+  { 
+    title: "Muhasebe Yazılımı", 
+    url: "/muhasebe-yazilimi",
+    description: "Doğru muhasebe yazılımı seçimi rehberi"
+  },
+  { 
+    title: "Bulut Muhasebe Sistemi", 
+    url: "/bulut-muhasebe-sistemi",
+    description: "Bulut teknolojisinin avantajlarını keşfedin"
+  },
+  { 
+    title: "ERP Sistemi", 
+    url: "/erp-sistemi",
+    description: "Kurumsal kaynak planlama çözümleri"
+  },
+  { 
+    title: "Mağaza Yönetim Yazılımı", 
+    url: "/magaza-yonetim-yazilimi",
+    description: "Mağaza otomasyonu için çözümler"
+  }
+];
+
+// KOBİ'ler için özellikler
+const kobiFeatures = [
+  {
+    icon: "💰",
+    title: "Düşük Maliyet",
+    description: "Kurulum maliyeti yok, abonelik sistemi ile bütçenize uygun"
+  },
+  {
+    icon: "⚡",
+    title: "Hızlı Kurulum",
+    description: "5 dakikada kullanmaya başlayın, teknik bilgi gerektirmez"
+  },
+  {
+    icon: "📱",
+    title: "Mobil Erişim",
+    description: "Telefonunuzdan işlerinizi takip edin, her yerden yönetin"
+  },
+  {
+    icon: "🔄",
+    title: "Kolay Geçiş",
+    description: "Mevcut verilerinizi kolayca aktarın, eğitim süreci kısa"
+  },
+  {
+    icon: "📊",
+    title: "Temel Raporlar",
+    description: "KOBİ'ler için gerekli tüm raporlar hazır şablonlarla"
+  },
+  {
+    icon: "👨‍💼",
+    title: "Kişisel Destek",
+    description: "Özel danışmanınız ile 7/24 destek"
+  }
+];
+
+// KOBİ türleri ve çözümler
+const kobiTypes = [
+  {
+    type: "Toptan ve Perakende Mağazalar",
+    needs: ["Stok takibi", "Nakit akışı", "Müşteri takibi", "Fatura yönetimi"],
+    solution: "Mağaza otomasyonu + temel muhasebe modülleri"
+  },
+  {
+    type: "Hizmet Firmaları",
+    needs: ["Proje maliyetleri", "Fatura takibi", "Müşteri yönetimi", "Gider takibi"],
+    solution: "Cari hesap + fatura + gider yönetimi"
+  },
+  {
+    type: "Üretici/İmalatçılar",
+    needs: ["Hammadde stok", "Üretim maliyet", "Tedarik zinciri", "Depo yönetimi"],
+    solution: "Detaylı stok + üretim + depo modülleri"
+  },
+  {
+    type: "E-Ticaret İşletmeleri",
+    needs: ["Çoklu kanal", "Otomatik stok", "Kargo entegrasyonu", "Müşteri memnuniyeti"],
+    solution: "Pazaryeri entegrasyonu + otomatik stok yönetimi"
+  }
+];
+
+// FAQ soruları
+const faqItems = [
+  {
+    question: "KOBİ'ler için muhasebe programı seçerken nelere dikkat etmeliyim?",
+    answer: "4 kritik faktör: 1) Kullanım kolaylığı, 2) Abonelik maliyeti, 3) Teknik destek, 4) İhtiyaçlarınıza uygun modüller. Stok Pratik KOBİ paketleri tüm bu kriterleri karşılar."
+  },
+  {
+    question: "Muhasebecimle nasıl çalışabiliriz?",
+    answer: "Stok Pratik, muhasebecinize erişim izni verebilmenizi sağlar. Böylece muhasebeciniz işlemlerinizi uzaktan takip edebilir, raporlarınıza ulaşabilir ve sizinle işbirliği içinde çalışabilir."
+  },
+  {
+    question: "Kaç kullanıcı ekleyebilirim?",
+    answer: "KOBİ paketlerimizde 3-10 kullanıcı arası esnek seçenekler mevcut. Personelinize yetki seviyeleri atayabilir, kimin neyi görebileceğini belirleyebilirsiniz."
+  },
+  {
+    question: "Büyüdüğümde sistemi değiştirmem gerekir mi?",
+    answer: "Hayır! Stok Pratik modüler yapısı sayesinde büyüdükçe yeni modüller ekleyebilirsiniz. Temel paketten başlayıp, ERP modüllerine kadar tek sistem üzerinden büyüyebilirsiniz."
+  },
+  {
+    question: "Yasal değişikliklerde sistem güncelleniyor mu?",
+    answer: "Evet! Vergi mevzuatındaki değişiklikler, e-fatura düzenlemeleri ve yasal zorunluluklar otomatik olarak sisteme entegre edilir. Sizin ekstra bir şey yapmanıza gerek kalmaz."
+  }
+];
+
+// SEO için meta bilgileri
+const seoTitle = "KOBİ Muhasebe Programı | Stok Pratik - KOBİ'lere Özel Çözümler";
+const seoDescription = "KOBİ'lere muhasebe programı çözümleri. Bütçenize uygun, kolay kullanımlı, ihtiyaçlarınıza özel muhasebe yazılımı ile tanışın.";
+---
+
+<BaseLayout 
+  title={seoTitle}
+  description={seoDescription}
+>
+
+  <!-- Hero Section -->
+  <section style="background: linear-gradient(135deg, var(--primary-red-light) 0%, var(--bg-white) 100%); padding: 4rem 0;">
+    <div class="container">
+      <div style="text-align: center; max-width: 800px; margin: 0 auto;">
+        <h1 style="color: var(--primary-red); margin-bottom: 1.5rem; font-size: 2.5rem;">
+          KOBİ Yazılım ve Muhasebe Programı: İşinizi Büyütmenin Akıllı Yolu
+        </h1>
+        <p style="font-size: 1.25rem; color: var(--text-gray); margin-bottom: 2rem;">
+          Küçük ve orta ölçekli işletmeler için özel tasarlanmış, bütçe dostu, kolay kullanımlı muhasebe çözümü
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Ana İçerik -->
+  <main style="padding: 3rem 0; background: var(--bg-white);">
+    <div class="container">
+      <div style="max-width: 1000px; margin: 0 auto;">
+        
+        <!-- Giriş -->
+        <section style="margin-bottom: 3rem;">
+          <h2>KOBİ'ler Neden Muhasebe Programına İhtiyaç Duyar?</h2>
+          <p>Küçük ve orta ölçekli işletmelerin muhasebe ihtiyaçları büyük şirketlerden farklıdır. <strong>KOBİ muhasebe programı</strong>, karmaşık olmayan ama işlevsel çözümler sunmalıdır.</p>
+          
+          <div style="background: var(--primary-red-light); padding: 2rem; border-radius: 1rem; margin: 2rem 0; border-left: 4px solid var(--primary-red);">
+            <h3 style="color: var(--primary-red); margin-top: 0;">KOBİ'ler İçin Kritik Özellikler:</h3>
+            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-top: 1rem;">
+              <div style="display: flex; align-items: start; gap: 0.5rem;">
+                <span style="color: var(--primary-red);">✓</span>
+                <span>Düşük başlangıç maliyeti</span>
+              </div>
+              <div style="display: flex; align-items: start; gap: 0.5rem;">
+                <span style="color: var(--primary-red);">✓</span>
+                <span>Kullanım kolaylığı</span>
+              </div>
+              <div style="display: flex; align-items: start; gap: 0.5rem;">
+                <span style="color: var(--primary-red);">✓</span>
+                <span>Hızlı kurulum</span>
+              </div>
+              <div style="display: flex; align-items: start; gap: 0.5rem;">
+                <span style="color: var(--primary-red);">✓</span>
+                <span>Esnek ödeme seçenekleri</span>
+              </div>
+              <div style="display: flex; align-items: start; gap: 0.5rem;">
+                <span style="color: var(--primary-red);">✓</span>
+                <span>7/24 teknik destek</span>
+              </div>
+              <div style="display: flex; align-items: start; gap: 0.5rem;">
+                <span style="color: var(--primary-red);">✓</span>
+                <span>İhtiyaca göre büyüme</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- KOBİ Türleri ve Çözümler -->
+        <section style="margin-bottom: 3rem;">
+          <h2>KOBİ Türünüze Göre En Uygun Çözüm</h2>
+          <p style="margin-bottom: 2rem;">İşletmenizin türüne göre ihtiyaç duyduğunuz modüller ve çözüm önerileri:</p>
+          
+          <div style="display: grid; gap: 1.5rem;">
+            {kobiTypes.map((kobi) => (
+              <div style="background: var(--bg-light); padding: 1.5rem; border-radius: 0.75rem; border: 1px solid var(--border-color);">
+                <h3 style="color: var(--primary-red); margin-top: 0; margin-bottom: 1rem;">{kobi.type}</h3>
+                
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+                  <div>
+                    <h4 style="color: var(--text-dark); margin-bottom: 0.5rem; font-size: 1rem;">İhtiyaçlar:</h4>
+                    <ul style="margin: 0; padding-left: 1.25rem;">
+                      {kobi.needs.map((need) => (
+                        <li style="margin-bottom: 0.25rem;">{need}</li>
+                      ))}
+                    </ul>
+                  </div>
+                  
+                  <div>
+                    <h4 style="color: var(--text-dark); margin-bottom: 0.5rem; font-size: 1rem;">Stok Pratik Çözümü:</h4>
+                    <p style="background: var(--primary-red-light); padding: 0.75rem; border-radius: 0.5rem; margin: 0; border-left: 3px solid var(--primary-red);">
+                      {kobi.solution}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <!-- Stok Pratik KOBİ Özellikleri -->
+        <section style="margin-bottom: 3rem;">
+          <h2>Stok Pratik KOBİ Paketlerinin Avantajları</h2>
+          <p style="margin-bottom: 2rem;">KOBİ'ler için özel olarak tasarlanmış özelliklerimiz:</p>
+          
+          <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin-top: 1.5rem;">
+            {kobiFeatures.map((feature) => (
+              <div style="background: var(--bg-white); padding: 1.5rem; border-radius: 0.75rem; border: 1px solid var(--border-color); box-shadow: var(--shadow-sm);">
+                <div style="font-size: 2.5rem; margin-bottom: 1rem; text-align: center;">{feature.icon}</div>
+                <h3 style="color: var(--primary-red); margin-bottom: 0.5rem; text-align: center;">{feature.title}</h3>
+                <p style="text-align: center; margin: 0; color: var(--text-dark);">{feature.description}</p>
+              </div>
+            ))}
+          </div>
+          
+          <style>
+            @media (max-width: 768px) {
+              div[style*="grid-template-columns: repeat(2, 1fr)"] {
+                grid-template-columns: 1fr;
+              }
+            }
+          </style>
+        </section>
+
+        <!-- Maliyet Karşılaştırması -->
+        <section style="margin-bottom: 3rem; background: var(--bg-light); padding: 2rem; border-radius: 1rem;">
+          <h2>KOBİ'ler İçin Maliyet Avantajı</h2>
+          <p>Geleneksel sistemlerle Stok Pratik arasındaki maliyet farkını görün:</p>
+          
+                   
+          <div style="margin-top: 1.5rem; padding: 1rem; background: var(--bg-white); border-radius: 0.5rem; border-left: 4px solid var(--primary-red);">
+            <p style="margin: 0; color: var(--text-dark);">
+              <strong>Not:</strong> Stok Pratik'te donanım, bakım, güncelleme gibi ek maliyetler yoktur. Sadece aylık abonelik ücreti ödersiniz.
+            </p>
+          </div>
+        </section>
+
+        <!-- Başarı Hikayeleri -->
+        <section style="margin-bottom: 3rem;">
+          <h2>KOBİ Müşterilerimizin Başarı Hikayeleri</h2>
+          
+          <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin-top: 1.5rem;">
+            <div style="background: var(--bg-white); padding: 1.5rem; border-radius: 0.75rem; border: 1px solid var(--border-color);">
+              <div style="font-size: 3rem; margin-bottom: 1rem; color: var(--primary-red);">🏪</div>
+              <h3 style="color: var(--primary-red); margin-top: 0; margin-bottom: 0.5rem;">Toptan ve Perakende Mağaza</h3>
+              <p style="margin: 0; color: var(--text-dark);">
+                "3 mağazamızın stok ve muhasebesini tek yerden yönetiyoruz. Aylık 15 saat zaman tasarrufu sağladık."
+              </p>
+              <div style="margin-top: 1rem; font-weight: bold; color: var(--primary-red);">- Ahmet Bey, Tekstil Mağazası</div>
+            </div>
+            
+            <div style="background: var(--bg-white); padding: 1.5rem; border-radius: 0.75rem; border: 1px solid var(--border-color);">
+              <div style="font-size: 3rem; margin-bottom: 1rem; color: var(--primary-red);">🛒</div>
+              <h3 style="color: var(--primary-red); margin-top: 0; margin-bottom: 0.5rem;">E-Ticaret Firması</h3>
+              <p style="margin: 0; color: var(--text-dark);">
+                "Trendyol ve Hepsiburada satışlarımız otomatik stok güncellemesi sayesinde hiç stok hatası yaşamıyoruz."
+              </p>
+              <div style="margin-top: 1rem; font-weight: bold; color: var(--primary-red);">- Ayşe Hanım, Kozmetik Satışı</div>
+            </div>
+          </div>
+        </section>
+
+        <!-- İç Linkler -->
+        <section style="margin-bottom: 3rem; background: var(--bg-light); padding: 2rem; border-radius: 1rem;">
+          <h2>İlgili Diğer Çözümlerimiz</h2>
+          <p style="margin-bottom: 1.5rem;">İşletmenizin diğer ihtiyaçları için çözümlerimizi keşfedin:</p>
+          
+          <div style="display: grid; gap: 1rem;">
+            {internalLinks.map((link) => (
+              <a 
+                href={link.url}
+                style="display: block; background: var(--bg-white); padding: 1rem; border-radius: 0.5rem; text-decoration: none; color: var(--text-dark); border: 1px solid var(--border-color); transition: all 0.3s;"
+              >
+                <div style="font-weight: bold; color: var(--primary-red); margin-bottom: 0.25rem;">{link.title}</div>
+                <div style="color: var(--text-gray); font-size: 0.9rem;">{link.description}</div>
+              </a>
+            ))}
+          </div>
+          
+          <style>
+            a:hover {
+              border-color: var(--primary-red);
+              background: var(--primary-red-light);
+              transform: translateY(-2px);
+            }
+          </style>
+        </section>
+
+        <!-- FAQ -->
+        <section style="margin-bottom: 3rem;">
+          <h2>Sık Sorulan Sorular</h2>
+          
+          <div style="display: grid; gap: 1rem; margin-top: 1.5rem;">
+            {faqItems.map((item) => (
+              <div style="background: var(--bg-white); padding: 1.5rem; border-radius: 0.75rem; border: 1px solid var(--border-color);">
+                <h3 style="color: var(--primary-red); margin-top: 0; margin-bottom: 0.5rem;">{item.question}</h3>
+                <p style="margin: 0; color: var(--text-dark);">{item.answer}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <!-- CTA -->
+        <section style="background: linear-gradient(135deg, var(--primary-red-light) 0%, var(--bg-white) 100%); padding: 2.5rem; border-radius: 1rem; text-align: center; border: 2px solid var(--primary-red);">
+          <h2 style="color: var(--primary-red); margin-bottom: 1rem;">KOBİ'nize Özel Çözüm İster Misiniz?</h2>
+          <p style="margin-bottom: 1.5rem; color: var(--text-dark);">
+            İşletmenizin ihtiyaçlarını analiz edip, size özel çözüm önerisi sunalım.
+          </p>
+          
+          <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+            <a 
+              href="https://wa.me/+905325000999?text=Merhaba,%20KOBİ%20muhasebe%20programı%20demo%20talep%20ediyorum"
+              style="display: inline-flex; align-items: center; justify-content: center; padding: 0.75rem 1.5rem; background-color: #25D366; color: white; text-decoration: none; border-radius: 0.5rem; font-weight: 600; gap: 0.5rem; border: none; cursor: pointer;"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              📱 Demo Talep Et
+            </a>
+            
+            <a 
+              href="https://wa.me/+905325000999?text=Merhaba,%20KOBİ%20paketleri%20hakkında%20bilgi%20almak%20istiyorum"
+              style="display: inline-flex; align-items: center; justify-content: center; padding: 0.75rem 1.5rem; background-color: transparent; color: var(--primary-red); text-decoration: none; border-radius: 0.5rem; font-weight: 600; gap: 0.5rem; border: 2px solid var(--primary-red); cursor: pointer;"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              💰 Paket Bilgisi Al
+            </a>
+          </div>
+          
+          <div style="margin-top: 2rem; padding-top: 1rem; border-top: 1px dashed var(--border-color);">
+            <p style="margin: 0; color: var(--text-gray); font-size: 0.9rem;">
+              <strong>KOBİ'lere Özel Avantajlar:</strong> İlk 3 ay %25 indirim • Ücretsiz kurulum • 7/24 özel destek • İlk yıl ücretsiz eğitim
+            </p>
+          </div>
+        </section>
+
+      </div>
+    </div>
+  </main>
+
+  <style>
+    :root {
+      --border-color: #e5e7eb;
+    }
+    
+    h2 {
+      color: var(--primary-red);
+      margin-bottom: 1rem;
+      font-size: 1.8rem;
+    }
+    
+    h3 {
+      color: var(--text-dark);
+      margin-bottom: 0.5rem;
+      font-size: 1.3rem;
+    }
+    
+    p {
+      color: var(--text-dark);
+      line-height: 1.6;
+    }
+    
+    @media (max-width: 768px) {
+      div[style*="grid-template-columns: repeat(3, 1fr)"] {
+        grid-template-columns: 1fr;
+      }
+      
+      section {
+        padding-left: 1rem;
+        padding-right: 1rem;
+      }
+      
+      .container > div {
+        padding: 0;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 2rem !important;
+      }
+      
+      .cta-buttons {
+        flex-direction: column;
+      }
+      
+      .cta-buttons a {
+        width: 100%;
+        text-align: center;
+      }
+    }
+  </style>
+
+</BaseLayout>

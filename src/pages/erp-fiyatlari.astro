@@ -1,0 +1,356 @@
+---
+// src/pages/erp-sistemi.astro
+import BaseLayout from '../layouts/BaseLayout.astro';
+import '../styles/variables.css';
+import '../styles/global.css';
+import '../styles/components.css';
+
+// İç linkler için data
+const internalLinks = [
+  { title: "Online Muhasebe Programı ile İş Süreçlerinizi Dijitalleştirin", url: "/online-muhasebe-programi" },
+  { title: "Muhasebe Yazılımı Seçerken Dikkat Edilmesi Gerekenler", url: "/muhasebe-yazilimi" },
+  { title: "Bulut Tabanlı Muhasebe Sisteminin Avantajları", url: "/bulut-muhasebe-sistemi" },
+  { title: "KOBİ'ler İçin En İyi Muhasebe Çözümleri", url: "/kobi-muhasebe-programi" },
+  { title: "Mağaza Otomasyonu ile Verimliliği Artırın", url: "/magaza-otomasyonu" },
+  { title: "CRM Sistemleri ile Müşteri İlişkilerini Güçlendirin", url: "/crm-sistemleri" }
+];
+---
+
+<BaseLayout 
+  title="ERP Sistemi Nedir? | Stok Pratik" 
+  description="ERP sistemi ile işletmenizin tüm süreçlerini entegre edin. Stok Pratik'in kapsamlı ERP çözümleri ile verimliliğinizi maksimize edin."
+>
+  
+  <!-- Blog Header -->
+  <section class="blog-hero py-16">
+    <div class="container">
+      <div class="blog-header text-center">
+        <span class="category-badge">İş Yönetimi Çözümleri</span>
+        <h1>ERP Fiyatları Nasıl Belirlenir, Sistem NAsıl Olmalı? <br>Tam Kapsamlı İşletme Yönetimi</h1>
+        <p class="blog-subtitle">ERP sistemi ile tüm iş süreçlerinizi tek platformda entegre edin, verimliliğinizi artırın ve maliyetleri düşürün</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Ana İçerik -->
+  <main class="blog-content">
+    <div class="container">
+      <article class="article-content">
+        
+        <!-- Giriş -->
+        <section class="section-intro">
+          <h2>ERP (Kurumsal Kaynak Planlama) Sistemi Nedir?</h2>
+          <p>ERP (Enterprise Resource Planning), işletmelerin tüm temel süreçlerini entegre bir şekilde yönetmelerini sağlayan kapsamlı bir yazılım sistemidir. <strong>ERP sistemi</strong>, finans, insan kaynakları, üretim, tedarik zinciri, satış ve pazarlama gibi departmanlar arasında veri akışını optimize eder.</p>
+          
+          <div class="feature-highlight">
+            <h3>🚀 ERP Sisteminin Temel Faydaları:</h3>
+            <ul>
+              <li><strong>Merkezi Veri Yönetimi:</strong> Tüm departmanlar için tek veri kaynağı</li>
+              <li><strong>Süreç Otomasyonu:</strong> Manuel işlemlerin azaltılması</li>
+              <li><strong>Gerçek Zamanlı Raporlama:</strong> Anlık iş zekası ve analiz</li>
+              <li><strong>Maliyet Optimizasyonu:</strong> Kaynak kullanımının verimlileştirilmesi</li>
+              <li><strong>Ölçeklenebilirlik:</strong> Büyüyen işletmelere uyum sağlama</li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- ERP Modülleri -->
+        <section class="section-features">
+          <h2>Stok Pratik ERP Sisteminin Modülleri</h2>
+          <p>Stok Pratik ERP sistemi, işletmenizin tüm ihtiyaçlarını karşılayan kapsamlı modüller sunar. İşte size sunduğumuz entegre çözümler:</p>
+          
+          <div class="features-grid">
+            <div class="feature-card">
+              <h3>📦 Stok ve Depo Yönetimi</h3>
+              <p>Çoklu depo yönetimi, otomatik stok takibi, barkod sistemi ve envanter optimizasyonu ile stok maliyetlerinizi minimize edin.</p>
+            </div>
+            
+            <div class="feature-card">
+              <h3>💰 Finans ve Muhasebe</h3>
+              <p>Otomatik muhasebe entegrasyonu, gelir-gider takibi, banka entegrasyonu ve vergi modülleri ile finansal süreçlerinizi yönetin.</p>
+            </div>
+            
+            <div class="feature-card">
+              <h3>🏭 Üretim Yönetimi</h3>
+              <p>Üretim planlama, sipariş yönetimi, kalite kontrol ve iş emri takibi ile üretim süreçlerinizi optimize edin.</p>
+            </div>
+            
+            <div class="feature-card">
+              <h3>🤝 CRM ve Satış</h3>
+              <p>Müşteri ilişkileri yönetimi, satış kanalı entegrasyonu, teklif yönetimi ve pazarlama otomasyonu ile satışlarınızı artırın.</p>
+            </div>
+            
+            <div class="feature-card">
+              <h3>🚚 Tedarik Zinciri</h3>
+              <p>Tedarikçi yönetimi, satın alma süreçleri, lojistik entegrasyonu ve sipariş takibi ile tedarik zincirinizi optimize edin.</p>
+            </div>
+            
+            <div class="feature-card">
+              <h3>📊 İnsan Kaynakları</h3>
+              <p>Personel yönetimi, maaş bordrosu, izin ve devam kontrolü, performans yönetimi ile insan kaynakları süreçlerinizi dijitalleştirin.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- ERP Süreç Akışı -->
+        <section class="section-process">
+          <h2>📈 ERP ile İş Süreçleri Nasıl İyileşir?</h2>
+          <p>ERP sistemi, iş süreçlerinizde aşağıdaki dönüşümü sağlar:</p>
+          
+          <div class="process-flow">
+            <div class="process-step">
+              <div class="step-number">1</div>
+              <h3>Satış Siparişi Alındı</h3>
+              <p>ERP sistemine giren sipariş otomatik olarak:</p>
+              <ul>
+                <li>Stok kontrolü yapar</li>
+                <li>Müşteri kredisini kontrol eder</li>
+                <li>Üretim planına ekler</li>
+              </ul>
+            </div>
+            
+            <div class="process-step">
+              <div class="step-number">2</div>
+              <h3>Otomatik Üretim Planı</h3>
+              <p>Sistem otomatik olarak:</p>
+              <ul>
+                <li>Malzeme ihtiyacını belirler</li>
+                <li>Tedarikçi siparişi oluşturur</li>
+                <li>İş emirlerini planlar</li>
+              </ul>
+            </div>
+            
+            <div class="process-step">
+              <div class="step-number">3</div>
+              <h3>Finansal Entegrasyon</h3>
+              <p>Tüm süreçler finans modülüne:</p>
+              <ul>
+                <li>Maliyet hesaplarını günceller</li>
+                <li>Alacak borç takibini yapar</li>
+                <li>Raporları otomatik oluşturur</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- İç Linkler Bölümü -->
+        <section class="internal-links-section py-12">
+          <div class="container">
+            <h2>📚 İlgili Yazılar</h2>
+            <p>ERP sistemi hakkında daha fazla bilgi edinmek için diğer yazılarımıza göz atın:</p>
+            
+            <div class="internal-links-grid">
+              {internalLinks.map((link) => (
+                <a href={link.url} class="internal-link-card">
+                  <strong>{link.title}</strong>
+                  <p>Detaylı bilgi için tıklayın</p>
+                </a>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <!-- Sıkça Sorulan Sorular -->
+        <section class="section-faq">
+          <h2>❓ ERP Sistemi Hakkında Sık Sorulan Sorular</h2>
+          
+          <div class="faq-item">
+            <h3>ERP sistemi KOBİ'ler için uygun mu?</h3>
+            <p>Evet! Stok Pratik ERP sistemi, büyüklüğüne bakılmaksızın tüm işletmelere uygun ölçeklenebilir çözümler sunar. Modüler yapısı sayesinde ihtiyacınıza göre özelleştirilebilir.</p>
+          </div>
+          
+          <div class="faq-item">
+            <h3>ERP uygulamasına geçiş süreci nasıl işliyor?</h3>
+            <p>Deneyimli danışmanlarımız eşliğinde adım adım geçiş sürecini yönetiyoruz. Mevcut verilerinizin aktarımı, personel eğitimi ve sistem kurulumu tam destek sağlıyoruz.</p>
+          </div>
+          
+          <div class="faq-item">
+            <h3>ERP sistemi maliyeti ne kadar?</h3>
+            <p>ERP maliyeti işletmenizin büyüklüğüne, sektörüne ve ihtiyaç duyduğu modüllere göre değişir. Size özel fiyat teklifi için iletişime geçebilirsiniz.</p>
+          </div>
+          
+          <div class="faq-item">
+            <h3>ERP ile diğer sistemler entegre edilebilir mi?</h3>
+            <p>Evet, Stok Pratik ERP sistemi API entegrasyonları ile e-ticaret platformları, bankalar, vergi daireleri ve diğer üçüncü parti yazılımlarla uyumlu çalışır.</p>
+          </div>
+        </section>
+
+        <!-- KOBİ'ler için ERP -->
+        <section class="section-kobi">
+          <div class="kobi-banner">
+            <h3>🏢 KOBİ'ler İçin ERP Çözümü</h3>
+            <p>Küçük ve orta ölçekli işletmeler için özel olarak tasarlanmış ERP sistemimiz sayesinde:</p>
+            
+            <div class="kobi-benefits">
+              <div class="benefit-item">
+                <h4>⏱️ Hızlı Kurulum</h4>
+                <p>15 gün içinde aktif kullanım</p>
+              </div>
+              
+              <div class="benefit-item">
+                <h4>💳 Esnek Ödeme</h4>
+                <p>Aylık abonelik modeli</p>
+              </div>
+              
+              <div class="benefit-item">
+                <h4>🎯 İhtiyaca Özel</h4>
+                <p>Sadece ihtiyacınız olan modüller</p>
+              </div>
+              
+              <div class="benefit-item">
+                <h4>👨‍🏫 Ücretsiz Eğitim</h4>
+                <p>Tam kapsamlı personel eğitimi</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Çağrı İçin Öneri -->
+        <section class="section-cta">
+          <div class="cta-banner">
+            <h3>🚀 ERP Sistemini Ücretsiz Deneyin!</h3>
+            <p>Stok Pratik ERP sisteminin gücünü deneyimlemek için hemen demo talebinde bulunun. İşletmenize özel çözümlerimizi keşfedin.</p>
+            
+            <div class="cta-buttons">
+              <a 
+                href="https://wa.me/+905325000999?text=Merhaba,%20ERP%20Sistemi%20demo%20talep%20ediyorum" 
+                class="btn btn-primary btn-whatsapp"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                ERP Demo Talep Et
+              </a>
+              
+              <a 
+                href="https://wa.me/+905325000999?text=Merhaba,%20ERP%20Sistemi%20fiyat%20teklifi%20alıyorum" 
+                class="btn btn-secondary"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                ERP Fiyat Teklifi Al
+              </a>
+            </div>
+            
+            <div class="cta-features">
+              <p><strong>Demo paketimizde neler var?</strong></p>
+              <ul>
+                <li>✔️ Stok Pratik ücretsiz paket ile kullanmaya başlayabilirsiniz</li>
+                <li>✔️ Tüm modüllere erişim</li>
+                <li>✔️ Teknik destek ve eğitim</li>
+                <li>✔️ Veri aktarım desteği</li>
+              </ul>
+            </div>
+            
+            <p class="note"><small>💡 <strong>Not:</strong> Fiyat bilgisi için lütfen WhatsApp üzerinden iletişime geçin. Size özel teklif hazırlayalım.</small></p>
+          </div>
+        </section>
+
+      </article>
+    </div>
+  </main>
+
+</BaseLayout>
+
+<style>
+  /* Özel Stiller */
+  .section-process {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 3rem 0;
+    border-radius: 20px;
+    margin: 3rem 0;
+  }
+  
+  .process-flow {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+  
+  .process-step {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 1.5rem;
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+  }
+  
+  .step-number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: white;
+    color: #667eea;
+    border-radius: 50%;
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+  }
+  
+  .section-kobi {
+    background: #f8f9fa;
+    padding: 2rem;
+    border-radius: 15px;
+    margin: 3rem 0;
+    border-left: 5px solid #28a745;
+  }
+  
+  .kobi-benefits {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+  }
+  
+  .benefit-item {
+    background: white;
+    padding: 1rem;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  }
+  
+  .benefit-item h4 {
+    color: #28a745;
+    margin-bottom: 0.5rem;
+  }
+  
+  .cta-features {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 1rem;
+    border-radius: 10px;
+    margin: 1.5rem 0;
+  }
+  
+  .cta-features ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .cta-features li {
+    padding: 0.3rem 0;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  /* Responsive Tasarım */
+  @media (max-width: 768px) {
+    .process-flow {
+      grid-template-columns: 1fr;
+    }
+    
+    .kobi-benefits {
+      grid-template-columns: 1fr;
+    }
+    
+    .section-process {
+      padding: 2rem 1rem;
+      margin: 2rem -1rem;
+      border-radius: 0;
+    }
+  }
+</style>

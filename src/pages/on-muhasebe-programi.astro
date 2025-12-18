@@ -1,0 +1,155 @@
+---
+// src/pages/blog/online-muhasebe-programi.astro
+import BaseLayout from '../layouts/BaseLayout.astro';
+import '../styles/variables.css';
+import '../styles/global.css';
+import '../styles/components.css';
+
+// İç linkler için data (bileşen yoksa doğrudan HTML kullanacağız)
+const internalLinks = [
+  { title: "Muhasebe Yazılımı Seçerken Dikkat Edilmesi Gerekenler", url: "/blog/muhasebe-yazilimi" },
+  { title: "Bulut Tabanlı Muhasebe Sisteminin Avantajları", url: "/blog/bulut-muhasebe-sistemi" },
+  { title: "KOBİ'ler İçin En İyi Muhasebe Çözümleri", url: "/blog/kobi-muhasebe-programi" },
+  { title: "Tam Rehber: ERP Sistemi Nedir?", url: "/blog/erp-sistemi" },
+  { title: "Mağaza Otomasyonu ile Verimliliği Artırın", url: "/blog/magaza-otomasyonu" }
+];
+---
+
+<BaseLayout title="Ön Muhasebe Programı | Stok Pratik" description="Online muhasebe programı ile işletmenizin finansal süreçlerini dijitalleştirin. Stok Pratik ile bulut tabanlı muhasebe çözümleri.">
+  
+  <!-- Blog Header -->
+  <section class="blog-hero py-16">
+    <div class="container">
+      <div class="blog-header text-center">
+        <span class="category-badge">Ön Muhasebe Çözümleri</span>
+        <h1>Online Ön Muhasebe Programı: <br>İşletmeniz için Doğru Seçim</h1>
+        <p class="blog-subtitle">Bulut tabanlı muhasebe çözümleri ile iş süreçlerinizi dijitalleştirin ve verimliliğinizi artırın</p>
+        
+        
+      </div>
+    </div>
+  </section>
+
+  <!-- Ana İçerik -->
+  <main class="blog-content">
+    <div class="container">
+      <article class="article-content">
+        
+        <!-- Giriş -->
+        <section class="section-intro">
+          <h2>Neden Online Muhasebe Programı Kullanmalısınız?</h2>
+          <p>Günümüz dijital dünyasında, geleneksel muhasebe yöntemleri işletmeler için yeterli olmamaktadır. <strong>Online muhasebe programı</strong> kullanarak, finansal süreçlerinizi merkezileştirebilir, gerçek zamanlı verilere ulaşabilir ve iş verimliliğinizi önemli ölçüde artırabilirsiniz.</p>
+          
+          <div class="feature-highlight">
+            <h3>💡 Online Muhasebenin Temel Faydaları:</h3>
+            <ul>
+              <li><strong>7/24 Erişim:</strong> İnternet olduğu her yerden erişim imkanı</li>
+              <li><strong>Gerçek Zamanlı Veri:</strong> Anlık finansal durum takibi</li>
+              <li><strong>Otomatik Yedekleme:</strong> Veri kaybı riski olmadan çalışma</li>
+              <li><strong>Düşük Maliyet:</strong> Kurulum ve donanım maliyeti yok</li>
+              <li><strong>Kolay Entegrasyon:</strong> Diğer iş süreçleriyle uyumlu çalışma</li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- Stok Pratik Özellikleri -->
+        <section class="section-features">
+          <h2>Stok Pratik ile Online Muhasebe</h2>
+          <p>Stok Pratik, işletmenizin tüm muhasebe ihtiyaçlarını karşılayan kapsamlı bir <strong>bulut muhasebe sistemi</strong> sunar. İşte size sağladığımız çözümler:</p>
+          
+          <div class="features-grid">
+            <div class="feature-card">
+              <h3>📊 Stok ve Envanter Yönetimi</h3>
+              <p>Gerçek zamanlı stok takibi, otomatik envanter güncelleme ve çoklu depo yönetimi ile stok maliyetlerinizi optimize edin.</p>
+            </div>
+            
+            <div class="feature-card">
+              <h3>🧾 e-Fatura ve e-İrsaliye</h3>
+              <p>Tam entegre e-fatura sistemi ile fatura süreçlerinizi hızlandırın, zaman ve kağıt tasarrufu sağlayın.</p>
+            </div>
+            
+            <div class="feature-card">
+              <h3>💼 Cari Hesap Takibi</h3>
+              <p>Müşteri ve tedarikçi hesaplarınızı düzenli takip edin, vade takibi yapın, tahsilat süreçlerinizi otomatikleştirin.</p>
+            </div>
+            
+            <div class="feature-card">
+              <h3>📱 Mobil Uyumluluk</h3>
+              <p>Akıllı telefon, tablet veya bilgisayarınızdan - her cihazdan sorunsuz erişim ile işinizi her yerden yönetin.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- İç Linkler Bölümü -->
+        <section class="internal-links-section py-12">
+          <div class="container">
+            <h2>📚 İlgili Yazılar</h2>
+            <p>Bu konu hakkında daha fazla bilgi edinmek için diğer yazılarımıza göz atın:</p>
+            
+            <div class="internal-links-grid">
+              {internalLinks.map((link) => (
+                <a href={link.url} class="internal-link-card">
+                  <strong>{link.title}</strong>
+                  <p>Detaylı bilgi için tıklayın</p>
+                </a>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <!-- Sıkça Sorulan Sorular -->
+        <section class="section-faq">
+          <h2>❓ Online Muhasebe Programı Hakkında Sık Sorulan Sorular</h2>
+          
+          <div class="faq-item">
+            <h3>Online muhasebe programı güvenli mi?</h3>
+            <p>Stok Pratik, banka seviyesinde şifreleme ve güvenlik protokolleri kullanır. Verileriniz güvenli bulut sunucularında saklanır ve düzenli olarak yedeklenir.</p>
+          </div>
+          
+          <div class="faq-item">
+            <h3>Teknik bilgim yok, kullanabilir miyim?</h3>
+            <p>Kullanıcı dostu arayüzümüz sayesinde teknik bilgi gerektirmeden kolayca kullanabilirsiniz. Ayrıca 7/24 destek ekibimiz her an yanınızda.</p>
+          </div>
+          
+          <div class="faq-item">
+            <h3>Verilerimi nasıl yedekliyorsunuz?</h3>
+            <p>Otomatik günlük yedekleme sistemimizle verileriniz sürekli olarak korunur. Ekstra yedekleme yapmanıza gerek kalmaz.</p>
+          </div>
+        </section>
+
+        <!-- Çağrı İçin Öneri -->
+        <section class="section-cta">
+          <div class="cta-banner">
+            <h3>🚀 Online Muhasebe Programını Ücretsiz Deneyin!</h3>
+            <p>Stok Pratik'in tüm özelliklerini deneyimlemek için hemen demo talebinde bulunun. İşletmenize özel çözümlerimizi keşfedin.</p>
+            
+            <div class="cta-buttons">
+              <a 
+                href="https://wa.me/+905325000999?text=Merhaba,%20Online%20Muhasebe%20Programı%20demo%20talep%20ediyorum" 
+                class="btn btn-primary btn-whatsapp"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Demo Talep Et
+              </a>
+              
+              <a 
+                href="https://wa.me/+905325000999?text=Merhaba,%20Online%20Muhasebe%20Programı%20fiyat%20teklifi%20alıyorum" 
+                class="btn btn-secondary"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Fiyat Teklifi Al
+              </a>
+            </div>
+            
+            <p class="note"><small>💡 <strong>Not:</strong> Fiyat bilgisi için lütfen WhatsApp üzerinden iletişime geçin. Size özel teklif hazırlayalım.</small></p>
+          </div>
+        </section>
+
+      </article>
+    </div>
+  </main>
+
+  
+</BaseLayout>

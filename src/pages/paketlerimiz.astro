@@ -2,234 +2,902 @@
 // src/pages/paketlerimiz.astro
 import BaseLayout from '../layouts/BaseLayout.astro';
 
-// Paketler listesi
+// Ana Paketler
 const packages = [
   {
-    id: "free",
-    name: "Ücretsiz Paket",
-    price: "0",
-    period: "Ömür Boyu Ücretsiz",
-    note: "*Sadece yıllık server/hosting bedeli öder",
+    id: "girisimci",
+    name: "Girişimci Paket",
+    price: "149",
+    period: "aylık + KDV",
+    note: "500 e-Fatura Kontör Hediye",
     features: [
-      "📦 Stok Yönetimi – Detaylı stok takibi ve envanter kontrolü",
-      "🔍 Cari Yönetimi – Müşteri ve tedarikçi hesaplarının yönetimi"
+      { type: "main", icon: "🧾", text: "e-Fatura & e-İrsaliye", highlight: true,
+        subItems: [
+          { type: "subheader", icon: "•", text: "Satışlar", highlight: true,
+            subItems: [
+              { type: "subitem", icon: "-", text: "Satış Faturaları" },
+              { type: "subitem", icon: "-", text: "Arşivlenmiş Faturalar" },
+              { type: "subitem", icon: "-", text: "Teklif / Proforma Hazırlama" },
+              { type: "subitem", icon: "-", text: "Toplu Faturalar" }
+            ]
+          },
+          { type: "subheader", icon: "•", text: "Gelen Faturalar", highlight: true },
+          { type: "subheader", icon: "•", text: "E-İrsaliye Yönetimi", highlight: true,
+            subItems: [
+              { type: "subitem", icon: "-", text: "İrsaliye Ekle" },
+              { type: "subitem", icon: "-", text: "Gönderilen İrsaliye" },
+              { type: "subitem", icon: "-", text: "Gelen İrsaliye" },
+              { type: "subitem", icon: "-", text: "Toplu İrsaliye" }
+            ]
+          }
+        ]
+      },
+      { type: "main", icon: "👥", text: "Müşteri / Tedarikçi Yönetimi", highlight: true,
+        subItems: [
+          { type: "subheader", icon: "•", text: "Yeni Müşteri/Tedarikçi Ekle", highlight: true },
+          { type: "subheader", icon: "•", text: "Müşterileri/Tedarikçileri Görüntüle", highlight: true }
+        ]
+      },
+      { type: "main", icon: "📦", text: "Ürün Yönetimi", highlight: true,
+        subItems: [
+          { type: "subheader", icon: "•", text: "Ürünleri Görüntüle", highlight: true },
+          { type: "subheader", icon: "•", text: "Varyantları Görüntüle", highlight: true }
+        ]
+      },
+      { type: "main", icon: "💰", text: "Gider Yönetimi", highlight: true,
+        subItems: [
+          { type: "subheader", icon: "•", text: "Giderleri Görüntüle", highlight: true },
+          { type: "subheader", icon: "•", text: "Kategorilendirilmiş Görünüm", highlight: true },
+          { type: "subheader", icon: "•", text: "Kategori Ayarları", highlight: true }
+        ]
+      },
+      { type: "main", icon: "💵", text: "Nakit Yönetimi", highlight: true,
+        subItems: [
+          { type: "subheader", icon: "•", text: "Kasa / Banka Bilgileri", highlight: true },
+          { type: "subheader", icon: "•", text: "Cariler", highlight: true },
+          { type: "subheader", icon: "•", text: "Çek Senet", highlight: true },
+          { type: "subheader", icon: "•", text: "Ödeme Takvimi", highlight: true }
+        ]
+      },
+      { type: "main", icon: "📊", text: "Rapor Yönetimi", highlight: true,
+        subItems: [
+          { type: "subheader", icon: "•", text: "En Çok Satılan Ürünler", highlight: true },
+          { type: "subheader", icon: "•", text: "KDV Raporu", highlight: true },
+          { type: "subheader", icon: "•", text: "Patron Raporu", highlight: true },
+          { type: "subheader", icon: "•", text: "Rapor Şablon Ayarları", highlight: true },
+          { type: "subheader", icon: "•", text: "Talep Edilmiş Raporlar", highlight: true }
+        ]
+      },
+      { type: "disabled", icon: "✖", text: "Mağaza Yönetimi", disabled: true },
+      { type: "disabled", icon: "✖", text: "Pos Ekran (Hızlı Satış)", disabled: true },
+      { type: "disabled", icon: "✖", text: "Çoklu Mağaza Yönetimi", disabled: true },
+      { type: "disabled", icon: "✖", text: "Depo Yönetimi", disabled: true },
+      { type: "disabled", icon: "✖", text: "Stok Yönetimi", disabled: true },
+      { type: "disabled", icon: "✖", text: "Banka Yönetimi", disabled: true },
+      { type: "disabled", icon: "✖", text: "Cari Yönetimi", disabled: true },
+      { type: "disabled", icon: "✖", text: "Kasa ve Banka Yönetimi", disabled: true },
+      { type: "disabled", icon: "✖", text: "Demirbaş Yönetimi", disabled: true },
+      { type: "disabled", icon: "✖", text: "Personel Yönetimi", disabled: true },
+      { type: "disabled", icon: "✖", text: "E-Ticaret", disabled: true },
+      { type: "disabled", icon: "✖", text: "B2B Platform", disabled: true },
+      { type: "disabled", icon: "✖", text: "CRM", disabled: true },
+      { type: "disabled", icon: "✖", text: "ERP", disabled: true },
+      { type: "disabled", icon: "✖", text: "Abonelik Yönetimi", disabled: true },
+      { type: "disabled", icon: "✖", text: "Oto Servis Paketi", disabled: true },
+      { type: "disabled", icon: "✖", text: "Hatırlatma Yönetimi", disabled: true },
+      { type: "disabled", icon: "✖", text: "Mobil (Telefon/Tablet) Uyumluluk", disabled: true }
     ],
     popular: false
   },
   {
     id: "basic",
-    name: "Online Muhasebe + <br> Tek Şube Paketi",
+    name: "Ön Muhasebe Online +",
+    name2: "Tek Mağaza Paketi",
     price: "999",
-    period: "aylık",
+    period: "aylık + KDV",
+    note: "500 e-Fatura Kontör Hediye",
     features: [
-      "📦 Stok Yönetimi",
-      "🔍 Cari Yönetimi",
-      "🧾 e-Fatura & e-İrsaliye",
-      "💼 Kasa ve Banka Yönetimi",
-      "📱 Mobil Uyumlu"
+      { type: "enabled", icon: "✅", text: "Pos Ekran (Hızlı Satış)"},
+      { type: "enabled", icon: "✅", text: "Barkod / El Terminali Kullanımı"},
+      { type: "enabled", icon: "✅", text: "Mağaza Yönetimi" },
+      { type: "disabled", icon: "✖", text: "Çoklu Mağaza Yönetimi", disabled: true, highlight: true },
+      { type: "main", icon: "🧾", text: "e-Fatura & e-İrsaliye", highlight: false,
+        subItems: [
+          { type: "subheader", icon: "•", text: "Satışlar", highlight: true,
+            subItems: [
+              { type: "subitem", icon: "-", text: "Satış Faturaları" },
+              { type: "subitem", icon: "-", text: "Arşivlenmiş Faturalar" },
+              { type: "subitem", icon: "-", text: "Teklif / Proforma Hazırlama" },
+              { type: "subitem", icon: "-", text: "Toplu Faturalar" }
+            ]
+          },
+          { type: "subheader", icon: "•", text: "Gelen Faturalar", highlight: true },
+          { type: "subheader", icon: "•", text: "E-İrsaliye Yönetimi", highlight: true,
+            subItems: [
+              { type: "subitem", icon: "-", text: "İrsaliye Ekle" },
+              { type: "subitem", icon: "-", text: "Gönderilen İrsaliye" },
+              { type: "subitem", icon: "-", text: "Gelen İrsaliye" },
+              { type: "subitem", icon: "-", text: "Toplu İrsaliye" }
+            ]
+          }
+        ]
+      },
+      { type: "main", icon: "👥", text: "Müşteri / Tedarikçi Yönetimi", highlight: true,
+        subItems: [
+          { type: "subheader", icon: "•", text: "Yeni Müşteri/Tedarikçi Ekle", highlight: true },
+          { type: "subheader", icon: "•", text: "Müşterileri/Tedarikçileri Görüntüle", highlight: true }
+        ]
+      },
+      { type: "main", icon: "📦", text: "Ürün Yönetimi", highlight: true,
+        subItems: [
+          { type: "subheader", icon: "•", text: "Ürünleri Görüntüle", highlight: true },
+          { type: "subheader", icon: "•", text: "Varyantları Görüntüle", highlight: true }
+        ]
+      },
+      { type: "main", icon: "💰", text: "Gider Yönetimi", highlight: true,
+        subItems: [
+          { type: "subheader", icon: "•", text: "Giderleri Görüntüle", highlight: true },
+          { type: "subheader", icon: "•", text: "Kategorilendirilmiş Görünüm", highlight: true },
+          { type: "subheader", icon: "•", text: "Kategori Ayarları", highlight: true }
+        ]
+      },
+      { type: "main", icon: "💵", text: "Nakit Yönetimi", highlight: true,
+        subItems: [
+          { type: "subheader", icon: "•", text: "Kasa / Banka Bilgileri", highlight: true },
+          { type: "subheader", icon: "•", text: "Cariler", highlight: true },
+          { type: "subheader", icon: "•", text: "Çek Senet", highlight: true },
+          { type: "subheader", icon: "•", text: "Ödeme Takvimi", highlight: true }
+        ]
+      },
+      { type: "main", icon: "📊", text: "Rapor Yönetimi", highlight: true,
+        subItems: [
+          { type: "subheader", icon: "•", text: "En Çok Satılan Ürünler", highlight: true },
+          { type: "subheader", icon: "•", text: "KDV Raporu", highlight: true },
+          { type: "subheader", icon: "•", text: "Patron Raporu", highlight: true },
+          { type: "subheader", icon: "•", text: "Rapor Şablon Ayarları", highlight: true },
+          { type: "subheader", icon: "•", text: "Talep Edilmiş Raporlar", highlight: true }
+        ]
+      },
+      
+      { type: "enabled", icon: "✅", text: "Depo Yönetimi" },
+      { type: "enabled", icon: "✅", text: "Stok Yönetimi" },
+      { type: "enabled", icon: "✅", text: "Banka Yönetimi" },
+      { type: "enabled", icon: "✅", text: "Cari Yönetimi" },
+      { type: "enabled", icon: "✅", text: "Kasa ve Banka Yönetimi" },
+      { type: "enabled", icon: "✅", text: "Demirbaş Yönetimi" },
+      { type: "enabled", icon: "✅", text: "Personel Yönetimi" },
+      { type: "disabled", icon: "✖", text: "E-Ticaret", disabled: true, highlight: true },
+      { type: "disabled", icon: "✖", text: "B2B Platform", disabled: true, highlight: true },
+      { type: "disabled", icon: "✖", text: "CRM", disabled: true, highlight: true },
+      { type: "disabled", icon: "✖", text: "ERP", disabled: true, highlight: true },
+      { type: "disabled", icon: "✖", text: "Abonelik Yönetimi", disabled: true, highlight: true },
+      { type: "disabled", icon: "✖", text: "Oto Servis Paketi", disabled: true, highlight: true },
+      { type: "enabled", icon: "✅", text: "Hatırlatma Yönetimi" },
+      { type: "enabled", icon: "✅", text: "Mobil (Telefon/Tablet) Uyumluluk" }
     ],
-    popular: true
+    popular: true,
+    badge: "🏆 En Popüler"
   },
   {
     id: "pro5",
-    name: "Online Muhasebe+5 Şubeli Mağaza Paketi",
-    price: "4,999",
-    period: "aylık",
+    name: "Ön Muhasebe +",
+    name2: "<span class='circle-number'>5</span> Şubeli Mağaza Paketi",
+    price: "4999",
+    period: "aylık + KDV",
+    note: "500 e-Fatura Kontör Hediye",
     features: [
-      "Temel Paketin Tüm Özellikleri",
-      "5 Şube Yönetimi",
-      "Çoklu Depo Takibi",
-      "Kullanıcı Yetkilendirme",
-      "Personel Yönetimi"
+      { type: "enabled", icon: "✅", text: "Pos Ekran (Hızlı Satış)"},
+      { type: "enabled", icon: "✅", text: "Barkod / El Terminali Kullanımı"},
+      { type: "enabled", icon: "✅", text: "Mağaza Yönetimi" },
+      { type: "enabled", icon: "✅", text: "Çoklu Mağaza Yönetimi (5 Mağaza)" },
+      { type: "main", icon: "🧾", text: "e-Fatura & e-İrsaliye", highlight: true,
+        subItems: [
+          { type: "subheader", icon: "•", text: "Satışlar", highlight: true,
+            subItems: [
+              { type: "subitem", icon: "-", text: "Satış Faturaları" },
+              { type: "subitem", icon: "-", text: "Arşivlenmiş Faturalar" },
+              { type: "subitem", icon: "-", text: "Teklif / Proforma Hazırlama" },
+              { type: "subitem", icon: "-", text: "Toplu Faturalar" }
+            ]
+          },
+          { type: "subheader", icon: "•", text: "Gelen Faturalar", highlight: true },
+          { type: "subheader", icon: "•", text: "E-İrsaliye Yönetimi", highlight: true,
+            subItems: [
+              { type: "subitem", icon: "-", text: "İrsaliye Ekle" },
+              { type: "subitem", icon: "-", text: "Gönderilen İrsaliye" },
+              { type: "subitem", icon: "-", text: "Gelen İrsaliye" },
+              { type: "subitem", icon: "-", text: "Toplu İrsaliye" }
+            ]
+          }
+        ]
+      },
+      { type: "main", icon: "👥", text: "Müşteri / Tedarikçi Yönetimi", highlight: true,
+        subItems: [
+          { type: "subheader", icon: "•", text: "Yeni Müşteri/Tedarikçi Ekle", highlight: true },
+          { type: "subheader", icon: "•", text: "Müşterileri/Tedarikçileri Görüntüle", highlight: true }
+        ]
+      },
+      { type: "main", icon: "📦", text: "Ürün Yönetimi", highlight: true,
+        subItems: [
+          { type: "subheader", icon: "•", text: "Ürünleri Görüntüle", highlight: true },
+          { type: "subheader", icon: "•", text: "Varyantları Görüntüle", highlight: true }
+        ]
+      },
+      { type: "main", icon: "💰", text: "Gider Yönetimi", highlight: true,
+        subItems: [
+          { type: "subheader", icon: "•", text: "Giderleri Görüntüle", highlight: true },
+          { type: "subheader", icon: "•", text: "Kategorilendirilmiş Görünüm", highlight: true },
+          { type: "subheader", icon: "•", text: "Kategori Ayarları", highlight: true }
+        ]
+      },
+      { type: "main", icon: "💵", text: "Nakit Yönetimi", highlight: true,
+        subItems: [
+          { type: "subheader", icon: "•", text: "Kasa / Banka Bilgileri", highlight: true },
+          { type: "subheader", icon: "•", text: "Cariler", highlight: true },
+          { type: "subheader", icon: "•", text: "Çek Senet", highlight: true },
+          { type: "subheader", icon: "•", text: "Ödeme Takvimi", highlight: true }
+        ]
+      },
+      { type: "main", icon: "📊", text: "Rapor Yönetimi", highlight: true,
+        subItems: [
+          { type: "subheader", icon: "•", text: "En Çok Satılan Ürünler", highlight: true },
+          { type: "subheader", icon: "•", text: "KDV Raporu", highlight: true },
+          { type: "subheader", icon: "•", text: "Patron Raporu", highlight: true },
+          { type: "subheader", icon: "•", text: "Rapor Şablon Ayarları", highlight: true },
+          { type: "subheader", icon: "•", text: "Talep Edilmiş Raporlar", highlight: true }
+        ]
+      },
+      
+      { type: "enabled", icon: "✅", text: "Depo Yönetimi (5 Depo)" },
+      { type: "enabled", icon: "✅", text: "Stok Yönetimi" },
+      { type: "enabled", icon: "✅", text: "Banka Yönetimi" },
+      { type: "enabled", icon: "✅", text: "Cari Yönetimi" },
+      { type: "enabled", icon: "✅", text: "Kasa ve Banka Yönetimi" },
+      { type: "enabled", icon: "✅", text: "Demirbaş Yönetimi" },
+      { type: "enabled", icon: "✅", text: "Personel Yönetimi" },
+      { type: "disabled", icon: "✖", text: "E-Ticaret", disabled: true, highlight: true },
+      { type: "disabled", icon: "✖", text: "B2B Platform", disabled: true, highlight: true },
+      { type: "disabled", icon: "✖", text: "CRM", disabled: true, highlight: true },
+      { type: "disabled", icon: "✖", text: "ERP", disabled: true, highlight: true },
+      { type: "disabled", icon: "✖", text: "Abonelik Yönetimi", disabled: true, highlight: true },
+      { type: "disabled", icon: "✖", text: "Oto Servis Paketi", disabled: true, highlight: true },
+      { type: "enabled", icon: "✅", text: "Hatırlatma Yönetimi" },
+      { type: "enabled", icon: "✅", text: "Mobil (Telefon/Tablet) Uyumluluk" }
     ],
     popular: false
   },
   {
     id: "pro10",
-    name: "Online Muhasebe+10 Şubeli Mağaza Paketi",
-    price: "8,999",
-    period: "aylık",
+    name: "Ön Muhasebe +",
+    name2: "<span class='circle-number'>10</span> Şubeli Mağaza Paketi",
+    price: "8999",
+    period: "aylık + KDV",
+    note: "500 e-Fatura Kontör Hediye",
     features: [
-      "5 Şube Paketi Tüm Özellikleri",
-      "10 Şube Yönetimi",
-      "Toplu Stok İşlemleri",
-      "Veri Transferi-Yedekleme",
-      "500 Adet e-Fatura Kontör HEDİYE"
+      { type: "enabled", icon: "✅", text: "Pos Ekran (Hızlı Satış)" },
+      { type: "enabled", icon: "✅", text: "Barkod / El Terminali Kullanımı"},
+      { type: "enabled", icon: "✅", text: "Mağaza Yönetimi" },
+      { type: "enabled", icon: "✅", text: "Çoklu Mağaza Yönetimi (10 Mağaza)" },
+      { type: "enabled", icon: "✅", text: "Depo Yönetimi (10 Depo)" },
+      { type: "main", icon: "🧾", text: "e-Fatura & e-İrsaliye", highlight: true,
+        subItems: [
+          { type: "subheader", icon: "•", text: "Satışlar", highlight: true,
+            subItems: [
+              { type: "subitem", icon: "-", text: "Satış Faturaları" },
+              { type: "subitem", icon: "-", text: "Arşivlenmiş Faturalar" },
+              { type: "subitem", icon: "-", text: "Teklif / Proforma Hazırlama" },
+              { type: "subitem", icon: "-", text: "Toplu Faturalar" }
+            ]
+          },
+          { type: "subheader", icon: "•", text: "Gelen Faturalar", highlight: true },
+          { type: "subheader", icon: "•", text: "E-İrsaliye Yönetimi", highlight: true,
+            subItems: [
+              { type: "subitem", icon: "-", text: "İrsaliye Ekle" },
+              { type: "subitem", icon: "-", text: "Gönderilen İrsaliye" },
+              { type: "subitem", icon: "-", text: "Gelen İrsaliye" },
+              { type: "subitem", icon: "-", text: "Toplu İrsaliye" }
+            ]
+          }
+        ]
+      },
+      { type: "main", icon: "👥", text: "Müşteri / Tedarikçi Yönetimi", highlight: true,
+        subItems: [
+          { type: "subheader", icon: "•", text: "Yeni Müşteri/Tedarikçi Ekle", highlight: true },
+          { type: "subheader", icon: "•", text: "Müşterileri/Tedarikçileri Görüntüle", highlight: true }
+        ]
+      },
+      { type: "main", icon: "📦", text: "Ürün Yönetimi", highlight: true,
+        subItems: [
+          { type: "subheader", icon: "•", text: "Ürünleri Görüntüle", highlight: true },
+          { type: "subheader", icon: "•", text: "Varyantları Görüntüle", highlight: true }
+        ]
+      },
+      { type: "main", icon: "💰", text: "Gider Yönetimi", highlight: true,
+        subItems: [
+          { type: "subheader", icon: "•", text: "Giderleri Görüntüle", highlight: true },
+          { type: "subheader", icon: "•", text: "Kategorilendirilmiş Görünüm", highlight: true },
+          { type: "subheader", icon: "•", text: "Kategori Ayarları", highlight: true }
+        ]
+      },
+      { type: "main", icon: "💵", text: "Nakit Yönetimi", highlight: true,
+        subItems: [
+          { type: "subheader", icon: "•", text: "Kasa / Banka Bilgileri", highlight: true },
+          { type: "subheader", icon: "•", text: "Cariler", highlight: true },
+          { type: "subheader", icon: "•", text: "Çek Senet", highlight: true },
+          { type: "subheader", icon: "•", text: "Ödeme Takvimi", highlight: true }
+        ]
+      },
+      { type: "main", icon: "📊", text: "Rapor Yönetimi", highlight: true,
+        subItems: [
+          { type: "subheader", icon: "•", text: "En Çok Satılan Ürünler", highlight: true },
+          { type: "subheader", icon: "•", text: "KDV Raporu", highlight: true },
+          { type: "subheader", icon: "•", text: "Patron Raporu", highlight: true },
+          { type: "subheader", icon: "•", text: "Rapor Şablon Ayarları", highlight: true },
+          { type: "subheader", icon: "•", text: "Talep Edilmiş Raporlar", highlight: true }
+        ]
+      },
+      
+      { type: "enabled", icon: "✅", text: "Stok Yönetimi" },
+      { type: "enabled", icon: "✅", text: "Banka Yönetimi" },
+      { type: "enabled", icon: "✅", text: "Cari Yönetimi" },
+      { type: "enabled", icon: "✅", text: "Kasa ve Banka Yönetimi" },
+      { type: "enabled", icon: "✅", text: "Demirbaş Yönetimi" },
+      { type: "enabled", icon: "✅", text: "Personel Yönetimi" },
+      { type: "disabled", icon: "✖", text: "E-Ticaret", disabled: true, highlight: true },
+      { type: "disabled", icon: "✖", text: "B2B Platform", disabled: true, highlight: true },
+      { type: "disabled", icon: "✖", text: "CRM", disabled: true, highlight: true },
+      { type: "disabled", icon: "✖", text: "ERP", disabled: true, highlight: true },
+      { type: "disabled", icon: "✖", text: "Abonelik Yönetimi", disabled: true, highlight: true },
+      { type: "disabled", icon: "✖", text: "Oto Servis Paketi", disabled: true, highlight: true },
+      { type: "enabled", icon: "✅", text: "Hatırlatma Yönetimi" },
+      { type: "enabled", icon: "✅", text: "Mobil (Telefon/Tablet) Uyumluluk" }
     ],
     popular: false
   },
   {
     id: "pro15",
-    name: "Online Muhasebe+15 Şubeli Mağaza Paketi",
-    price: "9,999",
-    period: "aylık",
+    name: "Ön Muhasebe +",
+    name2: "<span class='circle-number'>15</span> Şubeli Mağaza Paketi",
+    price: "9999",
+    period: "aylık + KDV",
+    note: "500 e-Fatura Kontör Hediye",
     features: [
-      "10 Şube Paketi Tüm Özellikleri",
-      "15 Şube Yönetimi",
-      "Saha/Sıcak Satış Modülü",
-      "Sayım İşlemleri",
-      "7/24 Öncelikli Destek"
+      { type: "enabled", icon: "✅", text: "Pos Ekran (Hızlı Satış)" },
+      { type: "enabled", icon: "✅", text: "Barkod / El Terminali Kullanımı"},
+      { type: "enabled", icon: "✅", text: "Mağaza Yönetimi" },
+      { type: "enabled", icon: "✅", text: "Çoklu Mağaza Yönetimi (15 Mağaza)" },
+      { type: "enabled", icon: "✅", text: "Depo Yönetimi (15 Depo)" },
+      { type: "main", icon: "🧾", text: "e-Fatura & e-İrsaliye", highlight: true,
+        subItems: [
+          { type: "subheader", icon: "•", text: "Satışlar", highlight: true,
+            subItems: [
+              { type: "subitem", icon: "-", text: "Satış Faturaları" },
+              { type: "subitem", icon: "-", text: "Arşivlenmiş Faturalar" },
+              { type: "subitem", icon: "-", text: "Teklif / Proforma Hazırlama" },
+              { type: "subitem", icon: "-", text: "Toplu Faturalar" }
+            ]
+          },
+          { type: "subheader", icon: "•", text: "Gelen Faturalar", highlight: true },
+          { type: "subheader", icon: "•", text: "E-İrsaliye Yönetimi", highlight: true,
+            subItems: [
+              { type: "subitem", icon: "-", text: "İrsaliye Ekle" },
+              { type: "subitem", icon: "-", text: "Gönderilen İrsaliye" },
+              { type: "subitem", icon: "-", text: "Gelen İrsaliye" },
+              { type: "subitem", icon: "-", text: "Toplu İrsaliye" }
+            ]
+          }
+        ]
+      },
+      { type: "main", icon: "👥", text: "Müşteri / Tedarikçi Yönetimi", highlight: true,
+        subItems: [
+          { type: "subheader", icon: "•", text: "Yeni Müşteri/Tedarikçi Ekle", highlight: true },
+          { type: "subheader", icon: "•", text: "Müşterileri/Tedarikçileri Görüntüle", highlight: true }
+        ]
+      },
+      { type: "main", icon: "📦", text: "Ürün Yönetimi", highlight: true,
+        subItems: [
+          { type: "subheader", icon: "•", text: "Ürünleri Görüntüle", highlight: true },
+          { type: "subheader", icon: "•", text: "Varyantları Görüntüle", highlight: true }
+        ]
+      },
+      { type: "main", icon: "💰", text: "Gider Yönetimi", highlight: true,
+        subItems: [
+          { type: "subheader", icon: "•", text: "Giderleri Görüntüle", highlight: true },
+          { type: "subheader", icon: "•", text: "Kategorilendirilmiş Görünüm", highlight: true },
+          { type: "subheader", icon: "•", text: "Kategori Ayarları", highlight: true }
+        ]
+      },
+      { type: "main", icon: "💵", text: "Nakit Yönetimi", highlight: true,
+        subItems: [
+          { type: "subheader", icon: "•", text: "Kasa / Banka Bilgileri", highlight: true },
+          { type: "subheader", icon: "•", text: "Cariler", highlight: true },
+          { type: "subheader", icon: "•", text: "Çek Senet", highlight: true },
+          { type: "subheader", icon: "•", text: "Ödeme Takvimi", highlight: true }
+        ]
+      },
+      { type: "main", icon: "📊", text: "Rapor Yönetimi", highlight: true,
+        subItems: [
+          { type: "subheader", icon: "•", text: "En Çok Satılan Ürünler", highlight: true },
+          { type: "subheader", icon: "•", text: "KDV Raporu", highlight: true },
+          { type: "subheader", icon: "•", text: "Patron Raporu", highlight: true },
+          { type: "subheader", icon: "•", text: "Rapor Şablon Ayarları", highlight: true },
+          { type: "subheader", icon: "•", text: "Talep Edilmiş Raporlar", highlight: true }
+        ]
+      },
+      { type: "enabled", icon: "✅", text: "Stok Yönetimi" },
+      { type: "enabled", icon: "✅", text: "Banka Yönetimi" },
+      { type: "enabled", icon: "✅", text: "Cari Yönetimi" },
+      { type: "enabled", icon: "✅", text: "Kasa ve Banka Yönetimi" },
+      { type: "enabled", icon: "✅", text: "Demirbaş Yönetimi" },
+      { type: "enabled", icon: "✅", text: "Personel Yönetimi" },
+      { type: "disabled", icon: "✖", text: "E-Ticaret", disabled: true, highlight: true },
+      { type: "disabled", icon: "✖", text: "B2B Platform", disabled: true, highlight: true },
+      { type: "disabled", icon: "✖", text: "CRM", disabled: true, highlight: true },
+      { type: "disabled", icon: "✖", text: "ERP", disabled: true, highlight: true },
+      { type: "disabled", icon: "✖", text: "Abonelik Yönetimi", disabled: true, highlight: true },
+      { type: "disabled", icon: "✖", text: "Oto Servis Paketi", disabled: true, highlight: true },
+      { type: "enabled", icon: "✅", text: "Hatırlatma Yönetimi" },
+      { type: "enabled", icon: "✅", text: "Mobil (Telefon/Tablet) Uyumluluk" }
     ],
     popular: false
   },
   {
     id: "unlimited",
-    name: "Online Muhasebe+Sınırsız Şubeli Mağaza Paketi",
-    price: "19,999",
-    period: "aylık",
+    name: "Ön Muhasebe +",
+    name2: "<span class='purple-badge'>Sınırsız</span> Şubeli Mağaza",
+    price: "19999",
+    period: "aylık + KDV",
+    note: "500 e-Fatura Kontör Hediye",
     features: [
-      "15 Şube Paketi Tüm Özellikleri",
-      "Sınırsız Şube Yönetimi",
-      "Web & Android Uygulama",
-      "Depo Yönetimi",
-      "1000 Adet e-Fatura Kontör HEDİYE"
-    ],
-    popular: false
-  },
-  {
-    id: "erp",
-    name: "Online Muhasebe+Mağazacılık+ERP Proje Yönetimi Modülü",
-    price: "49,999",
-    period: "aylık",
-    features: [
-      "Sınırsız Şube Paketi Tüm Özellikleri",
-      "ERP Proje Yönetimi",
-      "Görev Atama ve Takip",
-      "Maliyet ve Süre Raporlama",
-      "Proje Sonlandırma Modülü"
-    ],
-    popular: false
-  },
-  {
-    id: "bi",
-    name: "Online Muhasebe+Mağazacılık+ERP Proje Yönetimi+ERP İş Zekası (BI) Modülü",
-    price: "69,999",
-    period: "aylık",
-    features: [
-      "ERP Proje Yönetimi Tüm Özellikleri",
-      "ERP İş Zekası (BI) Modülü",
-      "Veri Toplama ve Analiz",
-      "Dashboard Tasarımı",
-      "Özelleştirilmiş Raporlama"
-    ],
-    popular: false
-  },
-  {
-    id: "service",
-    name: "Online Muhasebe+Mağazacılık+Teknik Servis Yönetimi Modülü",
-    price: "29,999",
-    period: "aylık",
-    features: [
-      "Sınırsız Şube Paketi Tüm Özellikleri",
-      "Teknik Servis Yönetimi",
-      "Servis Talebi ve Takip",
-      "Faturalandırma Sistemi",
-      "Müşteri Memnuniyeti Analizi"
+      { type: "enabled", icon: "✅", text: "Pos Ekran (Hızlı Satış)" },
+      { type: "enabled", icon: "✅", text: "Barkod / El Terminali Kullanımı"},
+      { type: "enabled", icon: "✅", text: "Mağaza Yönetimi" },
+      { type: "enabled", icon: "✅", text: "Çoklu Mağaza Yönetimi (Sınırsız)" },
+      { type: "enabled", icon: "✅", text: "Depo Yönetimi (Sınırsız Depo)" },  
+    { type: "main", icon: "🧾", text: "e-Fatura & e-İrsaliye", highlight: true,
+        subItems: [
+          { type: "subheader", icon: "•", text: "Satışlar", highlight: true,
+            subItems: [
+              { type: "subitem", icon: "-", text: "Satış Faturaları" },
+              { type: "subitem", icon: "-", text: "Arşivlenmiş Faturalar" },
+              { type: "subitem", icon: "-", text: "Teklif / Proforma Hazırlama" },
+              { type: "subitem", icon: "-", text: "Toplu Faturalar" }
+            ]
+          },
+          { type: "subheader", icon: "•", text: "Gelen Faturalar", highlight: true },
+          { type: "subheader", icon: "•", text: "E-İrsaliye Yönetimi", highlight: true,
+            subItems: [
+              { type: "subitem", icon: "-", text: "İrsaliye Ekle" },
+              { type: "subitem", icon: "-", text: "Gönderilen İrsaliye" },
+              { type: "subitem", icon: "-", text: "Gelen İrsaliye" },
+              { type: "subitem", icon: "-", text: "Toplu İrsaliye" }
+            ]
+          }
+        ]
+      },
+      { type: "main", icon: "👥", text: "Müşteri / Tedarikçi Yönetimi", highlight: true,
+        subItems: [
+          { type: "subheader", icon: "•", text: "Yeni Müşteri/Tedarikçi Ekle", highlight: true },
+          { type: "subheader", icon: "•", text: "Müşterileri/Tedarikçileri Görüntüle", highlight: true }
+        ]
+      },
+      { type: "main", icon: "📦", text: "Ürün Yönetimi", highlight: true,
+        subItems: [
+          { type: "subheader", icon: "•", text: "Ürünleri Görüntüle", highlight: true },
+          { type: "subheader", icon: "•", text: "Varyantları Görüntüle", highlight: true }
+        ]
+      },
+      { type: "main", icon: "💰", text: "Gider Yönetimi", highlight: true,
+        subItems: [
+          { type: "subheader", icon: "•", text: "Giderleri Görüntüle", highlight: true },
+          { type: "subheader", icon: "•", text: "Kategorilendirilmiş Görünüm", highlight: true },
+          { type: "subheader", icon: "•", text: "Kategori Ayarları", highlight: true }
+        ]
+      },
+      { type: "main", icon: "💵", text: "Nakit Yönetimi", highlight: true,
+        subItems: [
+          { type: "subheader", icon: "•", text: "Kasa / Banka Bilgileri", highlight: true },
+          { type: "subheader", icon: "•", text: "Cariler", highlight: true },
+          { type: "subheader", icon: "•", text: "Çek Senet", highlight: true },
+          { type: "subheader", icon: "•", text: "Ödeme Takvimi", highlight: true }
+        ]
+      },
+      { type: "main", icon: "📊", text: "Rapor Yönetimi", highlight: true,
+        subItems: [
+          { type: "subheader", icon: "•", text: "En Çok Satılan Ürünler", highlight: true },
+          { type: "subheader", icon: "•", text: "KDV Raporu", highlight: true },
+          { type: "subheader", icon: "•", text: "Patron Raporu", highlight: true },
+          { type: "subheader", icon: "•", text: "Rapor Şablon Ayarları", highlight: true },
+          { type: "subheader", icon: "•", text: "Talep Edilmiş Raporlar", highlight: true }
+        ]
+      },
+      
+      { type: "enabled", icon: "✅", text: "Stok Yönetimi" },
+      { type: "enabled", icon: "✅", text: "Banka Yönetimi" },
+      { type: "enabled", icon: "✅", text: "Cari Yönetimi" },
+      { type: "enabled", icon: "✅", text: "Kasa ve Banka Yönetimi" },
+      { type: "enabled", icon: "✅", text: "Demirbaş Yönetimi" },
+      { type: "enabled", icon: "✅", text: "Personel Yönetimi" },
+      { type: "disabled", icon: "✖", text: "E-Ticaret", disabled: true, highlight: true },
+      { type: "disabled", icon: "✖", text: "B2B Platform", disabled: true, highlight: true },
+      { type: "disabled", icon: "✖", text: "CRM", disabled: true, highlight: true },
+      { type: "disabled", icon: "✖", text: "ERP", disabled: true, highlight: true },
+      { type: "disabled", icon: "✖", text: "Abonelik Yönetimi", disabled: true, highlight: true },
+      { type: "disabled", icon: "✖", text: "Oto Servis Paketi", disabled: true, highlight: true },
+      { type: "enabled", icon: "✅", text: "Hatırlatma Yönetimi" },
+      { type: "enabled", icon: "✅", text: "Mobil (Telefon/Tablet) Uyumluluk" }
     ],
     popular: false
   }
 ];
 
-// Paket detayları
-const packageDetails = {
-  free: {
-    title: "Ücretsiz Paket Detayları",
-    description: "Temel işletme ihtiyaçlarınız için başlangıç paketi",
-    modules: [
-      "📦 Stok Yönetimi – Detaylı stok takibi ve envanter kontrolü",
-      "🔍 Cari Yönetimi – Müşteri ve tedarikçi hesaplarının yönetimi"
+// E-Ticaret Paketleri
+const ecommercePackages = [
+  {
+    id: "eticaret",
+    name: "E-Ticaret Paketi",
+    price: "1299",
+    period: "aylık + KDV",
+    note: "500 e-Fatura Kontör Hediye",
+    features: [
+      { type: "main", icon: "⭐", text: "Girişimci ve Mağaza Paketinin Tamamı", isHeader: true },
+      { type: "main", icon: "✅", text: "E-Ticaret Web Sitesi" },
+      { type: "disabled", icon: "✖", text: "B2B Platform Web Sitesi", disabled: true, highlight: true },
+      { type: "main", icon: "✅", text: "Fiziki Mağaza Yönetimi" },
+      { type: "main", icon: "✅", text: "Fiziki Mağaza Pos Ekran (Hızlı Satış)" },
+      { type: "main", icon: "✅", text: "Çoklu Mağaza Yönetimi (5 Mağaza)" },
+      { type: "main", icon: "✅", text: "Depo Yönetimi (5 Depo)" },
+      { type: "main", icon: "✅", text: "Stok Yönetimi" },
+      { type: "main", icon: "✅", text: "Banka Yönetimi" },
+      { type: "main", icon: "✅", text: "Cari Yönetimi" },
+      { type: "main", icon: "✅", text: "Kasa ve Banka Yönetimi" },
+      { type: "main", icon: "✅", text: "Demirbaş Yönetimi" },
+      { type: "main", icon: "✅", text: "Personel Yönetimi" },
+      { type: "disabled", icon: "✖", text: "CRM", disabled: true, highlight: true },
+      { type: "disabled", icon: "✖", text: "ERP", disabled: true, highlight: true },
+      { type: "disabled", icon: "✖", text: "Abonelik Yönetimi", disabled: true, highlight: true },
+      { type: "disabled", icon: "✖", text: "Oto Servis Paketi", disabled: true, highlight: true },
+      { type: "main", icon: "✅", text: "Hatırlatma Yönetimi" },
+      { type: "main", icon: "✅", text: "Mobil (Telefon/Tablet) Uyumluluk" }
     ]
   },
-  magaza: {
-    title: "Mağazacılık Paketi Detayları",
-    description: "Tam entegre mağaza yönetim çözümü",
-    modules: [
-      "📦 Stok Yönetimi – Detaylı stok takibi ve envanter kontrolü",
-      "🔍 Cari Yönetimi – Müşteri ve tedarikçi hesaplarının yönetimi",
-      "🧾 e-Fatura – Tam entegre elektronik fatura çözümü",
-      "📑 e-İrsaliye – Elektronik irsaliye yönetimi",
-      "💼 Kasa – Nakit ve banka hesaplarının detaylı takibi",
-      "🏦 Banka – Banka hesap yönetimi ve takibi",
-      "📋 Çek & Senet – Çek-senet portföy yönetimi ve takibi",
-      "📊 Toplu Stok İşlemleri – Toplu ürün giriş, fiyat güncelleme gibi işlemler",
-      "🔄 Veri Transferi-Yedekleme – Excel/XML ile veri aktarımı ve otomatik yedekleme",
-      "🔐 Kullanıcı Yetkilendirme – Rol bazlı kullanıcı yetkilendirme sistemi",
-      "👥 Personel Yönetimi – Personel bilgileri ve performans takibi",
-      "📄 Özlük Modülü – Personel dosyaları ve belge yönetimi",
-      "📱 Saha/Sıcak Satış – Mobil cihazlarla saha satış işlemleri",
-      "🌐 Web & 📱 Android – Tüm platformlarda sorunsuz çalışma",
-      "🏚️ Depo Yönetimi – Çoklu depo ve depo arası transfer işlemleri",
-      "🧮 Sayım İşlemleri – Periyodik stok sayımı ve fark analizi",
-      "🎁 500 Adet e-Fatura/e-Arşiv Kontör HEDİYE – Yeni başlayanlar için özel avantaj"
-    ]
-  },
-  erp: {
-    title: "ERP Proje Yönetimi Modülü Detayları",
-    description: "Kurumsal proje yönetimi ve takip sistemi",
-    modules: [
-      "• Proje Oluşturma – Proje Adı, Başlangıç-Bitiş Tarihleri, Bütçe Tanımlama, Sorumlu Kişi/Listesi",
-      "• Görev Atama – Görev Tanımlama, Görev Süresi, İlgili Kişiye Atama",
-      "• Görev Takibi – Görev Durumu (Başlamadı, Devam Ediyor, Tamamlandı), İlerleme Yüzdesi, Görev Geçmişi",
-      "• Maliyet ve Süre Raporlama – Gerçekleşen Maliyetler, Planlanan ve Gerçekleşen Süre Karşılaştırması, Bütçe Fark Analizi",
-      "• Proje Sonlandırma – Proje Sonuç Raporu, Performans Değerlendirmesi, Doküman Arşivleme"
-    ]
-  },
-  bi: {
-    title: "ERP İş Zekası (BI) Modülü Detayları",
-    description: "Gelişmiş analiz ve iş zekası çözümleri",
-    modules: [
-      "* Veri Toplama – Üretim Verileri, Satış Verileri, Stok Verileri, Finansal Veriler",
-      "o Görselleştirme – Dashboard Tasarımı, Grafikler (Çubuk, Pasta, Çizgi Grafikleri), Tablolar ve Filtreleme Seçenekleri",
-      "o Analiz – Satış Analizi, Stok Hareketleri Analizi, Maliyet ve Karlılık Analizi, Performans Göstergeleri (KPI'lar)",
-      "o Raporlama – Otomatik Rapor Oluşturma, PDF/Excel Dışa Aktarma, Yöneticiye Gönderilen Haftalık/Aylık Raporlar",
-      "o Özelleştirme – Kullanıcı Bazlı Dashboard Ayarları, Favori Raporlar ve Görseller, Erişim Yetkilendirmesi"
-    ]
-  },
-  service: {
-    title: "Teknik Servis Yönetimi Modülü Detayları",
-    description: "Kapsamlı teknik servis yönetim sistemi",
-    modules: [
-      "• Tanımlamalar (Ayarlar) – Yapılacakları tanımlama, Kontrol Değerleri, İşlem durumu, Cihaz durumu",
-      "• Servis Talebi Oluşturma – Müşteri Bilgisi, Arızalı ürün listesi, Problem Açıklaması, Teknisyen Atama",
-      "• Servis Kaydı ve İzleme – Servis Kaydı Oluşturma/Güncelleme, Yapılan İşlemler Listesi, Tanımlamalar, Aciliyet Derecesi",
-      "• Müşteri Onayı – Kağıt/PDF dökümü, E-Posta Onayı, SMS Onayı",
-      "• Faturalandırma – Servis Ücreti Hesaplama, Fatura Oluşturma, Müşteriye Fatura Gönderme",
-      "• Raporlama – Servis Süreleri, Çözülen Talep Sayısı, Müşteri Memnuniyeti Analizi"
+  {
+    id: "eticaretb2b",
+    name: "E-Ticaret + B2B Paketi",
+    price: "1499",
+    period: "aylık + KDV",
+    note: "500 e-Fatura Kontör Hediye",
+    features: [
+      { type: "main", icon: "⭐", text: "Girişimci ve Mağaza Paketinin Tamamı", isHeader: true },
+      { type: "main", icon: "✅", text: "E-Ticaret Web Sitesi" },
+      { type: "main", icon: "✅", text: "B2B Platform Web Sitesi"},
+      { type: "main", icon: "✅", text: "Fiziki Mağaza Yönetimi" },
+      { type: "main", icon: "✅", text: "Fiziki Mağaza Pos Ekran (Hızlı Satış)" },
+      { type: "main", icon: "✅", text: "Çoklu Mağaza Yönetimi (5 Mağaza)" },
+      { type: "main", icon: "✅", text: "Depo Yönetimi (5 Depo)" },
+      { type: "main", icon: "✅", text: "Stok Yönetimi" },
+      { type: "main", icon: "✅", text: "Banka Yönetimi" },
+      { type: "main", icon: "✅", text: "Cari Yönetimi" },
+      { type: "main", icon: "✅", text: "Kasa ve Banka Yönetimi" },
+      { type: "main", icon: "✅", text: "Demirbaş Yönetimi" },
+      { type: "main", icon: "✅", text: "Personel Yönetimi" },
+      { type: "disabled", icon: "✖", text: "CRM", disabled: true, highlight: true },
+      { type: "disabled", icon: "✖", text: "ERP", disabled: true, highlight: true },
+      { type: "disabled", icon: "✖", text: "Abonelik Yönetimi", disabled: true, highlight: true },
+      { type: "disabled", icon: "✖", text: "Oto Servis Paketi", disabled: true, highlight: true },
+      { type: "main", icon: "✅", text: "Hatırlatma Yönetimi" },
+      { type: "main", icon: "✅", text: "Mobil (Telefon/Tablet) Uyumluluk" }
     ]
   }
-};
+];
+
+// Süreç Yönetimi Paketleri
+const processPackages = [
+  {
+    id: "crm",
+    name: "CRM Müşteri İlişkileri",
+    price: "1899",
+    period: "aylık + KDV",
+    note: "500 e-Fatura Kontör Hediye",
+    features: [
+      { type: "main", icon: "⭐", text: "Girişimci, E-Ticaret, B2B Özelliklerin Tamamı", isHeader: true },
+      { type: "main", icon: "✅", text: "CRM Müşteri İlişkileri" },
+      { type: "disabled", icon: "✖", text: "ERP Üretim Süreçleri", disabled: true, highlight: true },
+      { type: "main", icon: "✅", text: "E-Ticaret Web Sitesi" },
+      { type: "main", icon: "✅", text: "B2B Platform Web Sitesi"},
+      { type: "main", icon: "✅", text: "Fiziki Mağaza Yönetimi" },
+      { type: "main", icon: "✅", text: "Fiziki Mağaza Pos Ekran (Hızlı Satış)" },
+      { type: "main", icon: "✅", text: "Çoklu Mağaza Yönetimi (5 Mağaza)" },
+      { type: "main", icon: "✅", text: "Depo Yönetimi (5 Depo)" },
+      { type: "main", icon: "✅", text: "Stok Yönetimi" },
+      { type: "main", icon: "✅", text: "Banka Yönetimi" },
+      { type: "main", icon: "✅", text: "Cari Yönetimi" },
+      { type: "main", icon: "✅", text: "Kasa ve Banka Yönetimi" },
+      { type: "main", icon: "✅", text: "Demirbaş Yönetimi" },
+      { type: "main", icon: "✅", text: "Personel Yönetimi" },
+      { type: "main", icon: "✅", text: "Abonelik Yönetimi" },
+      { type: "disabled", icon: "✖", text: "Oto Servis Paketi", disabled: true, highlight: true },
+      { type: "main", icon: "✅", text: "Hatırlatma Yönetimi" },
+      { type: "main", icon: "✅", text: "Mobil (Telefon/Tablet) Uyumluluk" }
+    ]
+  },
+  {
+    id: "erp",
+    name: "ERP Üretim Süreçleri + CRM",
+    price: "2499",
+    period: "aylık + KDV",
+    note: "500 e-Fatura Kontör Hediye",
+    features: [
+      { type: "main", icon: "⭐", text: "Girişimci, E-Ticaret, B2B Özelliklerin Tamamı", isHeader: true },
+      { type: "main", icon: "✅", text: "ERP Üretim Süreçleri" },
+      { type: "main", icon: "✅", text: "CRM Müşteri İlişkileri" },
+      { type: "main", icon: "✅", text: "E-Ticaret Web Sitesi" },
+      { type: "main", icon: "✅", text: "B2B Platform Web Sitesi"},
+      { type: "main", icon: "✅", text: "Fiziki Mağaza Yönetimi" },
+      { type: "main", icon: "✅", text: "Fiziki Mağaza Pos Ekran (Hızlı Satış)" },
+      { type: "main", icon: "✅", text: "Çoklu Mağaza Yönetimi (5 Mağaza)" },
+      { type: "main", icon: "✅", text: "Depo Yönetimi (5 Depo)" },
+      { type: "main", icon: "✅", text: "Stok Yönetimi" },
+      { type: "main", icon: "✅", text: "Banka Yönetimi" },
+      { type: "main", icon: "✅", text: "Cari Yönetimi" },
+      { type: "main", icon: "✅", text: "Kasa ve Banka Yönetimi" },
+      { type: "main", icon: "✅", text: "Demirbaş Yönetimi" },
+      { type: "main", icon: "✅", text: "Personel Yönetimi" },
+      { type: "main", icon: "✅", text: "Abonelik Yönetimi" },
+      { type: "disabled", icon: "✖", text: "Oto Servis Paketi", disabled: true, highlight: true },
+      { type: "main", icon: "✅", text: "Hatırlatma Yönetimi" },
+      { type: "main", icon: "✅", text: "Mobil (Telefon/Tablet) Uyumluluk" }
+    ]
+  }
+];
+
+// Oto Servis Paketleri
+const servicePackages = [
+  {
+    id: "otoservis",
+    name: "Oto Servis Merkezi ve Uzaktan Araç Durum Takip Paketi",
+    price: "1499",
+    period: "aylık + KDV",
+    note: "500 e-Fatura Kontör Hediye",
+    features: [
+      { type: "main", icon: "⭐", text: "Girişimci ve Mağazacılık Paketinin Tamamı", isHeader: true },
+      { type: "main", icon: "✅", text: "Oto Servis Yönetimi" },
+      { type: "main", icon: "✅", text: "Plaka Takip - 34 SP 9OO1" },
+      { type: "main", icon: "✅", text: "Şase No Takip - S34T6O5K8P1R2A3T4İ5K" },
+      { type: "main", icon: "✅", text: "İş Emri Takip" },
+      { type: "main", icon: "✅", text: "Araç/Müşteri Geçmiş Takip" },
+      { type: "main", icon: "✅", text: "Müşteri Uzaktan Araç Durum Takip (Hazır/Tamirde/Parça Bekleniyor)" },
+      { type: "main", icon: "✅", text: "CRM Müşteri İlişkileri" },
+      { type: "main", icon: "✅", text: "Servis Bekleme Ekranı (Araç Takip)" },
+      { type: "main", icon: "✅", text: "Yedek Parça Pos Ekran (Hızlı Satış)" },
+      { type: "disabled", icon: "✖", text: "E-Ticaret Web Sitesi", disabled: true, highlight: true },
+      { type: "disabled", icon: "✖", text: "B2B Web Sitesi", disabled: true, highlight: true },
+      { type: "disabled", icon: "✖", text: "B2B ile Mutabakat Takibi", disabled: true, highlight: true },
+      { type: "disabled", icon: "✖", text: "ERP Üretim Süreçleri", disabled: true, highlight: true },
+      { type: "main", icon: "✅", text: "Çoklu Servis Merkezi Yönetimi (5 Servis Merkezi)" },
+      { type: "main", icon: "✅", text: "Yedek Parça Depo Yönetimi (5 Depo)" },
+      { type: "main", icon: "✅", text: "Stok Yönetimi" },
+      { type: "main", icon: "✅", text: "Banka Yönetimi" },
+      { type: "main", icon: "✅", text: "Cari Yönetimi" },
+      { type: "main", icon: "✅", text: "Kasa ve Banka Yönetimi" },
+      { type: "main", icon: "✅", text: "Demirbaş Yönetimi" },
+      { type: "main", icon: "✅", text: "Personel Yönetimi" },
+       { type: "main", icon: "✅", text: "Abonelik Yönetimi" },
+      { type: "main", icon: "✅", text: "Oto Servis Paketi" },
+      { type: "main", icon: "✅", text: "Hatırlatma Yönetimi" },
+      { type: "main", icon: "✅", text: "Mobil (Telefon/Tablet) Uyumluluk" }
+    ]
+  },
+  {
+    id: "otoservisparca",
+    name: "Oto Servis Merkezi + Yedek Parça Satışı (E-Ticaret Paketi)",
+    price: "1999",
+    period: "aylık + KDV",
+    note: "500 e-Fatura Kontör Hediye",
+    features: [
+      { type: "main", icon: "⭐", text: "Girişimci, E-Ticaret, B2B Özelliklerin Tamamı", isHeader: true },
+      { type: "main", icon: "✅", text: "Oto Servis Yönetimi" },
+      { type: "main", icon: "✅", text: "Plaka Takip - 34 SP 9OO1" },
+      { type: "main", icon: "✅", text: "Şase No Takip - S34T6O5K8P1R2A3T4İ5K" },
+      { type: "main", icon: "✅", text: "İş Emri Takip" },
+      { type: "main", icon: "✅", text: "Araç/Müşteri Geçmiş Takip" },
+      { type: "main", icon: "✅", text: "Müşteri Uzaktan Araç Durum Takip (Hazır/Tamirde/Parça Bekleniyor)" },
+      { type: "main", icon: "✅", text: "CRM Müşteri İlişkileri" },
+      { type: "main", icon: "✅", text: "Servis Bekleme Ekranı (Araç Takip)" },
+      { type: "main", icon: "✅", text: "Yedek Parça Pos Ekran (Hızlı Satış)" },
+      { type: "main", icon: "✅", text: "E-Ticaret Yedek Parça Web Sitesi" },
+      { type: "main", icon: "✅", text: "B2B Web Sitesi" },
+      { type: "main", icon: "✅", text: "CRM Müşteri İlişkileri" },
+      { type: "disabled", icon: "✖", text: "ERP Üretim Süreçleri", disabled: true, highlight: true },
+      { type: "main", icon: "✅", text: "Çoklu Servis Merkezi Yönetimi (5 Servis Merkezi)" },
+      { type: "main", icon: "✅", text: "Yedek Parça Depo Yönetimi (5 Depo)" },
+      { type: "main", icon: "✅", text: "Stok Yönetimi" },
+      { type: "main", icon: "✅", text: "Banka Yönetimi" },
+      { type: "main", icon: "✅", text: "Cari Yönetimi" },
+      { type: "main", icon: "✅", text: "Kasa ve Banka Yönetimi" },
+      { type: "main", icon: "✅", text: "Demirbaş Yönetimi" },
+      { type: "main", icon: "✅", text: "Personel Yönetimi" },
+      { type: "main", icon: "✅", text: "Abonelik Yönetimi" },
+      { type: "main", icon: "✅", text: "Oto Servis Paketi" },
+      { type: "main", icon: "✅", text: "Hatırlatma Yönetimi" },
+      { type: "main", icon: "✅", text: "Mobil (Telefon/Tablet) Uyumluluk" }
+    ]
+  }
+];
+
+// Kontör fiyatları
+const kontorPrices = [
+  { count: "1000", price: "2100", note: "+KDV" },
+  { count: "2500", price: "4980", note: "+KDV" },
+  { count: "5000", price: "7300", note: "+KDV" },
+  { count: "10000", price: "11500", note: "+KDV" }
+];
 ---
 
 <BaseLayout title="Stok Pratik Paketleri | En Uygun ERP Çözümleri">
+  
+
   <!-- Hero Section -->
-  <section class="page-hero py-12">
-    <div class="container">
-      <div class="text-center max-w-3xl mx-auto">
-        <h1 class="page-title">Stok Pratik Paketleri</h1>
-        <p class="page-subtitle">
-          İşletmenizin büyüklüğüne ve ihtiyaçlarına özel hazırlanmış paketlerimizden size en uygun olanı seçin.
-          Ömür boyu lisans avantajı ile kalıcı çözümler sunuyoruz.
+<section class="page-hero py-12">
+  <div class="container">
+    <div class="text-center max-w-3xl mx-auto">
+      <h1 class="page-title">Stok Pratik Paketleri</h1>
+      <p class="page-subtitle">
+        İşletmenizin ihtiyaçlarına özel hazırlanmış paketlerimizden size en uygun olanı seçin.
+      </p>
+      <div class="info-box mt-8">
+        <p class="info-text">
+          💡 <strong>Bakım Derdi YOK:</strong> Programı kullanmaya başladıktan sonra server/hosting/bakım/yenileme gibi ödemeleri yapmazsınız, 
+          verileriniz bizim tarafımızdan 3 farklı lokasyonda güvenle saklanır ve yönetilir. Sadece paket ücretini ödeyerek tüm hizmetlerimizden faydalanabilirsiniz.
         </p>
-        <div class="info-box mt-8">
-          <p class="info-text">
-            💡 <strong>Önemli Not:</strong> Programı satın aldığınızda ilk yıl server/hosting/bakım/yenileme gibi ödemeleri yapmazsınız, 
-            2. yıldan itibaren her yıl sadece yenileme ücreti talep edilir.
-          </p>
-        </div>
+      </div>
+      
+      <!-- Hızlı Navigasyon Butonları -->
+      <div class="nav-buttons mt-8">
+        <a href="#ana-paketler" class="nav-btn">
+          <span class="nav-icon">📦</span>
+          Ön Muhasebe
+        </a>
+        <a href="#eticaret-paketler" class="nav-btn">
+          <span class="nav-icon">🛒</span>
+          E-Ticaret
+        </a>
+        <a href="#surec-paketler" class="nav-btn">
+          <span class="nav-icon">⚙️</span>
+          CRM + ERP
+        </a>
+        <a href="#otoservis-paketler" class="nav-btn">
+          <span class="nav-icon">🚗</span>
+          Oto Servis
+        </a>
+        <a href="#kontor-fiyatlari" class="nav-btn">
+          <span class="nav-icon">📨</span>
+          E-Fatura Kontör
+        </a>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- Pricing Cards -->
+<!-- Ana Paketler -->
+<section class="pricing-section py-12" id="ana-paketler">
+  <div class="container">
+    <h2 class="section-title text-center mb-12">Ön Muhasebe ve <br>Mağazacılık Paketlerimiz</h2>
+    <!-- Paket kartları burada... -->
+  </div>
+</section>
+
+  <!-- Ana Paketler -->
   <section class="pricing-section py-12">
     <div class="container">
-      <h2 class="section-title text-center mb-12">Paketlerimiz</h2>
       
       <div class="pricing-grid">
         {packages.map((pkg) => (
-          <div class={`pricing-card ${pkg.popular ? 'featured' : ''}`}>
-            {pkg.popular && <div class="popular-badge">POPÜLER</div>}
+        <div class={`pricing-card ${pkg.popular ? 'featured' : ''} main-package`}>
+            {pkg.popular && <div class="popular-badge">🏆 En Popüler</div>}
             
+            <div class="pricing-header">
+              <h3 class="package-name">
+                {pkg.name}<br>
+                <span set:html={pkg.name2}></span>
+              </h3>
+              <div class="price-container">
+                <span class="price">{pkg.price}</span>
+                <span class="currency">₺</span>
+                <span class="period">/{pkg.period}</span>
+              </div>
+              {pkg.note && <p class="package-note">📨 {pkg.note}</p>}
+            </div>
+            
+            <div class="package-features">
+              {pkg.features.map((feature) => (
+                feature.type === "main" ? (
+                  feature.subItems ? (
+                    <details class="feature-details" open>
+                      <summary class={`feature-summary ${feature.highlight ? 'highlight' : ''}`}>
+                        <span class="feature-icon">{feature.icon}</span>
+                        <span class="feature-text" set:html={feature.text}></span>
+                      </summary>
+                      <div class="feature-subitems">
+                        {feature.subItems.map((subItem) => (
+                          subItem.subItems ? (
+                            <details class="feature-subdetails">
+                              <summary class={`feature-subsummary ${subItem.highlight ? 'highlight' : ''}`}>
+                                <span class="feature-icon">{subItem.icon}</span>
+                                <span class="feature-text">{subItem.text}</span>
+                              </summary>
+                              <div class="feature-subitems">
+                                {subItem.subItems.map((subSubItem) => (
+                                  <div class="feature-subitem">
+                                    <span class="feature-icon">{subSubItem.icon}</span>
+                                    <span class="feature-text">{subSubItem.text}</span>
+                                  </div>
+                                ))}
+                              </div>
+                            </details>
+                          ) : (
+                            <div class={`feature-subitem ${subItem.highlight ? 'highlight' : ''}`}>
+                              <span class="feature-icon">{subItem.icon}</span>
+                              <span class="feature-text">{subItem.text}</span>
+                            </div>
+                          )
+                        ))}
+                      </div>
+                    </details>
+                  ) : (
+                    <div class={`feature-item ${feature.isHeader ? 'feature-header' : ''}`}>
+                      <span class={`feature-icon ${feature.disabled ? 'disabled' : ''}`}>{feature.icon}</span>
+                      <span class={`feature-text ${feature.disabled ? 'disabled' : ''} ${feature.highlight ? 'highlight' : ''}`} set:html={feature.text}></span>
+                    </div>
+                  )
+                ) : feature.type === "disabled" ? (
+                  <div class="feature-item">
+                    <span class="feature-icon disabled">✖</span>
+                    <span class={`feature-text disabled ${feature.highlight ? 'highlight' : ''}`} set:html={feature.text}></span>
+                  </div>
+                ) : feature.type === "enabled" ? (
+                  <div class="feature-item">
+                    <span class="feature-icon">✅</span>
+                    <span class="feature-text" set:html={feature.text}></span>
+                  </div>
+                ) : null
+              ))}
+            </div>
+            
+            <div class="pricing-footer">
+              <a 
+                href={`https://wa.me/+905325000999?text=${encodeURIComponent(`${pkg.name} paketini kullanmaya başlamak istiyorum`)}`}
+                class="btn btn-primary w-full"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Şimdi Kullanmaya Başla
+                <span class="btn-subtext">WhatsApp ile Görüş</span>
+              </a>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+  
+
+  <!-- E-Ticaret Paketleri -->
+<section class="pricing-section py-12 bg-gray-50" id="eticaret-paketler">
+  <div class="container">
+    <h2 class="section-title text-center mb-12">🛒 </h2>
+    <!-- Paket kartları burada... -->
+  </div>
+</section>
+
+  <!-- E-Ticaret Paketleri -->
+  <section class="pricing-section py-12 bg-gray-50">
+    <div class="container">
+      <h2 class="section-title text-center mb-12">E-Ticaret Paketleri</h2>
+      
+      <div class="pricing-grid-2col">
+        {ecommercePackages.map((pkg) => (
+          <div class="pricing-card ecommerce-package">
             <div class="pricing-header">
               <h3 class="package-name">{pkg.name}</h3>
               <div class="price-container">
@@ -237,14 +905,29 @@ const packageDetails = {
                 <span class="currency">₺</span>
                 <span class="period">/{pkg.period}</span>
               </div>
-              {pkg.note && <p class="package-note">{pkg.note}</p>}
+              {pkg.note && <p class="package-note">📨 {pkg.note}</p>}
             </div>
             
-            <ul class="package-features">
-              {pkg.features.slice(0, 5).map((feature) => (
-                <li>{feature}</li>
+            <div class="package-features">
+              {pkg.features.map((feature) => (
+                feature.isHeader ? (
+                  <div class="feature-item feature-header">
+                    <span class="feature-icon">{feature.icon}</span>
+                    <span class="feature-text" set:html={feature.text}></span>
+                  </div>
+                ) : feature.disabled ? (
+                  <div class="feature-item">
+                    <span class="feature-icon disabled">✖</span>
+                    <span class={`feature-text disabled ${feature.highlight ? 'highlight' : ''}`} set:html={feature.text}></span>
+                  </div>
+                ) : (
+                  <div class="feature-item">
+                    <span class="feature-icon">✅</span>
+                    <span class="feature-text" set:html={feature.text}></span>
+                  </div>
+                )
               ))}
-            </ul>
+            </div>
             
             <div class="pricing-footer">
               <a 
@@ -263,77 +946,161 @@ const packageDetails = {
     </div>
   </section>
 
-  <!-- Package Details -->
-  <section class="details-section py-16 bg-gray-50">
+
+<!-- Süreç Yönetimi Paketleri -->
+<section class="pricing-section py-12" id="surec-paketler">
+  <div class="container">
+    <h2 class="section-title text-center mb-12">⚙️</h2>
+    <!-- Paket kartları burada... -->
+  </div>
+</section>
+
+
+  <!-- Süreç Yönetimi Paketleri -->
+  <section class="pricing-section py-12">
     <div class="container">
-      <h2 class="section-title text-center mb-12">Paketlerin Detayları</h2>
+      <h2 class="section-title text-center mb-12">Süreç Yönetimi Paketleri</h2>
       
-      <div class="details-grid">
-        <!-- Ücretsiz Paket -->
-        <div class="detail-card">
-          <div class="detail-header">
-            <h3 class="detail-title">{packageDetails.free.title}</h3>
-            <p class="detail-description">{packageDetails.free.description}</p>
+      <div class="pricing-grid-2col">
+        {processPackages.map((pkg) => (
+          <div class="pricing-card">
+            <div class="pricing-header">
+              <h3 class="package-name">{pkg.name}</h3>
+              <div class="price-container">
+                <span class="price">{pkg.price}</span>
+                <span class="currency">₺</span>
+                <span class="period">/{pkg.period}</span>
+              </div>
+              {pkg.note && <p class="package-note">📨 {pkg.note}</p>}
+            </div>
+            
+            <div class="package-features">
+              {pkg.features.map((feature) => (
+                feature.isHeader ? (
+                  <div class="feature-item feature-header">
+                    <span class="feature-icon">{feature.icon}</span>
+                    <span class="feature-text" set:html={feature.text}></span>
+                  </div>
+                ) : feature.disabled ? (
+                  <div class="feature-item">
+                    <span class="feature-icon disabled">✖</span>
+                    <span class={`feature-text disabled ${feature.highlight ? 'highlight' : ''}`} set:html={feature.text}></span>
+                  </div>
+                ) : (
+                  <div class="feature-item">
+                    <span class="feature-icon">✅</span>
+                    <span class="feature-text" set:html={feature.text}></span>
+                  </div>
+                )
+              ))}
+            </div>
+            
+            <div class="pricing-footer">
+              <a 
+                href={`https://wa.me/+905325000999?text=${encodeURIComponent(`${pkg.name} paketini kullanmaya başlamak istiyorum`)}`}
+                class="btn btn-primary w-full"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Şimdi Kullanmaya Başla
+                <span class="btn-subtext">WhatsApp ile Görüş</span>
+              </a>
+            </div>
           </div>
-          <ul class="detail-list">
-            {packageDetails.free.modules.map((module) => (
-              <li>{module}</li>
-            ))}
-          </ul>
-        </div>
-        
-        <!-- Mağazacılık Paketi -->
-        <div class="detail-card">
-          <div class="detail-header">
-            <h3 class="detail-title">{packageDetails.magaza.title}</h3>
-            <p class="detail-description">{packageDetails.magaza.description}</p>
-          </div>
-          <ul class="detail-list">
-            {packageDetails.magaza.modules.map((module) => (
-              <li>{module}</li>
-            ))}
-          </ul>
-        </div>
-        
-        <!-- ERP Proje Yönetimi -->
-        <div class="detail-card">
-          <div class="detail-header">
-            <h3 class="detail-title">{packageDetails.erp.title}</h3>
-            <p class="detail-description">{packageDetails.erp.description}</p>
-          </div>
-          <ul class="detail-list">
-            {packageDetails.erp.modules.map((module) => (
-              <li>{module}</li>
-            ))}
-          </ul>
-        </div>
-        
-        <!-- ERP İş Zekası -->
-        <div class="detail-card">
-          <div class="detail-header">
-            <h3 class="detail-title">{packageDetails.bi.title}</h3>
-            <p class="detail-description">{packageDetails.bi.description}</p>
-          </div>
-          <ul class="detail-list">
-            {packageDetails.bi.modules.map((module) => (
-              <li>{module}</li>
-            ))}
-          </ul>
-        </div>
-        
-        <!-- Teknik Servis Yönetimi -->
-        <div class="detail-card">
-          <div class="detail-header">
-            <h3 class="detail-title">{packageDetails.service.title}</h3>
-            <p class="detail-description">{packageDetails.service.description}</p>
-          </div>
-          <ul class="detail-list">
-            {packageDetails.service.modules.map((module) => (
-              <li>{module}</li>
-            ))}
-          </ul>
-        </div>
+        ))}
       </div>
+    </div>
+  </section>
+
+  <!-- Oto Servis Paketleri -->
+<section class="pricing-section py-12 bg-gray-50" id="otoservis-paketler">
+  <div class="container">
+    <h2 class="section-title text-center mb-12">🚗</h2>
+    <!-- Paket kartları burada... -->
+  </div>
+</section>
+
+  <!-- Oto Servis Paketleri -->
+  <section class="pricing-section py-12 bg-gray-50">
+    <div class="container">
+      <h2 class="section-title text-center mb-12">Oto Servis Paketleri</h2>
+      
+      <div class="pricing-grid-2col">
+        {servicePackages.map((pkg) => (
+          <div class="pricing-card">
+            <div class="pricing-header">
+              <h3 class="package-name">{pkg.name}</h3>
+              <div class="price-container">
+                <span class="price">{pkg.price}</span>
+                <span class="currency">₺</span>
+                <span class="period">/{pkg.period}</span>
+              </div>
+              {pkg.note && <p class="package-note">📨 {pkg.note}</p>}
+            </div>
+            
+            <div class="package-features">
+              {pkg.features.map((feature) => (
+                feature.isHeader ? (
+                  <div class="feature-item feature-header">
+                    <span class="feature-icon">{feature.icon}</span>
+                    <span class="feature-text" set:html={feature.text}></span>
+                  </div>
+                ) : feature.disabled ? (
+                  <div class="feature-item">
+                    <span class="feature-icon disabled">✖</span>
+                    <span class={`feature-text disabled ${feature.highlight ? 'highlight' : ''}`} set:html={feature.text}></span>
+                  </div>
+                ) : (
+                  <div class="feature-item">
+                    <span class="feature-icon">✅</span>
+                    <span class="feature-text" set:html={feature.text}></span>
+                  </div>
+                )
+              ))}
+            </div>
+            
+            <div class="pricing-footer">
+              <a 
+                href={`https://wa.me/+905325000999?text=${encodeURIComponent(`${pkg.name} paketini kullanmaya başlamak istiyorum`)}`}
+                class="btn btn-primary w-full"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Şimdi Kullanmaya Başla
+                <span class="btn-subtext">WhatsApp ile Görüş</span>
+              </a>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  
+  <!-- E-Fatura Kontör Fiyatları -->
+  <section class="kontor-section py-16" id="kontor-fiyatlari">
+    <div class="container">
+      <h2 class="section-title text-center mb-12">📨 E-Fatura Kontör Fiyatları</h2>
+      
+      <div class="kontor-grid">
+        {kontorPrices.map((item) => (
+          <div class="kontor-card">
+            <div class="kontor-count">{item.count}</div>
+            <div class="kontor-label">Kontör</div>
+            <div class="kontor-price">{item.price}</div>
+            <div class="kontor-price-small">TL</div>
+            <div class="kontor-note">{item.note}</div>
+          </div>
+        ))}
+      </div>
+      <p class="text-center text-gray-500 mt-4">Notlar</p>
+      <p class="text-center text-gray-500 mt-4">Tüm fiyatlara KDV eklenecektir.
+        e-Fatura Kontör Hediyemiz ilk alımda verilecektir.
+        <br>Devam eden ayları kapsamamaktadır.</p>
+        <p class="text-center text-gray-500 mt-4">Ödemeler Yıllık şeklinde yapılmaktadır.</p>
+        <p class="text-center text-gray-500 mt-4">E-Fatura Kontörlerin zaman sınırlaması YOKTUR, Kontör bittikçe dilediğiniz kadar alabilirsiniz.
+          <br>Her işlem bir kontör tüketir.Gelen-Giden Fatura İrsaliye gibi..</p>
+    
     </div>
   </section>
 
@@ -354,7 +1121,7 @@ const packageDetails = {
           >
             WhatsApp'tan Yazın
           </a>
-          <a href="/iletisim" class="btn btn-outline btn-lg">
+          <a href="/iletisim" class="btn btn-outline btn-lg btn-white">
             İletişim
           </a>
         </div>
@@ -363,6 +1130,67 @@ const packageDetails = {
   </section>
 
   <style>
+
+    /* Navigasyon Butonları */
+.nav-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.nav-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  background: white;
+  border: 2px solid var(--primary-red);
+  border-radius: 50px;
+  color: var(--primary-red);
+  font-weight: 600;
+  font-size: 1rem;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow-sm);
+}
+
+.nav-btn:hover {
+  background: var(--primary-red);
+  color: white;
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+
+.nav-icon {
+  font-size: 1.2rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .nav-buttons {
+    gap: 0.75rem;
+  }
+  
+  .nav-btn {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .nav-buttons {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .nav-btn {
+    justify-content: center;
+  }
+}
+
+
     /* Page Hero */
     .page-hero {
       background: linear-gradient(135deg, var(--primary-red-light) 0%, var(--bg-white) 100%);
@@ -404,26 +1232,96 @@ const packageDetails = {
       font-size: 2.5rem;
       color: var(--text-dark);
       font-weight: 700;
+      margin-top: 1rem;
+    }
+    
+    /* Kırmızı yazılar */
+    .highlight {
+      color: var(--primary-red) !important;
+    }
+    
+    .feature-text.highlight {
+      color: var(--primary-red) !important;
+    }
+    
+    /* Circle Number */
+    .circle-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 30px;
+      height: 30px;
+      background-color: var(--primary-red);
+      color: white;
+      border-radius: 50%;
+      font-size: 1rem;
+      font-weight: 700;
+      margin: 0 2px;
+    }
+    
+    /* Purple Badge */
+    .purple-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 4px 12px;
+      background-color: #8B5CF6;
+      color: white;
+      border-radius: 20px;
+      font-size: 1rem;
+      font-weight: 700;
+      margin: 0 2px;
     }
     
     /* Pricing Cards */
     .pricing-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
       gap: 2rem;
       margin-top: 3rem;
     }
     
-    .pricing-card {
-      background: white;
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-      box-shadow: var(--shadow-md);
-      transition: all 0.3s ease;
-      position: relative;
-      display: flex;
-      flex-direction: column;
+    .pricing-grid-2col {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+      margin-top: 3rem;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
     }
+    
+    .pricing-card {
+  background: white;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  transition: all 0.3s ease;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #e0e0e0;  /* <-- Bu satırı çerçeve rengi */
+}
+
+/* Ana paketler için mavi çerçeve */
+.main-package {
+  border: 1px solid #3498db;
+}
+
+/* E-ticaret paketleri için yeşil çerçeve */
+.ecommerce-package {
+  border: 1px solid #2ecc71;
+}
+
+/* Süreç yönetimi paketleri için turuncu çerçeve */
+.process-package {
+  border: 1px solid #f39c12;
+}
+
+/* Oto servis paketleri için mor çerçeve */
+.service-package {
+  border: 1px solid #9b59b6;
+}
     
     .pricing-card:hover {
       transform: translateY(-8px);
@@ -444,12 +1342,14 @@ const packageDetails = {
       border-radius: 2rem;
       font-size: 0.875rem;
       font-weight: 600;
+      z-index: 20;
     }
     
     .pricing-header {
       padding: 2rem 2rem 1rem;
       text-align: center;
       border-bottom: 1px solid var(--secondary-light);
+      background: white;
     }
     
     .package-name {
@@ -494,80 +1394,164 @@ const packageDetails = {
     }
     
     .package-features {
-      list-style: none;
       padding: 1.5rem 2rem;
       flex-grow: 1;
     }
     
-    .package-features li {
-      padding: 0.5rem 0;
+    .feature-item {
+      padding: 0.25rem 0;
       color: var(--text-gray);
-      position: relative;
-      padding-left: 1.5rem;
+      font-size: 0.9rem;
+      line-height: 1.5;
     }
     
-    .package-features li::before {
-      content: "✓";
-      position: absolute;
-      left: 0;
+    .feature-header {
+      margin-top: 0.5rem;
+      margin-bottom: 0.5rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      background: var(--secondary-light);
+      padding: 0.5rem;
+      border-radius: var(--radius-md);
+    }
+    
+    .feature-icon {
+      display: inline-block;
+      width: 20px; /* <-- Bu satır ikon genişliğini belirler */
+      text-align: left;
+      margin-right: 0.5rem;
+      font-size: 0.9rem;
+    }
+    
+    .feature-icon.disabled {
       color: var(--primary-red);
-      font-weight: bold;
+    }
+    
+    .feature-text {
+      font-size: 0.9rem;
+    }
+    
+    .feature-text.disabled {
+      text-decoration: line-through;
+      color: #999;
+    }
+    
+    /* Details/Summary styles */
+    .feature-details,
+    .feature-subdetails {
+      margin: 0;
+    }
+    
+    .feature-summary,
+    .feature-subsummary {
+      cursor: pointer;
+      list-style: none;
+      display: flex;
+      align-items: center;
+      padding: 0.25rem 0;
+      font-weight: 600;
+      color: var(--text-dark);
+    }
+    
+    .feature-summary::-webkit-details-marker,
+    .feature-subsummary::-webkit-details-marker {
+      display: none;
+    }
+    
+    .feature-summary::before,
+    .feature-subsummary::before {
+      content: "▶";
+      display: inline-block;
+      width: 16px;
+      font-size: 0.7rem;
+      margin-right: 0.5rem;
+      transition: transform 0.2s;
+      color: var(--primary-red);
+    }
+    
+    details[open] > .feature-summary::before,
+    details[open] > .feature-subsummary::before {
+      transform: rotate(90deg);
+    }
+    
+    .feature-subitems {
+      margin-left: 2rem;
+      padding-left: 0.5rem;
+      border-left: 2px solid var(--secondary-light);
+    }
+    
+    .feature-subitem {
+      display: flex;
+      align-items: center;
+      padding: 0.2rem 0;
+      color: var(--text-gray);
+    }
+    
+    .feature-subitem.highlight {
+      color: var(--primary-red);
     }
     
     .pricing-footer {
       padding: 0 2rem 2rem;
+      background: white;
     }
     
-    /* Package Details */
-    .details-grid {
+    /* Kontör Kartları */
+    .kontor-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      grid-template-columns: repeat(4, 1fr);
       gap: 2rem;
+      max-width: 1000px;
+      margin: 0 auto;
     }
     
-    .detail-card {
+    .kontor-card {
       background: white;
       border-radius: var(--radius-lg);
       padding: 2rem;
+      text-align: center;
       box-shadow: var(--shadow-md);
-      transition: transform 0.3s ease;
+      transition: all 0.3s ease;
+      border: 1px solid var(--secondary-light);
     }
     
-    .detail-card:hover {
+    .kontor-card:hover {
       transform: translateY(-5px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--primary-red-light);
     }
     
-    .detail-header {
-      margin-bottom: 1.5rem;
-      padding-bottom: 1rem;
-      border-bottom: 2px solid var(--primary-red-light);
-    }
-    
-    .detail-title {
-      font-size: 1.5rem;
+    .kontor-count {
+      font-size: 2rem;
+      font-weight: 800;
       color: var(--primary-red);
-      margin-bottom: 0.5rem;
+      line-height: 1.2;
+    }
+    
+    .kontor-label {
+      font-size: 1rem;
+      color: var(--text-gray);
+      margin-bottom: 1rem;
+    }
+    
+    .kontor-price {
+      font-size: 1.75rem;
       font-weight: 700;
+      color: var(--text-dark);
+      display: inline-block;
     }
     
-    .detail-description {
+    .kontor-price-small {
+      font-size: 1rem;
       color: var(--text-gray);
-      line-height: 1.5;
+      display: inline-block;
+      margin-left: 0.25rem;
     }
     
-    .detail-list {
-      list-style: none;
-    }
-    
-    .detail-list li {
-      padding: 0.75rem 0;
-      color: var(--text-gray);
-      border-bottom: 1px solid var(--secondary-light);
-      line-height: 1.5;
-    }
-    
-    .detail-list li:last-child {
-      border-bottom: none;
+    .kontor-note {
+      font-size: 0.875rem;
+      color: var(--text-light);
+      margin-top: 0.5rem;
     }
     
     /* CTA Section */
@@ -602,6 +1586,16 @@ const packageDetails = {
       font-size: 1.125rem;
     }
     
+    .btn-white {
+      color: white !important;
+      border-color: white !important;
+    }
+    
+    .btn-white:hover {
+      background: rgba(255, 255, 255, 0.1) !important;
+      color: white !important;
+    }
+    
     /* Button Subtext */
     .btn-subtext {
       display: block;
@@ -626,11 +1620,8 @@ const packageDetails = {
         font-size: 2rem;
       }
       
-      .pricing-grid {
-        grid-template-columns: 1fr;
-      }
-      
-      .details-grid {
+      .pricing-grid,
+      .pricing-grid-2col {
         grid-template-columns: 1fr;
       }
       
@@ -644,6 +1635,11 @@ const packageDetails = {
       
       .price {
         font-size: 2.5rem;
+      }
+      
+      .kontor-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
       }
     }
     
@@ -667,9 +1663,123 @@ const packageDetails = {
         padding-right: 1.5rem;
       }
       
-      .detail-card {
-        padding: 1.5rem;
+      .kontor-grid {
+        grid-template-columns: 1fr;
       }
+      
+      .circle-number {
+        width: 25px;
+        height: 25px;
+        font-size: 0.9rem;
+      }
+      
     }
+    /* Yukarı Çık Butonu - Sol Versiyon */
+.scroll-to-top {
+  position: fixed;
+  bottom: 30px;
+  left: 30px;  /* right: 30px yerine left: 30px */
+  width: 50px;
+  height: 50px;
+  background: var(--primary-red);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  box-shadow: var(--shadow-lg);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  z-index: 1000;
+}
+
+.scroll-to-top.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.scroll-to-top:hover {
+  background: var(--primary-red-dark);
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-xl);
+}
+
+.scroll-icon {
+  font-size: 1.8rem;
+  font-weight: bold;
+  line-height: 1;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .scroll-to-top {
+    bottom: 20px;
+    left: 20px;  /* right: 20px yerine left: 20px */
+    width: 45px;
+    height: 45px;
+  }
+  
+  .scroll-icon {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .scroll-to-top {
+    bottom: 15px;
+    left: 15px;  /* right: 15px yerine left: 15px */
+    width: 40px;
+    height: 40px;
+  }
+  
+  .scroll-icon {
+    font-size: 1.3rem;
+  }
+}
   </style>
+  <script>
+  // Sayfa yüklendiğinde tüm detayları kapat
+  document.addEventListener('DOMContentLoaded', function() {
+    // Tüm feature-details ve feature-subdetails elementlerini bul
+    const details = document.querySelectorAll('.feature-details, .feature-subdetails');
+    
+    // Her birinden open attribute'unu kaldır
+    details.forEach(detail => {
+      detail.removeAttribute('open');
+    });
+  });
+</script>
+
+<!-- Yukarı Çık Butonu -->
+<a href="#" class="scroll-to-top" id="scrollToTop" aria-label="Sayfa Başına Çık">
+  <span class="scroll-icon">↑</span>
+</a>
+
+<script>
+  // Yukarı çık butonu için scroll olayı
+  document.addEventListener('DOMContentLoaded', function() {
+    const scrollButton = document.getElementById('scrollToTop');
+    
+    // Scroll olayını dinle
+    window.addEventListener('scroll', function() {
+      if (window.scrollY > 300) {
+        scrollButton.classList.add('visible');
+      } else {
+        scrollButton.classList.remove('visible');
+      }
+    });
+    
+    // Butona tıklandığında yumuşak scroll
+    scrollButton.addEventListener('click', function(e) {
+      e.preventDefault();
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+  });
+</script>
+
 </BaseLayout>

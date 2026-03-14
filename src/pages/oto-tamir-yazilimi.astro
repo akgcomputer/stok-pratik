@@ -1,0 +1,841 @@
+---
+// src/pages/oto-tamir-yazilimi.astro
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const images = {
+  mobileUst: "/images/site-foto/mobile-ust1.jpg",
+  ustArka: "/images/site-foto/ust-arka.jpg",
+  otoTamirci: "/images/site-foto/oto-tamircisi.jpg",
+  kamyonTamirci: "/images/site-foto/kamyon-tamircisi.jpg",
+  motorsikletTamirci: "/images/site-foto/motorsiklet-tamircisi.jpg",
+  yedekParca: "/images/site-foto/yedek-parca.jpg"
+};
+
+// SEO için meta veriler
+const seoData = {
+  title: "Stok Pratik Oto Tamir ve Yedek Parça Takip Yazılımı | Profesyonel Servis Yönetimi",
+  description: "Oto tamir, yedek parça takip, servis yönetimi, araç geçmişi, KM ve bakım takibi, borç/alacak takibi, kar/zarar analizi. Tüm cihazlardan erişim, sınırsız yedek parça satışı."
+};
+
+// Özellikler listesi
+const features = [
+  {
+    icon: "🚗",
+    title: "Plaka/Şase No ile Araç Takibi",
+    description: "Aracın Plakası veya Şase numarası ile anında takip, tüm geçmiş işlemlere hızlı erişim."
+  },
+  {
+    icon: "📋",
+    title: "İş Emri ve Kayıt Formu",
+    description: "Araç sahibini ve aracı tanımlayabilir, aracın servis merkezindeki geçmişini görüntüleyebilirsin."
+  },
+  {
+    icon: "🔧",
+    title: "KM ve Bakım Takibi",
+    description: "Servis Merkezini belirli periyotlarda uyararak araçları servise çağırmak ve randevu oluşturmak."
+  },
+  {
+    icon: "📦",
+    title: "Yedek Parça ve Stok Takibi",
+    description: "Dilediğin kadar yedek parçayı stok kartı olarak ekleyebilir, stok takibi yapabilirsin."
+  },
+  {
+    icon: "📜",
+    title: "Araç Geçmişi",
+    description: "Araç sahibi dilediği zaman aracı hakkında geçmiş bilgilere ulaşır, farklı tamircilerde işlem görmüş olsa bile."
+  },
+  {
+    icon: "👥",
+    title: "Yetki Yönetimi",
+    description: "Servis çalışanlarına yetkiler verebilir, hiyerarşi oluşturabilirsin. Veri elemanı, usta, çırak tüm çalışanlar sisteme dahil olabilir."
+  },
+  {
+    icon: "💰",
+    title: "Borç/Alacak İlişkisi",
+    description: "Hangi cariden ne kadar alacak var, hangi tedarikçiye (parçacıya) ne kadar borç var tüm hesabı takip edebilirsin."
+  },
+  {
+    icon: "📊",
+    title: "Maliyet - Kar/Zarar",
+    description: "Yedek parça alışlarını, satışlarını, işçilik fiyatlarını tanımlayabilir ve günlük, aylık kar/zarar durumunu takip edebilirsin."
+  },
+  {
+    icon: "🛒",
+    title: "E-Ticaret ile Sınırsız Yedek Parça Satışı",
+    description: "Online yedek parça satışı yapabilir, B2B ile yedek parçaları bayi ağına sunabilirsin."
+  }
+];
+
+// Kullanıcılar listesi
+const users = [
+  {
+    image: images.otoTamirci,
+    title: "Oto Tamirciler",
+    alt: "Oto tamir ve bakım yapan profesyonel tamirciler"
+  },
+  {
+    image: images.kamyonTamirci,
+    title: "Ağır Vasıta Tamircileri",
+    alt: "Kamyon, tır ve ağır vasıta tamiri yapan servisler"
+  },
+  {
+    image: images.motorsikletTamirci,
+    title: "Motosiklet Tamircileri",
+    alt: "Motosiklet bakım ve onarım hizmeti veren servisler"
+  },
+  {
+    image: images.yedekParca,
+    title: "Yedek Parça Satıcıları",
+    alt: "Yedek parça satışı ve stok takibi yapan işletmeler"
+  }
+];
+---
+
+<BaseLayout title={seoData.title} description={seoData.description}>
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="container">
+      <div class="hero-grid">
+        <div class="hero-content">
+          <h1 class="hero-title">
+            <span class="hero-brand">Stok Pratik</span>
+            <span class="hero-subtitle">Oto Tamir, Yedek Parça Takip Yazılımı</span>
+          </h1>
+          <p class="hero-description">
+            Profesyonel OTO Servis ve Yedek Parça Yazılımı ile tüm servis süreçlerinizi dijitalleştirin. 
+            Plaka takibinden stok yönetimine, kar/zarar analizinden <br>E-ticaret ve B2B özelliklerine kadar her şey tek platformda.
+          </p>
+          <div class="hero-buttons">
+            <a href="https://wa.me/+905325000999?text=Merhaba,%20Stok%20Pratik%20Oto%20Servis%20Yazılımı%20hakkında%20bilgi%20almak%20istiyorum" 
+               class="btn btn-primary btn-large">
+              <span class="btn-icon">📞</span>
+              WhatsApp ile Hemen Bilgi Al
+            </a>
+            <a href="/paketlerimiz" class="btn btn-outline btn-large">
+              <span class="btn-icon">🚗</span>
+              Paketleri incele
+            </a>
+          </div>
+          
+          <!-- Öne Çıkanlar -->
+          <div class="hero">
+            <div class="highlight-item">
+              <span class="highlight-icon hero-description">✓</span>
+              <span class="hero-description">Sınırsız Araç Kaydı</span>
+            </div>
+            <div class="highlight-item">
+              <span class="highlight-icon hero-description">✓</span>
+              <span class="hero-description">Stok Takibi</span>
+            </div>
+            <div class="highlight-item">
+              <span class="highlight-icon hero-description">✓</span>
+              <span class="hero-description">E-Ticaret ve B2B Özelliği</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="hero-image">
+          <img 
+            src={images.mobileUst} 
+            alt="Stok Pratik Oto Servis Yazılımı Mobil Görünüm" 
+            width="600" 
+            height="679"
+            loading="eager"
+            class="hero-img"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+   <!-- Background Image Section -->
+  <section class="background-section">
+    <div class="background-overlay">
+      <div class="container">
+        <div class="background-content">
+          <h2 class="background-title" style="color: var(--text-white);">Kimler Kullanabilir?</h2>
+          <p class="background-subtitle">Oto sanayi esnaflarından, 
+            <br>çok şubeli işletmelere kadar 
+            <br>tüm oto servis ve yedek parça işletmeleri için!</p>
+        </div>
+      </div>
+    </div>
+    <img 
+      src={images.ustArka} 
+      alt="Stok Pratik Oto Servis Yazılımı Arka Plan" 
+      class="background-image"
+      loading="lazy"
+    />
+  </section>
+
+  <!-- Kullanıcılar Section -->
+  <section class="users-section">
+    <div class="container">
+      <div class="users-grid">
+        {users.map((user) => (
+          <div class="user-card">
+            <div class="user-image-wrapper">
+              <img 
+                src={user.image} 
+                alt={user.alt} 
+                width="578" 
+                height="460"
+                loading="lazy"
+                class="user-image"
+              />
+            </div>
+            <h3 class="user-title">{user.title}</h3>
+            <a href="/paketlerimiz" class="user-link">
+              Paketleri İncele
+              <span class="link-arrow">→</span>
+            </a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta-section">
+    <div class="container">
+      <div class="cta-content">
+        <h2 class="cta-title" style="color: var(--text-white);">Siz de İşletmenizi Dijitalleştirin!</h2>
+        <p class="cta-description" style="color: var(--text-white);">
+          Oto servis ve yedek parça işletmeniz için en doğru çözüm Stok Pratik'te. 
+          <br>Hemen iletişime geçin.
+        </p>
+        <div class="cta-buttons">
+          <a href="https://wa.me/+905325000999?text=Merhaba,%20Stok%20Pratik%20Oto%20Servis%20paketi%20hakkında%20bilgi%20almak%20istiyorum" 
+             class="btn btn-primary btn-large">
+            <span class="btn-icon">📞</span>
+            WhatsApp'tan Yazın
+          </a>
+          <a href="/paketlerimiz" class="btn btn-outline btn-large btn-white">
+            Paketleri İncele
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Özellikler Section -->
+  <section class="features-section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">
+          Profesyonel OTO Servis ve Yedek Parça Yazılımı ile 
+          <span class="title-highlight">Neler Yapabilirsiniz?</span>
+        </h2>
+      </div>
+      
+      <div class="features-grid">
+        {features.map((feature) => (
+          <div class="feature-card">
+            <div class="feature-icon-wrapper">{feature.icon}</div>
+            <h3 class="feature-card-title">{feature.title}</h3>
+            <p class="feature-card-description">{feature.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Çalışma Platformları -->
+  <section class="platform-section">
+    <div class="container">
+      
+      <p class="platform-text">
+        Her cihazdan çalışır, Her yerden erişilir,
+        <br>İnternet bağlantısı olan her cihazdan kullanabilirsiniz.
+        <div class="platform-grid">
+        <div class="platform-item">
+          <span class="platform-icon">💻</span>
+          <span>Bilgisayar</span>
+        </div>
+        <div class="platform-item">
+          <span class="platform-icon">📱</span>
+          <span>Telefon</span>
+        </div>
+        <div class="platform-item">
+          <span class="platform-icon">📟</span>
+          <span>Tablet</span>
+        </div>
+      </div>
+      </p>
+      <p class="platform-text">
+        Araç yada Sınıf Ayrımı Yok, 
+        <br>Tüm Oto Servis ve Yedek Parça İşletmeleri İçin Uygundur.
+        <div class="platform-grid">
+        <div class="platform-item">
+        <div class="platform-item">
+          <span class="platform-icon">🚗</span>
+          <span>Binek Oto</span>
+        </div>
+        <div class="platform-item">
+          <span class="platform-icon">🚛</span>
+          <span>Ağır Vasıta</span>
+        </div>
+        <div class="platform-item">
+          <span class="platform-icon">🏍️</span>
+          <span>Motosiklet</span>
+        </div>
+        <div class="platform-item">
+          <span class="platform-icon">🏗️</span>
+          <span>İş Makinası</span>
+        </div>
+      </div>
+      </p>
+    </div>
+  </section>
+
+ 
+
+  <!-- Yukarı Çık Butonu -->
+  <a href="#" class="scroll-to-top" id="scrollToTop">
+    <span class="scroll-icon">↑</span>
+  </a>
+
+  <style>
+    /* Hero Section */
+    .hero-section {
+      background: linear-gradient(135deg, var(--primary-red-light) 0%, white 100%);
+      padding: 3rem 0;
+      overflow: hidden;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: var(--primary-red);
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 50px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-title {
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-brand {
+      display: block;
+      font-size: 3.5rem;
+      font-weight: 800;
+      color: var(--primary-red);
+      line-height: 1.2;
+    }
+
+    .hero-subtitle {
+      display: block;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      line-height: 1.3;
+    }
+
+    .hero-description {
+      font-size: 1.1rem;
+      color: var(--text-gray);
+      line-height: 1.6;
+      margin-bottom: 2rem;
+      max-width: 600px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-large {
+      padding: 1rem 2rem;
+      font-size: 1.1rem;
+    }
+
+    .btn-icon {
+      margin-right: 0.5rem;
+    }
+
+    .hero-highlights {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .highlight-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .highlight-icon {
+      color: var(--primary-red);
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+
+    .hero-image {
+      position: relative;
+    }
+
+    .hero-img {
+      width: 100%;
+      height: auto;
+      max-width: 600px;
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-xl);
+      animation: float 3s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    /* Features Section */
+    .features-section {
+      padding: 5rem 0;
+      background: white;
+    }
+
+    .section-header {
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto 3rem;
+    }
+
+    .section-title {
+      font-size: 2.5rem;
+      color: var(--text-dark);
+      line-height: 1.3;
+    }
+
+    .title-highlight {
+      color: var(--primary-red);
+      display: block;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 2rem;
+    }
+
+    .feature-card {
+      background: white;
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      box-shadow: var(--shadow-md);
+      border: 1px solid var(--secondary-light);
+      transition: all 0.3s ease;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--primary-red-light);
+    }
+
+    .feature-icon-wrapper {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .feature-card-title {
+      font-size: 1.3rem;
+      color: var(--primary-red);
+      margin-bottom: 1rem;
+      font-weight: 700;
+    }
+
+    .feature-card-description {
+      color: var(--text-gray);
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    /* Platform Section */
+    .platform-section {
+      padding: 3rem 0;
+      background: var(--bg-gray);
+      text-align: center;
+    }
+
+    .platform-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .platform-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.5rem;
+      background: white;
+      border-radius: 50px;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--secondary-light);
+    }
+
+    .platform-icon {
+      font-size: 1.3rem;
+    }
+
+    .platform-text {
+      font-size: 1.2rem;
+      color: var(--primary-red);
+      font-weight: 600;
+    }
+
+    /* Background Section */
+    .background-section {
+      position: relative;
+      height: 500px;
+      overflow: hidden;
+    }
+
+    .background-image {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 1;
+    }
+
+    .background-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.5) 100%);
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .background-content {
+      color: white;
+      z-index: 3;
+    }
+
+    .background-title {
+      font-size: 3.5rem;
+      font-weight: 800;
+      margin-bottom: 1rem;
+    }
+
+    .background-subtitle {
+      font-size: 2rem;
+      font-weight: 600;
+      opacity: 0.9;
+    }
+
+    /* Users Section */
+    .users-section {
+      padding: 5rem 0;
+    }
+
+    .users-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+    }
+
+    .user-card {
+      background: white;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+      transition: all 0.3s ease;
+    }
+
+    .user-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .user-image-wrapper {
+      overflow: hidden;
+    }
+
+    .user-image {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: transform 0.3s ease;
+    }
+
+    .user-card:hover .user-image {
+      transform: scale(1.05);
+    }
+
+    .user-title {
+      padding: 1.5rem 1rem 0.5rem;
+      font-size: 1.2rem;
+      color: var(--text-dark);
+      font-weight: 700;
+      text-align: center;
+    }
+
+    .user-link {
+      display: block;
+      padding: 0.5rem 1rem 1.5rem;
+      color: var(--primary-red);
+      text-decoration: none;
+      font-weight: 600;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+
+    .user-link:hover {
+      color: var(--primary-red-dark);
+      transform: translateX(3px);
+    }
+
+    .link-arrow {
+      display: inline-block;
+      transition: transform 0.3s ease;
+    }
+
+    .user-link:hover .link-arrow {
+      transform: translateX(5px);
+    }
+
+    /* CTA Section */
+    .cta-section {
+      background: linear-gradient(135deg, var(--secondary-dark), var(--primary-red));
+      padding: 5rem 0;
+      color: white;
+    }
+
+    .cta-content {
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .cta-title {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      font-weight: 800;
+    }
+
+    .cta-description {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+      opacity: 0.9;
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-white {
+      color: white !important;
+      border-color: white !important;
+    }
+
+    .btn-white:hover {
+      background: rgba(255, 255, 255, 0.1) !important;
+    }
+
+    /* Yukarı Çık Butonu */
+    .scroll-to-top {
+      position: fixed;
+      bottom: 30px;
+      left: 30px;
+      width: 50px;
+      height: 50px;
+      background: var(--primary-red);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      box-shadow: var(--shadow-lg);
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+      z-index: 1000;
+    }
+
+    .scroll-to-top.visible {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .scroll-to-top:hover {
+      background: var(--primary-red-dark);
+      transform: translateY(-5px);
+    }
+
+    .scroll-icon {
+      font-size: 1.8rem;
+      font-weight: bold;
+    }
+
+    /* Responsive */
+    @media (max-width: 1200px) {
+      .users-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 992px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .hero-description {
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .hero-highlights {
+        justify-content: center;
+      }
+
+      .hero-image {
+        grid-row: 1;
+      }
+
+      .background-title {
+        font-size: 2.5rem;
+      }
+
+      .background-subtitle {
+        font-size: 1.5rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .hero-brand {
+        font-size: 2.5rem;
+      }
+
+      .hero-subtitle {
+        font-size: 1.5rem;
+      }
+
+      .section-title {
+        font-size: 2rem;
+      }
+
+      .features-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .users-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .platform-grid {
+        gap: 1rem;
+      }
+
+      .platform-item {
+        padding: 0.5rem 1rem;
+      }
+
+      .background-title {
+        font-size: 2rem;
+      }
+
+      .background-subtitle {
+        font-size: 1.2rem;
+      }
+
+      .cta-title {
+        font-size: 2rem;
+      }
+
+      .cta-buttons {
+        flex-direction: column;
+      }
+
+      .scroll-to-top {
+        bottom: 20px;
+        left: 20px;
+        width: 45px;
+        height: 45px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero-buttons {
+        flex-direction: column;
+      }
+
+      .btn-large {
+        width: 100%;
+      }
+
+      .hero-highlights {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+      }
+
+      .background-title {
+        font-size: 1.5rem;
+      }
+
+      .background-subtitle {
+        font-size: 1rem;
+      }
+
+      .scroll-to-top {
+        bottom: 15px;
+        left: 15px;
+        width: 40px;
+        height: 40px;
+      }
+    }
+  </style>
+
+  <script>
+    // Yukarı çık butonu
+    document.addEventListener('DOMContentLoaded', function() {
+      const scrollButton = document.getElementById('scrollToTop');
+      
+      window.addEventListener('scroll', function() {
+        if (window.scrollY > 300) {
+          scrollButton.classList.add('visible');
+        } else {
+          scrollButton.classList.remove('visible');
+        }
+      });
+      
+      scrollButton.addEventListener('click', function(e) {
+        e.preventDefault();
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+      });
+    });
+  </script>
+</BaseLayout>

@@ -3,38 +3,210 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 
 const images = {
+  // Mevcut görselleriniz
   general: "/images/site-foto/Stok-pratik-genel.png",
   efatura: "/images/site-foto/stok-pratik-efatura.jpg",
   hesap: "/images/site-foto/Stok-pratik-hesap.png",
+  crm: "/images/site-foto/crm.webp",
+  stok: "/images/site-foto/stok.webp",
+  barkod: "/images/site-foto/barkod.webp",
+  otoservis: "/images/site-foto/oto-servis.webp",
   hesaplama: "/images/site-foto/Stok-pratik-hesaplama.png",
-  hesaplamalar: "/images/site-foto/Stok-pratik-hesaplamalar.png"
+  hesaplamalar: "/images/site-foto/Stok-pratik-hesaplamalar.png",
+  
+  // Yeni modüller için görseller
+  magaza: "/images/site-foto/Stok-pratik-hesap.png",
+  servis: "/images/site-foto/stok-pratik-efatura.jpg",
+  uretim: "/images/site-foto/uretim.webp",
+  stokpratik: "/images/site-foto/stok-pratik.webp",
+  finans: "/images/site-foto/Stok-pratik-hesap.png",
+  eticaret: "/images/site-foto/stok-pratik-efatura.jpg",
+  rapor: "/images/site-foto/Stok-pratik-hesaplama.png"
 };
+
+// Güçlü yönler listesi
+const strongFeatures = [
+  "🏪 Mağazacılık Bulut Muhasebe",
+  "🛒 E-Ticaret",
+  "📱 Mobil Uyumlu",
+  "📊 Çok Şube Yönetimi",
+  "🏷️ Barkodlu Çalışma",
+  "🔧 Servis Takibi",
+  "🏭 ERP- Üretim Modülü"
+];
+
+// Modül kategorileri
+const moduleCategories = [
+  {
+    id: "magaza",
+    title: "🏪 Mağazacılık & Perakende",
+    features: [
+      "Gün Sonu İşlemleri ve Kasa Raporu",
+      "Mağaza Stok Takibi ve Sayım",
+      "Mağazalar Arası Transfer",
+      "POS Ekranı ve Hızlı Satış",
+      "Çalışma Takvimi ve Vardiya Yönetimi",
+      "Hediye/Kampanya Tanımları"
+    ]
+  },
+  {
+    id: "finans",
+    title: "💰 Finans & Muhasebe",
+    features: [
+      "Kasa ve Banka Yönetimi (Anlık Bakiye Takibi)",
+      "Kredi Kartı POS Takibi",
+      "Çek ve Senet Portföy Yönetimi",
+      "Gider Listesi ve Otomatik Giderler",
+      "Cari Borç/Alacak Raporları",
+      "e-Fatura ve e-Arşiv Entegrasyonu"
+    ]
+  },
+  {
+    id: "stok",
+    title: "📦 Stok & Ürün Yönetimi",
+    features: [
+      "Stok Hareketleri (Giriş/Çıkış)",
+      "Ürün ve Hizmet Kartları",
+      "Kategori ve Marka Yönetimi",
+      "Barkodlu Çalışma ve Barkod Okutma",
+      "Varlık Takibi ve Demirbaş Yönetimi",
+      "Fiyat Listeleri (Müşteri Özel)"
+    ]
+  },
+  {
+    id: "eticaret",
+    title: "🛒 E-Ticaret & Pazaryeri",
+    features: [
+      "B2B Sipariş Yönetimi",
+      "E-Ticaret Siparişleri Otomatik Aktarım",
+      "Kupon ve Kampanya Yönetimi",
+      "Misafir Form Takibi",
+      "Pazaryeri Entegrasyonu (Trendyol, Hepsiburada, N11)"
+    ]
+  },
+  {
+    id: "uretim",
+    title: "🏭 Üretim Yönetimi ERP",
+    features: [
+      "Üretim Emirleri ve Takibi",
+      "Reçete/Şablon Yönetimi",
+      "Terminal (PWA) ile Üretim Bandı Girişi",
+      "Üretim Hatları ve Bilgisayar Takibi",
+      "Üretim Maliyet ve Verimlilik Raporları"
+    ]
+  },
+  {
+    id: "servis",
+    title: "🔧 Servis & Bakım Takibi (Oto Servis)",
+    features: [
+      "İş Emri Yönetimi (Araç Kabul / İş Başladı / Tamamlandı)",
+      "Servis Şablonları (Periyodik Bakım)",
+      "TV Board - Bekleme Odası Ekranı",
+      "Müşteri ve Araç Geçmişi",
+      "Servis Kârlılık Analizi",
+      "Plaka ile Müşteri ve Araç Bilgilerini Otomatik Getirme"
+    ]
+  },
+  {
+    id: "rapor",
+    title: "📊 Raporlama & Analiz",
+    features: [
+      "Günlük/Aylık Satış Raporları",
+      "Satış Analizi ve Çok Satanlar",
+      "Ciro ve Kârlılık Raporları",
+      "Stok Raporları",
+      "Alış Analizi ve KDV Raporları"
+    ]
+  },
+  {
+    id: "crm",
+    title: "👥 Müşteri İlişkileri (CRM)",
+    features: [
+      "Potansiyel Müşteri ve Fırsat Takibi",
+      "Aktivite ve Görev Yönetimi",
+      "Toplu SMS/E-Posta Gönderimi",
+      "Müşteri İşlem Geçmişi"
+    ]
+  }
+];
 ---
 
 <BaseLayout title="Stok Pratik Özelliklerimiz | Tüm Modüller ve Yenilikler">
   <!-- Hero Section -->
-  <section class="page-hero py-12">
-    <div class="container">
-      <div class="text-center max-w-4xl mx-auto">
-        <h1 class="page-title">Bulut Tabanlı En Hızlı Stok & Muhasebe Yazılımı</h1>
-        <div class="powerful-features">
-          <h2 class="features-title">🎯 Stok Pratik'in Güçlü Yönleri</h2>
-          <div class="features-grid">
-            <div class="feature-item">🏪 Mağazacılık</div>
-            <div class="feature-item">🔄 ERP</div>
-            <div class="feature-item">🛒 E-Ticaret</div>
-            <div class="feature-item">☁️ Bulut Muhasebe</div>
-            <div class="feature-item">📱 Mobil Uyumlu</div>
-            <div class="feature-item">📊 Çok Şube Yönetimi</div>
-            <div class="feature-item">🏷️ Barkodlu Çalışma</div>
-          </div>
+<section class="page-hero py-12">
+  <div class="container">
+    <div class="text-center max-w-4xl mx-auto">
+      <h1 class="page-title">Stok Pratik ile Entegrasyon Firmasına Gerek Yok!🚀</h1>
+      <h3>Bulut Tabanlı En Hızlı Barkodlu Mağazacılık,</h3>
+      <h4>Ön Muhasebe, E-Ticaret ve B2B Yazılımı</h4>
+      
+      <!-- Hızlı Navigasyon Butonları (Tıklanabilir - Kırmızı Çerçeveli) -->
+      <div class="nav-buttons">
+
+        <p class="price-banner-text">
+        <a href="#magaza" class="nav-btn">
+          <span class="nav-icon">🏪</span>
+          Mağazacılık
+        </a>
+        <a href="#finans" class="nav-btn">
+          <span class="nav-icon">💰</span>
+          Finans
+        </a>
+        <a href="#stok" class="nav-btn">
+          <span class="nav-icon">📦</span>
+          Stok
+        </a>
+        <a href="#eticaret" class="nav-btn">
+          <span class="nav-icon">🛒</span>
+          E-Ticaret
+        </a>  
+        </p>
+
+          <p class="price-banner-text">
+          <a href="#uretim" class="nav-btn">
+          <span class="nav-icon">🏭</span>
+          Üretim
+        </a>
+        <a href="#servis" class="nav-btn">
+          <span class="nav-icon">🔧</span>
+          Oto Servis
+        </a>
+        <a href="#rapor" class="nav-btn">
+          <span class="nav-icon">📊</span>
+          Raporlama
+        </a>
+        <a href="#crm" class="nav-btn">
+          <span class="nav-icon">👥</span>
+          CRM
+        </a>
+          </p>
+        
+        
+      </div>
+
+      
+
+      <!-- Fiyat Banner -->
+      <div class="price-banner">
+        <div class="price-banner-content">
+          <span class="price-banner-icon">💰</span>
+          <p class="price-banner-text">
+            Tüm bu özellikler size özel fiyatlarla! Detaylı bilgi ve paket fiyatları için:
+          </p>
+          <a href="/paketlerimiz" class="btn btn-primary">
+            Paketleri İncele
+            <span class="btn-arrow">→</span>
+          </a>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- Physical Store Section -->
-  <section class="feature-section py-16">
+
+
+  <!-- Fiziksel Mağazanız ve Pazaryeri Aynı Ekranda (İlk versiyondaki bölüm) -->
+  <section class="feature-section py-16 bg-gray-50">
     <div class="container">
       <div class="feature-header text-center mb-12">
         <h2 class="feature-title">Fiziksel Mağazanız ve Pazaryeri Aynı Ekranda</h2>
@@ -43,44 +215,374 @@ const images = {
           Stok, satış ve müşteri takibini merkezi olarak yönetin, verimliliğinizi maksimuma çıkarın.
         </p>
       </div>
-      <div class="feature-image">
+      
+      <div class="feature-image-full">
         <img 
           src={images.general} 
-          alt="Stok Pratik Fiziksel Mağaza ve Online Pazaryeri Entegrasyonu" 
+          alt="Stok Pratik Genel Görünüm" 
           width="1920" 
           height="1080"
           loading="lazy"
-          class="feature-img"
+          class="feature-img-full"
         />
+      </div>
+    </div>
+  </section>
+
+  <!-- Mağazacılık & Gün Sonu İşlemleri -->
+  <section class="feature-section py-16" id="magaza">
+    <div class="container">
+      <div class="feature-header text-center mb-12">
+        <h2 class="feature-title">🏪 Mağazacılık ve Gün Sonu İşlemleri</h2>
+        <p class="feature-description">
+          Birden fazla mağazanızı tek merkezden yönetin. Gün sonu işlemleri, kasa/banka bakiyeleri, 
+          gider takibi ve satış raporlarına anlık erişin.
+        </p>
+      </div>
+      
+      <div class="feature-grid-2col">
+        <div class="feature-content">
+          <div class="feature-list">
+            <h3 class="list-title">📋 Gün Sonu İşlemleri</h3>
+            <ul>
+              <li>✅ Günlük brüt ciro, iade ve net ciro takibi</li>
+              <li>✅ Kasa, banka ve POS bakiyeleri tek ekranda</li>
+              <li>✅ Gider kategorileri ve anlık gider takibi</li>
+              <li>✅ Satış ve iade listeleri detaylı görüntüleme</li>
+              <li>✅ Mağaza stok sayımı ve transfer işlemleri</li>
+              <li>✅ Çalışma takvimi ve vardiya yönetimi</li>
+            </ul>
+          </div>
+          
+          <div class="feature-list mt-6">
+            <h3 class="list-title">💳 Hesap Bakiyeleri</h3>
+            <ul>
+              <li>✅ Banka hesapları anlık bakiye</li>
+              <li>✅ Nakit kasa takibi</li>
+              <li>✅ POS cihazları bakiyeleri</li>
+              <li>✅ Toplam bakiye görüntüleme</li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="feature-image">
+          <img 
+            src={images.barkod} 
+            alt="Stok Pratik Mağaza ve Gün Sonu İşlemleri" 
+            width="400" 
+            height="400"
+            loading="lazy"
+            class="feature-img"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Finans & Muhasebe -->
+  <section class="feature-section py-16 bg-gray-50" id="finans">
+    <div class="container">
+      <div class="feature-header text-center mb-12">
+        <h2 class="feature-title">💰 Finans & Muhasebe</h2>
+        <p class="feature-description">
+          Kasa, banka, cari ve e-fatura işlemlerinizi tek merkezden yönetin. Anlık bakiye takibi ve detaylı raporlarla finansal kontrol sizde.
+        </p>
+      </div>
+      
+      <div class="feature-grid-2col reversed">
+        <div class="feature-image">
+          <img 
+            src={images.finans} 
+            alt="Stok Pratik Finans ve Muhasebe" 
+            width="400" 
+            height="400"
+            loading="lazy"
+            class="feature-img"
+          />
+        </div>
+        
+        <div class="feature-content">
+          <div class="feature-list">
+            <ul>
+              <li>✅ Kasa ve Banka Yönetimi (Anlık Bakiye Takibi)</li>
+              <li>✅ Kredi Kartı POS Takibi</li>
+              <li>✅ Çek ve Senet Portföy Yönetimi</li>
+              <li>✅ Gider Listesi ve Otomatik Giderler</li>
+              <li>✅ Cari Borç/Alacak Raporları</li>
+              <li>✅ e-Fatura ve e-Arşiv Entegrasyonu</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stok & Ürün Yönetimi -->
+  <section class="feature-section py-16" id="stok">
+    <div class="container">
+      <div class="feature-header text-center mb-12">
+        <h2 class="feature-title">📦 Stok & Ürün Yönetimi</h2>
+        <p class="feature-description">
+          Stok hareketlerinizi anlık takip edin, barkodlu çalışma ile ürün giriş/çıkışlarını hızlandırın.
+        </p>
+      </div>
+      
+      <div class="feature-grid-2col">
+        <div class="feature-content">
+          <div class="feature-list">
+            <ul>
+              <li>✅ Stok Hareketleri (Giriş/Çıkış)</li>
+              <li>✅ Ürün ve Hizmet Kartları</li>
+              <li>✅ Kategori ve Marka Yönetimi</li>
+              <li>✅ Barkodlu Çalışma ve Barkod Okutma</li>
+              <li>✅ Varlık Takibi ve Demirbaş Yönetimi</li>
+              <li>✅ Fiyat Listeleri (Müşteri Özel)</li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="feature-image">
+          <img 
+            src={images.stok} 
+            alt="Stok Pratik Stok Yönetimi" 
+            width="400" 
+            height="400"
+            loading="lazy"
+            class="feature-img"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- E-Ticaret & Pazaryeri -->
+  <section class="feature-section py-16 bg-gray-50" id="eticaret">
+    <div class="container">
+      <div class="feature-header text-center mb-12">
+        <h2 class="feature-title">🛒 E-Ticaret & Pazaryeri</h2>
+        <p class="feature-description">
+          Trendyol, Hepsiburada, N11 gibi pazaryerleriyle entegre çalışın. Siparişler otomatik aktarılsın, stoklar senkronize olsun.
+        </p>
+      </div>
+      
+      <div class="feature-grid-2col reversed">
+        <div class="feature-image">
+          <img 
+            src={images.eticaret} 
+            alt="Stok Pratik E-Ticaret" 
+            width="400" 
+            height="400"
+            loading="lazy"
+            class="feature-img"
+          />
+        </div>
+        
+        <div class="feature-content">
+          <div class="feature-list">
+            <ul>
+              <li>✅ B2B Sipariş Yönetimi</li>
+              <li>✅ E-Ticaret Siparişleri Otomatik Aktarım</li>
+              <li>✅ Kupon ve Kampanya Yönetimi</li>
+              <li>✅ Misafir Form Takibi</li>
+              <li>✅ Pazaryeri Entegrasyonu (Trendyol, Hepsiburada, N11)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Üretim Yönetimi -->
+  <section class="feature-section py-16" id="uretim">
+    <div class="container">
+      <div class="feature-header text-center mb-12">
+        <h2 class="feature-title">🏭 Üretim Yönetimi ERP</h2>
+        <p class="feature-description">
+          Hammadde girişinden mamul çıkışına kadar tüm üretim süreçlerini dijitalleştirin.
+        </p>
+      </div>
+      
+      <div class="feature-grid-2col">
+        <div class="feature-content">
+          <div class="feature-list">
+            <ul>
+              <li>✅ Üretim Emirleri ve Durum Takibi</li>
+              <li>✅ Reçete/Şablon Yönetimi</li>
+              <li>✅ Terminal (PWA) ile Üretim Bandı Girişi</li>
+              <li>✅ Üretim Hatları ve Bilgisayar Takibi</li>
+              <li>✅ Maliyet ve Verimlilik Raporları</li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="feature-image">
+          <img 
+            src={images.uretim} 
+            alt="Stok Pratik Üretim Yönetimi" 
+            width="400" 
+            height="400"
+            loading="lazy"
+            class="feature-img"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Oto Servis ve Bakım Takibi -->
+  <section class="feature-section py-16 bg-gray-50" id="servis">
+    <div class="container">
+      <div class="feature-header text-center mb-12">
+        <h2 class="feature-title">🔧 Oto Servis ve Bakım Takibi</h2>
+        <p class="feature-description">
+          Araç kabulünden iş emri oluşturmaya, parça stok takibinden bekleme odası TV ekranına kadar 
+          tüm servis süreçlerinizi dijitalleştirin.
+        </p>
+      </div>
+      
+      <div class="feature-grid-2col reversed">
+        <div class="feature-image">
+          <img 
+            src={images.otoservis} 
+            alt="Stok Pratik Oto Servis Yönetimi" 
+            width="400" 
+            height="400"
+            loading="lazy"
+            class="feature-img"
+          />
+        </div>
+        
+        <div class="feature-content">
+          <div class="feature-list">
+            <h3 class="list-title">🛠️ Servis Özellikleri</h3>
+            <ul>
+              <li>✅ İş Emri Yönetimi (Araç Kabul / İş Başladı / Tamamlandı)</li>
+              <li>✅ Plaka ile müşteri ve araç bilgilerini otomatik getirme</li>
+              <li>✅ Periyodik bakım şablonları (10.000 km yağ bakımı vb.)</li>
+              <li>✅ TV Board - Müşteri bekleme odası ekranı</li>
+              <li>✅ Müşteri ve araç geçmişi (tüm işlemler)</li>
+              <li>✅ Servis kârlılık analizi ve ciro takibi</li>
+              <li>✅ Yedek parça stok takibi ve otomatik düşüm</li>
+            </ul>
+          </div>
+          
+          <div class="stats-grid mt-6">
+            <div class="stat-card">
+              <div class="stat-value">1.adım</div>
+              <div class="stat-label">İş Emrini Aç, Aşamaları Kaydet</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-value">2.adım</div>
+              <div class="stat-label">Durumunu Güncelle</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-value">3.adım</div>
+              <div class="stat-label">Müşteri heryerden takip etsin</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Raporlama & Analiz -->
+  <section class="feature-section py-16" id="rapor">
+    <div class="container">
+      <div class="feature-header text-center mb-12">
+        <h2 class="feature-title">📊 Raporlama & Analiz</h2>
+        <p class="feature-description">
+          İşletmenizin performansını anlık raporlarla takip edin, veri odaklı kararlar alın.
+        </p>
+      </div>
+      
+      <div class="feature-grid-2col">
+        <div class="feature-content">
+          <div class="feature-list">
+            <ul>
+              <li>✅ Günlük/Aylık Satış Raporları</li>
+              <li>✅ Satış Analizi ve Çok Satanlar</li>
+              <li>✅ Ciro ve Kârlılık Raporları</li>
+              <li>✅ Stok Raporları</li>
+              <li>✅ Alış Analizi ve KDV Raporları</li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="feature-image">
+          <img 
+            src={images.rapor} 
+            alt="Stok Pratik Raporlama" 
+            width="400" 
+            height="400"
+            loading="lazy"
+            class="feature-img"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Müşteri İlişkileri (CRM) -->
+  <section class="feature-section py-16 bg-gray-50" id="crm">
+    <div class="container">
+      <div class="feature-header text-center mb-12">
+        <h2 class="feature-title">👥 Müşteri İlişkileri (CRM)</h2>
+        <p class="feature-description">
+          Müşterilerinizle ilişkilerinizi güçlendirin, satış süreçlerinizi yönetin.
+        </p>
+      </div>
+      
+      <div class="feature-grid-2col reversed">
+        <div class="feature-image">
+          <img 
+            src={images.crm} 
+            alt="Stok Pratik CRM" 
+            width="400" 
+            height="400"
+            loading="lazy"
+            class="feature-img"
+          />
+        </div>
+        
+        <div class="feature-content">
+          <div class="feature-list">
+            <ul>
+              <li>✅ Potansiyel Müşteri ve Fırsat Takibi</li>
+              <li>✅ Aktivite ve Görev Yönetimi</li>
+              <li>✅ Toplu SMS/E-Posta Gönderimi</li>
+              <li>✅ Müşteri İşlem Geçmişi</li>
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- E-Fatura Section -->
-  <section class="feature-section py-16 bg-gray-50">
+  <section class="feature-section py-16" id="efatura">
     <div class="container">
       <div class="feature-header text-center mb-12">
         <h2 class="feature-title">e-Fatura Entegrasyonlarımız</h2>
         <p class="feature-description">
           Stok Pratik ile e-fatura süreçlerinizi otomatikleştirin. Tüm fatura işlemlerinizi hızlı, 
-          güvenli ve hatasız şekilde yönetin. Vergi düzenlemelerine tam uyumlu, kullanımı kolay e-fatura çözümümüz ile zaman kazanın.
+          güvenli ve hatasız şekilde yönetin.
         </p>
       </div>
-      <div class="feature-image">
+      <div class="feature-image-full">
         <img 
           src={images.efatura} 
-          alt="Stok Pratik e-Fatura Entegrasyonu Ekran Görüntüsü" 
+          alt="Stok Pratik e-Fatura Entegrasyonu" 
           width="1920" 
           height="1080"
           loading="lazy"
-          class="feature-img"
+          class="feature-img-full"
         />
       </div>
     </div>
   </section>
 
-  <!-- Why Stok Pratik Section -->
-  <section class="why-section py-16">
+  <!-- Neden Stok Pratik Section -->
+  <section class="why-section py-16 bg-gray-50">
     <div class="container">
       <div class="section-header text-center mb-12">
         <h2 class="section-title">Neden Stok Pratik</h2>
@@ -94,7 +596,7 @@ const images = {
         <div class="why-grid">
           <div class="why-image">
             <img 
-              src={images.hesap} 
+              src={images.stokpratik} 
               alt="Stok Pratik Stok Takip ve İş Yönetimi" 
               width="400" 
               height="400"
@@ -104,7 +606,7 @@ const images = {
           </div>
           <div class="why-content">
             <div class="why-icon">💡</div>
-            <h3 class="why-title">"Stok Takibi Pratik, İş Yönetimi Daha Kolay!"</h3>
+            <h3 class="why-title">"Stok Takibi Pratik, <br>İş Yönetimi Daha Kolay!"</h3>
             <p class="why-description">
               Stok Pratik, işletmenizin tüm süreçlerini dijitalleştiren, kurulum gerektirmeyen ve her cihazdan anında erişilebilen bulut tabanlı yönetim yazılımıdır.
             </p>
@@ -114,170 +616,30 @@ const images = {
                 <span class="benefit-icon">✅</span>
                 <div>
                   <strong>Kurulum Gerekmez</strong>
-                  <p>Sadece internete bağlanın, hemen kullanmaya başlayın. Hiçbir teknik kurulum gerektirmez.</p>
+                  <p>Sadece internete bağlanın, hemen kullanmaya başlayın.</p>
                 </div>
               </div>
-              
               <div class="benefit-item">
                 <span class="benefit-icon">📱</span>
                 <div>
                   <strong>Tüm Cihazlardan Erişim</strong>
-                  <p>Telefon, tablet, bilgisayar… İnternet olduğu her yerden 7/24 erişim imkanı.</p>
+                  <p>Telefon, tablet, bilgisayar… İnternet olduğu her yerden 7/24 erişim.</p>
                 </div>
               </div>
-              
               <div class="benefit-item">
                 <span class="benefit-icon">🔐</span>
                 <div>
                   <strong>Güvenli Bulut Teknolojisi</strong>
-                  <p>Verileriniz en güvenli bulut altyapısında saklanır, yedeklenir ve korunur.</p>
+                  <p>Verileriniz en güvenli bulut altyapısında saklanır.</p>
                 </div>
               </div>
-              
               <div class="benefit-item">
                 <span class="benefit-icon">🎯</span>
                 <div>
                   <strong>7/24 Destek</strong>
-                  <p>Teknik destek ekibimiz her zaman yanınızda. WhatsApp, telefon veya e-posta ile ulaşabilirsiniz.</p>
+                  <p>Teknik destek ekibimiz her zaman yanınızda.</p>
                 </div>
               </div>
-            </div>
-            
-            <div class="why-buttons">
-              <a 
-                href="https://wa.me/+905325000999?text=Merhaba,%20Stok%20Pratik%20demo%20talep%20ediyorum"
-                class="btn btn-primary btn-red"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Demo Talep Et
-                <span class="btn-subtext">WhatsApp ile Görüş</span>
-              </a>
-              
-              <a 
-                href="https://wa.me/+905325000999?text=Merhaba,%20Stok%20Pratik%20fiyat%20teklifi%20alıyorum"
-                class="btn btn-secondary btn-green"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Fiyat Teklifi Al
-                <span class="btn-subtext">WhatsApp ile Görüş</span>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Feature 2 -->
-      <div class="why-feature">
-        <div class="why-grid reversed">
-          <div class="why-content">
-            <div class="why-icon">🚀</div>
-            <h3 class="why-title">Türkiye'nin En Hızlı Online Muhasebe Mağazacılık ve ERP Yazılımı</h3>
-            <p class="why-description">
-              Üretim süreçlerinizi inanılmaz bir hızda yönetin. Gerçek zamanlı takip ve kontrol imkanı.
-            </p>
-            
-            <div class="why-benefits">
-              <div class="benefit-item">
-                <span class="benefit-icon">💰</span>
-                <div>
-                  <strong>Maliyet Etkin Çözüm</strong>
-                  <p>Donanım, sunucu, bakım gibi ek maliyetler olmadan aylık sabit ücretle kullanın.</p>
-                </div>
-              </div>
-              
-              <div class="benefit-item">
-                <span class="benefit-icon">🌱</span>
-                <div>
-                  <strong>Doğa Dostu İşletme</strong>
-                  <p>Kağıt kullanımını %90 oranında azaltarak çevre dostu bir işletme olun.</p>
-                </div>
-              </div>
-            </div>
-            
-            <div class="why-buttons">
-              <a 
-                href="https://wa.me/+905325000999?text=Merhaba,%20Stok%20Pratik%20fiyat%20teklifi%20alıyorum"
-                class="btn btn-secondary btn-green"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Fiyat Teklifi Al
-                <span class="btn-subtext">WhatsApp ile Görüş</span>
-              </a>
-              
-              <a 
-                href="https://wa.me/+905325000999?text=Merhaba,%20Stok%20Pratik%20demo%20talep%20ediyorum"
-                class="btn btn-primary btn-red"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Demo Talep Et
-                <span class="btn-subtext">WhatsApp ile Görüş</span>
-              </a>
-            </div>
-          </div>
-          
-          <div class="why-image">
-            <img 
-              src={images.hesaplama} 
-              alt="Stok Pratik Online Muhasebe ve ERP Yazılımı" 
-              width="400" 
-              height="400"
-              loading="lazy"
-              class="why-img"
-            />
-          </div>
-        </div>
-      </div>
-
-      <!-- Feature 3 -->
-      <div class="why-feature">
-        <div class="why-grid">
-          <div class="why-image">
-            <img 
-              src={images.hesaplamalar} 
-              alt="Stok Pratik Finansal Özgürlük Çözümü" 
-              width="400" 
-              height="400"
-              loading="lazy"
-              class="why-img"
-            />
-          </div>
-          <div class="why-content">
-            <div class="why-icon">💰</div>
-            <h3 class="why-title">Finansal Özgürlüğünüz İçin Stok Pratik</h3>
-            <p class="why-description">
-              Stok Pratik ile işletmenizin finansal özgürlüğüne adım atın! Kurulum maliyeti olmadan, bulut tabanlı yazılımımız sayesinde donanım, sunucu ve bakım gibi ek giderlerden kurtulun.
-            </p>
-            <p class="why-description">
-              Gerçek zamanlı stok takibi, otomatik muhasebe entegrasyonu ve detaylı raporlama ile nakit akışınızı optimize edin, israfı minimize edin ve karlılığı artırın. 7/24 erişim imkanı ile işinizi her yerden yönetebilir, finansal kontrolü tamamen elinizde tutabilirsiniz.
-            </p>
-            <p class="why-description">
-              Stok Pratik, işletmenizin finansal geleceğini şekillendiren akıllı çözümünüzdür!
-            </p>
-            
-            <div class="why-buttons">
-              <a 
-                href="https://wa.me/+905325000999?text=Merhaba,%20Stok%20Pratik%20demo%20talep%20ediyorum"
-                class="btn btn-primary btn-red"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Demo Talep Et
-                <span class="btn-subtext">WhatsApp ile Görüş</span>
-              </a>
-              
-              <a 
-                href="https://wa.me/+905325000999?text=Merhaba,%20Stok%20Pratik%20fiyat%20teklifi%20alıyorum"
-                class="btn btn-secondary btn-green"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Fiyat Teklifi Al
-                <span class="btn-subtext">WhatsApp ile Görüş</span>
-              </a>
             </div>
           </div>
         </div>
@@ -285,101 +647,38 @@ const images = {
     </div>
   </section>
 
-  <!-- General Features Section -->
-  <section class="general-features py-16 bg-gray-50">
+  <!-- Tüm Modüller Grid -->
+  <section class="modules-section py-16">
     <div class="container">
       <div class="section-header text-center mb-12">
-        <h2 class="section-title">Genel Özelliklerimiz</h2>
+        <h2 class="section-title">Tüm Modüller ve Özellikler</h2>
         <p class="section-subtitle">
-          İşletmenizin tüm ihtiyaçları için kapsamlı çözümler
+          İşletmenizin ihtiyacı olan her şey tek çatı altında
         </p>
       </div>
       
-      <div class="features-grid">
-        <div class="general-feature-card">
-          <div class="feature-icon">🏪</div>
-          <h3 class="feature-card-title">Mağazacılık</h3>
-          <p class="feature-card-description">
-            Tek merkezden stok, satış ve cari takibi ile mağaza yönetimini kolaylaştırın. Detaylı raporlarla performansınızı izleyin.
-          </p>
-        </div>
-        
-        <div class="general-feature-card">
-          <div class="feature-icon">📊</div>
-          <h3 class="feature-card-title">Çoklu Şubenizi Yönetin</h3>
-          <p class="feature-card-description">
-            Birden fazla şubenizin tüm işlemlerini tek merkezden yönetin. Şubeler arası karşılaştırmalar yapın.
-          </p>
-        </div>
-        
-        <div class="general-feature-card">
-          <div class="feature-icon">🏷️</div>
-          <h3 class="feature-card-title">Barkodlu Çalışma</h3>
-          <p class="feature-card-description">
-            Barkod okuyucu ile hızlı, hatasız stok ve satış işlemleri. Zaman kazanın, verimliliği artırın.
-          </p>
-        </div>
-        
-        <div class="general-feature-card">
-          <div class="feature-icon">🔄</div>
-          <h3 class="feature-card-title">ERP</h3>
-          <p class="feature-card-description">
-            Üretimden muhasebeye tüm işletme süreçlerini entegre şekilde yönetin. Gerçek zamanlı verilerle kontrol elinizde olsun.
-          </p>
-        </div>
-        
-        <div class="general-feature-card">
-          <div class="feature-icon">🛒</div>
-          <h3 class="feature-card-title">E-Ticaret</h3>
-          <p class="feature-card-description">
-            Online mağazalarınızla entegre çalışarak siparişleri otomatik alın. Stok ve kargo süreçlerini tek tıkla yönetin.
-          </p>
-        </div>
-        
-        <div class="general-feature-card">
-          <div class="feature-icon">☁️</div>
-          <h3 class="feature-card-title">Bulut Muhasebe</h3>
-          <p class="feature-card-description">
-            Kurulum gerektirmeden, internet olduğu her yerden 7/24 muhasebe işlemlerinizi yapın. Verileriniz her zaman güvende.
-          </p>
-        </div>
-        
-        <div class="general-feature-card">
-          <div class="feature-icon">📱</div>
-          <h3 class="feature-card-title">Mobil Uyumlu</h3>
-          <p class="feature-card-description">
-            Telefon, tablet, bilgisayar… Tüm cihazlardan sorunsuz erişim. İşinizi her yerden yönetme özgürlüğü.
-          </p>
-        </div>
-        
-        <div class="general-feature-card cta-card">
-          <div class="feature-icon">🚀</div>
-          <h3 class="feature-card-title">Hemen Başlayın</h3>
-          <p class="feature-card-description">
-            Stok Pratik'in tüm özelliklerini deneyimlemek için hemen demo talep edin veya fiyat teklifi alın.
-          </p>
-          <div class="cta-buttons">
-            <a 
-              href="https://wa.me/+905325000999?text=Merhaba,%20Stok%20Pratik%20demo%20talep%20ediyorum"
-              class="btn btn-primary"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Demo Talep Et
-            </a>
+      <div class="modules-grid">
+        {moduleCategories.map((category) => (
+          <div class="module-card" id={category.id}>
+            <h3 class="module-title">{category.title}</h3>
+            <ul class="module-features">
+              {category.features.map((feature) => (
+                <li class="module-feature-item">✓ {feature}</li>
+              ))}
+            </ul>
           </div>
-        </div>
+        ))}
       </div>
     </div>
   </section>
 
-  <!-- Final CTA -->
+  <!-- Final CTA - Aynen kalıyor -->
   <section class="final-cta py-16">
     <div class="container">
       <div class="final-cta-content text-center">
         <h2 class="final-cta-title">Stok Pratik ile İşinizi Büyütmeye Hazır mısınız?</h2>
         <p class="final-cta-description">
-          Binlerce mutlu müşterimiz gibi siz de iş süreçlerinizi dijitalleştirin, zaman kazanın ve verimliliğinizi artırın.
+          Binlerce mutlu müşterimiz gibi siz de iş süreçlerinizi dijitalleştirin.
         </p>
         <div class="final-cta-buttons mt-8">
           <a 
@@ -398,320 +697,195 @@ const images = {
     </div>
   </section>
 
+  <!-- Yukarı Çık Butonu (Sol) -->
+  <a href="#" class="scroll-to-top" id="scrollToTop" aria-label="Sayfa Başına Çık">
+    <span class="scroll-icon">↑</span>
+  </a>
+
   <style>
+
+    /* Navigasyon Butonları */
+.nav-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.nav-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  background: white;
+  border: 2px solid var(--primary-red);
+  border-radius: 50px;
+  color: var(--primary-red);
+  font-weight: 600;
+  font-size: 1rem;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow-sm);
+}
+
+.nav-btn:hover {
+  background: var(--primary-red);
+  color: white;
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+
+.nav-icon {
+  font-size: 1.2rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .nav-buttons {
+    gap: 0.75rem;
+  }
+  
+  .nav-btn {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
+  }
+}
+
+    /* Features Showcase - Birleşik Tasarım */
+.features-showcase {
+  margin: 2.5rem 0;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  backdrop-filter: blur(10px);
+}
+
+.showcase-title {
+  font-size: 1.8rem;
+  color: var(--primary-red);
+  margin-bottom: 1.5rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+.showcase-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.showcase-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.25rem;
+  background: white;
+  border: 2px solid var(--primary-red-light);
+  border-radius: 50px;
+  color: var(--text-dark);
+  font-weight: 600;
+  font-size: 1rem;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow-sm);
+}
+
+.showcase-item:hover {
+  border-color: var(--primary-red);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+  background: var(--primary-red);
+  color: white;
+}
+
+.showcase-item.highlight-item {
+  background: linear-gradient(135deg, var(--primary-red-light), white);
+  border-color: var(--primary-red);
+}
+
+.showcase-item.highlight-item:hover {
+  background: var(--primary-red);
+  color: white;
+}
+
+.showcase-icon {
+  font-size: 1.2rem;
+}
+
+.showcase-text {
+  font-size: 0.95rem;
+}
+
+/* Responsive düzenlemeler */
+@media (max-width: 768px) {
+  .features-showcase {
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+  }
+  
+  .showcase-title {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .showcase-grid {
+    gap: 0.75rem;
+  }
+  
+  .showcase-item {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+  }
+  
+  .showcase-icon {
+    font-size: 1rem;
+  }
+  
+  .showcase-text {
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .features-showcase {
+    padding: 1rem;
+  }
+  
+  .showcase-grid {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .showcase-item {
+    width: 100%;
+    justify-content: center;
+  }
+}
     /* Page Hero */
     .page-hero {
       background: linear-gradient(135deg, var(--primary-red-light) 0%, var(--bg-white) 100%);
+      padding-bottom: 2rem;
+    }
+
+    .btn-white {
+      color: white !important;
+      border-color: white !important;
     }
     
-    .page-title {
-      font-size: 2.5rem;
-      color: var(--primary-red);
-      margin-bottom: 2rem;
-      font-weight: 800;
-      line-height: 1.2;
+    .btn-white:hover {
+      background: rgba(255, 255, 255, 0.1) !important;
+      color: white !important;
     }
-    
-    .powerful-features {
-      margin-top: 2rem;
-    }
-    
-    .features-title {
-      font-size: 1.75rem;
-      color: var(--text-dark);
-      margin-bottom: 1.5rem;
-      font-weight: 700;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.5rem;
-    }
-    
-    .features-grid {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 1rem;
-      max-width: 800px;
-      margin: 0 auto;
-    }
-    
-    .feature-item {
-      background: white;
-      border: 2px solid var(--primary-red-light);
-      border-radius: var(--radius-lg);
-      padding: 0.75rem 1.5rem;
-      font-weight: 600;
-      color: var(--text-dark);
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      transition: all 0.3s ease;
-    }
-    
-    .feature-item:hover {
-      background: var(--primary-red);
-      color: white;
-      transform: translateY(-2px);
-      box-shadow: var(--shadow-md);
-    }
-    
-    /* Feature Sections */
-    .feature-section {
-      background: var(--bg-white);
-    }
-    
-    .feature-header {
-      max-width: 800px;
-      margin: 0 auto;
-    }
-    
-    .feature-title {
-      font-size: 2.25rem;
-      color: var(--primary-red);
-      margin-bottom: 1rem;
-      font-weight: 700;
-    }
-    
-    .feature-description {
-      font-size: 1.125rem;
-      color: var(--text-gray);
-      line-height: 1.6;
-    }
-    
-    .feature-image {
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-      box-shadow: var(--shadow-lg);
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-    
-    .feature-img {
-      width: 100%;
-      height: auto;
-      display: block;
-    }
-    
-    /* Why Section */
-    .section-header {
-      max-width: 800px;
-      margin: 0 auto;
-    }
-    
-    .section-title {
-      font-size: 2.5rem;
-      color: var(--text-dark);
-      margin-bottom: 1rem;
-      font-weight: 700;
-    }
-    
-    .section-subtitle {
-      font-size: 1.25rem;
-      color: var(--text-gray);
-      line-height: 1.6;
-    }
-    
-    .why-feature {
-      margin-bottom: 4rem;
-    }
-    
-    .why-feature:last-child {
-      margin-bottom: 0;
-    }
-    
-    .why-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 3rem;
-      align-items: center;
-    }
-    
-    @media (min-width: 992px) {
-      .why-grid {
-        grid-template-columns: 1fr 1fr;
-      }
-      
-      .why-grid.reversed {
-        direction: rtl;
-      }
-      
-      .why-grid.reversed .why-content {
-        direction: ltr;
-      }
-      
-      .why-grid.reversed .why-image {
-        direction: ltr;
-      }
-    }
-    
-    .why-image {
-      text-align: center;
-    }
-    
-    .why-img {
-      width: 100%;
-      max-width: 400px;
-      height: auto;
-      border-radius: var(--radius-lg);
-      box-shadow: var(--shadow-lg);
-    }
-    
-    .why-content {
-      padding: 1rem;
-    }
-    
-    .why-icon {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
-    }
-    
-    .why-title {
-      font-size: 1.75rem;
-      color: var(--text-dark);
-      margin-bottom: 1.5rem;
-      font-weight: 700;
-      line-height: 1.3;
-    }
-    
-    .why-description {
-      font-size: 1.125rem;
-      color: var(--text-gray);
-      line-height: 1.6;
-      margin-bottom: 2rem;
-    }
-    
-    .why-benefits {
-      margin: 2rem 0;
-    }
-    
-    .benefit-item {
-      display: flex;
-      gap: 1rem;
-      margin-bottom: 1.5rem;
-      align-items: flex-start;
-    }
-    
-    .benefit-icon {
-      font-size: 1.5rem;
-      flex-shrink: 0;
-      margin-top: 0.25rem;
-    }
-    
-    .benefit-item strong {
-      display: block;
-      color: var(--text-dark);
-      font-size: 1.1rem;
-      margin-bottom: 0.25rem;
-    }
-    
-    .benefit-item p {
-      color: var(--text-gray);
-      line-height: 1.5;
-      margin: 0;
-      font-size: 0.95rem;
-    }
-    
-    .why-buttons {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 1rem;
-      margin-top: 2rem;
-    }
-    
-    /* Button Styles */
-    .btn-red {
-      background: linear-gradient(135deg, #dc2626, #f97316);
-      border-color: #dc2626;
-    }
-    
-    .btn-red:hover {
-      background: linear-gradient(135deg, #b91c1c, #ea580c);
-      border-color: #b91c1c;
-    }
-    
-    .btn-green {
-      background: linear-gradient(135deg, #059669, #10b981);
-      border-color: #059669;
-    }
-    
-    .btn-green:hover {
-      background: linear-gradient(135deg, #047857, #0d9488);
-      border-color: #047857;
-    }
-    
-    .btn-subtext {
-      display: block;
-      font-size: 0.85rem;
-      opacity: 0.9;
-      margin-top: 0.25rem;
-      font-weight: normal;
-    }
-    
-    /* Buton hover yazı rengi düzeltmesi */
-    .btn-primary:hover,
-    .btn-red:hover,
-    .btn-green:hover {
-      color: #000 !important;
-    }
-    
-    /* General Features */
-    .features-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 2rem;
-    }
-    
-    .general-feature-card {
-      background: white;
-      border-radius: var(--radius-lg);
-      padding: 2rem;
-      box-shadow: var(--shadow-md);
-      transition: all 0.3s ease;
-      border: 1px solid var(--secondary-light);
-      display: flex;
-      flex-direction: column;
-    }
-    
-    .general-feature-card:hover {
-      transform: translateY(-5px);
-      box-shadow: var(--shadow-lg);
-      border-color: var(--primary-red-light);
-    }
-    
-    .general-feature-card.cta-card {
-      background: linear-gradient(135deg, var(--primary-red-light), var(--bg-white));
-      border-color: var(--primary-red);
-    }
-    
-    .feature-icon {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
-    }
-    
-    .feature-card-title {
-      font-size: 1.5rem;
-      color: var(--text-dark);
-      margin-bottom: 1rem;
-      font-weight: 700;
-    }
-    
-    .feature-card-description {
-      color: var(--text-gray);
-      line-height: 1.6;
-      flex-grow: 1;
-    }
-    
-    .cta-card .cta-buttons {
-      margin-top: 1.5rem;
-    }
-    
-    /* Final CTA */
+
     .final-cta {
       background: linear-gradient(135deg, var(--secondary-dark), var(--primary-red));
       color: white;
     }
-    
+
     .final-cta-title {
       color: white;
       font-size: 2.5rem;
@@ -727,90 +901,511 @@ const images = {
     }
     
     .final-cta-buttons {
+      color: white;
       display: flex;
       gap: 1rem;
       justify-content: center;
       flex-wrap: wrap;
     }
     
-    .btn-lg {
-      padding: 0.875rem 2rem;
-      font-size: 1.125rem;
+    .page-title {
+      font-size: 2.5rem;
+      color: #000000;  /* başlık siyah */
+      margin-top: 2rem;
+      margin-bottom: 2rem;
+      font-weight: 800;
+    }
+    
+    
+    
+    
+    
+    /* Fiyat Banner */
+    .price-banner {
+      background: linear-gradient(135deg, var(--primary-red), #050505);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem 2rem;
+      margin-top: 2rem;
+      box-shadow: var(--shadow-lg);
+    }
+    
+    .price-banner-content {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+    
+    .price-banner-icon {
+      font-size: 2rem;
+    }
+    
+    .price-banner-text {
+      font-size: 1.2rem;
+      font-weight: 500;
+      margin: 0;
+      color: white;
+    }
+    
+    .price-banner-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 2rem;
+      background: white;
+      color: var(--primary-red);
+      border-radius: 50px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: var(--shadow-md);
+    }
+    
+    .price-banner-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-lg);
+      background: var(--secondary-light);
+    }
+    
+    .btn-arrow {
+      font-size: 1.2rem;
+      transition: transform 0.3s ease;
+    }
+    
+    .price-banner-btn:hover .btn-arrow {
+      transform: translateX(5px);
+    }
+    
+    /* Feature Sections */
+    .feature-section {
+      border-bottom: 1px solid var(--secondary-light);
+    }
+    
+    .feature-section:last-child {
+      border-bottom: none;
+    }
+    
+    .feature-title {
+      font-size: 2.2rem;
+      color: var(--primary-red);
+      margin-bottom: 1rem;
+      font-weight: 700;
+    }
+    
+    .feature-description {
+      font-size: 1.2rem;
+      color: var(--text-gray);
+      max-width: 800px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+    
+    /* Feature Grid */
+    .feature-grid-2col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+    
+    .feature-grid-2col.reversed {
+      direction: rtl;
+    }
+    
+    .feature-grid-2col.reversed .feature-content {
+      direction: ltr;
+    }
+    
+    .feature-list ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    
+    .feature-list li {
+      padding: 0.5rem 0;
+      font-size: 1.1rem;
+      color: var(--text-dark);
+      border-bottom: 1px dashed var(--secondary-light);
+    }
+    
+    .feature-list li:last-child {
+      border-bottom: none;
+    }
+    
+    .list-title {
+      font-size: 1.5rem;
+      color: var(--primary-red);
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
+    
+    /* Feature Images */
+    .feature-image {
+      text-align: center;
+    }
+    
+    .feature-img {
+      max-width: 100%;
+      height: auto;
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-lg);
+      transition: transform 0.3s ease;
+    }
+    
+    .feature-img:hover {
+      transform: scale(1.02);
+    }
+    
+    .feature-image-full {
+      text-align: center;
+      max-width: 100%;
+      overflow: hidden;
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-lg);
+    }
+    
+    .feature-img-full {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: transform 0.3s ease;
+    }
+    
+    .feature-img-full:hover {
+      transform: scale(1.02);
+    }
+    
+    /* Stats Grid */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+    
+    .stat-card {
+      background: white;
+      padding: 1.5rem;
+      border-radius: var(--radius-lg);
+      text-align: center;
+      box-shadow: var(--shadow-md);
+      border: 1px solid var(--secondary-light);
+    }
+    
+    .stat-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--primary-red-light);
+    }
+    
+    .stat-value {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--primary-red);
+      line-height: 1.2;
+    }
+    
+    .stat-label {
+      font-size: 0.9rem;
+      color: var(--text-gray);
+      margin-top: 0.5rem;
+    }
+    
+    /* Modules Grid */
+    .modules-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 2rem;
+    }
+    
+    .module-card {
+      background: white;
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      box-shadow: var(--shadow-md);
+      border: 1px solid var(--secondary-light);
+      transition: all 0.3s ease;
+    }
+    
+    .module-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--primary-red-light);
+    }
+    
+    .module-title {
+      font-size: 1.3rem;
+      color: var(--primary-red);
+      margin-bottom: 1.5rem;
+      font-weight: 700;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid var(--primary-red-light);
+    }
+    
+    .module-features {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    
+    .module-feature-item {
+      padding: 0.4rem 0;
+      color: var(--text-dark);
+      font-size: 0.95rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .module-feature-item::before {
+      content: "✓";
+      color: var(--primary-red);
+      font-weight: bold;
+      margin-right: 0.5rem;
+    }
+    
+    /* Why Section */
+    .why-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+    
+    .why-img {
+      max-width: 100%;
+      height: auto;
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-lg);
+    }
+    
+    .why-icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+    
+    .why-title {
+      font-size: 2rem;
+      color: var(--text-dark);
+      margin-bottom: 1rem;
+      font-weight: 700;
+    }
+    
+    .why-description {
+      font-size: 1.1rem;
+      color: var(--text-gray);
+      line-height: 1.6;
+      margin-bottom: 2rem;
+    }
+    
+    .why-benefits {
+      display: grid;
+      gap: 1.5rem;
+    }
+    
+    .benefit-item {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+    
+    .benefit-icon {
+      font-size: 1.5rem;
+      flex-shrink: 0;
+    }
+    
+    .benefit-item strong {
+      display: block;
+      color: var(--text-dark);
+      margin-bottom: 0.25rem;
+    }
+    
+    .benefit-item p {
+      color: var(--text-gray);
+      margin: 0;
+      line-height: 1.5;
+    }
+    
+    /* Yukarı Çık Butonu - Sol */
+    .scroll-to-top {
+      position: fixed;
+      bottom: 30px;
+      left: 30px;
+      width: 50px;
+      height: 50px;
+      background: var(--primary-red);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      box-shadow: var(--shadow-lg);
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+      z-index: 1000;
+    }
+    
+    .scroll-to-top.visible {
+      opacity: 1;
+      visibility: visible;
+    }
+    
+    .scroll-to-top:hover {
+      background: var(--primary-red-dark);
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-xl);
+    }
+    
+    .scroll-icon {
+      font-size: 1.8rem;
+      font-weight: bold;
+      line-height: 1;
     }
     
     /* Responsive */
+    @media (max-width: 992px) {
+      .feature-grid-2col {
+        gap: 2rem;
+      }
+      
+      .why-grid {
+        gap: 2rem;
+      }
+    }
+    
     @media (max-width: 768px) {
       .page-title {
         font-size: 2rem;
       }
       
-      .features-title {
+      .strong-features-title {
         font-size: 1.5rem;
       }
       
-      .feature-item {
-        padding: 0.5rem 1rem;
-        font-size: 0.9rem;
-      }
-      
       .feature-title {
-        font-size: 1.75rem;
+        font-size: 1.8rem;
       }
       
       .feature-description {
         font-size: 1rem;
       }
       
-      .section-title {
-        font-size: 2rem;
+      .feature-grid-2col {
+        grid-template-columns: 1fr;
+        gap: 2rem;
       }
       
-      .section-subtitle {
-        font-size: 1.1rem;
+      .feature-grid-2col.reversed {
+        direction: ltr;
       }
       
-      .why-title {
-        font-size: 1.5rem;
+      .stats-grid {
+        grid-template-columns: 1fr;
       }
       
-      .why-description {
+      .modules-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .why-grid {
+        grid-template-columns: 1fr;
+      }
+      
+
+      
+      
+      .strong-features-grid {
+        gap: 0.75rem;
+      }
+      
+      .strong-feature-item {
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
+      }
+      
+      .price-banner-content {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+      }
+      
+      .price-banner-text {
         font-size: 1rem;
       }
       
-      .why-buttons {
-        grid-template-columns: 1fr;
+      .scroll-to-top {
+        bottom: 20px;
+        left: 20px;
+        width: 45px;
+        height: 45px;
       }
       
-      .features-grid {
-        grid-template-columns: 1fr;
-      }
-      
-      .final-cta-title {
-        font-size: 2rem;
-      }
-      
-      .final-cta-buttons {
-        flex-direction: column;
-      }
-      
-      .btn-lg {
-        width: 100%;
+      .scroll-icon {
+        font-size: 1.5rem;
       }
     }
     
     @media (max-width: 480px) {
       .page-title {
-        font-size: 1.75rem;
+        font-size: 1.5rem;
       }
       
-      .feature-item {
-        flex: 1 0 calc(50% - 0.5rem);
-        justify-content: center;
+      
+      
+      
+      
+      .strong-features-grid {
+        flex-direction: column;
       }
       
-      .why-grid.reversed {
-        direction: ltr;
+      .strong-feature-item {
+        width: 100%;
+        text-align: center;
+      }
+      
+      .feature-list li {
+        font-size: 1rem;
+      }
+      
+      .scroll-to-top {
+        bottom: 15px;
+        left: 15px;
+        width: 40px;
+        height: 40px;
+      }
+      
+      .scroll-icon {
+        font-size: 1.3rem;
       }
     }
   </style>
+
+  <script>
+    // Yukarı çık butonu için scroll olayı
+    document.addEventListener('DOMContentLoaded', function() {
+      const scrollButton = document.getElementById('scrollToTop');
+      
+      // Scroll olayını dinle
+      window.addEventListener('scroll', function() {
+        if (window.scrollY > 300) {
+          scrollButton.classList.add('visible');
+        } else {
+          scrollButton.classList.remove('visible');
+        }
+      });
+      
+      // Butona tıklandığında yumuşak scroll
+      scrollButton.addEventListener('click', function(e) {
+        e.preventDefault();
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+      });
+    });
+  </script>
 </BaseLayout>

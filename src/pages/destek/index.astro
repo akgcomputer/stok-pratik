@@ -1,0 +1,91 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const allDestekPosts = await getCollection('destek');
+---
+
+<BaseLayout title="Destek ve Nasıl Yapılır | Stok Pratik">
+  <div class="destek-container">
+    <h1>Destek Merkezi</h1>
+    <p>Stok Pratik kullanımı hakkında resimli ve videolu anlatımlar.</p>
+    
+    <div class="destek-grid">
+      {allDestekPosts.map((post) => {
+        const link = post.data.externalLink || `/destek/${post.slug}`;
+        const target = post.data.externalLink ? '_blank' : '_self';
+        return (
+          <a href={link} target={target} class="destek-card">
+            {post.data.category && <span class="category">{post.data.category}</span>}
+            <h2>{post.data.title}</h2>
+            <p class="desc">{post.data.description}</p>
+            <span class="read-more">Çözümü Görüntüle &rarr;</span>
+          </a>
+        );
+      })}
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .destek-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 100px 20px 60px;
+  }
+  .destek-container h1 {
+    font-size: 2.5rem;
+    color: var(--primary-color, #1a1a1a);
+    margin-bottom: 10px;
+  }
+  .destek-container > p {
+    font-size: 1.1rem;
+    color: #666;
+    margin-bottom: 40px;
+  }
+  .destek-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+  }
+  .destek-card {
+    background: #f9f9fa;
+    border: 1px solid #eee;
+    border-radius: 12px;
+    padding: 24px;
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.3s ease;
+    display: block;
+  }
+  .destek-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    border-color: var(--accent-color, #0056b3);
+  }
+  .category {
+    background: var(--accent-color, #0056b3);
+    color: white;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    display: inline-block;
+    margin-bottom: 15px;
+  }
+  .destek-card h2 {
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+    line-height: 1.3;
+  }
+  .desc {
+    color: #666;
+    margin-bottom: 20px;
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+  .read-more {
+    font-weight: 600;
+    color: var(--accent-color, #0056b3);
+  }
+</style>

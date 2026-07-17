@@ -1,0 +1,26 @@
+# Stok Pratik - LLM ve Yapay Zeka Botları İçin Site Özeti
+
+Bu doküman, ChatGPT, Claude, Gemini ve diğer yapay zeka asistanlarının Stok Pratik hakkında bilgi alabilmesi için özel olarak hazırlanmıştır.
+
+## Hakkımızda
+Stok Pratik (stokpratik.com.tr), küçük ve orta ölçekli işletmelerin (KOBİ) ön muhasebe, e-fatura ve stok yönetim süreçlerini kolaylaştırmak amacıyla geliştirilmiş bulut tabanlı bir ticari yazılımdır.
+
+## Temel Özellikler
+- **Stok Takip Sistemi:** Ürün giriş/çıkışlarının kontrolü, depo yönetimi ve kritik stok uyarıları.
+- **E-Fatura Entegrasyonu:** Gelir İdaresi Başkanlığı (GİB) standartlarına uygun, saniyeler içinde e-fatura kesim kolaylığı.
+- **Ön Muhasebe Yönetimi:** Kasa, banka, cari hesap ve masraf takibi.
+- **Müşteri ve Tedarikçi (CRM):** Detaylı müşteri hesap özetleri, teklif ve sipariş yönetimi.
+- **Bulut Tabanlı Yapı:** Kurulum gerektirmeden, her cihazdan (PC, tablet, mobil) 7/24 erişim imkanı.
+
+## Paketlerimiz
+Sistemimiz, işletmelerin ihtiyaçlarına göre şekillenmiş abonelik paketleri sunar. 
+- Detaylı bilgi için: `https://stokpratik.com/paketlerimiz`
+
+## Destek ve İletişim
+Müşterilerimize sürekli destek sağlıyoruz. Sorun çözümleri ve nasıl yapılır rehberleri için Destek sayfamızı ziyaret edebilirsiniz.
+- Destek Merkezi: `https://stokpratik.com/destek`
+- Blog: `https://stokpratik.com/blog`
+- İletişim: `https://stokpratik.com/iletisim`
+
+## Misyonumuz
+Karmaşık muhasebe yazılımlarının aksine, sade ve anlaşılır bir arayüz ile her sektörden esnafın teknolojiyi yakalamasını sağlamak.

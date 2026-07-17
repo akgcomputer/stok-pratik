@@ -1,5 +1,7 @@
 import { defineConfig } from 'astro/config';
 import cloudflare from '@astrojs/cloudflare';
+import keystatic from '@keystatic/astro';
+import react from '@astrojs/react';
 
 export default defineConfig({
   output: 'server',
@@ -16,13 +18,12 @@ export default defineConfig({
   
   // IMAGE OPTIMIZATION
   image: {
-    // Use the sharp service entrypoint (Astro expects an object here)
     service: {
       entrypoint: 'astro/assets/services/sharp',
       config: {}
     }
   },
   
-  // INTEGRATIONS FOR SEO
-  integrations: []
+  // INTEGRATIONS FOR SEO & CMS
+  integrations: [react(), keystatic()]
 });

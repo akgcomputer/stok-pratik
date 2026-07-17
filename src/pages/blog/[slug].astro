@@ -1,0 +1,69 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+export const prerender = true;
+
+export async function getStaticPaths() {
+  const blogEntries = await getCollection('blog');
+  return blogEntries.map(entry => ({
+    params: { slug: entry.slug }, props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+---
+
+<BaseLayout title={`${entry.data.title} | Stok Pratik Blog`}>
+  <article class="blog-post">
+    <header class="post-header">
+      <h1>{entry.data.title}</h1>
+      <p class="meta">Yazar: {entry.data.author}</p>
+    </header>
+    <div class="post-content">
+      <Content />
+    </div>
+  </article>
+</BaseLayout>
+
+<style>
+  .blog-post {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 100px 20px 60px;
+  }
+  .post-header {
+    margin-bottom: 40px;
+    text-align: center;
+  }
+  .post-header h1 {
+    font-size: 2.5rem;
+    color: var(--primary-color, #1a1a1a);
+    margin-bottom: 15px;
+  }
+  .meta {
+    color: #666;
+    font-size: 0.95rem;
+  }
+  .post-content {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #333;
+  }
+  .post-content h2 {
+    margin-top: 40px;
+    margin-bottom: 20px;
+    font-size: 1.8rem;
+  }
+  .post-content p {
+    margin-bottom: 20px;
+  }
+  .post-content ul, .post-content ol {
+    margin-bottom: 20px;
+    padding-left: 20px;
+  }
+  .post-content li {
+    margin-bottom: 10px;
+  }
+</style>

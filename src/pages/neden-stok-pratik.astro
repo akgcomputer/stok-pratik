@@ -1,6 +1,9 @@
 ---
 // src/pages/neden-stok-pratik.astro
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const destekPosts = await getCollection('destek');
 ---
 
 <BaseLayout title="Neden Stok Pratik? - Stok Pratik ERP">
@@ -187,6 +190,25 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     </div>
   </section>
 
+  <!-- Destek ve Nasıl Yapılır Section -->
+  <section class="destek-section py-16">
+    <div class="container">
+      <div class="section-header text-center">
+        <h2>🛠️ Destek & Nasıl Yapılır?</h2>
+        <p>Sistem kullanımıyla ilgili kılavuzlar ve rehberler</p>
+      </div>
+      
+      <div class="destek-grid">
+        {destekPosts.map(post => (
+          <a href={`/destek/${post.slug}`} class="destek-card">
+            <h4>{post.data.title}</h4>
+            <span class="read-more">Kılavuzu İncele &rarr;</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
   <!-- CTA Section -->
   <section class="cta-section py-16">
     <div class="container text-center">
@@ -365,6 +387,51 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       to { opacity: 1; transform: translateY(0); }
     }
 
+    /* Destek Section */
+    .destek-section {
+      background-color: var(--bg-white);
+    }
+
+    .destek-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--spacing-lg);
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .destek-card {
+      background: var(--bg-light);
+      padding: var(--spacing-lg);
+      border-radius: var(--radius-md);
+      text-decoration: none;
+      color: var(--text-dark);
+      border: 1px solid var(--secondary-light);
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .destek-card:hover {
+      border-color: var(--primary-red);
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .destek-card h4 {
+      margin-bottom: var(--spacing-sm);
+      color: var(--text-dark);
+      font-size: 1.1rem;
+    }
+
+    .read-more {
+      color: var(--primary-red);
+      font-weight: 600;
+      font-size: 0.9rem;
+      margin-top: var(--spacing-sm);
+    }
+
     /* CTA Section */
     .cta-section {
       background: linear-gradient(135deg, var(--primary-red-light), var(--primary-red));
@@ -401,6 +468,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         grid-template-columns: 1fr;
       }
       
+      .destek-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
       .benefits-grid {
         grid-template-columns: 1fr;
       }
@@ -422,6 +493,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     @media (max-width: 480px) {
       .benefit-card {
         padding: var(--spacing-md);
+      }
+      
+      .destek-grid {
+        grid-template-columns: 1fr;
       }
       
       .faq-question {

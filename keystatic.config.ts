@@ -20,6 +20,7 @@ export default config({
       label: 'Blog Yazıları',
       slugField: 'title',
       path: 'src/content/blog/*',
+      previewUrl: 'https://stokpratik.com.tr/blog/{category}/{slug}/',
       format: { contentField: 'content' },
       schema: {
         title: fields.slug({ name: { label: 'Başlık' } }),
@@ -48,6 +49,7 @@ export default config({
       label: 'Destek & Nasıl Yapılır',
       slugField: 'title',
       path: 'src/content/destek/*',
+      previewUrl: 'https://stokpratik.com.tr/destek/{slug}/',
       format: { contentField: 'content' },
       schema: {
         title: fields.slug({ name: { label: 'Başlık' } }),

@@ -8,7 +8,6 @@ description: >-
   odaklanmak için ihtiyacınız olan her şey var.
 category: muhasebe-sistemleri
 author: Fatih
-externalLink: https://stokpratik.com.tr/paketlerimiz
 tags: >-
   `Kolay Stok Programı`, `Depo Takip Programı`, `Stok Yönetimi`, `Envanter
   Takibi`, `Barkodlu Stok`, `Çoklu Depo Yönetimi`, `Bulut Stok Programı`, `Stok

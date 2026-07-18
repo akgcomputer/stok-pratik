@@ -1,6 +1,18 @@
 ---
 // src/components/Footer.astro
 import SocialMedia from './SocialMedia.astro';
+import { getCollection } from 'astro:content';
+
+const blogPosts = await getCollection('blog');
+const destekPosts = await getCollection('destek');
+
+const allPosts = [
+  ...blogPosts.map(p => ({ title: p.data.title, url: `/blog/${p.data.category || 'genel'}/${p.slug}` })),
+  ...destekPosts.map(p => ({ title: p.data.title, url: `/destek/${p.slug}` }))
+];
+
+// Randomize and pick up to 20
+const shuffledPosts = allPosts.sort(() => 0.5 - Math.random()).slice(0, 20);
 ---
 
 <footer class="site-footer">
@@ -86,6 +98,16 @@ import SocialMedia from './SocialMedia.astro';
           <li><a href="/sitemap">Site Haritası</a></li>
         </ul>
       </div>
+
+      <!-- Faydalı İçerikler (Rastgele 20) -->
+      <div class="footer-section">
+        <h4>Faydalı İçerikler</h4>
+        <ul class="footer-links random-links">
+          {shuffledPosts.map(post => (
+            <li><a href={post.url} title={post.title}>{post.title}</a></li>
+          ))}
+        </ul>
+      </div>
     </div>
     
     <div class="footer-bottom">
@@ -103,9 +125,29 @@ import SocialMedia from './SocialMedia.astro';
 
   .footer-content {
     display: grid;
-    grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 2fr 1fr 1fr 1fr 1fr 1.5fr;
     gap: var(--spacing-xl);
     margin-bottom: var(--spacing-xl);
+  }
+  .random-links {
+    max-height: 250px;
+    overflow-y: auto;
+    padding-right: 10px;
+  }
+  /* Scrollbar styling for random-links */
+  .random-links::-webkit-scrollbar {
+    width: 6px;
+  }
+  .random-links::-webkit-scrollbar-track {
+    background: rgba(255,255,255,0.05); 
+    border-radius: 4px;
+  }
+  .random-links::-webkit-scrollbar-thumb {
+    background: rgba(255,255,255,0.2); 
+    border-radius: 4px;
+  }
+  .random-links::-webkit-scrollbar-thumb:hover {
+    background: rgba(255,255,255,0.3); 
   }
 
   .footer-section h3,

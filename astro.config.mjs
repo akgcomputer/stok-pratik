@@ -8,7 +8,7 @@ export default defineConfig({
   adapter: cloudflare(),
   
   // SEO OPTIMIZATIONS
-  site: 'https://stokpratik.com',
+  site: 'https://stokpratik.com.tr',
   compressHTML: true,
   
   // BUILD OPTIMIZATIONS

@@ -12,6 +12,7 @@ const blogCollection = defineCollection({
   schema: z.object({
     title: z.string(),
     description: z.string(),
+    category: z.string().nullable().optional(),
     author: z.string().default('Stok Pratik Ekibi'),
     externalLink: z.string().url().optional(),
     image: z.string().optional(),

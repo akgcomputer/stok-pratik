@@ -7,7 +7,11 @@ export const prerender = true;
 export async function getStaticPaths() {
   const blogEntries = await getCollection('blog');
   return blogEntries.map(entry => ({
-    params: { slug: entry.slug }, props: { entry },
+    params: { 
+      category: entry.data.category || 'genel',
+      slug: entry.slug 
+    }, 
+    props: { entry },
   }));
 }
 

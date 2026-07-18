@@ -24,6 +24,11 @@ export default config({
       schema: {
         title: fields.slug({ name: { label: 'Başlık' } }),
         description: fields.text({ label: 'Kısa Açıklama', multiline: true }),
+        category: fields.relationship({
+          label: 'Kategori',
+          collection: 'kategoriler',
+          validation: { isRequired: false }
+        }),
         author: fields.text({ label: 'Yazar', defaultValue: 'Stok Pratik Ekibi' }),
         externalLink: fields.url({ label: 'Dış Bağlantı (Tıklanınca başka sayfaya gitsin)', description: 'Doldurulursa tıklanınca yeni sekmede bu link açılır.' }),
         tags: fields.array(fields.text({ label: 'Etiket' }), { label: 'Etiketler', itemLabel: props => props.value }),

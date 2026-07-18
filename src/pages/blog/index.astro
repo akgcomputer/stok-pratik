@@ -12,7 +12,8 @@ const allBlogPosts = await getCollection('blog');
     
     <div class="blog-grid">
       {allBlogPosts.map((post) => {
-        const link = post.data.externalLink || `/blog/${post.slug}`;
+        const category = post.data.category || 'genel';
+        const link = post.data.externalLink || `/blog/${category}/${post.slug}`;
         const target = post.data.externalLink ? '_blank' : '_self';
         return (
           <article class="blog-card">

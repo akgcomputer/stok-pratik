@@ -3,7 +3,7 @@ import { config, fields, collection } from '@keystatic/core';
 export default config({
   storage: import.meta.env.DEV
     ? { kind: 'local' }
-    : { kind: 'github', repo: 'mehmetfatihakgun-projeler/stokpratik' },
+    : { kind: 'github', repo: 'akgcomputer/stok-pratik' },
   collections: {
     kategoriler: collection({
       label: 'Kategoriler',

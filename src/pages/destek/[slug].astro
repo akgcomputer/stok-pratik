@@ -13,6 +13,15 @@ export async function getStaticPaths() {
 
 const { entry } = Astro.props;
 const { Content } = await entry.render();
+
+// Process YouTube link to embed format
+let videoEmbedUrl = entry.data.videoLink;
+if (videoEmbedUrl) {
+  const ytMatch = videoEmbedUrl.match(/^(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/watch\?v=|youtu\.be\/)([^&?\s]+)/);
+  if (ytMatch) {
+    videoEmbedUrl = `https://www.youtube.com/embed/${ytMatch[1]}`;
+  }
+}
 ---
 
 <BaseLayout title={`${entry.data.title} | Stok Pratik Destek`}>
@@ -22,10 +31,10 @@ const { Content } = await entry.render();
       <h1>{entry.data.title}</h1>
     </header>
     
-    {entry.data.videoLink && (
+    {videoEmbedUrl && (
       <div class="video-container">
         <iframe 
-          src={entry.data.videoLink} 
+          src={videoEmbedUrl} 
           title="Video Player" 
           frameborder="0" 
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 

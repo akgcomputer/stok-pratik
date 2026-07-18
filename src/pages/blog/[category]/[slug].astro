@@ -24,6 +24,13 @@ const { Content } = await entry.render();
     <header class="post-header">
       <h1>{entry.data.title}</h1>
       <p class="meta">Yazar: {entry.data.author}</p>
+      {entry.data.tags && (
+        <div class="tags">
+          {entry.data.tags.split(',').map((tag: string) => (
+            <span class="tag">{tag.trim()}</span>
+          ))}
+        </div>
+      )}
     </header>
     <div class="post-content">
       <Content />
@@ -49,6 +56,20 @@ const { Content } = await entry.render();
   .meta {
     color: #666;
     font-size: 0.95rem;
+    margin-bottom: 15px;
+  }
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+  }
+  .tag {
+    background: #f0f0f0;
+    color: #555;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
   }
   .post-content {
     font-size: 1.1rem;

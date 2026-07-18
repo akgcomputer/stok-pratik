@@ -16,7 +16,7 @@ const blogCollection = defineCollection({
     author: z.string().default('Stok Pratik Ekibi'),
     externalLink: z.string().url().optional(),
     image: z.string().optional(),
-    tags: z.array(z.string()).optional(),
+    tags: z.string().optional(),
   }),
 });
 

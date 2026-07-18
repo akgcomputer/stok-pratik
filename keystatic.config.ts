@@ -31,7 +31,7 @@ export default config({
         }),
         author: fields.text({ label: 'Yazar', defaultValue: 'Stok Pratik Ekibi' }),
         externalLink: fields.url({ label: 'Dış Bağlantı (Tıklanınca başka sayfaya gitsin)', description: 'Doldurulursa tıklanınca yeni sekmede bu link açılır.' }),
-        tags: fields.array(fields.text({ label: 'Etiket' }), { label: 'Etiketler', itemLabel: props => props.value }),
+        tags: fields.text({ label: 'Etiketler', description: 'Etiketleri aralarına virgül koyarak yazın (Örn: muhasebe, ön muhasebe, e-fatura)' }),
         content: fields.markdoc({
           label: 'İçerik',
           extension: 'md',

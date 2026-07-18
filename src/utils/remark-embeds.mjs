@@ -1,10 +1,21 @@
-import { visit } from 'unist-util-visit';
+// Custom AST visitor to avoid dependencies
+function visit(node, type, handler, index = null, parent = null) {
+  if (!node) return;
+  if (node.type === type) {
+    handler(node, index, parent);
+  }
+  if (node.children) {
+    node.children.forEach((child, i) => {
+      visit(child, type, handler, i, node);
+    });
+  }
+}
 
 export default function remarkEmbeds() {
   return (tree) => {
     // 1. Handle plain text URLs or raw iframes that might be wrapped in text nodes
     visit(tree, 'text', (node, index, parent) => {
-      if (!parent || index === undefined) return;
+      if (!parent || index === null) return;
       const text = node.value.trim();
       
       // Auto-embed YouTube URLs
@@ -32,7 +43,7 @@ export default function remarkEmbeds() {
     
     // 2. Handle links (if Keystatic made the YouTube URL a clickable link instead of plain text)
     visit(tree, 'link', (node, index, parent) => {
-      if (!parent || index === undefined) return;
+      if (!parent || index === null) return;
       const url = node.url;
       const ytMatch = url.match(/^(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/watch\?v=|youtu\.be\/)([^&?\s]+)$/);
       

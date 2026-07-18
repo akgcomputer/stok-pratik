@@ -11,7 +11,7 @@ const blogCollection = defineCollection({
   type: 'content',
   schema: z.object({
     title: z.string(),
-    description: z.string(),
+    description: z.string().optional(),
     category: z.string().nullable().optional(),
     author: z.string().default('Stok Pratik Ekibi'),
     externalLink: z.string().url().optional(),
@@ -24,7 +24,7 @@ const destekCollection = defineCollection({
   type: 'content',
   schema: z.object({
     title: z.string(),
-    description: z.string(),
+    description: z.string().optional(),
     category: z.string().optional(),
     externalLink: z.string().url().optional(),
     videoLink: z.string().optional(),

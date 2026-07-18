@@ -11,8 +11,8 @@ const allPosts = [
   ...destekPosts.map(p => ({ title: p.data.title, url: `/destek/${p.slug}` }))
 ];
 
-// Randomize and pick up to 20
-const shuffledPosts = allPosts.sort(() => 0.5 - Math.random()).slice(0, 20);
+// Randomize and pick up to 21
+const shuffledPosts = allPosts.sort(() => 0.5 - Math.random()).slice(0, 21);
 ---
 
 <footer class="site-footer">
@@ -99,15 +99,16 @@ const shuffledPosts = allPosts.sort(() => 0.5 - Math.random()).slice(0, 20);
         </ul>
       </div>
 
-      <!-- Faydalı İçerikler (Rastgele 20) -->
-      <div class="footer-section">
-        <h4>Faydalı İçerikler</h4>
-        <ul class="footer-links random-links">
-          {shuffledPosts.map(post => (
-            <li><a href={post.url} title={post.title}>{post.title}</a></li>
-          ))}
-        </ul>
-      </div>
+    </div>
+    
+    <!-- Faydalı İçerikler (Rastgele 21) -->
+    <div class="footer-useful-links">
+      <h4>Faydalı İçerikler</h4>
+      <ul class="footer-links random-links">
+        {shuffledPosts.map(post => (
+          <li><a href={post.url} title={post.title}>{post.title}</a></li>
+        ))}
+      </ul>
     </div>
     
     <div class="footer-bottom">
@@ -125,29 +126,28 @@ const shuffledPosts = allPosts.sort(() => 0.5 - Math.random()).slice(0, 20);
 
   .footer-content {
     display: grid;
-    grid-template-columns: 2fr 1fr 1fr 1fr 1fr 1.5fr;
+    grid-template-columns: 2.5fr 1fr 1fr 1fr 1fr 1fr;
     gap: var(--spacing-xl);
     margin-bottom: var(--spacing-xl);
   }
+  .footer-useful-links {
+    margin-top: var(--spacing-xl);
+    padding-top: var(--spacing-md);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    margin-bottom: var(--spacing-xl);
+  }
+  .footer-useful-links h4 {
+    color: white;
+    margin-bottom: var(--spacing-md);
+    text-align: center;
+  }
   .random-links {
-    max-height: 250px;
-    overflow-y: auto;
-    padding-right: 10px;
+    column-count: 3;
+    column-gap: 40px;
   }
-  /* Scrollbar styling for random-links */
-  .random-links::-webkit-scrollbar {
-    width: 6px;
-  }
-  .random-links::-webkit-scrollbar-track {
-    background: rgba(255,255,255,0.05); 
-    border-radius: 4px;
-  }
-  .random-links::-webkit-scrollbar-thumb {
-    background: rgba(255,255,255,0.2); 
-    border-radius: 4px;
-  }
-  .random-links::-webkit-scrollbar-thumb:hover {
-    background: rgba(255,255,255,0.3); 
+  .random-links li {
+    break-inside: avoid;
+    margin-bottom: var(--spacing-sm);
   }
 
   .footer-section h3,
@@ -215,11 +215,17 @@ const shuffledPosts = allPosts.sort(() => 0.5 - Math.random()).slice(0, 20);
     .footer-content {
       grid-template-columns: 1fr 1fr;
     }
+    .random-links {
+      column-count: 2;
+    }
   }
 
   @media (max-width: 480px) {
     .footer-content {
       grid-template-columns: 1fr;
+    }
+    .random-links {
+      column-count: 1;
     }
     
     .footer-section h4:empty {

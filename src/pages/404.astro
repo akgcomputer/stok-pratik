@@ -1,0 +1,84 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Sayfa Bulunamadı | Stok Pratik">
+  <div class="error-container">
+    <h1>404</h1>
+    <h2>Aradığınız Sayfa Bulunamadı</h2>
+    <p>Maalesef ulaşmaya çalıştığınız sayfa taşınmış, silinmiş veya hiç var olmamış olabilir.</p>
+    <div class="actions">
+      <a href="/" class="btn btn-primary">Ana Sayfaya Dön</a>
+      <a href="/blog" class="btn btn-secondary">Blog'a Göz At</a>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .error-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 150px 20px;
+    text-align: center;
+    min-height: 60vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .error-container h1 {
+    font-size: 8rem;
+    color: var(--primary-color, #1a1a1a);
+    margin-bottom: 0;
+    line-height: 1;
+    text-shadow: 4px 4px 0px rgba(0,0,0,0.05);
+  }
+  
+  .error-container h2 {
+    font-size: 2rem;
+    color: #333;
+    margin-top: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .error-container p {
+    font-size: 1.2rem;
+    color: #666;
+    margin-bottom: 40px;
+  }
+  
+  .actions {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+  }
+  
+  .btn {
+    padding: 12px 30px;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+  
+  .btn-primary {
+    background: var(--primary-color, #1a1a1a);
+    color: white;
+  }
+  
+  .btn-primary:hover {
+    background: #000;
+    transform: translateY(-2px);
+  }
+  
+  .btn-secondary {
+    background: #f0f0f0;
+    color: #333;
+  }
+  
+  .btn-secondary:hover {
+    background: #e0e0e0;
+    transform: translateY(-2px);
+  }
+</style>

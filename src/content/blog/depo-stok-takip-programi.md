@@ -11,12 +11,7 @@ description: >
   görünürlük** ve **tam kontrol** sunar.
 category: muhasebe-sistemleri
 author: Stok Pratik Ekibi
-tags:
-  - >-
-    `Depo Stok Takip Programı`, `Stok Programı`, `Depo Yönetimi`, `Envanter
-    Takibi`, `Barkodlu Stok Takibi`, `Stok Kontrol`, `Stok Otomasyonu`, `Çoklu
-    Depo Yönetimi`, `Kritik Stok Uyarısı`, `Stok Pratik`, `Stok Takip Yazılımı`,
-    `KOBİ Stok Çözümü`
+tags: Depo Stok Takip Programı, Stok Programı, Depo Yönetimi, Envanter Takibi, Barkodlu Stok Takibi, Stok Kontrol, Stok Otomasyonu, Çoklu Depo Yönetimi, Kritik Stok Uyarısı, Stok Pratik, Stok Takip Yazılımı, KOBİ Stok Çözümü
 ---
 Doğru bir depo stok takip programı, sadece stok miktarını göstermekle kalmaz; aynı zamanda ürün giriş-çıkışlarını barkod ile hızlandırır, çoklu depo yönetimine olanak tanır, minimum stok seviyeleri için otomatik uyarılar gönderir ve detaylı raporlarla işletmenizin nabzını tutar.
 

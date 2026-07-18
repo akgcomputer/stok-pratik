@@ -8,17 +8,7 @@ description: >-
   gereksiz harcamaların önüne geçin ve iş akışınızı hızlandırın.
 category: muhasebe-sistemleri
 author: Stok Pratik Ekibi
-tags:
-  - Stok Takibi
-  - Depo Yönetimi
-  - KOBİ Stok Çözümü
-  - WMS
-  - Stok Otomasyonu
-  - Kritik Stok Uyarısı
-  - Çoklu Depo Yönetimi
-  - Barkodlu Stok Takibi
-  - Stok Yönetim Yazılımı
-  - Envanter Kontrolü
+tags: Stok Takibi, Depo Yönetimi, KOBİ Stok Çözümü, WMS, Stok Otomasyonu, Kritik Stok Uyarısı, Çoklu Depo Yönetimi, Barkodlu Stok Takibi, Stok Yönetim Yazılımı, Envanter Kontrolü
 ---
 ### **Stok Takibi Nedir ve Neden Bu Kadar Önemlidir?**
 

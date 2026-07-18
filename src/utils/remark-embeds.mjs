@@ -47,11 +47,19 @@ export default function remarkEmbeds() {
       const url = node.url;
       const ytMatch = url.match(/^(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/watch\?v=|youtu\.be\/)([^&?\s]+)$/);
       
-      // Only embed if the link text is the URL itself
-      if (ytMatch && node.children.length === 1 && node.children[0].value === url) {
-        const videoId = ytMatch[1];
-        const iframe = `<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; margin-bottom: 20px; border-radius: 8px;"><iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" src="https://www.youtube.com/embed/${videoId}" frameborder="0" allowfullscreen></iframe></div>`;
-        parent.children[index] = { type: 'html', value: iframe };
+      if (ytMatch) {
+        // Extract all text from inside the link (handles bold/italic)
+        let linkText = '';
+        visit(node, 'text', (textNode) => {
+          linkText += textNode.value;
+        });
+        
+        // If the text inside the link is basically the URL (or wrapped in formatting)
+        if (linkText.trim() === url || linkText.trim().replace(/^https?:\/\//, '') === url.replace(/^https?:\/\//, '')) {
+          const videoId = ytMatch[1];
+          const iframe = `<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; margin-bottom: 20px; border-radius: 8px;"><iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" src="https://www.youtube.com/embed/${videoId}" frameborder="0" allowfullscreen></iframe></div>`;
+          parent.children[index] = { type: 'html', value: iframe };
+        }
       }
     });
   };

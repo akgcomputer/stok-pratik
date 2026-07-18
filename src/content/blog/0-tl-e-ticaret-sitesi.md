@@ -1,5 +1,5 @@
 ---
-title: 0 TL E-ticaret Sitesi
+title: 0 TL E-ticaret Sitesi 🤑
 description: >-
   E-ticaret dünyasına sıfır maliyetle mi adım atmak istiyorsunuz? Stok Pratik
   ile ücretsiz e-ticaret altyapısına sahip olun, online satışa başlayın,

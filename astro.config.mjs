@@ -3,6 +3,8 @@ import cloudflare from '@astrojs/cloudflare';
 import keystatic from '@keystatic/astro';
 import react from '@astrojs/react';
 
+import remarkEmbeds from './src/utils/remark-embeds.mjs';
+
 export default defineConfig({
   output: 'server',
   adapter: cloudflare(),
@@ -10,6 +12,11 @@ export default defineConfig({
   // SEO OPTIMIZATIONS
   site: 'https://stokpratik.com.tr',
   compressHTML: true,
+  
+  // MARKDOWN CONFIGURATION
+  markdown: {
+    remarkPlugins: [remarkEmbeds],
+  },
   
   // BUILD OPTIMIZATIONS
   build: {

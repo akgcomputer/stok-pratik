@@ -9,7 +9,6 @@ description: >
   bağlantısı olan her cihazdan işletmenizi yönetin.
 category: muhasebe-sistemleri
 author: Stok Pratik Ekibi
-externalLink: https://stokpratik.com.tr/ozelliklerimiz
 tags: >-
   `Bulut Tabanlı Stok Programı`, `Muhasebe Yazılımı`, `Stok ve Muhasebe
   Entegrasyonu`, `Online Stok Takibi`, `Depo Yönetimi`, `Fatura Kesme Programı`,

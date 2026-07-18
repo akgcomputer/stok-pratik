@@ -195,11 +195,7 @@ Kısmi Kabul işlemleri yapılır
 
 ![](/images/destek/magazalar-arasi-urun-transferi-nasil-yapilir/image.png)
 
-Miktar ile Kontrol farklı ise
-Kısmı olarak tamamlamak için onaylayın! seçilmelidir..
-fark yoksa rakamlar aynen yazılır ve
-Transferi Kabul Et butonuna basılır..
-Transferi hatalı buluyorsanız Geri Gönder butonuna basınız
+Miktar ile Kontrol farklı ise Kısmı olarak tamamlamak için onaylayın! seçilmelidir.. fark yoksa rakamlar aynen yazılır ve Transferi Kabul Et butonuna basılır.. Transferi hatalı buluyorsanız Geri Gönder butonuna basınız..
 
 ![](/images/destek/magazalar-arasi-urun-transferi-nasil-yapilir/image.png)
 

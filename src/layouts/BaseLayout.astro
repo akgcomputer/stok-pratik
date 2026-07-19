@@ -5,7 +5,13 @@ import Footer from '../components/Footer.astro';
 import WhatsAppFloat from '../components/WhatsAppFloat.astro';
 import '../styles/global.css';
 
-const { title = "Stok Pratik - ERP Çözümleri" } = Astro.props;
+const { 
+  title = "Stok Pratik - KOBİ'ler İçin En İyi Ön Muhasebe ve ERP Yazılımı",
+  description = "Stok Pratik ERP ile stok yönetiminizi kolaylaştırın, e-fatura kesin, gelir gider takibi yapın. KOBİ'ler, Oto Servis ve Kuyumcular için bulut tabanlı ticari yazılım.",
+  image = "/images/site-foto/fav-stok-pratik-2.png"
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, 'https://stokpratik.com.tr');
 ---
 
 <!doctype html>
@@ -13,9 +19,26 @@ const { title = "Stok Pratik - ERP Çözümleri" } = Astro.props;
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Stok Pratik ERP ile stok yönetiminizi kolaylaştırın. İşletmeniz için en iyi stok takip çözümü." />
-    <meta name="keywords" content="stok yönetimi, stok takip, envanter yönetimi, ticari yazılım" />
+    <meta name="description" content={description} />
+    <meta name="keywords" content="stok yönetimi, stok takip, envanter yönetimi, ticari yazılım, ön muhasebe, e-fatura, oto servis programı, kuyumcu yazılımı" />
     <title>{title}</title>
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href={canonicalURL} />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={new URL(image, canonicalURL)} />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={canonicalURL} />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={new URL(image, canonicalURL)} />
     
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">

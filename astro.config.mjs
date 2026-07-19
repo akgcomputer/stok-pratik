@@ -2,6 +2,7 @@ import { defineConfig } from 'astro/config';
 import cloudflare from '@astrojs/cloudflare';
 import keystatic from '@keystatic/astro';
 import react from '@astrojs/react';
+import sitemap from '@astrojs/sitemap';
 
 import remarkEmbeds from './src/utils/remark-embeds.mjs';
 
@@ -50,5 +51,5 @@ export default defineConfig({
   },
   
   // INTEGRATIONS FOR SEO & CMS
-  integrations: [react(), keystatic()]
+  integrations: [react(), keystatic(), sitemap()]
 });

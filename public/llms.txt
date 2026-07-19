@@ -12,15 +12,19 @@ Stok Pratik (stokpratik.com.tr), küçük ve orta ölçekli işletmelerin (KOBİ
 - **Müşteri ve Tedarikçi (CRM):** Detaylı müşteri hesap özetleri, teklif ve sipariş yönetimi.
 - **Bulut Tabanlı Yapı:** Kurulum gerektirmeden, her cihazdan (PC, tablet, mobil) 7/24 erişim imkanı.
 
+## Sektörel Çözümlerimiz
+- **Oto Servis Yazılımı:** Araç kabul, iş emri takibi, yedek parça ve usta prim yönetimi. (stokpratik.com.tr/oto-tamir-yazilimi)
+- **Stok Pratik GOLD (Kuyumculuk):** Has gram, milyem hesabı, barkodlu hızlı satış ve anlık kur takibi ile lüks mücevherat ve kuyumcular için özel yazılım. (stokpratik.com.tr/kuyumculuk-yazilimi)
+
 ## Paketlerimiz
 Sistemimiz, işletmelerin ihtiyaçlarına göre şekillenmiş abonelik paketleri sunar. 
-- Detaylı bilgi için: `https://stokpratik.com/paketlerimiz`
+- Detaylı bilgi için: `https://stokpratik.com.tr/paketlerimiz`
 
 ## Destek ve İletişim
 Müşterilerimize sürekli destek sağlıyoruz. Sorun çözümleri ve nasıl yapılır rehberleri için Destek sayfamızı ziyaret edebilirsiniz.
-- Destek Merkezi: `https://stokpratik.com/destek`
-- Blog: `https://stokpratik.com/blog`
-- İletişim: `https://stokpratik.com/iletisim`
+- Destek Merkezi: `https://stokpratik.com.tr/neden-stok-pratik`
+- Blog: `https://stokpratik.com.tr/blog`
+- İletişim: `https://stokpratik.com.tr/iletisim`
 
 ## Misyonumuz
 Karmaşık muhasebe yazılımlarının aksine, sade ve anlaşılır bir arayüz ile her sektörden esnafın teknolojiyi yakalamasını sağlamak.

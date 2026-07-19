@@ -3,4 +3,4 @@ Allow: /
 Disallow: /admin/
 Disallow: /api/
 
-Sitemap: https://stokpratik.com/sitemap-index.xml
+Sitemap: https://stokpratik.com.tr/sitemap-index.xml

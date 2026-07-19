@@ -780,4 +780,22 @@ a:hover {
     height: 300px;
     margin-top: 2rem;
   }
+}/* Fix for post content images */
+.post-content img, .post-content video, .post-content iframe {
+  max-width: 100% !important;
+  height: auto !important;
+  object-fit: contain;
+  box-sizing: border-box;
+}
+.post-content iframe {
+  aspect-ratio: 16 / 9;
+}
+.post-content {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-word;
+}
+.post-content pre, .post-content code {
+  white-space: pre-wrap !important;
+  word-break: break-word !important;
 }

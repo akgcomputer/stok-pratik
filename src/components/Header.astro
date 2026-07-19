@@ -15,14 +15,14 @@ import SocialMedia from './SocialMedia.astro';
       <div class="nav-left">
         <ul class="nav-list">
           <li><a href="/" title="Ana Sayfa">🏠</a></li>
-          <li><a href="/ozelliklerimiz">Özellikler</a></li>
-          <li><a href="/paketlerimiz">Paketler</a></li>
-          <li><a href="/oto-tamir-yazilimi">Oto Servis</a></li>
+          <li class="icon-link"><a href="/ozelliklerimiz" title="Özellikler"><span class="icon-letter sapphire-bg">Özellikler</span></a></li>
+          <li class="icon-link"><a href="/paketlerimiz" title="Paketler"><span class="icon-letter emerald-bg">Paketler</span></a></li>
+          <li class="icon-link"><a href="/oto-tamir-yazilimi" title="Oto Servis"><span class="icon-letter silver-bg">Oto Servis</span></a></li>
+          <li class="icon-link gold-icon"><a href="/kuyumculuk-yazilimi" title="Kuyumculuk Yazılımı"><span class="icon-letter gold-bg">GOLD</span></a></li>
           <li class="icon-link sss-icon"><a href="/neden-stok-pratik" title="SSS"><span class="icon-letter sss-bg">S</span></a></li>
           <li class="icon-link ss-icon"><a href="/ekran-goruntuleri" title="Ekran Görüntüleri"><span class="icon-letter ss-bg">E</span></a></li>
           <li class="icon-link ref-icon"><a href="/referanslarimiz" title="Referanslar"><span class="icon-letter ref-bg">R</span></a></li>
           <li class="icon-link blog-icon"><a href="/blog" title="Blog"><span class="icon-letter blog-bg">B</span></a></li>
-          <li class="icon-link gold-icon"><a href="/kuyumculuk-yazilimi" title="Kuyumculuk Yazılımı"><span class="icon-letter gold-bg">GOLD</span></a></li>
           <li class="contact-link">
             <a href="/iletisim" title="İletişim">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
@@ -239,17 +239,50 @@ import SocialMedia from './SocialMedia.astro';
   .blog-bg { background: linear-gradient(135deg, var(--primary-red), #ff4b4b); box-shadow: 0 4px 10px rgba(220, 38, 38, 0.3); }
   .icon-link a:hover .blog-bg { box-shadow: 0 6px 15px rgba(220, 38, 38, 0.4); }
 
+  .sapphire-bg { 
+    background: linear-gradient(135deg, #2563eb, #bfdbfe, #2563eb); 
+    color: #1e3a8a;
+    box-shadow: 0 4px 10px rgba(37, 99, 235, 0.4); 
+    font-size: 0.95rem;
+    background-size: 200% auto;
+    animation: shineAnim 3s linear infinite;
+  }
+  .icon-link a:hover .sapphire-bg { box-shadow: 0 6px 15px rgba(37, 99, 235, 0.6); }
+
+  .emerald-bg { 
+    background: linear-gradient(135deg, #059669, #a7f3d0, #059669); 
+    color: #064e3b;
+    box-shadow: 0 4px 10px rgba(5, 150, 105, 0.4); 
+    font-size: 0.95rem;
+    background-size: 200% auto;
+    animation: shineAnim 3s linear infinite;
+    animation-delay: 1s;
+  }
+  .icon-link a:hover .emerald-bg { box-shadow: 0 6px 15px rgba(5, 150, 105, 0.6); }
+
+  .silver-bg { 
+    background: linear-gradient(135deg, #64748b, #e2e8f0, #64748b); 
+    color: #0f172a;
+    box-shadow: 0 4px 10px rgba(100, 116, 139, 0.4); 
+    font-size: 0.95rem;
+    background-size: 200% auto;
+    animation: shineAnim 3s linear infinite;
+    animation-delay: 2s;
+  }
+  .icon-link a:hover .silver-bg { box-shadow: 0 6px 15px rgba(100, 116, 139, 0.6); }
+
   .gold-bg { 
     background: linear-gradient(135deg, #d4af37, #fff6d6, #d4af37); 
     color: #5c4308;
     box-shadow: 0 4px 10px rgba(212, 175, 55, 0.4); 
     font-size: 0.95rem;
     background-size: 200% auto;
-    animation: goldShine 3s linear infinite;
+    animation: shineAnim 3s linear infinite;
+    animation-delay: 0.5s;
   }
   .icon-link a:hover .gold-bg { box-shadow: 0 6px 15px rgba(212, 175, 55, 0.6); }
 
-  @keyframes goldShine {
+  @keyframes shineAnim {
     to { background-position: 200% center; }
   }
 

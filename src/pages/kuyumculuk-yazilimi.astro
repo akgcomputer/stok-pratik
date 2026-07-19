@@ -1,0 +1,543 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const title = "Stok Pratik Gold - Kuyumculuk Yazılımı";
+---
+
+<BaseLayout title={title}>
+  <div class="gold-theme">
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="hero-bg"></div>
+      <div class="hero-content container">
+        <span class="badge">Türkiye'nin En Gelişmiş Kuyumculuk ERP'si</span>
+        <h1>
+          Kuyumculuk İçin Tasarlanmış <br/>
+          <span class="gold-text">50+ Modül, 200+ Özellik</span>
+        </h1>
+        <p class="hero-desc">
+          Has gram, milyem, KARMA işlem, çoklu döviz, otomatik banka entegrasyonu, e-fatura ve MASAK — doğrudan kuyumculuk operasyonu için özel yazıldı.
+        </p>
+        
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-num">50+</div>
+            <div class="stat-label">Modül</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-num">200+</div>
+            <div class="stat-label">Özellik</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-num">1 dk</div>
+            <div class="stat-label">Banka Senkron</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-num">19+</div>
+            <div class="stat-label">Banka Desteği</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Hızlı Satış -->
+    <section class="feature-section right-image">
+      <div class="container grid-2">
+        <div class="text-content">
+          <span class="badge">HIZLI SATIŞ / POS</span>
+          <h2>Tezgâhta <span class="gold-text">Saniyeler</span> Kazanın</h2>
+          <p>
+            Hızlı Satış ekranı, kuyumcu tezgâhının ritmine göre tasarlandı: barkod okutun ya da F2 ile ürün arayın, F3 ile cariyi seçin, F12 ile tahsilatı tamamlayın.
+          </p>
+          <ul class="feature-list">
+            <li>✔️ <strong>KARMA İşlem:</strong> satış + alış aynı ekranda</li>
+            <li>✔️ <strong>Çoklu döviz:</strong> her kalem TL / USD / EUR / GBP / HAS gram</li>
+            <li>✔️ <strong>Anlık altın fiyatı:</strong> 5 dk güncellenme</li>
+            <li>✔️ <strong>F2 / F3 / F12</strong> klavye kısayolları ile beklemeden işlem</li>
+          </ul>
+        </div>
+        <div class="image-content">
+          <div class="mockup-box">
+            <div class="mockup-header">Hızlı Satış / POS</div>
+            <div class="mockup-body">
+              <div class="search-bar">🔍 Barkod / Ürün Ara (F2)</div>
+              <div class="item-row">
+                <div class="item-name">22K Bilezik x2</div>
+                <div class="item-price">₺48.750,00</div>
+              </div>
+              <div class="item-row">
+                <div class="item-name">Eski Altın (Alış)</div>
+                <div class="item-price text-green">-₺12.000,00</div>
+              </div>
+              <div class="total-row">
+                <div>Net Tutar</div>
+                <div class="gold-text font-bold">₺36.750,00</div>
+              </div>
+              <button class="mockup-btn">F12 Tahsilat</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Stok Yönetimi -->
+    <section class="feature-section dark-bg">
+      <div class="container grid-2">
+        <div class="image-content">
+          <div class="mockup-box dark-mockup">
+            <div class="mockup-header">Detaylı Stok Yönetimi</div>
+            <div class="mockup-body">
+              <div class="stock-grid">
+                <div class="stock-item">Mevcut: <strong>1.450</strong></div>
+                <div class="stock-item">Satıldı: <strong>320</strong></div>
+                <div class="stock-item">Konsinye: <strong>45</strong></div>
+                <div class="stock-item">Tamir: <strong>12</strong></div>
+              </div>
+              <div class="stock-list">
+                <div class="stock-row">Has Gram: <span class="gold-text">840.50</span></div>
+                <div class="stock-row">Milyem Ortalama: <span class="gold-text">916</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="text-content">
+          <span class="badge">STOK YÖNETİMİ</span>
+          <h2>Ayar, Milyem ve <span class="gold-text">Has Gram</span> Dünyası</h2>
+          <p>
+            Kuyumcuların en büyük derdi olan gramlı, adetli, milyemli ve has gramlı stok takibini tek ekranda çözüyoruz.
+          </p>
+          <ul class="feature-list">
+            <li>✔️ <strong>5 Katmanlı Hiyerarşi:</strong> Grup → Kategori → Stok Kartı → Parti → Item</li>
+            <li>✔️ <strong>11 Farklı Stok Durumu:</strong> Mevcut, satıldı, konsinye, transfer, tamir...</li>
+            <li>✔️ <strong>RFID & Barkod:</strong> Sayım saniyeler sürer</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Cari Hesap & Banka -->
+    <section class="feature-section text-center">
+      <div class="container">
+        <h2>Çoklu Döviz Cari & <span class="gold-text">Banka Entegrasyonu</span></h2>
+        <p class="center-desc">19'dan fazla banka ile 1 dakikada senkronizasyon ve akıllı eşleştirme.</p>
+        
+        <div class="cards-grid">
+          <div class="feature-card">
+            <div class="card-icon">🏦</div>
+            <h3>Banka Entegrasyonu</h3>
+            <p>19 banka için 1 dakikada otomatik hesap senkronizasyonu. Akıllı eşleştirme ile manuel giriş ortadan kalkar.</p>
+          </div>
+          <div class="feature-card">
+            <div class="card-icon">💱</div>
+            <h3>Çoklu Döviz</h3>
+            <p>TL, USD, EUR, GBP ve HAS gram bakiyeleri tek ekranda. Mutabakat ve ekstre kontrolü.</p>
+          </div>
+          <div class="feature-card">
+            <div class="card-icon">📄</div>
+            <h3>E-Fatura & E-Arşiv</h3>
+            <p>GİB entegrasyonu, otomatik durum sorgulama ve MASAK 185.000 TL yaptırım kontrolü.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Mobil Uygulama -->
+    <section class="feature-section right-image dark-bg">
+      <div class="container grid-2">
+        <div class="text-content">
+          <span class="badge">MOBİL UYGULAMA</span>
+          <h2>Cep Telefonunuzdaki <span class="gold-text">Kuyumcu</span></h2>
+          <p>
+            iOS ve Android native uygulamalarımız; hızlı satış, barkod okutma, stok arama, cari ekstre görüntüleme ve tahsilat alma işlemlerini cebinize getiriyor.
+          </p>
+          <div class="action-buttons">
+            <a href="https://wa.me/+905325000999" class="gold-btn">Demo Talep Et</a>
+            <a href="/iletisim" class="outline-btn">Bize Ulaşın</a>
+          </div>
+        </div>
+        <div class="image-content flex-center">
+          <div class="phone-mockup">
+            <div class="phone-screen">
+              <div class="phone-header">
+                <strong>Stok Pratik <span class="gold-text">GOLD</span></strong>
+              </div>
+              <div class="phone-body">
+                <div class="p-card">
+                  <div class="p-title">Günlük Ciro</div>
+                  <div class="p-value gold-text">₺245.800</div>
+                </div>
+                <div class="p-card">
+                  <div class="p-title">Canlı Altın</div>
+                  <div class="p-value">Has: 2.940 ₺/gr</div>
+                </div>
+                <div class="p-btn">Satış Yap</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</BaseLayout>
+
+<style>
+  /* Base Theme */
+  .gold-theme {
+    background-color: #0f1115;
+    color: #e2e8f0;
+    font-family: 'Inter', sans-serif;
+  }
+  
+  .gold-text {
+    background: linear-gradient(135deg, #d4af37, #fdf5e6, #d4af37);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+  }
+  
+  .badge {
+    display: inline-block;
+    padding: 0.25rem 1rem;
+    background: rgba(212, 175, 55, 0.1);
+    color: #d4af37;
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    border-radius: 999px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+
+  /* Typography */
+  h1 { font-size: 3rem; font-weight: 800; line-height: 1.2; margin-bottom: 1.5rem; color: #fff; }
+  h2 { font-size: 2.5rem; font-weight: 700; line-height: 1.3; margin-bottom: 1rem; color: #fff; }
+  @media(max-width: 768px) {
+    h1 { font-size: 2.2rem; }
+    h2 { font-size: 2rem; }
+  }
+
+  p { font-size: 1.1rem; line-height: 1.6; color: #94a3b8; margin-bottom: 1.5rem; }
+
+  /* Sections */
+  .hero-section {
+    position: relative;
+    padding: 6rem 0;
+    text-align: center;
+    background: radial-gradient(circle at top, #1a1e28 0%, #0f1115 100%);
+    border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+  }
+  
+  .hero-desc {
+    max-width: 800px;
+    margin: 0 auto 3rem;
+  }
+  
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  
+  .stat-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    padding: 1.5rem;
+    border-radius: 12px;
+    transition: transform 0.3s;
+  }
+  
+  .stat-card:hover {
+    transform: translateY(-5px);
+    background: rgba(212, 175, 55, 0.05);
+  }
+  
+  .stat-num {
+    font-size: 2rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, #d4af37, #fdf5e6, #d4af37);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
+  .stat-label {
+    font-size: 0.9rem;
+    color: #64748b;
+    margin-top: 0.5rem;
+  }
+  
+  @media(max-width: 768px) {
+    .stats-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  /* Grid Layouts */
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+  @media(max-width: 768px) {
+    .grid-2 { grid-template-columns: 1fr; gap: 2rem; }
+  }
+
+  .feature-section {
+    padding: 6rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+  
+  .dark-bg {
+    background-color: #15181e;
+  }
+
+  .feature-list {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .feature-list li {
+    margin-bottom: 0.8rem;
+    color: #cbd5e1;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+  
+  .feature-list strong {
+    color: #fff;
+  }
+
+  .text-center {
+    text-align: center;
+  }
+  
+  .center-desc {
+    max-width: 600px;
+    margin: 0 auto 3rem;
+  }
+
+  /* Cards Grid */
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+  @media(max-width: 768px) {
+    .cards-grid { grid-template-columns: 1fr; }
+  }
+  
+  .feature-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 2rem;
+    border-radius: 16px;
+    text-align: left;
+    transition: all 0.3s;
+  }
+  
+  .feature-card:hover {
+    border-color: rgba(212, 175, 55, 0.3);
+    background: rgba(212, 175, 55, 0.02);
+  }
+  
+  .card-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .feature-card h3 {
+    font-size: 1.3rem;
+    color: #fff;
+    margin-bottom: 1rem;
+  }
+
+  /* Buttons */
+  .action-buttons {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+  
+  .gold-btn {
+    background: linear-gradient(135deg, #d4af37, #b8860b);
+    color: #fff;
+    padding: 0.8rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s;
+  }
+  .gold-btn:hover {
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
+    transform: translateY(-2px);
+  }
+  
+  .outline-btn {
+    border: 1px solid rgba(212, 175, 55, 0.5);
+    color: #d4af37;
+    padding: 0.8rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s;
+  }
+  .outline-btn:hover {
+    background: rgba(212, 175, 55, 0.1);
+  }
+
+  /* UI Mockups */
+  .mockup-box {
+    background: #1a1e28;
+    border: 1px solid #334155;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+  }
+  
+  .mockup-header {
+    background: #0f1115;
+    padding: 1rem;
+    font-weight: 600;
+    color: #fff;
+    border-bottom: 1px solid #334155;
+    display: flex;
+    align-items: center;
+  }
+  .mockup-header::before {
+    content: '';
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #ef4444;
+    margin-right: 6px;
+    box-shadow: 18px 0 0 #f59e0b, 36px 0 0 #10b981;
+    margin-right: 48px;
+  }
+  
+  .mockup-body {
+    padding: 1.5rem;
+  }
+  
+  .search-bar {
+    background: #0f1115;
+    padding: 0.8rem;
+    border-radius: 6px;
+    color: #64748b;
+    margin-bottom: 1rem;
+    border: 1px solid #334155;
+  }
+  
+  .item-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.8rem 0;
+    border-bottom: 1px solid #334155;
+    color: #e2e8f0;
+  }
+  
+  .text-green { color: #10b981; }
+  
+  .total-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 0;
+    font-size: 1.2rem;
+    color: #fff;
+  }
+  
+  .mockup-btn {
+    width: 100%;
+    padding: 1rem;
+    background: linear-gradient(135deg, #d4af37, #b8860b);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 1.1rem;
+    cursor: pointer;
+  }
+
+  .stock-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .stock-item {
+    background: #0f1115;
+    padding: 1rem;
+    border-radius: 8px;
+    border: 1px solid #334155;
+    text-align: center;
+    color: #94a3b8;
+  }
+  .stock-item strong {
+    display: block;
+    font-size: 1.5rem;
+    color: #fff;
+    margin-top: 0.5rem;
+  }
+  
+  .stock-row {
+    display: flex;
+    justify-content: space-between;
+    background: #0f1115;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+  }
+
+  /* Phone Mockup */
+  .flex-center {
+    display: flex;
+    justify-content: center;
+  }
+  .phone-mockup {
+    width: 300px;
+    height: 600px;
+    background: #000;
+    border-radius: 40px;
+    padding: 12px;
+    box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+    border: 2px solid #333;
+  }
+  .phone-screen {
+    width: 100%;
+    height: 100%;
+    background: #15181e;
+    border-radius: 30px;
+    overflow: hidden;
+    position: relative;
+  }
+  .phone-header {
+    background: #0f1115;
+    padding: 3rem 1rem 1rem;
+    text-align: center;
+    border-bottom: 1px solid #334155;
+  }
+  .phone-body {
+    padding: 1.5rem;
+  }
+  .p-card {
+    background: #1a1e28;
+    padding: 1.5rem;
+    border-radius: 12px;
+    margin-bottom: 1rem;
+    border: 1px solid #334155;
+  }
+  .p-title { color: #94a3b8; font-size: 0.9rem; margin-bottom: 0.5rem; }
+  .p-value { font-size: 1.5rem; font-weight: bold; color: #fff; }
+  .p-btn {
+    background: #d4af37;
+    color: #000;
+    text-align: center;
+    padding: 1rem;
+    border-radius: 12px;
+    font-weight: bold;
+    margin-top: 2rem;
+  }
+</style>

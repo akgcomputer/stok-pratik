@@ -21,6 +21,11 @@ import SocialMedia from './SocialMedia.astro';
           <li><a href="/neden-stok-pratik">SSS?</a></li>
           <li><a href="/ekran-goruntuleri">SS</a></li>
           <li><a href="/referanslarimiz">Referanslar</a></li>
+          <li class="blog-icon-link">
+            <a href="/blog" title="Blog">
+              <span class="blog-icon-b">B</span>
+            </a>
+          </li>
           <li class="contact-link">
             <a href="/iletisim" title="İletişim">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
@@ -69,6 +74,7 @@ import SocialMedia from './SocialMedia.astro';
         <li><a href="/paketlerimiz" class="mobile-nav-link">💰 Paketlerimiz</a></li>
         <li><a href="/ekran-goruntuleri" class="mobile-nav-link">🖼️ Ekran Görüntüleri</a></li>
         <li><a href="/referanslarimiz" class="mobile-nav-link">⭐ Referanslarımız</a></li>
+        <li><a href="/blog" class="mobile-nav-link">📝 Blog</a></li>
         <li>
           <a href="/iletisim" class="mobile-nav-link">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" style="margin-right: 8px;">
@@ -195,6 +201,34 @@ import SocialMedia from './SocialMedia.astro';
 
   .contact-link a:hover svg {
     stroke: white;
+  }
+
+  .blog-icon-link a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    margin-left: 0.5rem;
+  }
+
+  .blog-icon-b {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    background: linear-gradient(135deg, var(--primary-red), #ff4b4b);
+    color: white;
+    font-weight: 800;
+    font-size: 1.2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(220, 38, 38, 0.3);
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+
+  .blog-icon-link a:hover .blog-icon-b {
+    transform: scale(1.15) rotate(5deg);
+    box-shadow: 0 6px 15px rgba(220, 38, 38, 0.4);
   }
 
   .contact-link svg {

@@ -2,6 +2,7 @@
 title: B2B ve Toptan Satış Modülü Nasıl Kullanılır? | Stok Pratik🚀 (videolu)
 description: Toptan Satıcıların Vazgeçilmez Yazılımı Stok Pratik
 category: e-ticaret-sistemleri
+videoLink: https://youtu.be/OnFbtRNYAD0**](https://youtu.be/OnFbtRNYAD0
 ---
 ![](/images/destek/b2-b-ve-toptan-satis-modulu-nasil-kullanilir-stok-pratik/image.png)
 

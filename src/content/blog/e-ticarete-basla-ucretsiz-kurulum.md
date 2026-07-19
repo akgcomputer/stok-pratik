@@ -16,7 +16,7 @@ tags: >-
   `N11 Entegrasyonu`, `Online Satış`, `Stok Senkronizasyonu`, `Stok Pratik`,
   `E-ticaret Otomasyonu`, `Sıfır Maliyet`
 ---
-### **![](/images/blog/e-ticarete-basla-uecretsiz-kurulum/image.png)**
+### ![](/images/blog/e-ticarete-basla-ucretsiz-kurulum/image.png)
 
 ### **E-ticaret’e Başlamak İçin Daha Ne Bekliyorsunuz?**
 

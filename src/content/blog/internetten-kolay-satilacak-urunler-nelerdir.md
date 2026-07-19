@@ -16,7 +16,7 @@ tags: >-
   Saat Kordonu`, `Kişiselleştirilmiş Hediye`, `Evcil Hayvan Malzemeleri`, `Spor
   Aksesuarları`, `Stok Pratik`, `E-ticaret Stok Yönetimi`
 ---
-## **![](/images/blog/internetten-kolay-satilacak-ueruenler-nelerdir/image.png)**
+## ![](/images/blog/internetten-kolay-satilacak-urunler-nelerdir/image.png)
 
 ## **İnternetten Kolay Satılacak Ürünlerin Ortak Özellikleri**
 

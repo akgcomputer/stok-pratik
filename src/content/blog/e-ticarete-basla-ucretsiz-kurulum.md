@@ -1,5 +1,5 @@
 ---
-title: E-Ticarete Başla - Ücretsiz Kurulum
+title: E-Ticarete Başla - Ücretsiz Kurulum 🛒 😎
 description: >
   E-ticaret dünyasına adım atmak hiç bu kadar kolay olmamıştı! Stok Pratik ile
   **ücretsiz kurulum** avantajıyla kendi online satış kanalınızı kurun, fiziksel

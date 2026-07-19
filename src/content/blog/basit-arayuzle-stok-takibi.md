@@ -14,7 +14,7 @@ tags: >-
   Dostu Stok Yazılımı, Tek Ekranda Stok, Stok Pratik, Depo Yönetimi, Stok
   Otomasyonu, Bulut Stok Sistemi, Hızlı Stok Girişi
 ---
-### **![](/images/blog/basit-arayuezle-stok-takibi/image.png)**
+### ![](/images/blog/basit-arayuzle-stok-takibi/image.png)
 
 ### **Karmaşık Programlardan Sıkıldınız mı?**
 
@@ -106,4 +106,4 @@ Sektörünüzdeki diğer işletmelerin Stok Pratik ile nasıl başarılı olduğ
 
 Herhangi bir sorunuz, demo talebiniz veya ücretsiz deneme isteğiniz için **iletişim** sayfamızdan bize ulaşın – [https://stokpratik.com.tr/iletisim](https://stokpratik.com.tr/iletisim)
 
-![](/images/blog/basit-arayuezle-stok-takibi/image.png)
+![](/images/blog/basit-arayuzle-stok-takibi/image.png)

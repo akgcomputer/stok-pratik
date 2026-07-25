@@ -1,0 +1,127 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+import seoTitles from '../data/seo-titles.json';
+
+// Fetch all existing content
+const allBlogPosts = await getCollection('blog');
+const allDestekPosts = await getCollection('destek');
+
+// Combine and sort them alphabetically
+const allExistingPosts = [...allBlogPosts, ...allDestekPosts].sort((a, b) => {
+  return a.data.title.localeCompare(b.data.title);
+});
+
+// For numbering
+let counter = 1;
+---
+
+<BaseLayout title="Yararlı Bilgiler - SEO Liste">
+  <div class="seo-list-container">
+    <h1>Yararlı Bilgiler - Tüm İçerikler</h1>
+    <p class="description">Bu sayfada, sistemde bulunan mevcut içerikleriniz ve ilham alabileceğiniz yeni SEO başlıkları listelenmektedir. Rahatça seçip kopyalayabilirsiniz.</p>
+    
+    <h2>Mevcut İçerikleriniz (1 - {allExistingPosts.length})</h2>
+    <ul class="existing-list">
+      {allExistingPosts.map(post => {
+        const url = post.collection === 'blog' 
+          ? `/blog/${post.data.category || 'genel'}/${post.slug}`
+          : `/destek/${post.slug}`;
+        
+        return (
+          <li>
+            <span class="counter">{counter++}.</span>
+            <a href={url} target="_blank" rel="noopener noreferrer">{post.data.title}</a>
+          </li>
+        );
+      })}
+    </ul>
+
+    <hr />
+
+    <h2>Yeni Üretilen SEO Odaklı Başlıklar ({counter} - {counter + seoTitles.length - 1}) 💡</h2>
+    <ul class="new-list">
+      {seoTitles.map(title => (
+        <li>
+          <span class="counter">{counter++}.</span>
+          <span class="title-text">{title}</span>
+        </li>
+      ))}
+    </ul>
+  </div>
+</BaseLayout>
+
+<style>
+  .seo-list-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 100px 20px;
+    font-family: 'Inter', sans-serif;
+  }
+  
+  h1 {
+    font-size: 2rem;
+    color: #111;
+    margin-bottom: 10px;
+  }
+  
+  .description {
+    color: #555;
+    margin-bottom: 40px;
+    font-size: 1.1rem;
+    line-height: 1.5;
+  }
+  
+  h2 {
+    font-size: 1.5rem;
+    color: #333;
+    margin: 40px 0 20px;
+    border-bottom: 2px solid #eaeaea;
+    padding-bottom: 10px;
+  }
+  
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  li {
+    margin-bottom: 12px;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    line-height: 1.4;
+  }
+  
+  .counter {
+    font-weight: bold;
+    color: #888;
+    min-width: 40px;
+  }
+  
+  .existing-list a {
+    color: #2563eb;
+    text-decoration: none;
+  }
+  
+  .existing-list a:hover {
+    text-decoration: underline;
+  }
+  
+  .new-list .title-text {
+    color: #111;
+  }
+  
+  hr {
+    border: none;
+    border-top: 1px solid #ddd;
+    margin: 60px 0;
+  }
+  
+  /* Disable user select on counters so only text is copied */
+  .counter {
+    user-select: none;
+  }
+</style>

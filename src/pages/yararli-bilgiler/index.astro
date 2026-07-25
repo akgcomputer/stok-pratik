@@ -1,7 +1,7 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
-import seoTitles from '../data/seo-titles.json';
+import seoTitles from '../../data/seo-titles.json';
 
 // Fetch all existing content
 const allBlogPosts = await getCollection('blog');

@@ -1,0 +1,86 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import HeroSection from '../components/landing/HeroSection.astro';
+import ComparisonSection from '../components/landing/ComparisonSection.astro';
+import FeaturesGrid from '../components/landing/FeaturesGrid.astro';
+import HowItWorks from '../components/landing/HowItWorks.astro';
+import FaqAccordion from '../components/landing/FaqAccordion.astro';
+import CtaBanner from '../components/landing/CtaBanner.astro';
+
+const pageTitle = "Kitap, Kırtasiye ve Oyuncak Mağazası Stok Programı | Stok Pratik";
+const pageDescription = "Kırtasiye ve kitapçılar için ISBN/Barkod arama motorlu, sezonluk okul kampanyası destekli hızlı satış yazılımı.";
+
+const features = [
+  {
+    title: "ISBN & Yayın Barkodu Arama",
+    description: "Kitapların arkasındaki ISBN veya standart barkodları okutarak ürünleri kasaya saniyeler içinde ekleyin.",
+    icon: `<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>`
+  },
+  {
+    title: "Okul Listesi Paket Satışı",
+    description: "Okul dönemlerinde sınıf listesindeki malzemeleri tek bir '1. Sınıf Kırtasiye Seti' olarak birleştirip tek tıkla satın.",
+    icon: `<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path></svg>`
+  },
+  {
+    title: "Sezon Kampanya Yönetimi",
+    description: "Okula dönüş sezonuna özel (3 al 2 öde, %15 İndirim vb.) kampanyaları sisteme tanımlayın, kasada otomatik hesaplansın.",
+    icon: `<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>`
+  },
+  {
+    title: "Yaş Grubu & Kategori Filtresi",
+    description: "Oyuncak ve kitapları yaş grupları, sınıflar veya konularına göre kategorilendirerek depoda hızla bulun.",
+    icon: `<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"></path></svg>`
+  },
+  {
+    title: "Veresiye & Okul Aile Birliği Takibi",
+    description: "Öğretmenlere veya okullara yaptığınız vadeli / açık hesap satışları dijital olarak kaydedin.",
+    icon: `<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>`
+  },
+  {
+    title: "Pazaryeri (N11, Hepsiburada) Entegrasyonu",
+    description: "Fiziki mağazanızdaki kalem, defter satışları ile internet satışlarınızı tek stok havuzundan yönetin.",
+    icon: `<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>`
+  }
+];
+
+const faqs = [
+  { question: "Mevcut kitap listemi Excel ile aktarabilir miyim?", answer: "Evet, dağıtımcılardan (Toptancılardan) aldığınız tüm kitap veya kırtasiye Excel listelerini saniyeler içinde fiyat ve barkodlarıyla beraber içeri aktarabilirsiniz." },
+  { question: "Barkodsuz kırtasiye ürünlerini (örn. tek kalem, silgi) nasıl satacağım?", answer: "Dokunmatik veya fare ile kullanılabilen Hızlı Satış ekranımıza resimli kısayol tuşları (örn: Kırmızı Silgi, 2B Kalem) ekleyerek barkod okutmadan tıklayarak satabilirsiniz." },
+  { question: "İnternet bağlantım koptuğunda sezon yoğunluğunda satış yapabilir miyim?", answer: "Stok Pratik Offline Kasa (Çevrimdışı Kasa) özelliği sayesinde, internet kopsa bile ürünleri okutmaya, satış yapmaya ve fiş kesmeye kesintisiz devam edebilirsiniz." }
+];
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <HeroSection 
+    h1="Kırtasiye ve Kitapçılarda Sezon Yoğunluğunu Hızlı Kasa İle Aşın!"
+    description={pageDescription}
+    badges={["ISBN Arama", "Hızlı Kasa", "Paket/Set Satışı", "Veresiye Takibi"]}
+    imageSrc="/images/site-foto/urunler.png"
+    imageAlt="Kırtasiye Kasa ve Stok Programı"
+  />
+  
+  <ComparisonSection 
+    oldMethodTitle="Geleneksel Kırtasiyecilik"
+    oldMethodItems={["Eylül ayında kasada uzun kuyruklar", "Tek tek silgi kalem okutmaktan vakit kaybı", "İnternet gidince dükkanda paniğin başlaması", "Öğretmenlere verilen vadeli ürünlerin unutulması"]}
+    newMethodTitle="Stok Pratik Kırtasiye Yazılımı"
+    newMethodItems={["Saniyeler içinde rekor hızda fiş kesimi", "Okul listelerini 'Paket' olarak tek tıkla okutma", "Çevrimdışı kasa sayesinde %100 kesintisiz satış", "Öğretmen ve okul alacaklarının dijital takibi"]}
+  />
+  
+  <FeaturesGrid 
+    title="Kırtasiye ve Kitap Mağazalarının İhtiyacı Olan Tüm Özellikler"
+    features={features}
+  />
+  
+  <HowItWorks 
+    title="Mağazanızda Yoğun Sezona Hazırlanın"
+    steps={[
+      { title: "Raflarınızı Doldurun", description: "Toptancınızdan gelen Excel listesini sisteme aktarın veya ürünlerin arkasındaki ISBN'leri okutarak kaydedin." },
+      { title: "Okul Paketlerini Hazırlayın", description: "1. Sınıf veya 2. Sınıf okul listelerini sisteme 'Set' olarak tanımlayın." },
+      { title: "Hızlı Satışa Başlayın", description: "Müşteriler geldiğinde paketin tek barkodunu okutarak onlarca ürünü saniyeler içinde satın." }
+    ]}
+  />
+  
+  <FaqAccordion faqs={faqs} />
+  
+  <CtaBanner />
+</BaseLayout>

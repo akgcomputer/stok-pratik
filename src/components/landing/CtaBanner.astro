@@ -1,0 +1,38 @@
+---
+interface Props {
+  title?: string;
+  description?: string;
+  ctaText?: string;
+  ctaLink?: string;
+}
+
+const { 
+  title = "Hemen Ücretsiz Denemeye Başlayın",
+  description = "Kredi kartı gerektirmez. 14 gün boyunca tüm özellikleri ücretsiz test edin.",
+  ctaText = "Ücretsiz Hesabınızı Oluşturun",
+  ctaLink = "https://app.stokpratik.com.tr/register"
+} = Astro.props;
+---
+
+<section class="bg-blue-600 relative overflow-hidden py-16">
+  {/* Decorative circles */}
+  <div class="absolute top-0 right-0 -mt-20 -mr-20 w-80 h-80 bg-blue-500 rounded-full opacity-50 blur-3xl mix-blend-screen"></div>
+  <div class="absolute bottom-0 left-0 -mb-20 -ml-20 w-80 h-80 bg-emerald-500 rounded-full opacity-30 blur-3xl mix-blend-screen"></div>
+  
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center max-w-4xl">
+    <h2 class="text-3xl font-extrabold text-white sm:text-4xl mb-4">
+      {title}
+    </h2>
+    <p class="text-xl text-blue-100 mb-10 max-w-2xl mx-auto">
+      {description}
+    </p>
+    
+    <a href={ctaLink} class="inline-flex justify-center items-center px-10 py-4 border border-transparent text-lg font-bold rounded-xl shadow-lg text-blue-900 bg-white hover:bg-slate-50 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-blue-600 focus:ring-white transition-all duration-300">
+      {ctaText}
+    </a>
+    
+    <p class="mt-6 text-sm text-blue-200">
+      Kurulum ücreti yok • İptal edilebilir • Anında erişim
+    </p>
+  </div>
+</section>

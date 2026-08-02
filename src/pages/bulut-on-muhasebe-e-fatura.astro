@@ -1,0 +1,86 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import HeroSection from '../components/landing/HeroSection.astro';
+import ComparisonSection from '../components/landing/ComparisonSection.astro';
+import FeaturesGrid from '../components/landing/FeaturesGrid.astro';
+import HowItWorks from '../components/landing/HowItWorks.astro';
+import FaqAccordion from '../components/landing/FaqAccordion.astro';
+import CtaBanner from '../components/landing/CtaBanner.astro';
+
+const pageTitle = "Bulut Ön Muhasebe ve E-Fatura Programı | Stok Pratik";
+const pageDescription = "KOBİ'ler ve şahıs şirketleri için kullanımı en kolay bulut ön muhasebe yazılımı. Tek tıkla e-Fatura kesin, gelir-gider ve nakit akışınızı cebinizden yönetin.";
+
+const features = [
+  {
+    title: "Tek Tıkla e-Fatura/e-Arşiv",
+    description: "Gelir İdaresi Başkanlığı (GİB) uyumlu entegrasyon sayesinde saniyeler içinde e-Fatura veya e-Arşiv oluşturun.",
+    icon: `<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>`
+  },
+  {
+    title: "Gelir-Gider & Kasa Takibi",
+    description: "Şirketinizin tüm nakit giriş-çıkışlarını, günlük harcamalarını ve banka hareketlerini tek ekrandan izleyin.",
+    icon: `<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>`
+  },
+  {
+    title: "Müşteri/Tedarikçi Cari Yönetimi",
+    description: "Kimin size ne kadar borcu var, siz kime ödeme yapacaksınız? Cari hesap mutabakatlarını anında yapın.",
+    icon: `<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>`
+  },
+  {
+    title: "Çek ve Senet Modülü",
+    description: "Alınan ve verilen çeklerin vadelerini takip edin, ödeme günü yaklaşan çekler için otomatik hatırlatma alın.",
+    icon: `<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>`
+  },
+  {
+    title: "Otomatik Kâr-Zarar Raporlama",
+    description: "Hangi üründen veya projeden ne kadar kâr ettiğinizi saniyeler içinde grafiksel raporlarla analiz edin.",
+    icon: `<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z"></path></svg>`
+  },
+  {
+    title: "Personel Avans ve Masraf Takibi",
+    description: "Çalışanlarınızın maaş, avans ve harcama (masraf) fişlerini kaydederek şirket içi giderleri kontrol altına alın.",
+    icon: `<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V8a2 2 0 00-2-2h-5m-4 0V5a2 2 0 114 0v1m-4 0a2 2 0 104 0m-5 8a2 2 0 100-4 2 2 0 000 4zm0 0c1.306 0 2.417.835 2.83 2M9 14a3.001 3.001 0 00-2.83 2M15 11h3m-3 4h2"></path></svg>`
+  }
+];
+
+const faqs = [
+  { question: "Mali müşavirimle veri paylaşabiliyor muyum?", answer: "Evet, mali müşavirinize özel bir erişim yetkisi verebilir veya tüm fatura ve masraflarınızı tek tıkla muhasebeye uygun Excel formatında dışa aktarabilirsiniz." },
+  { question: "e-Faturaya geçmek zorunlu mu?", answer: "Herkes için zorunlu değil ancak Stok Pratik kullanarak kendi isteğinizle ücretsiz e-faturaya (GİB Portal) geçebilir ve kaşe/imza maliyetlerinden kurtulabilirsiniz." },
+  { question: "Eğitim gerektiriyor mu?", answer: "Stok Pratik'in kullanıcı arayüzü son derece basittir. Muhasebe bilmenize gerek kalmadan, sadece rakamları girerek tüm hesaplarınızı yönetebilirsiniz." }
+];
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <HeroSection 
+    h1="Muhasebe Karmaşasına Son: Tek Tıkla e-Fatura Kesin, Nakit Akışınızı Cebinizden Yönetin!"
+    description={pageDescription}
+    badges={["Ön Muhasebe", "e-Fatura Modülü", "Gelir-Gider", "Bulut Teknolojisi"]}
+    imageSrc="/images/screenshots/Stok-pratik-ekran-fatura.png"
+    imageAlt="Ön Muhasebe ve e-Fatura Ekranı"
+  />
+  
+  <ComparisonSection 
+    oldMethodTitle="Geleneksel Masaüstü Muhasebe"
+    oldMethodItems={["Sadece ofisteki bilgisayardan erişim", "Güncellemeler için yıllık lisans bedeli", "Karışık terimler, muhasebeci bağımlılığı", "Bilgisayar çökünce verilerin silinme riski"]}
+    newMethodTitle="Bulut Tabanlı Stok Pratik"
+    newMethodItems={["Telefondan, tabletten her yerden erişim", "Tüm güncellemeler otomatik ve ücretsiz", "Muhasebe bilmeyenler için basit arayüz", "Verileriniz banka güvenliğinde yedeklenir"]}
+  />
+  
+  <FeaturesGrid 
+    title="İşletmenizin Finansal Kontrolü Elinizde Olsun"
+    features={features}
+  />
+  
+  <HowItWorks 
+    title="e-Fatura Kesmek Artık Çok Kolay"
+    steps={[
+      { title: "Bilgilerinizi Doldurun", description: "Şirket ünvanınızı ve vergi numaranızı sisteme tanımlayın." },
+      { title: "Müşteriyi Seçin", description: "Kayıtlı cari hesabınızı seçin veya saniyeler içinde yeni bir cari açın." },
+      { title: "Faturayı Gönderin", description: "Ürünleri ekleyin ve 'e-Fatura Kes' butonuna tıklayarak işlemi tamamlayın." }
+    ]}
+  />
+  
+  <FaqAccordion faqs={faqs} />
+  
+  <CtaBanner />
+</BaseLayout>

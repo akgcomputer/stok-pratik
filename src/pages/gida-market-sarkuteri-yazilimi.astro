@@ -1,0 +1,86 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import HeroSection from '../components/landing/HeroSection.astro';
+import ComparisonSection from '../components/landing/ComparisonSection.astro';
+import FeaturesGrid from '../components/landing/FeaturesGrid.astro';
+import HowItWorks from '../components/landing/HowItWorks.astro';
+import FaqAccordion from '../components/landing/FaqAccordion.astro';
+import CtaBanner from '../components/landing/CtaBanner.astro';
+
+const pageTitle = "Gıda, Market ve Şarküteri Barkod Satış Programı | Stok Pratik";
+const pageDescription = "Terazi ve kantar entegreli hızlı market ve şarküteri kasa yazılımı. Gramajlı ürün satışı, SKT takibi ve açık veresiye hesap yönetimi!";
+
+const features = [
+  {
+    title: "Terazi & Kantar Bağlantısı",
+    description: "Barkodlu veya PC bağlantılı terazilerden çıkan gramajlı etiketleri kasada otomatik okutun ve hesaplayın.",
+    icon: `<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3"></path></svg>`
+  },
+  {
+    title: "Dijital Veresiye Defteri",
+    description: "Mahalle esnafının vazgeçilmezi olan 'yaz deftere' kültürünü dijitalleştirin. Alacaklarınızı tek ekranda görün.",
+    icon: `<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>`
+  },
+  {
+    title: "Cep Telefonu İle Hızlı Sayım",
+    description: "Pahalı el terminallerine gerek kalmadan, çalışanlarınız kendi akıllı telefonlarıyla raftaki ürünleri sayabilir.",
+    icon: `<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>`
+  },
+  {
+    title: "Alış Faturası Maliyet Güncelleme",
+    description: "Toptancıdan gelen XML veya e-faturaları içeri aktararak değişen alış fiyatlarınızı otomatik güncelleyin.",
+    icon: `<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg>`
+  },
+  {
+    title: "SKT Uyarı Sistemi",
+    description: "Tarihi yaklaşan süt ürünleri ve şarküteri ürünleri için alarm alın, çöpe gitmeden indirime sokun.",
+    icon: `<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>`
+  },
+  {
+    title: "Kasa Gün Sonu Z Raporu",
+    description: "Günün sonunda kasadaki nakit, pos ve veresiye toplamlarını kuruşu kuruşuna hatasız alın.",
+    icon: `<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>`
+  }
+];
+
+const faqs = [
+  { question: "Barkodu olmayan sebze/meyveleri nasıl satacağım?", answer: "Hızlı satış (POS) ekranımızda ürünlerin resimlerini ekleyebileceğiniz dokunmatik 'Hızlı Tuşlar' bulunur. Üstüne tıklayıp kilosuyla çarparak saniyeler içinde satabilirsiniz." },
+  { question: "Sistemde kaç tane terazi tanımlayabiliriz?", answer: "Sınır yok! Manav, kasap ve şarküteri reyonlarınızdaki tüm terazilerden çıkan 27'li veya 29'lu barkodları sistemimiz otomatik tanır ve hesaplar." },
+  { question: "Müşterime fiş vermem gerekiyor mu?", answer: "Mevcut termal fiş yazıcınızdan bilgi fişi yazdırabilir veya dilerseniz e-Arşiv faturası keserek müşterinize SMS/Email ile gönderebilirsiniz." }
+];
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <HeroSection 
+    h1="Market ve Şarküteriler İçin Terazi Entegreli Yıldırım Hızında Kasa Programı!"
+    description={pageDescription}
+    badges={["Terazi Uyumlu", "Hızlı Kasa", "Veresiye Takibi", "Mobil Sayım"]}
+    imageSrc="/images/site-foto/urunler.png"
+    imageAlt="Market Hızlı Satış Kasası"
+  />
+  
+  <ComparisonSection 
+    oldMethodTitle="Eski Nesil Yazar Kasalar"
+    oldMethodItems={["Düğmeleri bozuk, yavaş ve hantal donanımlar", "Raftaki fiyatla kasadaki fiyatın uyuşmaması", "Veresiyelerin defterde silinip kaybolması", "Tarihi geçmiş ürünlerin fark edilmemesi"]}
+    newMethodTitle="Stok Pratik Market Yazılımı"
+    newMethodItems={["İstediğiniz bilgisayardan dokunmatik hızlı satış", "Fiyat değişikliklerinin anında kasaya yansıması", "Güvenli ve şeffaf dijital veresiye (açık hesap)", "SKT alarmları ile sıfır ziyan"]}
+  />
+  
+  <FeaturesGrid 
+    title="Bakkal, Market ve Şarküterileri Hızlandıran Araçlar"
+    features={features}
+  />
+  
+  <HowItWorks 
+    title="Market Kasasında Hayat Kurtaran Süreç"
+    steps={[
+      { title: "Barkodları Okutun", description: "Ürünlerin standart barkodlarını veya teraziden çıkan gramaj barkodlarını okuyucuyla taratın." },
+      { title: "Ödemeyi Seçin", description: "Müşterinin ödeme tipini (Nakit, Kredi Kartı, Veresiye, Parçalı) saniyeler içinde belirleyin." },
+      { title: "Fişi Kesip Yollayın", description: "Fiş yazıcısından çıktıyı alın, stok anında düşsün ve sıradaki müşteriye hemen geçin." }
+    ]}
+  />
+  
+  <FaqAccordion faqs={faqs} />
+  
+  <CtaBanner />
+</BaseLayout>

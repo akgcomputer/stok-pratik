@@ -1,0 +1,86 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import HeroSection from '../components/landing/HeroSection.astro';
+import ComparisonSection from '../components/landing/ComparisonSection.astro';
+import FeaturesGrid from '../components/landing/FeaturesGrid.astro';
+import HowItWorks from '../components/landing/HowItWorks.astro';
+import FaqAccordion from '../components/landing/FaqAccordion.astro';
+import CtaBanner from '../components/landing/CtaBanner.astro';
+
+const pageTitle = "Barkodlu Mağaza Satış ve Butik Kasa Programı | Stok Pratik";
+const pageDescription = "Tekstil, giyim ve butikler için renk-beden takipli, hızlı barkodlu mağaza satış programı. Kasa gün sonu raporları ve stok senkronizasyonu tek ekranda!";
+
+const features = [
+  {
+    title: "Renk/Beden/Numara Varyant Takibi",
+    description: "Tekstil ve ayakkabı butikleri için karmaşık varyant matrisini kolayca oluşturun ve barkodlayın.",
+    icon: `<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"></path></svg>`
+  },
+  {
+    title: "Yıldırım Hızında POS Kasa",
+    description: "İnternet kopsa bile kesintisiz satış yapabilen, dokunmatik ekran uyumlu hızlı kasa (POS) arayüzü.",
+    icon: `<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>`
+  },
+  {
+    title: "Mağazalar Arası Ürün Transferi",
+    description: "Birden fazla şubeniz varsa, mağazalar arası stok sevkiyatını tek tuşla, kayıpsız yapın.",
+    icon: `<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"></path></svg>`
+  },
+  {
+    title: "Gün Sonu Z Raporu",
+    description: "Kasada nakit, kredi kartı ve veresiye satışlarınızı tek bir raporda anında görün.",
+    icon: `<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>`
+  },
+  {
+    title: "Fiş ve e-Arşiv Yazdırma",
+    description: "Müşterinize anında bilgi fişi veya e-Arşiv faturası yazdırın, yasal süreçleri otomatikleştirin.",
+    icon: `<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path></svg>`
+  },
+  {
+    title: "Müşteri Sadakat Puanları",
+    description: "Müşterilerinize telefon numaraları üzerinden alışveriş yaptıkça puan kazandırın, sadakati artırın.",
+    icon: `<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"></path></svg>`
+  }
+];
+
+const faqs = [
+  { question: "Barkod okuyucu ve fiş yazıcılarla uyumlu mu?", answer: "Evet, piyasadaki standart USB veya Bluetooth bağlantılı tüm barkod okuyucular, termal fiş yazıcılar ve para çekmeceleri ile tak-çalıştır uyumludur." },
+  { question: "Sistem internet koptuğunda satışa devam edebilir mi?", answer: "Gelişmiş çevrimdışı (offline) modumuz sayesinde internetiniz kopsa bile satış yapmaya, fiş kesmeye devam edebilirsiniz. İnternet geldiğinde veriler bulutla eşitlenir." },
+  { question: "Farklı renkte ve bedende aynı ürün barkodlanabiliyor mu?", answer: "Kesinlikle. Stok Pratik'in varyant altyapısı sayesinde Kırmızı-M beden tişört ile Mavi-L beden tişört için ayrı barkodlar basabilir ve stoklarını ayrı takip edebilirsiniz." }
+];
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <HeroSection 
+    h1="Mağaza Kasasında Kuyruklara Son: Barkodlu Hızlı Satış ve Renk-Beden Takibi!"
+    description={pageDescription}
+    badges={["Hızlı POS", "Varyant Takibi", "Barkod Yazdırma", "Fiş & e-Fatura"]}
+    imageSrc="/images/site-foto/urunler.png"
+    imageAlt="Mağaza Hızlı Satış ve Kasa Ekranı"
+  />
+  
+  <ComparisonSection 
+    oldMethodTitle="Eski Usül Kasa Sistemleri"
+    oldMethodItems={["Renk ve beden takibinin yapılamaması", "Kasa ve deponun farklı programlarda olması", "Barkod basımının zor ve karmaşık olması", "İnternet gidince satışın durması"]}
+    newMethodTitle="Stok Pratik POS Sistemi"
+    newMethodItems={["Kusursuz varyant (Renk/Beden) matrisi", "Bulut mimari ile mağaza ve deponun senkronu", "Tek tuşla toplu barkod etiketi tasarımı ve basımı", "Offline (Çevrimdışı) mod ile kesintisiz satış"]}
+  />
+  
+  <FeaturesGrid 
+    title="Butik ve Mağazalar İçin Özel Geliştirilen Araçlar"
+    features={features}
+  />
+  
+  <HowItWorks 
+    title="Mağazanızda Kurulum Çok Basit"
+    steps={[
+      { title: "Ürünlerinizi Yükleyin", description: "Excel ile veya tek tek, varyantlı (renk/beden) ürünlerinizi sisteme kaydedin." },
+      { title: "Barkodlarınızı Basın", description: "Sistem üzerinden kendi barkod etiketlerinizi tasarlayın ve yazdırıp ürünlere yapıştırın." },
+      { title: "Hemen Satışa Başlayın", description: "Barkod okuyucunuzu bağlayın, ürünleri okutarak yıldırım hızında satış yapın." }
+    ]}
+  />
+  
+  <FaqAccordion faqs={faqs} />
+  
+  <CtaBanner />
+</BaseLayout>

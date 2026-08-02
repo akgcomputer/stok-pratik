@@ -1,0 +1,38 @@
+---
+export interface FeatureItem {
+  title: string;
+  description: string;
+  icon: string; // SVG string
+}
+
+interface Props {
+  title?: string;
+  subtitle?: string;
+  features: FeatureItem[];
+}
+
+const { 
+  title = "Sistemin Öne Çıkan Özellikleri",
+  subtitle = "Stok Pratik ile iş süreçlerinizi hızlandırın, maliyetlerinizi düşürün.",
+  features 
+} = Astro.props;
+---
+
+<section id="ozellikler" class="py-20 bg-slate-50">
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
+    <div class="text-center max-w-3xl mx-auto mb-16">
+      <h2 class="text-3xl font-bold text-slate-900 sm:text-4xl">{title}</h2>
+      <p class="mt-4 text-lg text-slate-600">{subtitle}</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {features.map((feature, index) => (
+        <div class="bg-white rounded-2xl p-8 shadow-sm hover:shadow-md border border-slate-200 transition-all duration-300 transform hover:-translate-y-1">
+          <div class="w-14 h-14 bg-blue-100 rounded-xl flex items-center justify-center text-blue-600 mb-6" set:html={feature.icon}></div>
+          <h3 class="text-xl font-bold text-slate-900 mb-3">{feature.title}</h3>
+          <p class="text-slate-600 leading-relaxed">{feature.description}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

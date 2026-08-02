@@ -1,0 +1,86 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import HeroSection from '../components/landing/HeroSection.astro';
+import ComparisonSection from '../components/landing/ComparisonSection.astro';
+import FeaturesGrid from '../components/landing/FeaturesGrid.astro';
+import HowItWorks from '../components/landing/HowItWorks.astro';
+import FaqAccordion from '../components/landing/FaqAccordion.astro';
+import CtaBanner from '../components/landing/CtaBanner.astro';
+
+const pageTitle = "B2B Toptan Satış ve Bayi Sipariş Yönetim Programı | Stok Pratik";
+const pageDescription = "WhatsApp ve telefonla sipariş toplamaya son! Toptan müşterilerinize özel fiyat listeleri sunun, B2B bayi portalı üzerinden siparişleri 7/24 otomatik toplayın.";
+
+const features = [
+  {
+    title: "Bayiye Özel Fiyat Listeleri",
+    description: "Müşteri gruplarınıza (Platin, Altın, Gümüş bayi vb.) özel iskonto oranları ve fiyat listeleri tanımlayın.",
+    icon: `<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>`
+  },
+  {
+    title: "Cari Limit & Risk Yönetimi",
+    description: "Her bayinize açık hesap limiti tanımlayın. Limiti aşan bayilerin sipariş girmesini otomatik engelleyin.",
+    icon: `<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>`
+  },
+  {
+    title: "Sanal POS ile Online Tahsilat",
+    description: "Bayileriniz sipariş verirken kredi kartıyla ödeme yapsın. Cari bakiye anında otomatik düşsün.",
+    icon: `<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"></path></svg>`
+  },
+  {
+    title: "Görselli Ürün Kataloğu",
+    description: "B2B panelinizde ürün görsellerini, teknik detayları ve güncel stok durumunu anlık olarak sunun.",
+    icon: `<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>`
+  },
+  {
+    title: "Aşamalı Sipariş Onayı",
+    description: "Gelen toptan siparişleri 'Onay Bekliyor', 'Hazırlanıyor', 'Kargoya Verildi' şeklinde yönetin.",
+    icon: `<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>`
+  },
+  {
+    title: "Entegre e-Fatura & İrsaliye",
+    description: "Toptan siparişi onayladığınız anda e-Arşiv veya e-Faturası tek tıkla otomatik oluşturulsun.",
+    icon: `<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>`
+  }
+];
+
+const faqs = [
+  { question: "Müşterilerim B2B portalına nasıl giriş yapacak?", answer: "Sizin belirlediğiniz veya müşteriye sistem üzerinden otomatik gönderilen şifrelerle kendilerine özel portala giriş yapabilirler." },
+  { question: "Mobil cihazlardan sipariş verilebilir mi?", answer: "Evet, B2B Toptan satış portalımız %100 mobil uyumludur. Müşterileriniz cep telefonlarından bile kolayca sipariş oluşturabilir." },
+  { question: "Müşteri özel fiyatları nasıl ayarlanıyor?", answer: "Müşteri cari kartı içerisinden o müşteriye özel iskonto yüzdesi veya doğrudan bir fiyat listesi atayabilirsiniz." }
+];
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <HeroSection 
+    h1="WhatsApp'tan Fiyat Listesi Göndermeyi Bırakın: Kendi B2B Toptan Portalınızı Açın!"
+    description={pageDescription}
+    badges={["B2B Sipariş Modülü", "Bayi Paneli", "Özel Fiyat Listeleri", "Sanal POS"]}
+    imageSrc="/images/screenshots/Stok-pratik-ekran-toptan-satis.png"
+    imageAlt="B2B Toptan Satış Portalı"
+  />
+  
+  <ComparisonSection 
+    oldMethodTitle="Geleneksel Toptan Satış"
+    oldMethodItems={["WhatsApp'tan karışık sipariş almak", "Güncel fiyatları sürekli PDF atmak", "Cari limiti aşan bayiye manuel bakmak", "Tahsilatları tek tek takip etmek"]}
+    newMethodTitle="Stok Pratik B2B Sistemi"
+    newMethodItems={["7/24 bayilerin kendi sipariş girmesi", "Bayiye özel anlık güncel fiyatlar", "Cari risk limiti ile otomatik kontrol", "Sanal POS ile sipariş anında tahsilat"]}
+  />
+  
+  <FeaturesGrid 
+    title="Toptan Satış Sürecinizi Dijitalleştiren Özellikler"
+    features={features}
+  />
+  
+  <HowItWorks 
+    title="B2B Portalınız Nasıl Çalışır?"
+    steps={[
+      { title: "Müşterilerinizi Tanımlayın", description: "Bayilerinizi sisteme ekleyin ve onlara özel fiyat iskontolarını ayarlayın." },
+      { title: "Portal Şifresi Gönderin", description: "Müşterilerinize kendi sipariş panellerine giriş yapmaları için şifrelerini iletin." },
+      { title: "Sipariş ve Tahsilat Aksın", description: "Siz uyurken bile bayileriniz güncel stoklardan sipariş versin, Sanal POS ile ödesin." }
+    ]}
+  />
+  
+  <FaqAccordion faqs={faqs} />
+  
+  <CtaBanner />
+</BaseLayout>

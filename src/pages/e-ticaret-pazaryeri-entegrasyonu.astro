@@ -1,0 +1,86 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import HeroSection from '../components/landing/HeroSection.astro';
+import ComparisonSection from '../components/landing/ComparisonSection.astro';
+import FeaturesGrid from '../components/landing/FeaturesGrid.astro';
+import HowItWorks from '../components/landing/HowItWorks.astro';
+import FaqAccordion from '../components/landing/FaqAccordion.astro';
+import CtaBanner from '../components/landing/CtaBanner.astro';
+
+const pageTitle = "E-Ticaret Pazaryeri Entegrasyon Programı | Stok Pratik";
+const pageDescription = "Trendyol, Hepsiburada, N11 ve Amazon siparişlerinizi tek panelden yönetin. Aracı entegrasyon firmasına gerek kalmadan e-fatura ve stok takibini otomatikleştirin.";
+
+const features = [
+  {
+    title: "Otomatik Stok Senkronizasyonu",
+    description: "Tüm pazaryerlerindeki stoklarınız tek merkezden saniyeler içinde güncellenir.",
+    icon: `<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>`
+  },
+  {
+    title: "Doğrudan API Bağlantısı",
+    description: "Aracı firmalara ek ücret ödemeden Trendyol, Hepsiburada gibi platformlara doğrudan bağlanın.",
+    icon: `<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"></path></svg>`
+  },
+  {
+    title: "Tek Tıkla e-Fatura",
+    description: "Gelen pazaryeri siparişlerinizi tek tıkla e-Faturaya dönüştürün ve müşteriye iletin.",
+    icon: `<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>`
+  },
+  {
+    title: "Toplu Kargo Barkodu",
+    description: "Siparişlerinize ait kargo fişlerini ve faturaları tek seferde toplu olarak yazdırın.",
+    icon: `<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"></path></svg>`
+  },
+  {
+    title: "Varyantlı Ürün Yönetimi",
+    description: "Renk, beden ve numara gibi farklı varyantları pazaryerlerinde hatasız eşleştirin.",
+    icon: `<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"></path></svg>`
+  },
+  {
+    title: "B2B Toptan Portal Entegresi",
+    description: "Pazaryeri siparişlerinizi ve B2B toptan satışlarınızı tek bir havuzda birleştirin.",
+    icon: `<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>`
+  }
+];
+
+const faqs = [
+  { question: "Hangi pazaryerleri ile entegrasyonunuz var?", answer: "Şu anda Trendyol, Hepsiburada, N11, Çiçeksepeti, PttAVM ve Amazon ile tam entegre çalışıyoruz. Ayrıca kendi e-ticaret siteniz (WooCommerce, Shopify) ile de entegre olabilirsiniz." },
+  { question: "Aracı firmalara ek komisyon veya kontör ücreti ödeyecek miyim?", answer: "Hayır! Stok Pratik doğrudan API üzerinden iletişim kurduğu için sipariş veya fatura başına ek bir entegratör ücreti ödemezsiniz." },
+  { question: "Varyantlı ürünlerde stoklar nasıl güncelleniyor?", answer: "Renk ve beden gibi varyantlarınız için barkod eşleştirmesi yapılır. Herhangi bir pazaryerinde satış olduğunda diğer tüm platformlardaki varyant stokları anında düşülür." }
+];
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <HeroSection 
+    h1="Pazaryeri Entegrasyonu İçin Aracı Firmalara Ek Ücret Ödemeye SON!"
+    description={pageDescription}
+    badges={["Trendyol", "Hepsiburada", "N11", "Amazon"]}
+    imageSrc="/images/site-foto/crm.webp"
+    imageAlt="E-Ticaret Pazaryeri Ekranı"
+  />
+  
+  <ComparisonSection 
+    oldMethodTitle="Geleneksel Entegrasyon Firmaları"
+    oldMethodItems={["Aylık veya sipariş başı ek ücretler", "Destek almak için saatlerce beklemek", "Sadece entegrasyon (Muhasebesiz)", "Karmaşık eşleştirme süreçleri"]}
+    newMethodTitle="Stok Pratik Entegrasyonu"
+    newMethodItems={["Ek kontör veya sipariş başı ücret YOK", "Ön muhasebe ve depo ile tam entegre", "Varyant (Renk/Beden) duyarlı stok", "Ücretsiz 7/24 kesintisiz destek"]}
+  />
+  
+  <FeaturesGrid 
+    title="Pazaryeri Satışlarınızı Kolaylaştıran Özellikler"
+    features={features}
+  />
+  
+  <HowItWorks 
+    title="3 Adımda Satışlarınızı Otomatikleştirin"
+    steps={[
+      { title: "API Bilgilerini Girin", description: "Pazaryeri panellerinizden aldığınız API anahtarlarını sisteme bir kez kaydedin." },
+      { title: "Ürünleri Eşleştirin", description: "Sistem, pazaryerindeki ürünlerinizle Stok Pratik içindeki stokları otomatik eşleştirir." },
+      { title: "Arkanıza Yaslanın", description: "Gelen siparişler onaylansın, stoklar düşsün ve e-faturalar otomatik kesilsin." }
+    ]}
+  />
+  
+  <FaqAccordion faqs={faqs} />
+  
+  <CtaBanner />
+</BaseLayout>

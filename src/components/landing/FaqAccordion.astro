@@ -1,0 +1,98 @@
+---
+export interface FaqItem {
+  question: string;
+  answer: string;
+}
+
+interface Props {
+  title?: string;
+  faqs: FaqItem[];
+}
+
+const { 
+  title = "Sıkça Sorulan Sorular",
+  faqs 
+} = Astro.props;
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map(faq => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.answer
+    }
+  }))
+};
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(jsonLd)}></script>
+
+<section class="py-20 bg-slate-50">
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl font-bold text-slate-900 sm:text-4xl">{title}</h2>
+    </div>
+
+    <div class="space-y-4" id="faq-accordion">
+      {faqs.map((faq, index) => (
+        <div class="bg-white border border-slate-200 rounded-xl overflow-hidden transition-all duration-200">
+          <button 
+            type="button"
+            class="faq-button flex w-full items-center justify-between px-6 py-5 text-left text-lg font-medium text-slate-900 hover:bg-slate-50 focus:outline-none"
+            aria-expanded="false"
+            aria-controls={`faq-answer-${index}`}
+          >
+            <span>{faq.question}</span>
+            <svg class="faq-icon h-5 w-5 text-slate-500 transform transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+          <div 
+            id={`faq-answer-${index}`} 
+            class="faq-content hidden px-6 pb-5 text-slate-600 leading-relaxed"
+          >
+            {faq.answer}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const buttons = document.querySelectorAll('.faq-button');
+    
+    buttons.forEach(button => {
+      button.addEventListener('click', () => {
+        const isExpanded = button.getAttribute('aria-expanded') === 'true';
+        const content = button.nextElementSibling as HTMLElement;
+        const icon = button.querySelector('.faq-icon') as HTMLElement;
+        
+        // Close all other FAQs (optional, accordion style)
+        /*
+        document.querySelectorAll('.faq-button').forEach(otherBtn => {
+          if (otherBtn !== button) {
+            otherBtn.setAttribute('aria-expanded', 'false');
+            otherBtn.nextElementSibling?.classList.add('hidden');
+            otherBtn.querySelector('.faq-icon')?.classList.remove('rotate-180');
+          }
+        });
+        */
+        
+        // Toggle current FAQ
+        button.setAttribute('aria-expanded', (!isExpanded).toString());
+        if (isExpanded) {
+          content.classList.add('hidden');
+          icon.classList.remove('rotate-180');
+        } else {
+          content.classList.remove('hidden');
+          icon.classList.add('rotate-180');
+        }
+      });
+    });
+  });
+</script>

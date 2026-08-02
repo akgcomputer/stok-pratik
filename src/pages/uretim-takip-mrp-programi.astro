@@ -1,0 +1,86 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import HeroSection from '../components/landing/HeroSection.astro';
+import ComparisonSection from '../components/landing/ComparisonSection.astro';
+import FeaturesGrid from '../components/landing/FeaturesGrid.astro';
+import HowItWorks from '../components/landing/HowItWorks.astro';
+import FaqAccordion from '../components/landing/FaqAccordion.astro';
+import CtaBanner from '../components/landing/CtaBanner.astro';
+
+const pageTitle = "İmalatçı ve Üretim Yapan İşletmeler İçin MRP Programı | Stok Pratik";
+const pageDescription = "Küçük ve orta ölçekli imalatçılar için ürün reçetesi (BOM) ve hammadde stok takip yazılımı. Üretim maliyetini hatasız hesaplayın!";
+
+const features = [
+  {
+    title: "Aşamalı Ürün Reçetesi (BOM)",
+    description: "Bir ürünün üretilmesi için gereken hammadde, yarı mamul ve ambalaj malzemelerini standart reçeteler olarak tanımlayın.",
+    icon: `<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>`
+  },
+  {
+    title: "Otomatik Hammadde Düşüşü",
+    description: "Üretim fişini oluşturduğunuz an sistem, reçetede yazan hammaddeleri ana depodan otomatik olarak düşer, mamul stoğunu artırır.",
+    icon: `<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>`
+  },
+  {
+    title: "Gerçek Birim Maliyet Hesabı",
+    description: "Hammaddelerin güncel alış fiyatları (FIFO), işçilik ve genel gider payları eklenerek en doğru üretim maliyetinizi hesaplar.",
+    icon: `<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>`
+  },
+  {
+    title: "Fason Üretim Takibi",
+    description: "Üretimin bir aşamasını dışarıya fasona veriyorsanız, gönderilen hammaddeleri ve dışarıda oluşan maliyetleri sisteme işleyin.",
+    icon: `<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"></path></svg>`
+  },
+  {
+    title: "Eksik Hammadde İkazı",
+    description: "Sipariş aldığınızda üretim için gerekli olan ancak depoda bulunmayan eksik hammaddelerin listesini tek tıkla alın.",
+    icon: `<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>`
+  },
+  {
+    title: "Entegre Ön Muhasebe & e-Fatura",
+    description: "Üretilen malları toptan veya perakende sattığınızda anında e-faturasını kesin ve tahsilatlarını muhasebeden takip edin.",
+    icon: `<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>`
+  }
+];
+
+const faqs = [
+  { question: "Üretim sırasında harcanan işçilik veya elektriği maliyete ekleyebilir miyim?", answer: "Evet, reçetelerinize 'Genel Gider' veya 'İşçilik' isimli hizmet kalemleri ekleyerek toplam maliyetinizin daha tutarlı hesaplanmasını sağlayabilirsiniz." },
+  { question: "Gıda imalathaneleri için uygun mu?", answer: "Kesinlikle. Gram, litre, adet gibi farklı birimlerle reçete oluşturabilirsiniz. Unlu mamuller, kuruyemiş, tekstil ve makine parça imalatı yapan tüm KOBİ'ler kullanabilir." },
+  { question: "Yarı mamul üretimi destekleniyor mu?", answer: "Sistemde alt reçeteler (yarı mamuller) oluşturabilir, bir ana ürünü üretirken içinde kullanılan yarı mamullerin de hammaddelerden düşmesini sağlayabilirsiniz." }
+];
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <HeroSection 
+    h1="İmalathanelerde Hammadde Kaybına ve Hatalı Maliyet Hesabına Son!"
+    description={pageDescription}
+    badges={["Üretim Reçetesi (BOM)", "Maliyet Analizi", "Fason Takibi", "KOBİ Üretim"]}
+    imageSrc="/images/site-foto/analiz.webp"
+    imageAlt="MRP Üretim Takip Ekranı"
+  />
+  
+  <ComparisonSection 
+    oldMethodTitle="Geleneksel Atölye Düzeni"
+    oldMethodItems={["Hammaddeleri kafadan düşmek", "Ürünün gerçek maliyetini bilememek", "Sipariş gelince hammaddenin eksik çıkması", "Fasona giden malların sayılamaması"]}
+    newMethodTitle="Stok Pratik Üretim Sistemi"
+    newMethodItems={["Dinamik reçete ile firesiz hammadde düşüşü", "Güncel kurlarla hatasız birim maliyet hesabı", "Üretim öncesi eksik malzeme analizi", "Fason depo takibi ile sıfır kayıp"]}
+  />
+  
+  <FeaturesGrid 
+    title="Küçük ve Orta Ölçekli İmalatçılar İçin"
+    features={features}
+  />
+  
+  <HowItWorks 
+    title="Üretiminizi Sisteme Nasıl Tanımlarsınız?"
+    steps={[
+      { title: "Hammaddeleri Kaydedin", description: "Tedarikçiden aldığınız iplik, kumaş, un, sac gibi malzemeleri sisteme girin." },
+      { title: "Reçetenizi Çıkarın", description: "Bir gömlek üretmek için ne kadar kumaş ve düğme gerektiğini standart şablon olarak ekleyin." },
+      { title: "Üretime Başlayın", description: "Kaç adet ürettiğinizi yazdığınız an, gerekli tüm hammaddeler deponuzdan düşülüp maliyetiniz hesaplansın." }
+    ]}
+  />
+  
+  <FaqAccordion faqs={faqs} />
+  
+  <CtaBanner />
+</BaseLayout>

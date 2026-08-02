@@ -1,0 +1,86 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import HeroSection from '../components/landing/HeroSection.astro';
+import ComparisonSection from '../components/landing/ComparisonSection.astro';
+import FeaturesGrid from '../components/landing/FeaturesGrid.astro';
+import HowItWorks from '../components/landing/HowItWorks.astro';
+import FaqAccordion from '../components/landing/FaqAccordion.astro';
+import CtaBanner from '../components/landing/CtaBanner.astro';
+
+const pageTitle = "Mobilya, Züccaciye ve Ev Eşyası Mağaza Programı | Stok Pratik";
+const pageDescription = "Taksitli ve senetli satış takibi yapan mobilya ve züccaciye mağaza yazılımı. Sevkiyat, montaj iş emri ve çoklu depo yönetimi!";
+
+const features = [
+  {
+    title: "Taksitli & Senetli Satış Takibi",
+    description: "Kefilli ve senetli vadeli satışlarınızı düzenleyin, aylık taksitleri sisteme işleyip gecikmeleri tek ekrandan görün.",
+    icon: `<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>`
+  },
+  {
+    title: "Sevkiyat & Montaj İş Emri",
+    description: "Satılan ürünlerin ne zaman, hangi ekiple, kime teslim edileceğini planlayın. Sevkiyat listelerini otomatik yazdırın.",
+    icon: `<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4"></path></svg>`
+  },
+  {
+    title: "Züccaciye Fire Takibi",
+    description: "Kırılan cam eşyalar veya defolu çıkan ürünler için fire fişi düzenleyin, deponuzu gerçeğe uygun güncelleyin.",
+    icon: `<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg>`
+  },
+  {
+    title: "Takım Ürün Parça Düşümü",
+    description: "'Yemek Odası Takımı' satıldığında; içindeki masa, sandalye ve konsolun stoklarının ayrı ayrı otomatik düşmesini sağlayın.",
+    icon: `<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 10l-2 1m0 0l-2-1m2 1v2.5M20 7l-2 1m2-1l-2-1m2 1v2.5M14 4l-2-1-2 1M4 7l2-1M4 7l2 1M4 7v2.5M12 21l-2-1m2 1l2-1m-2 1v-2.5M6 18l-2-1v-2.5M18 18l2-1v-2.5"></path></svg>`
+  },
+  {
+    title: "Otomatik Taksit Hatırlatma SMS'i",
+    description: "Taksit ödeme günü gelen müşterilerinize sistem üzerinden tek tıkla otomatik ödeme hatırlatma SMS'i gönderin.",
+    icon: `<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path></svg>`
+  },
+  {
+    title: "Plasiyer / Tezgahtar Prim Hesabı",
+    description: "Hangi satış danışmanının ne kadarlık ürün sattığını takip edin, ay sonu kotaları ve hak edilen primleri otomatik hesaplayın.",
+    icon: `<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>`
+  }
+];
+
+const faqs = [
+  { question: "Müşterilere senet yazdırabiliyor muyum?", answer: "Evet, vadeli bir satış yaptığınızda sistemde kayıtlı boş senet şablonuna müşteri ve taksit bilgilerini otomatik doldurarak yazıcıdan çıktı alabilirsiniz." },
+  { question: "Çoklu depo (Mağaza ve Ana Depo) yönetimi var mı?", answer: "Mağazadaki teşhir ürünleri ile ana depodaki kapalı kutu ürünleri ayrı ayrı takip edebilirsiniz. Satış olduğunda malı isterseniz ana depodan sevkiyata çıkartabilirsiniz." },
+  { question: "Geciken taksitleri nasıl görebilirim?", answer: "Ön muhasebe modülümüzde yer alan 'Geciken Alacaklar' raporu sayesinde, vadesi geçmiş ve ödenmemiş tüm taksitleri gün sayısına göre listeleyebilirsiniz." }
+];
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <HeroSection 
+    h1="Mobilya ve Züccaciye Mağazalarında Taksitli Satış ve Sevkiyat Karmaşasına Son!"
+    description={pageDescription}
+    badges={["Taksit & Senet", "Sevkiyat Modülü", "Takım/Set Ürünler", "Prim Sistemi"]}
+    imageSrc="/images/site-foto/analiz.webp"
+    imageAlt="Mobilya Mağazası Yazılımı"
+  />
+  
+  <ComparisonSection 
+    oldMethodTitle="Karmaşık Mağaza Yönetimi"
+    oldMethodItems={["Taksitleri Excel veya defterde tutmak", "Teslimat ve montaj tarihlerinin karışması", "Takım satılınca tek tek alt ürünleri düşmek", "Personel primlerini manuel hesaplamak"]}
+    newMethodTitle="Stok Pratik Dijital Çözümü"
+    newMethodItems={["Senet yazdırma ve otomatik SMS hatırlatmaları", "Teslimat günlerine göre sevkiyat planlaması", "Dinamik reçete ile takım/set ürün düşümü", "Performans ve satışa dayalı şeffaf prim raporu"]}
+  />
+  
+  <FeaturesGrid 
+    title="Ev Eşyası Sektörü İçin Geliştirilmiş Özellikler"
+    features={features}
+  />
+  
+  <HowItWorks 
+    title="Vadeli Satışlarınızı Kolayca Yönetin"
+    steps={[
+      { title: "Müşteriye Satışı Yapın", description: "Ürünleri seçip vade farkını hesaplatın, taksit sayılarını belirleyin." },
+      { title: "Evrakları Yazdırın", description: "Satış sözleşmesini ve ödeme senetlerini tek tıkla yazıcıdan alın." },
+      { title: "Sevkiyatı Planlayın", description: "Ürünlerin teslim edileceği tarihi girip, montaj ekibinize iş emri verin." }
+    ]}
+  />
+  
+  <FaqAccordion faqs={faqs} />
+  
+  <CtaBanner />
+</BaseLayout>

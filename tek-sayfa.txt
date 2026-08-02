@@ -1,0 +1,554 @@
+📑 SAYFA 1: E-Ticaret & Pazaryeri Entegrasyon Sayfası
+📌 SEO & Meta Bilgileri
+Sayfa Adresi (URL Slug): stokpratik.com.tr/e-ticaret-pazaryeri-entegrasyonu
+
+SEO Başlığı (Title): E-Ticaret Pazaryeri Entegrasyon Programı | Stok Pratik
+
+Meta Açıklaması (Description): Trendyol, Hepsiburada, N11 ve Amazon siparişlerinizi tek panelden yönetin. Aracı entegrasyon firmasına gerek kalmadan e-fatura ve stok takibini otomatikleştirin. 14 gün ücretsiz deneyin!
+
+BÖLÜM 1: Hero Section (Giriş Karşılama Alanı)
+Tasarım & Görsel Düzeni:
+
+Sol Taraf: Dikkat çekici H1 başlık, vurgulu alt metin, 2 adet CTA butonu ve güven rozetleri.
+
+Sağ Taraf: Trendyol, Hepsiburada, N11 ve Amazon logolarıyla anlık senkronize çalışan Stok Pratik panel ekranı görseli (Mockup).
+
+H1 Başlığı: Pazaryeri Entegrasyonu İçin Aracı Firmalara Ek Ücret Ödemeye SON!
+
+Alt Açıklama: Trendyol, Hepsiburada, N11 ve Amazon siparişleriniz doğrudan sisteminize düşsün. Stoklarınız tüm kanallarda anında güncellensin, e-faturalarınız tek tıkla kesilsin.
+
+CTA Butonları: [ 14 Gün Ücretsiz Deneyin ] (Birincil Buton) | [ Ücretsiz Demo İsteyin ] (İkincil Buton)
+
+Güven Rozetleri (İkonlu):
+
+💳 Kredi Kartı Gerekmez
+
+⚡ 5 Dakikada Kurulum
+
+☁️ %100 Bulut Tabanlı
+
+BÖLÜM 2: Karşılaştırma Kartı (Geleneksel Yöntem vs. Stok Pratik)
+Tasarım & Görsel Düzeni:
+
+Yan yana 2 adet geniş kart tasarımı.
+
+Sol Kart (Kırmızı/Gri Kutu): "Eski & Karmaşık Yöntem"
+
+Sağ Kart (Yeşil/Mavi Vurgulu Kutu): "Stok Pratik Yöntemi"
+
+Sol Kart Metinleri (Eski Yöntem):
+
+❌ E-ticaret altyapısına ayrı yıllık ücret ödersiniz.
+
+❌ Pazaryerlerine bağlanmak için dıişarıdan entegrasyon firmasına binlerce TL verirsiniz.
+
+❌ Ön muhasebe ve e-fatura için ayrı bir yazılıma abonelik ödersiniz.
+
+❌ Stok çakışması ve stokta olmayan ürünü satma riski yaşarsınız.
+
+Sağ Kart Metinleri (Stok Pratik Yöntemi):
+
+✅ E-Ticaret sitesi, Pazaryeri Entegrasyonu ve Ön Muhasebe TEK panelde.
+
+✅ Aracı entegrasyon firmasına 0 TL ödersiniz.
+
+✅ Kasadan veya pazaryerinden satılan ürün tüm kanallardan anında düşer.
+
+✅ Sipariş geldiğinde e-Fatura tek tıkla otomatik düzenlenir.
+
+BÖLÜM 3: Öne Çıkan Özellikler (3x2 Grid İkonlu Kartlar)
+Tasarım & Görsel Düzeni:
+
+6 adet şık, ikona sahip kutucuk tasarımı.
+
+Anlık Otomatik Stok Senkronizasyonu
+
+Açıklama: Mağazanızda veya Trendyol'da satılan bir ürün, aynı saniyede Hepsiburada ve N11 stoklarınızdan da otomatik düşer. Hatalı satış biter.
+
+Aracı Entegratörsüz Doğrudan API Bağlantısı
+
+Açıklama: Üçüncü taraf entegrasyon şirketleriyle uğraşmayın. Stok Pratik dahili entegrasyon motoruyla tüm pazaryerlerine direkt bağlanır.
+
+Tek Tıkla e-Fatura ve e-Arşiv Düzenleme
+
+Açıklama: Pazaryerlerinden gelen siparişlerinizi tek ekranda görün, tek tıkla e-faturaya dönüştürüp müşterinize e-posta ile gönderin.
+
+Toplu Kargo Barkodu ve Fiş Çıktısı
+
+Açıklama: Sipariş paketlerinizi hazırlarken zaman kaybetmeyin. Tüm pazaryeri kargo kodlarını ve paket etiketlerini tek tıkla toplu basın.
+
+Varyantlı Ürün Yönetimi (Renk / Beden / Numara)
+
+Açıklama: Tekstil, ayakkabı ve aksesuar satıcıları için gelişmiş renk ve beden eşleştirme. Stoklarınızı varyant bazında hatasız izleyin.
+
+B2B Toptan Satış Portal Entegrasyonu
+
+Açıklama: Sadece perakende değil, toptan müşterilerinize özel fiyat listeleri tanımlayın ve B2B siparişleri tek panelden toplayın.
+
+BÖLÜM 4: 3 Basit Adımda Nasıl Çalışır? (Adım Adım Akış)
+Tasarım & Görsel Düzeni:
+
+1-2-3 numaralandırılmış yatay çizgi üzeri süreç adımları.
+
+Adım 1: Mağazalarınızı Bağlayın
+
+Açıklama: Ücretsiz hesabınızı açın, Trendyol veya Hepsiburada API bilgilerinizi sisteme tek tıkla tanımlayın.
+
+Adım 2: Ürünlerinizi İçeri Aktarın
+
+Açıklama: Mevcut ürünlerinizi pazaryerlerinden otomatik çekin veya Excel/XML ile saniyeler içinde yükleyin.
+
+Adım 3: Satışa ve Otomasyona Başlayın!
+
+Açıklama: Siparişler ekranınıza düşsün, stoklar otomatik senkronize olsun, e-faturalarınız tek tıkla kesilsin.
+
+BÖLÜM 5: Sıkça Sorulan Sorular (SSS / FAQ Accordion)
+Tasarım & Görsel Düzeni:
+
+Açılır-kapanır (Accordion) soru-cevap listesi.
+
+S1: Pazaryeri entegrasyonu için dışarıdan başka bir firma ile anlaşmam gerekiyor mu?
+
+Cevap: Hayır. Stok Pratik pazaryeri entegrasyon motorunu kendi içerisinde dahili olarak sunar. Başka bir entegratör firmaya veya ek moda ücret ödemeniz gerekmez.
+
+S2: Fiziki mağazadaki satışlarım pazaryeri stoklarını etkiler mi?
+
+Cevap: Evet. Barkodlu mağaza satış ekranımızdan (POS) bir ürün sattığınızda, o ürünün stoğu Trendyol, Hepsiburada ve diğer tüm kanallarınızda anında güncellenir.
+
+S3: Gelen siparişlere e-Fatura kesebilir miyim?
+
+Cevap: Evet. Gelen siparişlerinizi panelinizden seçerek tek tıkla e-Fatura veya e-Arşiv faturaya dönüştürebilirsiniz.
+
+S4: Programı kullanmak için bilgisayara kurulum yapmamız gerekiyor mu?
+
+Cevap: Hayır. Stok Pratik %100 bulut tabanlıdır. Bilgisayar, tablet veya cep telefonunuzdan internetin olduğu her yerden 7/24 erişebilirsiniz.
+
+BÖLÜM 6: Kapanış CTA (Dönüşüm Alanı)
+Tasarım & Görsel Düzeni:
+
+Sayfa altında koyu mavi/yeşil arka plana sahip geniş banner kutusu.
+
+Başlık: E-Ticarette Karmaşaya ve Ek Entegratör Ücretlerine Bugün Son Verin!
+
+Alt Açıklama: Stok Pratik'in tüm pazaryeri ve ön muhasebe özelliklerini 14 gün boyunca hiçbir ücret ödemeden ve kredi kartı tanımlamadan hemen deneyin.
+
+CTA Butonu: [ 14 Gün Ücretsiz Denemeye Başla ]
+
+Sayfa (E-Ticaret & Pazaryeri Entegrasyonu) tamamlandı!
+
+📑 SAYFA 2: B2B Toptan Satış & Bayi Portalı Sayfası
+📌 SEO & Meta Bilgileri
+Sayfa Adresi (URL Slug): stokpratik.com.tr/b2b-toptan-satis-sistemi
+
+SEO Başlığı (Title): B2B Toptan Satış ve Bayi Sipariş Yönetim Programı | Stok Pratik
+
+Meta Açıklaması (Description): WhatsApp ve telefonla sipariş toplamaya son! Toptan müşterilerinize özel fiyat listeleri sunun, B2B bayi portalı üzerinden siparişleri 7/24 otomatik toplayın. 14 gün ücretsiz deneyin!
+
+BÖLÜM 1: Hero Section (Giriş Karşılama Alanı)
+Tasarım & Görsel Düzeni:
+
+Sol Taraf: H1 Başlık, vurucu alt metin, 2 adet CTA butonu ve güven rozetleri.
+
+Sağ Taraf: Toptan müşterinin cep telefonundan veya bilgisayarından giriş yapıp sipariş oluşturduğu B2B Bayi Portalı ekran görseli (Mockup).
+
+H1 Başlığı: WhatsApp’tan Fiyat Listesi Göndermeyi Bırakın: Kendi B2B Toptan Portalınızı Açın!
+
+Alt Açıklama: Toptancılar, üreticiler ve distribütörler için özel tasarlanmış B2B sipariş sistemi. Bayilerinize özel fiyatlar tanımlayın, siparişleri, cari borçları ve ödemeleri 7/24 tek panelden yönetin.
+
+CTA Butonları: [ 14 Gün Ücretsiz Deneyin ] | [ B2B Demosu İsteyin ]
+
+Güven Rozetleri: 🏢 Bayiye Özel Fiyatlandırma | 📱 Mobil Uyumlu Bayi Ekranı | 🔒 Risk & Cari Limit Takibi
+
+BÖLÜM 2: Karşılaştırma Kartı (Geleneksel Toptancılık vs. Stok Pratik B2B)
+Tasarım & Görsel Düzeni: Yan yana 2 karşılaştırma kartı (Geleneksel vs. Stok Pratik).
+
+Sol Kart (Geleneksel Yöntem):
+
+❌ Müşteriler sürekli WhatsApp veya telefondan fiyat ve stok sorar.
+
+❌ Hatalı fiyat verme ve yanlış ürün gönderme riskleri yüksektir.
+
+❌ Mesai saatleri dışında sipariş alamazsınız.
+
+❌ Vadesi geçen borçları takip etmek ve tahsilat yapmak yıpratıcıdır.
+
+Sağ Kart (Stok Pratik B2B Yöntemi):
+
+✅ Bayi kendi şifresiyle portala girer, kendisine özel tanımlanan fiyatı ve anlık stoğu görür.
+
+✅ Siparişler doğrudan panelinize hatasız ve anında düşer.
+
+✅ Mesai bittikten sonra bile 7/24 sipariş toplamaya devam edersiniz.
+
+✅ B2B portal üzerinden Sanal POS ile kredi kartıyla anında tahsilat yaparsınız.
+
+BÖLÜM 3: Öne Çıkan Özellikler (3x2 Grid Kartlar)
+Müşteriye ve Bayiye Özel Fiyat Listeleri
+
+Açıklama: A, B, C grubu bayilerinize veya seçtiğiniz müşterilere özel iskonto oranları ve fiyat listeleri tanımlayın.
+
+Cari Limit ve Risk Yönetimi
+
+Açıklama: Borcunu geciktiren veya cari limitini aşan bayilerin otomatik sipariş vermesini engelleyin veya onaya düşürün.
+
+Sanal POS ile Online Tahsilat
+
+Açıklama: Toptan müşterileriniz sipariş verirken veya geçmiş borçlarını öderken kredi kartıyla B2B portalı üzerinden güvenle ödeme yapsın.
+
+Stok Katoloğu ve Görselli Ürün Listesi
+
+Açıklama: Ürün görselleri, teknik detaylar ve koli/paket içi adet bilgisiyle profesyonel bir dijital katalog sunun.
+
+Aşamalı Sipariş Onay Mekanizması
+
+Açıklama: Müşteriden gelen siparişleri önce depocunuza, ardından faturalandırma biriminize kontrol mekanizmasıyla aktarın.
+
+E-Fatura ve Ön Muhasebe İle Tam Entegrasyon
+
+Açıklama: B2B portalından onaylanan siparişi tek tıkla e-faturaya ve sevk irsaliyesine dönüştürün.
+
+BÖLÜM 4: Sıkça Sorulan Sorular (SSS)
+S1: B2B portalını kullanmak için müşterilerimin bir uygulama indirmesi gerekir mi?
+
+Cevap: Hayır. B2B portalınız web tabanlıdır. Toptan müşterileriniz kendilerine verilen kullanıcı adı ve şifre ile telefon, tablet veya bilgisayar tarayıcısından anında giriş yapabilir.
+
+S2: Farklı bayilere farklı fiyat gösterebilir miyim?
+
+Cevap: Evet. Müşterilerinizi kategorize edebilir, her bayi grubuna özel iskonto veya fiyat listesi atayabilirsiniz.
+
+📑 SAYFA 3: Barkodlu Mağaza & Butik Satış (POS) Sayfası
+📌 SEO & Meta Bilgileri
+Sayfa Adresi (URL Slug): stokpratik.com.tr/barkodlu-magaza-pos-programi
+
+SEO Başlığı (Title): Barkodlu Mağaza Satış ve Butik Kasa Programı | Stok Pratik
+
+Meta Açıklaması (Description): Tekstil, giyim ve butikler için renk-beden takipli, hızlı barkodlu mağaza satış programı. Kasa gün sonu raporları, fiziki ve online stok senkronizasyonu tek ekranda!
+
+BÖLÜM 1: Hero Section
+Tasarım & Görsel Düzeni:
+
+Sol Taraf: H1 Başlık, kısa açıklama, CTA butonları.
+
+Sağ Taraf: Dokunmatik ekran veya tablet üzerinden çalışan, hızlı barkod okutmalı Stok Pratik POS Kasa ekranı görseli.
+
+H1 Başlığı: Mağaza Kasasında Kuyruklara Son: Barkodlu Hızlı Satış ve Renk-Beden Takibi!
+
+Alt Açıklama: Butik, tekstil, ayakkabı ve perakende mağazaları için tasarlanmış yıldırım hızında kasa programı. Barkod okutun, renk ve beden stoğunu anında görün, e-faturayı kasadan saniyeler içinde kesin.
+
+CTA Butonları: [ 14 Gün Ücretsiz Deneyin ] | [ Kasa Demosu İsteyin ]
+
+Güven Rozetleri: 🏷️ Renk / Beden Varyant Takibi | ⚡ Yıldırım Hızında POS Kasa | 🔄 Mağazalar Arası Ürün Transferi
+
+BÖLÜM 2: Öne Çıkan Özellikler (3x2 Grid Kartlar)
+Gelişmiş Renk, Beden ve Numara Varyant Takibi
+
+Açıklama: Tekstil ve ayakkabı mağazaları için özel matris. Hangi renk ve bedenden elinizde kaç adet kaldığını kasadan anında sorgulayın.
+
+Yıldırım Hızında Barkodlu Satış (POS)
+
+Açıklama: Dokunmatik ekran ve barkod okuyucu uyumlu arayüzle kasadaki müşteri bekleme sürelerini sıfıra indirin.
+
+Çoklu Şube ve Mağazalar Arası Ürün Transferi
+
+Açıklama: A şubesinde biten bir ürünü B şubesinden tek tıkla transfer edin, şubeler arası stok kaçaklarını önleyin.
+
+Anlık Gün Sonu Z Raporu ve Kasa Takibi
+
+Açıklama: Gün sonunda nakit, kredi kartı ve veresiye satışlarınızı tek tıkla raporlayın. Kasa açıklarını anında tespit edin.
+
+Fiş ve E-Arşiv Fatura Yazdırma
+
+Açıklama: Kasadaki müşterinize bilgi fişi basın veya e-Arşiv faturasını anında cep telefonuna SMS/e-posta olarak iletin.
+
+Müşteri Sadakat (Puan) ve Kampanya Yönetimi
+
+Açıklama: Müşterilerinize alışveriş yaptıkça puan kazandırın, doğum günlerinde SMS ile özel indirim kuponları tanımlayın.
+
+BÖLÜM 3: Sıkça Sorulan Sorular (SSS)
+S1: Dokunmatik ekran ve barkod okuyucum var, sistemimle uyumlu çalışır mı?
+
+Cevap: Evet. Stok Pratik tüm standart USB/Bluetooth barkod okuyucular, fiş yazıcılar ve dokunmatik POS ekranlarıyla %100 uyumludur.
+
+S2: İnternet kesilirse kasada satış durur mu?
+
+Cevap: Cep telefonunuzun mobil interneti üzerinden bile sistemi çalıştırmaya devam edebilir, kasanızı aksatmazsınız.
+
+📑 SAYFA 4: Hırdavat, Yapı Market & Nalburiye Yazılımı Sayfası
+📌 SEO & Meta Bilgileri
+Sayfa Adresi (URL Slug): stokpratik.com.tr/hirdavat-yapi-market-yazilimi
+
+SEO Başlığı (Title): Hırdavat, Yapı Market ve Nalburiye Stok Takip Programı | Stok Pratik
+
+Meta Açıklaması (Description): Binlerce çeşit hırdavat, civata ve yapı malzemesini barkodla kolayca yönetin. Depolar arası transfer, metre/kilo bazlı satış ve hızlı cari takibi tek tıkla!
+
+BÖLÜM 1: Hero Section
+Tasarım & Görsel Düzeni:
+
+Sol Taraf: H1 Başlık, açıklama, CTA butonları.
+
+Sağ Taraf: Binlerce kalem hırdavat ürününün arandığı ve hızlı stok giriş-çıkışının yapıldığı Stok Pratik Depo & Stok ekranı görseli.
+
+H1 Başlığı: Binlerce Çeşit Hırdavat ve Yapı Malzemesinde Sayım Karmaşasına Son!
+
+Alt Açıklama: Nalburlar, hırdavatçılar ve yapı marketler için özel stok yönetim çözümü. Metre, kilo, paket ve koli bazlı karmaşık ürünleri barkod okutarak saniyeler içinde takip edin.
+
+CTA Butonları: [ 14 Gün Ücretsiz Deneyin ] | [ Ücretsiz Demo İsteyin ]
+
+Güven Rozetleri: 🛠️ 10.000+ Ürün Hızlı Arama | 📦 Çoklu Depo Takibi | 📄 Hızlı Veresiye & Cari Defter
+
+BÖLÜM 2: Öne Çıkan Özellikler (3x2 Grid Kartlar)
+Saniyeler İçinde Binlerce Kalem Ürün Araması
+
+Açıklama: Barkod, ürün kodu veya isimle arama yaparak en karmaşık hırdavat stoklarına anında ulaşın.
+
+Çoklu Birim Yönetimi (Metre, Kilo, Adet, Paket)
+
+Açıklama: Kabloyu metreyle, çiviyi kiloyla, somunu adetle satın. Birim dönüşümlerini sistem otomatik hesaplasın.
+
+Birden Fazla Depo ve Raf Lokasyonu Takibi
+
+Açıklama: Hangi malzemenin hangi depoda, kaçıncı rafta olduğunu anında görün, depo aramalarında zaman kaybetmeyin.
+
+Dijital Veresiye Defteri ve Müşteri Cari Takibi
+
+Açıklama: Ustaların ve müteahhitlerin veresiye hesaplarını, çek/senet ödemelerini hatasız ve anlık takip edin.
+
+Kritik Stok ve Otomatik Tedarik Uyarısı
+
+Açıklama: Azalan malzemelerde sistem otomatik ikaz versin, tedarikçiye tek tıkla sipariş formu oluşturun.
+
+El Terminali ve Mobil Cep Telefonundan Sayım
+
+Açıklama: Depo sayımlarınızı cep telefonunuzun kamerasını barkod okuyucu gibi kullanarak saniyeler içinde tamamlayın.
+
+BÖLÜM 3: Sıkça Sorulan Sorular (SSS)
+S1: Mevcut hırdavat stoklarımı Excel ile toplu yükleyebilir miyim?
+
+Cevap: Evet. Binlerce kalem ürününüzü hazırlayacağınız Excel şablonu ile tek tıkla Stok Pratik'e aktarabilirsiniz.
+
+S2: Ustaların veresiye hesaplarına sınır koyabilir miyim?
+
+Cevap: Evet. Müşterilerinize cari risk limiti tanımlayabilir, limiti aşan müşterilerde sistemin uyarı vermesini sağlayabilirsiniz.
+
+🚀 Özet ve Yol Haritamızın Durumu
+Tüm yeni 4 Sektörel Landing Page içerik ve tasarım kurguları hazırlandı:
+
+✅ E-Ticaret & Pazaryeri Entegrasyon Sayfası
+
+✅ B2B Toptan Satış & Bayi Portalı Sayfası
+
+✅ Barkodlu Mağaza & Butik Satış (POS) Sayfası
+
+✅ Hırdavat, Yapı Market & Nalburiye Yazılımı Sayfası
+
+Tamamdır, hedeflenen toplam 10 adet Sektörel Landing Page çalışmasını tamamlayalım.
+
+Daha önce hazırladığımız 4 sayfaya ek olarak, en çok aranan ve dönüşüm getirecek kalan 6 yeni dikey sektörel landing page tasarımı ve içerikleri aşağıdadır:
+
+📑 SAYFA 5: Bulut Ön Muhasebe & E-Fatura Programı Sayfası
+📌 SEO & Meta Bilgileri
+Sayfa Adresi (URL Slug): stokpratik.com.tr/bulut-on-muhasebe-e-fatura
+
+SEO Başlığı (Title): Bulut Ön Muhasebe ve E-Fatura Programı | Stok Pratik
+
+Meta Açıklaması (Description): KOBİ'ler ve şahıs şirketleri için kullanımı en kolay bulut ön muhasebe yazılımı. Tek tıkla e-Fatura kesin, gelir-gider ve nakit akışınızı cebinizden yönetin. 14 gün ücretsiz deneyin!
+
+BÖLÜM 1: Hero Section
+H1 Başlığı: Muhasebe Karmaşasına Son: Tek Tıkla e-Fatura Kesin, Nakit Akışınızı Cebinizden Yönetin!
+
+Alt Açıklama: Şahıs şirketleri ve KOBİ'ler için karmaşık menülerden arındırılmış %100 bulut tabanlı ön muhasebe programı. Fatura kesin, gelir-giderinizi takip edin, banka bakiyelerinizi anlık izleyin.
+
+CTA Butonları: [ 14 Gün Ücretsiz Deneyin ] | [ Ön Muhasebe Demosu İsteyin ]
+
+Güven Rozetleri: 📄 Tek Tıkla e-Fatura / e-Arşiv | 💰 Anlık Nakit Akışı Takibi | 📱 Mobil Uyumlu
+
+BÖLÜM 2: Öne Çıkan Özellikler (3x2 Grid Kartlar)
+Tek Tıkla GİB Entegre e-Fatura ve e-Arşiv: Müşterilerinize saniyeler içinde şablonlu e-fatura düzenleyin ve e-posta ile iletin.
+
+Gelir, Gider ve Kasa/Banka Takibi: Şirketinize giren ve çıkan tüm parayı, nakit kasanızı ve banka hesaplarınızı tek ekrandan görün.
+
+Müşteri ve Tedarikçi Cari Hesap Yönetimi: Kimden ne kadar alacağınız var, kime ne kadar borcunuz var; vadesi gelen ödemeleri uyarısıyla takip edin.
+
+Çek ve Senet Takip Modülü: Müşterilerinizden aldığınız veya tedarikçiye verdiğiniz çek/senetlerin vade tarihlerini kaçırmayın.
+
+Excel Derdine Son Veren Otomatik Raporlama: Kâr-zarar analizi, aylık ciro raporu ve KDV ödeme tahminlerini tek tıkla alın.
+
+Personel Avans ve Masraf Takibi: Çalışanlarınızın harcamalarını ve avans ödemelerini muhasebenize anında yansıtın.
+
+BÖLÜM 3: Sıkça Sorulan Sorular (SSS)
+S1: Şahıs şirketim var, mali müşavirime veri gönderebilir miyim?
+
+Cevap: Evet. Tüm fatura ve cari verilerinizi Excel/PDF formatında indirebilir veya mali müşavirinize tek tıkla rapor olarak iletebilirsiniz.
+
+📑 SAYFA 6: Kozmetik, Parfümeri & Kişisel Bakım Mağaza Yazılımı
+📌 SEO & Meta Bilgileri
+Sayfa Adresi (URL Slug): stokpratik.com.tr/kozmetik-magaza-yazilimi
+
+SEO Başlığı (Title): Kozmetik ve Parfümeri Mağaza Stok Takip Programı | Stok Pratik
+
+Meta Açıklaması (Description): Kozmetik mağazaları için SKT (Son Kullanma Tarihi) ve Seri/Lot takipli barkodlu satış programı. Kampanya yönetimi ve hızlı kasa takibi tek ekranda!
+
+BÖLÜM 1: Hero Section
+H1 Başlığı: Kozmetik Mağazalarında Tarihi Geçen Ürün (SKT) Ziyanına Son!
+
+Alt Açıklama: Parfümeri, kozmetik ve kişisel bakım mağazaları için özel stok ve hızlı satış yazılımı. Seri/Lot numarası ve son kullanma tarihi takibi yapın, kampanyalarla müşteri sadakatini artırın.
+
+CTA Butonları: [ 14 Gün Ücretsiz Deneyin ] | [ Kozmetik Modülü Demosu ]
+
+Güven Rozetleri: ⌛ SKT & Seri/Lot Takibi | 💄 Hızlı Hediye Çeki & Kupon | 🏷️ Varyantlı Ürün Yönetimi
+
+BÖLÜM 2: Öne Çıkan Özellikler (3x2 Grid Kartlar)
+Son Kullanma Tarihi (SKT) İkaz Sistemi: Tarihi yaklaşan krem, makyaj ve bakım ürünlerinde sistem otomatik uyarı versin, fire kaybını önleyin.
+
+Seri No ve Lot Takipli Ürün Yönetimi: Orijinal parfümler ve ithal kozmetik ürünlerinde seri numarası bazında %100 stok kontrolü sağlayın.
+
+Müşteri Sadakat ve Doğum Günü Kampanyaları: Müşterilerinize özel puan tanımlayın, doğum günlerinde otomatik indirim SMS'i gönderin.
+
+Hızlı Barkodlu Kasa Satışı ve Bilgi Fişi: Dokunmatik ekran uyumlu arayüzle kasada ürünleri hızlıca okutun ve satış yapın.
+
+Set ve Paket Ürün Tanımlama: "Cilt Bakım Seti" veya "Hediye Paketi" gibi birden fazla ürünü tek fiyatla satıp stoktan otomatik düşün.
+
+Fiziki Mağaza ve Online Satış Eşitlemesi: İnternetten ve dükkandan satılan kozmetik stoklarınızı anında senkronize edin.
+
+📑 SAYFA 7: Gıda, Market & Şarküteri Barkodlu Satış Yazılımı
+📌 SEO & Meta Bilgileri
+Sayfa Adresi (URL Slug): stokpratik.com.tr/gida-market-sarkuteri-yazilimi
+
+SEO Başlığı (Title): Gıda, Market ve Şarküteri Barkod Satış Programı | Stok Pratik
+
+Meta Açıklaması (Description): Terazi ve kantar entegreli hızlı market ve şarküteri kasa yazılımı. Gramajlı ürün satışı, SKT takibi ve açık veresiye hesap yönetimi tek tıkla!
+
+BÖLÜM 1: Hero Section
+H1 Başlığı: Market ve Şarküteriler İçin Terazi Entegreli Yıldırım Hızında Kasa Programı!
+
+Alt Açıklama: Gramajlı ürünleri tartın, barkodunu okutun ve kasadaki işlemleri saniyeler içinde tamamlayın. Açık hesap veresiye takibi yapın, son kullanma tarihi geçen gıdaların önüne geçin.
+
+CTA Butonları: [ 14 Gün Ücretsiz Deneyin ] | [ Market Demosu İsteyin ]
+
+Güven Rozetleri: ⚖️ Terazi Entegrasyonu | 🧀 Gramajlı Ürün Satışı | ✍️ Dijital Veresiye Defteri
+
+BÖLÜM 2: Öne Çıkan Özellikler (3x2 Grid Kartlar)
+Elektronik Terazi ve Kantar Bağlantısı: Şarküteri ve manav ürünlerini terazide tartın, gramajlı barkodu kasadan anında okutun.
+
+Dijital Veresiye Defteri (Açık Hesap): Mahalle ve düzenli müşterilerin veresiye hesaplarını anlık tutun, ödemeleri SMS ile bilgilendirin.
+
+Sayımlarda Hızlı Cep Telefonu İle Barkod Okutma: Depo sayımlarını telefon kamerasıyla saniyeler içinde tamamlayın.
+
+Tedarikçi Alış Faturası ve Maliyet Güncellemesi: Toptancıdan gelen ürünün alış fiyatı değiştiğinde satış fiyatını anında güncelleyin.
+
+Gıda Güvenliği ve SKT İkazı: Son kullanma tarihi yaklaşan süt, peynir ve şarküteri ürünlerinde erken uyarı alın.
+
+Kasa Gün Sonu ve Nakit/POS Raporu: Gün sonunda kasanızdaki nakit ve kredi kartı bakiyelerini lekesiz şekilde raporlayın.
+
+📑 SAYFA 8: Mobilya, Züccaciye & Ev Eşyası Mağaza Yazılımı
+📌 SEO & Meta Bilgileri
+Sayfa Adresi (URL Slug): stokpratik.com.tr/mobilya-zuccaciye-ev-esyasi-yazilimi
+
+SEO Başlığı (Title): Mobilya, Züccaciye ve Ev Eşyası Mağaza Programı | Stok Pratik
+
+Meta Açıklaması (Description): Taksitli ve senetli satış takibi yapan mobilya ve züccaciye mağaza yazılımı. Sevkiyat, montaj iş emri ve çoklu depo yönetimi tek ekranda!
+
+BÖLÜM 1: Hero Section
+H1 Başlığı: Mobilya ve Züccaciye Mağazalarında Taksitli Satış ve Sevkiyat Karmaşasına Son!
+
+Alt Açıklama: Senetli/taksitli satış yapan, depo teslimi çalışan ve montaj takibi gerektiren ev eşyası mağazaları için özel geliştirilmiş yönetim programı.
+
+CTA Butonları: [ 14 Gün Ücretsiz Deneyin ] | [ Mağaza Demosu İsteyin ]
+
+Güven Rozetleri: 📅 Taksitli & Senetli Satış Takibi | 🚚 Sevkiyat & Montaj Formu | 📦 Çoklu Depo Yönetimi
+
+BÖLÜM 2: Öne Çıkan Özellikler (3x2 Grid Kartlar)
+Taksitli ve Senetli Satış Takip Modülü: Müşterilerin aylık taksit ödemelerini, geciken senetlerini ve ödeme planlarını hatasız izleyin.
+
+Sevkiyat ve Montaj İş Emri Takibi: Satılan mobilyanın depodan çıkışını, nakliye gününü ve montaj ekibinin durumunu yönetin.
+
+Kırılabilir Züccaciye Ürünlerinde Fire Takibi: Kırılan veya defolu kalan züccaciye ürünlerini tek tıkla fire olarak stoktan düşürün.
+
+Takım Ürün ve Parça Detayı Tanımlama: "Yatak Odası Takımı" satıldığında gardırop, komodin ve karyolayı stoktan otomatik düşün.
+
+Geciken Taksitlere Otomatik SMS Hatırlatması: Ödeme günü yaklaşan veya geçen müşterilere otomatik taksit hatırlatma SMS'i atın.
+
+Gelişmiş Plasiyer ve Tezgahtar Prim Hesabı: Hangi satış elemanının ne kadar ciro yaptığını ve ne kadar prim hak ettiğini görün.
+
+📑 SAYFA 9: Üretim Takip & MRP Programı Sayfası
+📌 SEO & Meta Bilgileri
+Sayfa Adresi (URL Slug): stokpratik.com.tr/uretim-takip-mrp-programi
+
+SEO Başlığı (Title): İmalatçı ve Üretim Yapan İşletmeler İçin MRP Programı | Stok Pratik
+
+Meta Açıklaması (Description): Küçük ve orta ölçekli imalatçılar için ürün reçetesi (BOM) ve hammadde stok takip yazılımı. Üretim maliyetini hatasız hesaplayın, verimliliği artırın!
+
+BÖLÜM 1: Hero Section
+H1 Başlığı: İmalathanelerde Hammadde Kaybına ve Hatalı Maliyet Hesabına Son!
+
+Alt Açıklama: Küçük ve orta ölçekli üreticiler için tasarlanmış yalın MRP yazılımı. Ürün reçetelerinizi (BOM) tanımlayın, üretimi başlatın, hammadde stoktan otomatik düşsün, birim maliyetiniz anında hesaplansın.
+
+CTA Butonları: [ 14 Gün Ücretsiz Deneyin ] | [ Üretim Demosu İsteyin ]
+
+Güven Rozetleri: 📑 Ürün Reçetesi (BOM) Yönetimi | ⚙️ Otomatik Hammadde Düşüşü | 📊 Gerçek Birim Maliyet Hesabı
+
+BÖLÜM 2: Öne Çıkan Özellikler (3x2 Grid Kartlar)
+Aşamalı Ürün Reçetesi (Bill of Materials) Oluşturma: Bir mamulün üretimi için gereken tüm hammadde, yarı mamul ve sarf malzemeleri reçeteye ekleyin.
+
+Otomatik Hammadde Düşüşü: Üretim emri verildiğinde, reçetedeki hammaddeler depodan otomatik düşsün, stok açığı yaşanmasın.
+
+Gerçek Ürün Birim Maliyeti Hesaplama: Hammadde fiyatları, işçilik ve genel giderleri ekleyerek mamulün net maliyetini ve kâr marjını görün.
+
+Fason Üretim ve Dış Tedarikçi Takibi: Dışarıya fasona gönderilen yarı mamulleri ve işçilik maliyetlerini hatasız izleyin.
+
+Eksik Hammadde İkazı: Üretim emri vermeden önce depoda yeterli hammadde olup olmadığını sistem anında kontrol etsin.
+
+E-Fatura ve Muhasebe Entegrasyonu: Üretilen mamul satıldığında e-Faturasını tek tıkla düzenleyin.
+
+📑 SAYFA 10: Kitap, Kırtasiye & Oyuncak Mağaza Yazılımı
+📌 SEO & Meta Bilgileri
+Sayfa Adresi (URL Slug): stokpratik.com.tr/kitap-kirtasiye-oyuncak-yazilimi
+
+SEO Başlığı (Title): Kitap, Kırtasiye ve Oyuncak Mağazası Stok Programı | Stok Pratik
+
+Meta Açıklaması (Description): Kırtasiye ve kitapçılar için ISBN/Barkod arama motorlu, sezonluk okul kampanyası destekli hızlı satış yazılımı. 14 gün ücretsiz deneyin!
+
+BÖLÜM 1: Hero Section
+H1 Başlığı: Kırtasiye ve Kitapçılarda Sezon Yoğunluğunu Hızlı Kasa İle Aşın!
+
+Alt Açıklama: Okul sezonu yoğunluğunda kasadaki kuyrukları eritmek için tasarlanmış hızlı barkodlu satış ve stok programı. ISBN barkod okutma, okul listesi hazırlama ve çoklu paket satışı tek tıkla!
+
+CTA Butonları: [ 14 Gün Ücretsiz Deneyin ] | [ Kırtasiye Demosu İsteyin ]
+
+Güven Rozetleri: 📚 ISBN & Barkod Okutma | 🎒 Okul Sezonu Kampanya Yönetimi | ⚡ Dokunmatik Hızlı POS
+
+BÖLÜM 2: Öne Çıkan Özellikler (3x2 Grid Kartlar)
+ISBN ve Yayın Barkodu İle Hızlı Arama: Kitapların ISBN kodunu okutarak yazar, yayınevi ve stok durumuna saniyeler içinde ulaşın.
+
+Okul Listesi ve Paket Ürün Hazırlama: Öğrenci ihtiyaç listelerini (defter, kalem, boya seti) tek paket yapıp toplu satın.
+
+Okul Sezonu İndirim ve Kampanya Yönetimi: Okul açılış dönemlerinde toplu indirimler ve "3 Al 2 Öde" kampanyaları tanımlayın.
+
+Oyuncak ve Kırtasiyede Yaş Grubu & Kategori Filtresi: Binlerce çeşit kırtasiye ürününü kategorilere göre hızlıca arayın.
+
+Veresiye ve Okul Aile Birliği Cari Takibi: Düzenli veli ve okul cari hesaplarını aksatmadan kayıt altında tutun.
+
+İnternet Satışı ve Pazaryeri Entegrasyonu: Kitap ve oyuncaklarınızı Trendyol veya kendi sitenizde aynı stoktan satın.
+
+🏆 TOPLAM 10 SEKTÖREL LANDING PAGE TAMAMLANDI!
+Sitenizin dönüşüm oranını ve SEO gücünü zirveye taşıyacak 10 Sektörel Açılış Sayfası Planı eksiksiz hazırlandı:
+
+✅ E-Ticaret & Pazaryeri Entegrasyonu (/e-ticaret-pazaryeri-entegrasyonu)
+
+✅ B2B Toptan Satış & Bayi Portalı (/b2b-toptan-satis-sistemi)
+
+✅ Barkodlu Mağaza & Butik Satış (POS) (/barkodlu-magaza-pos-programi)
+
+✅ Hırdavat, Yapı Market & Nalburiye Yazılımı (/hirdavat-yapi-market-yazilimi)
+
+✅ Bulut Ön Muhasebe & E-Fatura Programı (/bulut-on-muhasebe-e-fatura)
+
+✅ Kozmetik, Parfümeri & Kişisel Bakım Mağaza Yazılımı (/kozmetik-magaza-yazilimi)
+
+✅ Gıda, Market & Şarküteri Barkod Satış Yazılımı (/gida-market-sarkuteri-yazilimi)
+
+✅ Mobilya, Züccaciye & Ev Eşyası Yazılımı (/mobilya-zuccaciye-ev-esyasi-yazilimi)
+
+✅ Üretim Takip & MRP Programı (/uretim-takip-mrp-programi)
+
+✅ Kitap, Kırtasiye & Oyuncak Mağaza Yazılımı (/kitap-kirtasiye-oyuncak-yazilimi)

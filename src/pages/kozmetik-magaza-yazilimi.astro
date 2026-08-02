@@ -1,0 +1,86 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import HeroSection from '../components/landing/HeroSection.astro';
+import ComparisonSection from '../components/landing/ComparisonSection.astro';
+import FeaturesGrid from '../components/landing/FeaturesGrid.astro';
+import HowItWorks from '../components/landing/HowItWorks.astro';
+import FaqAccordion from '../components/landing/FaqAccordion.astro';
+import CtaBanner from '../components/landing/CtaBanner.astro';
+
+const pageTitle = "Kozmetik ve Parfümeri Mağaza Stok Takip Programı | Stok Pratik";
+const pageDescription = "Kozmetik mağazaları için SKT ve Seri/Lot takipli barkodlu satış programı. Kampanya yönetimi ve hızlı kasa takibi tek ekranda!";
+
+const features = [
+  {
+    title: "SKT İkaz Sistemi",
+    description: "Son Kullanma Tarihi (SKT) yaklaşan makyaj ve bakım ürünlerini önceden tespit edin, uyarı alın ve indirime sokun.",
+    icon: `<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>`
+  },
+  {
+    title: "Seri No & Lot Takibi",
+    description: "Her bir parfüm veya kozmetik ürününü Lot ve Batch kodlarıyla sisteme kaydedin, üretim partilerini kolayca takip edin.",
+    icon: `<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 20l4-16m2 16l4-16M6 9h14M4 15h14"></path></svg>`
+  },
+  {
+    title: "Müşteri Sadakat & Doğum Günü Kampanyası",
+    description: "Müşterilerinizin doğum günlerini kaydedin, otomatik tebrik SMS'i ve kişiye özel iskontolar tanımlayın.",
+    icon: `<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 15.546c-.523 0-1.046.151-1.5.454a2.704 2.704 0 01-3 0 2.704 2.704 0 00-3 0 2.704 2.704 0 01-3 0 2.704 2.704 0 00-3 0 2.704 2.704 0 01-3 0 2.701 2.701 0 00-1.5-.454M9 6v2m3-2v2m3-2v2M9 3h.01M12 3h.01M15 3h.01M21 21v-7a2 2 0 00-2-2H5a2 2 0 00-2 2v7h18zm-3-9v-2a2 2 0 00-2-2H8a2 2 0 00-2 2v2h12z"></path></svg>`
+  },
+  {
+    title: "Hızlı Barkodlu Satış",
+    description: "Binlerce renk tonu ve ruj çeşidini kasada tek okutmayla saniyeler içinde sepetinize ekleyip satış yapın.",
+    icon: `<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"></path></svg>`
+  },
+  {
+    title: "Set/Paket Ürün Satışı",
+    description: "Farklı ürünleri (Parfüm + Losyon) tek bir hediye seti olarak tanımlayıp satın, alt ürünlerin stokları otomatik düşsün.",
+    icon: `<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path></svg>`
+  },
+  {
+    title: "Fiziki & Online Stok Eşitleme",
+    description: "Mağazanızdaki satışlar ile Trendyol, Hepsiburada gibi e-ticaret sitelerinizdeki stoklar eşzamanlı olarak düşsün.",
+    icon: `<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>`
+  }
+];
+
+const faqs = [
+  { question: "Yeni çıkan koleksiyonları topluca nasıl eklerim?", answer: "Markaların size gönderdiği Excel listesini saniyeler içinde Stok Pratik'e aktarabilir, barkodlarıyla beraber yüzlerce ürünü tek seferde kaydedebilirsiniz." },
+  { question: "Müşterilerim için 'Alışveriş Puanı' sistemi kurabilir miyim?", answer: "Kesinlikle! Müşterileriniz her alışverişte belirlediğiniz oranda TL puan kazanır ve bu puanları bir sonraki alışverişlerinde indirim olarak kullanabilirler." },
+  { question: "Ürünlerin tester (deneme boyu) çıkışlarını nasıl takip ederim?", answer: "Bedelsiz çıkış (Fire/Zayi/Tester) fişi oluşturarak mağaza içindeki numune kullanımlarını kayıt altında tutabilir, maliyetlerinizi net olarak görebilirsiniz." }
+];
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <HeroSection 
+    h1="Kozmetik Mağazalarında Tarihi Geçen Ürün (SKT) Ziyanına Son!"
+    description={pageDescription}
+    badges={["SKT Takibi", "Müşteri Kartı", "Barkodlu Kasa", "Paket/Set Satışı"]}
+    imageSrc="/images/site-foto/analiz.webp"
+    imageAlt="Kozmetik Stok Takip Yazılımı"
+  />
+  
+  <ComparisonSection 
+    oldMethodTitle="Klasik Parfümeri Yönetimi"
+    oldMethodItems={["Bozulan ve tarihi geçen ürünlerin çöpe gitmesi", "Tester (deneme) ürünlerinin hesabının tutulamaması", "Küçük ürünlerde barkod karışıklıkları", "Müşterinin sadece kasada hatırlanması"]}
+    newMethodTitle="Stok Pratik Kozmetik Çözümü"
+    newMethodItems={["SKT öncesi akıllı sistem ikazları", "Tester çıkışlarının dijital takibi", "En ufak oje şişesine bile barkod basımı", "Sadakat puanı ve doğum günü mesajları"]}
+  />
+  
+  <FeaturesGrid 
+    title="Güzellik ve Kozmetik Sektörüne Özel Fonksiyonlar"
+    features={features}
+  />
+  
+  <HowItWorks 
+    title="Sistemi Mağazanıza Nasıl Kurarsınız?"
+    steps={[
+      { title: "Ürünlerinizi Sisteme Girin", description: "Binlerce renk seçeneğine sahip ruj, oje ve parfümlerinizi barkodlarıyla yükleyin." },
+      { title: "SKT ve Lot Bilgilerini İşleyin", description: "Mal kabul sırasında ürünlerin son kullanma tarihlerini sisteme girin." },
+      { title: "Fireleri Önleyin", description: "Satış yapın ve tarihi yaklaşan ürünleri kampanya ile hızla eriterek zarar etmekten kurtulun." }
+    ]}
+  />
+  
+  <FaqAccordion faqs={faqs} />
+  
+  <CtaBanner />
+</BaseLayout>

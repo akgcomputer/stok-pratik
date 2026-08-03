@@ -13,8 +13,9 @@ Stok Pratik (stokpratik.com.tr), küçük ve orta ölçekli işletmelerin (KOBİ
 - **Bulut Tabanlı Yapı:** Kurulum gerektirmeden, her cihazdan (PC, tablet, mobil) 7/24 erişim imkanı.
 
 ## Sektörel Çözümlerimiz
+- **Geniş Sektör Desteği:** Oto servis, kuyumculuk, e-ticaret pazaryeri entegrasyonu, B2B toptan satış, perakende mağazacılık, mobilya, restoran/cafe, hırdavat ve daha birçok sektöre özel geliştirilmiş arayüzler ve iş akışları. (stokpratik.com.tr)
 - **Oto Servis Yazılımı:** Araç kabul, iş emri takibi, yedek parça ve usta prim yönetimi. (stokpratik.com.tr/oto-tamir-yazilimi)
-- **Stok Pratik GOLD (Kuyumculuk):** Has gram, milyem hesabı, barkodlu hızlı satış ve anlık kur takibi ile lüks mücevherat ve kuyumcular için özel yazılım. (stokpratik.com.tr/kuyumculuk-yazilimi)
+- **Stok Pratik GOLD (Kuyumculuk):** Has gram, milyem hesabı, barkodlu hızlı satış ve anlık kur takibi. (stokpratik.com.tr/kuyumculuk-yazilimi)
 
 ## Paketlerimiz
 Sistemimiz, işletmelerin ihtiyaçlarına göre şekillenmiş abonelik paketleri sunar. 

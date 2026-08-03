@@ -1,86 +1,324 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import HeroSection from '../components/landing/HeroSection.astro';
-import ComparisonSection from '../components/landing/ComparisonSection.astro';
-import FeaturesGrid from '../components/landing/FeaturesGrid.astro';
-import HowItWorks from '../components/landing/HowItWorks.astro';
-import FaqAccordion from '../components/landing/FaqAccordion.astro';
-import CtaBanner from '../components/landing/CtaBanner.astro';
 
 const pageTitle = "Kozmetik ve Parfümeri Mağaza Stok Takip Programı | Stok Pratik";
 const pageDescription = "Kozmetik mağazaları için SKT ve Seri/Lot takipli barkodlu satış programı. Kampanya yönetimi ve hızlı kasa takibi tek ekranda!";
 
 const features = [
-  {
-    title: "SKT İkaz Sistemi",
-    description: "Son Kullanma Tarihi (SKT) yaklaşan makyaj ve bakım ürünlerini önceden tespit edin, uyarı alın ve indirime sokun.",
-    icon: `<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>`
-  },
-  {
-    title: "Seri No & Lot Takibi",
-    description: "Her bir parfüm veya kozmetik ürününü Lot ve Batch kodlarıyla sisteme kaydedin, üretim partilerini kolayca takip edin.",
-    icon: `<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 20l4-16m2 16l4-16M6 9h14M4 15h14"></path></svg>`
-  },
-  {
-    title: "Müşteri Sadakat & Doğum Günü Kampanyası",
-    description: "Müşterilerinizin doğum günlerini kaydedin, otomatik tebrik SMS'i ve kişiye özel iskontolar tanımlayın.",
-    icon: `<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 15.546c-.523 0-1.046.151-1.5.454a2.704 2.704 0 01-3 0 2.704 2.704 0 00-3 0 2.704 2.704 0 01-3 0 2.704 2.704 0 00-3 0 2.704 2.704 0 01-3 0 2.701 2.701 0 00-1.5-.454M9 6v2m3-2v2m3-2v2M9 3h.01M12 3h.01M15 3h.01M21 21v-7a2 2 0 00-2-2H5a2 2 0 00-2 2v7h18zm-3-9v-2a2 2 0 00-2-2H8a2 2 0 00-2 2v2h12z"></path></svg>`
-  },
-  {
-    title: "Hızlı Barkodlu Satış",
-    description: "Binlerce renk tonu ve ruj çeşidini kasada tek okutmayla saniyeler içinde sepetinize ekleyip satış yapın.",
-    icon: `<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"></path></svg>`
-  },
-  {
-    title: "Set/Paket Ürün Satışı",
-    description: "Farklı ürünleri (Parfüm + Losyon) tek bir hediye seti olarak tanımlayıp satın, alt ürünlerin stokları otomatik düşsün.",
-    icon: `<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path></svg>`
-  },
-  {
-    title: "Fiziki & Online Stok Eşitleme",
-    description: "Mağazanızdaki satışlar ile Trendyol, Hepsiburada gibi e-ticaret sitelerinizdeki stoklar eşzamanlı olarak düşsün.",
-    icon: `<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>`
-  }
+  { icon: "⏰", title: "SKT İkaz Sistemi", desc: "Son Kullanma Tarihi (SKT) yaklaşan makyaj ve bakım ürünlerini önceden tespit edin, uyarı alın ve indirime sokun.", details: ["Otomatik uyarı", "İndirim önerisi", "Raporlama"] },
+  { icon: "🔢", title: "Seri No & Lot Takibi", desc: "Her bir parfüm veya kozmetik ürününü Lot ve Batch kodlarıyla sisteme kaydedin, üretim partilerini kolayca takip edin.", details: ["Lot numarası", "Batch takibi", "Üretim partisi"] },
+  { icon: "🎂", title: "Müşteri Sadakat & Doğum Günü Kampanyası", desc: "Müşterilerinizin doğum günlerini kaydedin, otomatik tebrik SMS'i ve kişiye özel iskontolar tanımlayın.", details: ["Doğum günü hatırlatma", "SMS gönderimi", "Özel indirim"] },
+  { icon: "🏷️", title: "Hızlı Barkodlu Satış", desc: "Binlerce renk tonu ve ruj çeşidini kasada tek okutmayla saniyeler içinde sepetinize ekleyip satış yapın.", details: ["Barkod okuma", "Hızlı kasa", "Stok düşümü"] },
+  { icon: "🎁", title: "Set/Paket Ürün Satışı", desc: "Farklı ürünleri (Parfüm + Losyon) tek bir hediye seti olarak tanımlayıp satın, alt ürünlerin stokları otomatik düşsün.", details: ["Set oluşturma", "Otomatik stok düşümü", "Fiyatlandırma"] },
+  { icon: "🔄", title: "Fiziki & Online Stok Eşitleme", desc: "Mağazanızdaki satışlar ile Trendyol, Hepsiburada gibi e-ticaret sitelerinizdeki stoklar eşzamanlı olarak düşsün.", details: ["Mağaza-online senkron", "Anlık güncelleme", "Çoklu platform"] }
 ];
 
 const faqs = [
-  { question: "Yeni çıkan koleksiyonları topluca nasıl eklerim?", answer: "Markaların size gönderdiği Excel listesini saniyeler içinde Stok Pratik'e aktarabilir, barkodlarıyla beraber yüzlerce ürünü tek seferde kaydedebilirsiniz." },
-  { question: "Müşterilerim için 'Alışveriş Puanı' sistemi kurabilir miyim?", answer: "Kesinlikle! Müşterileriniz her alışverişte belirlediğiniz oranda TL puan kazanır ve bu puanları bir sonraki alışverişlerinde indirim olarak kullanabilirler." },
-  { question: "Ürünlerin tester (deneme boyu) çıkışlarını nasıl takip ederim?", answer: "Bedelsiz çıkış (Fire/Zayi/Tester) fişi oluşturarak mağaza içindeki numune kullanımlarını kayıt altında tutabilir, maliyetlerinizi net olarak görebilirsiniz." }
+  { q: "Yeni çıkan koleksiyonları topluca nasıl eklerim?", a: "Markaların size gönderdiği Excel listesini saniyeler içinde Stok Pratik'e aktarabilir, barkodlarıyla beraber yüzlerce ürünü tek seferde kaydedebilirsiniz." },
+  { q: "Müşterilerim için 'Alışveriş Puanı' sistemi kurabilir miyim?", a: "Kesinlikle! Müşterileriniz her alışverişte belirlediğiniz oranda TL puan kazanır ve bu puanları bir sonraki alışverişlerinde indirim olarak kullanabilirler." },
+  { q: "Ürünlerin tester (deneme boyu) çıkışlarını nasıl takip ederim?", a: "Bedelsiz çıkış (Fire/Zayi/Tester) fişi oluşturarak mağaza içindeki numune kullanımlarını kayıt altında tutabilir, maliyetlerinizi net olarak görebilirsiniz." }
+];
+
+const stats = [
+  { number: "%60", label: "SKT Ziyanı Azalması", icon: "⏱️" },
+  { number: "%40", label: "Satış Artışı", icon: "📈" },
+  { number: "%55", label: "Stok Doğruluğu", icon: "✅" },
+  { number: "24/7", label: "Kesintisiz Erişim", icon: "🌐" }
 ];
 ---
 
 <BaseLayout title={pageTitle} description={pageDescription}>
-  <HeroSection 
-    h1="Kozmetik Mağazalarında Tarihi Geçen Ürün (SKT) Ziyanına Son!"
-    description={pageDescription}
-    badges={["SKT Takibi", "Müşteri Kartı", "Barkodlu Kasa", "Paket/Set Satışı"]}
-    imageSrc="/images/site-foto/analiz.webp"
-    imageAlt="Kozmetik Stok Takip Yazılımı"
-  />
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-grid">
+        <div class="hero-text">
+          <span class="badge">💄 Kozmetik & Parfümeri Çözümü</span>
+          <h1>Kozmetik Mağazalarında Tarihi Geçen Ürün (SKT) <span class="highlight">Ziyanına Son!</span></h1>
+          <p class="subtitle">{pageDescription}</p>
+          <div class="stats">
+            {stats.map(s => (
+              <div class="stat" key={s.label}>
+                <div class="stat-icon">{s.icon}</div>
+                <div class="stat-number">{s.number}</div>
+                <div class="stat-label">{s.label}</div>
+              </div>
+            ))}
+          </div>
+          <div class="buttons">
+            <a href="https://wa.me/+905325000999?text=Merhaba,%20Kozmetik%20programı%20demo%20istiyorum" target="_blank" rel="noopener" class="btn btn-primary">📅 Demo İste</a>
+            <a href="tel:+905325000999" class="btn btn-secondary">📞 0532 500 09 99</a>
+          </div>
+          <div class="tags">
+            <span>⏰ SKT Takibi</span>
+            <span>🎂 Sadakat Puanı</span>
+            <span>🏷️ Barkodlu Satış</span>
+            <span>🎁 Set Satışı</span>
+          </div>
+        </div>
+        <div class="hero-image">
+          <div class="dashboard">
+            <div class="dash-header"><span>💄 Stok Pratik Kozmetik</span><span>Bugün</span></div>
+            <div class="dash-cards">
+              <div><div class="dash-label">Toplam Ürün</div><div class="dash-value">3.240</div></div>
+              <div><div class="dash-label">SKT Uyarısı</div><div class="dash-value warning">12</div></div>
+              <div><div class="dash-label">Bugün Satış</div><div class="dash-value">₺5.720</div></div>
+            </div>
+            <div class="dash-list">
+              <div><span>💄 Ruj Kırmızı #01</span><span class="badge-stock">24 adet</span></div>
+              <div><span>🧴 Losyon SPF 50</span><span class="badge-stock warning">SKT: 2 ay</span></div>
+              <div><span>🎁 Hediye Seti</span><span class="badge-stock">6 adet</span></div>
+            </div>
+            <div class="dash-alert">⚠️ 12 üründe SKT yaklaşıyor!</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- KARŞILAŞTIRMA -->
+  <section class="compare">
+    <div class="container">
+      <h2>Klasik Parfümeri mi, Stok Pratik mi?</h2>
+      <p class="section-desc">Hangisi size daha çok kazandırır?</p>
+      <div class="compare-grid">
+        <div class="compare-old">
+          <div class="compare-icon">📵</div>
+          <h3>Klasik Parfümeri Yönetimi</h3>
+          <ul>
+            <li>Bozulan ve tarihi geçen ürünlerin çöpe gitmesi</li>
+            <li>Tester (deneme) ürünlerinin hesabının tutulamaması</li>
+            <li>Küçük ürünlerde barkod karışıklıkları</li>
+            <li>Müşterinin sadece kasada hatırlanması</li>
+          </ul>
+        </div>
+        <div class="compare-new">
+          <div class="compare-icon">🚀</div>
+          <h3>Stok Pratik Kozmetik Çözümü</h3>
+          <ul>
+            <li>SKT öncesi akıllı sistem ikazları</li>
+            <li>Tester çıkışlarının dijital takibi</li>
+            <li>En ufak oje şişesine bile barkod basımı</li>
+            <li>Sadakat puanı ve doğum günü mesajları</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ÖZELLİKLER -->
+  <section class="features">
+    <div class="container">
+      <h2>Güzellik ve Kozmetik Sektörüne Özel Fonksiyonlar</h2>
+      <p class="section-desc">Mağazanızın ihtiyaçlarına özel geliştirilmiş araçlar</p>
+      <div class="features-grid">
+        {features.map(f => (
+          <div class="feature-card" key={f.title}>
+            <div class="feature-icon">{f.icon}</div>
+            <h3>{f.title}</h3>
+            <p>{f.desc}</p>
+            <ul>
+              {f.details.map(d => <li key={d}>✓ {d}</li>)}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
   
-  <ComparisonSection 
-    oldMethodTitle="Klasik Parfümeri Yönetimi"
-    oldMethodItems={["Bozulan ve tarihi geçen ürünlerin çöpe gitmesi", "Tester (deneme) ürünlerinin hesabının tutulamaması", "Küçük ürünlerde barkod karışıklıkları", "Müşterinin sadece kasada hatırlanması"]}
-    newMethodTitle="Stok Pratik Kozmetik Çözümü"
-    newMethodItems={["SKT öncesi akıllı sistem ikazları", "Tester çıkışlarının dijital takibi", "En ufak oje şişesine bile barkod basımı", "Sadakat puanı ve doğum günü mesajları"]}
-  />
-  
-  <FeaturesGrid 
-    title="Güzellik ve Kozmetik Sektörüne Özel Fonksiyonlar"
-    features={features}
-  />
-  
-  <HowItWorks 
-    title="Sistemi Mağazanıza Nasıl Kurarsınız?"
-    steps={[
-      { title: "Ürünlerinizi Sisteme Girin", description: "Binlerce renk seçeneğine sahip ruj, oje ve parfümlerinizi barkodlarıyla yükleyin." },
-      { title: "SKT ve Lot Bilgilerini İşleyin", description: "Mal kabul sırasında ürünlerin son kullanma tarihlerini sisteme girin." },
-      { title: "Fireleri Önleyin", description: "Satış yapın ve tarihi yaklaşan ürünleri kampanya ile hızla eriterek zarar etmekten kurtulun." }
-    ]}
-  />
-  
-  <FaqAccordion faqs={faqs} />
-  
-  <CtaBanner />
+    <div class="container">
+      <h2>Sistemi Mağazanıza Nasıl Kurarsınız?</h2>
+      <p class="section-desc">3 kolay adımda başlayın</p>
+      <div class="steps-grid">
+        <div class="step"><span class="step-num">1</span><span class="step-icon">📤</span><h3>Ürünlerinizi Sisteme Girin</h3><p>Binlerce renk seçeneğine sahip ruj, oje ve parfümlerinizi barkodlarıyla yükleyin.</p></div>
+        <div class="step"><span class="step-num">2</span><span class="step-icon">📅</span><h3>SKT ve Lot Bilgilerini İşleyin</h3><p>Mal kabul sırasında ürünlerin son kullanma tarihlerini sisteme girin.</p></div>
+        <div class="step"><span class="step-num">3</span><span class="step-icon">🔥</span><h3>Fireleri Önleyin</h3><p>Satış yapın ve tarihi yaklaşan ürünleri kampanya ile hızla eriterek zarar etmekten kurtulun.</p></div>
+      </div>
+      <div class="steps-result">
+        <span class="result-icon">🎉</span>
+        <div><h3>SKT Korkusu Tarih Olsun!</h3><p>Stok Pratik ile ürün kayıplarınızı minimuma indirin.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ENTEGRASYON -->
+  <section class="integrations">
+    <div class="container">
+      <h2>Entegre Çalıştığımız Sistemler</h2>
+      <p class="section-desc">Diğer modüllerle tam uyum</p>
+      <div class="integ-grid">
+        <div><span>📦</span><h3>Stok Yönetimi</h3><p>Depo ve mağaza stokları</p></div>
+        <div><span>🛒</span><h3>B2B Toptan</h3><p>Bayilere özel fiyatlar</p></div>
+        <div><span>🏪</span><h3>Mağaza POS</h3><p>Hızlı kasa işlemleri</p></div>
+        <div><span>🧾</span><h3>Muhasebe</h3><p>Otomatik fatura ve muhasebe</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SSS -->
+  <section class="faq">
+    <div class="container">
+      <h2>Sıkça Sorulan Sorular</h2>
+      <div class="faq-list">
+        {faqs.map(f => (
+          <details key={f.q}>
+            <summary>{f.q} <span>▼</span></summary>
+            <div class="faq-answer">{f.a}</div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta">
+    <div class="container">
+      <div class="cta-box">
+        <span class="cta-icon">💄</span>
+        <h2>Kozmetik Mağazanızı Dijitalleştirmeye Hazır mısınız?</h2>
+        <p>Hemen ücretsiz demo talep edin, SKT kayıplarınızı önleyin.</p>
+        <div class="cta-buttons">
+          <a href="https://wa.me/+905325000999?text=Merhaba,%20Kozmetik%20programı%20demo%20istiyorum" target="_blank" rel="noopener" class="btn btn-primary">📅 Demo İste</a>
+          <a href="tel:+905325000999" class="btn btn-secondary">📞 Canlı Destek</a>
+        </div>
+        <div class="cta-benefits">
+          <span>🎯 Ücretsiz Kurulum</span>
+          <span>👨‍🏫 Canlı Eğitim</span>
+          <span>🔄 Veri Aktarımı</span>
+          <span>💰 Özel Fiyat</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    /* ===== TEMEL ===== */
+    *{box-sizing:border-box;margin:0;padding:0}
+    .container{max-width:1200px;margin:0 auto;padding:0 20px}
+
+    /* ===== HERO - PEMBE/MOR TEMA ===== */
+    .hero{background:linear-gradient(135deg,#4A148C,#6A1B9A);color:#fff;padding:60px 0}
+    .hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+    .badge{display:inline-block;background:rgba(255,255,255,.15);padding:6px 18px;border-radius:20px;font-size:.9rem;margin-bottom:16px}
+    .hero h1{font-size:2.8rem;line-height:1.2;margin-bottom:16px;color:#FFA726}
+    .highlight{color:#FF80AB}
+    .subtitle{font-size:1.1rem;opacity:.9;margin-bottom:30px}
+    .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:20px 0}
+    .stat{background:rgba(255,255,255,.08);padding:12px;border-radius:10px;text-align:center}
+    .stat-icon{font-size:1.5rem}
+    .stat-number{font-size:1.4rem;font-weight:700;color:#FF80AB}
+    .stat-label{font-size:.75rem;opacity:.8}
+    .buttons{display:flex;gap:12px;flex-wrap:wrap;margin:20px 0}
+    .btn{display:inline-block;padding:12px 28px;border-radius:8px;font-weight:700;text-decoration:none;transition:.3s}
+    .btn-primary{background:#FF80AB;color:#4A148C}
+    .btn-primary:hover{background:#F48FB1;transform:translateY(-2px)}
+    .btn-secondary{background:rgba(255,255,255,.15);color:#fff;border:2px solid rgba(255,255,255,.2)}
+    .btn-secondary:hover{background:rgba(255,255,255,.25);transform:translateY(-2px)}
+    .tags{display:flex;gap:10px;flex-wrap:wrap}
+    .tags span{background:rgba(255,255,255,.08);padding:4px 14px;border-radius:16px;font-size:.85rem}
+
+    /* ===== DASHBOARD ===== */
+    .dashboard{background:#fff;color:#333;border-radius:16px;padding:20px;box-shadow:0 20px 40px rgba(0,0,0,.3)}
+    .dash-header{display:flex;justify-content:space-between;font-weight:700;font-size:1.1rem;padding-bottom:12px;border-bottom:2px solid #f3e5f5}
+    .dash-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:16px 0}
+    .dash-cards>div{background:#fce4ec;padding:10px;border-radius:8px;text-align:center}
+    .dash-label{font-size:.75rem;color:#777}
+    .dash-value{font-size:1.4rem;font-weight:700;color:#4A148C}
+    .dash-value.warning{color:#E65100}
+    .dash-list>div{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #f3e5f5;font-size:.9rem}
+    .badge-stock{background:#e8f5e9;padding:2px 10px;border-radius:12px;font-size:.8rem;color:#2e7d32}
+    .badge-stock.warning{background:#fff3e0;color:#e65100}
+    .dash-alert{background:#fff8e1;border:1px solid #ffecb3;padding:8px;border-radius:8px;margin-top:12px;font-size:.9rem;color:#E65100}
+
+    /* ===== KARŞILAŞTIRMA ===== */
+    .compare{padding:60px 0;background:#fce4ec}
+    .compare h2{text-align:center;font-size:2.2rem;color:#4A148C}
+    .section-desc{text-align:center;color:#777;margin-bottom:36px;font-size:1.05rem}
+    .compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:30px}
+    .compare-old,.compare-new{padding:28px;border-radius:16px;box-shadow:0 4px 12px rgba(0,0,0,.06)}
+    .compare-old{background:#fff;border-top:5px solid #E65100}
+    .compare-new{background:linear-gradient(135deg,#4A148C,#6A1B9A);color:#fff;border-top:5px solid #FF80AB}
+    .compare-icon{font-size:2.5rem;margin-bottom:10px}
+    .compare-old h3{color:#4A148C}
+    .compare-new h3{color:#fff}
+    .compare-old ul,.compare-new ul{list-style:none;padding:0;margin-top:12px}
+    .compare-old li,.compare-new li{padding:6px 0;padding-left:28px;position:relative}
+    .compare-old li:before{content:"❌";position:absolute;left:0;color:#E65100}
+    .compare-new li:before{content:"✅";position:absolute;left:0;color:#FF80AB}
+
+    /* ===== ÖZELLİKLER ===== */
+    .features{padding:60px 0;background:#fff}
+    .features h2{text-align:center;font-size:2.2rem;color:#4A148C}
+    .features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+    .feature-card{background:#fce4ec;padding:24px;border-radius:14px;border:2px solid transparent;transition:.3s}
+    .feature-card:hover{border-color:#FF80AB;transform:translateY(-4px);box-shadow:0 8px 24px rgba(255,128,171,.15)}
+    .feature-icon{font-size:2.2rem;margin-bottom:10px}
+    .feature-card h3{color:#4A148C;font-size:1.15rem;margin-bottom:6px}
+    .feature-card p{color:#666;font-size:.92rem;line-height:1.5}
+    .feature-card ul{list-style:none;padding:0;margin-top:10px}
+    .feature-card li{color:#555;font-size:.88rem;padding:3px 0}
+
+    /* ===== ADIMLAR ===== */
+    .steps{padding:60px 0;background:#fce4ec}
+    .steps h2{text-align:center;font-size:2.2rem;color:#4A148C}
+    .steps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-bottom:30px}
+    .step{background:#fff;padding:24px;border-radius:14px;box-shadow:0 2px 8px rgba(0,0,0,.06);position:relative}
+    .step-num{position:absolute;top:-12px;left:-12px;background:#FF80AB;color:#4A148C;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.85rem}
+    .step-icon{font-size:2rem;display:block;margin:6px 0 8px}
+    .step h3{color:#4A148C;font-size:1.1rem}
+    .step p{color:#666;font-size:.9rem;line-height:1.5}
+    .steps-result{display:flex;align-items:center;gap:24px;background:linear-gradient(135deg,#FF80AB,#F48FB1);padding:24px 32px;border-radius:14px;color:#4A148C}
+    .result-icon{font-size:3rem}
+    .steps-result h3{font-size:1.3rem;margin-bottom:4px}
+
+    /* ===== ENTEGRASYON ===== */
+    .integrations{padding:60px 0;background:#fff}
+    .integrations h2{text-align:center;font-size:2.2rem;color:#4A148C}
+    .integ-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+    .integ-grid>div{text-align:center;background:#fce4ec;padding:24px;border-radius:14px;transition:.3s}
+    .integ-grid>div:hover{transform:translateY(-4px);box-shadow:0 6px 16px rgba(0,0,0,.08)}
+    .integ-grid span{font-size:2.5rem;display:block}
+    .integ-grid h3{color:#4A148C;margin:8px 0 4px;font-size:1rem}
+    .integ-grid p{color:#777;font-size:.85rem}
+
+    /* ===== SSS ===== */
+    .faq{padding:60px 0;background:#fce4ec}
+    .faq h2{text-align:center;font-size:2.2rem;color:#4A148C}
+    .faq-list{max-width:760px;margin:0 auto}
+    .faq-list details{background:#fff;border:1px solid #f3e5f5;border-radius:10px;padding:4px 20px;margin-bottom:12px}
+    .faq-list summary{display:flex;justify-content:space-between;padding:14px 0;font-weight:600;color:#4A148C;cursor:pointer;list-style:none}
+    .faq-list summary::-webkit-details-marker{display:none}
+    .faq-list details[open] summary span{transform:rotate(180deg)}
+    .faq-answer{padding:0 0 18px;color:#555;border-top:1px solid #f3e5f5;padding-top:14px;line-height:1.6}
+
+    /* ===== CTA ===== */
+    .cta{padding:60px 0;background:linear-gradient(135deg,#4A148C,#6A1B9A)}
+    .cta-box{text-align:center;color:#fff}
+    .cta-icon{font-size:3.5rem;display:block;margin-bottom:12px}
+    .cta-box h2{font-size:2.2rem;margin-bottom:10px}
+    .cta-box p{font-size:1.1rem;opacity:.9;margin-bottom:24px}
+    .cta-buttons{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin-bottom:24px}
+    .cta-benefits{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;max-width:700px;margin:0 auto}
+    .cta-benefits span{background:rgba(255,255,255,.08);padding:8px 12px;border-radius:20px;font-size:.9rem}
+
+    /* ===== RESPONSIVE ===== */
+    @media(max-width:992px){
+      .hero-grid{grid-template-columns:1fr}
+      .hero h1{font-size:2.2rem}
+      .stats{grid-template-columns:repeat(2,1fr)}
+      .features-grid{grid-template-columns:repeat(2,1fr)}
+      .integ-grid{grid-template-columns:repeat(2,1fr)}
+      .compare-grid{grid-template-columns:1fr}
+      .steps-grid{grid-template-columns:1fr}
+      .cta-benefits{grid-template-columns:repeat(2,1fr)}
+    }
+    @media(max-width:600px){
+      .hero h1{font-size:1.8rem}
+      .features-grid{grid-template-columns:1fr}
+      .integ-grid{grid-template-columns:1fr}
+      .dashboard .dash-cards{grid-template-columns:1fr}
+      .buttons{flex-direction:column}
+      .btn{width:100%;text-align:center}
+      .cta-buttons{flex-direction:column}
+    }
+  </style>
 </BaseLayout>

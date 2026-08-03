@@ -1,86 +1,1313 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import HeroSection from '../components/landing/HeroSection.astro';
-import ComparisonSection from '../components/landing/ComparisonSection.astro';
-import FeaturesGrid from '../components/landing/FeaturesGrid.astro';
-import HowItWorks from '../components/landing/HowItWorks.astro';
-import FaqAccordion from '../components/landing/FaqAccordion.astro';
-import CtaBanner from '../components/landing/CtaBanner.astro';
+import '../styles/variables.css';
+import '../styles/global.css';
+import '../styles/components.css';
 
-const pageTitle = "B2B Toptan Satış ve Bayi Sipariş Yönetim Programı | Stok Pratik";
-const pageDescription = "WhatsApp ve telefonla sipariş toplamaya son! Toptan müşterilerinize özel fiyat listeleri sunun, B2B bayi portalı üzerinden siparişleri 7/24 otomatik toplayın.";
-
+// Özellikler (aynı içerik)
 const features = [
   {
+    icon: "💰",
     title: "Bayiye Özel Fiyat Listeleri",
     description: "Müşteri gruplarınıza (Platin, Altın, Gümüş bayi vb.) özel iskonto oranları ve fiyat listeleri tanımlayın.",
-    icon: `<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>`
+    details: [
+      "İskonto oranları",
+      "Özel fiyat listeleri",
+      "Grup bazlı fiyatlandırma",
+      "Anlık güncelleme"
+    ]
   },
   {
+    icon: "🛡️",
     title: "Cari Limit & Risk Yönetimi",
     description: "Her bayinize açık hesap limiti tanımlayın. Limiti aşan bayilerin sipariş girmesini otomatik engelleyin.",
-    icon: `<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>`
+    details: [
+      "Bireysel cari limit",
+      "Otomatik sipariş engeli",
+      "Risk uyarıları",
+      "Limit artırım talepleri"
+    ]
   },
   {
+    icon: "💳",
     title: "Sanal POS ile Online Tahsilat",
     description: "Bayileriniz sipariş verirken kredi kartıyla ödeme yapsın. Cari bakiye anında otomatik düşsün.",
-    icon: `<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"></path></svg>`
+    details: [
+      "Kredi kartı ile ödeme",
+      "Otomatik bakiye düşüşü",
+      "Taksit seçenekleri",
+      "Güvenli 3D Secure"
+    ]
   },
   {
+    icon: "🖼️",
     title: "Görselli Ürün Kataloğu",
     description: "B2B panelinizde ürün görsellerini, teknik detayları ve güncel stok durumunu anlık olarak sunun.",
-    icon: `<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>`
+    details: [
+      "Yüksek çözünürlüklü görseller",
+      "Teknik özellikler",
+      "Stok durumu göstergesi",
+      "Filtreleme ve arama"
+    ]
   },
   {
+    icon: "✅",
     title: "Aşamalı Sipariş Onayı",
     description: "Gelen toptan siparişleri 'Onay Bekliyor', 'Hazırlanıyor', 'Kargoya Verildi' şeklinde yönetin.",
-    icon: `<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>`
+    details: [
+      "Onay süreci takibi",
+      "Otomatik e-posta bildirimleri",
+      "Kargo entegrasyonu",
+      "Sipariş geçmişi"
+    ]
   },
   {
+    icon: "📄",
     title: "Entegre e-Fatura & İrsaliye",
     description: "Toptan siparişi onayladığınız anda e-Arşiv veya e-Faturası tek tıkla otomatik oluşturulsun.",
-    icon: `<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>`
+    details: [
+      "e-Arşiv/e-Fatura",
+      "Otomatik oluşturma",
+      "PDF gönderimi",
+      "Muhasebe entegrasyonu"
+    ]
   }
 ];
 
+// Sıkça sorulan sorular
 const faqs = [
-  { question: "Müşterilerim B2B portalına nasıl giriş yapacak?", answer: "Sizin belirlediğiniz veya müşteriye sistem üzerinden otomatik gönderilen şifrelerle kendilerine özel portala giriş yapabilirler." },
-  { question: "Mobil cihazlardan sipariş verilebilir mi?", answer: "Evet, B2B Toptan satış portalımız %100 mobil uyumludur. Müşterileriniz cep telefonlarından bile kolayca sipariş oluşturabilir." },
-  { question: "Müşteri özel fiyatları nasıl ayarlanıyor?", answer: "Müşteri cari kartı içerisinden o müşteriye özel iskonto yüzdesi veya doğrudan bir fiyat listesi atayabilirsiniz." }
+  { 
+    question: "Müşterilerim B2B portalına nasıl giriş yapacak?", 
+    answer: "Sizin belirlediğiniz veya müşteriye sistem üzerinden otomatik gönderilen şifrelerle kendilerine özel portala giriş yapabilirler." 
+  },
+  { 
+    question: "Mobil cihazlardan sipariş verilebilir mi?", 
+    answer: "Evet, B2B Toptan satış portalımız %100 mobil uyumludur. Müşterileriniz cep telefonlarından bile kolayca sipariş oluşturabilir." 
+  },
+  { 
+    question: "Müşteri özel fiyatları nasıl ayarlanıyor?", 
+    answer: "Müşteri cari kartı içerisinden o müşteriye özel iskonto yüzdesi veya doğrudan bir fiyat listesi atayabilirsiniz." 
+  },
+  {
+    question: "Sanal POS entegrasyonu hangi bankaları destekliyor?",
+    answer: "Tüm Türk bankalarının sanal POS'ları ile entegre çalışır. İster kendi bankanızın POS'unu kullanın, ister bizim anlaşmalı sağlayıcılarımızdan faydalanın."
+  },
+  {
+    question: "Siparişlerim stokla senkronize mi?",
+    answer: "Evet, stok hareketleri anlık olarak güncellenir. Bayi sipariş verdiğinde stoktan otomatik düşer, stok sıfırlanırsa ürün pasif hale gelir."
+  }
+];
+
+// Karşılaştırma verileri
+const comparison = {
+  old: {
+    title: "Geleneksel Toptan Satış",
+    icon: "📵",
+    items: [
+      "WhatsApp'tan karışık sipariş almak",
+      "Güncel fiyatları sürekli PDF atmak",
+      "Cari limiti aşan bayiye manuel bakmak",
+      "Tahsilatları tek tek takip etmek"
+    ]
+  },
+  new: {
+    title: "Stok Pratik B2B Sistemi",
+    icon: "🚀",
+    items: [
+      "7/24 bayilerin kendi sipariş girmesi",
+      "Bayiye özel anlık güncel fiyatlar",
+      "Cari risk limiti ile otomatik kontrol",
+      "Sanal POS ile sipariş anında tahsilat"
+    ]
+  }
+};
+
+// Adımlar (How It Works)
+const steps = [
+  {
+    step: 1,
+    title: "Müşterilerinizi Tanımlayın",
+    description: "Bayilerinizi sisteme ekleyin ve onlara özel fiyat iskontolarını ayarlayın.",
+    icon: "👥"
+  },
+  {
+    step: 2,
+    title: "Portal Şifresi Gönderin",
+    description: "Müşterilerinize kendi sipariş panellerine giriş yapmaları için şifrelerini iletin.",
+    icon: "🔑"
+  },
+  {
+    step: 3,
+    title: "Sipariş ve Tahsilat Aksın",
+    description: "Siz uyurken bile bayileriniz güncel stoklardan sipariş versin, Sanal POS ile ödesin.",
+    icon: "💸"
+  }
+];
+
+// İstatistikler
+const statistics = [
+  { number: "%70", label: "Zaman Tasarrufu", icon: "⏱️" },
+  { number: "%40", label: "Sipariş Artışı", icon: "📈" },
+  { number: "%55", label: "Hata Azalması", icon: "✅" },
+  { number: "7/24", label: "Sistem Erişimi", icon: "🌐" }
 ];
 ---
 
-<BaseLayout title={pageTitle} description={pageDescription}>
-  <HeroSection 
-    h1="WhatsApp'tan Fiyat Listesi Göndermeyi Bırakın: Kendi B2B Toptan Portalınızı Açın!"
-    description={pageDescription}
-    badges={["B2B Sipariş Modülü", "Bayi Paneli", "Özel Fiyat Listeleri", "Sanal POS"]}
-    imageSrc="/images/screenshots/Stok-pratik-ekran-toptan-satis.png"
-    imageAlt="B2B Toptan Satış Portalı"
-  />
+<BaseLayout 
+  title="B2B Toptan Satış ve Bayi Sipariş Yönetim Programı | Stok Pratik" 
+  description="WhatsApp ve telefonla sipariş toplamaya son! Toptan müşterilerinize özel fiyat listeleri sunun, B2B bayi portalı üzerinden siparişleri 7/24 otomatik toplayın."
+>
   
-  <ComparisonSection 
-    oldMethodTitle="Geleneksel Toptan Satış"
-    oldMethodItems={["WhatsApp'tan karışık sipariş almak", "Güncel fiyatları sürekli PDF atmak", "Cari limiti aşan bayiye manuel bakmak", "Tahsilatları tek tek takip etmek"]}
-    newMethodTitle="Stok Pratik B2B Sistemi"
-    newMethodItems={["7/24 bayilerin kendi sipariş girmesi", "Bayiye özel anlık güncel fiyatlar", "Cari risk limiti ile otomatik kontrol", "Sanal POS ile sipariş anında tahsilat"]}
-  />
-  
-  <FeaturesGrid 
-    title="Toptan Satış Sürecinizi Dijitalleştiren Özellikler"
-    features={features}
-  />
-  
-  <HowItWorks 
-    title="B2B Portalınız Nasıl Çalışır?"
-    steps={[
-      { title: "Müşterilerinizi Tanımlayın", description: "Bayilerinizi sisteme ekleyin ve onlara özel fiyat iskontolarını ayarlayın." },
-      { title: "Portal Şifresi Gönderin", description: "Müşterilerinize kendi sipariş panellerine giriş yapmaları için şifrelerini iletin." },
-      { title: "Sipariş ve Tahsilat Aksın", description: "Siz uyurken bile bayileriniz güncel stoklardan sipariş versin, Sanal POS ile ödesin." }
-    ]}
-  />
-  
-  <FaqAccordion faqs={faqs} />
-  
-  <CtaBanner />
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-text">
+          <span class="hero-badge">🚀 B2B Dijital Dönüşüm</span>
+          <h1>WhatsApp'tan Fiyat Listesi Göndermeyi Bırakın: <span class="highlight">Kendi B2B Toptan Portalınızı Açın!</span></h1>
+          <p class="hero-subtitle">Bayileriniz 7/24 kendi hesaplarıyla giriş yapıp, özel fiyatlarıyla anında sipariş versin. Sanal POS ile tahsilat otomatik olsun.</p>
+          
+          <div class="hero-stats">
+            {statistics.map((stat, index) => (
+              <div class="stat-item" key={index}>
+                <div class="stat-icon">{stat.icon}</div>
+                <div class="stat-number">{stat.number}</div>
+                <div class="stat-label">{stat.label}</div>
+              </div>
+            ))}
+          </div>
+          
+          <div class="hero-buttons">
+            <a 
+              href="https://wa.me/+905325000999?text=Merhaba,%20B2B%20Toptan%20Satış%20Sistemi%20demo%20talep%20ediyorum" 
+              class="btn btn-primary btn-large"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              🛒 Ücretsiz Demo İste
+            </a>
+            <a 
+              href="tel:+905325000999" 
+              class="btn btn-secondary btn-large"
+            >
+              📞 Hemen Ara: 0532 500 09 99
+            </a>
+          </div>
+          
+          <div class="hero-features">
+            <div class="feature">
+              <span class="feature-icon">🤖</span>
+              <span>Otomatik Sipariş</span>
+            </div>
+            <div class="feature">
+              <span class="feature-icon">📱</span>
+              <span>Mobil Uyumlu</span>
+            </div>
+            <div class="feature">
+              <span class="feature-icon">🔒</span>
+              <span>Güvenli Ödeme</span>
+            </div>
+            <div class="feature">
+              <span class="feature-icon">⚡</span>
+              <span>Anlık Stok</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="hero-image">
+          <div class="b2b-dashboard">
+            <div class="dashboard-header">
+              <div class="dashboard-title">
+                <span class="title-icon">🏪</span>
+                <span>B2B Bayi Portalı</span>
+              </div>
+              <div class="dashboard-period">Hoş Geldiniz, Ahmet Usta</div>
+            </div>
+            
+            <div class="order-summary">
+              <div class="summary-card">
+                <div class="summary-label">Bugünkü Siparişler</div>
+                <div class="summary-value">24</div>
+                <div class="summary-trend">↑ %12</div>
+              </div>
+              <div class="summary-card">
+                <div class="summary-label">Bekleyen Siparişler</div>
+                <div class="summary-value">6</div>
+                <div class="summary-trend warning">⏳ Onay Bekliyor</div>
+              </div>
+              <div class="summary-card">
+                <div class="summary-label">Toplam Ciro</div>
+                <div class="summary-value">₺189.450</div>
+                <div class="summary-trend success">↑ %8</div>
+              </div>
+            </div>
+            
+            <div class="recent-orders">
+              <div class="order-item">
+                <div class="order-info">
+                  <span class="order-customer">Mehmet Demir</span>
+                  <span class="order-product">3x Ürün A</span>
+                </div>
+                <div class="order-status success">Tamamlandı</div>
+              </div>
+              <div class="order-item">
+                <div class="order-info">
+                  <span class="order-customer">Ayşe Yılmaz</span>
+                  <span class="order-product">5x Ürün B</span>
+                </div>
+                <div class="order-status warning">Hazırlanıyor</div>
+              </div>
+              <div class="order-item">
+                <div class="order-info">
+                  <span class="order-customer">Ali Can</span>
+                  <span class="order-product">2x Ürün C</span>
+                </div>
+                <div class="order-status danger">Onay Bekliyor</div>
+              </div>
+            </div>
+            
+            <div class="urgent-alerts">
+              <div class="alert-icon">⚠️</div>
+              <div class="alert-text">2 bayi cari limitini aştı, siparişleri engellendi.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Karşılaştırma (Challenge / Solution) -->
+  <section class="challenge-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Eski Yöntem mi, Stok Pratik mi?</h2>
+        <p>Geleneksel toptan satış süreci ile dijital B2B sistemimizi karşılaştırın</p>
+      </div>
+      
+      <div class="challenge-grid">
+        <div class="challenge-card">
+          <div class="challenge-icon">{comparison.old.icon}</div>
+          <h3>{comparison.old.title}</h3>
+          <ul>
+            {comparison.old.items.map((item, i) => (
+              <li key={i}>{item}</li>
+            ))}
+          </ul>
+        </div>
+        
+        <div class="solution-card">
+          <div class="solution-icon">{comparison.new.icon}</div>
+          <h3>{comparison.new.title}</h3>
+          <ul>
+            {comparison.new.items.map((item, i) => (
+              <li key={i}>{item}</li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Özellikler Grid -->
+  <section class="features-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Toptan Satış Sürecinizi Dijitalleştiren Özellikler</h2>
+        <p>Bayilerinize özel, otomatik ve güvenli bir alışveriş deneyimi sunun</p>
+      </div>
+      
+      <div class="features-grid">
+        {features.map((feature, index) => (
+          <div class="feature-card" key={index}>
+            <div class="feature-header">
+              <div class="feature-icon">{feature.icon}</div>
+              <div>
+                <h3>{feature.title}</h3>
+                <p class="feature-desc">{feature.description}</p>
+              </div>
+            </div>
+            
+            <ul class="feature-details">
+              {feature.details.map((detail, i) => (
+                <li key={i}>
+                  <span class="detail-check">✓</span>
+                  {detail}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Nasıl Çalışır (Adımlar) -->
+  <section class="process-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>B2B Portalınız Nasıl Çalışır?</h2>
+        <p>Üç adımda toptan satış sürecinizi otomatikleştirin</p>
+      </div>
+      
+      <div class="process-timeline">
+        {steps.map((step, index) => (
+          <div class="process-step" key={index}>
+            <div class="step-number">{step.step}</div>
+            <div class="step-content">
+              <div class="step-header">
+                <div class="step-icon">{step.icon}</div>
+                <h3>{step.title}</h3>
+              </div>
+              <p class="step-description">{step.description}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+      
+      <div class="process-result">
+        <div class="result-icon">🎉</div>
+        <div class="result-content">
+          <h3>Siparişleriniz Otomatik, Bayileriniz Memnun!</h3>
+          <p>Stok Pratik B2B sistemi ile toptan satış sürecinizde devrim yaratın, zamandan ve maliyetten tasarruf edin.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Entegrasyonlar -->
+  <section class="integration-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Diğer Sistemlerle Tam Entegrasyon</h2>
+        <p>B2B portalınız mevcut sistemlerinizle uyumlu çalışır</p>
+      </div>
+      
+      <div class="integrations-grid">
+        <div class="integration-card">
+          <div class="integration-icon">📦</div>
+          <h3>Stok Yönetimi</h3>
+          <p>Anlık stok senkronizasyonu ile her zaman güncel ürün miktarları</p>
+        </div>
+        
+        <div class="integration-card">
+          <div class="integration-icon">💰</div>
+          <h3>Muhasebe</h3>
+          <p>Otomatik e-fatura ve irsaliye oluşturma, muhasebe yazılımlarıyla entegre</p>
+        </div>
+        
+        <div class="integration-card">
+          <div class="integration-icon">🏦</div>
+          <h3>Sanal POS</h3>
+          <p>Tüm bankaların sanal POS'ları ile kolay entegrasyon</p>
+        </div>
+        
+        <div class="integration-card">
+          <div class="integration-icon">🚚</div>
+          <h3>Kargo</h3>
+          <p>Kargo firmaları ile entegre, otomatik kargo oluşturma ve takip</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- İlgili Sayfalar -->
+  <section class="related-pages">
+    <div class="container">
+      <div class="section-header">
+        <h2>Entegre Çalışan Diğer Çözümlerimiz</h2>
+        <p>B2B sistemi ile birlikte kullanabileceğiniz diğer modüller</p>
+      </div>
+      
+      <div class="pages-grid">
+        <a href="/erp-sistemi" class="page-card">
+          <h3>📊 ERP Sistemi</h3>
+          <p>Tüm iş süreçleriniz için entegre çözüm</p>
+          <div class="page-link">
+            <span>İncele</span>
+            <span class="arrow">→</span>
+          </div>
+        </a>
+        <a href="/stok-yonetimi" class="page-card">
+          <h3>📦 Stok Yönetimi</h3>
+          <p>Depo ve stok takibinizi optimize edin</p>
+          <div class="page-link">
+            <span>İncele</span>
+            <span class="arrow">→</span>
+          </div>
+        </a>
+        <a href="/fatura-yonetimi" class="page-card">
+          <h3>🧾 Fatura Yönetimi</h3>
+          <p>e-Fatura, e-Arşiv ve irsaliye yönetimi</p>
+          <div class="page-link">
+            <span>İncele</span>
+            <span class="arrow">→</span>
+          </div>
+        </a>
+        <a href="/cari-yonetim" class="page-card">
+          <h3>👥 Cari Yönetim</h3>
+          <p>Müşteri ve tedarikçi yönetimi, risk takibi</p>
+          <div class="page-link">
+            <span>İncele</span>
+            <span class="arrow">→</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SSS -->
+  <section class="faq-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Sıkça Sorulan Sorular</h2>
+        <p>B2B sistemi hakkında merak edilenler</p>
+      </div>
+      
+      <div class="faq-grid">
+        {faqs.map((faq, index) => (
+          <details class="faq-item" key={index}>
+            <summary>
+              {faq.question}
+              <span class="faq-icon">▼</span>
+            </summary>
+            <div class="faq-answer">
+              {faq.answer}
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="final-cta">
+    <div class="container">
+      <div class="cta-content">
+        <div class="cta-icon">🚀</div>
+        <h2>Toptan Satışınızı Dijitalleştirmeye Hazır mısınız?</h2>
+        <p>Hemen ücretsiz demo talep edin, bayileriniz 7/24 sipariş vermeye başlasın.</p>
+        
+        <div class="cta-buttons">
+          <a 
+            href="https://wa.me/+905325000999?text=Merhaba,%20B2B%20Toptan%20Satış%20Sistemi%20demo%20talep%20ediyorum"
+            class="btn btn-primary btn-large"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            📅 Ücretsiz Demo İste
+          </a>
+          <a 
+            href="tel:+905325000999"
+            class="btn btn-secondary btn-large"
+          >
+            📞 Canlı Destek Al
+          </a>
+        </div>
+        
+        <div class="cta-benefits">
+          <div class="benefit">
+            <span class="benefit-icon">🎯</span>
+            <span>Ücretsiz Sistem Analizi</span>
+          </div>
+          <div class="benefit">
+            <span class="benefit-icon">👨‍🏫</span>
+            <span>Canlı Eğitim Desteği</span>
+          </div>
+          <div class="benefit">
+            <span class="benefit-icon">🔄</span>
+            <span>Veri Aktarım Desteği</span>
+          </div>
+          <div class="benefit">
+            <span class="benefit-icon">💰</span>
+            <span>Özel Fiyat Teklifi</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
 </BaseLayout>
+
+<style>
+  /* Bu stiller, is-gucu-planlama.astro'daki stillerin aynısıdır.
+     Sadece renkler ve bazı detaylar B2B temasına uygun değiştirilmiştir. */
+  
+  /* Hero Section */
+  .hero-section {
+    background: linear-gradient(135deg, #1a237e 0%, #0d47a1 100%);
+    color: white;
+    padding: 4rem 0;
+  }
+  
+  .hero-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+  
+  .hero-badge {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+  }
+  
+  .hero-text h1 {
+    font-size: 3rem;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+  }
+  
+  .highlight {
+    color: #ffc107;
+  }
+  
+  .hero-subtitle {
+    font-size: 1.2rem;
+    opacity: 0.9;
+    margin-bottom: 2rem;
+  }
+  
+  .hero-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    margin: 2rem 0;
+  }
+  
+  .stat-item {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 1rem;
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+  }
+  
+  .stat-icon {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .stat-number {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #ffc107;
+    margin-bottom: 0.3rem;
+  }
+  
+  .stat-label {
+    font-size: 0.8rem;
+    opacity: 0.8;
+  }
+  
+  .hero-buttons {
+    display: flex;
+    gap: 1rem;
+    margin: 2rem 0;
+  }
+  
+  .btn-large {
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+  }
+  
+  .btn-primary {
+    background: #ffc107;
+    color: #1a237e;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.3s ease;
+  }
+  
+  .btn-primary:hover {
+    background: #ffb300;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(255, 193, 7, 0.3);
+  }
+  
+  .btn-secondary {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 8px;
+    font-weight: bold;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.3s ease;
+  }
+  
+  .btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px);
+  }
+  
+  .hero-features {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+  
+  .feature {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+  }
+  
+  .feature-icon {
+    font-size: 1rem;
+  }
+  
+  /* B2B Dashboard */
+  .b2b-dashboard {
+    background: white;
+    border-radius: 15px;
+    padding: 1.5rem;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+    color: #1a237e;
+  }
+  
+  .dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #e8eaf6;
+  }
+  
+  .dashboard-title {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: bold;
+    font-size: 1.2rem;
+  }
+  
+  .title-icon {
+    font-size: 1.5rem;
+  }
+  
+  .dashboard-period {
+    font-size: 0.9rem;
+    color: #5c6bc0;
+  }
+  
+  .order-summary {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .summary-card {
+    background: #f5f7ff;
+    padding: 1rem;
+    border-radius: 10px;
+    text-align: center;
+  }
+  
+  .summary-label {
+    font-size: 0.8rem;
+    color: #5c6bc0;
+    margin-bottom: 0.3rem;
+  }
+  
+  .summary-value {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #1a237e;
+  }
+  
+  .summary-trend {
+    font-size: 0.8rem;
+    margin-top: 0.3rem;
+  }
+  
+  .summary-trend.success {
+    color: #2e7d32;
+  }
+  
+  .summary-trend.warning {
+    color: #f57f17;
+  }
+  
+  .recent-orders {
+    margin-bottom: 1.5rem;
+  }
+  
+  .order-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.8rem 0;
+    border-bottom: 1px solid #e8eaf6;
+  }
+  
+  .order-item:last-child {
+    border-bottom: none;
+  }
+  
+  .order-customer {
+    font-weight: bold;
+    color: #1a237e;
+  }
+  
+  .order-product {
+    font-size: 0.9rem;
+    color: #5c6bc0;
+    margin-left: 1rem;
+  }
+  
+  .order-status {
+    padding: 0.2rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: bold;
+  }
+  
+  .order-status.success {
+    background: #e8f5e9;
+    color: #2e7d32;
+  }
+  
+  .order-status.warning {
+    background: #fff3e0;
+    color: #e65100;
+  }
+  
+  .order-status.danger {
+    background: #ffebee;
+    color: #c62828;
+  }
+  
+  .urgent-alerts {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: #fff8e1;
+    border: 1px solid #ffecb3;
+    color: #f57f17;
+    padding: 0.8rem;
+    border-radius: 8px;
+    font-size: 0.9rem;
+  }
+  
+  .alert-icon {
+    font-size: 1.2rem;
+  }
+  
+  /* Challenge Section */
+  .challenge-section {
+    padding: 4rem 0;
+    background: #f5f7ff;
+  }
+  
+  .section-header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+  
+  .section-header h2 {
+    font-size: 2.5rem;
+    color: #1a237e;
+    margin-bottom: 1rem;
+  }
+  
+  .section-header p {
+    color: #5c6bc0;
+    font-size: 1.1rem;
+  }
+  
+  .challenge-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+  
+  .challenge-card, .solution-card {
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  }
+  
+  .challenge-card {
+    background: white;
+    border-top: 5px solid #e53935;
+  }
+  
+  .solution-card {
+    background: linear-gradient(135deg, #1a237e, #0d47a1);
+    color: white;
+  }
+  
+  .challenge-icon, .solution-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+  
+  .challenge-card h3, .solution-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .challenge-card ul, .solution-card ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 1rem;
+  }
+  
+  .challenge-card li, .solution-card li {
+    padding: 0.3rem 0;
+    position: relative;
+    padding-left: 1.5rem;
+  }
+  
+  .challenge-card li:before {
+    content: "❌";
+    position: absolute;
+    left: 0;
+    color: #e53935;
+  }
+  
+  .solution-card li:before {
+    content: "✅";
+    position: absolute;
+    left: 0;
+    color: #ffc107;
+  }
+  
+  /* Features Section */
+  .features-section {
+    padding: 4rem 0;
+  }
+  
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+  
+  .feature-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+    border: 2px solid transparent;
+  }
+  
+  .feature-card:hover {
+    transform: translateY(-5px);
+    border-color: #1a237e;
+    box-shadow: 0 10px 20px rgba(26, 35, 126, 0.2);
+  }
+  
+  .feature-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .feature-icon {
+    font-size: 2.5rem;
+    flex-shrink: 0;
+  }
+  
+  .feature-card h3 {
+    color: #1a237e;
+    margin-bottom: 0.5rem;
+    font-size: 1.3rem;
+  }
+  
+  .feature-desc {
+    color: #5c6bc0;
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+  
+  .feature-details {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .feature-details li {
+    padding: 0.5rem 0;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .detail-check {
+    color: #2e7d32;
+    font-weight: bold;
+  }
+  
+  /* Process Section */
+  .process-section {
+    padding: 4rem 0;
+    background: #f5f7ff;
+  }
+  
+  .process-timeline {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-bottom: 3rem;
+  }
+  
+  .process-step {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    position: relative;
+  }
+  
+  .step-number {
+    position: absolute;
+    top: -15px;
+    left: -15px;
+    width: 30px;
+    height: 30px;
+    background: #1a237e;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 0.9rem;
+  }
+  
+  .step-content {
+    margin-top: 1rem;
+  }
+  
+  .step-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+  
+  .step-icon {
+    font-size: 2rem;
+  }
+  
+  .process-step h3 {
+    color: #1a237e;
+    margin: 0;
+    font-size: 1.2rem;
+  }
+  
+  .step-description {
+    color: #5c6bc0;
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+  
+  .process-result {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    background: linear-gradient(135deg, #ffc107, #ffb300);
+    color: #1a237e;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(255, 193, 7, 0.3);
+  }
+  
+  .result-icon {
+    font-size: 4rem;
+  }
+  
+  .result-content h3 {
+    margin-bottom: 0.5rem;
+    font-size: 1.5rem;
+  }
+  
+  .result-content p {
+    opacity: 0.9;
+  }
+  
+  /* Integration Section */
+  .integration-section {
+    padding: 4rem 0;
+  }
+  
+  .integrations-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+  }
+  
+  .integration-card {
+    text-align: center;
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+  }
+  
+  .integration-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+  }
+  
+  .integration-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+  
+  .integration-card h3 {
+    color: #1a237e;
+    margin-bottom: 0.5rem;
+  }
+  
+  .integration-card p {
+    color: #5c6bc0;
+    font-size: 0.9rem;
+  }
+  
+  /* Related Pages */
+  .related-pages {
+    padding: 4rem 0;
+    background: #f5f7ff;
+  }
+  
+  .pages-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+  
+  .page-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+  }
+  
+  .page-card:hover {
+    transform: translateY(-5px);
+    border-color: #1a237e;
+    box-shadow: 0 10px 20px rgba(26, 35, 126, 0.2);
+  }
+  
+  .page-card h3 {
+    color: #1a237e;
+    margin-bottom: 0.5rem;
+  }
+  
+  .page-card p {
+    color: #5c6bc0;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+  }
+  
+  .page-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #1a237e;
+    font-weight: bold;
+  }
+  
+  .arrow {
+    font-size: 1.2rem;
+  }
+  
+  /* FAQ Section */
+  .faq-section {
+    padding: 4rem 0;
+  }
+  
+  .faq-grid {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .faq-item {
+    background: white;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+    padding: 0.5rem 1.5rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    border: 1px solid #e8eaf6;
+  }
+  
+  .faq-item summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    padding: 1rem 0;
+    font-weight: 600;
+    color: #1a237e;
+    list-style: none;
+  }
+  
+  .faq-item summary::-webkit-details-marker {
+    display: none;
+  }
+  
+  .faq-icon {
+    transition: transform 0.3s ease;
+  }
+  
+  .faq-item[open] .faq-icon {
+    transform: rotate(180deg);
+  }
+  
+  .faq-answer {
+    padding: 0 0 1.5rem 0;
+    color: #5c6bc0;
+    line-height: 1.6;
+    border-top: 1px solid #e8eaf6;
+    padding-top: 1rem;
+  }
+  
+  /* Final CTA */
+  .final-cta {
+    padding: 4rem 0;
+    background: linear-gradient(135deg, #1a237e, #0d47a1);
+    color: white;
+    text-align: center;
+  }
+  
+  .cta-content {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .cta-icon {
+    font-size: 4rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .cta-content h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .cta-content p {
+    font-size: 1.2rem;
+    opacity: 0.9;
+    margin-bottom: 2rem;
+  }
+  
+  .cta-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+  
+  .cta-benefits {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+  
+  .benefit {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    justify-content: center;
+    font-size: 0.9rem;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 0.8rem;
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+  }
+  
+  .benefit-icon {
+    font-size: 1.2rem;
+  }
+  
+  /* Responsive */
+  @media (max-width: 1200px) {
+    .features-grid,
+    .integrations-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media (max-width: 992px) {
+    .hero-content {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+    
+    .challenge-grid,
+    .pages-grid,
+    .cta-benefits {
+      grid-template-columns: 1fr;
+    }
+    
+    .hero-stats {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .order-summary {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .process-timeline {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .hero-text h1 {
+      font-size: 2rem;
+    }
+    
+    .hero-buttons,
+    .cta-buttons {
+      flex-direction: column;
+    }
+    
+    .btn-large {
+      width: 100%;
+      text-align: center;
+    }
+    
+    .section-header h2 {
+      font-size: 2rem;
+    }
+    
+    .features-grid,
+    .integrations-grid,
+    .process-timeline {
+      grid-template-columns: 1fr;
+    }
+    
+    .hero-features {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    
+    .process-result {
+      flex-direction: column;
+      text-align: center;
+    }
+  }
+</style>

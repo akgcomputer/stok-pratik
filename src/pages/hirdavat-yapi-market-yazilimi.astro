@@ -1,86 +1,347 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import HeroSection from '../components/landing/HeroSection.astro';
-import ComparisonSection from '../components/landing/ComparisonSection.astro';
-import FeaturesGrid from '../components/landing/FeaturesGrid.astro';
-import HowItWorks from '../components/landing/HowItWorks.astro';
-import FaqAccordion from '../components/landing/FaqAccordion.astro';
-import CtaBanner from '../components/landing/CtaBanner.astro';
 
 const pageTitle = "Hırdavat, Yapı Market ve Nalburiye Stok Takip Programı | Stok Pratik";
 const pageDescription = "Binlerce çeşit hırdavat, civata ve yapı malzemesini barkodla kolayca yönetin. Depolar arası transfer, metre/kilo bazlı satış ve veresiye takibi!";
 
 const features = [
-  {
-    title: "10.000+ Ürün Hızlı Arama",
-    description: "Binlerce cıvata, vida, boya ve el aleti arasında saniyeler içinde arama yapın, kasada bekletmeyin.",
-    icon: `<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>`
-  },
-  {
-    title: "Çoklu Birim Yönetimi",
-    description: "Aynı ürünü; Adet, Metre, Kilo, Kutu veya Koli cinsinden satabilir, stokları ana birime göre dönüştürebilirsiniz.",
-    icon: `<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3"></path></svg>`
-  },
-  {
-    title: "Çoklu Depo & Raf Lokasyonu",
-    description: "Hırdavat deponuzu reyon ve raf numarasına kadar haritalandırın, aradığınız malzemeyi anında bulun.",
-    icon: `<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>`
-  },
-  {
-    title: "Dijital Veresiye Defteri",
-    description: "Ustalara ve taşeron firmalara yaptığınız vadeli satışları, ödemeleri ve tahsilatları açık hesap olarak tutun.",
-    icon: `<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>`
-  },
-  {
-    title: "Kritik Stok İkaz Sistemi",
-    description: "Sık satılan çivi, bant gibi ürünler belirlenen adedin altına düştüğünde sistem otomatik sipariş uyarısı versin.",
-    icon: `<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>`
-  },
-  {
-    title: "Mobil Kameralı Sayım",
-    description: "El terminaline para harcamadan, çalışanlarınız cep telefonu kamerasıyla mağaza sayımı yapabilsin.",
-    icon: `<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>`
-  }
+  { icon: "🔍", title: "10.000+ Ürün Hızlı Arama", desc: "Binlerce cıvata, vida, boya ve el aleti arasında saniyeler içinde arama yapın, kasada bekletmeyin.", details: ["Anında arama", "Barkod okuma", "Filtreleme"] },
+  { icon: "📦", title: "Çoklu Birim Yönetimi", desc: "Aynı ürünü; Adet, Metre, Kilo, Kutu veya Koli cinsinden satabilir, stokları ana birime göre dönüştürebilirsiniz.", details: ["Adet/Kilo/Metre", "Koli/Kutu dönüşümü", "Otomatik hesaplama"] },
+  { icon: "📍", title: "Çoklu Depo & Raf Lokasyonu", desc: "Hırdavat deponuzu reyon ve raf numarasına kadar haritalandırın, aradığınız malzemeyi anında bulun.", details: ["Raf adresi", "Reyon haritası", "Kolay bulma"] },
+  { icon: "📋", title: "Dijital Veresiye Defteri", desc: "Ustalara ve taşeron firmalara yaptığınız vadeli satışları, ödemeleri ve tahsilatları açık hesap olarak tutun.", details: ["Müşteri hesabı", "Ödeme takibi", "Bakiye görüntüleme"] },
+  { icon: "⚠️", title: "Kritik Stok İkaz Sistemi", desc: "Sık satılan çivi, bant gibi ürünler belirlenen adedin altına düştüğünde sistem otomatik sipariş uyarısı versin.", details: ["Otomatik uyarı", "E-posta bildirimi", "Sipariş önerisi"] },
+  { icon: "📸", title: "Mobil Kameralı Sayım", desc: "El terminaline para harcamadan, çalışanlarınız cep telefonu kamerasıyla mağaza sayımı yapabilsin.", details: ["Kamera ile sayım", "Bulut senkron", "Raporlama"] }
 ];
 
 const faqs = [
-  { question: "Mevcut ürün listemi nasıl aktarabilirim?", answer: "Toptancınızdan veya eski programınızdan aldığınız on binlerce satırlık Excel dosyasını tek tuşla Stok Pratik'e aktarabilirsiniz." },
-  { question: "Hırdavat ürünlerinde birim dönüşümü yapabiliyor muyuz?", answer: "Evet, örneğin 1 Koli (100 Adet) olarak aldığınız silikonları, kasada Adet olarak satabilirsiniz. Stoktan 1 adet düşerken, koli bakiyesi otomatik güncellenir." },
-  { question: "Barkodsuz dökme ürünleri nasıl satacağız?", answer: "Vidalar veya metreyle satılan kablolar gibi barkodsuz ürünler için, satış ekranında hızlı erişim tuşları (kısayol butonları) oluşturabilirsiniz." }
+  { q: "Mevcut ürün listemi nasıl aktarabilirim?", a: "Toptancınızdan veya eski programınızdan aldığınız on binlerce satırlık Excel dosyasını tek tuşla Stok Pratik'e aktarabilirsiniz." },
+  { q: "Hırdavat ürünlerinde birim dönüşümü yapabiliyor muyuz?", a: "Evet, örneğin 1 Koli (100 Adet) olarak aldığınız silikonları, kasada Adet olarak satabilirsiniz. Stoktan 1 adet düşerken, koli bakiyesi otomatik güncellenir." },
+  { q: "Barkodsuz dökme ürünleri nasıl satacağız?", a: "Vidalar veya metreyle satılan kablolar gibi barkodsuz ürünler için, satış ekranında hızlı erişim tuşları (kısayol butonları) oluşturabilirsiniz." }
+];
+
+const stats = [
+  { number: "%70", label: "Sayım Süresi Azalması", icon: "⏱️" },
+  { number: "%45", label: "Stok Bulunurluğu Artışı", icon: "📈" },
+  { number: "%60", label: "Veresiye Hatası Azalması", icon: "✅" },
+  { number: "24/7", label: "Kesintisiz Erişim", icon: "🛡️" }
 ];
 ---
 
 <BaseLayout title={pageTitle} description={pageDescription}>
-  <HeroSection 
-    h1="Binlerce Çeşit Hırdavat ve Yapı Malzemesinde Sayım Karmaşasına Son!"
-    description={pageDescription}
-    badges={["Hırdavat Takibi", "Çoklu Birim", "Kritik Stok Uyarıları", "Açık Hesap (Veresiye)"]}
-    imageSrc="/images/site-foto/analiz.webp"
-    imageAlt="Hırdavat Stok Takip Ekranı"
-  />
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-grid">
+        <div class="hero-text">
+          <span class="badge">🔨 Nalbur & Yapı Market Çözümü</span>
+          <h1>Binlerce Çeşit Hırdavat ve Yapı Malzemesinde <span class="highlight">Sayım Karmaşasına Son!</span></h1>
+          <p class="subtitle">{pageDescription}</p>
+          <div class="stats">
+            {stats.map(s => (
+              <div class="stat" key={s.label}>
+                <div class="stat-icon">{s.icon}</div>
+                <div class="stat-number">{s.number}</div>
+                <div class="stat-label">{s.label}</div>
+              </div>
+            ))}
+          </div>
+          <div class="buttons">
+            <a href="https://wa.me/+905325000999?text=Merhaba,%20Hırdavat%20programı%20demo%20istiyorum" target="_blank" rel="noopener" class="btn btn-primary">🛒 Demo İste</a>
+            <a href="tel:+905325000999" class="btn btn-secondary">📞 0532 500 09 99</a>
+          </div>
+          <div class="tags">
+            <span>🏷️ Barkod Takibi</span>
+            <span>📦 Çoklu Birim</span>
+            <span>⚠️ Stok Uyarıları</span>
+            <span>📋 Veresiye</span>
+          </div>
+        </div>
+        <div class="hero-image">
+          <div class="dashboard">
+            <div class="dash-header"><span>🏪 Stok Pratik</span><span>Bugün</span></div>
+            <div class="dash-cards">
+              <div><div class="dash-label">Toplam Ürün</div><div class="dash-value">12.450</div></div>
+              <div><div class="dash-label">Kritik Stok</div><div class="dash-value warning">8</div></div>
+              <div><div class="dash-label">Bugün Satış</div><div class="dash-value">₺8.720</div></div>
+            </div>
+            <div class="dash-list">
+              <div><span>🔩 Civata M8</span><span class="badge-stock">42 adet</span></div>
+              <div><span>🔧 El Aleti Takımı</span><span class="badge-stock">12 adet</span></div>
+              <div><span>🎨 Boya 2.5L</span><span class="badge-stock danger">3 adet</span></div>
+            </div>
+            <div class="dash-alert">⚠️ 8 üründe stok kritik seviyede!</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- KARŞILAŞTIRMA -->
+  <section class="compare">
+    <div class="container">
+      <h2>Klasik Nalburiye mi, Stok Pratik mi?</h2>
+      <p class="section-desc">Hangisi size daha çok kazandırır?</p>
+      <div class="compare-grid">
+        <div class="compare-old">
+          <div class="compare-icon">📵</div>
+          <h3>Klasik Nalburiye Yönetimi</h3>
+          <ul>
+            <li>Sayım günlerinde dükkanı kapatmak</li>
+            <li>Veresiye defterinde alacakların kaybolması</li>
+            <li>Depoda var olan malın rafta bulunamaması</li>
+            <li>Hangi vidanın azaldığını manuel kontrol etmek</li>
+          </ul>
+        </div>
+        <div class="compare-new">
+          <div class="compare-icon">🚀</div>
+          <h3>Stok Pratik Yapı Market Çözümü</h3>
+          <ul>
+            <li>Mobil cihaz ile dükkan açıkken sayım</li>
+            <li>Her müşterinin hesabını anlık görüntüleme</li>
+            <li>Raf ve lokasyon numarasıyla kolay bulunabilirlik</li>
+            <li>Akıllı kritik stok uyarılarıyla sıfır stoksuzluk</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ÖZELLİKLER -->
+  <section class="features">
+    <div class="container">
+      <h2>Yapı Marketinizin İhtiyacı Olan Tüm Fonksiyonlar</h2>
+      <p class="section-desc">Hırdavat stok takibini kolaylaştıran özel araçlar</p>
+      <div class="features-grid">
+        {features.map(f => (
+          <div class="feature-card" key={f.title}>
+            <div class="feature-icon">{f.icon}</div>
+            <h3>{f.title}</h3>
+            <p>{f.desc}</p>
+            <ul>
+              {f.details.map(d => <li key={d}>✓ {d}</li>)}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
   
-  <ComparisonSection 
-    oldMethodTitle="Klasik Nalburiye Yönetimi"
-    oldMethodItems={["Sayım günlerinde dükkanı kapatmak", "Veresiye defterinde alacakların kaybolması", "Depoda var olan malın rafta bulunamaması", "Hangi vidanın azaldığını manuel kontrol etmek"]}
-    newMethodTitle="Stok Pratik Yapı Market Çözümü"
-    newMethodItems={["Mobil cihaz ile dükkan açıkken sayım", "Her müşterinin hesabını anlık görüntüleme", "Raf ve lokasyon numarasıyla kolay bulunabilirlik", "Akıllı kritik stok uyarılarıyla sıfır stoksuzluk"]}
-  />
-  
-  <FeaturesGrid 
-    title="Yapı Marketinizin İhtiyacı Olan Tüm Fonksiyonlar"
-    features={features}
-  />
-  
-  <HowItWorks 
-    title="Nalbur ve Hırdavat Mağazanızı Dijitale Taşıyın"
-    steps={[
-      { title: "Toptancı Excel'ini Yükleyin", description: "Mal aldığınız toptancılardaki binlerce kalem ürünü fiyatlarıyla birlikte sisteme aktarın." },
-      { title: "Raf Lokasyonlarını Belirleyin", description: "Ürünlerin mağaza içi reyon ve raf adreslerini belirterek kaybolmaları önleyin." },
-      { title: "Barkodlu Satışa Geçin", description: "Hızlı satış ekranında barkod okutarak veya ismini yazarak saniyeler içinde fatura kesin." }
-    ]}
-  />
-  
-  <FaqAccordion faqs={faqs} />
-  
-  <CtaBanner />
+    <div class="container">
+      <h2>Nalbur ve Hırdavat Mağazanızı Dijitale Taşıyın</h2>
+      <p class="section-desc">3 kolay adımda sisteme geçin</p>
+      <div class="steps-grid">
+        <div class="step"><span class="step-num">1</span><span class="step-icon">📤</span><h3>Toptancı Excel'ini Yükleyin</h3><p>Mal aldığınız toptancılardaki binlerce kalem ürünü fiyatlarıyla birlikte sisteme aktarın.</p></div>
+        <div class="step"><span class="step-num">2</span><span class="step-icon">📍</span><h3>Raf Lokasyonlarını Belirleyin</h3><p>Ürünlerin mağaza içi reyon ve raf adreslerini belirterek kaybolmaları önleyin.</p></div>
+        <div class="step"><span class="step-num">3</span><span class="step-icon">🏷️</span><h3>Barkodlu Satışa Geçin</h3><p>Hızlı satış ekranında barkod okutarak veya ismini yazarak saniyeler içinde fatura kesin.</p></div>
+      </div>
+      <div class="steps-result">
+        <span class="result-icon">🎉</span>
+        <div><h3>Stoklar Net, Satışlar Hızlı!</h3><p>Stok Pratik ile hırdavat işletmenizde düzen ve verimlilik artsın.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ENTEGRASYON -->
+  <section class="integrations">
+    <div class="container">
+      <h2>Uyumlu Donanım ve Sistemler</h2>
+      <p class="section-desc">Tüm cihazlarla tak-çalıştır uyumu</p>
+      <div class="integ-grid">
+        <div><span>📟</span><h3>Barkod Okuyucu</h3><p>USB/Bluetooth tüm okuyucular</p></div>
+        <div><span>🖨️</span><h3>Fiş Yazıcı</h3><p>Termal makbuz yazıcılar</p></div>
+        <div><span>📱</span><h3>Mobil Cihaz</h3><p>Tablet ve telefon desteği</p></div>
+        <div><span>🔒</span><h3>Ödeme POS</h3><p>Bankalar ile entegre</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- İLGİLİ SAYFALAR -->
+  <section class="related">
+    <div class="container">
+      <h2>Entegre Çalışan Diğer Çözümler</h2>
+      <div class="related-grid">
+        <a href="/stok-yonetimi"><h3>📦 Stok Yönetimi</h3><p>Depo ve mağaza stokları</p><span>→</span></a>
+        <a href="/b2b-toptan-satis-sistemi"><h3>🛒 B2B Toptan Satış</h3><p>Bayilere özel fiyatlar</p><span>→</span></a>
+        <a href="/barkodlu-magaza-pos-programi"><h3>🏪 Mağaza POS</h3><p>Hızlı kasa işlemleri</p><span>→</span></a>
+        <a href="/muhasebe-ve-finans"><h3>💰 Muhasebe</h3><p>Otomatik fatura ve muhasebe</p><span>→</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SSS -->
+  <section class="faq">
+    <div class="container">
+      <h2>Sıkça Sorulan Sorular</h2>
+      <div class="faq-list">
+        {faqs.map(f => (
+          <details key={f.q}>
+            <summary>{f.q} <span>▼</span></summary>
+            <div class="faq-answer">{f.a}</div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta">
+    <div class="container">
+      <div class="cta-box">
+        <span class="cta-icon">🔨</span>
+        <h2>Hırdavat İşletmenizi Dijitalleştirmeye Hazır mısınız?</h2>
+        <p>Hemen ücretsiz demo talep edin, stok takibinde rahatlayın.</p>
+        <div class="cta-buttons">
+          <a href="https://wa.me/+905325000999?text=Merhaba,%20Hırdavat%20programı%20demo%20istiyorum" target="_blank" rel="noopener" class="btn btn-primary">📅 Demo İste</a>
+          <a href="tel:+905325000999" class="btn btn-secondary">📞 Canlı Destek</a>
+        </div>
+        <div class="cta-benefits">
+          <span>🎯 Ücretsiz Kurulum</span>
+          <span>👨‍🏫 Canlı Eğitim</span>
+          <span>🔄 Veri Aktarımı</span>
+          <span>💰 Özel Fiyat</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0}
+    .container{max-width:1200px;margin:0 auto;padding:0 20px}
+
+    /* HERO */
+    .hero{background:linear-gradient(135deg,#3E2723,#4E342E);color:#fff;padding:60px 0}
+    .hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+    .badge{display:inline-block;background:rgba(255,255,255,.15);padding:6px 18px;border-radius:20px;font-size:.9rem;margin-bottom:16px}
+    .hero h1{font-size:2.8rem;line-height:1.2;margin-bottom:16px;color: #f8f8f8 !important;}
+    .highlight{color:#FFA726}
+    .subtitle{font-size:1.1rem;opacity:.9;margin-bottom:30px}
+    .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:20px 0}
+    .stat{background:rgba(255,255,255,.08);padding:12px;border-radius:10px;text-align:center}
+    .stat-icon{font-size:1.5rem}
+    .stat-number{font-size:1.4rem;font-weight:700;color:#FFA726}
+    .stat-label{font-size:.75rem;opacity:.8}
+    .buttons{display:flex;gap:12px;flex-wrap:wrap;margin:20px 0}
+    .btn{display:inline-block;padding:12px 28px;border-radius:8px;font-weight:700;text-decoration:none;transition:.3s}
+    .btn-primary{background:#FFA726;color:#3E2723}
+    .btn-primary:hover{background:#FF9800;transform:translateY(-2px)}
+    .btn-secondary{background:rgba(255,255,255,.15);color:#fff;border:2px solid rgba(255,255,255,.2)}
+    .btn-secondary:hover{background:rgba(255,255,255,.25);transform:translateY(-2px)}
+    .tags{display:flex;gap:10px;flex-wrap:wrap}
+    .tags span{background:rgba(255,255,255,.08);padding:4px 14px;border-radius:16px;font-size:.85rem}
+
+    /* DASHBOARD */
+    .dashboard{background:#fff;color:#333;border-radius:16px;padding:20px;box-shadow:0 20px 40px rgba(0,0,0,.3)}
+    .dash-header{display:flex;justify-content:space-between;font-weight:700;font-size:1.1rem;padding-bottom:12px;border-bottom:2px solid #eee}
+    .dash-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:16px 0}
+    .dash-cards>div{background:#f5f5f5;padding:10px;border-radius:8px;text-align:center}
+    .dash-label{font-size:.75rem;color:#777}
+    .dash-value{font-size:1.4rem;font-weight:700;color:#3E2723}
+    .dash-value.warning{color:#E65100}
+    .dash-list>div{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #f0f0f0;font-size:.9rem}
+    .badge-stock{background:#e8f5e9;padding:2px 10px;border-radius:12px;font-size:.8rem;color:#2e7d32}
+    .badge-stock.danger{background:#ffebee;color:#c62828}
+    .dash-alert{background:#fff8e1;border:1px solid #ffecb3;padding:8px;border-radius:8px;margin-top:12px;font-size:.9rem;color:#E65100}
+
+    /* COMPARE */
+    .compare{padding:60px 0;background:#fafafa}
+    .compare h2{text-align:center;font-size:2.2rem;color:#3E2723}
+    .section-desc{text-align:center;color:#777;margin-bottom:36px;font-size:1.05rem}
+    .compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:30px}
+    .compare-old,.compare-new{padding:28px;border-radius:16px;box-shadow:0 4px 12px rgba(0,0,0,.06)}
+    .compare-old{background:#fff;border-top:5px solid #E65100}
+    .compare-new{background:linear-gradient(135deg,#3E2723,#4E342E);color:#fff;border-top:5px solid #FFA726}
+    .compare-icon{font-size:2.5rem;margin-bottom:10px}
+    .compare-old h3{color:#3E2723}
+    .compare-new h3{color:#fff}
+    .compare-old ul,.compare-new ul{list-style:none;padding:0;margin-top:12px}
+    .compare-old li,.compare-new li{padding:6px 0;padding-left:28px;position:relative}
+    .compare-old li:before{content:"❌";position:absolute;left:0;color:#E65100}
+    .compare-new li:before{content:"✅";position:absolute;left:0;color:#FFA726}
+
+    /* FEATURES */
+    .features{padding:60px 0;background:#fff}
+    .features h2{text-align:center;font-size:2.2rem;color:#3E2723}
+    .features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+    .feature-card{background:#fafafa;padding:24px;border-radius:14px;border:2px solid transparent;transition:.3s}
+    .feature-card:hover{border-color:#FFA726;transform:translateY(-4px);box-shadow:0 8px 24px rgba(255,167,38,.15)}
+    .feature-icon{font-size:2.2rem;margin-bottom:10px}
+    .feature-card h3{color:#3E2723;font-size:1.15rem;margin-bottom:6px}
+    .feature-card p{color:#666;font-size:.92rem;line-height:1.5}
+    .feature-card ul{list-style:none;padding:0;margin-top:10px}
+    .feature-card li{color:#555;font-size:.88rem;padding:3px 0}
+
+    /* STEPS */
+    .steps{padding:60px 0;background:#f5f0eb}
+    .steps h2{text-align:center;font-size:2.2rem;color:#3E2723}
+    .steps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-bottom:30px}
+    .step{background:#fff;padding:24px;border-radius:14px;box-shadow:0 2px 8px rgba(0,0,0,.06);position:relative}
+    .step-num{position:absolute;top:-12px;left:-12px;background:#E65100;color:#fff;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.85rem}
+    .step-icon{font-size:2rem;display:block;margin:6px 0 8px}
+    .step h3{color:#3E2723;font-size:1.1rem}
+    .step p{color:#666;font-size:.9rem;line-height:1.5}
+    .steps-result{display:flex;align-items:center;gap:24px;background:linear-gradient(135deg,#FFA726,#FF9800);padding:24px 32px;border-radius:14px;color:#3E2723}
+    .result-icon{font-size:3rem}
+    .steps-result h3{font-size:1.3rem;margin-bottom:4px}
+
+    /* INTEGRATIONS */
+    .integrations{padding:60px 0;background:#fff}
+    .integrations h2{text-align:center;font-size:2.2rem;color:#3E2723}
+    .integ-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+    .integ-grid>div{text-align:center;background:#fafafa;padding:24px;border-radius:14px;transition:.3s}
+    .integ-grid>div:hover{transform:translateY(-4px);box-shadow:0 6px 16px rgba(0,0,0,.08)}
+    .integ-grid span{font-size:2.5rem;display:block}
+    .integ-grid h3{color:#3E2723;margin:8px 0 4px;font-size:1rem}
+    .integ-grid p{color:#777;font-size:.85rem}
+
+    /* RELATED */
+    .related{padding:60px 0;background:#f5f0eb}
+    .related h2{text-align:center;font-size:2.2rem;color:#3E2723}
+    .related-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+    .related-grid a{display:block;background:#fff;padding:20px 24px;border-radius:12px;text-decoration:none;color:inherit;border:2px solid transparent;transition:.3s}
+    .related-grid a:hover{border-color:#FFA726;transform:translateY(-3px)}
+    .related-grid h3{color:#3E2723;font-size:1.05rem;margin-bottom:4px}
+    .related-grid p{color:#777;font-size:.9rem;margin-bottom:6px}
+    .related-grid span{color:#E65100;font-weight:700}
+
+    /* FAQ */
+    .faq{padding:60px 0;background:#fff}
+    .faq h2{text-align:center;font-size:2.2rem;color:#3E2723}
+    .faq-list{max-width:760px;margin:0 auto}
+    .faq-list details{background:#fafafa;border:1px solid #eee;border-radius:10px;padding:4px 20px;margin-bottom:12px}
+    .faq-list summary{display:flex;justify-content:space-between;padding:14px 0;font-weight:600;color:#3E2723;cursor:pointer;list-style:none}
+    .faq-list summary::-webkit-details-marker{display:none}
+    .faq-list details[open] summary span{transform:rotate(180deg)}
+    .faq-answer{padding:0 0 18px;color:#555;border-top:1px solid #eee;padding-top:14px;line-height:1.6}
+
+    /* CTA */
+    .cta{padding:60px 0;background:#3E2723}
+    .cta-box{text-align:center;color:#fff}
+    .cta-icon{font-size:3.5rem;display:block;margin-bottom:12px}
+    .cta-box h2{font-size:2.2rem;margin-bottom:10px}
+    .cta-box p{font-size:1.1rem;opacity:.9;margin-bottom:24px}
+    .cta-buttons{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin-bottom:24px}
+    .cta-benefits{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;max-width:700px;margin:0 auto}
+    .cta-benefits span{background:rgba(255,255,255,.08);padding:8px 12px;border-radius:20px;font-size:.9rem}
+
+    /* RESPONSIVE */
+    @media(max-width:992px){
+      .hero-grid{grid-template-columns:1fr}
+      .hero h1{font-size:2.2rem}
+      .stats{grid-template-columns:repeat(2,1fr)}
+      .features-grid{grid-template-columns:repeat(2,1fr)}
+      .integ-grid{grid-template-columns:repeat(2,1fr)}
+      .compare-grid{grid-template-columns:1fr}
+      .steps-grid{grid-template-columns:1fr}
+      .related-grid{grid-template-columns:1fr}
+      .cta-benefits{grid-template-columns:repeat(2,1fr)}
+    }
+    @media(max-width:600px){
+      .hero h1{font-size:1.8rem}
+      .features-grid{grid-template-columns:1fr}
+      .integ-grid{grid-template-columns:1fr}
+      .dashboard .dash-cards{grid-template-columns:1fr}
+      .buttons{flex-direction:column}
+      .btn{width:100%;text-align:center}
+      .cta-buttons{flex-direction:column}
+    }
+  </style>
 </BaseLayout>

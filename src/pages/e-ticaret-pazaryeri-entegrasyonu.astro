@@ -1,86 +1,1304 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import HeroSection from '../components/landing/HeroSection.astro';
-import ComparisonSection from '../components/landing/ComparisonSection.astro';
-import FeaturesGrid from '../components/landing/FeaturesGrid.astro';
-import HowItWorks from '../components/landing/HowItWorks.astro';
-import FaqAccordion from '../components/landing/FaqAccordion.astro';
-import CtaBanner from '../components/landing/CtaBanner.astro';
+import '../styles/variables.css';
+import '../styles/global.css';
+import '../styles/components.css';
 
 const pageTitle = "E-Ticaret Pazaryeri Entegrasyon Programı | Stok Pratik";
-const pageDescription = "Trendyol, Hepsiburada, N11 ve Amazon siparişlerinizi tek panelden yönetin. Aracı entegrasyon firmasına gerek kalmadan e-fatura ve stok takibini otomatikleştirin.";
+const pageDescription =
+  "Trendyol, Hepsiburada, N11 ve Amazon siparişlerinizi tek panelden yönetin. Aracı entegrasyon firmasına gerek kalmadan e-fatura ve stok takibini otomatikleştirin.";
 
+// Özellikler
 const features = [
   {
+    icon: "🔄",
     title: "Otomatik Stok Senkronizasyonu",
     description: "Tüm pazaryerlerindeki stoklarınız tek merkezden saniyeler içinde güncellenir.",
-    icon: `<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>`
+    details: [
+      "Anlık stok güncelleme",
+      "Çapraz platform senkronizasyonu",
+      "Varyant bazlı güncelleme",
+      "Stok uyarıları"
+    ]
   },
   {
+    icon: "🔗",
     title: "Doğrudan API Bağlantısı",
     description: "Aracı firmalara ek ücret ödemeden Trendyol, Hepsiburada gibi platformlara doğrudan bağlanın.",
-    icon: `<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"></path></svg>`
+    details: [
+      "API anahtar yönetimi",
+      "Otomatik token yenileme",
+      "Hata logları",
+      "Bağlantı test aracı"
+    ]
   },
   {
+    icon: "📄",
     title: "Tek Tıkla e-Fatura",
     description: "Gelen pazaryeri siparişlerinizi tek tıkla e-Faturaya dönüştürün ve müşteriye iletin.",
-    icon: `<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>`
+    details: [
+      "Otomatik fatura oluşturma",
+      "e-Arşiv/e-Fatura seçeneği",
+      "Toplu fatura kesimi",
+      "Müşteriye e-posta gönderimi"
+    ]
   },
   {
+    icon: "📦",
     title: "Toplu Kargo Barkodu",
     description: "Siparişlerinize ait kargo fişlerini ve faturaları tek seferde toplu olarak yazdırın.",
-    icon: `<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"></path></svg>`
+    details: [
+      "Toplu barkod yazdırma",
+      "Kargo firması entegrasyonu",
+      "Otomatik kargo takip no",
+      "Excel/PDF dökümü"
+    ]
   },
   {
+    icon: "🎨",
     title: "Varyantlı Ürün Yönetimi",
     description: "Renk, beden ve numara gibi farklı varyantları pazaryerlerinde hatasız eşleştirin.",
-    icon: `<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"></path></svg>`
+    details: [
+      "Renk/beden eşleştirme",
+      "Otomatik varyant oluşturma",
+      "Stok sayımı",
+      "Görsel yönetimi"
+    ]
   },
   {
+    icon: "🏪",
     title: "B2B Toptan Portal Entegresi",
     description: "Pazaryeri siparişlerinizi ve B2B toptan satışlarınızı tek bir havuzda birleştirin.",
-    icon: `<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>`
+    details: [
+      "Kombine sipariş yönetimi",
+      "Ortak stok havuzu",
+      "Fatura birleştirme",
+      "Raporlama"
+    ]
   }
 ];
 
+// Karşılaştırma
+const comparison = {
+  old: {
+    title: "Geleneksel Entegrasyon Firmaları",
+    icon: "💰",
+    items: [
+      "Aylık veya sipariş başı ek ücretler",
+      "Destek almak için saatlerce beklemek",
+      "Sadece entegrasyon (Muhasebesiz)",
+      "Karmaşık eşleştirme süreçleri"
+    ]
+  },
+  new: {
+    title: "Stok Pratik Entegrasyonu",
+    icon: "🚀",
+    items: [
+      "Ek kontör veya sipariş başı ücret YOK",
+      "Ön muhasebe ve depo ile tam entegre",
+      "Varyant (Renk/Beden) duyarlı stok",
+      "Ücretsiz 7/24 kesintisiz destek"
+    ]
+  }
+};
+
+// Adımlar
+const steps = [
+  {
+    step: 1,
+    title: "API Bilgilerini Girin",
+    description: "Pazaryeri panellerinizden aldığınız API anahtarlarını sisteme bir kez kaydedin.",
+    icon: "🔑"
+  },
+  {
+    step: 2,
+    title: "Ürünleri Eşleştirin",
+    description: "Sistem, pazaryerindeki ürünlerinizle Stok Pratik içindeki stokları otomatik eşleştirir.",
+    icon: "🔗"
+  },
+  {
+    step: 3,
+    title: "Arkanıza Yaslanın",
+    description: "Gelen siparişler onaylansın, stoklar düşsün ve e-faturalar otomatik kesilsin.",
+    icon: "😎"
+  }
+];
+
+// İstatistikler
+const statistics = [
+  { number: "%100", label: "Stok Tutarlılığı", icon: "📊" },
+  { number: "%60", label: "Zaman Tasarrufu", icon: "⏱️" },
+  { number: "%80", label: "Hata Azalması", icon: "✅" },
+  { number: "7/24", label: "Otomatik Senkron", icon: "🌐" }
+];
+
+// SSS
 const faqs = [
-  { question: "Hangi pazaryerleri ile entegrasyonunuz var?", answer: "Şu anda Trendyol, Hepsiburada, N11, Çiçeksepeti, PttAVM ve Amazon ile tam entegre çalışıyoruz. Ayrıca kendi e-ticaret siteniz (WooCommerce, Shopify) ile de entegre olabilirsiniz." },
-  { question: "Aracı firmalara ek komisyon veya kontör ücreti ödeyecek miyim?", answer: "Hayır! Stok Pratik doğrudan API üzerinden iletişim kurduğu için sipariş veya fatura başına ek bir entegratör ücreti ödemezsiniz." },
-  { question: "Varyantlı ürünlerde stoklar nasıl güncelleniyor?", answer: "Renk ve beden gibi varyantlarınız için barkod eşleştirmesi yapılır. Herhangi bir pazaryerinde satış olduğunda diğer tüm platformlardaki varyant stokları anında düşülür." }
+  {
+    question: "Hangi pazaryerleri ile entegrasyonunuz var?",
+    answer: "Şu anda Trendyol, Hepsiburada, N11, Çiçeksepeti, PttAVM ve Amazon ile tam entegre çalışıyoruz. Ayrıca kendi e-ticaret siteniz (WooCommerce, Shopify) ile de entegre olabilirsiniz."
+  },
+  {
+    question: "Aracı firmalara ek komisyon veya kontör ücreti ödeyecek miyim?",
+    answer: "Hayır! Stok Pratik doğrudan API üzerinden iletişim kurduğu için sipariş veya fatura başına ek bir entegratör ücreti ödemezsiniz."
+  },
+  {
+    question: "Varyantlı ürünlerde stoklar nasıl güncelleniyor?",
+    answer: "Renk ve beden gibi varyantlarınız için barkod eşleştirmesi yapılır. Herhangi bir pazaryerinde satış olduğunda diğer tüm platformlardaki varyant stokları anında düşülür."
+  },
+  {
+    question: "Birden fazla pazaryerinde aynı ürünü satıyorum, sorun yaşar mıyım?",
+    answer: "Hayır, sistem tüm pazaryerlerindeki stokları tek merkezden yönetir. Bir platformda satıldığında diğerlerinde otomatik düşer."
+  }
 ];
 ---
 
 <BaseLayout title={pageTitle} description={pageDescription}>
-  <HeroSection 
-    h1="Pazaryeri Entegrasyonu İçin Aracı Firmalara Ek Ücret Ödemeye SON!"
-    description={pageDescription}
-    badges={["Trendyol", "Hepsiburada", "N11", "Amazon"]}
-    imageSrc="/images/site-foto/crm.webp"
-    imageAlt="E-Ticaret Pazaryeri Ekranı"
-  />
   
-  <ComparisonSection 
-    oldMethodTitle="Geleneksel Entegrasyon Firmaları"
-    oldMethodItems={["Aylık veya sipariş başı ek ücretler", "Destek almak için saatlerce beklemek", "Sadece entegrasyon (Muhasebesiz)", "Karmaşık eşleştirme süreçleri"]}
-    newMethodTitle="Stok Pratik Entegrasyonu"
-    newMethodItems={["Ek kontör veya sipariş başı ücret YOK", "Ön muhasebe ve depo ile tam entegre", "Varyant (Renk/Beden) duyarlı stok", "Ücretsiz 7/24 kesintisiz destek"]}
-  />
-  
-  <FeaturesGrid 
-    title="Pazaryeri Satışlarınızı Kolaylaştıran Özellikler"
-    features={features}
-  />
-  
-  <HowItWorks 
-    title="3 Adımda Satışlarınızı Otomatikleştirin"
-    steps={[
-      { title: "API Bilgilerini Girin", description: "Pazaryeri panellerinizden aldığınız API anahtarlarını sisteme bir kez kaydedin." },
-      { title: "Ürünleri Eşleştirin", description: "Sistem, pazaryerindeki ürünlerinizle Stok Pratik içindeki stokları otomatik eşleştirir." },
-      { title: "Arkanıza Yaslanın", description: "Gelen siparişler onaylansın, stoklar düşsün ve e-faturalar otomatik kesilsin." }
-    ]}
-  />
-  
-  <FaqAccordion faqs={faqs} />
-  
-  <CtaBanner />
+  <!-- Hero Section - Turuncu/Koyu Mavi -->
+  <section class="hero-section">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-text">
+          <span class="hero-badge">🚀 E-Ticaret Dönüşümü</span>
+          <h1>Pazaryeri Entegrasyonu İçin Aracı Firmalara Ek Ücret Ödemeye <span class="highlight">SON!</span></h1>
+          <p class="hero-subtitle">{pageDescription}</p>
+          
+          <div class="hero-stats">
+            {statistics.map((stat, index) => (
+              <div class="stat-item" key={index}>
+                <div class="stat-icon">{stat.icon}</div>
+                <div class="stat-number">{stat.number}</div>
+                <div class="stat-label">{stat.label}</div>
+              </div>
+            ))}
+          </div>
+          
+          <div class="hero-buttons">
+            <a 
+              href="https://wa.me/+905325000999?text=Merhaba,%20Pazaryeri%20Entegrasyon%20Sistemi%20demo%20talep%20ediyorum" 
+              class="btn btn-primary btn-large"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              🛒 Ücretsiz Demo İste
+            </a>
+            <a 
+              href="tel:+905325000999" 
+              class="btn btn-secondary btn-large"
+            >
+              📞 Hemen Ara: 0532 500 09 99
+            </a>
+          </div>
+          
+          <div class="hero-features">
+            <div class="feature">
+              <span class="feature-icon">🤖</span>
+              <span>Otomatik Senkron</span>
+            </div>
+            <div class="feature">
+              <span class="feature-icon">🔒</span>
+              <span>Güvenli API</span>
+            </div>
+            <div class="feature">
+              <span class="feature-icon">💳</span>
+              <span>Komisyon Yok</span>
+            </div>
+            <div class="feature">
+              <span class="feature-icon">⚡</span>
+              <span>Anlık Güncelleme</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="hero-image">
+          <div class="marketplace-dashboard">
+            <div class="dashboard-header">
+              <div class="dashboard-title">
+                <span class="title-icon">📊</span>
+                <span>Pazaryeri Kontrol Paneli</span>
+              </div>
+              <div class="dashboard-period">Bugün: 12 Ağustos</div>
+            </div>
+            
+            <div class="order-summary">
+              <div class="summary-card">
+                <div class="summary-label">Toplam Sipariş</div>
+                <div class="summary-value">48</div>
+                <div class="summary-trend success">↑ %15</div>
+              </div>
+              <div class="summary-card">
+                <div class="summary-label">Bekleyen Sipariş</div>
+                <div class="summary-value">12</div>
+                <div class="summary-trend warning">⏳ İşlemde</div>
+              </div>
+              <div class="summary-card">
+                <div class="summary-label">Hatalı Sipariş</div>
+                <div class="summary-value">2</div>
+                <div class="summary-trend danger">⚠️ Hata</div>
+              </div>
+            </div>
+            
+            <div class="platform-status">
+               <div class="platform-item">
+                <span class="platform-icon">🟢</span>
+                <span class="platform-name">Trendyol</span>
+                <span class="platform-orders">7 sipariş</span>
+              </div>
+              <div class="platform-item">
+                <span class="platform-icon">🟢</span>
+                <span class="platform-name">Amazon</span>
+                <span class="platform-orders">12 sipariş</span>
+              </div>
+              <div class="platform-item">
+                <span class="platform-icon">🟢</span>
+                <span class="platform-name">Hepsiburada</span>
+                <span class="platform-orders">8 sipariş</span>
+              </div>
+              <div class="platform-item">
+                <span class="platform-icon">🟡</span>
+                <span class="platform-name">N11</span>
+                <span class="platform-orders">3 sipariş</span>
+              </div>
+             
+            </div>
+            
+            <div class="urgent-alerts">
+              <div class="alert-icon">⚡</div>
+              <div class="alert-text">2 üründe stok kritik seviyede (≤5 adet)</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Karşılaştırma (Challenge/Solution) -->
+  <section class="challenge-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Aracı Firmalar mı, Stok Pratik mi?</h2>
+        <p>Geleneksel entegratörler ile doğrudan API çözümümüzü karşılaştırın</p>
+      </div>
+      
+      <div class="challenge-grid">
+        <div class="challenge-card">
+          <div class="challenge-icon">{comparison.old.icon}</div>
+          <h3>{comparison.old.title}</h3>
+          <ul>
+            {comparison.old.items.map((item, i) => (
+              <li key={i}>{item}</li>
+            ))}
+          </ul>
+        </div>
+        
+        <div class="solution-card">
+          <div class="solution-icon">{comparison.new.icon}</div>
+          <h3>{comparison.new.title}</h3>
+          <ul>
+            {comparison.new.items.map((item, i) => (
+              <li key={i}>{item}</li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Özellikler Grid -->
+  <section class="features-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Pazaryeri Satışlarınızı Kolaylaştıran Özellikler</h2>
+        <p>Tüm pazaryerlerini tek bir çatı altında yönetin</p>
+      </div>
+      
+      <div class="features-grid">
+        {features.map((feature, index) => (
+          <div class="feature-card" key={index}>
+            <div class="feature-header">
+              <div class="feature-icon">{feature.icon}</div>
+              <div>
+                <h3>{feature.title}</h3>
+                <p class="feature-desc">{feature.description}</p>
+              </div>
+            </div>
+            
+            <ul class="feature-details">
+              {feature.details.map((detail, i) => (
+                <li key={i}>
+                  <span class="detail-check">✓</span>
+                  {detail}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Nasıl Çalışır (Adımlar) -->
+  <section class="process-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>3 Adımda Satışlarınızı Otomatikleştirin</h2>
+        <p>Stok Pratik ile entegrasyon süreci ne kadar kolay?</p>
+      </div>
+      
+      <div class="process-timeline">
+        {steps.map((step, index) => (
+          <div class="process-step" key={index}>
+            <div class="step-number">{step.step}</div>
+            <div class="step-content">
+              <div class="step-header">
+                <div class="step-icon">{step.icon}</div>
+                <h3>{step.title}</h3>
+              </div>
+              <p class="step-description">{step.description}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+      
+      <div class="process-result">
+        <div class="result-icon">🎉</div>
+        <div class="result-content">
+          <h3>Siparişler Otomatik, Stoklar Senkron, Siz Rahat!</h3>
+          <p>Stok Pratik ile pazaryeri satışlarınızı otomatikleştirin, aracı firmaların ek maliyetlerinden kurtulun.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Entegrasyonlar -->
+  <section class="integration-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Desteklenen Pazaryerleri</h2>
+        <p>Türkiye'nin önde gelen e-ticaret platformları ile entegre</p>
+      </div>
+      
+      <div class="integrations-grid">
+        <div class="integration-card">
+          <div class="integration-icon">🟣</div>
+          <h3>Trendyol</h3>
+          <p>Trendyol API ile tam entegre, ürün ve sipariş yönetimi</p>
+        </div>
+        
+        <div class="integration-card">
+          <div class="integration-icon">🔵</div>
+          <h3>Hepsiburada</h3>
+          <p>Hepsiburada Entegrasyon API'si ile anlık veri akışı</p>
+        </div>
+        
+        <div class="integration-card">
+          <div class="integration-icon">🟢</div>
+          <h3>N11</h3>
+          <p>N11 API entegrasyonu ile stok ve sipariş senkronizasyonu</p>
+        </div>
+        
+        <div class="integration-card">
+          <div class="integration-icon">🟠</div>
+          <h3>Amazon</h3>
+          <p>Amazon Marketplac entegrasyonu ile uluslararası satış</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- İlgili Sayfalar -->
+  <section class="related-pages">
+    <div class="container">
+      <div class="section-header">
+        <h2>Entegre Çalışan Diğer Çözümlerimiz</h2>
+        <p>Pazaryeri entegrasyonu ile birlikte kullanabileceğiniz modüller</p>
+      </div>
+      
+      <div class="pages-grid">
+        <a href="/stok-yonetimi" class="page-card">
+          <h3>📦 Stok Yönetimi</h3>
+          <p>Depo ve stok takibini pazaryerleriyle senkronize edin</p>
+          <div class="page-link">
+            <span>İncele</span>
+            <span class="arrow">→</span>
+          </div>
+        </a>
+        <a href="/fatura-yonetimi" class="page-card">
+          <h3>🧾 Fatura Yönetimi</h3>
+          <p>Otomatik e-fatura ve e-arşiv ile uyumlu</p>
+          <div class="page-link">
+            <span>İncele</span>
+            <span class="arrow">→</span>
+          </div>
+        </a>
+        <a href="/b2b-toptan-satis-sistemi" class="page-card">
+          <h3>🏪 B2B Toptan Satış</h3>
+          <p>Perakende ve toptan satışları tek panelde birleştirin</p>
+          <div class="page-link">
+            <span>İncele</span>
+            <span class="arrow">→</span>
+          </div>
+        </a>
+        <a href="/erp-sistemi" class="page-card">
+          <h3>📊 ERP Sistemi</h3>
+          <p>Tüm iş süreçlerinizi entegre yönetin</p>
+          <div class="page-link">
+            <span>İncele</span>
+            <span class="arrow">→</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SSS -->
+  <section class="faq-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Sıkça Sorulan Sorular</h2>
+        <p>Pazaryeri entegrasyonu hakkında merak edilenler</p>
+      </div>
+      
+      <div class="faq-grid">
+        {faqs.map((faq, index) => (
+          <details class="faq-item" key={index}>
+            <summary>
+              {faq.question}
+              <span class="faq-icon">▼</span>
+            </summary>
+            <div class="faq-answer">
+              {faq.answer}
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="final-cta">
+    <div class="container">
+      <div class="cta-content">
+        <div class="cta-icon">🚀</div>
+        <h2>Pazaryeri Satışlarınızı Otomatikleştirmeye Hazır mısınız?</h2>
+        <p>Ücretsiz demo talep edin, aracı firmalara ödediğiniz ek ücretleri değerlendirelim.</p>
+        
+        <div class="cta-buttons">
+          <a 
+            href="https://wa.me/+905325000999?text=Merhaba,%20Pazaryeri%20Entegrasyon%20Sistemi%20demo%20talep%20ediyorum"
+            class="btn btn-primary btn-large"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            📅 Ücretsiz Demo İste
+          </a>
+          <a 
+            href="tel:+905325000999"
+            class="btn btn-secondary btn-large"
+          >
+            📞 Canlı Destek Al
+          </a>
+        </div>
+        
+        <div class="cta-benefits">
+          <div class="benefit">
+            <span class="benefit-icon">🎯</span>
+            <span>Ücretsiz Entegrasyon Analizi</span>
+          </div>
+          <div class="benefit">
+            <span class="benefit-icon">👨‍🏫</span>
+            <span>Canlı Eğitim Desteği</span>
+          </div>
+          <div class="benefit">
+            <span class="benefit-icon">🔄</span>
+            <span>Veri Göçüm Desteği</span>
+          </div>
+          <div class="benefit">
+            <span class="benefit-icon">💰</span>
+            <span>Özel Fiyat Teklifi</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
 </BaseLayout>
+
+<style>
+  /* ===== TURUNCU + KOYU MAVİ TEMASI ===== */
+  
+  /* Hero Section */
+  .hero-section {
+    background: linear-gradient(135deg, #0d1b2a 0%, #1b3a5c 100%);
+    color: white;
+    padding: 4rem 0;
+  }
+  
+  .hero-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+  
+  .hero-badge {
+    display: inline-block;
+    background: rgba(252, 252, 252, 0.15);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+  }
+  
+  .hero-text h1 {
+    font-size: 3rem;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+    color: white;
+  }
+  
+  .highlight {
+    color: #f97316; /* Turuncu */
+  }
+  
+  .hero-subtitle {
+    font-size: 1.2rem;
+    opacity: 0.9;
+    margin-bottom: 2rem;
+  }
+  
+  .hero-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    margin: 2rem 0;
+  }
+  
+  .stat-item {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 1rem;
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+  }
+  
+  .stat-icon {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .stat-number {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #f97316;
+    margin-bottom: 0.3rem;
+  }
+  
+  .stat-label {
+    font-size: 0.8rem;
+    opacity: 0.8;
+  }
+  
+  .hero-buttons {
+    display: flex;
+    gap: 1rem;
+    margin: 2rem 0;
+  }
+  
+  .btn-large {
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+  }
+  
+  .btn-primary {
+    background: #f97316;
+    color: #0d1b2a;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.3s ease;
+  }
+  
+  .btn-primary:hover {
+    background: #ea580c;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(249, 115, 22, 0.3);
+  }
+  
+  .btn-secondary {
+    background: rgba(255, 255, 255, 0.15);
+    color: white;
+    border: 2px solid rgba(255, 255, 255, 0.25);
+    border-radius: 8px;
+    font-weight: bold;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.3s ease;
+  }
+  
+  .btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.25);
+    transform: translateY(-2px);
+  }
+  
+  .hero-features {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+  
+  .feature {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    background: rgba(255, 255, 255, 0.08);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+  }
+  
+  .feature-icon {
+    font-size: 1rem;
+  }
+  
+  /* Marketplace Dashboard */
+  .marketplace-dashboard {
+    background: white;
+    border-radius: 15px;
+    padding: 1.5rem;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+    color: #0d1b2a;
+  }
+  
+  .dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #e2e8f0;
+  }
+  
+  .dashboard-title {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: bold;
+    font-size: 1.2rem;
+  }
+  
+  .title-icon {
+    font-size: 1.5rem;
+  }
+  
+  .dashboard-period {
+    font-size: 0.9rem;
+    color: #64748b;
+  }
+  
+  .order-summary {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .summary-card {
+    background: #f8fafc;
+    padding: 1rem;
+    border-radius: 10px;
+    text-align: center;
+  }
+  
+  .summary-label {
+    font-size: 0.8rem;
+    color: #64748b;
+    margin-bottom: 0.3rem;
+  }
+  
+  .summary-value {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #0d1b2a;
+  }
+  
+  .summary-trend {
+    font-size: 0.8rem;
+    margin-top: 0.3rem;
+  }
+  
+  .summary-trend.success {
+    color: #16a34a;
+  }
+  
+  .summary-trend.warning {
+    color: #f97316;
+  }
+  
+  .summary-trend.danger {
+    color: #dc2626;
+  }
+  
+  .platform-status {
+    margin-bottom: 1.5rem;
+  }
+  
+  .platform-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.6rem 0;
+    border-bottom: 1px solid #e2e8f0;
+  }
+  
+  .platform-item:last-child {
+    border-bottom: none;
+  }
+  
+  .platform-icon {
+    font-size: 1rem;
+  }
+  
+  .platform-name {
+    flex: 1;
+    margin-left: 0.5rem;
+    font-weight: 500;
+  }
+  
+  .platform-orders {
+    font-size: 0.9rem;
+    color: #64748b;
+  }
+  
+  .urgent-alerts {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: #fef3c7;
+    border: 1px solid #fde68a;
+    color: #92400e;
+    padding: 0.8rem;
+    border-radius: 8px;
+    font-size: 0.9rem;
+  }
+  
+  .alert-icon {
+    font-size: 1.2rem;
+  }
+  
+  /* Challenge Section */
+  .challenge-section {
+    padding: 4rem 0;
+    background: #f8fafc;
+  }
+  
+  .section-header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+  
+  .section-header h2 {
+    font-size: 2.5rem;
+    color: #2a2a0d;
+    margin-bottom: 1rem;
+  }
+  
+  .section-header p {
+    color: #0067f7;
+    font-size: 1.1rem;
+  }
+  
+  .challenge-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+  
+  .challenge-card, .solution-card {
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+  }
+  
+  .challenge-card {
+    background: white;
+    border-top: 5px solid #dc2626;
+  }
+  
+  .solution-card {
+    background: linear-gradient(135deg, #0d1b2a, #1b3a5c);
+    color: white;
+  }
+  
+  .challenge-icon, .solution-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+  
+  .challenge-card h3, .solution-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  color: #ffc107 !important;
+}
+    
+  }
+  
+  .challenge-card ul, .solution-card ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 1rem;
+  }
+  
+  .challenge-card li, .solution-card li {
+    padding: 0.3rem 0;
+    position: relative;
+    padding-left: 1.5rem;
+  }
+  
+  .challenge-card li:before {
+    content: "❌";
+    position: absolute;
+    left: 0;
+    color: #dc2626;
+  }
+  
+  .solution-card li:before {
+    content: "✅";
+    position: absolute;
+    left: 0;
+    color: #f97316;
+  }
+  
+  /* Features Section */
+  .features-section {
+    padding: 4rem 0;
+    background: white;
+  }
+  
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+  
+  .feature-card {
+    background: #f8fafc;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease;
+    border: 2px solid transparent;
+  }
+  
+  .feature-card:hover {
+    transform: translateY(-5px);
+    border-color: #f97316;
+    box-shadow: 0 10px 20px rgba(249, 115, 22, 0.15);
+  }
+  
+  .feature-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .feature-icon {
+    font-size: 2.5rem;
+    flex-shrink: 0;
+  }
+  
+  .feature-card h3 {
+    color: #0d1b2a;
+    margin-bottom: 0.5rem;
+    font-size: 1.3rem;
+  }
+  
+  .feature-desc {
+    color: #64748b;
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+  
+  .feature-details {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .feature-details li {
+    padding: 0.5rem 0;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .detail-check {
+    color: #16a34a;
+    font-weight: bold;
+  }
+  
+  /* Process Section */
+  .process-section {
+    padding: 4rem 0;
+    background: #f1f5f9;
+  }
+  
+  .process-timeline {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-bottom: 3rem;
+  }
+  
+  .process-step {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    position: relative;
+  }
+  
+  .step-number {
+    position: absolute;
+    top: -15px;
+    left: -15px;
+    width: 30px;
+    height: 30px;
+    background: #f97316;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 0.9rem;
+  }
+  
+  .step-content {
+    margin-top: 1rem;
+  }
+  
+  .step-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+  
+  .step-icon {
+    font-size: 2rem;
+  }
+  
+  .process-step h3 {
+    color: #0d1b2a;
+    margin: 0;
+    font-size: 1.2rem;
+  }
+  
+  .step-description {
+    color: #64748b;
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+  
+  .process-result {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    background: linear-gradient(135deg, #f97316, #ea580c);
+    color: white;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(249, 115, 22, 0.25);
+  }
+  
+  .result-icon {
+    font-size: 4rem;
+  }
+  
+  .result-content h3 {
+    margin-bottom: 0.5rem;
+    font-size: 1.5rem;
+  }
+  
+  .result-content p {
+    opacity: 0.95;
+  }
+  
+  /* Integration Section */
+  .integration-section {
+    padding: 4rem 0;
+    background: white;
+  }
+  
+  .integrations-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+  }
+  
+  .integration-card {
+    text-align: center;
+    background: #f8fafc;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease;
+  }
+  
+  .integration-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+  }
+  
+  .integration-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+  
+  .integration-card h3 {
+    color: #0d1b2a;
+    margin-bottom: 0.5rem;
+  }
+  
+  .integration-card p {
+    color: #64748b;
+    font-size: 0.9rem;
+  }
+  
+  /* Related Pages */
+  .related-pages {
+    padding: 4rem 0;
+    background: #f1f5f9;
+  }
+  
+  .pages-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+  
+  .page-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+  }
+  
+  .page-card:hover {
+    transform: translateY(-5px);
+    border-color: #f97316;
+    box-shadow: 0 10px 20px rgba(249, 115, 22, 0.15);
+  }
+  
+  .page-card h3 {
+    color: #0d1b2a;
+    margin-bottom: 0.5rem;
+  }
+  
+  .page-card p {
+    color: #64748b;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+  }
+  
+  .page-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #f97316;
+    font-weight: bold;
+  }
+  
+  .arrow {
+    font-size: 1.2rem;
+  }
+  
+  /* FAQ Section */
+  .faq-section {
+    padding: 4rem 0;
+    background: white;
+  }
+  
+  .faq-grid {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .faq-item {
+    background: #f8fafc;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+    padding: 0.5rem 1.5rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    border: 1px solid #e2e8f0;
+  }
+  
+  .faq-item summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    padding: 1rem 0;
+    font-weight: 600;
+    color: #0d1b2a;
+    list-style: none;
+  }
+  
+  .faq-item summary::-webkit-details-marker {
+    display: none;
+  }
+  
+  .faq-icon {
+    transition: transform 0.3s ease;
+    color: #f97316;
+  }
+  
+  .faq-item[open] .faq-icon {
+    transform: rotate(180deg);
+  }
+  
+  .faq-answer {
+    padding: 0 0 1.5rem 0;
+    color: #64748b;
+    line-height: 1.6;
+    border-top: 1px solid #e2e8f0;
+    padding-top: 1rem;
+  }
+  
+  /* Final CTA */
+  .final-cta {
+    padding: 4rem 0;
+    background: linear-gradient(135deg, #0d1b2a, #1b3a5c);
+    color: white;
+    text-align: center;
+  }
+  
+  .cta-content {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .cta-icon {
+    font-size: 4rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .cta-content h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: #ffc107 !important;
+  }
+  
+  .cta-content p {
+    font-size: 1.2rem;
+    opacity: 0.9;
+    margin-bottom: 2rem;
+  }
+  
+  .cta-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+  
+  .cta-benefits {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+  
+  .benefit {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    justify-content: center;
+    font-size: 0.9rem;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 0.8rem;
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+  }
+  
+  .benefit-icon {
+    font-size: 1.2rem;
+  }
+  
+  /* Responsive */
+  @media (max-width: 1200px) {
+    .features-grid,
+    .integrations-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media (max-width: 992px) {
+    .hero-content {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+    
+    .challenge-grid,
+    .pages-grid,
+    .cta-benefits {
+      grid-template-columns: 1fr;
+    }
+    
+    .hero-stats {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .order-summary {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .process-timeline {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .hero-text h1 {
+      font-size: 2rem;
+    }
+    
+    .hero-buttons,
+    .cta-buttons {
+      flex-direction: column;
+    }
+    
+    .btn-large {
+      width: 100%;
+      text-align: center;
+    }
+    
+    .section-header h2 {
+      font-size: 2rem;
+    }
+    
+    .features-grid,
+    .integrations-grid,
+    .process-timeline {
+      grid-template-columns: 1fr;
+    }
+    
+    .hero-features {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    
+    .process-result {
+      flex-direction: column;
+      text-align: center;
+    }
+  }
+</style>

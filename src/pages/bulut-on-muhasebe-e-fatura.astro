@@ -1,86 +1,324 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import HeroSection from '../components/landing/HeroSection.astro';
-import ComparisonSection from '../components/landing/ComparisonSection.astro';
-import FeaturesGrid from '../components/landing/FeaturesGrid.astro';
-import HowItWorks from '../components/landing/HowItWorks.astro';
-import FaqAccordion from '../components/landing/FaqAccordion.astro';
-import CtaBanner from '../components/landing/CtaBanner.astro';
 
 const pageTitle = "Bulut Ön Muhasebe ve E-Fatura Programı | Stok Pratik";
 const pageDescription = "KOBİ'ler ve şahıs şirketleri için kullanımı en kolay bulut ön muhasebe yazılımı. Tek tıkla e-Fatura kesin, gelir-gider ve nakit akışınızı cebinizden yönetin.";
 
 const features = [
-  {
-    title: "Tek Tıkla e-Fatura/e-Arşiv",
-    description: "Gelir İdaresi Başkanlığı (GİB) uyumlu entegrasyon sayesinde saniyeler içinde e-Fatura veya e-Arşiv oluşturun.",
-    icon: `<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>`
-  },
-  {
-    title: "Gelir-Gider & Kasa Takibi",
-    description: "Şirketinizin tüm nakit giriş-çıkışlarını, günlük harcamalarını ve banka hareketlerini tek ekrandan izleyin.",
-    icon: `<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>`
-  },
-  {
-    title: "Müşteri/Tedarikçi Cari Yönetimi",
-    description: "Kimin size ne kadar borcu var, siz kime ödeme yapacaksınız? Cari hesap mutabakatlarını anında yapın.",
-    icon: `<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>`
-  },
-  {
-    title: "Çek ve Senet Modülü",
-    description: "Alınan ve verilen çeklerin vadelerini takip edin, ödeme günü yaklaşan çekler için otomatik hatırlatma alın.",
-    icon: `<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>`
-  },
-  {
-    title: "Otomatik Kâr-Zarar Raporlama",
-    description: "Hangi üründen veya projeden ne kadar kâr ettiğinizi saniyeler içinde grafiksel raporlarla analiz edin.",
-    icon: `<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z"></path></svg>`
-  },
-  {
-    title: "Personel Avans ve Masraf Takibi",
-    description: "Çalışanlarınızın maaş, avans ve harcama (masraf) fişlerini kaydederek şirket içi giderleri kontrol altına alın.",
-    icon: `<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V8a2 2 0 00-2-2h-5m-4 0V5a2 2 0 114 0v1m-4 0a2 2 0 104 0m-5 8a2 2 0 100-4 2 2 0 000 4zm0 0c1.306 0 2.417.835 2.83 2M9 14a3.001 3.001 0 00-2.83 2M15 11h3m-3 4h2"></path></svg>`
-  }
+  { icon: "📄", title: "Tek Tıkla e-Fatura/e-Arşiv", desc: "Gelir İdaresi Başkanlığı (GİB) uyumlu entegrasyon sayesinde saniyeler içinde e-Fatura veya e-Arşiv oluşturun.", details: ["GİB uyumlu", "Saniyeler içinde", "e-Arşiv desteği"] },
+  { icon: "💰", title: "Gelir-Gider & Kasa Takibi", desc: "Şirketinizin tüm nakit giriş-çıkışlarını, günlük harcamalarını ve banka hareketlerini tek ekrandan izleyin.", details: ["Nakit akışı", "Banka entegrasyonu", "Günlük rapor"] },
+  { icon: "👥", title: "Müşteri/Tedarikçi Cari Yönetimi", desc: "Kimin size ne kadar borcu var, siz kime ödeme yapacaksınız? Cari hesap mutabakatlarını anında yapın.", details: ["Bakiye takibi", "Mutabakat", "Ödeme hatırlatma"] },
+  { icon: "📝", title: "Çek ve Senet Modülü", desc: "Alınan ve verilen çeklerin vadelerini takip edin, ödeme günü yaklaşan çekler için otomatik hatırlatma alın.", details: ["Vade takibi", "Hatırlatma", "Portföy yönetimi"] },
+  { icon: "📊", title: "Otomatik Kâr-Zarar Raporlama", desc: "Hangi üründen veya projeden ne kadar kâr ettiğinizi saniyeler içinde grafiksel raporlarla analiz edin.", details: ["Grafik raporlar", "Kar analizi", "Excel çıktısı"] },
+  { icon: "🧾", title: "Personel Avans ve Masraf Takibi", desc: "Çalışanlarınızın maaş, avans ve harcama (masraf) fişlerini kaydederek şirket içi giderleri kontrol altına alın.", details: ["Avans yönetimi", "Masraf fişleri", "Bütçe kontrolü"] }
 ];
 
 const faqs = [
-  { question: "Mali müşavirimle veri paylaşabiliyor muyum?", answer: "Evet, mali müşavirinize özel bir erişim yetkisi verebilir veya tüm fatura ve masraflarınızı tek tıkla muhasebeye uygun Excel formatında dışa aktarabilirsiniz." },
-  { question: "e-Faturaya geçmek zorunlu mu?", answer: "Herkes için zorunlu değil ancak Stok Pratik kullanarak kendi isteğinizle ücretsiz e-faturaya (GİB Portal) geçebilir ve kaşe/imza maliyetlerinden kurtulabilirsiniz." },
-  { question: "Eğitim gerektiriyor mu?", answer: "Stok Pratik'in kullanıcı arayüzü son derece basittir. Muhasebe bilmenize gerek kalmadan, sadece rakamları girerek tüm hesaplarınızı yönetebilirsiniz." }
+  { q: "Mali müşavirimle veri paylaşabiliyor muyum?", a: "Evet, mali müşavirinize özel bir erişim yetkisi verebilir veya tüm fatura ve masraflarınızı tek tıkla muhasebeye uygun Excel formatında dışa aktarabilirsiniz." },
+  { q: "e-Faturaya geçmek zorunlu mu?", a: "Herkes için zorunlu değil ancak Stok Pratik kullanarak kendi isteğinizle ücretsiz e-faturaya (GİB Portal) geçebilir ve kaşe/imza maliyetlerinden kurtulabilirsiniz." },
+  { q: "Eğitim gerektiriyor mu?", a: "Stok Pratik'in kullanıcı arayüzü son derece basittir. Muhasebe bilmenize gerek kalmadan, sadece rakamları girerek tüm hesaplarınızı yönetebilirsiniz." }
+];
+
+const stats = [
+  { number: "%80", label: "Fatura Süresi Azalması", icon: "⏱️" },
+  { number: "%50", label: "Muhasebe Hatası Azalması", icon: "✅" },
+  { number: "%35", label: "Nakit Akış İyileşmesi", icon: "📈" },
+  { number: "7/24", label: "Her Yerden Erişim", icon: "🌐" }
 ];
 ---
 
 <BaseLayout title={pageTitle} description={pageDescription}>
-  <HeroSection 
-    h1="Muhasebe Karmaşasına Son: Tek Tıkla e-Fatura Kesin, Nakit Akışınızı Cebinizden Yönetin!"
-    description={pageDescription}
-    badges={["Ön Muhasebe", "e-Fatura Modülü", "Gelir-Gider", "Bulut Teknolojisi"]}
-    imageSrc="/images/screenshots/Stok-pratik-ekran-fatura.png"
-    imageAlt="Ön Muhasebe ve e-Fatura Ekranı"
-  />
-  
-  <ComparisonSection 
-    oldMethodTitle="Geleneksel Masaüstü Muhasebe"
-    oldMethodItems={["Sadece ofisteki bilgisayardan erişim", "Güncellemeler için yıllık lisans bedeli", "Karışık terimler, muhasebeci bağımlılığı", "Bilgisayar çökünce verilerin silinme riski"]}
-    newMethodTitle="Bulut Tabanlı Stok Pratik"
-    newMethodItems={["Telefondan, tabletten her yerden erişim", "Tüm güncellemeler otomatik ve ücretsiz", "Muhasebe bilmeyenler için basit arayüz", "Verileriniz banka güvenliğinde yedeklenir"]}
-  />
-  
-  <FeaturesGrid 
-    title="İşletmenizin Finansal Kontrolü Elinizde Olsun"
-    features={features}
-  />
-  
-  <HowItWorks 
-    title="e-Fatura Kesmek Artık Çok Kolay"
-    steps={[
-      { title: "Bilgilerinizi Doldurun", description: "Şirket ünvanınızı ve vergi numaranızı sisteme tanımlayın." },
-      { title: "Müşteriyi Seçin", description: "Kayıtlı cari hesabınızı seçin veya saniyeler içinde yeni bir cari açın." },
-      { title: "Faturayı Gönderin", description: "Ürünleri ekleyin ve 'e-Fatura Kes' butonuna tıklayarak işlemi tamamlayın." }
-    ]}
-  />
-  
-  <FaqAccordion faqs={faqs} />
-  
-  <CtaBanner />
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-grid">
+        <div class="hero-text">
+          <span class="badge">🧾 Bulut Muhasebe</span>
+          <h1>Muhasebe Karmaşasına Son: <span class="highlight">Tek Tıkla e-Fatura Kesin, Nakit Akışınızı Cebinizden Yönetin!</span></h1>
+          <p class="subtitle">{pageDescription}</p>
+          <div class="stats">
+            {stats.map(s => (
+              <div class="stat" key={s.label}>
+                <div class="stat-icon">{s.icon}</div>
+                <div class="stat-number">{s.number}</div>
+                <div class="stat-label">{s.label}</div>
+              </div>
+            ))}
+          </div>
+          <div class="buttons">
+            <a href="https://wa.me/+905325000999?text=Merhaba,%20Muhasebe%20programı%20demo%20istiyorum" target="_blank" rel="noopener" class="btn btn-primary">📅 Demo İste</a>
+            <a href="tel:+905325000999" class="btn btn-secondary">📞 0532 500 09 99</a>
+          </div>
+          <div class="tags">
+            <span>🧾 e-Fatura</span>
+            <span>📊 Kâr-Zarar</span>
+            <span>👥 Cari Yönetim</span>
+            <span>☁️ Bulut</span>
+          </div>
+        </div>
+        <div class="hero-image">
+          <div class="dashboard">
+            <div class="dash-header"><span>📊 Ön Muhasebe Paneli</span><span>Bugün</span></div>
+            <div class="dash-cards">
+              <div><div class="dash-label">Ciro</div><div class="dash-value">₺45.200</div></div>
+              <div><div class="dash-label">e-Fatura</div><div class="dash-value">12</div></div>
+              <div><div class="dash-label">Bekleyen</div><div class="dash-value warning">3</div></div>
+            </div>
+            <div class="dash-list">
+              <div><span>ABC Ltd. - Fatura #F2025</span><span class="badge-stock">₺1.250</span></div>
+              <div><span>XYZ A.Ş. - Fatura #F2024</span><span class="badge-stock">₺3.400</span></div>
+              <div><span>Gider - Ofis Kira</span><span class="badge-stock danger">-₺1.800</span></div>
+            </div>
+            <div class="dash-alert">⚠️ 3 fatura onay bekliyor!</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- KARŞILAŞTIRMA -->
+  <section class="compare">
+    <div class="container">
+      <h2>Geleneksel Muhasebe mi, Bulut Stok Pratik mi?</h2>
+      <p class="section-desc">Hangisi işletmenize daha çok kazandırır?</p>
+      <div class="compare-grid">
+        <div class="compare-old">
+          <div class="compare-icon">📵</div>
+          <h3>Geleneksel Masaüstü Muhasebe</h3>
+          <ul>
+            <li>Sadece ofisteki bilgisayardan erişim</li>
+            <li>Güncellemeler için yıllık lisans bedeli</li>
+            <li>Karışık terimler, muhasebeci bağımlılığı</li>
+            <li>Bilgisayar çökünce verilerin silinme riski</li>
+          </ul>
+        </div>
+        <div class="compare-new">
+          <div class="compare-icon">🚀</div>
+          <h3>Bulut Tabanlı Stok Pratik</h3>
+          <ul>
+            <li>Telefondan, tabletten her yerden erişim</li>
+            <li>Tüm güncellemeler otomatik ve ücretsiz</li>
+            <li>Muhasebe bilmeyenler için basit arayüz</li>
+            <li>Verileriniz banka güvenliğinde yedeklenir</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ÖZELLİKLER -->
+  <section class="features">
+    <div class="container">
+      <h2>İşletmenizin Finansal Kontrolü Elinizde Olsun</h2>
+      <p class="section-desc">Tüm muhasebe ihtiyaçlarınız için eksiksiz çözümler</p>
+      <div class="features-grid">
+        {features.map(f => (
+          <div class="feature-card" key={f.title}>
+            <div class="feature-icon">{f.icon}</div>
+            <h3>{f.title}</h3>
+            <p>{f.desc}</p>
+            <ul>
+              {f.details.map(d => <li key={d}>✓ {d}</li>)}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <div class="container">
+      <h2>e-Fatura Kesmek Artık Çok Kolay</h2>
+      <p class="section-desc">3 adımda fatura kesmeye başlayın</p>
+      <div class="steps-grid">
+        <div class="step"><span class="step-num">1</span><span class="step-icon">📝</span><h3>Bilgilerinizi Doldurun</h3><p>Şirket ünvanınızı ve vergi numaranızı sisteme tanımlayın.</p></div>
+        <div class="step"><span class="step-num">2</span><span class="step-icon">👤</span><h3>Müşteriyi Seçin</h3><p>Kayıtlı cari hesabınızı seçin veya saniyeler içinde yeni bir cari açın.</p></div>
+        <div class="step"><span class="step-num">3</span><span class="step-icon">📤</span><h3>Faturayı Gönderin</h3><p>Ürünleri ekleyin ve 'e-Fatura Kes' butonuna tıklayarak işlemi tamamlayın.</p></div>
+      </div>
+      <div class="steps-result">
+        <span class="result-icon">🎉</span>
+        <div><h3>Faturalar Anında, Muhasebe Tertemiz!</h3><p>Stok Pratik ile finansal işleriniz kolaylaşsın.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ENTEGRASYON -->
+  <section class="integrations">
+    <div class="container">
+      <h2>Entegre Çalıştığımız Sistemler</h2>
+      <p class="section-desc">Diğer modüllerle tam uyum</p>
+      <div class="integ-grid">
+        <div><span>📦</span><h3>Stok Yönetimi</h3><p>Faturalar stoktan düşsün</p></div>
+        <div><span>🛒</span><h3>B2B Toptan</h3><p>Toptan sipariş faturaları</p></div>
+        <div><span>🏪</span><h3>Mağaza POS</h3><p>Kasa ile entegre fatura</p></div>
+        <div><span>🏦</span><h3>Bankalar</h3><p>Hesap dökümü aktarımı</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SSS -->
+  <section class="faq">
+    <div class="container">
+      <h2>Sıkça Sorulan Sorular</h2>
+      <div class="faq-list">
+        {faqs.map(f => (
+          <details key={f.q}>
+            <summary>{f.q} <span>▼</span></summary>
+            <div class="faq-answer">{f.a}</div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta">
+    <div class="container">
+      <div class="cta-box">
+        <span class="cta-icon">🧾</span>
+        <h2>Muhasebenizi Buluta Taşımaya Hazır mısınız?</h2>
+        <p>Hemen ücretsiz demo talep edin, e-Fatura ve muhasebe işleriniz kolaylaşsın.</p>
+        <div class="cta-buttons">
+          <a href="https://wa.me/+905325000999?text=Merhaba,%20Muhasebe%20programı%20demo%20istiyorum" target="_blank" rel="noopener" class="btn btn-primary">📅 Demo İste</a>
+          <a href="tel:+905325000999" class="btn btn-secondary">📞 Canlı Destek</a>
+        </div>
+        <div class="cta-benefits">
+          <span>🎯 Ücretsiz Kurulum</span>
+          <span>👨‍🏫 Canlı Eğitim</span>
+          <span>🔄 Veri Aktarımı</span>
+          <span>💰 Özel Fiyat</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    /* ===== TEMEL ===== */
+    *{box-sizing:border-box;margin:0;padding:0}
+    .container{max-width:1200px;margin:0 auto;padding:0 20px}
+
+    /* ===== HERO - LACİVERT TEMA ===== */
+    .hero{background:linear-gradient(135deg,#0D1B3E,#1A2A6C);color:#fff;padding:60px 0}
+    .hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+    .badge{display:inline-block;background:rgba(255,255,255,.15);padding:6px 18px;border-radius:20px;font-size:.9rem;margin-bottom:16px}
+    .hero h1{font-size:2.8rem;line-height:1.2;margin-bottom:16px;color:#ff1706}
+    .highlight{color:#FFD700}
+    .subtitle{font-size:1.1rem;opacity:.9;margin-bottom:30px}
+    .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:20px 0}
+    .stat{background:rgba(255,255,255,.08);padding:12px;border-radius:10px;text-align:center}
+    .stat-icon{font-size:1.5rem}
+    .stat-number{font-size:1.4rem;font-weight:700;color:#FFD700}
+    .stat-label{font-size:.75rem;opacity:.8}
+    .buttons{display:flex;gap:12px;flex-wrap:wrap;margin:20px 0}
+    .btn{display:inline-block;padding:12px 28px;border-radius:8px;font-weight:700;text-decoration:none;transition:.3s}
+    .btn-primary{background:#FFD700;color:#0D1B3E}
+    .btn-primary:hover{background:#FFC107;transform:translateY(-2px)}
+    .btn-secondary{background:rgba(255,255,255,.15);color:#fff;border:2px solid rgba(255,255,255,.2)}
+    .btn-secondary:hover{background:rgba(255,255,255,.25);transform:translateY(-2px)}
+    .tags{display:flex;gap:10px;flex-wrap:wrap}
+    .tags span{background:rgba(255,255,255,.08);padding:4px 14px;border-radius:16px;font-size:.85rem}
+
+    /* ===== DASHBOARD ===== */
+    .dashboard{background:#fff;color:#333;border-radius:16px;padding:20px;box-shadow:0 20px 40px rgba(0,0,0,.3)}
+    .dash-header{display:flex;justify-content:space-between;font-weight:700;font-size:1.1rem;padding-bottom:12px;border-bottom:2px solid #eee}
+    .dash-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:16px 0}
+    .dash-cards>div{background:#f5f5f5;padding:10px;border-radius:8px;text-align:center}
+    .dash-label{font-size:.75rem;color:#777}
+    .dash-value{font-size:1.4rem;font-weight:700;color:#0D1B3E}
+    .dash-value.warning{color:#E65100}
+    .dash-list>div{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #f0f0f0;font-size:.9rem}
+    .badge-stock{background:#e8f5e9;padding:2px 10px;border-radius:12px;font-size:.8rem;color:#2e7d32}
+    .badge-stock.danger{background:#ffebee;color:#c62828}
+    .dash-alert{background:#fff8e1;border:1px solid #ffecb3;padding:8px;border-radius:8px;margin-top:12px;font-size:.9rem;color:#E65100}
+
+    /* ===== KARŞILAŞTIRMA ===== */
+    .compare{padding:60px 0;background:#f5f7ff}
+    .compare h2{text-align:center;font-size:2.2rem;color:#0D1B3E}
+    .section-desc{text-align:center;color:#777;margin-bottom:36px;font-size:1.05rem}
+    .compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:30px}
+    .compare-old,.compare-new{padding:28px;border-radius:16px;box-shadow:0 4px 12px rgba(0,0,0,.06)}
+    .compare-old{background:#fff;border-top:5px solid #E65100}
+    .compare-new{background:linear-gradient(135deg,#0D1B3E,#1A2A6C);color:#fff;border-top:5px solid #FFD700}
+    .compare-icon{font-size:2.5rem;margin-bottom:10px}
+    .compare-old h3{color:#0D1B3E}
+    .compare-new h3{color:#fff}
+    .compare-old ul,.compare-new ul{list-style:none;padding:0;margin-top:12px}
+    .compare-old li,.compare-new li{padding:6px 0;padding-left:28px;position:relative}
+    .compare-old li:before{content:"❌";position:absolute;left:0;color:#E65100}
+    .compare-new li:before{content:"✅";position:absolute;left:0;color:#FFD700}
+
+    /* ===== ÖZELLİKLER ===== */
+    .features{padding:60px 0;background:#fff}
+    .features h2{text-align:center;font-size:2.2rem;color:#0D1B3E}
+    .features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+    .feature-card{background:#fafaff;padding:24px;border-radius:14px;border:2px solid transparent;transition:.3s}
+    .feature-card:hover{border-color:#FFD700;transform:translateY(-4px);box-shadow:0 8px 24px rgba(255,215,0,.15)}
+    .feature-icon{font-size:2.2rem;margin-bottom:10px}
+    .feature-card h3{color:#0D1B3E;font-size:1.15rem;margin-bottom:6px}
+    .feature-card p{color:#666;font-size:.92rem;line-height:1.5}
+    .feature-card ul{list-style:none;padding:0;margin-top:10px}
+    .feature-card li{color:#555;font-size:.88rem;padding:3px 0}
+
+    /* ===== ADIMLAR ===== */
+    .steps{padding:60px 0;background:#f5f7ff}
+    .steps h2{text-align:center;font-size:2.2rem;color:#0D1B3E}
+    .steps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-bottom:30px}
+    .step{background:#fff;padding:24px;border-radius:14px;box-shadow:0 2px 8px rgba(0,0,0,.06);position:relative}
+    .step-num{position:absolute;top:-12px;left:-12px;background:#FFD700;color:#0D1B3E;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.85rem}
+    .step-icon{font-size:2rem;display:block;margin:6px 0 8px}
+    .step h3{color:#0D1B3E;font-size:1.1rem}
+    .step p{color:#666;font-size:.9rem;line-height:1.5}
+    .steps-result{display:flex;align-items:center;gap:24px;background:linear-gradient(135deg,#FFD700,#FFC107);padding:24px 32px;border-radius:14px;color:#0D1B3E}
+    .result-icon{font-size:3rem}
+    .steps-result h3{font-size:1.3rem;margin-bottom:4px}
+
+    /* ===== ENTEGRASYON ===== */
+    .integrations{padding:60px 0;background:#fff}
+    .integrations h2{text-align:center;font-size:2.2rem;color:#0D1B3E}
+    .integ-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+    .integ-grid>div{text-align:center;background:#fafaff;padding:24px;border-radius:14px;transition:.3s}
+    .integ-grid>div:hover{transform:translateY(-4px);box-shadow:0 6px 16px rgba(0,0,0,.08)}
+    .integ-grid span{font-size:2.5rem;display:block}
+    .integ-grid h3{color:#0D1B3E;margin:8px 0 4px;font-size:1rem}
+    .integ-grid p{color:#777;font-size:.85rem}
+
+    /* ===== SSS ===== */
+    .faq{padding:60px 0;background:#f5f7ff}
+    .faq h2{text-align:center;font-size:2.2rem;color:#0D1B3E}
+    .faq-list{max-width:760px;margin:0 auto}
+    .faq-list details{background:#fff;border:1px solid #e0e5f0;border-radius:10px;padding:4px 20px;margin-bottom:12px}
+    .faq-list summary{display:flex;justify-content:space-between;padding:14px 0;font-weight:600;color:#0D1B3E;cursor:pointer;list-style:none}
+    .faq-list summary::-webkit-details-marker{display:none}
+    .faq-list details[open] summary span{transform:rotate(180deg)}
+    .faq-answer{padding:0 0 18px;color:#555;border-top:1px solid #eee;padding-top:14px;line-height:1.6}
+
+    /* ===== CTA ===== */
+    .cta{padding:60px 0;background:#0D1B3E}
+    .cta-box{text-align:center;color:#fff}
+    .cta-icon{font-size:3.5rem;display:block;margin-bottom:12px}
+    .cta-box h2{font-size:2.2rem;margin-bottom:10px}
+    .cta-box p{font-size:1.1rem;opacity:.9;margin-bottom:24px}
+    .cta-buttons{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin-bottom:24px}
+    .cta-benefits{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;max-width:700px;margin:0 auto}
+    .cta-benefits span{background:rgba(255,255,255,.08);padding:8px 12px;border-radius:20px;font-size:.9rem}
+
+    /* ===== RESPONSIVE ===== */
+    @media(max-width:992px){
+      .hero-grid{grid-template-columns:1fr}
+      .hero h1{font-size:2.2rem}
+      .stats{grid-template-columns:repeat(2,1fr)}
+      .features-grid{grid-template-columns:repeat(2,1fr)}
+      .integ-grid{grid-template-columns:repeat(2,1fr)}
+      .compare-grid{grid-template-columns:1fr}
+      .steps-grid{grid-template-columns:1fr}
+      .cta-benefits{grid-template-columns:repeat(2,1fr)}
+    }
+    @media(max-width:600px){
+      .hero h1{font-size:1.8rem}
+      .features-grid{grid-template-columns:1fr}
+      .integ-grid{grid-template-columns:1fr}
+      .dashboard .dash-cards{grid-template-columns:1fr}
+      .buttons{flex-direction:column}
+      .btn{width:100%;text-align:center}
+      .cta-buttons{flex-direction:column}
+    }
+  </style>
 </BaseLayout>

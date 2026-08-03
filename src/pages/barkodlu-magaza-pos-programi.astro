@@ -1,86 +1,1303 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import HeroSection from '../components/landing/HeroSection.astro';
-import ComparisonSection from '../components/landing/ComparisonSection.astro';
-import FeaturesGrid from '../components/landing/FeaturesGrid.astro';
-import HowItWorks from '../components/landing/HowItWorks.astro';
-import FaqAccordion from '../components/landing/FaqAccordion.astro';
-import CtaBanner from '../components/landing/CtaBanner.astro';
+import '../styles/variables.css';
+import '../styles/global.css';
+import '../styles/components.css';
 
-const pageTitle = "Barkodlu Mağaza Satış ve Butik Kasa Programı | Stok Pratik";
-const pageDescription = "Tekstil, giyim ve butikler için renk-beden takipli, hızlı barkodlu mağaza satış programı. Kasa gün sonu raporları ve stok senkronizasyonu tek ekranda!";
-
+// Özellikler (aynı içerik)
 const features = [
   {
+    icon: "🎨",
     title: "Renk/Beden/Numara Varyant Takibi",
     description: "Tekstil ve ayakkabı butikleri için karmaşık varyant matrisini kolayca oluşturun ve barkodlayın.",
-    icon: `<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"></path></svg>`
+    details: [
+      "Renk, beden, numara matrisi",
+      "Barkod üretimi",
+      "Stok güncellemeleri",
+      "Kolay ürün arama"
+    ]
   },
   {
+    icon: "⚡",
     title: "Yıldırım Hızında POS Kasa",
     description: "İnternet kopsa bile kesintisiz satış yapabilen, dokunmatik ekran uyumlu hızlı kasa (POS) arayüzü.",
-    icon: `<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>`
+    details: [
+      "Offline mod desteği",
+      "Dokunmatik ekran uyumu",
+      "Hızlı ürün ekleme",
+      "Otomatik fiyat hesaplama"
+    ]
   },
   {
+    icon: "🔄",
     title: "Mağazalar Arası Ürün Transferi",
     description: "Birden fazla şubeniz varsa, mağazalar arası stok sevkiyatını tek tuşla, kayıpsız yapın.",
-    icon: `<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"></path></svg>`
+    details: [
+      "Tek tıkla transfer",
+      "Stok güncelleme",
+      "Transfer raporları",
+      "Şubeler arası görünürlük"
+    ]
   },
   {
+    icon: "📊",
     title: "Gün Sonu Z Raporu",
     description: "Kasada nakit, kredi kartı ve veresiye satışlarınızı tek bir raporda anında görün.",
-    icon: `<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>`
+    details: [
+      "Nakit/kart/veresiye ayrımı",
+      "Toplam ciro",
+      "Detaylı raporlar",
+      "Excel çıktısı"
+    ]
   },
   {
+    icon: "🧾",
     title: "Fiş ve e-Arşiv Yazdırma",
     description: "Müşterinize anında bilgi fişi veya e-Arşiv faturası yazdırın, yasal süreçleri otomatikleştirin.",
-    icon: `<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path></svg>`
+    details: [
+      "Termal fiş yazdırma",
+      "e-Arşiv faturası",
+      "Otomatik gönderim",
+      "Yasal uyumluluk"
+    ]
   },
   {
+    icon: "⭐",
     title: "Müşteri Sadakat Puanları",
     description: "Müşterilerinize telefon numaraları üzerinden alışveriş yaptıkça puan kazandırın, sadakati artırın.",
-    icon: `<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"></path></svg>`
+    details: [
+      "Puan kazanma",
+      "Puanla ödeme",
+      "Müşteri profili",
+      "Sadakat raporları"
+    ]
   }
 ];
 
+// SSS (aynı)
 const faqs = [
-  { question: "Barkod okuyucu ve fiş yazıcılarla uyumlu mu?", answer: "Evet, piyasadaki standart USB veya Bluetooth bağlantılı tüm barkod okuyucular, termal fiş yazıcılar ve para çekmeceleri ile tak-çalıştır uyumludur." },
-  { question: "Sistem internet koptuğunda satışa devam edebilir mi?", answer: "Gelişmiş çevrimdışı (offline) modumuz sayesinde internetiniz kopsa bile satış yapmaya, fiş kesmeye devam edebilirsiniz. İnternet geldiğinde veriler bulutla eşitlenir." },
-  { question: "Farklı renkte ve bedende aynı ürün barkodlanabiliyor mu?", answer: "Kesinlikle. Stok Pratik'in varyant altyapısı sayesinde Kırmızı-M beden tişört ile Mavi-L beden tişört için ayrı barkodlar basabilir ve stoklarını ayrı takip edebilirsiniz." }
+  {
+    question: "Barkod okuyucu ve fiş yazıcılarla uyumlu mu?",
+    answer: "Evet, piyasadaki standart USB veya Bluetooth bağlantılı tüm barkod okuyucular, termal fiş yazıcılar ve para çekmeceleri ile tak-çalıştır uyumludur."
+  },
+  {
+    question: "Sistem internet koptuğunda satışa devam edebilir mi?",
+    answer: "Gelişmiş çevrimdışı (offline) modumuz sayesinde internetiniz kopsa bile satış yapmaya, fiş kesmeye devam edebilirsiniz. İnternet geldiğinde veriler bulutla eşitlenir."
+  },
+  {
+    question: "Farklı renkte ve bedende aynı ürün barkodlanabiliyor mu?",
+    answer: "Kesinlikle. Stok Pratik'in varyant altyapısı sayesinde Kırmızı-M beden tişört ile Mavi-L beden tişört için ayrı barkodlar basabilir ve stoklarını ayrı takip edebilirsiniz."
+  }
+];
+
+// Karşılaştırma
+const comparison = {
+  old: {
+    title: "Eski Usül Kasa Sistemleri",
+    icon: "📵",
+    items: [
+      "Renk ve beden takibinin yapılamaması",
+      "Kasa ve deponun farklı programlarda olması",
+      "Barkod basımının zor ve karmaşık olması",
+      "İnternet gidince satışın durması"
+    ]
+  },
+  new: {
+    title: "Stok Pratik POS Sistemi",
+    icon: "🚀",
+    items: [
+      "Kusursuz varyant (Renk/Beden) matrisi",
+      "Bulut mimari ile mağaza ve deponun senkronu",
+      "Tek tuşla toplu barkod etiketi tasarımı ve basımı",
+      "Offline (Çevrimdışı) mod ile kesintisiz satış"
+    ]
+  }
+};
+
+// Adımlar
+const steps = [
+  {
+    step: 1,
+    title: "Ürünlerinizi Yükleyin",
+    description: "Excel ile veya tek tek, varyantlı (renk/beden) ürünlerinizi sisteme kaydedin.",
+    icon: "📤"
+  },
+  {
+    step: 2,
+    title: "Barkodlarınızı Basın",
+    description: "Sistem üzerinden kendi barkod etiketlerinizi tasarlayın ve yazdırıp ürünlere yapıştırın.",
+    icon: "🏷️"
+  },
+  {
+    step: 3,
+    title: "Hemen Satışa Başlayın",
+    description: "Barkod okuyucunuzu bağlayın, ürünleri okutarak yıldırım hızında satış yapın.",
+    icon: "💰"
+  }
+];
+
+// İstatistikler
+const statistics = [
+  { number: "%60", label: "Kasa Süresi Azalması", icon: "⏱️" },
+  { number: "%35", label: "Satış Artışı", icon: "📈" },
+  { number: "%45", label: "Stok Hatası Azalması", icon: "✅" },
+  { number: "7/24", label: "Kesintisiz Çalışma", icon: "🛡️" }
 ];
 ---
 
-<BaseLayout title={pageTitle} description={pageDescription}>
-  <HeroSection 
-    h1="Mağaza Kasasında Kuyruklara Son: Barkodlu Hızlı Satış ve Renk-Beden Takibi!"
-    description={pageDescription}
-    badges={["Hızlı POS", "Varyant Takibi", "Barkod Yazdırma", "Fiş & e-Fatura"]}
-    imageSrc="/images/site-foto/urunler.png"
-    imageAlt="Mağaza Hızlı Satış ve Kasa Ekranı"
-  />
+<BaseLayout
+  title="Barkodlu Mağaza Satış ve Butik Kasa Programı | Stok Pratik"
+  description="Tekstil, giyim ve butikler için renk-beden takipli, hızlı barkodlu mağaza satış programı. Kasa gün sonu raporları ve stok senkronizasyonu tek ekranda!"
+>
   
-  <ComparisonSection 
-    oldMethodTitle="Eski Usül Kasa Sistemleri"
-    oldMethodItems={["Renk ve beden takibinin yapılamaması", "Kasa ve deponun farklı programlarda olması", "Barkod basımının zor ve karmaşık olması", "İnternet gidince satışın durması"]}
-    newMethodTitle="Stok Pratik POS Sistemi"
-    newMethodItems={["Kusursuz varyant (Renk/Beden) matrisi", "Bulut mimari ile mağaza ve deponun senkronu", "Tek tuşla toplu barkod etiketi tasarımı ve basımı", "Offline (Çevrimdışı) mod ile kesintisiz satış"]}
-  />
-  
-  <FeaturesGrid 
-    title="Butik ve Mağazalar İçin Özel Geliştirilen Araçlar"
-    features={features}
-  />
-  
-  <HowItWorks 
-    title="Mağazanızda Kurulum Çok Basit"
-    steps={[
-      { title: "Ürünlerinizi Yükleyin", description: "Excel ile veya tek tek, varyantlı (renk/beden) ürünlerinizi sisteme kaydedin." },
-      { title: "Barkodlarınızı Basın", description: "Sistem üzerinden kendi barkod etiketlerinizi tasarlayın ve yazdırıp ürünlere yapıştırın." },
-      { title: "Hemen Satışa Başlayın", description: "Barkod okuyucunuzu bağlayın, ürünleri okutarak yıldırım hızında satış yapın." }
-    ]}
-  />
-  
-  <FaqAccordion faqs={faqs} />
-  
-  <CtaBanner />
+  <!-- ===== HERO ===== -->
+  <section class="hero-section">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-text">
+          <span class="hero-badge">🛍️ Butik & Mağaza Çözümü</span>
+          <h1>Mağaza Kasasında Kuyruklara Son: <span class="highlight">Barkodlu Hızlı Satış ve Renk-Beden Takibi!</span></h1>
+          <p class="hero-subtitle">Tekstil, giyim ve butikler için renk-beden takipli, hızlı barkodlu mağaza satış programı. Kasa gün sonu raporları ve stok senkronizasyonu tek ekranda!</p>
+          
+          <div class="hero-stats">
+            {statistics.map((stat, index) => (
+              <div class="stat-item" key={index}>
+                <div class="stat-icon">{stat.icon}</div>
+                <div class="stat-number">{stat.number}</div>
+                <div class="stat-label">{stat.label}</div>
+              </div>
+            ))}
+          </div>
+          
+          <div class="hero-buttons">
+            <a
+              href="https://wa.me/+905325000999?text=Merhaba,%20Barkodlu%20Mağaza%20POS%20programı%20demo%20talep%20ediyorum"
+              class="btn btn-primary btn-large"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              🛒 Ücretsiz Demo İste
+            </a>
+            <a
+              href="tel:+905325000999"
+              class="btn btn-secondary btn-large"
+            >
+              📞 Hemen Ara: 0532 500 09 99
+            </a>
+          </div>
+          
+          <div class="hero-features">
+            <div class="feature">
+              <span class="feature-icon">🏷️</span>
+              <span>Barkod Desteği</span>
+            </div>
+            <div class="feature">
+              <span class="feature-icon">📱</span>
+              <span>Dokunmatik POS</span>
+            </div>
+            <div class="feature">
+              <span class="feature-icon">🔒</span>
+              <span>Offline Mod</span>
+            </div>
+            <div class="feature">
+              <span class="feature-icon">📊</span>
+              <span>Gün Sonu Raporu</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="hero-image">
+          <div class="pos-dashboard">
+            <div class="dashboard-header">
+              <div class="dashboard-title">
+                <span class="title-icon">🏪</span>
+                <span>Stok Pratik POS</span>
+              </div>
+              <div class="dashboard-period">Bugün: 18 Ağustos</div>
+            </div>
+            
+            <div class="pos-summary">
+              <div class="summary-card">
+                <div class="summary-label">Bugünkü Satış</div>
+                <div class="summary-value">₺14.250</div>
+                <div class="summary-trend success">↑ %18</div>
+              </div>
+              <div class="summary-card">
+                <div class="summary-label">Fiş Sayısı</div>
+                <div class="summary-value">42</div>
+                <div class="summary-trend">Ort. 340₺</div>
+              </div>
+              <div class="summary-card">
+                <div class="summary-label">Stok Uyarısı</div>
+                <div class="summary-value warning">3</div>
+                <div class="summary-trend">Kritik seviye</div>
+              </div>
+            </div>
+            
+            <div class="recent-sales">
+              <div class="sale-item">
+                <div class="sale-info">
+                  <span class="sale-product">Tişört (Kırmızı / M)</span>
+                  <span class="sale-price">₺450</span>
+                </div>
+                <div class="sale-status success">Tamamlandı</div>
+              </div>
+              <div class="sale-item">
+                <div class="sale-info">
+                  <span class="sale-product">Ayakkabı (Beyaz / 42)</span>
+                  <span class="sale-price">₺1.200</span>
+                </div>
+                <div class="sale-status warning">Beklemede</div>
+              </div>
+              <div class="sale-item">
+                <div class="sale-info">
+                  <span class="sale-product">Şort (Mavi / L)</span>
+                  <span class="sale-price">₺320</span>
+                </div>
+                <div class="sale-status danger">İade</div>
+              </div>
+            </div>
+            
+            <div class="urgent-alerts">
+              <div class="alert-icon">⚠️</div>
+              <div class="alert-text">3 üründe stok kritik seviyede, sipariş verin.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== KARŞILAŞTIRMA ===== -->
+  <section class="challenge-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Geleneksel Kasa ile Stok Pratik POS Karşılaştırması</h2>
+        <p>Hangi sistem size daha fazla kazandırır?</p>
+      </div>
+      
+      <div class="challenge-grid">
+        <div class="challenge-card">
+          <div class="challenge-icon">{comparison.old.icon}</div>
+          <h3>{comparison.old.title}</h3>
+          <ul>
+            {comparison.old.items.map((item, i) => (
+              <li key={i}>{item}</li>
+            ))}
+          </ul>
+        </div>
+        
+        <div class="solution-card">
+          <div class="solution-icon">{comparison.new.icon}</div>
+          <h3>{comparison.new.title}</h3>
+          <ul>
+            {comparison.new.items.map((item, i) => (
+              <li key={i}>{item}</li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ÖZELLİKLER ===== -->
+  <section class="features-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Butik ve Mağazalar İçin Özel Geliştirilen Araçlar</h2>
+        <p>Satış sürecinizi hızlandıran, stok takibinizi kolaylaştıran özellikler</p>
+      </div>
+      
+      <div class="features-grid">
+        {features.map((feature, index) => (
+          <div class="feature-card" key={index}>
+            <div class="feature-header">
+              <div class="feature-icon">{feature.icon}</div>
+              <div>
+                <h3>{feature.title}</h3>
+                <p class="feature-desc">{feature.description}</p>
+              </div>
+            </div>
+            <ul class="feature-details">
+              {feature.details.map((detail, i) => (
+                <li key={i}>
+                  <span class="detail-check">✓</span>
+                  {detail}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== NASIL ÇALIŞIR ===== -->
+  <section class="process-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Mağazanızda Kurulum Çok Basit</h2>
+        <p>3 adımda POS sisteminizi aktif hale getirin</p>
+      </div>
+      
+      <div class="process-timeline">
+        {steps.map((step, index) => (
+          <div class="process-step" key={index}>
+            <div class="step-number">{step.step}</div>
+            <div class="step-content">
+              <div class="step-header">
+                <div class="step-icon">{step.icon}</div>
+                <h3>{step.title}</h3>
+              </div>
+              <p class="step-description">{step.description}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+      
+      <div class="process-result">
+        <div class="result-icon">🎉</div>
+        <div class="result-content">
+          <h3>Kuyruklar Tarih Olsun, Satışlar Uçuşa Geçsin!</h3>
+          <p>Stok Pratik POS ile mağaza satışlarınızda devrim yaratın, müşteri memnuniyetini artırın.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ENTEGRASYONLAR ===== -->
+  <section class="integration-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Uyumlu Donanımlar ve Sistemler</h2>
+        <p>Tüm popüler cihazlarla tak-çalıştır uyumu</p>
+      </div>
+      
+      <div class="integrations-grid">
+        <div class="integration-card">
+          <div class="integration-icon">📟</div>
+          <h3>Barkod Okuyucu</h3>
+          <p>USB, Bluetooth ve kablosuz tüm barkod okuyucularla uyumlu</p>
+        </div>
+        <div class="integration-card">
+          <div class="integration-icon">🖨️</div>
+          <h3>Fiş Yazıcı</h3>
+          <p>Termal, makbuz ve tüm standart fiş yazıcılar</p>
+        </div>
+        <div class="integration-card">
+          <div class="integration-icon">📱</div>
+          <h3>Tablet / Telefon</h3>
+          <p>iOS ve Android cihazlarda dokunmatik POS desteği</p>
+        </div>
+        <div class="integration-card">
+          <div class="integration-icon">🔒</div>
+          <h3>POS Cihazları</h3>
+          <p>Ödeme cihazları ile entegre, tahsilat otomatik</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== İLGİLİ SAYFALAR ===== -->
+  <section class="related-pages">
+    <div class="container">
+      <div class="section-header">
+        <h2>Entegre Çalışan Diğer Çözümlerimiz</h2>
+        <p>POS sisteminizle birlikte kullanabileceğiniz modüller</p>
+      </div>
+      
+      <div class="pages-grid">
+        <a href="/stok-yonetimi" class="page-card">
+          <h3>📦 Stok Yönetimi</h3>
+          <p>Depo ve mağaza stoklarınızı tek havuzda yönetin</p>
+          <div class="page-link">
+            <span>İncele</span>
+            <span class="arrow">→</span>
+          </div>
+        </a>
+        <a href="/b2b-toptan-satis-sistemi" class="page-card">
+          <h3>🛒 B2B Toptan Satış</h3>
+          <p>Bayilerinize özel fiyatlar ve toptan sipariş yönetimi</p>
+          <div class="page-link">
+            <span>İncele</span>
+            <span class="arrow">→</span>
+          </div>
+        </a>
+        <a href="/e-ticaret-pazaryeri-entegrasyon" class="page-card">
+          <h3>🛍️ Pazaryeri Entegrasyonu</h3>
+          <p>Trendyol, Hepsiburada siparişlerinizi POS ile birleştirin</p>
+          <div class="page-link">
+            <span>İncele</span>
+            <span class="arrow">→</span>
+          </div>
+        </a>
+        <a href="/muhasebe-ve-finans" class="page-card">
+          <h3>💰 Muhasebe & Finans</h3>
+          <p>Satış verilerinizi otomatik muhasebeye aktarın</p>
+          <div class="page-link">
+            <span>İncele</span>
+            <span class="arrow">→</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SSS ===== -->
+  <section class="faq-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Sıkça Sorulan Sorular</h2>
+        <p>Mağaza POS sistemi hakkında merak edilenler</p>
+      </div>
+      
+      <div class="faq-grid">
+        {faqs.map((faq, index) => (
+          <details class="faq-item" key={index}>
+            <summary>
+              {faq.question}
+              <span class="faq-icon">▼</span>
+            </summary>
+            <div class="faq-answer">
+              {faq.answer}
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CTA ===== -->
+  <section class="final-cta">
+    <div class="container">
+      <div class="cta-content">
+        <div class="cta-icon">🏪</div>
+        <h2>Mağaza POS Sisteminizi Şimdi Kurun, Satışlara Hemen Başlayın!</h2>
+        <p>Hemen ücretsiz demo talep edin, mağazanıza özel kurulum desteği alın.</p>
+        
+        <div class="cta-buttons">
+          <a
+            href="https://wa.me/+905325000999?text=Merhaba,%20Mağaza%20POS%20programı%20demo%20talep%20ediyorum"
+            class="btn btn-primary btn-large"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            📅 Ücretsiz Demo İste
+          </a>
+          <a
+            href="tel:+905325000999"
+            class="btn btn-secondary btn-large"
+          >
+            📞 Canlı Destek Al
+          </a>
+        </div>
+        
+        <div class="cta-benefits">
+          <div class="benefit">
+            <span class="benefit-icon">🎯</span>
+            <span>Ücretsiz Kurulum Desteği</span>
+          </div>
+          <div class="benefit">
+            <span class="benefit-icon">👨‍🏫</span>
+            <span>Canlı Eğitim</span>
+          </div>
+          <div class="benefit">
+            <span class="benefit-icon">🔄</span>
+            <span>Mevcut Veri Aktarımı</span>
+          </div>
+          <div class="benefit">
+            <span class="benefit-icon">💰</span>
+            <span>Özel Fiyat Teklifi</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
 </BaseLayout>
+
+<style>
+  /* ===== HERO – Bordo/Kırmızı tema ===== */
+  .hero-section {
+    background: linear-gradient(135deg, #7B1F1F 0%, #B71C1C 100%);
+    color: white;
+    padding: 4rem 0;
+  }
+
+  .hero-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  .hero-badge {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+  }
+
+  .hero-text h1 {
+    font-size: 3rem;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+    color: white;
+  }
+
+  .highlight {
+    color: #FFD700; /* altın sarısı */
+  }
+
+  .hero-subtitle {
+    font-size: 1.2rem;
+    opacity: 0.9;
+    margin-bottom: 2rem;
+    color: #f5f5f5;
+  }
+
+  .hero-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    margin: 2rem 0;
+  }
+
+  .stat-item {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 1rem;
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+  }
+
+  .stat-icon {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .stat-number {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #FFD700;
+    margin-bottom: 0.3rem;
+  }
+
+  .stat-label {
+    font-size: 0.8rem;
+    opacity: 0.8;
+    color: #f5f5f5;
+  }
+
+  .hero-buttons {
+    display: flex;
+    gap: 1rem;
+    margin: 2rem 0;
+    flex-wrap: wrap;
+  }
+
+  .btn-large {
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+  }
+
+  .btn-primary {
+    background: #FFD700;
+    color: #7B1F1F;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.3s ease;
+  }
+
+  .btn-primary:hover {
+    background: #FFC107;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(255, 215, 0, 0.3);
+  }
+
+  .btn-secondary {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 8px;
+    font-weight: bold;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.3s ease;
+  }
+
+  .btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px);
+  }
+
+  .hero-features {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+
+  .feature {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    color: white;
+  }
+
+  /* ===== POS Dashboard ===== */
+  .pos-dashboard {
+    background: white;
+    border-radius: 15px;
+    padding: 1.5rem;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    color: #333;
+  }
+
+  .dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #f5f5f5;
+  }
+
+  .dashboard-title {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: #7B1F1F;
+  }
+
+  .dashboard-period {
+    font-size: 0.9rem;
+    color: #999;
+  }
+
+  .pos-summary {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .summary-card {
+    background: #f5f5f5;
+    padding: 1rem;
+    border-radius: 10px;
+    text-align: center;
+  }
+
+  .summary-label {
+    font-size: 0.8rem;
+    color: #777;
+    margin-bottom: 0.3rem;
+  }
+
+  .summary-value {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #7B1F1F;
+  }
+
+  .summary-value.warning {
+    color: #E65100;
+  }
+
+  .summary-trend {
+    font-size: 0.8rem;
+    margin-top: 0.3rem;
+    color: #777;
+  }
+
+  .summary-trend.success {
+    color: #2E7D32;
+  }
+
+  .recent-sales {
+    margin-bottom: 1.5rem;
+  }
+
+  .sale-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.8rem 0;
+    border-bottom: 1px solid #eee;
+  }
+
+  .sale-item:last-child {
+    border-bottom: none;
+  }
+
+  .sale-product {
+    font-weight: 500;
+    color: #333;
+  }
+
+  .sale-price {
+    font-weight: bold;
+    color: #7B1F1F;
+    margin-left: 1rem;
+  }
+
+  .sale-status {
+    padding: 0.2rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: bold;
+  }
+
+  .sale-status.success {
+    background: #e8f5e9;
+    color: #2e7d32;
+  }
+  .sale-status.warning {
+    background: #fff3e0;
+    color: #e65100;
+  }
+  .sale-status.danger {
+    background: #ffebee;
+    color: #c62828;
+  }
+
+  .urgent-alerts {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: #fff8e1;
+    border: 1px solid #ffecb3;
+    color: #f57f17;
+    padding: 0.8rem;
+    border-radius: 8px;
+    font-size: 0.9rem;
+  }
+
+  /* ===== KARŞILAŞTIRMA ===== */
+  .challenge-section {
+    padding: 4rem 0;
+    background: #f5f5f5;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .section-header h2 {
+    font-size: 2.5rem;
+    color: #7B1F1F;
+    margin-bottom: 1rem;
+  }
+
+  .section-header p {
+    color: #666;
+    font-size: 1.1rem;
+  }
+
+  .challenge-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+
+  .challenge-card, .solution-card {
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  }
+
+  .challenge-card {
+    background: white;
+    border-top: 5px solid #C62828;
+  }
+
+  .solution-card {
+    background: linear-gradient(135deg, #7B1F1F, #B71C1C);
+    color: white;
+  }
+
+  .challenge-icon, .solution-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+
+  .challenge-card h3, .solution-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .challenge-card h3 {
+    color: #7B1F1F;
+  }
+
+  .challenge-card ul, .solution-card ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 1rem;
+  }
+
+  .challenge-card li, .solution-card li {
+    padding: 0.3rem 0;
+    position: relative;
+    padding-left: 1.5rem;
+  }
+
+  .challenge-card li:before {
+    content: "❌";
+    position: absolute;
+    left: 0;
+    color: #C62828;
+  }
+
+  .solution-card li:before {
+    content: "✅";
+    position: absolute;
+    left: 0;
+    color: #FFD700;
+  }
+
+  /* ===== ÖZELLİKLER ===== */
+  .features-section {
+    padding: 4rem 0;
+    background: white;
+  }
+
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+
+  .feature-card {
+    background: #fafafa;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease, border-color 0.3s ease;
+    border: 2px solid transparent;
+  }
+
+  .feature-card:hover {
+    transform: translateY(-5px);
+    border-color: #B71C1C;
+    box-shadow: 0 10px 20px rgba(183, 28, 28, 0.15);
+  }
+
+  .feature-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .feature-icon {
+    font-size: 2.5rem;
+    flex-shrink: 0;
+  }
+
+  .feature-card h3 {
+    color: #7B1F1F;
+    margin-bottom: 0.5rem;
+    font-size: 1.3rem;
+  }
+
+  .feature-desc {
+    color: #666;
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+
+  .feature-details {
+    list-style: none;
+    padding: 0;
+  }
+
+  .feature-details li {
+    padding: 0.5rem 0;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #444;
+  }
+
+  .detail-check {
+    color: #2E7D32;
+    font-weight: bold;
+  }
+
+  /* ===== SÜREÇ ===== */
+  .process-section {
+    padding: 4rem 0;
+    background: #f5f5f5;
+  }
+
+  .process-timeline {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-bottom: 3rem;
+  }
+
+  .process-step {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    position: relative;
+  }
+
+  .step-number {
+    position: absolute;
+    top: -15px;
+    left: -15px;
+    width: 30px;
+    height: 30px;
+    background: #B71C1C;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 0.9rem;
+  }
+
+  .step-content {
+    margin-top: 1rem;
+  }
+
+  .step-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .step-icon {
+    font-size: 2rem;
+  }
+
+  .process-step h3 {
+    color: #7B1F1F;
+    margin: 0;
+    font-size: 1.2rem;
+  }
+
+  .step-description {
+    color: #666;
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+
+  .process-result {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    background: linear-gradient(135deg, #FFD700, #FFC107);
+    color: #7B1F1F;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(255, 215, 0, 0.3);
+  }
+
+  .result-icon {
+    font-size: 4rem;
+  }
+
+  .result-content h3 {
+    margin-bottom: 0.5rem;
+    font-size: 1.5rem;
+  }
+
+  .result-content p {
+    opacity: 0.9;
+  }
+
+  /* ===== ENTEGRASYON ===== */
+  .integration-section {
+    padding: 4rem 0;
+    background: white;
+  }
+
+  .integrations-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+  }
+
+  .integration-card {
+    text-align: center;
+    background: #fafafa;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.06);
+    transition: transform 0.3s ease;
+  }
+
+  .integration-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.12);
+  }
+
+  .integration-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+
+  .integration-card h3 {
+    color: #7B1F1F;
+    margin-bottom: 0.5rem;
+  }
+
+  .integration-card p {
+    color: #666;
+    font-size: 0.9rem;
+  }
+
+  /* ===== İLGİLİ SAYFALAR ===== */
+  .related-pages {
+    padding: 4rem 0;
+    background: #f5f5f5;
+  }
+
+  .pages-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+
+  .page-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.06);
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+  }
+
+  .page-card:hover {
+    transform: translateY(-5px);
+    border-color: #B71C1C;
+    box-shadow: 0 10px 20px rgba(183, 28, 28, 0.12);
+  }
+
+  .page-card h3 {
+    color: #7B1F1F;
+    margin-bottom: 0.5rem;
+  }
+
+  .page-card p {
+    color: #666;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+  }
+
+  .page-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #B71C1C;
+    font-weight: bold;
+  }
+
+  .arrow {
+    font-size: 1.2rem;
+  }
+
+  /* ===== SSS ===== */
+  .faq-section {
+    padding: 4rem 0;
+    background: white;
+  }
+
+  .faq-grid {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .faq-item {
+    background: #fafafa;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+    padding: 0.5rem 1.5rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    border: 1px solid #eee;
+  }
+
+  .faq-item summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    padding: 1rem 0;
+    font-weight: 600;
+    color: #7B1F1F;
+    list-style: none;
+  }
+
+  .faq-item summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq-icon {
+    transition: transform 0.3s ease;
+  }
+
+  .faq-item[open] .faq-icon {
+    transform: rotate(180deg);
+  }
+
+  .faq-answer {
+    padding: 0 0 1.5rem 0;
+    color: #555;
+    line-height: 1.6;
+    border-top: 1px solid #eee;
+    padding-top: 1rem;
+  }
+
+  /* ===== CTA ===== */
+  .final-cta {
+    padding: 4rem 0;
+    background: linear-gradient(135deg, #7B1F1F, #B71C1C);
+    color: white;
+    text-align: center;
+  }
+
+  .cta-content {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .cta-icon {
+    font-size: 4rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .cta-content h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: white;
+  }
+
+  .cta-content p {
+    font-size: 1.2rem;
+    opacity: 0.9;
+    margin-bottom: 2rem;
+    color: #f5f5f5;
+  }
+
+  .cta-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .cta-benefits {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+
+  .benefit {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    justify-content: center;
+    font-size: 0.9rem;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 0.8rem;
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+    color: white;
+  }
+
+  .benefit-icon {
+    font-size: 1.2rem;
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 1200px) {
+    .features-grid,
+    .integrations-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 992px) {
+    .hero-content {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    .challenge-grid,
+    .pages-grid,
+    .cta-benefits {
+      grid-template-columns: 1fr;
+    }
+
+    .hero-stats {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .pos-summary {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .process-timeline {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .hero-text h1 {
+      font-size: 2rem;
+    }
+
+    .hero-buttons,
+    .cta-buttons {
+      flex-direction: column;
+    }
+
+    .btn-large {
+      width: 100%;
+      text-align: center;
+    }
+
+    .section-header h2 {
+      font-size: 2rem;
+    }
+
+    .features-grid,
+    .integrations-grid,
+    .process-timeline {
+      grid-template-columns: 1fr;
+    }
+
+    .hero-features {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .process-result {
+      flex-direction: column;
+      text-align: center;
+    }
+  }
+</style>

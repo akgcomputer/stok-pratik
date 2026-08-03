@@ -1,86 +1,350 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import HeroSection from '../components/landing/HeroSection.astro';
-import ComparisonSection from '../components/landing/ComparisonSection.astro';
-import FeaturesGrid from '../components/landing/FeaturesGrid.astro';
-import HowItWorks from '../components/landing/HowItWorks.astro';
-import FaqAccordion from '../components/landing/FaqAccordion.astro';
-import CtaBanner from '../components/landing/CtaBanner.astro';
 
 const pageTitle = "Mobilya, Züccaciye ve Ev Eşyası Mağaza Programı | Stok Pratik";
 const pageDescription = "Taksitli ve senetli satış takibi yapan mobilya ve züccaciye mağaza yazılımı. Sevkiyat, montaj iş emri ve çoklu depo yönetimi!";
 
 const features = [
-  {
-    title: "Taksitli & Senetli Satış Takibi",
-    description: "Kefilli ve senetli vadeli satışlarınızı düzenleyin, aylık taksitleri sisteme işleyip gecikmeleri tek ekrandan görün.",
-    icon: `<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>`
-  },
-  {
-    title: "Sevkiyat & Montaj İş Emri",
-    description: "Satılan ürünlerin ne zaman, hangi ekiple, kime teslim edileceğini planlayın. Sevkiyat listelerini otomatik yazdırın.",
-    icon: `<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4"></path></svg>`
-  },
-  {
-    title: "Züccaciye Fire Takibi",
-    description: "Kırılan cam eşyalar veya defolu çıkan ürünler için fire fişi düzenleyin, deponuzu gerçeğe uygun güncelleyin.",
-    icon: `<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg>`
-  },
-  {
-    title: "Takım Ürün Parça Düşümü",
-    description: "'Yemek Odası Takımı' satıldığında; içindeki masa, sandalye ve konsolun stoklarının ayrı ayrı otomatik düşmesini sağlayın.",
-    icon: `<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 10l-2 1m0 0l-2-1m2 1v2.5M20 7l-2 1m2-1l-2-1m2 1v2.5M14 4l-2-1-2 1M4 7l2-1M4 7l2 1M4 7v2.5M12 21l-2-1m2 1l2-1m-2 1v-2.5M6 18l-2-1v-2.5M18 18l2-1v-2.5"></path></svg>`
-  },
-  {
-    title: "Otomatik Taksit Hatırlatma SMS'i",
-    description: "Taksit ödeme günü gelen müşterilerinize sistem üzerinden tek tıkla otomatik ödeme hatırlatma SMS'i gönderin.",
-    icon: `<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path></svg>`
-  },
-  {
-    title: "Plasiyer / Tezgahtar Prim Hesabı",
-    description: "Hangi satış danışmanının ne kadarlık ürün sattığını takip edin, ay sonu kotaları ve hak edilen primleri otomatik hesaplayın.",
-    icon: `<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>`
-  }
+  { icon: "📅", title: "Taksitli & Senetli Satış Takibi", desc: "Kefilli ve senetli vadeli satışlarınızı düzenleyin, aylık taksitleri sisteme işleyip gecikmeleri tek ekrandan görün.", details: ["Taksit planı", "Senet yazdırma", "Gecikme takibi"] },
+  { icon: "🚚", title: "Sevkiyat & Montaj İş Emri", desc: "Satılan ürünlerin ne zaman, hangi ekiple, kime teslim edileceğini planlayın. Sevkiyat listelerini otomatik yazdırın.", details: ["İş emri", "Teslimat planı", "Montaj takvimi"] },
+  { icon: "💔", title: "Züccaciye Fire Takibi", desc: "Kırılan cam eşyalar veya defolu çıkan ürünler için fire fişi düzenleyin, deponuzu gerçeğe uygun güncelleyin.", details: ["Fire fişi", "Stok düzeltme", "Raporlama"] },
+  { icon: "🛋️", title: "Takım Ürün Parça Düşümü", desc: "'Yemek Odası Takımı' satıldığında; içindeki masa, sandalye ve konsolun stoklarının ayrı ayrı otomatik düşmesini sağlayın.", details: ["Reçete tanımı", "Otomatik düşüm", "Stok kontrol"] },
+  { icon: "📱", title: "Otomatik Taksit Hatırlatma SMS'i", desc: "Taksit ödeme günü gelen müşterilerinize sistem üzerinden tek tıkla otomatik ödeme hatırlatma SMS'i gönderin.", details: ["Hatırlatma SMS", "Toplu gönderim", "Raporlama"] },
+  { icon: "📊", title: "Plasiyer / Tezgahtar Prim Hesabı", desc: "Hangi satış danışmanının ne kadarlık ürün sattığını takip edin, ay sonu kotaları ve hak edilen primleri otomatik hesaplayın.", details: ["Prim hesaplama", "Kota takibi", "Performans raporu"] }
 ];
 
 const faqs = [
-  { question: "Müşterilere senet yazdırabiliyor muyum?", answer: "Evet, vadeli bir satış yaptığınızda sistemde kayıtlı boş senet şablonuna müşteri ve taksit bilgilerini otomatik doldurarak yazıcıdan çıktı alabilirsiniz." },
-  { question: "Çoklu depo (Mağaza ve Ana Depo) yönetimi var mı?", answer: "Mağazadaki teşhir ürünleri ile ana depodaki kapalı kutu ürünleri ayrı ayrı takip edebilirsiniz. Satış olduğunda malı isterseniz ana depodan sevkiyata çıkartabilirsiniz." },
-  { question: "Geciken taksitleri nasıl görebilirim?", answer: "Ön muhasebe modülümüzde yer alan 'Geciken Alacaklar' raporu sayesinde, vadesi geçmiş ve ödenmemiş tüm taksitleri gün sayısına göre listeleyebilirsiniz." }
+  { q: "Müşterilere senet yazdırabiliyor muyum?", a: "Evet, vadeli bir satış yaptığınızda sistemde kayıtlı boş senet şablonuna müşteri ve taksit bilgilerini otomatik doldurarak yazıcıdan çıktı alabilirsiniz." },
+  { q: "Çoklu depo (Mağaza ve Ana Depo) yönetimi var mı?", a: "Mağazadaki teşhir ürünleri ile ana depodaki kapalı kutu ürünleri ayrı ayrı takip edebilirsiniz. Satış olduğunda malı isterseniz ana depodan sevkiyata çıkartabilirsiniz." },
+  { q: "Geciken taksitleri nasıl görebilirim?", a: "Ön muhasebe modülümüzde yer alan 'Geciken Alacaklar' raporu sayesinde, vadesi geçmiş ve ödenmemiş tüm taksitleri gün sayısına göre listeleyebilirsiniz." }
+];
+
+const stats = [
+  { number: "%70", label: "Tahsilat Zamanı", icon: "⏱️" },
+  { number: "%45", label: "Sevkiyat Hatası", icon: "📉" },
+  { number: "%60", label: "Müşteri Memnuniyeti", icon: "😊" },
+  { number: "7/24", label: "Erişim", icon: "📱" }
 ];
 ---
 
 <BaseLayout title={pageTitle} description={pageDescription}>
-  <HeroSection 
-    h1="Mobilya ve Züccaciye Mağazalarında Taksitli Satış ve Sevkiyat Karmaşasına Son!"
-    description={pageDescription}
-    badges={["Taksit & Senet", "Sevkiyat Modülü", "Takım/Set Ürünler", "Prim Sistemi"]}
-    imageSrc="/images/site-foto/analiz.webp"
-    imageAlt="Mobilya Mağazası Yazılımı"
-  />
+  <!-- ===== HERO - Soft toprak tonları ===== -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-grid">
+        <div class="hero-text">
+          <span class="badge">🪑 Mobilya & Ev Eşyası</span>
+          <h1>Mobilya ve Züccaciye Mağazalarında <span class="highlight">Taksitli Satış ve Sevkiyat Karmaşasına Son!</span></h1>
+          <p class="subtitle">{pageDescription}</p>
+          <div class="stats">
+            {stats.map(s => (
+              <div class="stat" key={s.label}>
+                <div class="stat-icon">{s.icon}</div>
+                <div class="stat-number">{s.number}</div>
+                <div class="stat-label">{s.label}</div>
+              </div>
+            ))}
+          </div>
+          <div class="buttons">
+            <a href="https://wa.me/+905325000999?text=Merhaba,%20Mobilya%20programı%20demo%20istiyorum" target="_blank" rel="noopener" class="btn btn-primary">🪑 Demo İste</a>
+            <a href="tel:+905325000999" class="btn btn-secondary">📞 0532 500 09 99</a>
+          </div>
+          <div class="tags">
+            <span>📅 Taksit & Senet</span>
+            <span>🚚 Sevkiyat</span>
+            <span>🛋️ Takım Ürün</span>
+            <span>📊 Prim Sistemi</span>
+          </div>
+        </div>
+        <div class="hero-image">
+          <div class="dashboard">
+            <div class="dash-header"><span>🪑 Mobilya POS</span><span>Bugün</span></div>
+            <div class="dash-cards">
+              <div><div class="dash-label">Ciro</div><div class="dash-value">₺78.200</div></div>
+              <div><div class="dash-label">Taksitli</div><div class="dash-value">₺45.000</div></div>
+              <div><div class="dash-label">Sevkiyat</div><div class="dash-value warning">12</div></div>
+            </div>
+            <div class="dash-list">
+              <div><span>🛋️ Koltuk Takımı</span><span class="badge-stock">₺12.500</span></div>
+              <div><span>🪑 Yemek Masası</span><span class="badge-stock">₺8.200</span></div>
+              <div><span>🚚 Montaj</span><span class="badge-stock danger">Bugün 3</span></div>
+            </div>
+            <div class="dash-alert">⚠️ 5 müşterinin taksiti gecikti!</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== KARŞILAŞTIRMA ===== -->
+  <section class="compare">
+    <div class="container">
+      <h2>Karmaşık Yönetim mi, Stok Pratik mi?</h2>
+      <p class="section-desc">Hangisi işletmenize daha çok kazandırır?</p>
+      <div class="compare-grid">
+        <div class="compare-old">
+          <div class="compare-icon">📵</div>
+          <h3>Karmaşık Mağaza Yönetimi</h3>
+          <ul>
+            <li>Taksitleri Excel veya defterde tutmak</li>
+            <li>Teslimat ve montaj tarihlerinin karışması</li>
+            <li>Takım satılınca tek tek alt ürünleri düşmek</li>
+            <li>Personel primlerini manuel hesaplamak</li>
+          </ul>
+        </div>
+        <div class="compare-new">
+          <div class="compare-icon">🚀</div>
+          <h3>Stok Pratik Dijital Çözümü</h3>
+          <ul>
+            <li>Senet yazdırma ve otomatik SMS hatırlatmaları</li>
+            <li>Teslimat günlerine göre sevkiyat planlaması</li>
+            <li>Dinamik reçete ile takım/set ürün düşümü</li>
+            <li>Performans ve satışa dayalı şeffaf prim raporu</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ÖZELLİKLER - Kart grid ===== -->
+  <section class="features">
+    <div class="container">
+      <h2>Ev Eşyası Sektörü İçin Geliştirilmiş Özellikler</h2>
+      <p class="section-desc">Tüm ihtiyaçlarınıza özel fonksiyonlar</p>
+      <div class="features-grid">
+        {features.map(f => (
+          <div class="feature-card" key={f.title}>
+            <div class="feature-icon">{f.icon}</div>
+            <h3>{f.title}</h3>
+            <p>{f.desc}</p>
+            <ul>
+              {f.details.map(d => <li key={d}>✓ {d}</li>)}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
   
-  <ComparisonSection 
-    oldMethodTitle="Karmaşık Mağaza Yönetimi"
-    oldMethodItems={["Taksitleri Excel veya defterde tutmak", "Teslimat ve montaj tarihlerinin karışması", "Takım satılınca tek tek alt ürünleri düşmek", "Personel primlerini manuel hesaplamak"]}
-    newMethodTitle="Stok Pratik Dijital Çözümü"
-    newMethodItems={["Senet yazdırma ve otomatik SMS hatırlatmaları", "Teslimat günlerine göre sevkiyat planlaması", "Dinamik reçete ile takım/set ürün düşümü", "Performans ve satışa dayalı şeffaf prim raporu"]}
-  />
-  
-  <FeaturesGrid 
-    title="Ev Eşyası Sektörü İçin Geliştirilmiş Özellikler"
-    features={features}
-  />
-  
-  <HowItWorks 
-    title="Vadeli Satışlarınızı Kolayca Yönetin"
-    steps={[
-      { title: "Müşteriye Satışı Yapın", description: "Ürünleri seçip vade farkını hesaplatın, taksit sayılarını belirleyin." },
-      { title: "Evrakları Yazdırın", description: "Satış sözleşmesini ve ödeme senetlerini tek tıkla yazıcıdan alın." },
-      { title: "Sevkiyatı Planlayın", description: "Ürünlerin teslim edileceği tarihi girip, montaj ekibinize iş emri verin." }
-    ]}
-  />
-  
-  <FaqAccordion faqs={faqs} />
-  
-  <CtaBanner />
+    <div class="container">
+      <h2>Vadeli Satışlarınızı Kolayca Yönetin</h2>
+      <p class="section-desc">3 adımda tüm süreci yönetin</p>
+      <div class="steps-grid">
+        <div class="step"><span class="step-num">1</span><span class="step-icon">🛒</span><h3>Müşteriye Satışı Yapın</h3><p>Ürünleri seçip vade farkını hesaplatın, taksit sayılarını belirleyin.</p></div>
+        <div class="step"><span class="step-num">2</span><span class="step-icon">📄</span><h3>Evrakları Yazdırın</h3><p>Satış sözleşmesini ve ödeme senetlerini tek tıkla yazıcıdan alın.</p></div>
+        <div class="step"><span class="step-num">3</span><span class="step-icon">🚚</span><h3>Sevkiyatı Planlayın</h3><p>Ürünlerin teslim edileceği tarihi girip, montaj ekibinize iş emri verin.</p></div>
+      </div>
+      <div class="steps-result">
+        <span class="result-icon">🎉</span>
+        <div><h3>Taksitler Düzenli, Sevkiyatlar Zamanında!</h3><p>Stok Pratik ile mobilya işletmenizde düzen ve memnuniyet artsın.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ENTEGRASYON ===== -->
+  <section class="integrations">
+    <div class="container">
+      <h2>Uyumlu Modüller</h2>
+      <p class="section-desc">Diğer sistemlerle entegre çalışır</p>
+      <div class="integ-grid">
+        <div><span>📦</span><h3>Stok Yönetimi</h3><p>Depo ve mağaza stokları</p></div>
+        <div><span>🧾</span><h3>Muhasebe</h3><p>e-Fatura ve cari takip</p></div>
+        <div><span>📱</span><h3>SMS Modülü</h3><p>Otomatik hatırlatma</p></div>
+        <div><span>🚚</span><h3>Lojistik</h3><p>Sevkiyat ve montaj</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== İLGİLİ SAYFALAR ===== -->
+  <section class="related">
+    <div class="container">
+      <h2>Entegre Çalışan Diğer Çözümler</h2>
+      <div class="related-grid">
+        <a href="/stok-yonetimi"><h3>📦 Stok Yönetimi</h3><p>Depo ve mağaza stokları</p><span>→</span></a>
+        <a href="/b2b-toptan-satis-sistemi"><h3>🛒 B2B Toptan Satış</h3><p>Toptan siparişler</p><span>→</span></a>
+        <a href="/barkodlu-magaza-pos-programi"><h3>🏪 Mağaza POS</h3><p>Hızlı kasa işlemleri</p><span>→</span></a>
+        <a href="/bulut-on-muhasebe-e-fatura"><h3>🧾 Muhasebe</h3><p>e-Fatura ve cari</p><span>→</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SSS ===== -->
+  <section class="faq">
+    <div class="container">
+      <h2>Sıkça Sorulan Sorular</h2>
+      <div class="faq-list">
+        {faqs.map(f => (
+          <details key={f.q}>
+            <summary>{f.q} <span>▼</span></summary>
+            <div class="faq-answer">{f.a}</div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CTA ===== -->
+  <section class="cta">
+    <div class="container">
+      <div class="cta-box">
+        <span class="cta-icon">🪑</span>
+        <h2>Mobilya Mağazanızı Dijitale Taşımaya Hazır mısınız?</h2>
+        <p>Hemen ücretsiz demo talep edin, taksitli satışları kolayca yönetin.</p>
+        <div class="cta-buttons">
+          <a href="https://wa.me/+905325000999?text=Merhaba,%20Mobilya%20programı%20demo%20istiyorum" target="_blank" rel="noopener" class="btn btn-primary">📅 Demo İste</a>
+          <a href="tel:+905325000999" class="btn btn-secondary">📞 Canlı Destek</a>
+        </div>
+        <div class="cta-benefits">
+          <span>🎯 Ücretsiz Kurulum</span>
+          <span>👨‍🏫 Canlı Eğitim</span>
+          <span>🔄 Veri Aktarımı</span>
+          <span>💰 Özel Fiyat</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    /* ===== TEMEL ===== */
+    *{box-sizing:border-box;margin:0;padding:0}
+    .container{max-width:1200px;margin:0 auto;padding:0 20px}
+
+    /* ===== HERO - Soft toprak tonları ===== */
+    .hero{background:linear-gradient(135deg,#F5E6D3,#E8D5B7);color:#3E2723;padding:60px 0}
+    .hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+    .badge{display:inline-block;background:#3E2723;color:#F5E6D3;padding:6px 18px;border-radius:20px;font-size:.9rem;margin-bottom:16px}
+    .hero h1{font-size:2.8rem;line-height:1.2;margin-bottom:16px}
+    .highlight{color:#2E7D32}
+    .subtitle{font-size:1.1rem;color:#5D4037;margin-bottom:30px}
+    .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:20px 0}
+    .stat{background:rgba(255,255,255,.6);padding:12px;border-radius:10px;text-align:center}
+    .stat-icon{font-size:1.5rem}
+    .stat-number{font-size:1.4rem;font-weight:700;color:#2E7D32}
+    .stat-label{font-size:.75rem;color:#5D4037}
+    .buttons{display:flex;gap:12px;flex-wrap:wrap;margin:20px 0}
+    .btn{display:inline-block;padding:12px 28px;border-radius:8px;font-weight:700;text-decoration:none;transition:.3s}
+    .btn-primary{background:#2E7D32;color:#fff}
+    .btn-primary:hover{background:#1B5E20;transform:translateY(-2px)}
+    .btn-secondary{background:rgba(62,39,35,.15);color:#3E2723;border:2px solid rgba(62,39,35,.2)}
+    .btn-secondary:hover{background:rgba(62,39,35,.25);transform:translateY(-2px)}
+    .tags{display:flex;gap:10px;flex-wrap:wrap}
+    .tags span{background:rgba(255,255,255,.5);padding:4px 14px;border-radius:16px;font-size:.85rem;color:#3E2723}
+
+    /* ===== DASHBOARD ===== */
+    .dashboard{background:#fff;color:#3E2723;border-radius:16px;padding:20px;box-shadow:0 20px 40px rgba(0,0,0,.1)}
+    .dash-header{display:flex;justify-content:space-between;font-weight:700;font-size:1.1rem;padding-bottom:12px;border-bottom:2px solid #f0e6dc}
+    .dash-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:16px 0}
+    .dash-cards>div{background:#fcf8f4;padding:10px;border-radius:8px;text-align:center}
+    .dash-label{font-size:.75rem;color:#8D6E63}
+    .dash-value{font-size:1.4rem;font-weight:700;color:#3E2723}
+    .dash-value.warning{color:#D84315}
+    .dash-list>div{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #f0e6dc;font-size:.9rem}
+    .badge-stock{background:#E8F5E9;padding:2px 10px;border-radius:12px;font-size:.8rem;color:#2E7D32}
+    .badge-stock.danger{background:#FFF3E0;color:#D84315}
+    .dash-alert{background:#FFF8E1;border:1px solid #FFECB3;padding:8px;border-radius:8px;margin-top:12px;font-size:.9rem;color:#D84315}
+
+    /* ===== KARŞILAŞTIRMA ===== */
+    .compare{padding:60px 0;background:#FCF8F4}
+    .compare h2{text-align:center;font-size:2.2rem;color:#3E2723}
+    .section-desc{text-align:center;color:#8D6E63;margin-bottom:36px;font-size:1.05rem}
+    .compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:30px}
+    .compare-old,.compare-new{padding:28px;border-radius:16px;box-shadow:0 4px 12px rgba(0,0,0,.06)}
+    .compare-old{background:#fff;border-top:5px solid #D84315}
+    .compare-new{background:linear-gradient(135deg,#2E7D32,#1B5E20);color:#fff;border-top:5px solid #D4A574}
+    .compare-icon{font-size:2.5rem;margin-bottom:10px}
+    .compare-old h3{color:#3E2723}
+    .compare-new h3{color:#fff}
+    .compare-old ul,.compare-new ul{list-style:none;padding:0;margin-top:12px}
+    .compare-old li,.compare-new li{padding:6px 0;padding-left:28px;position:relative}
+    .compare-old li:before{content:"❌";position:absolute;left:0;color:#D84315}
+    .compare-new li:before{content:"✅";position:absolute;left:0;color:#D4A574}
+
+    /* ===== ÖZELLİKLER ===== */
+    .features{padding:60px 0;background:#fff}
+    .features h2{text-align:center;font-size:2.2rem;color:#3E2723}
+    .features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+    .feature-card{background:#FCF8F4;padding:24px;border-radius:14px;border:2px solid transparent;transition:.3s}
+    .feature-card:hover{border-color:#2E7D32;transform:translateY(-4px);box-shadow:0 8px 24px rgba(46,125,50,.12)}
+    .feature-icon{font-size:2.2rem;margin-bottom:10px}
+    .feature-card h3{color:#3E2723;font-size:1.15rem;margin-bottom:6px}
+    .feature-card p{color:#5D4037;font-size:.92rem;line-height:1.5}
+    .feature-card ul{list-style:none;padding:0;margin-top:10px}
+    .feature-card li{color:#5D4037;font-size:.88rem;padding:3px 0}
+
+    /* ===== ADIMLAR ===== */
+    .steps{padding:60px 0;background:#FCF8F4}
+    .steps h2{text-align:center;font-size:2.2rem;color:#3E2723}
+    .steps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-bottom:30px}
+    .step{background:#fff;padding:24px;border-radius:14px;box-shadow:0 2px 8px rgba(0,0,0,.06);position:relative}
+    .step-num{position:absolute;top:-12px;left:-12px;background:#2E7D32;color:#fff;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.85rem}
+    .step-icon{font-size:2rem;display:block;margin:6px 0 8px}
+    .step h3{color:#3E2723;font-size:1.1rem}
+    .step p{color:#5D4037;font-size:.9rem;line-height:1.5}
+    .steps-result{display:flex;align-items:center;gap:24px;background:linear-gradient(135deg,#2E7D32,#1B5E20);padding:24px 32px;border-radius:14px;color:#fff}
+    .result-icon{font-size:3rem}
+    .steps-result h3{font-size:1.3rem;margin-bottom:4px}
+    .steps-result p{opacity:.9}
+
+    /* ===== ENTEGRASYON ===== */
+    .integrations{padding:60px 0;background:#fff}
+    .integrations h2{text-align:center;font-size:2.2rem;color:#3E2723}
+    .integ-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+    .integ-grid>div{text-align:center;background:#FCF8F4;padding:24px;border-radius:14px;transition:.3s}
+    .integ-grid>div:hover{transform:translateY(-4px);box-shadow:0 6px 16px rgba(0,0,0,.06)}
+    .integ-grid span{font-size:2.5rem;display:block}
+    .integ-grid h3{color:#3E2723;margin:8px 0 4px;font-size:1rem}
+    .integ-grid p{color:#8D6E63;font-size:.85rem}
+
+    /* ===== İLGİLİ SAYFALAR ===== */
+    .related{padding:60px 0;background:#FCF8F4}
+    .related h2{text-align:center;font-size:2.2rem;color:#3E2723}
+    .related-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+    .related-grid a{display:block;background:#fff;padding:20px 24px;border-radius:12px;text-decoration:none;color:inherit;border:2px solid transparent;transition:.3s}
+    .related-grid a:hover{border-color:#2E7D32;transform:translateY(-3px)}
+    .related-grid h3{color:#3E2723;font-size:1.05rem;margin-bottom:4px}
+    .related-grid p{color:#8D6E63;font-size:.9rem;margin-bottom:6px}
+    .related-grid span{color:#2E7D32;font-weight:700}
+
+    /* ===== SSS ===== */
+    .faq{padding:60px 0;background:#fff}
+    .faq h2{text-align:center;font-size:2.2rem;color:#3E2723}
+    .faq-list{max-width:760px;margin:0 auto}
+    .faq-list details{background:#FCF8F4;border:1px solid #f0e6dc;border-radius:10px;padding:4px 20px;margin-bottom:12px}
+    .faq-list summary{display:flex;justify-content:space-between;padding:14px 0;font-weight:600;color:#3E2723;cursor:pointer;list-style:none}
+    .faq-list summary::-webkit-details-marker{display:none}
+    .faq-list details[open] summary span{transform:rotate(180deg)}
+    .faq-answer{padding:0 0 18px;color:#5D4037;border-top:1px solid #f0e6dc;padding-top:14px;line-height:1.6}
+
+    /* ===== CTA ===== */
+    .cta{padding:60px 0;background:linear-gradient(135deg,#3E2723,#2E7D32);color:#fff}
+    .cta-box{text-align:center}
+    .cta-icon{font-size:3.5rem;display:block;margin-bottom:12px}
+    .cta-box h2{font-size:2.2rem;margin-bottom:10px}
+    .cta-box p{font-size:1.1rem;opacity:.9;margin-bottom:24px}
+    .cta-buttons{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin-bottom:24px}
+    .cta-benefits{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;max-width:700px;margin:0 auto}
+    .cta-benefits span{background:rgba(255,255,255,.08);padding:8px 12px;border-radius:20px;font-size:.9rem}
+
+    /* ===== RESPONSIVE ===== */
+    @media(max-width:992px){
+      .hero-grid{grid-template-columns:1fr}
+      .hero h1{font-size:2.2rem}
+      .stats{grid-template-columns:repeat(2,1fr)}
+      .features-grid{grid-template-columns:repeat(2,1fr)}
+      .integ-grid{grid-template-columns:repeat(2,1fr)}
+      .compare-grid{grid-template-columns:1fr}
+      .steps-grid{grid-template-columns:1fr}
+      .related-grid{grid-template-columns:1fr}
+      .cta-benefits{grid-template-columns:repeat(2,1fr)}
+    }
+    @media(max-width:600px){
+      .hero h1{font-size:1.8rem}
+      .features-grid{grid-template-columns:1fr}
+      .integ-grid{grid-template-columns:1fr}
+      .dashboard .dash-cards{grid-template-columns:1fr}
+      .buttons{flex-direction:column}
+      .btn{width:100%;text-align:center}
+      .cta-buttons{flex-direction:column}
+      .steps-grid{grid-template-columns:1fr}
+    }
+  </style>
 </BaseLayout>

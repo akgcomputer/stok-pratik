@@ -85,22 +85,22 @@ export default function PricingWizard() {
   const toggleAddon = (key) => setAddons(prev => ({...prev, [key]: !prev[key]}));
 
   const handleWhatsApp = (pkgName, price) => {
-    let msg = \`Merhaba, \${pkgName} hakkında bilgi almak istiyorum.\`;
+    let msg = `Merhaba, ${pkgName} hakkında bilgi almak istiyorum.`;
     if (pathChoice === 'configure') {
-       msg = \`Merhaba, sistem üzerinden ihtiyacımı yapılandırdım.\\nSektör: \${sector}\\nMağaza Sayısı: \${storeCount}\\nSeçilen Modüller: \${Object.keys(addons).filter(k => addons[k]).join(', ')}\\nHesaplanan Paket: \${selectedBasePackage?.name}\\nTutar: \${isCustomOffer ? 'Özel Teklif' : formatCurrency(totalPrice, currency)}\`;
+       msg = `Merhaba, sistem üzerinden ihtiyacımı yapılandırdım.\\nSektör: ${sector}\\nMağaza Sayısı: ${storeCount}\\nSeçilen Modüller: ${Object.keys(addons).filter(k => addons[k]).join(', ')}\\nHesaplanan Paket: ${selectedBasePackage?.name}\\nTutar: ${isCustomOffer ? 'Özel Teklif' : formatCurrency(totalPrice, currency)}`;
     }
-    window.open(\`https://wa.me/+905325000999?text=\${encodeURIComponent(msg)}\`, '_blank');
+    window.open(`https://wa.me/+905325000999?text=${encodeURIComponent(msg)}`, '_blank');
   };
 
   return (
     <div className="wizard-container">
       {/* Progress */}
       <div className="wizard-progress">
-        <div className={\`step \${step >= 1 ? 'active' : ''}\`} onClick={() => setStep(1)}>1. Lisans Tipi</div>
+        <div className={`step ${step >= 1 ? 'active' : ''}`} onClick={() => setStep(1)}>1. Lisans Tipi</div>
         <div className="divider"></div>
-        <div className={\`step \${step >= 2 ? 'active' : ''}\`} onClick={() => setStep(2)}>2. İlerleme Yolu</div>
+        <div className={`step ${step >= 2 ? 'active' : ''}`} onClick={() => setStep(2)}>2. İlerleme Yolu</div>
         <div className="divider"></div>
-        <div className={\`step \${step >= 3 ? 'active' : ''}\`} onClick={() => step > 2 && setStep(3)}>3. Yapılandırma</div>
+        <div className={`step ${step >= 3 ? 'active' : ''}`} onClick={() => step > 2 && setStep(3)}>3. Yapılandırma</div>
       </div>
 
       <div className="wizard-content">
@@ -110,7 +110,7 @@ export default function PricingWizard() {
             <h2>Nasıl bir lisans modeli tercih edersiniz?</h2>
             <div className="cards-grid">
               <div 
-                className={\`option-card \${licenseType === 'rental' ? 'selected' : ''}\`}
+                className={`option-card ${licenseType === 'rental' ? 'selected' : ''}`}
                 onClick={() => { setLicenseType('rental'); setStep(2); }}
               >
                 <div className="icon">🗓️</div>
@@ -118,7 +118,7 @@ export default function PricingWizard() {
                 <p>Düşük başlangıç maliyeti, aylık veya yıllık düzenli ödeme planı.</p>
               </div>
               <div 
-                className={\`option-card \${licenseType === 'lifetime' ? 'selected' : ''}\`}
+                className={`option-card ${licenseType === 'lifetime' ? 'selected' : ''}`}
                 onClick={() => { setLicenseType('lifetime'); setStep(2); }}
               >
                 <div className="icon">♾️</div>
@@ -195,8 +195,8 @@ export default function PricingWizard() {
               <div className="form-group">
                 <label>E-Fatura / E-İrsaliye Kullanacak mısınız?</label>
                 <div className="toggle-group">
-                  <button className={\`toggle-btn \${useEInvoice ? 'active' : ''}\`} onClick={() => setUseEInvoice(true)}>Evet</button>
-                  <button className={\`toggle-btn \${!useEInvoice ? 'active' : ''}\`} onClick={() => setUseEInvoice(false)}>Hayır</button>
+                  <button className={`toggle-btn ${useEInvoice ? 'active' : ''}`} onClick={() => setUseEInvoice(true)}>Evet</button>
+                  <button className={`toggle-btn ${!useEInvoice ? 'active' : ''}`} onClick={() => setUseEInvoice(false)}>Hayır</button>
                 </div>
               </div>
 

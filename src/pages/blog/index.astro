@@ -102,3 +102,13 @@ function truncateWords(text, maxWords) {
     flex: 1; /* Pushes the card to take full height equally */
   }
 </style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const grid = document.querySelector('.blog-grid');
+    if (!grid) return;
+    for (let i = grid.children.length; i >= 0; i--) {
+      grid.appendChild(grid.children[Math.random() * i | 0]);
+    }
+  });
+</script>

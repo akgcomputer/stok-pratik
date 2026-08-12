@@ -735,1052 +735,597 @@ const kontorPrices = [
 ];
 ---
 
-<BaseLayout title="Stok Pratik Paketleri | En Uygun ERP Çözümleri">
-  
-
-  <!-- Hero Section -->
-<section class="page-hero py-12">
-  <div class="container">
-    <div class="text-center max-w-3xl mx-auto">
-      <h1 class="page-title">Stok Pratik Paketleri</h1>
-      <p class="page-subtitle">
-        İşletmenizin ihtiyaçlarına özel hazırlanmış paketlerimizden size en uygun olanı seçin.
-      </p>
-      <div class="info-box mt-8">
-        <p class="info-text">
-          💡 <strong>Bakım Derdi YOK:</strong> Programı kullanmaya başladıktan sonra server/hosting/bakım/yenileme gibi ödemeleri yapmazsınız, 
-          verileriniz bizim tarafımızdan 3 farklı lokasyonda güvenle saklanır ve yönetilir. Sadece paket ücretini ödeyerek tüm hizmetlerimizden faydalanabilirsiniz.
-        </p>
-      </div>
-      
-      <!-- Hızlı Navigasyon Butonları -->
-      <div class="nav-buttons mt-8">
-        <a href="#ana-paketler" class="nav-btn">
-          <span class="nav-icon">📦</span>
-          Ön Muhasebe
-        </a>
-        <a href="#eticaret-paketler" class="nav-btn">
-          <span class="nav-icon">🛒</span>
-          E-Ticaret
-        </a>
-        <a href="#surec-paketler" class="nav-btn">
-          <span class="nav-icon">⚙️</span>
-          CRM + ERP
-        </a>
-        <a href="#otoservis-paketler" class="nav-btn">
-          <span class="nav-icon">🚗</span>
-          Oto Servis
-        </a>
-        <a href="#kontor-fiyatlari" class="nav-btn">
-          <span class="nav-icon">📨</span>
-          E-Fatura Kontör
-        </a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Ana Paketler -->
-<section class="pricing-section py-12" id="ana-paketler">
-  <div class="container">
-    <h2 class="section-title text-center mb-12">Ön Muhasebe ve <br>Mağazacılık Paketlerimiz</h2>
-    <!-- Paket kartları burada... -->
-  </div>
-</section>
-
-  <!-- Ana Paketler -->
-  <section class="pricing-section py-12">
-    <div class="container">
-      
-      <div class="pricing-grid">
-        {packages.map((pkg) => (
-        <div class={`pricing-card ${pkg.popular ? 'featured' : ''} main-package`}>
-            {pkg.popular && <div class="popular-badge">🏆 En Popüler</div>}
-            
-            <div class="pricing-header">
-              <h3 class="package-name">
-                {pkg.name}<br>
-                <span set:html={pkg.name2}></span>
-              </h3>
-              <div class="price-container">
-                <span class="price">{pkg.price}</span>
-                <span class="currency">₺</span>
-                <span class="period">/{pkg.period}</span>
-              </div>
-              {pkg.note && <p class="package-note">📨 {pkg.note}</p>}
-            </div>
-            
-            <div class="package-features">
-              {pkg.features.map((feature) => (
-                feature.type === "main" ? (
-                  feature.subItems ? (
-                    <details class="feature-details" open>
-                      <summary class={`feature-summary ${feature.highlight ? 'highlight' : ''}`}>
-                        <span class="feature-icon">{feature.icon}</span>
-                        <span class="feature-text" set:html={feature.text}></span>
-                      </summary>
-                      <div class="feature-subitems">
-                        {feature.subItems.map((subItem) => (
-                          subItem.subItems ? (
-                            <details class="feature-subdetails">
-                              <summary class={`feature-subsummary ${subItem.highlight ? 'highlight' : ''}`}>
-                                <span class="feature-icon">{subItem.icon}</span>
-                                <span class="feature-text">{subItem.text}</span>
-                              </summary>
-                              <div class="feature-subitems">
-                                {subItem.subItems.map((subSubItem) => (
-                                  <div class="feature-subitem">
-                                    <span class="feature-icon">{subSubItem.icon}</span>
-                                    <span class="feature-text">{subSubItem.text}</span>
-                                  </div>
-                                ))}
-                              </div>
-                            </details>
-                          ) : (
-                            <div class={`feature-subitem ${subItem.highlight ? 'highlight' : ''}`}>
-                              <span class="feature-icon">{subItem.icon}</span>
-                              <span class="feature-text">{subItem.text}</span>
-                            </div>
-                          )
-                        ))}
-                      </div>
-                    </details>
-                  ) : (
-                    <div class={`feature-item ${feature.isHeader ? 'feature-header' : ''}`}>
-                      <span class={`feature-icon ${feature.disabled ? 'disabled' : ''}`}>{feature.icon}</span>
-                      <span class={`feature-text ${feature.disabled ? 'disabled' : ''} ${feature.highlight ? 'highlight' : ''}`} set:html={feature.text}></span>
-                    </div>
-                  )
-                ) : feature.type === "disabled" ? (
-                  <div class="feature-item">
-                    <span class="feature-icon disabled">✖</span>
-                    <span class={`feature-text disabled ${feature.highlight ? 'highlight' : ''}`} set:html={feature.text}></span>
-                  </div>
-                ) : feature.type === "enabled" ? (
-                  <div class="feature-item">
-                    <span class="feature-icon">✅</span>
-                    <span class="feature-text" set:html={feature.text}></span>
-                  </div>
-                ) : null
-              ))}
-            </div>
-            
-            <div class="pricing-footer">
-              <a 
-                href={`https://wa.me/+905325000999?text=${encodeURIComponent(`${pkg.name} paketini kullanmaya başlamak istiyorum`)}`}
-                class="btn btn-primary w-full"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Şimdi Kullanmaya Başla
-                <span class="btn-subtext">WhatsApp ile Görüş</span>
-              </a>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-  
-
-  <!-- E-Ticaret Paketleri -->
-<section class="pricing-section py-12 bg-gray-50" id="eticaret-paketler">
-  <div class="container">
-    <h2 class="section-title text-center mb-12">🛒 </h2>
-    <!-- Paket kartları burada... -->
-  </div>
-</section>
-
-  <!-- E-Ticaret Paketleri -->
-  <section class="pricing-section py-12 bg-gray-50">
-    <div class="container">
-      <h2 class="section-title text-center mb-12">E-Ticaret Paketleri</h2>
-      
-      <div class="pricing-grid-2col">
-        {ecommercePackages.map((pkg) => (
-          <div class="pricing-card ecommerce-package">
-            <div class="pricing-header">
-              <h3 class="package-name">{pkg.name}</h3>
-              <div class="price-container">
-                <span class="price">{pkg.price}</span>
-                <span class="currency">₺</span>
-                <span class="period">/{pkg.period}</span>
-              </div>
-              {pkg.note && <p class="package-note">📨 {pkg.note}</p>}
-            </div>
-            
-            <div class="package-features">
-              {pkg.features.map((feature) => (
-                feature.isHeader ? (
-                  <div class="feature-item feature-header">
-                    <span class="feature-icon">{feature.icon}</span>
-                    <span class="feature-text" set:html={feature.text}></span>
-                  </div>
-                ) : feature.disabled ? (
-                  <div class="feature-item">
-                    <span class="feature-icon disabled">✖</span>
-                    <span class={`feature-text disabled ${feature.highlight ? 'highlight' : ''}`} set:html={feature.text}></span>
-                  </div>
-                ) : (
-                  <div class="feature-item">
-                    <span class="feature-icon">✅</span>
-                    <span class="feature-text" set:html={feature.text}></span>
-                  </div>
-                )
-              ))}
-            </div>
-            
-            <div class="pricing-footer">
-              <a 
-                href={`https://wa.me/+905325000999?text=${encodeURIComponent(`${pkg.name} paketini kullanmaya başlamak istiyorum`)}`}
-                class="btn btn-primary w-full"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Şimdi Kullanmaya Başla
-                <span class="btn-subtext">WhatsApp ile Görüş</span>
-              </a>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-
-<!-- Süreç Yönetimi Paketleri -->
-<section class="pricing-section py-12" id="surec-paketler">
-  <div class="container">
-    <h2 class="section-title text-center mb-12">⚙️</h2>
-    <!-- Paket kartları burada... -->
-  </div>
-</section>
-
-
-  <!-- Süreç Yönetimi Paketleri -->
-  <section class="pricing-section py-12">
-    <div class="container">
-      <h2 class="section-title text-center mb-12">Süreç Yönetimi Paketleri</h2>
-      
-      <div class="pricing-grid-2col">
-        {processPackages.map((pkg) => (
-          <div class="pricing-card">
-            <div class="pricing-header">
-              <h3 class="package-name">{pkg.name}</h3>
-              <div class="price-container">
-                <span class="price">{pkg.price}</span>
-                <span class="currency">₺</span>
-                <span class="period">/{pkg.period}</span>
-              </div>
-              {pkg.note && <p class="package-note">📨 {pkg.note}</p>}
-            </div>
-            
-            <div class="package-features">
-              {pkg.features.map((feature) => (
-                feature.isHeader ? (
-                  <div class="feature-item feature-header">
-                    <span class="feature-icon">{feature.icon}</span>
-                    <span class="feature-text" set:html={feature.text}></span>
-                  </div>
-                ) : feature.disabled ? (
-                  <div class="feature-item">
-                    <span class="feature-icon disabled">✖</span>
-                    <span class={`feature-text disabled ${feature.highlight ? 'highlight' : ''}`} set:html={feature.text}></span>
-                  </div>
-                ) : (
-                  <div class="feature-item">
-                    <span class="feature-icon">✅</span>
-                    <span class="feature-text" set:html={feature.text}></span>
-                  </div>
-                )
-              ))}
-            </div>
-            
-            <div class="pricing-footer">
-              <a 
-                href={`https://wa.me/+905325000999?text=${encodeURIComponent(`${pkg.name} paketini kullanmaya başlamak istiyorum`)}`}
-                class="btn btn-primary w-full"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Şimdi Kullanmaya Başla
-                <span class="btn-subtext">WhatsApp ile Görüş</span>
-              </a>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- Oto Servis Paketleri -->
-<section class="pricing-section py-12 bg-gray-50" id="otoservis-paketler">
-  <div class="container">
-    <h2 class="section-title text-center mb-12">🚗</h2>
-    <!-- Paket kartları burada... -->
-  </div>
-</section>
-
-  <!-- Oto Servis Paketleri -->
-  <section class="pricing-section py-12 bg-gray-50">
-    <div class="container">
-      <h2 class="section-title text-center mb-12">Oto Servis Paketleri</h2>
-      
-      <div class="pricing-grid-2col">
-        {servicePackages.map((pkg) => (
-          <div class="pricing-card">
-            <div class="pricing-header">
-              <h3 class="package-name">{pkg.name}</h3>
-              <div class="price-container">
-                <span class="price">{pkg.price}</span>
-                <span class="currency">₺</span>
-                <span class="period">/{pkg.period}</span>
-              </div>
-              {pkg.note && <p class="package-note">📨 {pkg.note}</p>}
-            </div>
-            
-            <div class="package-features">
-              {pkg.features.map((feature) => (
-                feature.isHeader ? (
-                  <div class="feature-item feature-header">
-                    <span class="feature-icon">{feature.icon}</span>
-                    <span class="feature-text" set:html={feature.text}></span>
-                  </div>
-                ) : feature.disabled ? (
-                  <div class="feature-item">
-                    <span class="feature-icon disabled">✖</span>
-                    <span class={`feature-text disabled ${feature.highlight ? 'highlight' : ''}`} set:html={feature.text}></span>
-                  </div>
-                ) : (
-                  <div class="feature-item">
-                    <span class="feature-icon">✅</span>
-                    <span class="feature-text" set:html={feature.text}></span>
-                  </div>
-                )
-              ))}
-            </div>
-            
-            <div class="pricing-footer">
-              <a 
-                href={`https://wa.me/+905325000999?text=${encodeURIComponent(`${pkg.name} paketini kullanmaya başlamak istiyorum`)}`}
-                class="btn btn-primary w-full"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Şimdi Kullanmaya Başla
-                <span class="btn-subtext">WhatsApp ile Görüş</span>
-              </a>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  
-  <!-- E-Fatura Kontör Fiyatları -->
-  <section class="kontor-section py-16" id="kontor-fiyatlari">
-    <div class="container">
-      <h2 class="section-title text-center mb-12">📨 E-Fatura Kontör Fiyatları</h2>
-      
-      <div class="kontor-grid">
-        {kontorPrices.map((item) => (
-          <div class="kontor-card">
-            <div class="kontor-count">{item.count}</div>
-            <div class="kontor-label">Kontör</div>
-            <div class="kontor-price">{item.price}</div>
-            <div class="kontor-price-small">TL</div>
-            <div class="kontor-note">{item.note}</div>
-          </div>
-        ))}
-      </div>
-      <p class="text-center text-gray-500 mt-4">Notlar</p>
-      <p class="text-center text-gray-500 mt-4">Tüm fiyatlara KDV eklenecektir.
-        e-Fatura Kontör Hediyemiz ilk alımda verilecektir.
-        <br>Devam eden ayları kapsamamaktadır.</p>
-        <p class="text-center text-gray-500 mt-4">Ödemeler Yıllık şeklinde yapılmaktadır.</p>
-        <p class="text-center text-gray-500 mt-4">E-Fatura Kontörlerin zaman sınırlaması YOKTUR, Kontör bittikçe dilediğiniz kadar alabilirsiniz.
-          <br>Her işlem bir kontör tüketir.Gelen-Giden Fatura İrsaliye gibi..</p>
+<BaseLayout title="Yeni Paketler | Modern & Premium Stok Pratik">
+  <div class="packages-page">
     
-    </div>
-  </section>
-
-  <!-- CTA Section -->
-  <section class="cta-section py-16">
-    <div class="container">
-      <div class="cta-content text-center">
-        <h2 class="cta-title">Paketlerimizle İlgili Sorularınız mı Var?</h2>
-        <p class="cta-text">
-          Size en uygun paketi seçmenize yardımcı olalım. Teklif almak veya demo talep etmek için hemen iletişime geçin.
-        </p>
-        <div class="cta-buttons mt-8">
-          <a 
-            href="https://wa.me/+905325000999?text=Merhaba,%20Stok%20Pratik%20paketleri%20hakkında%20bilgi%20almak%20istiyorum"
-            class="btn btn-primary btn-lg"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            WhatsApp'tan Yazın
-          </a>
-          <a href="/iletisim" class="btn btn-outline btn-lg btn-white">
-            İletişim
-          </a>
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="hero-bg-glow"></div>
+      <div class="container text-center relative z-10">
+        <span class="badge">2026 Yeni Nesil Fiyatlandırma</span>
+        <h1 class="page-title">İşletmenize Güç Katan <br/><span class="gradient-text">Akıllı Paketler</span></h1>
+        <p class="page-subtitle">Şeffaf fiyatlandırma, sürpriz maliyetler yok. <br/>Sadece size uygun paketi seçin ve hemen başlayın.</p>
+        
+        <div class="hero-features">
+           <div class="hf-item"><i class="icon">☁️</i> <span>Tamamen Bulut Tabanlı</span></div>
+           <div class="hf-item"><i class="icon">🔒</i> <span>%100 Güvenli & Yedekli</span></div>
+           <div class="hf-item"><i class="icon">🚀</i> <span>Anında Kurulum</span></div>
         </div>
       </div>
+    </section>
+
+    <!-- Navigation Tabs -->
+    <div class="container">
+      <div class="tabs-container">
+        <button class="tab-btn active" data-target="tab-ana">📦 Ön Muhasebe & Mağaza</button>
+        <button class="tab-btn" data-target="tab-eticaret">🛒 E-Ticaret</button>
+        <button class="tab-btn" data-target="tab-surec">⚙️ CRM & ERP</button>
+        <button class="tab-btn" data-target="tab-otoservis">🚗 Oto Servis</button>
+        <button class="tab-btn" data-target="tab-kontor">📨 E-Fatura Kontör</button>
+      </div>
     </div>
-  </section>
 
-  <style>
+    <div class="tab-contents container">
+      
+      <!-- Ana Paketler -->
+      <div class="tab-content active" id="tab-ana">
+        <div class="pricing-grid">
+          {packages.map((pkg) => (
+            <div class={`pricing-card ${pkg.popular ? 'featured' : ''}`}>
+              {pkg.popular && <div class="popular-badge">🏆 En Popüler</div>}
+              <div class="card-header">
+                <h3>{pkg.name}</h3>
+                {pkg.name2 && <h4 set:html={pkg.name2}></h4>}
+                <div class="price-box">
+                  <span class="currency">₺</span>
+                  <span class="amount">{pkg.price}</span>
+                  <span class="period">/ {pkg.period}</span>
+                </div>
+                {pkg.note && <div class="note-badge">{pkg.note}</div>}
+              </div>
+              
+              <div class="features-list">
+                {pkg.features.map((feature) => (
+                  <div class={`feature-item ${feature.type} ${feature.highlight ? 'highlight' : ''}`}>
+                    <div class="feature-title">
+                      <span class="feature-icon">{feature.icon}</span>
+                      <span class="feature-text">{feature.text}</span>
+                    </div>
+                    {feature.subItems && feature.subItems.length > 0 && (
+                      <details class="sub-features">
+                        <summary>Detayları Gör</summary>
+                        <div class="sub-items-content">
+                          {feature.subItems.map(sub1 => (
+                            <div class="sub1">
+                              <strong>{sub1.text}</strong>
+                              {sub1.subItems && (
+                                <ul class="sub2-list">
+                                  {sub1.subItems.map(sub2 => (
+                                    <li>{sub2.text}</li>
+                                  ))}
+                                </ul>
+                              )}
+                            </div>
+                          ))}
+                        </div>
+                      </details>
+                    )}
+                  </div>
+                ))}
+              </div>
+              
+              <div class="card-footer">
+                <a href={`https://wa.me/+905325000999?text=${encodeURIComponent(`${pkg.name} paketini kullanmaya başlamak istiyorum`)}`} class="btn-action">
+                  Hemen Başla
+                </a>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
 
-    /* Navigasyon Butonları */
-.nav-buttons {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-  justify-content: center;
-  margin-top: 2rem;
-}
+      <!-- E-Ticaret Paketleri -->
+      <div class="tab-content" id="tab-eticaret">
+        <div class="pricing-grid">
+          {ecommercePackages.map((pkg) => (
+            <div class="pricing-card">
+              <div class="card-header">
+                <h3>{pkg.name}</h3>
+                <div class="price-box">
+                  <span class="currency">₺</span>
+                  <span class="amount">{pkg.price}</span>
+                  <span class="period">/ {pkg.period}</span>
+                </div>
+                {pkg.note && <div class="note-badge">{pkg.note}</div>}
+              </div>
+              <div class="features-list">
+                {pkg.features.map((feature) => (
+                  <div class={`feature-item ${feature.type} ${feature.highlight ? 'highlight' : ''}`}>
+                    <span class="feature-icon">{feature.icon}</span>
+                    <span class="feature-text">{feature.text}</span>
+                  </div>
+                ))}
+              </div>
+              <div class="card-footer">
+                <a href={`https://wa.me/+905325000999?text=${encodeURIComponent(`${pkg.name} paketini kullanmaya başlamak istiyorum`)}`} class="btn-action">
+                  Hemen Başla
+                </a>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
 
-.nav-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.75rem 1.5rem;
-  background: white;
-  border: 2px solid var(--primary-red);
-  border-radius: 50px;
-  color: var(--primary-red);
-  font-weight: 600;
-  font-size: 1rem;
-  text-decoration: none;
-  transition: all 0.3s ease;
-  box-shadow: var(--shadow-sm);
-}
+      <!-- Süreç Yönetimi Paketleri -->
+      <div class="tab-content" id="tab-surec">
+        <div class="pricing-grid">
+          {processPackages.map((pkg) => (
+            <div class="pricing-card">
+              <div class="card-header">
+                <h3>{pkg.name}</h3>
+                <div class="price-box">
+                  <span class="currency">₺</span>
+                  <span class="amount">{pkg.price}</span>
+                  <span class="period">/ {pkg.period}</span>
+                </div>
+                {pkg.note && <div class="note-badge">{pkg.note}</div>}
+              </div>
+              <div class="features-list">
+                {pkg.features.map((feature) => (
+                  <div class={`feature-item ${feature.type} ${feature.highlight ? 'highlight' : ''}`}>
+                    <span class="feature-icon">{feature.icon}</span>
+                    <span class="feature-text">{feature.text}</span>
+                  </div>
+                ))}
+              </div>
+              <div class="card-footer">
+                <a href={`https://wa.me/+905325000999?text=${encodeURIComponent(`${pkg.name} paketini kullanmaya başlamak istiyorum`)}`} class="btn-action">
+                  Hemen Başla
+                </a>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
 
-.nav-btn:hover {
-  background: var(--primary-red);
-  color: white;
-  transform: translateY(-3px);
-  box-shadow: var(--shadow-md);
-}
+      <!-- Oto Servis Paketleri -->
+      <div class="tab-content" id="tab-otoservis">
+        <div class="pricing-grid">
+          {servicePackages.map((pkg) => (
+            <div class="pricing-card">
+              <div class="card-header">
+                <h3>{pkg.name}</h3>
+                <div class="price-box">
+                  <span class="currency">₺</span>
+                  <span class="amount">{pkg.price}</span>
+                  <span class="period">/ {pkg.period}</span>
+                </div>
+                {pkg.note && <div class="note-badge">{pkg.note}</div>}
+              </div>
+              <div class="features-list">
+                {pkg.features.map((feature) => (
+                  <div class={`feature-item ${feature.type} ${feature.highlight ? 'highlight' : ''}`}>
+                    <span class="feature-icon">{feature.icon}</span>
+                    <span class="feature-text">{feature.text}</span>
+                  </div>
+                ))}
+              </div>
+              <div class="card-footer">
+                <a href={`https://wa.me/+905325000999?text=${encodeURIComponent(`${pkg.name} paketini kullanmaya başlamak istiyorum`)}`} class="btn-action">
+                  Hemen Başla
+                </a>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
 
-.nav-icon {
-  font-size: 1.2rem;
-}
+      <!-- Kontör Fiyatları -->
+      <div class="tab-content" id="tab-kontor">
+        <div class="pricing-grid kontor-grid">
+          {kontorPrices.map((pkg) => (
+            <div class="pricing-card mini-card">
+              <div class="card-header">
+                <h3>{pkg.count} <small>Kontör</small></h3>
+                <div class="price-box">
+                  <span class="currency">₺</span>
+                  <span class="amount">{pkg.price}</span>
+                  <span class="period">{pkg.note}</span>
+                </div>
+              </div>
+              <div class="card-footer">
+                <a href="https://wa.me/+905325000999?text=Kontör satın almak istiyorum" class="btn-action outline">
+                  Satın Al
+                </a>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
 
-/* Responsive */
-@media (max-width: 768px) {
-  .nav-buttons {
-    gap: 0.75rem;
+    </div>
+    
+  </div>
+</BaseLayout>
+
+<style>
+  .packages-page {
+    background: #f8fafc;
+    min-height: 100vh;
+    padding-bottom: 80px;
+    font-family: 'Inter', sans-serif;
   }
   
-  .nav-btn {
-    padding: 0.6rem 1.2rem;
-    font-size: 0.9rem;
+  /* Hero Section */
+  .hero-section {
+    position: relative;
+    padding: 100px 20px 60px;
+    overflow: hidden;
+    background: #ffffff;
   }
-}
+  .hero-bg-glow {
+    position: absolute;
+    top: -50%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 800px;
+    height: 800px;
+    background: radial-gradient(circle, rgba(99,102,241,0.15) 0%, rgba(255,255,255,0) 70%);
+    z-index: 0;
+  }
+  .badge {
+    display: inline-block;
+    padding: 6px 16px;
+    background: #eef2ff;
+    color: #4f46e5;
+    border-radius: 30px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 10px rgba(79, 70, 229, 0.1);
+  }
+  .page-title {
+    font-size: 3.5rem;
+    font-weight: 800;
+    color: #0f172a;
+    line-height: 1.2;
+    margin-bottom: 20px;
+    letter-spacing: -1px;
+  }
+  .gradient-text {
+    background: linear-gradient(135deg, #4f46e5, #ec4899);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .page-subtitle {
+    font-size: 1.2rem;
+    color: #64748b;
+    margin-bottom: 40px;
+  }
+  .hero-features {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+  }
+  .hf-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 500;
+    color: #334155;
+    background: white;
+    padding: 10px 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.04);
+  }
 
-@media (max-width: 480px) {
-  .nav-buttons {
-    flex-direction: column;
+  /* Tabs */
+  .tabs-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    background: white;
+    padding: 10px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+    margin: -30px auto 50px;
+    position: relative;
+    z-index: 20;
+    max-width: 900px;
+  }
+  .tab-btn {
+    padding: 12px 24px;
+    border: none;
+    background: transparent;
+    color: #64748b;
+    font-weight: 600;
+    font-size: 1rem;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  .tab-btn:hover {
+    background: #f1f5f9;
+    color: #0f172a;
+  }
+  .tab-btn.active {
+    background: #4f46e5;
+    color: white;
+    box-shadow: 0 4px 15px rgba(79, 70, 229, 0.3);
+  }
+
+  /* Tab Contents */
+  .tab-content {
+    display: none;
+    animation: fadeIn 0.4s ease forwards;
+  }
+  .tab-content.active {
+    display: block;
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Grid & Cards */
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
     align-items: stretch;
   }
-  
-  .nav-btn {
-    justify-content: center;
+  .kontor-grid {
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   }
-}
-
-
-    /* Page Hero */
-    .page-hero {
-      background: linear-gradient(135deg, var(--primary-red-light) 0%, var(--bg-white) 100%);
-    }
-    
-    .page-title {
-      font-size: 3rem;
-      color: var(--primary-red);
-      margin-bottom: 1rem;
-      font-weight: 800;
-    }
-    
-    .page-subtitle {
-      font-size: 1.25rem;
-      color: var(--text-gray);
-      line-height: 1.6;
-      max-width: 800px;
-      margin: 0 auto;
-    }
-    
-    .info-box {
-      background: white;
-      border-radius: var(--radius-lg);
-      padding: 1.5rem;
-      box-shadow: var(--shadow-md);
-      max-width: 800px;
-      margin: 0 auto;
-    }
-    
-    .info-text {
-      color: var(--text-gray);
-      font-size: 1.1rem;
-      line-height: 1.6;
-      margin: 0;
-    }
-    
-    /* Section Title */
-    .section-title {
-      font-size: 2.5rem;
-      color: var(--text-dark);
-      font-weight: 700;
-      margin-top: 1rem;
-    }
-    
-    /* Kırmızı yazılar */
-    .highlight {
-      color: var(--primary-red) !important;
-    }
-    
-    .feature-text.highlight {
-      color: var(--primary-red) !important;
-    }
-    
-    /* Circle Number */
-    .circle-number {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 30px;
-      height: 30px;
-      background-color: var(--primary-red);
-      color: white;
-      border-radius: 50%;
-      font-size: 1rem;
-      font-weight: 700;
-      margin: 0 2px;
-    }
-    
-    /* Purple Badge */
-    .purple-badge {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 4px 12px;
-      background-color: #8B5CF6;
-      color: white;
-      border-radius: 20px;
-      font-size: 1rem;
-      font-weight: 700;
-      margin: 0 2px;
-    }
-    
-    /* Pricing Cards */
-    .pricing-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-      gap: 2rem;
-      margin-top: 3rem;
-    }
-    
-    .pricing-grid-2col {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 2rem;
-      margin-top: 3rem;
-      max-width: 900px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-    
-    .pricing-card {
-  background: white;
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-  box-shadow: var(--shadow-md);
-  transition: all 0.3s ease;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  border: 1px solid #e0e0e0;  /* <-- Bu satırı çerçeve rengi */
-}
-
-/* Ana paketler için mavi çerçeve */
-.main-package {
-  border: 1px solid #3498db;
-}
-
-/* E-ticaret paketleri için yeşil çerçeve */
-.ecommerce-package {
-  border: 1px solid #2ecc71;
-}
-
-/* Süreç yönetimi paketleri için turuncu çerçeve */
-.process-package {
-  border: 1px solid #f39c12;
-}
-
-/* Oto servis paketleri için mor çerçeve */
-.service-package {
-  border: 1px solid #9b59b6;
-}
-    
-    .pricing-card:hover {
-      transform: translateY(-8px);
-      box-shadow: var(--shadow-lg);
-    }
-    
-    .pricing-card.featured {
-      border: 3px solid var(--primary-red);
-    }
-    
-    .popular-badge {
-      position: absolute;
-      top: 1rem;
-      right: 1rem;
-      background: var(--primary-red);
-      color: white;
-      padding: 0.5rem 1rem;
-      border-radius: 2rem;
-      font-size: 0.875rem;
-      font-weight: 600;
-      z-index: 20;
-    }
-    
-    .pricing-header {
-      padding: 2rem 2rem 1rem;
-      text-align: center;
-      border-bottom: 1px solid var(--secondary-light);
-      background: white;
-    }
-    
-    .package-name {
-      font-size: 1.25rem;
-      color: var(--text-dark);
-      font-weight: 700;
-      margin-bottom: 1rem;
-      line-height: 1.4;
-    }
-    
-    .price-container {
-      display: flex;
-      align-items: baseline;
-      justify-content: center;
-      gap: 0.25rem;
-      margin-bottom: 0.5rem;
-    }
-    
-    .price {
-      font-size: 3rem;
-      font-weight: 800;
-      color: var(--primary-red);
-      line-height: 1;
-    }
-    
-    .currency {
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: var(--primary-red);
-    }
-    
-    .period {
-      font-size: 1rem;
-      color: var(--text-gray);
-    }
-    
-    .package-note {
-      color: var(--text-light);
-      font-size: 0.875rem;
-      font-style: italic;
-      margin-top: 0.5rem;
-    }
-    
-    .package-features {
-      padding: 1.5rem 2rem;
-      flex-grow: 1;
-    }
-    
-    .feature-item {
-      padding: 0.25rem 0;
-      color: var(--text-gray);
-      font-size: 0.9rem;
-      line-height: 1.5;
-    }
-    
-    .feature-header {
-      margin-top: 0.5rem;
-      margin-bottom: 0.5rem;
-      font-weight: 700;
-      color: var(--text-dark);
-      background: var(--secondary-light);
-      padding: 0.5rem;
-      border-radius: var(--radius-md);
-    }
-    
-    .feature-icon {
-      display: inline-block;
-      width: 20px; /* <-- Bu satır ikon genişliğini belirler */
-      text-align: left;
-      margin-right: 0.5rem;
-      font-size: 0.9rem;
-    }
-    
-    .feature-icon.disabled {
-      color: var(--primary-red);
-    }
-    
-    .feature-text {
-      font-size: 0.9rem;
-    }
-    
-    .feature-text.disabled {
-      text-decoration: line-through;
-      color: #999;
-    }
-    
-    /* Details/Summary styles */
-    .feature-details,
-    .feature-subdetails {
-      margin: 0;
-    }
-    
-    .feature-summary,
-    .feature-subsummary {
-      cursor: pointer;
-      list-style: none;
-      display: flex;
-      align-items: center;
-      padding: 0.25rem 0;
-      font-weight: 600;
-      color: var(--text-dark);
-    }
-    
-    .feature-summary::-webkit-details-marker,
-    .feature-subsummary::-webkit-details-marker {
-      display: none;
-    }
-    
-    .feature-summary::before,
-    .feature-subsummary::before {
-      content: "▶";
-      display: inline-block;
-      width: 16px;
-      font-size: 0.7rem;
-      margin-right: 0.5rem;
-      transition: transform 0.2s;
-      color: var(--primary-red);
-    }
-    
-    details[open] > .feature-summary::before,
-    details[open] > .feature-subsummary::before {
-      transform: rotate(90deg);
-    }
-    
-    .feature-subitems {
-      margin-left: 2rem;
-      padding-left: 0.5rem;
-      border-left: 2px solid var(--secondary-light);
-    }
-    
-    .feature-subitem {
-      display: flex;
-      align-items: center;
-      padding: 0.2rem 0;
-      color: var(--text-gray);
-    }
-    
-    .feature-subitem.highlight {
-      color: var(--primary-red);
-    }
-    
-    .pricing-footer {
-      padding: 0 2rem 2rem;
-      background: white;
-    }
-    
-    /* Kontör Kartları */
-    .kontor-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 2rem;
-      max-width: 1000px;
-      margin: 0 auto;
-    }
-    
-    .kontor-card {
-      background: white;
-      border-radius: var(--radius-lg);
-      padding: 2rem;
-      text-align: center;
-      box-shadow: var(--shadow-md);
-      transition: all 0.3s ease;
-      border: 1px solid var(--secondary-light);
-    }
-    
-    .kontor-card:hover {
-      transform: translateY(-5px);
-      box-shadow: var(--shadow-lg);
-      border-color: var(--primary-red-light);
-    }
-    
-    .kontor-count {
-      font-size: 2rem;
-      font-weight: 800;
-      color: var(--primary-red);
-      line-height: 1.2;
-    }
-    
-    .kontor-label {
-      font-size: 1rem;
-      color: var(--text-gray);
-      margin-bottom: 1rem;
-    }
-    
-    .kontor-price {
-      font-size: 1.75rem;
-      font-weight: 700;
-      color: var(--text-dark);
-      display: inline-block;
-    }
-    
-    .kontor-price-small {
-      font-size: 1rem;
-      color: var(--text-gray);
-      display: inline-block;
-      margin-left: 0.25rem;
-    }
-    
-    .kontor-note {
-      font-size: 0.875rem;
-      color: var(--text-light);
-      margin-top: 0.5rem;
-    }
-    
-    /* CTA Section */
-    .cta-section {
-      background: linear-gradient(135deg, var(--secondary-dark), var(--primary-red));
-      color: white;
-    }
-    
-    .cta-title {
-      color: white;
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
-    }
-    
-    .cta-text {
-      color: rgba(255, 255, 255, 0.9);
-      font-size: 1.25rem;
-      max-width: 600px;
-      margin: 0 auto;
-      line-height: 1.6;
-    }
-    
-    .cta-buttons {
-      display: flex;
-      gap: 1rem;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-    
-    .btn-lg {
-      padding: 0.875rem 2rem;
-      font-size: 1.125rem;
-    }
-    
-    .btn-white {
-      color: white !important;
-      border-color: white !important;
-    }
-    
-    .btn-white:hover {
-      background: rgba(255, 255, 255, 0.1) !important;
-      color: white !important;
-    }
-    
-    /* Button Subtext */
-    .btn-subtext {
-      display: block;
-      font-size: 0.85rem;
-      opacity: 0.9;
-      margin-top: 0.25rem;
-      font-weight: normal;
-    }
-    
-    /* Buton hover yazı rengi düzeltmesi */
-    .btn-primary:hover {
-      color: #000 !important;
-    }
-    
-    /* Responsive */
-    @media (max-width: 768px) {
-      .page-title {
-        font-size: 2.5rem;
-      }
-      
-      .section-title {
-        font-size: 2rem;
-      }
-      
-      .pricing-grid,
-      .pricing-grid-2col {
-        grid-template-columns: 1fr;
-      }
-      
-      .cta-buttons {
-        flex-direction: column;
-      }
-      
-      .btn-lg {
-        width: 100%;
-      }
-      
-      .price {
-        font-size: 2.5rem;
-      }
-      
-      .kontor-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1rem;
-      }
-    }
-    
-    @media (max-width: 480px) {
-      .page-title {
-        font-size: 2rem;
-      }
-      
-      .page-subtitle {
-        font-size: 1.1rem;
-      }
-      
-      .info-box {
-        padding: 1rem;
-      }
-      
-      .pricing-header,
-      .package-features,
-      .pricing-footer {
-        padding-left: 1.5rem;
-        padding-right: 1.5rem;
-      }
-      
-      .kontor-grid {
-        grid-template-columns: 1fr;
-      }
-      
-      .circle-number {
-        width: 25px;
-        height: 25px;
-        font-size: 0.9rem;
-      }
-      
-    }
-    /* Yukarı Çık Butonu - Sol Versiyon */
-.scroll-to-top {
-  position: fixed;
-  bottom: 30px;
-  left: 30px;  /* right: 30px yerine left: 30px */
-  width: 50px;
-  height: 50px;
-  background: var(--primary-red);
-  color: white;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-decoration: none;
-  box-shadow: var(--shadow-lg);
-  opacity: 0;
-  visibility: hidden;
-  transition: all 0.3s ease;
-  z-index: 1000;
-}
-
-.scroll-to-top.visible {
-  opacity: 1;
-  visibility: visible;
-}
-
-.scroll-to-top:hover {
-  background: var(--primary-red-dark);
-  transform: translateY(-5px);
-  box-shadow: var(--shadow-xl);
-}
-
-.scroll-icon {
-  font-size: 1.8rem;
-  font-weight: bold;
-  line-height: 1;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  .scroll-to-top {
-    bottom: 20px;
-    left: 20px;  /* right: 20px yerine left: 20px */
-    width: 45px;
-    height: 45px;
+  .pricing-card {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 24px;
+    padding: 40px 30px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.04);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    overflow: hidden;
+  }
+  .pricing-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 6px;
+    background: #e2e8f0;
+    transition: background 0.3s ease;
+  }
+  .pricing-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 30px 60px rgba(0,0,0,0.08);
+  }
+  .pricing-card:hover::before {
+    background: linear-gradient(90deg, #4f46e5, #ec4899);
+  }
+  .pricing-card.featured {
+    border: 2px solid #4f46e5;
+    background: #ffffff;
+    box-shadow: 0 30px 60px rgba(79, 70, 229, 0.15);
+    transform: scale(1.02);
+  }
+  .pricing-card.featured::before {
+    background: linear-gradient(90deg, #4f46e5, #ec4899);
+  }
+  .pricing-card.featured:hover {
+    transform: scale(1.02) translateY(-10px);
   }
   
-  .scroll-icon {
+  .popular-badge {
+    position: absolute;
+    top: 15px;
+    right: -35px;
+    background: linear-gradient(90deg, #4f46e5, #ec4899);
+    color: white;
+    font-size: 0.8rem;
+    font-weight: 700;
+    padding: 5px 40px;
+    transform: rotate(45deg);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    z-index: 10;
+  }
+
+  .card-header {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  .card-header h3 {
     font-size: 1.5rem;
+    color: #0f172a;
+    font-weight: 700;
+    margin-bottom: 5px;
   }
-}
+  .card-header h4 {
+    font-size: 1rem;
+    color: #64748b;
+    margin-bottom: 15px;
+    font-weight: 500;
+  }
+  .price-box {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: 4px;
+    margin-bottom: 10px;
+    color: #0f172a;
+  }
+  .currency {
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+  .amount {
+    font-size: 3.5rem;
+    font-weight: 800;
+    letter-spacing: -1px;
+  }
+  .period {
+    font-size: 1rem;
+    color: #64748b;
+    font-weight: 500;
+  }
+  .note-badge {
+    display: inline-block;
+    background: #f0fdf4;
+    color: #16a34a;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    border: 1px solid #bbf7d0;
+  }
 
-@media (max-width: 480px) {
-  .scroll-to-top {
-    bottom: 15px;
-    left: 15px;  /* right: 15px yerine left: 15px */
-    width: 40px;
-    height: 40px;
+  /* Features List */
+  .features-list {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 30px;
   }
-  
-  .scroll-icon {
-    font-size: 1.3rem;
+  .feature-item {
+    display: flex;
+    flex-direction: column;
+    font-size: 0.95rem;
+    color: #334155;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #f1f5f9;
   }
-}
-  </style>
-  <script>
-  // Sayfa yüklendiğinde tüm detayları kapat
-  document.addEventListener('DOMContentLoaded', function() {
-    // Tüm feature-details ve feature-subdetails elementlerini bul
-    const details = document.querySelectorAll('.feature-details, .feature-subdetails');
-    
-    // Her birinden open attribute'unu kaldır
-    details.forEach(detail => {
-      detail.removeAttribute('open');
-    });
-  });
-</script>
+  .feature-item:last-child {
+    border-bottom: none;
+  }
+  .feature-item.disabled {
+    opacity: 0.5;
+    text-decoration: line-through;
+  }
+  .feature-item.highlight {
+    font-weight: 600;
+    color: #0f172a;
+  }
+  .feature-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .feature-icon {
+    font-size: 1.1rem;
+    width: 24px;
+    text-align: center;
+  }
 
-<!-- Yukarı Çık Butonu -->
-<a href="#" class="scroll-to-top" id="scrollToTop" aria-label="Sayfa Başına Çık">
-  <span class="scroll-icon">↑</span>
-</a>
+  /* Accordion Sub Features */
+  .sub-features {
+    margin-top: 8px;
+    padding-left: 34px;
+  }
+  .sub-features summary {
+    cursor: pointer;
+    font-size: 0.85rem;
+    color: #4f46e5;
+    font-weight: 600;
+    list-style: none;
+    transition: color 0.2s;
+  }
+  .sub-features summary:hover {
+    color: #3730a3;
+  }
+  .sub-features summary::-webkit-details-marker {
+    display: none;
+  }
+  .sub-items-content {
+    margin-top: 10px;
+    font-size: 0.85rem;
+    color: #475569;
+    padding: 10px;
+    background: #f8fafc;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+  }
+  .sub1 {
+    margin-bottom: 8px;
+  }
+  .sub1 strong {
+    color: #334155;
+    display: block;
+    margin-bottom: 4px;
+  }
+  .sub2-list {
+    padding-left: 15px;
+    margin: 0;
+    list-style-type: disc;
+    color: #64748b;
+  }
+
+  /* Buttons */
+  .card-footer {
+    margin-top: auto;
+  }
+  .btn-action {
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 14px 20px;
+    background: #0f172a;
+    color: white;
+    text-decoration: none;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+  }
+  .pricing-card.featured .btn-action {
+    background: linear-gradient(135deg, #4f46e5, #ec4899);
+    box-shadow: 0 4px 15px rgba(79, 70, 229, 0.4);
+  }
+  .btn-action:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  }
+  .pricing-card.featured .btn-action:hover {
+    box-shadow: 0 8px 25px rgba(79, 70, 229, 0.6);
+  }
+  .btn-action.outline {
+    background: transparent;
+    color: #0f172a;
+    border: 2px solid #0f172a;
+  }
+  .btn-action.outline:hover {
+    background: #0f172a;
+    color: white;
+  }
+
+  @media (max-width: 768px) {
+    .page-title { font-size: 2.5rem; }
+    .hero-features { flex-direction: column; gap: 10px; align-items: center; }
+    .pricing-card.featured { transform: scale(1); }
+    .pricing-card.featured:hover { transform: translateY(-5px); }
+  }
+</style>
 
 <script>
-  // Yukarı çık butonu için scroll olayı
-  document.addEventListener('DOMContentLoaded', function() {
-    const scrollButton = document.getElementById('scrollToTop');
-    
-    // Scroll olayını dinle
-    window.addEventListener('scroll', function() {
-      if (window.scrollY > 300) {
-        scrollButton.classList.add('visible');
-      } else {
-        scrollButton.classList.remove('visible');
-      }
-    });
-    
-    // Butona tıklandığında yumuşak scroll
-    scrollButton.addEventListener('click', function(e) {
-      e.preventDefault();
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
+  // Tab Navigation Logic
+  document.addEventListener('DOMContentLoaded', () => {
+    const tabBtns = document.querySelectorAll('.tab-btn');
+    const tabContents = document.querySelectorAll('.tab-content');
+
+    tabBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        // Remove active class from all buttons and contents
+        tabBtns.forEach(b => b.classList.remove('active'));
+        tabContents.forEach(c => c.classList.remove('active'));
+
+        // Add active class to clicked button and target content
+        btn.classList.add('active');
+        const targetId = btn.getAttribute('data-target');
+        document.getElementById(targetId).classList.add('active');
       });
     });
   });
 </script>
-
-</BaseLayout>

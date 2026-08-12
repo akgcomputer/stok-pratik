@@ -1,0 +1,101 @@
+{
+  "settings": {
+    "default_currency": "TRY",
+    "usd_try_exchange_rate": 34.50,
+    "vat_rate": 0.20
+  },
+  "packages": [
+    {
+      "id": "girisimci",
+      "name": "Girişimci Paket",
+      "rental_price": 149,
+      "rental_period": "monthly",
+      "rental_currency": "TRY",
+      "lifetime_available": false,
+      "lifetime_price": null,
+      "lifetime_currency": null,
+      "description": "Mikro işletmeler için temel e-Fatura ve ön muhasebe"
+    },
+    {
+      "id": "tek-magaza",
+      "name": "Tek Mağaza Paketi",
+      "rental_price": 999,
+      "rental_period": "monthly",
+      "rental_currency": "TRY",
+      "lifetime_available": true,
+      "lifetime_price": 129900,
+      "lifetime_currency": "TRY",
+      "description": "Ön Muhasebe Online + Tek Fiziksel Mağaza / POS"
+    },
+    {
+      "id": "eticaret-tek-magaza",
+      "name": "E-Ticaret & Tek Mağaza Paketi",
+      "rental_price": 1999,
+      "rental_period": "monthly",
+      "rental_currency": "TRY",
+      "lifetime_available": true,
+      "lifetime_price": 259000,
+      "lifetime_currency": "TRY",
+      "description": "E-Ticaret Entegrasyonu + Tek Mağaza Yönetimi"
+    },
+    {
+      "id": "eticaret-b2b",
+      "name": "E-Ticaret + B2B Paketi",
+      "rental_price": 2999,
+      "rental_period": "monthly",
+      "rental_currency": "TRY",
+      "lifetime_available": true,
+      "lifetime_price": 359000,
+      "lifetime_currency": "TRY",
+      "description": "Toptan B2B Portalı + Pazaryeri Entegrasyonu"
+    },
+    {
+      "id": "oto-servis",
+      "name": "Oto Servis & Yazılım Paketi",
+      "rental_price": 2499,
+      "rental_period": "monthly",
+      "rental_currency": "TRY",
+      "lifetime_available": true,
+      "lifetime_price": 169900,
+      "lifetime_currency": "TRY",
+      "description": "Servis Kabul, Araç Takip ve Yedek Parça Yönetimi"
+    },
+    {
+      "id": "crm-erp",
+      "name": "CRM + ERP Süreç Yönetimi Paketi",
+      "rental_price": 5999,
+      "rental_period": "monthly",
+      "rental_currency": "TRY",
+      "lifetime_available": true,
+      "lifetime_price": 579000,
+      "lifetime_currency": "TRY",
+      "description": "Gelişmiş Üretim, Müşteri ve Süreç Otomasyonu"
+    },
+    {
+      "id": "kuyumculuk",
+      "name": "GOLD Kuyumculuk Paketi",
+      "rental_price": 900,
+      "rental_period": "yearly",
+      "rental_currency": "USD",
+      "rental_notes": "Banka Entegrasyonu + Otomatik Özel Matrah + MASAK & KYC Dahil",
+      "lifetime_available": true,
+      "lifetime_price": 9000,
+      "lifetime_currency": "USD",
+      "lifetime_maintenance_fee": "400 USD / Yıl (2. yıldan itibaren)",
+      "description": "Kuyumcu & Maden İşletmelerine Özel Sertifikalı Çözüm"
+    }
+  ],
+  "add_ons": [
+    {
+      "id": "5-sube-eklenti",
+      "name": "+5 Şubeli Mağaza Eklentisi",
+      "trigger_condition": "stores > 1",
+      "rental_price": 4999,
+      "rental_period": "monthly",
+      "rental_currency": "TRY",
+      "lifetime_price": 199900,
+      "lifetime_currency": "TRY",
+      "description": "1 mağazadan fazla (2 ve üzeri) şube ihtiyaçlarında eklenir."
+    }
+  ]
+}

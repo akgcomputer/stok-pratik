@@ -1,6 +1,6 @@
 ---
 title: e-Arşiv Nedir, Nasıl Kesilir? Başlangıç İçin Adım Adım Uygulama Rehberi
-description: >
+description: >-
   e-Arşiv nedir, nasıl kesilir sorusuna başlangıç seviyesinde yanıt veren bu
   rehberde e-Arşiv fatura mantığını, kimlerin düzenlediğini ve adım adım e-Arşiv
   fatura kesme sürecini öğrenin. E-Arşiv, kağıt faturanın dijital versiyonudur.
@@ -10,9 +10,8 @@ description: >
 category: muhasebe-sistemleri
 author: Stok Pratik Ekibi
 tags: >-
-  `e-Arşiv Nedir`, `e-Arşiv Fatura`, `e-Arşiv Nasıl Kesilir`, `e-Arşiv ile
-  e-Fatura Arasındaki Fark`, `Dijital Fatura`, `Stok Pratik`, `e-Fatura
-  Zorunluluğu`
+  e-Arşiv Nedir, e-Arşiv Fatura, e-Arşiv Nasıl Kesilir, e-Arşiv ile e-Fatura
+  Arasındaki Fark, Dijital Fatura, Stok Pratik, e-Fatura Zorunluluğu
 ---
 ### **📌 e-Arşiv Fatura Ne Anlama Gelir?**
 

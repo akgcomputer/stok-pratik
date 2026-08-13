@@ -18,19 +18,7 @@ tags: >-
 
 ---
 
-## **Kısa Açıklama**
-
-Ürün Takip Sistemi (ÜTS), Sağlık Bakanlığı Türkiye İlaç ve Tıbbi Cihaz Kurumu (TİTCK) tarafından tıbbi cihaz ve kozmetik ürünlerin üretimden kullanıcıya kadar izlenebilmesi için kurulan ulusal takip altyapısıdır. Sahte, taklit ve onaysız ürünlerin piyasaya sürülmesini engellemeyi, kayıt dışı ekonomiyle mücadele etmeyi ve hasta güvenliğini sağlamayı amaçlayan bu sistem, sektörde faaliyet gösteren tüm firmalar için zorunludur.
-
----
-
-## **Etiketler**
-
-`Ürün Takip Sistemi`, `ÜTS`, `Sağlık Bakanlığı ÜTS`, `tıbbi cihaz takip sistemi`, `kozmetik ürün takip`, `ÜTS barkod`, `GS1 barkod entegrasyonu`, `TİTCK`, `medikal ürün takip`, `Stok Pratik`
-
----
-
-## **![](/images/blog/urun-takip-sistemi-uts-saglik-bakanligi/image.png)**
+## ![](/images/blog/urun-takip-sistemi-uts-saglik-bakanligi/image.png)
 
 ## **📌 ÜTS Nedir ve Neden Önemlidir?**
 
@@ -90,7 +78,7 @@ tags: >-
 
 ---
 
-## **![](/images/blog/urun-takip-sistemi-uts-saglik-bakanligi/image.png)**
+## ![](/images/blog/urun-takip-sistemi-uts-saglik-bakanligi/image.png)
 
 ## **📝 ÜTS Kayıt Süreci**
 

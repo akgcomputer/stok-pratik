@@ -18,19 +18,7 @@ tags: >-
 
 ---
 
-## **Kısa Açıklama**
-
-e-Arşiv Portalı, Gelir İdaresi Başkanlığı (GİB) tarafından işletmelere sunulan, faturaların dijital ortamda oluşturulmasını, gönderilmesini ve saklanmasını sağlayan resmi platformdur. Kağıt fatura dönemi resmen sona ererken, bu portal işletmelerin e-Arşiv fatura işlemlerini tek bir noktadan yönetmesine olanak tanır. Stok Pratik ile e-Arşiv süreçlerinizi otomatikleştirin, zamandan ve maliyetten tasarruf edin.
-
----
-
-## **Etiketler**
-
-`e-Arşiv Portalı`, `e-Arşiv fatura`, `GİB e-Arşiv`, `e-Arşiv nasıl kesilir`, `e-Arşiv başvuru`, `dijital fatura`, `Stok Pratik`, `e-fatura zorunluluğu 2026`
-
----
-
-## **![](/images/blog/e-arsiv-portali/image.png)**
+## ![](/images/blog/e-arsiv-portali/image.png)
 
 ## **📌 e-Arşiv Portalı Nedir?**
 
@@ -40,7 +28,7 @@ Portal, **e-Fatura sistemine kayıtlı olmayan alıcılara** (son kullanıcılar
 
 ---
 
-## **![](/images/blog/e-arsiv-portali/image.png)**
+## ![](/images/blog/e-arsiv-portali/image.png)
 
 ## **🔑 e-Arşiv Portalı'na Nasıl Giriş Yapılır?**
 
@@ -60,7 +48,7 @@ e-Devlet Kapısı üzerinden de GİB hizmetlerine erişerek e-Arşiv Portalı'na
 
 ---
 
-## **![](/images/blog/e-arsiv-portali/image.png)**
+## ![](/images/blog/e-arsiv-portali/image.png)
 
 ## **🛠️ e-Arşiv Portalı'nda Neler Yapabilirsiniz?**
 

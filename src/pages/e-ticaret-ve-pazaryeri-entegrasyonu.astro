@@ -1,0 +1,78 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const pageTitle = "E-Ticaret ve Pazaryeri Entegrasyon Programı | Stok Pratik";
+const pageDescription = "Trendyol, Hepsiburada, Amazon ve web sitenizi tek merkezden yönetin. Otomatik stok eşitleme, toplu e-Fatura kesme ve kargo takip sistemi.";
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <main class="bg-slate-50 text-slate-800 antialiased">
+    
+    <!-- HERO -->
+    <section class="relative overflow-hidden bg-gradient-to-b from-purple-900 to-slate-900 py-20 text-white">
+      <div class="container mx-auto px-4 max-w-5xl text-center">
+        <span class="inline-block px-4 py-1.5 mb-6 text-sm font-semibold tracking-wide text-purple-300 bg-purple-950/60 border border-purple-500/30 rounded-full">
+          🛒 Çok Kanallı Satış & Entegrasyon
+        </span>
+        <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight mb-6 leading-tight">
+          Tüm Pazaryerleri & E-Ticaret Mağazanız<br class="hidden sm:inline" />
+          <span class="text-purple-400">Tek Panelden Canlı Eşitlensin</span>
+        </h1>
+        <p class="text-lg sm:text-xl text-slate-300 max-w-3xl mx-auto mb-10 leading-relaxed">
+          Trendyol, Hepsiburada, Çiçeksepeti, Pazarama ve kendi e-ticaret sitenizdeki siparişleri tek ekranda toplayın; stoklarınızı otomatik güncelleyip faturalarınızı saniyeler içinde kesin.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+          <a href="https://wa.me/+905325000999?text=E-Ticaret%20ve%20Pazaryeri%20entegrasyonu%20hakkında%20bilgi%20almak%20istiyorum." target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto px-8 py-4 bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-bold text-lg rounded-xl shadow-lg transition duration-200 text-center">
+            Pazaryeri Demosu İsteyin
+          </a>
+          <a href="/paketlerimiz" class="w-full sm:w-auto px-8 py-4 bg-white/10 hover:bg-white/20 text-white font-semibold text-lg rounded-xl border border-white/20 transition duration-200 text-center">
+            Paketleri Karşılaştır
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- PAZARYERİ AVANTAJLARI -->
+    <section class="py-16 bg-white border-b border-slate-200">
+      <div class="container mx-auto px-4 max-w-5xl">
+        <div class="text-center mb-12">
+          <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 mb-3">E-Ticarette Hız ve Sıfır Stok Hatası</h2>
+          <p class="text-slate-600 max-w-2xl mx-auto">Çoklu kanalda satış yaparken stok tükenmesi veya çift sipariş karmaşasına son verin.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div class="p-6 rounded-2xl border border-slate-200 bg-slate-50">
+            <div class="text-3xl mb-4">🔄</div>
+            <h3 class="text-xl font-bold text-slate-900 mb-2">Otomatik Çift Yönlü Stok</h3>
+            <p class="text-slate-600 text-sm leading-relaxed">Bir kanaldan ürün satıldığında diğer tüm pazaryerlerindeki ve fiziksel mağazanızdaki stok miktarı anında düşer.</p>
+          </div>
+
+          <div class="p-6 rounded-2xl border border-slate-200 bg-slate-50">
+            <div class="text-3xl mb-4">📑</div>
+            <h3 class="text-xl font-bold text-slate-900 mb-2">Toplu E-Fatura & Kargo Fişi</h3>
+            <p class="text-slate-600 text-sm leading-relaxed">Gelen yüzlerce siparişi seçin, tek tıkla e-faturalarını kesin ve kargo barkod çıktılarını sırayla yazdırın.</p>
+          </div>
+
+          <div class="p-6 rounded-2xl border border-slate-200 bg-slate-50">
+            <div class="text-3xl mb-4">💼</div>
+            <h3 class="text-xl font-bold text-slate-900 mb-2">B2B Toptan Portalı Eklentisi</h3>
+            <p class="text-slate-600 text-sm leading-relaxed">İsteğe bağlı B2B modülüyle toptan bayilerinize özel fiyat listeleri tanımlayın ve kapalı devre sipariş toplayın.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="py-16 bg-slate-900 text-white text-center">
+      <div class="container mx-auto px-4 max-w-3xl">
+        <h2 class="text-3xl font-bold mb-4">Satış Kanallarınızı Tek Merkezden Yönetin</h2>
+        <p class="text-slate-400 mb-8">E-Ticaret ve Pazaryeri paketlerimizi inceleyin veya ihtiyacınıza göre yapılandırın.</p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="/fiyatlar" class="px-8 py-3.5 bg-purple-500 hover:bg-purple-600 text-white font-bold rounded-xl transition">Konfigüratörü Aç</a>
+          <a href="/paketlerimiz" class="px-8 py-3.5 bg-slate-800 hover:bg-slate-700 text-white font-semibold rounded-xl border border-slate-700 transition">Paketleri Gör</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</BaseLayout>

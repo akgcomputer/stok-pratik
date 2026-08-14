@@ -1,0 +1,78 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const pageTitle = "ERP ve Üretim Süreç Yönetimi Yazılımı | Stok Pratik";
+const pageDescription = "KOBİ'ler için hafif, hızlı ve bulut tabanlı ERP çözümü. Ürün reçeteleri, hammadde takibi, iş emirleri, maliyet analizi ve üretim planlama.";
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <main class="bg-slate-50 text-slate-800 antialiased">
+    
+    <!-- HERO -->
+    <section class="relative overflow-hidden bg-gradient-to-b from-indigo-950 to-slate-900 py-20 text-white">
+      <div class="container mx-auto px-4 max-w-5xl text-center">
+        <span class="inline-block px-4 py-1.5 mb-6 text-sm font-semibold tracking-wide text-indigo-300 bg-indigo-950/60 border border-indigo-500/30 rounded-full">
+          ⚙️ Kurumsal Süreç & Üretim Planlama
+        </span>
+        <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight mb-6 leading-tight">
+          Hammadde Girişinden Nihai Ürüne:<br class="hidden sm:inline" />
+          <span class="text-indigo-400">Akıllı ve Yalın ERP Yönetimi</span>
+        </h1>
+        <p class="text-lg sm:text-xl text-slate-300 max-w-3xl mx-auto mb-10 leading-relaxed">
+          Geleneksel ERP programlarının getirdiği hantallıktan kurtulun. Ürün ağaçları, reçeteler, fire oranları ve operasyonel maliyetlerinizi buluttan kolayca yönetin.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+          <a href="https://wa.me/+905325000999?text=ERP%20ve%20Üretim%20modülü%20hakkında%20detaylı%20sunum%20istiyorum." target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto px-8 py-4 bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-bold text-lg rounded-xl shadow-lg transition duration-200 text-center">
+            Kurumsal Sunum Talep Edin
+          </a>
+          <a href="/fiyatlar" class="w-full sm:w-auto px-8 py-4 bg-white/10 hover:bg-white/20 text-white font-semibold text-lg rounded-xl border border-white/20 transition duration-200 text-center">
+            Fiyatı Yapılandır
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ERP MODÜLLERİ -->
+    <section class="py-16 bg-white border-b border-slate-200">
+      <div class="container mx-auto px-4 max-w-5xl">
+        <div class="text-center mb-12">
+          <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 mb-3">Üretim Süreçlerinizi Uçtan Uca Kontrol Edin</h2>
+          <p class="text-slate-600 max-w-2xl mx-auto">Stok Pratik ERP modülü işletmenizin verimliliğini ve kârlılığını maksimize eder.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div class="p-6 rounded-2xl border border-slate-200 bg-slate-50">
+            <div class="text-3xl mb-4">🧪</div>
+            <h3 class="text-xl font-bold text-slate-900 mb-2">Reçete & Ürün Ağacı</h3>
+            <p class="text-slate-600 text-sm leading-relaxed">Nihai ürün için gerekli hammadde, yardımcı malzeme ve işçilik giderlerini tanımlayın; maliyeti anlık hesaplayın.</p>
+          </div>
+
+          <div class="p-6 rounded-2xl border border-slate-200 bg-slate-50">
+            <div class="text-3xl mb-4">📋</div>
+            <h3 class="text-xl font-bold text-slate-900 mb-2">İş Emirleri & İstasyonlar</h3>
+            <p class="text-slate-600 text-sm leading-relaxed">Üretim aşamalarını iş emrine bağlayın. Hangi istasyonda ne kadar hammadde harcandığını ve fireleri anlık izleyin.</p>
+          </div>
+
+          <div class="p-6 rounded-2xl border border-slate-200 bg-slate-50">
+            <div class="text-3xl mb-4">🏭</div>
+            <h3 class="text-xl font-bold text-slate-900 mb-2">Demirbaş & Bakım Takibi</h3>
+            <p class="text-slate-600 text-sm leading-relaxed">İşletmenizdeki makine, ekipman ve araçların zimmet, amortisman ve periyodik bakım takvimlerini aksatmadan yönetin.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="py-16 bg-slate-900 text-white text-center">
+      <div class="container mx-auto px-4 max-w-3xl">
+        <h2 class="text-3xl font-bold mb-4">Üretim Maliyetlerinizi Kontrol Altına Alın</h2>
+        <p class="text-slate-400 mb-8">Stok Pratik ERP paketini tek seferlik satın alma veya kiralama avantajıyla kullanmaya başlayın.</p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="/paketlerimiz" class="px-8 py-3.5 bg-indigo-500 hover:bg-indigo-600 text-white font-bold rounded-xl transition">ERP Paketini İncele</a>
+          <a href="/ozelliklerimiz" class="px-8 py-3.5 bg-slate-800 hover:bg-slate-700 text-white font-semibold rounded-xl border border-slate-700 transition">Modül Detayları</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</BaseLayout>

@@ -1,201 +1,534 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-
-const pageTitle = "Stok Pratik Çözüm Ortağı & Bayimiz Olun | %30 Yüksek Kâr ve Ömür Boyu Pasif Gelir";
-const pageDescription = "Stok Pratik iş ortağı olun! Hem tek seferlik satışlarda %30 net kâr kazanın hem de kiralama yapan müşterileriniz ödeme yaptığı sürece yıllarca süren düzenli pasif gelir elde edin.";
 ---
 
-<BaseLayout title={pageTitle} description={pageDescription}>
-  <main class="bg-slate-50 text-slate-800 antialiased">
-    
-    <!-- HERO SECTION -->
-    <section class="relative overflow-hidden bg-gradient-to-b from-blue-900 to-slate-900 py-20 text-white">
-      <div class="container mx-auto px-4 max-w-5xl text-center">
-        <span class="inline-block px-4 py-1.5 mb-6 text-sm font-semibold tracking-wide text-emerald-300 bg-emerald-950/60 border border-emerald-500/30 rounded-full">
-          🚀 Stok Pratik Çözüm Ortaklığı Programı
-        </span>
-        <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight mb-6 leading-tight">
-          İşletmelerin Dijital Dönüşümüne Öncülük Edin,<br class="hidden sm:inline" />
-          <span class="text-emerald-400">%30 Net Kazanç & Ömür Boyu Pasif Gelir</span> Elde Edin!
-        </h1>
-        <p class="text-lg sm:text-xl text-slate-300 max-w-3xl mx-auto mb-10 leading-relaxed">
-          Sıfır altyapı maliyeti ve kota baskısı olmadan; ön muhasebe, e-ticaret ve sektörel yazılım çözümlerimizi portföyünüze sunarak kazancınızı katlayın.
+<BaseLayout title="Bayilik ve Çözüm Ortaklığı - Stok Pratik ERP">
+  <!-- Hero Section -->
+  <section class="hero py-16">
+    <div class="container">
+      <div class="hero-content text-center">
+        <h1>Stok Pratik Bayisi Olun</h1>
+        <h2 class="hero-subtitle">İşletmelerin Dijital Dönüşümüne Öncülük Edin</h2>
+        <p class="hero-description">
+          Sıfır altyapı maliyeti ve kota baskısı olmadan; ön muhasebe, e-ticaret ve sektörel yazılım çözümlerimizi portföyünüze sunarak %30 net kazanç ve ömür boyu pasif gelir elde edin!
         </p>
-        <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-          <a href="#basvuru" class="w-full sm:w-auto px-8 py-4 bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-bold text-lg rounded-xl shadow-lg hover:shadow-emerald-500/25 transition duration-200 text-center">
-            Hemen Bayilik Başvurusu Yap
-          </a>
-          <a href="/paketlerimiz" class="w-full sm:w-auto px-8 py-4 bg-white/10 hover:bg-white/20 text-white font-semibold text-lg rounded-xl border border-white/20 transition duration-200 text-center">
-            Paketleri İncele
-          </a>
+        <a href="#basvur" class="btn btn-primary btn-lg">Hemen Bayilik Başvurusu Yap</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Avantajlar Grid -->
+  <section class="advantages py-16">
+    <div class="container">
+      <div class="section-header text-center">
+        <h2>Çift Yönlü Kazanç Modeli</h2>
+        <p>Müşterinizin tercihine göre ister tek seferlik yüksek kazanç elde edin, ister yıllarca sürecek düzenli nakit akışı oluşturun.</p>
+      </div>
+
+      <div class="advantages-grid">
+        <div class="advantage-card">
+          <div class="advantage-icon">💎</div>
+          <h3>Ömür Boyu Lisans Satışı</h3>
+          <p>İşletmelere tek seferlik ömür boyu lisans satışını yapın, gerçekleştirilen her satıştan anında <strong>%30 net kâr payı</strong> kazanın.</p>
+        </div>
+
+        <div class="advantage-card">
+          <div class="advantage-icon">🔄</div>
+          <h3>Kiralama & Pasif Gelir</h3>
+          <p>Kiralama modeliyle sisteme dahil ettiğiniz işletmeler hizmeti kullandığı ve ödeme yaptığı sürece her dönem düzenli hakediş alın.</p>
+        </div>
+
+        <div class="advantage-card">
+          <div class="advantage-icon">🛡️</div>
+          <h3>Sıfır Sunucu & Bakım Yükü</h3>
+          <p>Tüm sunucu, yedekleme ve güncellemeler bizim tarafımızdan yönetilir. Siz sadece satışa odaklanırsınız.</p>
+        </div>
+
+        <div class="advantage-card">
+          <div class="advantage-icon">🎯</div>
+          <h3>Kota veya Teminat Yok</h3>
+          <p>Aylık satış kotaları veya yüksek bayilik giriş ücretleri olmadan doğrudan ortaklığınızı başlatabilirsiniz.</p>
+        </div>
+
+        <div class="advantage-card">
+          <div class="advantage-icon">🤝</div>
+          <h3>Birebir Eğitim ve Destek</h3>
+          <p>Satış öncesi ve sonrası süreçlerde, demo sunumlarında ve kurulumlarda tam destek sağlıyoruz.</p>
+        </div>
+
+        <div class="advantage-card">
+          <div class="advantage-icon">💼</div>
+          <h3>Geniş Ürün Yelpazesi</h3>
+          <p>Ön muhasebeden oto servis yazılımına kadar her sektörden işletmeye tam ihtiyacı olan çözümü rahatlıkla sunabilirsiniz.</p>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- KAZANÇ VE İŞ MODELİ SECTION -->
-    <section class="py-16 bg-white border-b border-slate-200">
-      <div class="container mx-auto px-4 max-w-5xl">
-        <div class="text-center mb-12">
-          <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 mb-3">Çift Yönlü Kazanç Modeli</h2>
-          <p class="text-slate-600 max-w-2xl mx-auto">
-            Müşterinizin tercihine göre ister tek seferlik yüksek kazanç elde edin, ister yıllarca sürecek düzenli nakit akışı oluşturun.
+  <!-- Motivasyon Sections -->
+  <section class="motivation py-16">
+    <div class="container">
+      <div class="motivation-grid">
+        <div class="motivation-card">
+          <div class="motivation-content">
+            <h2>Hangi Çözümleri Sunacaksınız?</h2>
+            <p>
+              Geniş ürün yelpazemiz sayesinde her bütçeye ve her sektöre uygun modüler çözümler sunun. Ön muhasebe, POS, E-Ticaret ve özel sektörel paketlerle müşterilerinizi dijitalleştirin.
+            </p>
+            <ul class="motivation-list">
+              <li>✓ Ön Muhasebe & POS</li>
+              <li>✓ E-Ticaret ve Pazaryeri</li>
+              <li>✓ Oto Servis & Yedek Parça</li>
+              <li>✓ Kuyumcu & Market Çözümleri</li>
+            </ul>
+          </div>
+          <div class="motivation-image">
+            <div class="image-placeholder">
+              <span style="font-size: 4rem;">📦</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="motivation-card reverse">
+          <div class="motivation-content">
+            <h2>Kazanmaya Bugün Başlayın</h2>
+            <p>
+              Özellikle Mali Müşavirler, Donanım & POS Satıcıları, Bilişim Teknik Servisleri ve E-Ticaret Danışmanları için benzersiz bir ek gelir ve iş büyütme fırsatı!
+            </p>
+            <ul class="motivation-list">
+              <li>✓ Garantili ömür boyu pasif gelir</li>
+              <li>✓ %30 net satış hakedişi</li>
+              <li>✓ Güçlü altyapı ve marka bilinirliği</li>
+              <li>✓ Sürekli teknik destek</li>
+            </ul>
+          </div>
+          <div class="motivation-image">
+            <div class="image-placeholder">
+              <span style="font-size: 4rem;">🚀</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Nasıl Çalışır -->
+  <section class="how-it-works py-16">
+    <div class="container">
+      <div class="section-header text-center">
+        <h2>Bayilik Süreci Nasıl İşliyor?</h2>
+        <p>3 adımda Stok Pratik bayisi olun</p>
+      </div>
+
+      <div class="steps-grid">
+        <div class="step">
+          <div class="step-number">1</div>
+          <h3>Başvuru Yap</h3>
+          <p>Aşağıdaki form veya WhatsApp üzerinden ön başvurunuzu tamamlayın.</p>
+        </div>
+
+        <div class="step">
+          <div class="step-number">2</div>
+          <h3>Sözleşme ve Eğitim</h3>
+          <p>Karşılıklı anlaşmanın ardından ürün ve satış eğitimlerini alın.</p>
+        </div>
+
+        <div class="step">
+          <div class="step-number">3</div>
+          <h3>Satışa Başla ve Kazan</h3>
+          <p>Hemen sahaya inerek işletmeleri dijitalleştirin ve komisyonlarınızı alın.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Başvuru Formu -->
+  <section class="application py-16" id="basvur">
+    <div class="container">
+      <div class="application-card">
+        <div class="application-content">
+          <h2>Bayimiz Olmak İçin İlk Adımı Atın</h2>
+          <p>
+            Aşağıdaki butona tıklayarak WhatsApp üzerinden doğrudan yetkili ekibimizle görüşebilir veya bilgilerinizi ileterek aynı gün içinde bayiliğinizi başlatabilirsiniz.
           </p>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <!-- Model 1: Satış -->
-          <div class="p-8 rounded-2xl border border-slate-200 bg-slate-50 hover:shadow-md transition">
-            <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-xl flex items-center justify-center text-2xl font-bold mb-5">
-              💎
-            </div>
-            <h3 class="text-xl font-bold text-slate-900 mb-3">Ömür Boyu Lisans Satışı</h3>
-            <p class="text-slate-600 leading-relaxed mb-4">
-              İşletmelere tek seferlik ömür boyu lisans paketlerimizin satışını yapın, gerçekleştirilen her satıştan anında <strong class="text-slate-900 font-semibold">%30 net kâr payı</strong> kazanın.
-            </p>
-            <span class="text-sm font-medium text-blue-600">Yüksek nakit dönüşümü & anında hakediş.</span>
-          </div>
-
-          <!-- Model 2: Kiralama (Pasif Gelir) -->
-          <div class="p-8 rounded-2xl border border-emerald-200 bg-emerald-50/50 hover:shadow-md transition relative">
-            <span class="absolute top-4 right-4 text-xs font-bold bg-emerald-200 text-emerald-800 px-3 py-1 rounded-full">
-              Sürekli Kazanç
-            </span>
-            <div class="w-12 h-12 bg-emerald-100 text-emerald-600 rounded-xl flex items-center justify-center text-2xl font-bold mb-5">
-              🔄
-            </div>
-            <h3 class="text-xl font-bold text-slate-900 mb-3">Kiralama & Ömür Boyu Pasif Gelir</h3>
-            <p class="text-slate-600 leading-relaxed mb-4">
-              Kiralama modeliyle sisteme dahil ettiğiniz işletmeler hizmeti kullandığı ve ödeme yaptığı sürece (10 yıl, 20 yıl fark etmeksizin) <strong class="text-slate-900 font-semibold">her dönem düzenli hakedişinizi almaya devam edersiniz.</strong>
-            </p>
-            <span class="text-sm font-medium text-emerald-700 font-semibold">Bayilik statünüz korunduğu sürece garantili gelir.</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- SEKTÖREL ÇÖZÜMLER & İÇ LİNKLER -->
-    <section class="py-16 bg-slate-50">
-      <div class="container mx-auto px-4 max-w-5xl">
-        <div class="text-center mb-12">
-          <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 mb-3">Hangi Çözümleri Sunacaksınız?</h2>
-          <p class="text-slate-600 max-w-2xl mx-auto">
-            Geniş ürün yelpazemiz sayesinde her sektörden işletmeye tam ihtiyacı olan çözümü rahatlıkla sunabilirsiniz.
-          </p>
-        </div>
-
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          <div class="p-6 bg-white rounded-xl border border-slate-200 flex flex-col justify-between">
-            <div>
-              <h4 class="font-bold text-lg text-slate-900 mb-2">Ön Muhasebe & POS</h4>
-              <p class="text-sm text-slate-600 mb-4">Hızlı satış, barkod entegrasyonu, stok, cari ve e-fatura takibi.</p>
-            </div>
-            <a href="/ozelliklerimiz" class="text-blue-600 font-medium text-sm hover:underline inline-flex items-center">
-              Özellikleri İncele &rarr;
-            </a>
-          </div>
-
-          <div class="p-6 bg-white rounded-xl border border-slate-200 flex flex-col justify-between">
-            <div>
-              <h4 class="font-bold text-lg text-slate-900 mb-2">Oto Servis Yazılımı</h4>
-              <p class="text-sm text-slate-600 mb-4">Araç kabul, iş emri, yedek parça ve servis bakım süreç yönetimi.</p>
-            </div>
-            <a href="/oto-tamir-yazilimi" class="text-blue-600 font-medium text-sm hover:underline inline-flex items-center">
-              Oto Servis Çözümünü Gör &rarr;
-            </a>
-          </div>
-
-          <div class="p-6 bg-white rounded-xl border border-slate-200 flex flex-col justify-between">
-            <div>
-              <h4 class="font-bold text-lg text-slate-900 mb-2">GOLD Kuyumculuk</h4>
-              <p class="text-sm text-slate-600 mb-4">Özel matrah, MASAK uyumu ve kuyumculara özel maden takip altyapısı.</p>
-            </div>
-            <a href="/kuyumculuk-yazilimi" class="text-blue-600 font-medium text-sm hover:underline inline-flex items-center">
-              Kuyumcu Paketini İncele &rarr;
-            </a>
-          </div>
-        </div>
-
-        <div class="mt-8 text-center">
-          <p class="text-slate-600 text-sm">
-            Farklı bütçeler ve yapılandırmalar için 
-            <a href="/fiyatlar" class="text-blue-600 font-semibold underline">Fiyat Yapılandırma</a> ve 
-            <a href="/paketlerimiz" class="text-blue-600 font-semibold underline">Tüm Paketler</a> sayfalarımızı ziyaret edebilirsiniz.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- NEDEN STOK PRATİK BAYİLİĞİ? -->
-    <section class="py-16 bg-white border-t border-slate-200">
-      <div class="container mx-auto px-4 max-w-5xl">
-        <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 text-center mb-12">İş Ortaklarımıza Sağladığımız Ayrıcalıklar</h2>
-        
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div class="text-center">
-            <div class="w-14 h-14 mx-auto bg-slate-100 rounded-2xl flex items-center justify-center text-2xl mb-4">
-              🛡️
-            </div>
-            <h3 class="font-bold text-lg text-slate-900 mb-2">Sıfır Sunucu & Bakım Yükü</h3>
-            <p class="text-sm text-slate-600 leading-relaxed">
-              Tüm sunucu, yedekleme ve mevzuat güncellemeleri bizim tarafımızdan yönetilir. Siz sadece satışa ve müşteri ilişkilerine odaklanırsınız.
-            </p>
-          </div>
-
-          <div class="text-center">
-            <div class="w-14 h-14 mx-auto bg-slate-100 rounded-2xl flex items-center justify-center text-2xl mb-4">
-              🎯
-            </div>
-            <h3 class="font-bold text-lg text-slate-900 mb-2">Kota veya Teminat Yok</h3>
-            <p class="text-sm text-slate-600 leading-relaxed">
-              Sözleşme bağlayıcılığı, aylık satış kotaları veya yüksek bayilik giriş ücretleri olmadan doğrudan ortaklığınızı başlatabilirsiniz.
-            </p>
-          </div>
-
-          <div class="text-center">
-            <div class="w-14 h-14 mx-auto bg-slate-100 rounded-2xl flex items-center justify-center text-2xl mb-4">
-              🤝
-            </div>
-            <h3 class="font-bold text-lg text-slate-900 mb-2">Birebir Eğitim ve Destek</h3>
-            <p class="text-sm text-slate-600 leading-relaxed">
-              Satış öncesi ve sonrası süreçlerde teknik ekibimiz her zaman yanınızda. Demo sunumlarında ve kurulumlarda tam destek sağlıyoruz.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- BAŞVURU FORMU / CTA SECTION -->
-    <section id="basvuru" class="py-20 bg-slate-900 text-white">
-      <div class="container mx-auto px-4 max-w-3xl text-center">
-        <h2 class="text-3xl font-extrabold mb-4">Bayimiz Olmak İçin İlk Adımı Atın</h2>
-        <p class="text-slate-400 mb-10">
-          Aşağıdaki butona tıklayarak WhatsApp üzerinden doğrudan yetkili ekibimizle görüşebilir veya bilgilerinizi ileterek aynı gün içinde iş ortaklığınızı başlatabilirsiniz.
-        </p>
-
-        <div class="bg-slate-800/80 p-8 rounded-3xl border border-slate-700 backdrop-blur-sm max-w-xl mx-auto shadow-2xl">
-          <div class="flex flex-col gap-4">
+          
+          <div class="application-buttons">
             <a 
               href="https://wa.me/+905325000999?text=Merhaba,%20Stok%20Pratik%20bayilik%20ve%20%C3%A7%C3%B6z%C3%BCm%20ortakl%C4%B1%C4%9F%C4%B1%20hakk%C4%B1nda%20g%C3%B6r%C3%BC%C5%9Fmek%20istiyorum." 
-              target="_blank" 
+              class="btn btn-primary btn-lg btn-whatsapp"
+              target="_blank"
               rel="noopener noreferrer"
-              class="w-full py-4 px-6 bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-bold text-lg rounded-xl shadow-lg transition duration-200 flex items-center justify-center gap-3"
             >
-              <span>💬</span> WhatsApp ile Hızlı Başvuru Yap
+              <span style="margin-right: 6px;">💬 WhatsApp ile Hızlı Başvuru Yap</span> 
             </a>
             
             <a 
               href="tel:+905325000999" 
-              class="w-full py-3 px-6 bg-slate-700 hover:bg-slate-600 text-white font-medium text-sm rounded-xl transition duration-200"
+              class="btn btn-secondary btn-lg"
             >
-              📞 Doğrudan Telefon ile İletişime Geç
+              <span class="btn btn-primary btn-lg">📞 Doğrudan Telefon ile İletişime Geç</span > 
             </a>
           </div>
-          <p class="text-xs text-slate-400 mt-6">
-            Mali Müşavirler, Donanım & POS Satıcıları, Bilişim Teknik Servisleri ve E-Ticaret Danışmanları için başvurular öncelikli olarak değerlendirilir.
-          </p>
+          
+          <div class="application-info">
+            <p><strong>Öncelikli Değerlendirilen Başvurular:</strong></p>
+            <ul>
+              <li>Mali Müşavirler</li>
+              <li>Donanım & POS Satıcıları</li>
+              <li>Bilişim Teknik Servisleri</li>
+              <li>E-Ticaret ve Marka Danışmanları</li>
+              <li>Franchise bedeli veya kota istenmemektedir.</li>
+            </ul>
+          </div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-  </main>
+  <style>
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(135deg, var(--primary-red), var(--primary-red-dark));
+      color: white;
+    }
+
+    .hero h1 {
+      color: white;
+      margin-bottom: var(--spacing-sm);
+      font-size: 3rem;
+    }
+
+    .hero-subtitle {
+      font-size: 1.75rem;
+      color: rgba(255, 255, 255, 0.9);
+      margin-bottom: var(--spacing-md);
+      font-weight: 600;
+    }
+
+    .hero-description {
+      font-size: 1.25rem;
+      color: rgba(255, 255, 255, 0.8);
+      max-width: 800px;
+      margin: 0 auto var(--spacing-lg);
+      line-height: 1.6;
+    }
+
+    .btn-lg {
+      padding: 1rem 2rem;
+      font-size: 1.1rem;
+      font-weight: 600;
+    }
+
+    /* Advantages Section */
+    .advantages {
+      background-color: var(--bg-white);
+    }
+
+    .section-header h2 {
+      color: var(--primary-red);
+      margin-bottom: var(--spacing-sm);
+    }
+
+    .section-header p {
+      color: var(--text-gray);
+      font-size: 1.125rem;
+      margin-bottom: var(--spacing-xl);
+    }
+
+    .advantages-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: var(--spacing-lg);
+    }
+
+    .advantage-card {
+      background: var(--bg-white);
+      padding: var(--spacing-xl);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-md);
+      text-align: center;
+      border: 2px solid var(--primary-red-light);
+      transition: transform var(--transition-normal);
+    }
+
+    .advantage-card:hover {
+      transform: translateY(-10px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .advantage-icon {
+      font-size: 3rem;
+      margin-bottom: var(--spacing-md);
+    }
+
+    .advantage-card h3 {
+      color: var(--primary-red);
+      margin-bottom: var(--spacing-md);
+    }
+
+    .advantage-card p {
+      color: var(--text-gray);
+      line-height: 1.6;
+    }
+
+    /* Motivation Sections */
+    .motivation {
+      background-color: var(--bg-light);
+    }
+
+    .motivation-grid {
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-xl);
+    }
+
+    .motivation-card {
+      background: var(--bg-white);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+    }
+
+    .motivation-card.reverse {
+      direction: rtl;
+    }
+
+    .motivation-card.reverse .motivation-content {
+      direction: ltr;
+      text-align: left;
+    }
+
+    .motivation-card.reverse .motivation-list {
+      direction: ltr;
+    }
+
+    .motivation-content {
+      padding: var(--spacing-xl);
+    }
+
+    .motivation-content h2 {
+      color: var(--primary-red);
+      margin-bottom: var(--spacing-md);
+    }
+
+    .motivation-content p {
+      color: var(--text-dark);
+      line-height: 1.6;
+      margin-bottom: var(--spacing-lg);
+    }
+
+    .motivation-list {
+      list-style: none;
+    }
+
+    .motivation-list li {
+      padding: var(--spacing-xs) 0;
+      color: var(--text-dark);
+    }
+
+    .motivation-list li::before {
+      content: "✓";
+      color: var(--primary-red);
+      font-weight: bold;
+      margin-right: 10px;
+    }
+
+    .motivation-image {
+      padding: var(--spacing-xl);
+      background: linear-gradient(135deg, var(--primary-red-light), var(--primary-red));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+    }
+
+    .image-placeholder {
+      text-align: center;
+      color: white;
+    }
+
+    /* How It Works */
+    .how-it-works {
+      background-color: var(--bg-white);
+    }
+
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: var(--spacing-lg);
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .step {
+      text-align: center;
+      padding: var(--spacing-lg);
+      position: relative;
+    }
+
+    .step-number {
+      width: 60px;
+      height: 60px;
+      background: linear-gradient(135deg, var(--primary-red), var(--primary-red-dark));
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin: 0 auto var(--spacing-md);
+    }
+
+    .step h3 {
+      color: var(--primary-red);
+      margin-bottom: var(--spacing-sm);
+    }
+
+    .step p {
+      color: var(--text-gray);
+      line-height: 1.6;
+    }
+
+    /* Application Section */
+    .application {
+      background: linear-gradient(135deg, var(--primary-red-light), var(--bg-light));
+    }
+
+    .application-card {
+      background: var(--bg-white);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-lg);
+      padding: var(--spacing-xl);
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .application-content h2 {
+      color: var(--primary-red);
+      margin-bottom: var(--spacing-md);
+      text-align: center;
+    }
+
+    .application-content p {
+      color: var(--text-dark);
+      text-align: center;
+      margin-bottom: var(--spacing-xl);
+      line-height: 1.6;
+    }
+
+    .application-buttons {
+      display: flex;
+      gap: var(--spacing-md);
+      justify-content: center;
+      margin-bottom: var(--spacing-xl);
+    }
+
+    .btn-whatsapp {
+      background: linear-gradient(135deg, #25D366, #128C7E);
+      border-color: #25D366;
+      color: white;
+    }
+
+    .btn-whatsapp:hover {
+      background: linear-gradient(135deg, #128C7E, #075E54);
+      border-color: #128C7E;
+    }
+
+    .application-info {
+      background: var(--primary-red-light);
+      padding: var(--spacing-lg);
+      border-radius: var(--radius-md);
+    }
+
+    .application-info p {
+      text-align: left;
+      margin-bottom: var(--spacing-sm);
+    }
+
+    .application-info ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .application-info li {
+      padding: var(--spacing-xs) 0;
+      padding-left: var(--spacing-lg);
+      position: relative;
+    }
+
+    .application-info li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: var(--primary-red);
+      font-size: 1.2rem;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 992px) {
+      .motivation-card {
+        grid-template-columns: 1fr;
+      }
+      
+      .motivation-card.reverse {
+        direction: ltr;
+      }
+      
+      .motivation-image {
+        min-height: 200px;
+      }
+      
+      .application-buttons {
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+      
+      .hero-subtitle {
+        font-size: 1.5rem;
+      }
+      
+      .hero-description {
+        font-size: 1.1rem;
+      }
+      
+      .advantages-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .steps-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .advantage-card,
+      .motivation-content,
+      .application-card {
+        padding: var(--spacing-lg);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero h1 {
+        font-size: 2rem;
+      }
+      
+      .hero-subtitle {
+        font-size: 1.25rem;
+      }
+      
+      .btn-lg {
+        padding: 0.75rem 1.5rem;
+        font-size: 1rem;
+      }
+    }
+  </style>
 </BaseLayout>

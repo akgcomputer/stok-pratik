@@ -18,110 +18,145 @@ const sectors = [
   { name: "Mermer & Doğal Taş", slug: "mermer-ve-dogal-tas", icon: "🪨", desc: "Plaka, kasa, m2/ton hesabı ve konteyner bazlı ihracat." },
   { name: "İş Elbiseleri & KKD", slug: "is-elbiseleri-ve-kkd", icon: "🦺", desc: "Kurumsal logo baskı takibi ve periyodik toplu siparişler." },
 ];
+
+// Slider için sektör görselleri (resimleri public/images/sektorler/ klasörüne koyun)
+// Örnek: gelinlik-ve-abiye.jpg, tekstil-ve-hazir-giyim.jpg, ...
+const sliderImages = sectors.map(s => ({
+  slug: s.slug,
+  name: s.name,
+  image: `/images/sektorler/${s.slug}.jpg`, // Kendi resimlerinizi buraya ekleyin
+}));
 ---
 
 <BaseLayout title={pageTitle} description={pageDescription}>
-  <!-- Hero Section -->
-  <section class="hero py-16">
+  <!-- Hero + Slider Birlikte -->
+  <section class="hero-slider-wrapper">
     <div class="container">
-      <div class="hero-content text-center">
-        <div style="display: inline-block; padding: 0.5rem 1rem; margin-bottom: 1.5rem; font-size: 0.875rem; font-weight: 600; letter-spacing: 0.05em; color: #a5b4fc; background-color: rgba(30, 27, 75, 0.7); border: 1px solid rgba(99, 102, 241, 0.3); border-radius: 9999px;">
-          🌐 Yazılım + B2B/B2C Pazaryeri & İhracat Ekosistemi
+      <div class="hero-slider-grid">
+        <!-- Sol: Hero Metin -->
+        <div class="hero-content">
+          <div class="badge">🌐 Yazılım + B2B/B2C Pazaryeri & İhracat Ekosistemi</div>
+          <h1>
+            İster Tek Tek Perakende,<br />
+            İster Koli Koli Toptan:<br />
+            <span class="highlight">DepodanDirekt</span> ile Dünyaya Satın
+          </h1>
+          <p class="hero-description">
+            Stok Pratik ile deponuzu ve ön muhasebenizi yönetirken; tek tıkla ürünlerinizi çok dilli ve çok para birimli DepodanDirekt platformunda satışa açın.
+          </p>
+          <div class="hero-buttons">
+            <a href="#sektorler" class="btn btn-primary">Sektörünüzü Seçin</a>
+            <a href="https://depodandirekt.com" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">DepodanDirekt.com'u Gör ↗</a>
+          </div>
         </div>
-        <h1>
-          İster Tek Tek Perakende, İster Koli Koli Toptan:<br/>
-          DepodanDirekt ile Dünyaya Satın
-        </h1>
-        <p class="hero-description">
-          Stok Pratik ile deponuzu ve ön muhasebenizi yönetirken; tek tıkla ürünlerinizi çok dilli ve çok para birimli DepodanDirekt platformunda satışa açın.
-        </p>
-        <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
-          <a href="#sektorler" class="btn btn-primary btn-lg" style="background: linear-gradient(135deg, #10b981, #059669); border: none; color: white;">
-            Sektörünüzü Seçin
-          </a>
-          <a href="https://depodandirekt.com" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-lg" style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: white;">
-            DepodanDirekt.com'u Gör ↗
-          </a>
+
+        <!-- Sağ: Sektör Slider -->
+        <div class="slider-container">
+          <div class="slider-track" id="sliderTrack">
+            {sliderImages.map((item) => (
+              <div class="slide-item">
+                <img src={item.image} alt={item.name} loading="lazy" />
+                <div class="slide-label">{item.name}</div>
+              </div>
+            ))}
+            <!-- İlk slidi tekrar ekleyerek sonsuz döngü sağlıyoruz (JS ile yönetilecek) -->
+          </div>
+          <!-- Ok Butonları -->
+          <button class="slider-btn prev" id="prevBtn">‹</button>
+          <button class="slider-btn next" id="nextBtn">›</button>
+          <!-- Nokta Göstergeleri -->
+          <div class="slider-dots" id="sliderDots"></div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Avantajlar Grid -->
-  <section class="advantages py-16">
+  <!-- Avantajlar (6 kart) -->
+  <section class="advantages">
     <div class="container">
+      <div class="section-header text-center">
+        <h2>Neden Stok Pratik & DepodanDirekt?</h2>
+        <p>İşinizi büyütmek için ihtiyacınız olan tüm araçlar tek bir ekosistemde.</p>
+      </div>
       <div class="advantages-grid">
         <div class="advantage-card">
           <div class="advantage-icon">🔄</div>
           <h3>Otomatik Canlı Stok</h3>
           <p>Stok Pratik'e girdiğiniz her ürün ve miktar anında vitrinde güncellenir. Çift veri girişi gerekmez.</p>
         </div>
-
         <div class="advantage-card">
           <div class="advantage-icon">🌍</div>
           <h3>Çoklu Dil & Para Birimi</h3>
-          <p>Ürünleriniz Türkçe, İngilizce, Arapça ve Rusça sergilenir; USD ve EUR cinsinden ödeme ve sipariş alabilirsiniz.</p>
+          <p>Ürünleriniz Türkçe, İngilizce, Arapça ve Rusça sergilenir; USD ve EUR cinsinden ödeme alabilirsiniz.</p>
         </div>
-
         <div class="advantage-card">
           <div class="advantage-icon">🎛️</div>
           <h3>Esnek Fiyatlandırma</h3>
-          <p>İster adetli perakende fiyat belirleyin, ister minimum koli/seri adedi koyarak toptan esnaf fiyatı uygulayın.</p>
+          <p>Perakende fiyat, toptan esnaf fiyatı veya kampanya fiyatı – hepsi sizin kontrolünüzde.</p>
+        </div>
+        <div class="advantage-card">
+          <div class="advantage-icon">📦</div>
+          <h3>Entegre Lojistik</h3>
+          <p>Anlaşmalı kargo firmaları ile otomatik gönderim ve takip numarası oluşturma.</p>
+        </div>
+        <div class="advantage-card">
+          <div class="advantage-icon">📊</div>
+          <h3>Detaylı Raporlama</h3>
+          <p>Satış, stok, kâr analizleri ve ihracat özetleri ile işinizi veriyle yönetin.</p>
+        </div>
+        <div class="advantage-card">
+          <div class="advantage-icon">🔒</div>
+          <h3>Güvenli Altyapı</h3>
+          <p>SSL, PCI-DSS ve KVKK uyumlu sistem ile müşteri verileriniz güvende.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Sektörler Listesi -->
-  <section id="sektorler" class="advantages py-16" style="background-color: var(--bg-light);">
+  <!-- Sektörler Listesi (Kartlar) -->
+  <section id="sektorler" class="sectors">
     <div class="container">
       <div class="section-header text-center">
-        <h2>Sektörünüze Özel Çözümü İnceleyin</h2>
-        <p>Hangi sektörde faaliyet gösteriyorsanız gösterin, atölyenizden veya deponuzdan doğrudan satış yapmanızı sağlayan altyapı hazır.</p>
+        <h2>Sektörünüze Özel Çözüm</h2>
+        <p>Hangi sektörde olursanız olun, atölyenizden veya deponuzdan doğrudan satış yapmanızı sağlayan altyapı hazır.</p>
       </div>
-
-      <div class="advantages-grid" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));">
+      <div class="sectors-grid">
         {sectors.map((s) => (
-          <a href={`/sektor/${s.slug}`} class="advantage-card" style="text-decoration: none; display: flex; flex-direction: column; justify-content: space-between;">
-            <div>
-              <div class="advantage-icon">{s.icon}</div>
-              <h3 style="margin-bottom: 0.5rem; font-size: 1.1rem; color: #1e293b;">{s.name}</h3>
-              <p style="font-size: 0.85rem; color: #64748b; line-height: 1.5; margin-bottom: 1rem;">{s.desc}</p>
-            </div>
-            <span style="color: #4f46e5; font-size: 0.85rem; font-weight: 600; text-decoration: none;">Detayları Gör &rarr;</span>
+          <a href={`/sektor/${s.slug}`} class="sector-card">
+            <div class="sector-icon">{s.icon}</div>
+            <h3>{s.name}</h3>
+            <p>{s.desc}</p>
+            <span class="sector-link">Detayları Gör →</span>
           </a>
         ))}
       </div>
     </div>
   </section>
 
-  <!-- Başvuru Formu -->
-  <section class="application py-16">
+  <!-- Başvuru / Form -->
+  <section class="application">
     <div class="container">
       <div class="application-card">
         <div class="application-content">
           <h2>Ürünlerinizi DepodanDirekt Vitrinine Taşıyın</h2>
-          <p>
-            Stok Pratik paketlerimizle entegre çalışan B2B/B2C ekosistemimiz hakkında doğrudan bilgi alın.
-          </p>
-          
-          <div class="application-buttons">
-            <a 
-              href="https://wa.me/+905325000999?text=Pazaryeri%20ve%20ihracat%20çözümleri%20hakkında%20bilgi%20almak%20istiyorum." 
-              class="btn btn-primary btn-lg"
-              style="background: linear-gradient(135deg, #10b981, #059669); border: none;"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              WhatsApp ile Hemen Görüşün
-            </a>
-            
-            <a 
-              href="/fiyatlar" 
-              class="btn btn-secondary btn-lg"
-            >
-              Fiyat & Yapılandırma
-            </a>
+          <p>Stok Pratik paketlerimizle entegre çalışan B2B/B2C ekosistemimiz hakkında bilgi alın ve hemen başlayın.</p>
+          <form class="application-form" action="/basvuru" method="POST">
+            <div class="form-row">
+              <input type="text" name="name" placeholder="Adınız Soyadınız" required />
+              <input type="email" name="email" placeholder="E-posta Adresiniz" required />
+            </div>
+            <div class="form-row">
+              <input type="tel" name="phone" placeholder="Telefon Numaranız" required />
+              <select name="sector" required>
+                <option value="">Sektörünüzü Seçin</option>
+                {sectors.map(s => <option value={s.slug}>{s.name}</option>)}
+              </select>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Hemen Başvurun</button>
+          </form>
+          <div class="form-alternative">
+            <p>veya doğrudan WhatsApp'tan görüşün</p>
+            <a href="https://wa.me/+905325000999?text=Pazaryeri%20ve%20ihracat%20çözümleri%20hakkında%20bilgi%20almak%20istiyorum." target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp">WhatsApp ile Yazın</a>
           </div>
         </div>
       </div>
@@ -129,169 +164,497 @@ const sectors = [
   </section>
 
   <style>
-    /* Hero Section */
-    .hero {
-      background: linear-gradient(135deg, #0f172a, #312e81, #0f172a);
-      color: white;
+    /* Genel Stiller */
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
     }
-
-    .hero h1 {
-      color: white;
-      margin-bottom: var(--spacing-sm);
-      font-size: 3rem;
-      line-height: 1.2;
+    .text-center { text-align: center; }
+    .section-header {
+      margin-bottom: 3rem;
     }
-
-    .hero-description {
-      font-size: 1.25rem;
-      color: rgba(255, 255, 255, 0.8);
-      max-width: 800px;
-      margin: 0 auto var(--spacing-lg);
-      line-height: 1.6;
-    }
-
-    .btn-lg {
-      padding: 1rem 2rem;
-      font-size: 1.1rem;
-      font-weight: 600;
-      border-radius: 0.75rem;
-      text-decoration: none;
-      display: inline-block;
-      text-align: center;
-      transition: all 0.2s;
-    }
-
-    .btn-lg:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-    }
-
-    /* Advantages Section */
-    .advantages {
-      background-color: var(--bg-white);
-    }
-
     .section-header h2 {
-      color: var(--primary-red);
-      margin-bottom: var(--spacing-sm);
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #0f172a;
+      margin-bottom: 0.75rem;
     }
-
     .section-header p {
-      color: var(--text-gray);
-      font-size: 1.125rem;
-      margin-bottom: var(--spacing-xl);
-    }
-
-    .advantages-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: var(--spacing-lg);
-    }
-
-    .advantage-card {
-      background: var(--bg-white);
-      padding: var(--spacing-xl);
-      border-radius: var(--radius-lg);
-      box-shadow: var(--shadow-md);
-      text-align: center;
-      border: 1px solid var(--border-color);
-      transition: transform var(--transition-normal);
-      cursor: pointer;
-    }
-
-    .advantage-card:hover {
-      transform: translateY(-5px);
-      box-shadow: var(--shadow-lg);
-      border-color: #a5b4fc;
-    }
-
-    .advantage-icon {
-      font-size: 3rem;
-      margin-bottom: var(--spacing-md);
-      background: var(--bg-light);
-      width: 80px;
-      height: 80px;
-      line-height: 80px;
-      border-radius: 20px;
-      margin: 0 auto 1.5rem;
-    }
-
-    .advantage-card h3 {
-      color: var(--primary-red);
-      margin-bottom: var(--spacing-md);
-    }
-
-    .advantage-card p {
-      color: var(--text-gray);
-      line-height: 1.6;
-    }
-
-    /* Application Section */
-    .application {
-      background: linear-gradient(135deg, var(--primary-red-light), var(--bg-light));
-    }
-
-    .application-card {
-      background: var(--bg-white);
-      border-radius: var(--radius-lg);
-      box-shadow: var(--shadow-lg);
-      padding: var(--spacing-xl);
-      max-width: 800px;
+      font-size: 1.2rem;
+      color: #475569;
+      max-width: 700px;
       margin: 0 auto;
     }
 
-    .application-content h2 {
-      color: var(--primary-red);
-      margin-bottom: var(--spacing-md);
-      text-align: center;
+    /* Hero + Slider */
+    .hero-slider-wrapper {
+      background: linear-gradient(135deg, #f0f9ff, #e0f2fe, #f8fafc);
+      padding: 4rem 0 3rem;
     }
-
-    .application-content p {
-      color: var(--text-dark);
-      text-align: center;
-      margin-bottom: var(--spacing-xl);
-      line-height: 1.6;
+    .hero-slider-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
     }
-
-    .application-buttons {
-      display: flex;
-      gap: var(--spacing-md);
-      justify-content: center;
+    .hero-content .badge {
+      display: inline-block;
+      background: #dbeafe;
+      color: #1e40af;
+      padding: 0.4rem 1rem;
+      border-radius: 30px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      margin-bottom: 1.5rem;
+    }
+    .hero-content h1 {
+      font-size: 2.8rem;
+      line-height: 1.2;
+      font-weight: 800;
+      color: #0f172a;
       margin-bottom: 1rem;
     }
-
-    /* Responsive Design */
-    @media (max-width: 768px) {
-      .hero h1 {
-        font-size: 2.5rem;
-      }
-      
-      .hero-description {
-        font-size: 1.1rem;
-      }
-      
-      .advantages-grid {
-        grid-template-columns: 1fr;
-      }
-      
-      .advantage-card, .application-card {
-        padding: var(--spacing-lg);
-      }
-      
-      .application-buttons {
-        flex-direction: column;
-      }
+    .hero-content h1 .highlight {
+      background: linear-gradient(135deg, #2563eb, #7c3aed);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero-description {
+      font-size: 1.15rem;
+      color: #334155;
+      line-height: 1.6;
+      margin-bottom: 2rem;
+    }
+    .hero-buttons {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .btn {
+      display: inline-block;
+      padding: 0.8rem 2rem;
+      border-radius: 50px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s;
+      border: none;
+      cursor: pointer;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, #2563eb, #4f46e5);
+      color: #fff;
+      box-shadow: 0 4px 14px rgba(37, 99, 235, 0.3);
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(37, 99, 235, 0.4);
+    }
+    .btn-secondary {
+      background: transparent;
+      color: #1e293b;
+      border: 2px solid #94a3b8;
+    }
+    .btn-secondary:hover {
+      border-color: #2563eb;
+      color: #2563eb;
+    }
+    .btn-whatsapp {
+      background: #25D366;
+      color: #fff;
+    }
+    .btn-whatsapp:hover {
+      background: #1da851;
+      transform: translateY(-2px);
+    }
+    .btn-block {
+      width: 100%;
+      text-align: center;
     }
 
-    @media (max-width: 480px) {
-      .hero h1 {
+    /* Slider */
+    .slider-container {
+      position: relative;
+      overflow: hidden;
+      border-radius: 1.5rem;
+      box-shadow: 0 20px 40px -12px rgba(0,0,0,0.15);
+      background: #fff;
+    }
+    .slider-track {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+    }
+    .slide-item {
+      min-width: 100%;
+      position: relative;
+      aspect-ratio: 16/10;
+      background: #f1f5f9;
+    }
+    .slide-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .slide-label {
+      position: absolute;
+      bottom: 1.5rem;
+      left: 1.5rem;
+      background: rgba(15, 23, 42, 0.7);
+      backdrop-filter: blur(4px);
+      color: #fff;
+      padding: 0.5rem 1.2rem;
+      border-radius: 30px;
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+    .slider-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255,255,255,0.8);
+      backdrop-filter: blur(4px);
+      border: none;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      font-size: 1.8rem;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transition: 0.2s;
+      color: #0f172a;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 5;
+    }
+    .slider-btn:hover {
+      background: #fff;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    }
+    .prev { left: 0.5rem; }
+    .next { right: 0.5rem; }
+    .slider-dots {
+      position: absolute;
+      bottom: 0.8rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 0.6rem;
+      z-index: 5;
+    }
+    .slider-dots span {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.5);
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .slider-dots span.active {
+      background: #ffffff;
+      box-shadow: 0 0 8px rgba(255,255,255,0.6);
+      transform: scale(1.2);
+    }
+
+    /* Avantajlar */
+    .advantages {
+      padding: 4rem 0;
+      background: #f8fafc;
+    }
+    .advantages-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+    .advantage-card {
+      background: #fff;
+      padding: 2rem 1.5rem;
+      border-radius: 1rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+      border: 1px solid #e2e8f0;
+      transition: 0.25s;
+      text-align: center;
+    }
+    .advantage-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.06);
+      border-color: #b9d0f0;
+    }
+    .advantage-icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      background: #dbeafe;
+      width: 70px;
+      height: 70px;
+      line-height: 70px;
+      border-radius: 20px;
+      margin: 0 auto 1.2rem;
+    }
+    .advantage-card h3 {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #0f172a;
+      margin-bottom: 0.5rem;
+    }
+    .advantage-card p {
+      color: #475569;
+      line-height: 1.5;
+      font-size: 0.95rem;
+    }
+
+    /* Sektörler Kartları */
+    .sectors {
+      padding: 4rem 0;
+      background: #ffffff;
+    }
+    .sectors-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 2rem;
+    }
+    .sector-card {
+      background: #fafbfc;
+      padding: 1.8rem 1.5rem;
+      border-radius: 1rem;
+      border: 1px solid #eef2f6;
+      text-decoration: none;
+      transition: 0.25s;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .sector-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 28px rgba(0,0,0,0.05);
+      border-color: #b9d0f0;
+      background: #f8faff;
+    }
+    .sector-icon {
+      font-size: 2.8rem;
+      margin-bottom: 0.8rem;
+    }
+    .sector-card h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #0f172a;
+      margin-bottom: 0.4rem;
+    }
+    .sector-card p {
+      color: #475569;
+      font-size: 0.9rem;
+      line-height: 1.5;
+      flex: 1;
+    }
+    .sector-link {
+      margin-top: 1rem;
+      color: #2563eb;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+    .sector-card:hover .sector-link {
+      text-decoration: underline;
+    }
+
+    /* Başvuru Formu */
+    .application {
+      padding: 4rem 0;
+      background: linear-gradient(135deg, #eef2ff, #f8fafc);
+    }
+    .application-card {
+      max-width: 800px;
+      margin: 0 auto;
+      background: #fff;
+      border-radius: 2rem;
+      padding: 3rem 2.5rem;
+      box-shadow: 0 20px 40px -12px rgba(0,0,0,0.08);
+    }
+    .application-content h2 {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #0f172a;
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+    .application-content > p {
+      text-align: center;
+      color: #475569;
+      margin-bottom: 2rem;
+    }
+    .application-form .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+    .application-form input,
+    .application-form select {
+      width: 100%;
+      padding: 0.8rem 1.2rem;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      font-size: 1rem;
+      transition: 0.2s;
+      background: #f8fafc;
+    }
+    .application-form input:focus,
+    .application-form select:focus {
+      border-color: #2563eb;
+      outline: none;
+      background: #fff;
+      box-shadow: 0 0 0 3px rgba(37,99,235,0.1);
+    }
+    .application-form button {
+      margin-top: 0.5rem;
+    }
+    .form-alternative {
+      margin-top: 2rem;
+      text-align: center;
+      border-top: 1px solid #e2e8f0;
+      padding-top: 1.5rem;
+    }
+    .form-alternative p {
+      color: #64748b;
+      margin-bottom: 0.8rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .hero-slider-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      .hero-content h1 {
+        font-size: 2.4rem;
+      }
+      .slider-container {
+        max-width: 600px;
+        margin: 0 auto;
+      }
+    }
+    @media (max-width: 640px) {
+      .hero-content h1 {
         font-size: 2rem;
       }
-      
-      .btn-lg {
-        padding: 0.75rem 1.5rem;
-        font-size: 1rem;
+      .hero-buttons {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .application-form .form-row {
+        grid-template-columns: 1fr;
+      }
+      .application-card {
+        padding: 1.5rem;
+      }
+      .slider-btn {
+        width: 36px;
+        height: 36px;
+        font-size: 1.4rem;
+      }
+      .slide-label {
+        font-size: 0.8rem;
+        padding: 0.3rem 0.8rem;
       }
     }
   </style>
+
+  <!-- Slider JavaScript (client-side) -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const track = document.getElementById('sliderTrack');
+      const slides = track.querySelectorAll('.slide-item');
+      const totalSlides = slides.length;
+      let currentIndex = 0;
+      let autoPlayInterval = null;
+      const dotsContainer = document.getElementById('sliderDots');
+
+      // Klonlama ile sonsuz döngü için ilk slidi sona ekle
+      const firstClone = slides[0].cloneNode(true);
+      track.appendChild(firstClone);
+      const allItems = track.querySelectorAll('.slide-item');
+      const totalItems = allItems.length;
+
+      // Nokta oluştur
+      for (let i = 0; i < totalSlides; i++) {
+        const dot = document.createElement('span');
+        if (i === 0) dot.classList.add('active');
+        dot.dataset.index = i;
+        dot.addEventListener('click', () => goTo(i));
+        dotsContainer.appendChild(dot);
+      }
+      const dots = dotsContainer.querySelectorAll('span');
+
+      function updateSlider(index) {
+        const offset = -index * 100;
+        track.style.transform = \`translateX(\${offset}%)\`;
+        // Noktaları güncelle
+        dots.forEach((dot, i) => {
+          dot.classList.toggle('active', i === index % totalSlides);
+        });
+      }
+
+      function goTo(index) {
+        currentIndex = index;
+        updateSlider(currentIndex);
+        resetAutoPlay();
+      }
+
+      function nextSlide() {
+        currentIndex++;
+        if (currentIndex >= totalItems) {
+          // Son klona geldiyse anında ilk slide geç (sıfır transition)
+          track.style.transition = 'none';
+          currentIndex = 0;
+          updateSlider(currentIndex);
+          // Transition'ı tekrar aç
+          requestAnimationFrame(() => {
+            track.style.transition = 'transform 0.5s ease-in-out';
+          });
+        } else {
+          updateSlider(currentIndex);
+        }
+        resetAutoPlay();
+      }
+
+      function prevSlide() {
+        if (currentIndex === 0) {
+          // Başa gelindiyse son klona git
+          currentIndex = totalItems - 1;
+          track.style.transition = 'none';
+          updateSlider(currentIndex);
+          requestAnimationFrame(() => {
+            track.style.transition = 'transform 0.5s ease-in-out';
+          });
+        } else {
+          currentIndex--;
+          updateSlider(currentIndex);
+        }
+        resetAutoPlay();
+      }
+
+      function resetAutoPlay() {
+        if (autoPlayInterval) {
+          clearInterval(autoPlayInterval);
+        }
+        autoPlayInterval = setInterval(nextSlide, 4000);
+      }
+
+      // Butonlar
+      document.getElementById('prevBtn').addEventListener('click', prevSlide);
+      document.getElementById('nextBtn').addEventListener('click', nextSlide);
+
+      // Başlat
+      track.style.transition = 'transform 0.5s ease-in-out';
+      resetAutoPlay();
+
+      // Pause on hover
+      const sliderContainer = document.querySelector('.slider-container');
+      sliderContainer.addEventListener('mouseenter', () => {
+        clearInterval(autoPlayInterval);
+      });
+      sliderContainer.addEventListener('mouseleave', resetAutoPlay);
+    });
+  </script>
 </BaseLayout>

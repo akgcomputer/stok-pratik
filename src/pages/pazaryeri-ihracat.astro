@@ -1,0 +1,374 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const pageTitle = "DepodanDirekt Entegrasyonu | Stok Pratik ile B2B Toptan ve İhracat Pazaryeri";
+const pageDescription = "Stok Pratik kullanın, ürünleriniz otomatik olarak çok dilli ve çok para birimli DepodanDirekt.com küresel toptan vitrininde yer alsın. Aracısız B2B ihracat fırsatı.";
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <!-- Hero Section -->
+  <section class="hero py-16">
+    <div class="container">
+      <div class="hero-content text-center">
+        <div style="display: inline-block; padding: 0.5rem 1rem; margin-bottom: 1.5rem; font-size: 0.875rem; font-weight: 600; letter-spacing: 0.05em; color: #a5b4fc; background-color: rgba(30, 27, 75, 0.7); border: 1px solid rgba(99, 102, 241, 0.3); border-radius: 9999px;">
+          🌐 Yazılım + B2B İhracat & Toptan Pazaryeri Ekosistemi
+        </div>
+        <h1>
+          Ön Muhasebenizi Yönetin,<br/>
+          Ürünleriniz DepodanDirekt ile Dünyaya Açılsın!
+        </h1>
+        <p class="hero-description">
+          Stok Pratik çekirdeği ile deponuzu, faturanızı ve carilerinizi yönetirken; tek tıkla ürünlerinizi 81 ildeki perakendecilere ve yurt dışındaki toptan alıcılara sergileyin.
+        </p>
+        <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+          <a href="https://wa.me/+905325000999?text=DepodanDirekt%20B2B%20entegrasyonu%20hakkında%20bilgi%20almak%20istiyorum." target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-lg" style="background: linear-gradient(135deg, #10b981, #059669); border: none; color: white;">
+            Vitrine Hemen Katılın
+          </a>
+          <a href="https://depodandirekt.com" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-lg" style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: white;">
+            DepodanDirekt.com'u İncele ↗
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Avantajlar Grid -->
+  <section class="advantages py-16">
+    <div class="container">
+      <div class="section-header text-center">
+        <h2>Neden DepodanDirekt & Stok Pratik?</h2>
+        <p>Geleneksel pazar yerlerinin aksine ürünlerinizi tek tek elle girmek zorunda kalmazsınız.</p>
+      </div>
+
+      <div class="advantages-grid">
+        <div class="advantage-card">
+          <div class="advantage-icon">⚡</div>
+          <h3>Sıfır Ekstra Operasyon</h3>
+          <p>Stok Pratik'e ürün ve stok girdikçe vitrininiz canlı eşitlenir. Mağaza yönetmek için fazladan zaman harcamazsınız.</p>
+        </div>
+
+        <div class="advantage-card">
+          <div class="advantage-icon">🌍</div>
+          <h3>Çok Dilli & Çoklu Para Birimi</h3>
+          <p>Ürünleriniz Türkçe, İngilizce, Arapça ve Rusça dillerinde sergilenir; USD ve EUR cinsinden toptan siparişler alın.</p>
+        </div>
+
+        <div class="advantage-card">
+          <div class="advantage-icon">🔒</div>
+          <h3>Kapalı Devre B2B Modu</h3>
+          <p>Toptan fiyatlarınızı gizleyin; sadece onayladığınız kurumsal müşterilerin ve esnafın fiyatları görmesini sağlayın.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Nasıl Çalışır -->
+  <section class="how-it-works py-16">
+    <div class="container">
+      <div class="section-header text-center">
+        <h2>3 Adımda Küresel Vitrindesiniz</h2>
+      </div>
+
+      <div class="steps-grid">
+        <div class="step">
+          <div class="step-number">1</div>
+          <h3>Programı Kullanın</h3>
+          <p>Stok Pratik üzerinde ürünlerinizi tanımlayın ve "Vitrinde Yayınla" seçeneğini aktif edin.</p>
+        </div>
+
+        <div class="step">
+          <div class="step-number">2</div>
+          <h3>Otomatik Listelenin</h3>
+          <p>Ürünleriniz ilgili sektör sayfasında (gelinlik, tekstil, vb.) anında yayına girsin.</p>
+        </div>
+
+        <div class="step">
+          <div class="step-number">3</div>
+          <h3>Doğrudan Sipariş Alın</h3>
+          <p>Yurt içi ve yurt dışı toptan siparişleri tek tıkla proformaya ve e-faturaya dönüştürün.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sektörler -->
+  <section class="advantages py-16" style="background-color: var(--bg-light);">
+    <div class="container">
+      <div class="section-header text-center">
+        <h2>Sektörel Vitrinlerimizi Keşfedin</h2>
+        <p>İşletmenizin faaliyet alanına özel hazırlanmış çözümleri inceleyin.</p>
+      </div>
+
+      <div class="advantages-grid" style="grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));">
+        <a href="/sektor/gelinlik-ve-abiye" class="advantage-card" style="text-decoration: none; cursor: pointer; display: block;">
+          <div class="advantage-icon">👰</div>
+          <h3 style="margin-bottom: 0.5rem; font-size: 1.1rem;">Gelinlik & Abiye</h3>
+          <p style="font-size: 0.85rem;">Atölye & Toptan İhracat</p>
+        </a>
+        <div class="advantage-card" style="opacity: 0.75;">
+          <div class="advantage-icon">👗</div>
+          <h3 style="margin-bottom: 0.5rem; font-size: 1.1rem;">Tekstil & Konfeksiyon</h3>
+          <p style="font-size: 0.85rem;">Seri/Asorti Toptan Satış</p>
+        </div>
+        <div class="advantage-card" style="opacity: 0.75;">
+          <div class="advantage-icon">🍽️</div>
+          <h3 style="margin-bottom: 0.5rem; font-size: 1.1rem;">Züccaciye & Mutfak</h3>
+          <p style="font-size: 0.85rem;">Koli & Desi Bazlı B2B</p>
+        </div>
+        <div class="advantage-card" style="opacity: 0.75;">
+          <div class="advantage-icon">🚗</div>
+          <h3 style="margin-bottom: 0.5rem; font-size: 1.1rem;">Oto Yedek Parça</h3>
+          <p style="font-size: 0.85rem;">OEM Kodlu B2B Dağıtım</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Başvuru Formu -->
+  <section class="application py-16">
+    <div class="container">
+      <div class="application-card">
+        <div class="application-content">
+          <h2>Ürünlerinizi DepodanDirekt ile Sergileyin</h2>
+          <p>
+            Stok Pratik paketlerimizle entegre çalışan B2B platformumuz hakkında ayrıntılı bilgi alın.
+          </p>
+          
+          <div class="application-buttons">
+            <a 
+              href="https://wa.me/+905325000999?text=DepodanDirekt%20vitrini%20için%20başvuru%20yapmak%20istiyorum." 
+              class="btn btn-primary btn-lg"
+              style="background: linear-gradient(135deg, #10b981, #059669); border: none;"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              WhatsApp ile Başvuru Yap
+            </a>
+            
+            <a 
+              href="/paketlerimiz" 
+              class="btn btn-secondary btn-lg"
+            >
+              Paketleri İncele
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(135deg, #0f172a, #312e81, #0f172a);
+      color: white;
+    }
+
+    .hero h1 {
+      color: white;
+      margin-bottom: var(--spacing-sm);
+      font-size: 3rem;
+      line-height: 1.2;
+    }
+
+    .hero-subtitle {
+      font-size: 1.75rem;
+      color: rgba(255, 255, 255, 0.9);
+      margin-bottom: var(--spacing-md);
+      font-weight: 600;
+    }
+
+    .hero-description {
+      font-size: 1.25rem;
+      color: rgba(255, 255, 255, 0.8);
+      max-width: 800px;
+      margin: 0 auto var(--spacing-lg);
+      line-height: 1.6;
+    }
+
+    .btn-lg {
+      padding: 1rem 2rem;
+      font-size: 1.1rem;
+      font-weight: 600;
+      border-radius: 0.75rem;
+      text-decoration: none;
+      display: inline-block;
+      text-align: center;
+      transition: all 0.2s;
+    }
+
+    .btn-lg:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Advantages Section */
+    .advantages {
+      background-color: var(--bg-white);
+    }
+
+    .section-header h2 {
+      color: var(--primary-red);
+      margin-bottom: var(--spacing-sm);
+    }
+
+    .section-header p {
+      color: var(--text-gray);
+      font-size: 1.125rem;
+      margin-bottom: var(--spacing-xl);
+    }
+
+    .advantages-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: var(--spacing-lg);
+    }
+
+    .advantage-card {
+      background: var(--bg-white);
+      padding: var(--spacing-xl);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-md);
+      text-align: center;
+      border: 2px solid var(--primary-red-light);
+      transition: transform var(--transition-normal);
+    }
+
+    .advantage-card:hover {
+      transform: translateY(-10px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .advantage-icon {
+      font-size: 3rem;
+      margin-bottom: var(--spacing-md);
+      background: var(--bg-light);
+      width: 80px;
+      height: 80px;
+      line-height: 80px;
+      border-radius: 20px;
+      margin: 0 auto 1.5rem;
+    }
+
+    .advantage-card h3 {
+      color: var(--primary-red);
+      margin-bottom: var(--spacing-md);
+    }
+
+    .advantage-card p {
+      color: var(--text-gray);
+      line-height: 1.6;
+    }
+
+    /* How It Works */
+    .how-it-works {
+      background-color: var(--bg-white);
+    }
+
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: var(--spacing-lg);
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .step {
+      text-align: center;
+      padding: var(--spacing-lg);
+      position: relative;
+    }
+
+    .step-number {
+      width: 60px;
+      height: 60px;
+      background: linear-gradient(135deg, var(--primary-red), var(--primary-red-dark));
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin: 0 auto var(--spacing-md);
+    }
+
+    .step h3 {
+      color: var(--primary-red);
+      margin-bottom: var(--spacing-sm);
+    }
+
+    .step p {
+      color: var(--text-gray);
+      line-height: 1.6;
+    }
+
+    /* Application Section */
+    .application {
+      background: linear-gradient(135deg, var(--primary-red-light), var(--bg-light));
+    }
+
+    .application-card {
+      background: var(--bg-white);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-lg);
+      padding: var(--spacing-xl);
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .application-content h2 {
+      color: var(--primary-red);
+      margin-bottom: var(--spacing-md);
+      text-align: center;
+    }
+
+    .application-content p {
+      color: var(--text-dark);
+      text-align: center;
+      margin-bottom: var(--spacing-xl);
+      line-height: 1.6;
+    }
+
+    .application-buttons {
+      display: flex;
+      gap: var(--spacing-md);
+      justify-content: center;
+      margin-bottom: 1rem;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+      
+      .hero-description {
+        font-size: 1.1rem;
+      }
+      
+      .advantages-grid, .steps-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .advantage-card, .application-card {
+        padding: var(--spacing-lg);
+      }
+      
+      .application-buttons {
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero h1 {
+        font-size: 2rem;
+      }
+      
+      .btn-lg {
+        padding: 0.75rem 1.5rem;
+        font-size: 1rem;
+      }
+    }
+  </style>
+</BaseLayout>

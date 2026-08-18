@@ -500,7 +500,7 @@ const sliderImages = [
     }
     @media (min-width: 768px) {
       .hero-content h1.hero-title {
-        white-space: nowrap;
+        /* white-space: nowrap removed to prevent overflow on tablets */
       }
     }
     .hero-content h1 .highlight {
@@ -790,6 +790,7 @@ const sliderImages = [
     .application-form input,
     .application-form select {
       width: 100%;
+      max-width: 100%;
       padding: 0.8rem 1.2rem;
       border: 1px solid #e2e8f0;
       border-radius: 12px;

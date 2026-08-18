@@ -498,10 +498,13 @@ const sliderImages = [
       font-weight: 800;
       color: #0f172a;
       margin-bottom: 2rem;
+      overflow-wrap: break-word;
+      word-break: break-word;
     }
-    @media (min-width: 768px) {
+    @media (min-width: 1024px) {
       .hero-content h1.hero-title {
-        /* white-space: nowrap removed to prevent overflow on tablets */
+        white-space: nowrap;
+        font-size: 2.2rem;
       }
     }
     .hero-content h1 .highlight {
@@ -575,7 +578,9 @@ const sliderImages = [
       transition: transform 0.5s ease-in-out;
     }
     .slide-item {
+      flex: 0 0 100%;
       min-width: 100%;
+      width: 100%;
       position: relative;
       aspect-ratio: 16/10;
       background: #f1f5f9;

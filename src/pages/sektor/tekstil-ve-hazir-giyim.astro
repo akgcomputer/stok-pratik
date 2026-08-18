@@ -7,26 +7,31 @@ const pageDescription = "Tekstil üreticileri ve toptancıları için renk/beden
 
 <BaseLayout title={pageTitle} description={pageDescription}>
   <!-- Hero Section -->
-  <section class="hero py-16" style="background: linear-gradient(135deg, #1e3a8a, #0f172a, #0f172a);">
+  <section class="hero py-16" style="background: linear-gradient(135deg, #1e3a8a, #0f172a, #0f172a); overflow: hidden;">
     <div class="container">
-      <div class="hero-content text-center">
-        <div style="display: inline-block; padding: 0.5rem 1rem; margin-bottom: 1.5rem; font-size: 0.875rem; font-weight: 600; letter-spacing: 0.05em; color: #93c5fd; background-color: rgba(30, 58, 138, 0.6); border: 1px solid rgba(59, 130, 246, 0.3); border-radius: 9999px;">
-          👗 Tekstil & Hazır Giyim Üreticilerine Özel
+      <div style="display: flex; gap: 3rem; align-items: center; flex-wrap: wrap;">
+        <!-- Sol Fotoğraf -->
+        <div style="flex: 1; min-width: 280px; width: 100%;">
+          <img src="/images/sektorler/tekstil-ve-hazir-giyim.jpg" alt="Tekstil ve Hazır Giyim" style="width: 100%; max-width: 600px; border-radius: 1rem; box-shadow: 0 20px 40px rgba(0,0,0,0.3); display: block; margin: 0 auto;" />
         </div>
-        <h1>
-          Renk, Beden ve Asortiyi Yönetin,<br/>
-          Seri Bazlı Toptan Satışınızı Katlayın
-        </h1>
-        <p class="hero-description">
-          Kumaş stoğu, kesim, dikim ve paketleme süreçlerini kontrol edin; ürünlerinizi DepodanDirekt tekstil vitrininde toptan ve perakende dünyaya sergileyin.
-        </p>
-        <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
-          <a href="https://wa.me/+905325000999?text=Tekstil%20ve%20Hazır%20Giyim%20yazılımı%20hakkında%20bilgi%20almak%20istiyorum." target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-lg" style="background: linear-gradient(135deg, #10b981, #059669); border: none; color: white;">
-            Tekstil Demosu İsteyin
-          </a>
-          <a href="/pazaryeri-ihracat" class="btn btn-secondary btn-lg" style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: white;">
-            Tüm Sektörleri Gör
-          </a>
+        
+        <!-- Sağ Metin -->
+        <div class="hero-content" style="flex: 1.2; min-width: 280px; text-align: left;">
+          <h1 style="text-align: left; font-size: clamp(2rem, 3.5vw, 3rem); margin-bottom: 1.5rem; line-height: 1.2; color: white; font-weight: 800;">
+            Renk, Beden ve Asortiyi Yönetin,<br/>
+            Seri Bazlı Toptan Satışınızı Katlayın
+          </h1>
+          <p class="hero-description" style="text-align: left; margin: 0 0 2rem 0; font-size: 1.15rem; color: rgba(255,255,255,0.9); max-width: none;">
+            Kumaş stoğu, kesim, dikim ve paketleme süreçlerini kontrol edin; ürünlerinizi DepodanDirekt tekstil vitrininde toptan ve perakende dünyaya sergileyin.
+          </p>
+          <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+            <a href="https://wa.me/+905325000999?text=Tekstil%20ve%20Hazır%20Giyim%20yazılımı%20hakkında%20bilgi%20almak%20istiyorum." target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-lg" style="background: linear-gradient(135deg, #10b981, #059669); border: none; color: white; text-align: center; padding: 1rem 1.5rem; font-weight: 600; border-radius: 0.75rem;">
+              Tekstil Demosu İsteyin
+            </a>
+            <a href="/pazaryeri-ihracat" class="btn btn-secondary btn-lg" style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: white; text-align: center; padding: 1rem 1.5rem; font-weight: 600; border-radius: 0.75rem;">
+              Tüm Sektörleri Gör
+            </a>
+          </div>
         </div>
       </div>
     </div>

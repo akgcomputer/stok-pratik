@@ -1,0 +1,242 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const pageTitle = "Mobilya & İç Mekan İmalat ve İhracat Yazılımı | Stok Pratik";
+const pageDescription = "Mobilya üreticileri için modüler parça takibi, takım/tekil satış yönetimi ve DepodanDirekt B2B toptan mobilya ihracat vitrini.";
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <!-- Hero Section -->
+  <section class="hero py-16" style="background: linear-gradient(135deg, #431407, #0f172a, #0f172a);">
+    <div class="container">
+      <div class="hero-content text-center">
+        <div style="display: inline-block; padding: 0.5rem 1rem; margin-bottom: 1.5rem; font-size: 0.875rem; font-weight: 600; letter-spacing: 0.05em; color: #fdba74; background-color: rgba(67, 20, 7, 0.6); border: 1px solid rgba(249, 115, 22, 0.3); border-radius: 9999px;">
+          🛋️ Mobilya & Dekorasyon Sektörüne Özel
+        </div>
+        <h1>
+          Modüler Parçaları Yönetin,<br/>
+          <span style="color: #fb923c;">İnegöl ve Kayseri Kalitesini</span> Dünyaya Taşıyın
+        </h1>
+        <p class="hero-description">
+          Sünger, kumaş, sunta/MDF ve mekanizma sarfiyatını izleyin; takımları modüler paketleyin ve DepodanDirekt ile dövizli sipariş toplayın.
+        </p>
+        <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+          <a href="https://wa.me/+905325000999?text=Mobilya%20yaz%C4%B1l%C4%B1m%C4%B1%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum." target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-lg" style="background: linear-gradient(135deg, #10b981, #059669); border: none; color: white;">
+            Mobilya Demosu İsteyin
+          </a>
+          <a href="/pazaryeri-ihracat" class="btn btn-secondary btn-lg" style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: white;">
+            Tüm Sektörleri Gör
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Avantajlar Grid -->
+  <section class="advantages py-16">
+    <div class="container">
+      <div class="section-header text-center">
+        <h2>Mobilya İmalat & Satış Çözümleri</h2>
+      </div>
+
+      <div class="advantages-grid">
+        <div class="advantage-card">
+          <div class="advantage-icon">🧩</div>
+          <h3>Modüler & Takım Mantığı</h3>
+          <p>Karyola, gardırop ve komodinleri tekil veya yatak odası takımı olarak esnek stoklayıp faturalandırma.</p>
+        </div>
+
+        <div class="advantage-card">
+          <div class="advantage-icon">📐</div>
+          <h3>Konteyner & m³ Hesabı</h3>
+          <p>İhracat sevkiyatlarında tır ve konteyner yükleme planı için otomatik hacim ve ağırlık analizi.</p>
+        </div>
+
+        <div class="advantage-card">
+          <div class="advantage-icon">🌍</div>
+          <h3>Küresel Mobilya Mağazası</h3>
+          <p>DepodanDirekt üzerinde showroom koleksiyonlarınızı 4 dilde sergileyip yurt dışı toptan alıcılardan teklif alma.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Başvuru Formu -->
+  <section class="application py-16">
+    <div class="container">
+      <div class="application-card">
+        <div class="application-content">
+          <h2>Sektörünüze Özel Çözümlerle Büyüyün</h2>
+          <p>Stok Pratik ile operasyonlarınızı dijitalleştirin ve DepodanDirekt ile dünyaya açılın.</p>
+          
+          <div class="application-buttons">
+            <a 
+              href="https://wa.me/+905325000999?text=Mobilya%20yaz%C4%B1l%C4%B1m%C4%B1%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum." 
+              class="btn btn-primary btn-lg"
+              style="background: linear-gradient(135deg, #10b981, #059669); border: none;"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Hemen İletişime Geçin
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    /* Hero Section */
+    .hero {
+      color: white;
+    }
+
+    .hero h1 {
+      color: white;
+      margin-bottom: var(--spacing-sm);
+      font-size: 3rem;
+      line-height: 1.2;
+    }
+
+    .hero-description {
+      font-size: 1.25rem;
+      color: rgba(255, 255, 255, 0.8);
+      max-width: 800px;
+      margin: 0 auto var(--spacing-lg);
+      line-height: 1.6;
+    }
+
+    .btn-lg {
+      padding: 1rem 2rem;
+      font-size: 1.1rem;
+      font-weight: 600;
+      border-radius: 0.75rem;
+      text-decoration: none;
+      display: inline-block;
+      text-align: center;
+      transition: all 0.2s;
+    }
+
+    .btn-lg:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Advantages Section */
+    .advantages {
+      background-color: var(--bg-white);
+    }
+
+    .section-header h2 {
+      color: var(--primary-red);
+      margin-bottom: var(--spacing-sm);
+    }
+
+    .advantages-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: var(--spacing-lg);
+    }
+
+    .advantage-card {
+      background: var(--bg-white);
+      padding: var(--spacing-xl);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-md);
+      text-align: center;
+      border: 1px solid var(--border-color);
+      transition: transform var(--transition-normal);
+    }
+
+    .advantage-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-lg);
+      border-color: #fdba74;
+    }
+
+    .advantage-icon {
+      font-size: 3rem;
+      margin-bottom: var(--spacing-md);
+      background: var(--bg-light);
+      width: 80px;
+      height: 80px;
+      line-height: 80px;
+      border-radius: 20px;
+      margin: 0 auto 1.5rem;
+    }
+
+    .advantage-card h3 {
+      color: var(--primary-red);
+      margin-bottom: var(--spacing-md);
+    }
+
+    .advantage-card p {
+      color: var(--text-gray);
+      line-height: 1.6;
+    }
+
+    /* Application Section */
+    .application {
+      background: linear-gradient(135deg, var(--primary-red-light), var(--bg-light));
+    }
+
+    .application-card {
+      background: var(--bg-white);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-lg);
+      padding: var(--spacing-xl);
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .application-content h2 {
+      color: var(--primary-red);
+      margin-bottom: var(--spacing-md);
+      text-align: center;
+    }
+
+    .application-content p {
+      color: var(--text-dark);
+      text-align: center;
+      margin-bottom: var(--spacing-xl);
+      line-height: 1.6;
+    }
+
+    .application-buttons {
+      display: flex;
+      gap: var(--spacing-md);
+      justify-content: center;
+      margin-bottom: 1rem;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+      
+      .hero-description {
+        font-size: 1.1rem;
+      }
+      
+      .advantages-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .advantage-card, .application-card {
+        padding: var(--spacing-lg);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero h1 {
+        font-size: 2rem;
+      }
+      
+      .btn-lg {
+        padding: 0.75rem 1.5rem;
+        font-size: 1rem;
+      }
+    }
+  </style>
+</BaseLayout>

@@ -19,13 +19,18 @@ const sectors = [
   { name: "İş Elbiseleri & KKD", slug: "is-elbiseleri-ve-kkd", icon: "🦺", desc: "Kurumsal logo baskı takibi ve periyodik toplu siparişler." },
 ];
 
-// Slider için sektör görselleri (resimleri public/images/sektorler/ klasörüne koyun)
-// Örnek: gelinlik-ve-abiye.jpg, tekstil-ve-hazir-giyim.jpg, ...
-const sliderImages = sectors.map(s => ({
-  slug: s.slug,
-  name: s.name,
-  image: `/images/sektorler/${s.slug}.jpg`, // Kendi resimlerinizi buraya ekleyin
-}));
+const sliderImages = [
+  {
+    slug: "depodandirekt",
+    name: "DepodanDirekt Pazaryeri",
+    image: "/images/sektorler/depodandirekt.jpg"
+  },
+  ...sectors.map(s => ({
+    slug: s.slug,
+    name: s.name,
+    image: `/images/sektorler/${s.slug}.jpg`,
+  }))
+];
 ---
 
 <BaseLayout title={pageTitle} description={pageDescription}>

@@ -27,6 +27,14 @@ const mainImage = "/images/site-foto/Stok-pratik-33.png";
       </div>
     </div>
 
+    <!-- Pazaryeri İhracat Banner -->
+    <a href="/pazaryeri-ihracat" class="marketplace-banner">
+      <div class="marketplace-banner-content">
+        <span class="marketplace-icon">🌐</span>
+        <span class="marketplace-text"><strong>DepodanDirekt.com Pazaryeri</strong> ile Toptan yada Perakende iç piyasa yada İhracat yapın.</span>
+        <span class="marketplace-arrow">Hemen İncele ›</span>
+      </div>
+    </a>
 
     <!-- Ana İçerik Grid -->
     <div class="content-grid">
@@ -244,6 +252,60 @@ const mainImage = "/images/site-foto/Stok-pratik-33.png";
   font-size: 1.2rem;
   color: var(--text-dark);
   font-weight: 600;
+}
+
+/* Marketplace Banner */
+.marketplace-banner {
+  display: block;
+  background: linear-gradient(135deg, #1e3a8a, #0f172a);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  margin-bottom: 2.5rem;
+  text-decoration: none;
+  box-shadow: var(--shadow-md);
+  transition: all 0.3s ease;
+  color: white;
+}
+.marketplace-banner:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+}
+.marketplace-banner-content {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  flex-wrap: wrap;
+}
+.marketplace-icon {
+  font-size: 2.2rem;
+}
+.marketplace-text {
+  font-size: 1.3rem;
+  font-weight: 500;
+  flex: 1;
+  min-width: 250px;
+}
+.marketplace-text strong {
+  color: #93c5fd;
+  font-weight: 800;
+}
+.marketplace-arrow {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 0.6rem 1.5rem;
+  border-radius: 50px;
+  font-weight: 600;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  white-space: nowrap;
+}
+@media (max-width: 768px) {
+  .marketplace-banner-content {
+    text-align: center;
+    justify-content: center;
+  }
+  .marketplace-arrow {
+    width: 100%;
+    margin-top: 0.5rem;
+  }
 }
 
 /* Content Grid */

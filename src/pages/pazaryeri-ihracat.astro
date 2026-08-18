@@ -23,12 +23,14 @@ const sliderImages = [
   {
     slug: "depodandirekt",
     name: "DepodanDirekt Pazaryeri",
-    image: "/images/sektorler/depodandirekt.jpg"
+    image: "/images/sektorler/depodandirekt.jpg",
+    link: "https://depodandirekt.com"
   },
   ...sectors.map(s => ({
     slug: s.slug,
     name: s.name,
     image: `/images/sektorler/${s.slug}.jpg`,
+    link: `/sektor/${s.slug}`
   }))
 ];
 ---
@@ -38,7 +40,7 @@ const sliderImages = [
   <section class="hero-slider-wrapper">
     <div class="container" style="display: flex; flex-direction: column; align-items: center; text-align: center;">
       <!-- Üst: Hero Metin (Tek Satır Başlık) -->
-      <div class="hero-content" style="width: 100%;">
+      <div class="hero-content" style="width: 100%; max-width: 900px; margin: 0 auto;">
         <h1 class="hero-title">
           <span class="highlight">DepodanDirekt Pazaryeri</span> ile İhracat Yapın Dünyaya Satın
         </h1>
@@ -48,10 +50,10 @@ const sliderImages = [
       <div class="slider-container" style="width: 100%; max-width: 900px; margin-bottom: 2rem;">
         <div class="slider-track" id="sliderTrack">
           {sliderImages.map((item) => (
-            <div class="slide-item">
+            <a href={item.link} class="slide-item" style="display: block; text-decoration: none; cursor: pointer;">
               <img src={item.image} alt={item.name} loading="lazy" />
               <div class="slide-label">{item.name}</div>
-            </div>
+            </a>
           ))}
         </div>
         <!-- Ok Butonları -->
@@ -208,7 +210,7 @@ const sliderImages = [
       margin-bottom: 1.5rem;
     }
     .hero-content h1.hero-title {
-      font-size: clamp(1.2rem, 2.8vw, 2.4rem);
+      font-size: clamp(1.2rem, 2.5vw, 2rem);
       line-height: 1.2;
       font-weight: 800;
       color: #0f172a;
@@ -369,8 +371,18 @@ const sliderImages = [
     }
     .advantages-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: 1fr;
       gap: 2rem;
+    }
+    @media (min-width: 768px) {
+      .advantages-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    @media (min-width: 1024px) {
+      .advantages-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
     }
     .advantage-card {
       background: #fff;

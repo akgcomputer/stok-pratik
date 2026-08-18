@@ -109,7 +109,8 @@ const sliderImages = [
             
             <div class="form-row" id="exportCountriesWrapper" style="display: none; grid-template-columns: 1fr;">
                 <label style="font-size: 0.9rem; color: #475569; margin-bottom: 0.5rem; display: block;">Hedef Ülkeleri Seçin (Birden fazla seçebilirsiniz)</label>
-                <select id="waExportCountries" multiple style="height: 180px; padding: 0.5rem; border: 1px solid #e2e8f0; border-radius: 0.5rem;">
+                <select id="waExportCountriesSelect" style="padding: 0.5rem; border: 1px solid #e2e8f0; border-radius: 0.5rem; width: 100%;">
+                    <option value="">Ülke Eklemek İçin Tıklayın (En fazla 5)</option>
                     <optgroup label="Öne Çıkan Ülkeler">
                         <option value="Türkiye">Türkiye</option>
                         <option value="İspanya">İspanya</option>
@@ -283,11 +284,45 @@ const sliderImages = [
                         <option value="Venezuela">Venezuela</option>
                     </optgroup>
                 </select>
+                <div id="selectedCountriesContainer" style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 0.5rem;"></div>
             </div>
             
             <button type="submit" class="btn btn-primary btn-block">Hemen Başvurun</button>
           </form>
           <script>
+            let selectedCountriesList = [];
+            const maxCountries = 5;
+
+            document.getElementById('waExportCountriesSelect').addEventListener('change', function() {
+                const val = this.value;
+                if (val && !selectedCountriesList.includes(val)) {
+                    if (selectedCountriesList.length >= maxCountries) {
+                        alert("En fazla 5 ülke seçebilirsiniz.");
+                        this.value = "";
+                        return;
+                    }
+                    selectedCountriesList.push(val);
+                    renderCountries();
+                }
+                this.value = ""; // Reset after selection
+            });
+
+            function renderCountries() {
+                const container = document.getElementById('selectedCountriesContainer');
+                container.innerHTML = "";
+                selectedCountriesList.forEach((country, index) => {
+                    const badge = document.createElement('span');
+                    badge.style.cssText = "background: #e2e8f0; color: #1e293b; padding: 0.35rem 0.6rem; border-radius: 0.5rem; font-size: 0.9rem; display: inline-flex; align-items: center; gap: 0.5rem; font-weight: 500;";
+                    badge.innerHTML = `${country} <span style="cursor:pointer; color: #ef4444; font-weight: bold; font-size: 1.1rem; line-height: 1;" onclick="removeCountry(${index})">×</span>`;
+                    container.appendChild(badge);
+                });
+            }
+
+            window.removeCountry = function(index) {
+                selectedCountriesList.splice(index, 1);
+                renderCountries();
+            }
+
             document.getElementById('whatsappForm').addEventListener('submit', function(e) {
               e.preventDefault();
               const name = document.getElementById('waName').value;
@@ -300,10 +335,8 @@ const sliderImages = [
               
               let exportText = isExporting;
               if (isExporting === 'Evet') {
-                  const selectElement = document.getElementById('waExportCountries');
-                  const selectedCountries = Array.from(selectElement.selectedOptions).map(opt => opt.value);
-                  if(selectedCountries.length > 0) {
-                      exportText += " (" + selectedCountries.join(', ') + ")";
+                  if(selectedCountriesList.length > 0) {
+                      exportText += " (" + selectedCountriesList.join(', ') + ")";
                   } else {
                       exportText += " (Ülke seçilmedi)";
                   }

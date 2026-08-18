@@ -1,8 +1,23 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 
-const pageTitle = "DepodanDirekt Entegrasyonu | Stok Pratik ile B2B Toptan ve İhracat Pazaryeri";
-const pageDescription = "Stok Pratik kullanın, ürünleriniz otomatik olarak çok dilli ve çok para birimli DepodanDirekt.com küresel toptan vitrininde yer alsın. Aracısız B2B ihracat fırsatı.";
+const pageTitle = "Pazaryeri & İhracat Platformu | Stok Pratik & DepodanDirekt";
+const pageDescription = "Stok Pratik ile deponuzu ve ön muhasebenizi yönetin, ürünlerinizi DepodanDirekt ile Türkiye'ye ve dünyaya hem perakende hem toptan satın.";
+
+const sectors = [
+  { name: "Gelinlik & Abiye", slug: "gelinlik-ve-abiye", icon: "👰", desc: "Model, kumaş sarfiyatı, prova takibi ve küresel butik ihracatı." },
+  { name: "Tekstil & Hazır Giyim", slug: "tekstil-ve-hazir-giyim", icon: "👗", desc: "Renk, beden, asorti varyant yönetimi ve seri bazlı toptan satış." },
+  { name: "Otomotiv & Yedek Parça", slug: "otomotiv-ve-yedek-parca", icon: "🚗", desc: "OEM/OES kod eşleme, raf/kutu takibi ve toptan dağıtım ağı." },
+  { name: "Mutfak & Züccaciye", slug: "zuccaciye-ve-mutfak", icon: "🍽️", desc: "Koli içi adet, hacim/desi hesabı ve çok kanallı ihracat." },
+  { name: "Ayakkabı & Deri Mamulleri", slug: "ayakkabi-ve-deri", icon: "👞", desc: "Numara asortisi, seri üretimi ve toptan sipariş yönetimi." },
+  { name: "Mobilya & İç Mekan", slug: "mobilya-ve-ic-mekan", icon: "🛋️", desc: "Modüler parça takibi, takım yönetimi ve hacimli B2B lojistik." },
+  { name: "Kozmetik & Kişisel Bakım", slug: "kozmetik-ve-bakim", icon: "💄", desc: "Barkod, lot/SKT takibi ve sınır ötesi hızlı e-ihracat." },
+  { name: "Ambalaj & Plastik", slug: "ambalaj-ve-plastik", icon: "📦", desc: "Hammadde reçeteleri, tonaj/adet hesabı ve toptan sevkiyat." },
+  { name: "Gıda İşleme & B2B Tarım", slug: "gida-ve-tarim", icon: "🌾", desc: "Parti, parti no, menşei ve soğuk zincir toptan sipariş." },
+  { name: "Metal İmalat & Hırdavat", slug: "metal-ve-hirdavat", icon: "🔩", desc: "Teknik ölçü, metraj, kg/adet dönüşümü ve sanayi tedariki." },
+  { name: "Mermer & Doğal Taş", slug: "mermer-ve-dogal-tas", icon: "🪨", desc: "Plaka, kasa, m2/ton hesabı ve konteyner bazlı ihracat." },
+  { name: "İş Elbiseleri & KKD", slug: "is-elbiseleri-ve-kkd", icon: "🦺", desc: "Kurumsal logo baskı takibi ve periyodik toplu siparişler." },
+];
 ---
 
 <BaseLayout title={pageTitle} description={pageDescription}>
@@ -11,21 +26,21 @@ const pageDescription = "Stok Pratik kullanın, ürünleriniz otomatik olarak ç
     <div class="container">
       <div class="hero-content text-center">
         <div style="display: inline-block; padding: 0.5rem 1rem; margin-bottom: 1.5rem; font-size: 0.875rem; font-weight: 600; letter-spacing: 0.05em; color: #a5b4fc; background-color: rgba(30, 27, 75, 0.7); border: 1px solid rgba(99, 102, 241, 0.3); border-radius: 9999px;">
-          🌐 Yazılım + B2B İhracat & Toptan Pazaryeri Ekosistemi
+          🌐 Yazılım + B2B/B2C Pazaryeri & İhracat Ekosistemi
         </div>
         <h1>
-          Ön Muhasebenizi Yönetin,<br/>
-          Ürünleriniz DepodanDirekt ile Dünyaya Açılsın!
+          İster Tek Tek Perakende, İster Koli Koli Toptan:<br/>
+          DepodanDirekt ile Dünyaya Satın
         </h1>
         <p class="hero-description">
-          Stok Pratik çekirdeği ile deponuzu, faturanızı ve carilerinizi yönetirken; tek tıkla ürünlerinizi 81 ildeki perakendecilere ve yurt dışındaki toptan alıcılara sergileyin.
+          Stok Pratik ile deponuzu ve ön muhasebenizi yönetirken; tek tıkla ürünlerinizi çok dilli ve çok para birimli DepodanDirekt platformunda satışa açın.
         </p>
         <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
-          <a href="https://wa.me/+905325000999?text=DepodanDirekt%20B2B%20entegrasyonu%20hakkında%20bilgi%20almak%20istiyorum." target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-lg" style="background: linear-gradient(135deg, #10b981, #059669); border: none; color: white;">
-            Vitrine Hemen Katılın
+          <a href="#sektorler" class="btn btn-primary btn-lg" style="background: linear-gradient(135deg, #10b981, #059669); border: none; color: white;">
+            Sektörünüzü Seçin
           </a>
           <a href="https://depodandirekt.com" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-lg" style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: white;">
-            DepodanDirekt.com'u İncele ↗
+            DepodanDirekt.com'u Gör ↗
           </a>
         </div>
       </div>
@@ -35,91 +50,47 @@ const pageDescription = "Stok Pratik kullanın, ürünleriniz otomatik olarak ç
   <!-- Avantajlar Grid -->
   <section class="advantages py-16">
     <div class="container">
-      <div class="section-header text-center">
-        <h2>Neden DepodanDirekt & Stok Pratik?</h2>
-        <p>Geleneksel pazar yerlerinin aksine ürünlerinizi tek tek elle girmek zorunda kalmazsınız.</p>
-      </div>
-
       <div class="advantages-grid">
         <div class="advantage-card">
-          <div class="advantage-icon">⚡</div>
-          <h3>Sıfır Ekstra Operasyon</h3>
-          <p>Stok Pratik'e ürün ve stok girdikçe vitrininiz canlı eşitlenir. Mağaza yönetmek için fazladan zaman harcamazsınız.</p>
+          <div class="advantage-icon">🔄</div>
+          <h3>Otomatik Canlı Stok</h3>
+          <p>Stok Pratik'e girdiğiniz her ürün ve miktar anında vitrinde güncellenir. Çift veri girişi gerekmez.</p>
         </div>
 
         <div class="advantage-card">
           <div class="advantage-icon">🌍</div>
-          <h3>Çok Dilli & Çoklu Para Birimi</h3>
-          <p>Ürünleriniz Türkçe, İngilizce, Arapça ve Rusça dillerinde sergilenir; USD ve EUR cinsinden toptan siparişler alın.</p>
+          <h3>Çoklu Dil & Para Birimi</h3>
+          <p>Ürünleriniz Türkçe, İngilizce, Arapça ve Rusça sergilenir; USD ve EUR cinsinden ödeme ve sipariş alabilirsiniz.</p>
         </div>
 
         <div class="advantage-card">
-          <div class="advantage-icon">🔒</div>
-          <h3>Kapalı Devre B2B Modu</h3>
-          <p>Toptan fiyatlarınızı gizleyin; sadece onayladığınız kurumsal müşterilerin ve esnafın fiyatları görmesini sağlayın.</p>
+          <div class="advantage-icon">🎛️</div>
+          <h3>Esnek Fiyatlandırma</h3>
+          <p>İster adetli perakende fiyat belirleyin, ister minimum koli/seri adedi koyarak toptan esnaf fiyatı uygulayın.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Nasıl Çalışır -->
-  <section class="how-it-works py-16">
+  <!-- Sektörler Listesi -->
+  <section id="sektorler" class="advantages py-16" style="background-color: var(--bg-light);">
     <div class="container">
       <div class="section-header text-center">
-        <h2>3 Adımda Küresel Vitrindesiniz</h2>
+        <h2>Sektörünüze Özel Çözümü İnceleyin</h2>
+        <p>Hangi sektörde faaliyet gösteriyorsanız gösterin, atölyenizden veya deponuzdan doğrudan satış yapmanızı sağlayan altyapı hazır.</p>
       </div>
 
-      <div class="steps-grid">
-        <div class="step">
-          <div class="step-number">1</div>
-          <h3>Programı Kullanın</h3>
-          <p>Stok Pratik üzerinde ürünlerinizi tanımlayın ve "Vitrinde Yayınla" seçeneğini aktif edin.</p>
-        </div>
-
-        <div class="step">
-          <div class="step-number">2</div>
-          <h3>Otomatik Listelenin</h3>
-          <p>Ürünleriniz ilgili sektör sayfasında (gelinlik, tekstil, vb.) anında yayına girsin.</p>
-        </div>
-
-        <div class="step">
-          <div class="step-number">3</div>
-          <h3>Doğrudan Sipariş Alın</h3>
-          <p>Yurt içi ve yurt dışı toptan siparişleri tek tıkla proformaya ve e-faturaya dönüştürün.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Sektörler -->
-  <section class="advantages py-16" style="background-color: var(--bg-light);">
-    <div class="container">
-      <div class="section-header text-center">
-        <h2>Sektörel Vitrinlerimizi Keşfedin</h2>
-        <p>İşletmenizin faaliyet alanına özel hazırlanmış çözümleri inceleyin.</p>
-      </div>
-
-      <div class="advantages-grid" style="grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));">
-        <a href="/sektor/gelinlik-ve-abiye" class="advantage-card" style="text-decoration: none; cursor: pointer; display: block;">
-          <div class="advantage-icon">👰</div>
-          <h3 style="margin-bottom: 0.5rem; font-size: 1.1rem;">Gelinlik & Abiye</h3>
-          <p style="font-size: 0.85rem;">Atölye & Toptan İhracat</p>
-        </a>
-        <div class="advantage-card" style="opacity: 0.75;">
-          <div class="advantage-icon">👗</div>
-          <h3 style="margin-bottom: 0.5rem; font-size: 1.1rem;">Tekstil & Konfeksiyon</h3>
-          <p style="font-size: 0.85rem;">Seri/Asorti Toptan Satış</p>
-        </div>
-        <div class="advantage-card" style="opacity: 0.75;">
-          <div class="advantage-icon">🍽️</div>
-          <h3 style="margin-bottom: 0.5rem; font-size: 1.1rem;">Züccaciye & Mutfak</h3>
-          <p style="font-size: 0.85rem;">Koli & Desi Bazlı B2B</p>
-        </div>
-        <div class="advantage-card" style="opacity: 0.75;">
-          <div class="advantage-icon">🚗</div>
-          <h3 style="margin-bottom: 0.5rem; font-size: 1.1rem;">Oto Yedek Parça</h3>
-          <p style="font-size: 0.85rem;">OEM Kodlu B2B Dağıtım</p>
-        </div>
+      <div class="advantages-grid" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));">
+        {sectors.map((s) => (
+          <a href={`/sektor/${s.slug}`} class="advantage-card" style="text-decoration: none; display: flex; flex-direction: column; justify-content: space-between;">
+            <div>
+              <div class="advantage-icon">{s.icon}</div>
+              <h3 style="margin-bottom: 0.5rem; font-size: 1.1rem; color: #1e293b;">{s.name}</h3>
+              <p style="font-size: 0.85rem; color: #64748b; line-height: 1.5; margin-bottom: 1rem;">{s.desc}</p>
+            </div>
+            <span style="color: #4f46e5; font-size: 0.85rem; font-weight: 600; text-decoration: none;">Detayları Gör &rarr;</span>
+          </a>
+        ))}
       </div>
     </div>
   </section>
@@ -129,27 +100,27 @@ const pageDescription = "Stok Pratik kullanın, ürünleriniz otomatik olarak ç
     <div class="container">
       <div class="application-card">
         <div class="application-content">
-          <h2>Ürünlerinizi DepodanDirekt ile Sergileyin</h2>
+          <h2>Ürünlerinizi DepodanDirekt Vitrinine Taşıyın</h2>
           <p>
-            Stok Pratik paketlerimizle entegre çalışan B2B platformumuz hakkında ayrıntılı bilgi alın.
+            Stok Pratik paketlerimizle entegre çalışan B2B/B2C ekosistemimiz hakkında doğrudan bilgi alın.
           </p>
           
           <div class="application-buttons">
             <a 
-              href="https://wa.me/+905325000999?text=DepodanDirekt%20vitrini%20için%20başvuru%20yapmak%20istiyorum." 
+              href="https://wa.me/+905325000999?text=Pazaryeri%20ve%20ihracat%20çözümleri%20hakkında%20bilgi%20almak%20istiyorum." 
               class="btn btn-primary btn-lg"
               style="background: linear-gradient(135deg, #10b981, #059669); border: none;"
               target="_blank"
               rel="noopener noreferrer"
             >
-              WhatsApp ile Başvuru Yap
+              WhatsApp ile Hemen Görüşün
             </a>
             
             <a 
-              href="/paketlerimiz" 
+              href="/fiyatlar" 
               class="btn btn-secondary btn-lg"
             >
-              Paketleri İncele
+              Fiyat & Yapılandırma
             </a>
           </div>
         </div>
@@ -169,13 +140,6 @@ const pageDescription = "Stok Pratik kullanın, ürünleriniz otomatik olarak ç
       margin-bottom: var(--spacing-sm);
       font-size: 3rem;
       line-height: 1.2;
-    }
-
-    .hero-subtitle {
-      font-size: 1.75rem;
-      color: rgba(255, 255, 255, 0.9);
-      margin-bottom: var(--spacing-md);
-      font-weight: 600;
     }
 
     .hero-description {
@@ -230,13 +194,15 @@ const pageDescription = "Stok Pratik kullanın, ürünleriniz otomatik olarak ç
       border-radius: var(--radius-lg);
       box-shadow: var(--shadow-md);
       text-align: center;
-      border: 2px solid var(--primary-red-light);
+      border: 1px solid var(--border-color);
       transition: transform var(--transition-normal);
+      cursor: pointer;
     }
 
     .advantage-card:hover {
-      transform: translateY(-10px);
+      transform: translateY(-5px);
       box-shadow: var(--shadow-lg);
+      border-color: #a5b4fc;
     }
 
     .advantage-icon {
@@ -256,49 +222,6 @@ const pageDescription = "Stok Pratik kullanın, ürünleriniz otomatik olarak ç
     }
 
     .advantage-card p {
-      color: var(--text-gray);
-      line-height: 1.6;
-    }
-
-    /* How It Works */
-    .how-it-works {
-      background-color: var(--bg-white);
-    }
-
-    .steps-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: var(--spacing-lg);
-      max-width: 1000px;
-      margin: 0 auto;
-    }
-
-    .step {
-      text-align: center;
-      padding: var(--spacing-lg);
-      position: relative;
-    }
-
-    .step-number {
-      width: 60px;
-      height: 60px;
-      background: linear-gradient(135deg, var(--primary-red), var(--primary-red-dark));
-      color: white;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.5rem;
-      font-weight: bold;
-      margin: 0 auto var(--spacing-md);
-    }
-
-    .step h3 {
-      color: var(--primary-red);
-      margin-bottom: var(--spacing-sm);
-    }
-
-    .step p {
       color: var(--text-gray);
       line-height: 1.6;
     }
@@ -347,7 +270,7 @@ const pageDescription = "Stok Pratik kullanın, ürünleriniz otomatik olarak ç
         font-size: 1.1rem;
       }
       
-      .advantages-grid, .steps-grid {
+      .advantages-grid {
         grid-template-columns: 1fr;
       }
       

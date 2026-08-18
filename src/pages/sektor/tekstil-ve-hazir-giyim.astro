@@ -1,0 +1,242 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const pageTitle = "Tekstil & Hazır Giyim Toptan ve İhracat Yazılımı | Stok Pratik";
+const pageDescription = "Tekstil üreticileri ve toptancıları için renk/beden matrisi, seri/asorti stok takibi ve DepodanDirekt ile küresel B2B toptan satış.";
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <!-- Hero Section -->
+  <section class="hero py-16" style="background: linear-gradient(135deg, #1e3a8a, #0f172a, #0f172a);">
+    <div class="container">
+      <div class="hero-content text-center">
+        <div style="display: inline-block; padding: 0.5rem 1rem; margin-bottom: 1.5rem; font-size: 0.875rem; font-weight: 600; letter-spacing: 0.05em; color: #93c5fd; background-color: rgba(30, 58, 138, 0.6); border: 1px solid rgba(59, 130, 246, 0.3); border-radius: 9999px;">
+          👗 Tekstil & Hazır Giyim Üreticilerine Özel
+        </div>
+        <h1>
+          Renk, Beden ve Asortiyi Yönetin,<br/>
+          Seri Bazlı Toptan Satışınızı Katlayın
+        </h1>
+        <p class="hero-description">
+          Kumaş stoğu, kesim, dikim ve paketleme süreçlerini kontrol edin; ürünlerinizi DepodanDirekt tekstil vitrininde toptan ve perakende dünyaya sergileyin.
+        </p>
+        <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+          <a href="https://wa.me/+905325000999?text=Tekstil%20ve%20Hazır%20Giyim%20yazılımı%20hakkında%20bilgi%20almak%20istiyorum." target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-lg" style="background: linear-gradient(135deg, #10b981, #059669); border: none; color: white;">
+            Tekstil Demosu İsteyin
+          </a>
+          <a href="/pazaryeri-ihracat" class="btn btn-secondary btn-lg" style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: white;">
+            Tüm Sektörleri Gör
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Avantajlar Grid -->
+  <section class="advantages py-16">
+    <div class="container">
+      <div class="section-header text-center">
+        <h2>Tekstilde Hız Kazandıran Özellikler</h2>
+      </div>
+
+      <div class="advantages-grid">
+        <div class="advantage-card">
+          <div class="advantage-icon">🎨</div>
+          <h3>Renk & Beden Matrisi</h3>
+          <p>Tek bir ana ürün altında S, M, L, XL beden ve onlarca renk varyantını tek ekrandan yönetin, barkodlayın.</p>
+        </div>
+
+        <div class="advantage-card">
+          <div class="advantage-icon">📦</div>
+          <h3>Seri & Asorti Satış Modu</h3>
+          <p>DepodanDirekt vitrininizde "1 Seri (6 Adet)" kuralı koyarak toptan alıcıların doğrudan seri bazlı sipariş vermesini sağlayın.</p>
+        </div>
+
+        <div class="advantage-card">
+          <div class="advantage-icon">🧵</div>
+          <h3>Fason & Üretim Takibi</h3>
+          <p>Kesimhaneye veya fason dikim atölyesine giden kumaş miktarını ve geri dönen dikilmiş ürün adetlerini net izleyin.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Başvuru Formu -->
+  <section class="application py-16">
+    <div class="container">
+      <div class="application-card">
+        <div class="application-content">
+          <h2>Tekstil Üretiminizi ve İhracatınızı Büyütün</h2>
+          <p>Stok Pratik çözümleriyle Merter, Laleli ve Bursa kalitesini dünyaya taşıyın.</p>
+          
+          <div class="application-buttons">
+            <a 
+              href="https://wa.me/+905325000999?text=Tekstil%20sektör%20çözümü%20için%20görüşmek%20istiyorum." 
+              class="btn btn-primary btn-lg"
+              style="background: linear-gradient(135deg, #10b981, #059669); border: none;"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Hemen İletişime Geçin
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    /* Hero Section */
+    .hero {
+      color: white;
+    }
+
+    .hero h1 {
+      color: white;
+      margin-bottom: var(--spacing-sm);
+      font-size: 3rem;
+      line-height: 1.2;
+    }
+
+    .hero-description {
+      font-size: 1.25rem;
+      color: rgba(255, 255, 255, 0.8);
+      max-width: 800px;
+      margin: 0 auto var(--spacing-lg);
+      line-height: 1.6;
+    }
+
+    .btn-lg {
+      padding: 1rem 2rem;
+      font-size: 1.1rem;
+      font-weight: 600;
+      border-radius: 0.75rem;
+      text-decoration: none;
+      display: inline-block;
+      text-align: center;
+      transition: all 0.2s;
+    }
+
+    .btn-lg:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Advantages Section */
+    .advantages {
+      background-color: var(--bg-white);
+    }
+
+    .section-header h2 {
+      color: var(--primary-red);
+      margin-bottom: var(--spacing-sm);
+    }
+
+    .advantages-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: var(--spacing-lg);
+    }
+
+    .advantage-card {
+      background: var(--bg-white);
+      padding: var(--spacing-xl);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-md);
+      text-align: center;
+      border: 1px solid var(--border-color);
+      transition: transform var(--transition-normal);
+    }
+
+    .advantage-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-lg);
+      border-color: #93c5fd;
+    }
+
+    .advantage-icon {
+      font-size: 3rem;
+      margin-bottom: var(--spacing-md);
+      background: var(--bg-light);
+      width: 80px;
+      height: 80px;
+      line-height: 80px;
+      border-radius: 20px;
+      margin: 0 auto 1.5rem;
+    }
+
+    .advantage-card h3 {
+      color: var(--primary-red);
+      margin-bottom: var(--spacing-md);
+    }
+
+    .advantage-card p {
+      color: var(--text-gray);
+      line-height: 1.6;
+    }
+
+    /* Application Section */
+    .application {
+      background: linear-gradient(135deg, var(--primary-red-light), var(--bg-light));
+    }
+
+    .application-card {
+      background: var(--bg-white);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-lg);
+      padding: var(--spacing-xl);
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .application-content h2 {
+      color: var(--primary-red);
+      margin-bottom: var(--spacing-md);
+      text-align: center;
+    }
+
+    .application-content p {
+      color: var(--text-dark);
+      text-align: center;
+      margin-bottom: var(--spacing-xl);
+      line-height: 1.6;
+    }
+
+    .application-buttons {
+      display: flex;
+      gap: var(--spacing-md);
+      justify-content: center;
+      margin-bottom: 1rem;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+      
+      .hero-description {
+        font-size: 1.1rem;
+      }
+      
+      .advantages-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .advantage-card, .application-card {
+        padding: var(--spacing-lg);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero h1 {
+        font-size: 2rem;
+      }
+      
+      .btn-lg {
+        padding: 0.75rem 1.5rem;
+        font-size: 1rem;
+      }
+    }
+  </style>
+</BaseLayout>

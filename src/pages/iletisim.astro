@@ -5,58 +5,142 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 <BaseLayout title="İletişim - Stok Pratik ERP">
   <!-- İletişim Hero Section -->
-  <section class="contact-hero py-16">
+  <section class="contact-hero py-16" style="padding-bottom: 2rem;">
     <div class="container">
       <div class="contact-header text-center">
         <h1>Bizimle İletişime Geçin</h1>
-        
+        <p class="contact-subtitle">İhtiyaçlarınızı belirleyin, size en uygun çözümü sunalım.</p>
       </div>
     </div>
   </section>
 
-  <!-- WhatsApp Butonu -->
-  <section class="whatsapp-section py-16">
-    <div class="container text-center">
-      <div class="whatsapp-card">
-        <div class="whatsapp-icon">
-          <span style="font-size: 4rem;">📱</span>
-        </div>
-        
-        <h2>WhatsApp ile İletişim</h2>
-        <p>Demo talep etmek veya fiyat teklifi almak için WhatsApp'tan bize yazın:</p>
-        
-        <div class="whatsapp-buttons">
-          <a 
-            href="https://wa.me/+905325000999?text=Merhaba,%20Stok%20Pratik%20demo%20talep%20ediyorum" 
-            class="btn btn-primary btn-whatsapp"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Demo Talep Et
-          </a>
+  <!-- Başvuru Formu -->
+  <section class="application py-8">
+    <div class="container">
+      <div class="application-card" style="max-width: 800px; margin: 0 auto; background: white; padding: 2rem; border-radius: 1rem; box-shadow: 0 10px 30px rgba(0,0,0,0.08);">
+        <form class="application-form" id="iletisimForm">
+          <div class="form-row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
+            <input type="text" id="contactName" placeholder="Adınız Soyadınız *" required style="width: 100%; padding: 0.75rem; border: 1px solid #e2e8f0; border-radius: 0.5rem;" />
+            <input type="tel" id="contactPhone" placeholder="Telefon Numaranız *" required style="width: 100%; padding: 0.75rem; border: 1px solid #e2e8f0; border-radius: 0.5rem;" />
+          </div>
           
-          <a 
-            href="https://wa.me/+905325000999?text=Merhaba,%20Stok%20Pratik%20fiyat%20teklifi%20alıyorum" 
-            class="btn btn-secondary"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Fiyat Teklifi Al
-          </a>
-        </div>
-        
-        <p class="whatsapp-info">
-          <strong>Çalışma Saatleri:</strong> Hafta içi 09:00 - 18:00
-        </p>
+          <div class="form-row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.5rem;">
+            <input type="text" id="contactCompany" placeholder="İşletme Adı *" required style="width: 100%; padding: 0.75rem; border: 1px solid #e2e8f0; border-radius: 0.5rem;" />
+            <input type="email" id="contactEmail" placeholder="E-posta Adresiniz (İsteğe bağlı)" style="width: 100%; padding: 0.75rem; border: 1px solid #e2e8f0; border-radius: 0.5rem;" />
+          </div>
+
+          <div style="margin-bottom: 1.5rem;">
+            <label style="font-size: 1rem; color: #1e293b; margin-bottom: 0.5rem; display: block; font-weight: 600;">Hangisi Sizin İçin Uygun? (İlgi Alanlarınızı Seçiniz)</label>
+            <p style="font-size: 0.85rem; color: #64748b; margin-bottom: 0.5rem;">Ön Muhasebe özelliği tüm paketlerimizde standarttır. Ek olarak ilgilendiğiniz özellikleri seçebilirsiniz.</p>
+            
+            <select id="featureSelect" style="width: 100%; padding: 0.75rem; border: 1px solid #e2e8f0; border-radius: 0.5rem; outline: none; cursor: pointer;">
+              <option value="">Özellik Eklemek İçin Tıklayın...</option>
+              <optgroup label="Satış & Mağazacılık">
+                  <option value="Barkodlu Satış & Stok Takibi">Barkodlu Satış & Stok Takibi</option>
+                  <option value="Çok Şubeli Kurum Yönetimi">Çok Şubeli Kurum Yönetimi</option>
+                  <option value="Mağazalar Arası Transfer & Sayım">Mağazalar Arası Transfer & Sayım</option>
+                  <option value="Çoklu Depo Takibi">Çoklu Depo Takibi</option>
+                  <option value="Varyant Sistemi (Renk, Beden vb.)">Varyant Sistemi (Renk, Beden vb.)</option>
+                  <option value="Teklif, Sipariş & Abonelik Satışı">Teklif, Sipariş & Abonelik Satışı</option>
+              </optgroup>
+              <optgroup label="E-Ticaret & Entegrasyon">
+                  <option value="E-Ticaret (Toptan veya Perakende)">E-Ticaret (Toptan veya Perakende)</option>
+                  <option value="Pazaryerlerine Aracısız Entegrasyon">Pazaryerlerine Aracısız Entegrasyon</option>
+                  <option value="B2B Toptan Cari Portalı">B2B Toptan Cari Portalı</option>
+                  <option value="Özel Entegrasyon Talepleri">Özel Entegrasyon Talepleri</option>
+              </optgroup>
+              <optgroup label="Finans, Ön Muhasebe & E-Dönüşüm">
+                  <option value="Kasa, Banka, Çek, Senet Yönetimi">Kasa, Banka, Çek, Senet Yönetimi</option>
+                  <option value="Banka Entegrasyonu (Anlık İleti)">Banka Entegrasyonu (Anlık İleti)</option>
+                  <option value="Satınalma & Gider Yönetimi">Satınalma & Gider Yönetimi</option>
+                  <option value="Genel Muhasebe (Yevmiye, Mizan vb.)">Genel Muhasebe (Yevmiye, Mizan vb.)</option>
+                  <option value="E-Fatura, E-İrsaliye, İhracat Faturası">E-Fatura, E-İrsaliye, İhracat Faturası</option>
+              </optgroup>
+              <optgroup label="Kurumsal İşleyiş & Özel Çözümler">
+                  <option value="ERP (Üretim ve Reçeteler)">ERP (Üretim ve Reçeteler)</option>
+                  <option value="CRM (Müşteri İlişkileri & Pazarlama)">CRM (Müşteri İlişkileri & Pazarlama)</option>
+                  <option value="Personel Yönetimi & Prim Sistemi">Personel Yönetimi & Prim Sistemi</option>
+                  <option value="Kullanıcı Yetki Sistemi">Kullanıcı Yetki Sistemi</option>
+                  <option value="Destek Sistemi (Ticket Yapısı)">Destek Sistemi (Ticket Yapısı)</option>
+                  <option value="Demirbaş Takibi">Demirbaş Takibi</option>
+                  <option value="Servis Yönetimi (Oto Servis, İş Emri)">Servis Yönetimi (Oto Servis, İş Emri)</option>
+                  <option value="Kuyumculuk Çözümü (MASAK Raporları)">Kuyumculuk Çözümü (MASAK Raporları)</option>
+                  <option value="Sektörel Çözümler & Detaylı Analizler">Sektörel Çözümler & Detaylı Analizler</option>
+              </optgroup>
+            </select>
+            
+            <div id="selectedFeaturesContainer" style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 1rem;">
+              <span style="background: var(--primary-red); color: white; padding: 0.35rem 0.6rem; border-radius: 0.5rem; font-size: 0.9rem; display: inline-flex; align-items: center; gap: 0.5rem; font-weight: 500;">
+                Ön Muhasebe <span style="font-size: 0.8rem;">(Sabit)</span>
+              </span>
+            </div>
+          </div>
+          
+          <button type="submit" class="btn btn-primary" style="width: 100%; padding: 1rem; font-size: 1.1rem; border-radius: 0.5rem; border: none; cursor: pointer; background: linear-gradient(135deg, var(--primary-red), #991b1b); color: white; font-weight: bold;">Talebi Gönder</button>
+        </form>
+
+        <script>
+          let selectedFeaturesList = [];
+
+          document.getElementById('featureSelect').addEventListener('change', function() {
+              const val = this.value;
+              if (val && !selectedFeaturesList.includes(val)) {
+                  selectedFeaturesList.push(val);
+                  renderFeatures();
+              }
+              this.value = ""; // Reset after selection
+          });
+
+          function renderFeatures() {
+              const container = document.getElementById('selectedFeaturesContainer');
+              
+              // Her render'da içeriği temizleyip sabit Ön Muhasebe'yi ekliyoruz
+              container.innerHTML = `<span style="background: var(--primary-red); color: white; padding: 0.35rem 0.6rem; border-radius: 0.5rem; font-size: 0.9rem; display: inline-flex; align-items: center; gap: 0.5rem; font-weight: 500;">Ön Muhasebe <span style="font-size: 0.8rem;">(Sabit)</span></span>`;
+
+              selectedFeaturesList.forEach((feature, index) => {
+                  const badge = document.createElement('span');
+                  badge.style.cssText = "background: #e2e8f0; color: #1e293b; padding: 0.35rem 0.6rem; border-radius: 0.5rem; font-size: 0.9rem; display: inline-flex; align-items: center; gap: 0.5rem; font-weight: 500;";
+                  badge.innerHTML = `${feature} <span style="cursor:pointer; color: #ef4444; font-weight: bold; font-size: 1.1rem; line-height: 1;" onclick="removeFeature(${index})">×</span>`;
+                  container.appendChild(badge);
+              });
+          }
+
+          window.removeFeature = function(index) {
+              selectedFeaturesList.splice(index, 1);
+              renderFeatures();
+          }
+
+          document.getElementById('iletisimForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('contactName').value;
+            const phone = document.getElementById('contactPhone').value;
+            const company = document.getElementById('contactCompany').value;
+            const email = document.getElementById('contactEmail').value;
+            
+            let featureText = "*Ön Muhasebe (Standart)*";
+            if (selectedFeaturesList.length > 0) {
+                featureText += "\nEk Seçimler:\n- " + selectedFeaturesList.join('\n- ');
+            }
+            
+            let message = `Merhaba, Stok Pratik hakkında bilgi ve teklif almak istiyorum.\n\n*Ad Soyad:* ${name}\n*Telefon:* ${phone}\n*İşletme Adı:* ${company}`;
+            if (email) {
+                message += `\n*E-posta:* ${email}`;
+            }
+            message += `\n\n*İlgilenilen Özellikler:*\n${featureText}`;
+            
+            const whatsappUrl = `https://wa.me/905325000999?text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, '_blank');
+          });
+        </script>
       </div>
     </div>
   </section>
 
   <!-- Basit Bilgiler -->
-  <section class="info-section py-16">
+  <section class="info-section py-8">
     <div class="container text-center">
       <h2>Stok Pratik  <br>Online Muhasebe, <br>Mağazacılık ve ERP</h2>
-      <p>
+      <p style="max-width: 600px; margin: 0 auto; color: #475569;">
         Online stok ve muhasebe yazılımı ile işletmenizin tüm süreçlerini tek platformdan yönetin.
       </p>
     </div>
@@ -73,77 +157,19 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
-      margin-bottom: var(--spacing-md);
+      margin-bottom: var(--spacing-sm);
     }
 
     .contact-subtitle {
-      font-size: 1.25rem;
+      font-size: 1.15rem;
       color: var(--text-gray);
       max-width: 600px;
       margin: 0 auto;
     }
-
-    /* WhatsApp Kartı */
-    .whatsapp-card {
-      background: var(--bg-white);
-      padding: var(--spacing-xl);
-      border-radius: var(--radius-lg);
-      box-shadow: var(--shadow-lg);
-      max-width: 500px;
-      margin: 0 auto;
-      text-align: center;
-    }
-
-    .whatsapp-icon {
-      margin-bottom: var(--spacing-lg);
-    }
-
-    .whatsapp-buttons {
-      display: flex;
-      flex-direction: column;
-      gap: var(--spacing-md);
-      margin: var(--spacing-xl) 0;
-    }
-
-    .btn-whatsapp {
-      background: linear-gradient(135deg, #25D366, #128C7E);
-      border-color: #25D366;
-      color: white;
-    }
-
-    .btn-whatsapp:hover {
-      background: linear-gradient(135deg, #128C7E, #075E54);
-      border-color: #128C7E;
-    }
-
-    .whatsapp-info {
-      background: var(--primary-red-light);
-      padding: var(--spacing-md);
-      border-radius: var(--radius-md);
-      margin-top: var(--spacing-lg);
-      text-align: center;
-    }
-
-    /* Info Section */
-    .info-section {
-      background-color: var(--bg-light);
-    }
-
-    /* Responsive */
-    @media (min-width: 768px) {
-      .whatsapp-buttons {
-        flex-direction: row;
-        justify-content: center;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .whatsapp-card {
-        padding: var(--spacing-lg);
-      }
-      
-      .whatsapp-buttons {
-        flex-direction: column;
+    
+    @media (max-width: 768px) {
+      .form-row {
+        grid-template-columns: 1fr !important;
       }
     }
   </style>

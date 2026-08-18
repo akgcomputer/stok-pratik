@@ -140,20 +140,45 @@ const sliderImages = [
         <div class="application-content">
           <h2>Ürünlerinizi DepodanDirekt<br/>Vitrinine Taşıyın</h2>
           <p>Stok Pratik paketlerimizle entegre çalışan toptan ve<br/>perakende (B2B/B2C) ekosistemimiz hakkında bilgi alın ve hemen başlayın.</p>
-          <form class="application-form" action="/basvuru" method="POST">
+          <form class="application-form" id="whatsappForm">
             <div class="form-row">
-              <input type="text" name="name" placeholder="Adınız Soyadınız" required />
-              <input type="email" name="email" placeholder="E-posta Adresiniz" required />
+              <input type="text" id="waName" placeholder="Adınız Soyadınız" required />
+              <input type="email" id="waEmail" placeholder="E-posta Adresiniz" required />
             </div>
             <div class="form-row">
-              <input type="tel" name="phone" placeholder="Telefon Numaranız" required />
-              <select name="sector" required>
+              <input type="tel" id="waPhone" placeholder="Telefon Numaranız" required />
+              <input type="text" id="waCompany" placeholder="İşletme Adı" required />
+            </div>
+            <div class="form-row">
+              <select id="waType" required>
+                <option value="">İşletme Türü Seçin</option>
+                <option value="Toptan">Toptan</option>
+                <option value="Perakende">Perakende</option>
+                <option value="Hem Toptan Hem Perakende">Hem Toptan Hem Perakende</option>
+              </select>
+              <select id="waSector" required>
                 <option value="">Sektörünüzü Seçin</option>
-                {sectors.map(s => <option value={s.slug}>{s.name}</option>)}
+                {sectors.map(s => <option value={s.name}>{s.name}</option>)}
               </select>
             </div>
             <button type="submit" class="btn btn-primary btn-block">Hemen Başvurun</button>
           </form>
+          <script>
+            document.getElementById('whatsappForm').addEventListener('submit', function(e) {
+              e.preventDefault();
+              const name = document.getElementById('waName').value;
+              const email = document.getElementById('waEmail').value;
+              const phone = document.getElementById('waPhone').value;
+              const company = document.getElementById('waCompany').value;
+              const type = document.getElementById('waType').value;
+              const sector = document.getElementById('waSector').value;
+              
+              const message = `Merhaba, Pazaryeri ve İhracat çözümleriniz için başvuru yapmak istiyorum.\n\n*Ad Soyad:* ${name}\n*E-posta:* ${email}\n*Telefon:* ${phone}\n*İşletme Adı:* ${company}\n*İşletme Türü:* ${type}\n*Sektör:* ${sector}`;
+              
+              const whatsappUrl = `https://wa.me/905325000999?text=${encodeURIComponent(message)}`;
+              window.open(whatsappUrl, '_blank');
+            });
+          </script>
           <div class="form-alternative">
             <p>veya doğrudan WhatsApp'tan görüşün</p>
             <a href="https://wa.me/+905325000999?text=Pazaryeri%20ve%20ihracat%20çözümleri%20hakkında%20bilgi%20almak%20istiyorum." target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp">WhatsApp ile Yazın</a>

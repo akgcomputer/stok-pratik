@@ -41,18 +41,18 @@ const sliderImages = [
         <!-- Sol: Hero Metin -->
         <div class="hero-content">
           <div class="badge">🌐 Yazılım + B2B/B2C Pazaryeri & İhracat Ekosistemi</div>
+          <h3 style="font-size: 1.8rem; font-weight: 700; color: #334155; margin-bottom: 0.5rem;">İster Tek Tek Perakende,</h3>
+          <h3 style="font-size: 1.8rem; font-weight: 700; color: #334155; margin-bottom: 1rem;">İster Koli Koli Toptan:</h3>
           <h1>
-            İster Tek Tek Perakende,<br />
-            İster Koli Koli Toptan:<br />
             <span class="highlight">DepodanDirekt</span> ile Dünyaya Satın
           </h1>
-          <p class="hero-description">
-            Stok Pratik ile deponuzu ve ön muhasebenizi yönetirken; tek tıkla ürünlerinizi çok dilli ve çok para birimli DepodanDirekt platformunda satışa açın.
-          </p>
           <div class="hero-buttons">
-            <a href="#sektorler" class="btn btn-primary">Sektörünüzü Seçin</a>
+            <a href="#sektorler" class="btn btn-primary" style="background: linear-gradient(135deg, #ef4444, #b91c1c); box-shadow: 0 4px 14px rgba(239, 68, 68, 0.3);">Sektörünüzü Seçin</a>
             <a href="https://depodandirekt.com" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">DepodanDirekt.com'u Gör ↗</a>
           </div>
+          <p class="hero-description" style="margin-top: 1.5rem;">
+            Stok Pratik ile deponuzu ve ön muhasebenizi yönetirken; tek tıkla ürünlerinizi çok dilli ve çok para birimli DepodanDirekt platformunda satışa açın.
+          </p>
         </div>
 
         <!-- Sağ: Sektör Slider -->
@@ -143,8 +143,8 @@ const sliderImages = [
     <div class="container">
       <div class="application-card">
         <div class="application-content">
-          <h2>Ürünlerinizi DepodanDirekt Vitrinine Taşıyın</h2>
-          <p>Stok Pratik paketlerimizle entegre çalışan B2B/B2C ekosistemimiz hakkında bilgi alın ve hemen başlayın.</p>
+          <h2>Ürünlerinizi DepodanDirekt<br/>Vitrinine Taşıyın</h2>
+          <p>Stok Pratik paketlerimizle entegre çalışan toptan ve<br/>perakende (B2B/B2C) ekosistemimiz hakkında bilgi alın ve hemen başlayın.</p>
           <form class="application-form" action="/basvuru" method="POST">
             <div class="form-row">
               <input type="text" name="name" placeholder="Adınız Soyadınız" required />
@@ -371,7 +371,7 @@ const sliderImages = [
     }
     .advantages-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      grid-template-columns: repeat(3, 1fr);
       gap: 2rem;
     }
     .advantage-card {
@@ -482,6 +482,7 @@ const sliderImages = [
       color: #0f172a;
       text-align: center;
       margin-bottom: 1rem;
+      line-height: 1.3;
     }
     .application-content > p {
       text-align: center;
@@ -593,7 +594,7 @@ const sliderImages = [
 
       function updateSlider(index) {
         const offset = -index * 100;
-        track.style.transform = \`translateX(\${offset}%)\`;
+        track.style.transform = `translateX(${offset}%)`;
         // Noktaları güncelle
         dots.forEach((dot, i) => {
           dot.classList.toggle('active', i === index % totalSlides);

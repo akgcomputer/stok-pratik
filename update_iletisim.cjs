@@ -1,0 +1,185 @@
+const fs = require('fs');
+const path = require('path');
+
+const filePath = path.join(__dirname, 'src/pages/iletisim.astro');
+
+const content = `---
+// src/pages/iletisim.astro
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="İletişim - Stok Pratik ERP">
+  <!-- İletişim Hero Section -->
+  <section class="contact-hero py-16" style="padding-bottom: 2rem;">
+    <div class="container">
+      <div class="contact-header text-center">
+        <h1>Bizimle İletişime Geçin</h1>
+        <p class="contact-subtitle">İhtiyaçlarınızı belirleyin, size en uygun çözümü sunalım.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Başvuru Formu -->
+  <section class="application py-8">
+    <div class="container">
+      <div class="application-card" style="max-width: 800px; margin: 0 auto; background: white; padding: 2rem; border-radius: 1rem; box-shadow: 0 10px 30px rgba(0,0,0,0.08);">
+        <form class="application-form" id="iletisimForm">
+          <div class="form-row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
+            <input type="text" id="contactName" placeholder="Adınız Soyadınız *" required style="width: 100%; padding: 0.75rem; border: 1px solid #e2e8f0; border-radius: 0.5rem;" />
+            <input type="tel" id="contactPhone" placeholder="Telefon Numaranız *" required style="width: 100%; padding: 0.75rem; border: 1px solid #e2e8f0; border-radius: 0.5rem;" />
+          </div>
+          
+          <div class="form-row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.5rem;">
+            <input type="text" id="contactCompany" placeholder="İşletme Adı *" required style="width: 100%; padding: 0.75rem; border: 1px solid #e2e8f0; border-radius: 0.5rem;" />
+            <input type="email" id="contactEmail" placeholder="E-posta Adresiniz (İsteğe bağlı)" style="width: 100%; padding: 0.75rem; border: 1px solid #e2e8f0; border-radius: 0.5rem;" />
+          </div>
+
+          <div style="margin-bottom: 1.5rem;">
+            <label style="font-size: 1rem; color: #1e293b; margin-bottom: 0.5rem; display: block; font-weight: 600;">Hangisi Sizin İçin Uygun? (İlgi Alanlarınızı Seçiniz)</label>
+            <p style="font-size: 0.85rem; color: #64748b; margin-bottom: 0.5rem;">Ön Muhasebe özelliği tüm paketlerimizde standarttır. Ek olarak ilgilendiğiniz özellikleri seçebilirsiniz.</p>
+            
+            <select id="featureSelect" style="width: 100%; padding: 0.75rem; border: 1px solid #e2e8f0; border-radius: 0.5rem; outline: none; cursor: pointer;">
+              <option value="">Özellik Eklemek İçin Tıklayın...</option>
+              <optgroup label="Satış & Mağazacılık">
+                  <option value="Barkodlu Satış & Stok Takibi">Barkodlu Satış & Stok Takibi</option>
+                  <option value="Çok Şubeli Kurum Yönetimi">Çok Şubeli Kurum Yönetimi</option>
+                  <option value="Mağazalar Arası Transfer & Sayım">Mağazalar Arası Transfer & Sayım</option>
+                  <option value="Çoklu Depo Takibi">Çoklu Depo Takibi</option>
+                  <option value="Varyant Sistemi (Renk, Beden vb.)">Varyant Sistemi (Renk, Beden vb.)</option>
+                  <option value="Teklif, Sipariş & Abonelik Satışı">Teklif, Sipariş & Abonelik Satışı</option>
+              </optgroup>
+              <optgroup label="E-Ticaret & Entegrasyon">
+                  <option value="E-Ticaret (Toptan veya Perakende)">E-Ticaret (Toptan veya Perakende)</option>
+                  <option value="Pazaryerlerine Aracısız Entegrasyon">Pazaryerlerine Aracısız Entegrasyon</option>
+                  <option value="B2B Toptan Cari Portalı">B2B Toptan Cari Portalı</option>
+                  <option value="Özel Entegrasyon Talepleri">Özel Entegrasyon Talepleri</option>
+              </optgroup>
+              <optgroup label="Finans, Ön Muhasebe & E-Dönüşüm">
+                  <option value="Kasa, Banka, Çek, Senet Yönetimi">Kasa, Banka, Çek, Senet Yönetimi</option>
+                  <option value="Banka Entegrasyonu (Anlık İleti)">Banka Entegrasyonu (Anlık İleti)</option>
+                  <option value="Satınalma & Gider Yönetimi">Satınalma & Gider Yönetimi</option>
+                  <option value="Genel Muhasebe (Yevmiye, Mizan vb.)">Genel Muhasebe (Yevmiye, Mizan vb.)</option>
+                  <option value="E-Fatura, E-İrsaliye, İhracat Faturası">E-Fatura, E-İrsaliye, İhracat Faturası</option>
+              </optgroup>
+              <optgroup label="Kurumsal İşleyiş & Özel Çözümler">
+                  <option value="ERP (Üretim ve Reçeteler)">ERP (Üretim ve Reçeteler)</option>
+                  <option value="CRM (Müşteri İlişkileri & Pazarlama)">CRM (Müşteri İlişkileri & Pazarlama)</option>
+                  <option value="Personel Yönetimi & Prim Sistemi">Personel Yönetimi & Prim Sistemi</option>
+                  <option value="Kullanıcı Yetki Sistemi">Kullanıcı Yetki Sistemi</option>
+                  <option value="Destek Sistemi (Ticket Yapısı)">Destek Sistemi (Ticket Yapısı)</option>
+                  <option value="Demirbaş Takibi">Demirbaş Takibi</option>
+                  <option value="Servis Yönetimi (Oto Servis, İş Emri)">Servis Yönetimi (Oto Servis, İş Emri)</option>
+                  <option value="Kuyumculuk Çözümü (MASAK Raporları)">Kuyumculuk Çözümü (MASAK Raporları)</option>
+                  <option value="Sektörel Çözümler & Detaylı Analizler">Sektörel Çözümler & Detaylı Analizler</option>
+              </optgroup>
+            </select>
+            
+            <div id="selectedFeaturesContainer" style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 1rem;">
+              <span style="background: var(--primary-red); color: white; padding: 0.35rem 0.6rem; border-radius: 0.5rem; font-size: 0.9rem; display: inline-flex; align-items: center; gap: 0.5rem; font-weight: 500;">
+                Ön Muhasebe <span style="font-size: 0.8rem;">(Sabit)</span>
+              </span>
+            </div>
+          </div>
+          
+          <button type="submit" class="btn btn-primary" style="width: 100%; padding: 1rem; font-size: 1.1rem; border-radius: 0.5rem; border: none; cursor: pointer; background: linear-gradient(135deg, var(--primary-red), #991b1b); color: white; font-weight: bold;">Talebi Gönder</button>
+        </form>
+
+        <script>
+          let selectedFeaturesList = [];
+
+          document.getElementById('featureSelect').addEventListener('change', function() {
+              const val = this.value;
+              if (val && !selectedFeaturesList.includes(val)) {
+                  selectedFeaturesList.push(val);
+                  renderFeatures();
+              }
+              this.value = ""; // Reset after selection
+          });
+
+          function renderFeatures() {
+              const container = document.getElementById('selectedFeaturesContainer');
+              
+              // Her render'da içeriği temizleyip sabit Ön Muhasebe'yi ekliyoruz
+              container.innerHTML = \`<span style="background: var(--primary-red); color: white; padding: 0.35rem 0.6rem; border-radius: 0.5rem; font-size: 0.9rem; display: inline-flex; align-items: center; gap: 0.5rem; font-weight: 500;">Ön Muhasebe <span style="font-size: 0.8rem;">(Sabit)</span></span>\`;
+
+              selectedFeaturesList.forEach((feature, index) => {
+                  const badge = document.createElement('span');
+                  badge.style.cssText = "background: #e2e8f0; color: #1e293b; padding: 0.35rem 0.6rem; border-radius: 0.5rem; font-size: 0.9rem; display: inline-flex; align-items: center; gap: 0.5rem; font-weight: 500;";
+                  badge.innerHTML = \`\${feature} <span style="cursor:pointer; color: #ef4444; font-weight: bold; font-size: 1.1rem; line-height: 1;" onclick="removeFeature(\${index})">×</span>\`;
+                  container.appendChild(badge);
+              });
+          }
+
+          window.removeFeature = function(index) {
+              selectedFeaturesList.splice(index, 1);
+              renderFeatures();
+          }
+
+          document.getElementById('iletisimForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('contactName').value;
+            const phone = document.getElementById('contactPhone').value;
+            const company = document.getElementById('contactCompany').value;
+            const email = document.getElementById('contactEmail').value;
+            
+            let featureText = "*Ön Muhasebe (Standart)*";
+            if (selectedFeaturesList.length > 0) {
+                featureText += "\\nEk Seçimler:\\n- " + selectedFeaturesList.join('\\n- ');
+            }
+            
+            let message = \`Merhaba, Stok Pratik hakkında bilgi ve teklif almak istiyorum.\\n\\n*Ad Soyad:* \${name}\\n*Telefon:* \${phone}\\n*İşletme Adı:* \${company}\`;
+            if (email) {
+                message += \`\\n*E-posta:* \${email}\`;
+            }
+            message += \`\\n\\n*İlgilenilen Özellikler:*\\n\${featureText}\`;
+            
+            const whatsappUrl = \`https://wa.me/905325000999?text=\${encodeURIComponent(message)}\`;
+            window.open(whatsappUrl, '_blank');
+          });
+        </script>
+      </div>
+    </div>
+  </section>
+
+  <!-- Basit Bilgiler -->
+  <section class="info-section py-8">
+    <div class="container text-center">
+      <h2>Stok Pratik  <br>Online Muhasebe, <br>Mağazacılık ve ERP</h2>
+      <p style="max-width: 600px; margin: 0 auto; color: #475569;">
+        Online stok ve muhasebe yazılımı ile işletmenizin tüm süreçlerini tek platformdan yönetin.
+      </p>
+    </div>
+  </section>
+
+  <style>
+    /* İletişim Hero */
+    .contact-hero {
+      background: linear-gradient(135deg, var(--primary-red-light) 0%, var(--bg-white) 100%);
+    }
+
+    .contact-header h1 {
+      background: linear-gradient(135deg, var(--primary-red), var(--primary-red-dark));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: var(--spacing-sm);
+    }
+
+    .contact-subtitle {
+      font-size: 1.15rem;
+      color: var(--text-gray);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    
+    @media (max-width: 768px) {
+      .form-row {
+        grid-template-columns: 1fr !important;
+      }
+    }
+  </style>
+</BaseLayout>
+`;
+
+fs.writeFileSync(filePath, content, 'utf8');
+console.log('iletisim.astro update complete.');

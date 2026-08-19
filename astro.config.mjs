@@ -6,6 +6,8 @@ import sitemap from '@astrojs/sitemap';
 
 import remarkEmbeds from './src/utils/remark-embeds.mjs';
 
+import tailwindcss from '@tailwindcss/vite';
+
 export default defineConfig({
   output: 'server',
   adapter: cloudflare(),
@@ -38,7 +40,9 @@ export default defineConfig({
       'process.env.KEYSTATIC_GITHUB_CLIENT_ID': JSON.stringify(process.env.KEYSTATIC_GITHUB_CLIENT_ID || ''),
       'process.env.KEYSTATIC_GITHUB_CLIENT_SECRET': JSON.stringify(process.env.KEYSTATIC_GITHUB_CLIENT_SECRET || ''),
       'process.env.KEYSTATIC_SECRET': JSON.stringify(process.env.KEYSTATIC_SECRET || '')
-    }
+    },
+
+    plugins: [tailwindcss()]
   },
   
   // Inject Environment Variables for Keystatic on Cloudflare

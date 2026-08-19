@@ -1,0 +1,11 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import App from '../react-components/App';
+
+const pageTitle = "Tekstil ve Mağazacılık Yazılımı | Stok Pratik";
+const pageDescription = "Tekstil sektörüne özel varyant yönetimi, renk ve beden takibi, e-ticaret ve toptan B2B satış platformu.";
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <App client:load />
+</BaseLayout>

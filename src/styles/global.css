@@ -1,3 +1,4 @@
+@import "tailwindcss";
 @import './variables.css';
 
 /* Reset & Base Styles */
@@ -799,3 +800,4 @@ a:hover {
   white-space: pre-wrap !important;
   word-break: break-word !important;
 }
+

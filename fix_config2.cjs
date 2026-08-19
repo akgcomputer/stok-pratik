@@ -1,4 +1,19 @@
-import { defineConfig } from 'astro/config';
+const fs = require('fs');
+
+let content = fs.readFileSync('astro.config.mjs', 'utf8');
+
+// The file has two 'vite: {' blocks. The second one lacks the plugins array.
+// Let's just find the last one and remove it.
+
+const lines = content.split('\n');
+const newLines = [];
+let skip = false;
+let braceCount = 0;
+
+// simple hack: find the first "vite: {" that DOES NOT have tailwindcss and remove it or something?
+// Actually, let's just write a clean astro.config.mjs.
+
+const cleanConfig = `import { defineConfig } from 'astro/config';
 import cloudflare from '@astrojs/cloudflare';
 import keystatic from '@keystatic/astro';
 import react from '@astrojs/react';
@@ -47,3 +62,7 @@ export default defineConfig({
   // INTEGRATIONS FOR SEO & CMS
   integrations: [react(), keystatic(), sitemap()]
 });
+`;
+
+fs.writeFileSync('astro.config.mjs', cleanConfig, 'utf8');
+console.log('Fixed config!');

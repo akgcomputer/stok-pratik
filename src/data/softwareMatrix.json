@@ -1,0 +1,66 @@
+{
+  "stokPratik": {
+    "name": "Stok Pratik Ekosistemi",
+    "badge": "Entegre Akıllı Ekosistem",
+    "strengths": [
+      "Ön muhasebe, mağaza POS, e-ticaret, pazar yerleri ve B2B tek veri tabanında",
+      "Sıfır entegrasyon riski; ek ara yazılım aboneliği gerektirmez",
+      "Kullanıcı veya modül başına gizli ek lisans maliyeti çıkarmaz"
+    ],
+    "estimatedCostText": "Tek Fiyat. Gizli Modül ve Sürpriz Kullanıcı Maliyetleri Yoktur.",
+    "pricingModel": "Şeffaf Yıllık Tek Abonelik (Tüm Modüller Dahil)",
+    "suitabilityBaseScore": 92
+  },
+  "brands": [
+    {
+      "id": "ikas",
+      "name": "ikas (Scale/Enterprise)",
+      "category": "e-ticaret",
+      "badge": "E-Ticaret Altyapısı",
+      "strengths": ["Yüksek dönüşümlü e-ticaret vitrini", "Hızlı sepet ve modern e-ihracat altyapısı"],
+      "limitations": "Mağaza içi barkodlu POS ve ön muhasebe için harici yazılım/entegrasyon gerektirir.",
+      "estimatedCostText": "80.000 TL / Yıl (2026 Eylül ayı tavsiye edilen fiyatlar) + İşlem komisyonları",
+      "bridgeRequired": ["Ön Muhasebe Yazılımı", "Pazaryeri Entegratörü"]
+    },
+    {
+      "id": "logo-tiger",
+      "name": "Logo Tiger / Wings",
+      "category": "erp",
+      "badge": "Kurumsal ERP",
+      "strengths": ["Büyük ölçekli üretim ve bütçe planlama derinliği", "Geniş bayi ve danışman ağı"],
+      "limitations": "Yüksek kurulum/LEM bedelleri, karmaşık arayüz ve e-ticaret/POS için pahalı ara entegrasyonlar.",
+      "estimatedCostText": "300.000 TL+ / İlk Kurulum (2026 Eylül ayı tavsiye edilen fiyatlar) + Yıllık Bakım",
+      "bridgeRequired": ["E-Ticaret Entegrasyonu", "Mağaza POS Terminal Lisansı"]
+    },
+    {
+      "id": "parasut",
+      "name": "Paraşüt (Gelişmiş)",
+      "category": "on-muhasebe",
+      "badge": "Bulut Ön Muhasebe",
+      "strengths": ["Kullanıcı dostu bulut arayüz", "Kolay e-fatura kesimi ve banka takibi"],
+      "limitations": "Fiziki mağaza barkodlu satışı, çoklu depo transferleri ve B2B sipariş portalı bulunmaz.",
+      "estimatedCostText": "16.000 TL / Yıl (2026 Eylül ayı tavsiye edilen fiyatlar) + e-Kontör",
+      "bridgeRequired": ["Perakende POS Programı", "Pazaryeri Entegratörü"]
+    },
+    {
+      "id": "entegra",
+      "name": "Entegra Bilişim",
+      "category": "entegrasyon",
+      "badge": "Pazaryeri Entegratörü",
+      "strengths": ["30+ pazaryerinde gelişmiş ürün/sipariş senkronizasyonu", "Otomatik fiyatlama botu"],
+      "limitations": "Sadece bir veri köprüsüdür; resmi ön muhasebe, kasa veya mağaza POS özelliği yoktur.",
+      "estimatedCostText": "55.000 TL / Yıl (2026 Eylül ayı tavsiye edilen fiyatlar)",
+      "bridgeRequired": ["ERP / Muhasebe Yazılımı", "E-Ticaret Altyapısı"]
+    },
+    {
+      "id": "teamgram",
+      "name": "TeamGram",
+      "category": "crm",
+      "badge": "Satış & CRM",
+      "strengths": ["Müşteri satış fırsatları takibi", "Saha teklif yönetimi ve onay mekanizması"],
+      "limitations": "Depo envanteri, e-fatura basımı ve mağazacılık kasası içermez.",
+      "estimatedCostText": "18.000 TL / Kullanıcı Başı Yıllık (2026 Eylül ayı tavsiye edilen fiyatlar)",
+      "bridgeRequired": ["Ön Muhasebe / ERP", "E-Ticaret / Mağaza Sistemi"]
+    }
+  ]
+}

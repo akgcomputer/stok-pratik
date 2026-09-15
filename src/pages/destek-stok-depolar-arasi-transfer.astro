@@ -1,0 +1,343 @@
+---
+// src/pages/destek-tema.astro
+// BU SAYFA DESTEK İÇERİKLERİ İÇİN MATBU BİR ŞABLON (TEMPLATE) OLARAK HAZIRLANMIŞTIR.
+// VS Code üzerinden bu dosyayı kopyalayıp (Duplicate) adını değiştirerek yeni sayfalar üretebilirsiniz.
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Destek: Desteğin Konusu - Stok Pratik">
+  <div class="py-12 bg-slate-50 min-h-screen">
+    <div class="container mx-auto px-4 max-w-4xl">
+      
+      <!-- Breadcrumb (Sayfa Yolu) -->
+      <nav class="text-sm font-medium text-slate-500 mb-6 flex items-center gap-2">
+        <a href="/" class="hover:text-red-600 transition-colors">Ana Sayfa</a> 
+        <span>/</span> 
+        <a href="/destek-icerikleri" class="text-slate-800 hover:text-red-600 transition-colors">Destek İçerikleri</a>
+      </nav>
+
+      <!-- Üst Başlık Alanı -->
+      <div class="bg-white rounded-3xl shadow-sm border border-slate-200 p-8 md:p-12 mb-8 text-center relative overflow-hidden">
+        <!-- Arka Plan Dekorasyonu -->
+        <div class="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-red-500 to-red-600"></div>
+        
+        <span class="inline-block px-5 py-1.5 rounded-full bg-red-50 text-red-600 font-extrabold text-sm mb-5 tracking-widest uppercase">
+          DESTEK
+        </span>
+        <h1 class="text-3xl md:text-5xl font-extrabold text-slate-800 tracking-tight mb-4">
+          Transfer İşlemleri (Mağazalar ve Depolar Arası)
+        </h1>
+        <p class="text-slate-500 text-lg max-w-2xl mx-auto">
+          Bu kılavuzda anlatımımız biraz uzun gibi görülse de transfer mağazacılık alanında sıkça yapılan bir işlemdir
+          lütfen adımları dikkatlice inceleyin ve siz de kendi Stok Pratik ekranınızdan adım yapın ve
+          aşağıda transfer işlemi adım adım nasıl gerçekleştireceğinizi görseller eşliğinde öğrenebilirsiniz.
+        </p>
+      </div>
+
+      <!-- İçerik ve Adımlar -->
+      <div class="space-y-12 bg-white rounded-3xl shadow-sm border border-slate-200 p-8 md:p-12">
+        
+        <!-- ADIM 1 -->
+        <div class="step-block border-b border-slate-100 pb-12 last:border-0 last:pb-0">
+          <h2 class="text-2xl font-bold text-slate-800 mb-6 flex items-center gap-4">
+            <span class="flex-shrink-0 flex items-center justify-center w-12 h-12 rounded-full bg-red-600 text-white text-xl shadow-md shadow-red-600/20">2</span>
+            Önemli Ayrıntı! > Doğru Mağaza Seçimi
+          </h2>
+          <!-- Görsel Alanı -->
+          <div class="mb-6 bg-slate-100 rounded-2xl overflow-hidden border border-slate-200 flex items-center justify-center min-h-[200px]">
+            <!-- Görseli buraya ekleyiniz. Örn: /images/destek/ornek-1.jpg -->
+            <!-- Eğer resim yoksa div içerisine açıklama yazabilirsiniz, resim koyduğunuzda bu metni silin -->
+            <img src="/images/destek/transfer-1.jpg" alt="Adım 1 Görseli" class="w-full h-auto object-contain" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" />
+            <span class="text-slate-400 font-medium hidden">Görsel Yeri: /images/destek/transfer-1.jpg</span>
+          </div>
+          <!-- Açıklama Alanı -->
+          <div class="text-slate-600 text-lg leading-relaxed">
+            <p>
+              2.Aşama Transfer yapacak yani stoklarındaki ürünleri gönderecek mağaza için giriş yapılır..
+Örneğimizde Üsküdar Mağaza-Nişantaşı Mağazaya Transfer yapacak olarak devam edelim
+            </p>
+          </div>
+        </div>
+
+        <!-- ADIM 2 -->
+        <div class="step-block border-b border-slate-100 pb-12 last:border-0 last:pb-0">
+          <h2 class="text-2xl font-bold text-slate-800 mb-6 flex items-center gap-4">
+            <span class="flex-shrink-0 flex items-center justify-center w-12 h-12 rounded-full bg-red-600 text-white text-xl shadow-md shadow-red-600/20">3</span>
+            Mağaza Giden Seçilir
+          </h2>
+          <!-- Görsel Alanı -->
+          <div class="mb-6 bg-slate-100 rounded-2xl overflow-hidden border border-slate-200 flex items-center justify-center min-h-[200px]">
+            <!-- Görseli buraya ekleyiniz. Örn: /images/destek/ornek-2.jpg -->
+            <img src="/images/destek/transfer-2.jpg" alt="Adım 2 Görseli" class="w-full h-auto object-contain" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" />
+            <span class="text-slate-400 font-medium hidden">Görsel Yeri: /images/destek/transfer-2.jpg</span>
+          </div>
+          <!-- Açıklama Alanı -->
+          <div class="text-slate-600 text-lg leading-relaxed">
+            <p>
+              3.Aşama Menüden Mağaza Giden bölümünü seçmek
+E-posta gibi düşünebilirsiniz 
+(Gelenler transfer edilmiş ürünler, Gidenler bizim Merkez yada mağazamızdan yollayacağımız ürünlerdir.)
+            </p>
+          </div>
+        </div>
+
+        <!-- ADIM 3 -->
+        <div class="step-block border-b border-slate-100 pb-12 last:border-0 last:pb-0">
+          <h2 class="text-2xl font-bold text-slate-800 mb-6 flex items-center gap-4">
+            <span class="flex-shrink-0 flex items-center justify-center w-12 h-12 rounded-full bg-red-600 text-white text-xl shadow-md shadow-red-600/20">4</span>
+            Transfer Listesi
+          </h2>
+          <!-- Görsel Alanı -->
+          <div class="mb-6 bg-slate-100 rounded-2xl overflow-hidden border border-slate-200 flex items-center justify-center min-h-[200px]">
+            <!-- Görseli buraya ekleyiniz. Örn: /images/destek/ornek-3.jpg -->
+            <img src="/images/destek/transfer-3.jpg" alt="Adım 3 Görseli" class="w-full h-auto object-contain" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" />
+            <span class="text-slate-400 font-medium hidden">Görsel Yeri: /images/destek/transfer-3.jpg</span>
+          </div>
+          <!-- Açıklama Alanı -->
+          <div class="text-slate-600 text-lg leading-relaxed">
+            <p>
+              Transferlerin listelendiği alanı seçelim
+            </p>
+          </div>
+        </div>
+
+        <!-- ADIM 4 -->
+        <div class="step-block border-b border-slate-100 pb-12 last:border-0 last:pb-0">
+          <h2 class="text-2xl font-bold text-slate-800 mb-6 flex items-center gap-4">
+            <span class="flex-shrink-0 flex items-center justify-center w-12 h-12 rounded-full bg-red-600 text-white text-xl shadow-md shadow-red-600/20">5</span>
+            Yeni Transfer Oluştur
+          </h2>
+          <!-- Görsel Alanı -->
+          <div class="mb-6 bg-slate-100 rounded-2xl overflow-hidden border border-slate-200 flex items-center justify-center min-h-[200px]">
+            <!-- Görseli buraya ekleyiniz. Örn: /images/destek/ornek-3.jpg -->
+            <img src="/images/destek/transfer-4.jpg" alt="Adım 4 Görseli" class="w-full h-auto object-contain" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" />
+            <span class="text-slate-400 font-medium hidden">Görsel Yeri: /images/destek/transfer-4.jpg</span>
+          </div>
+          <!-- Açıklama Alanı -->
+          <div class="text-slate-600 text-lg leading-relaxed">
+            <p>
+              Yeni Transfer Oluştur Seçiyoruz
+            </p>
+          </div>
+        </div>
+
+
+        <!-- ADIM 5 -->
+        <div class="step-block border-b border-slate-100 pb-12 last:border-0 last:pb-0">
+          <h2 class="text-2xl font-bold text-slate-800 mb-6 flex items-center gap-4">
+            <span class="flex-shrink-0 flex items-center justify-center w-12 h-12 rounded-full bg-red-600 text-white text-xl shadow-md shadow-red-600/20">6</span>
+            Transfer Listesi
+          </h2>
+          <!-- Görsel Alanı -->
+          <div class="mb-6 bg-slate-100 rounded-2xl overflow-hidden border border-slate-200 flex items-center justify-center min-h-[200px]">
+            <!-- Görseli buraya ekleyiniz. Örn: /images/destek/ornek-3.jpg -->
+            <img src="/images/destek/transfer-6.jpg" alt="Adım 6 Görseli" class="w-full h-auto object-contain" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" />
+            <span class="text-slate-400 font-medium hidden">Görsel Yeri: /images/destek/transfer-6.jpg</span>
+          </div>
+          <!-- Açıklama Alanı -->
+          <div class="text-slate-600 text-lg leading-relaxed">
+            <p>
+              Transferlerin listelendiği alanı seçelim
+              <br>
+              - Durumlar; Tamamlandı değiştirilemez,Hazırlanıyor, Gönderildi, Kısmi Kabul ekranda varsa düzenleme yapılabilir.
+                <br>- Hazırlanıyor (ürün ekleme işlemi devam ediyor)
+                <br>- Gönderildi (ürünler eklendi transfer yapıldı)
+                <br>- Kısmi Kabul (gönderilen ürünlerde eksik yada fazla çıktı)
+                <br>- Tamamlandı (gönderilen ürünler kabul edildi)
+              <br>
+              - Açıklamalar Çok Önemlidir. Transferin neden yapıldığını ve hangi ürünlerin transfer edildiğini açıklamak ilerideki süreçte size yardımcı olur.
+              <br>
+              - Artı (+) işareti ile transfer edilecek ürün/leri ekleyebilirsiniz. (+ simgesine basarak (tamamlandı hariç) ürünleri düzenleyebilirsiniz..)
+
+             </p>
+          </div>
+        </div>
+
+
+        <!-- ADIM 6 -->
+        <div class="step-block border-b border-slate-100 pb-12 last:border-0 last:pb-0">
+          <h2 class="text-2xl font-bold text-slate-800 mb-6 flex items-center gap-4">
+            <span class="flex-shrink-0 flex items-center justify-center w-12 h-12 rounded-full bg-red-600 text-white text-xl shadow-md shadow-red-600/20">7</span>
+            Son Aşama Transfer Yapabilirsiniz.
+          </h2>
+          <!-- Görsel Alanı -->
+          <div class="mb-6 bg-slate-100 rounded-2xl overflow-hidden border border-slate-200 flex items-center justify-center min-h-[200px]">
+            <!-- Görseli buraya ekleyiniz. Örn: /images/destek/ornek-3.jpg -->
+            <img src="/images/destek/transfer-7.jpg" alt="Adım 7 Görseli" class="w-full h-auto object-contain" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" />
+            <span class="text-slate-400 font-medium hidden">Görsel Yeri: /images/destek/transfer-7.jpg</span>
+          </div>
+          <!-- Açıklama Alanı -->
+          <div class="text-slate-600 text-lg leading-relaxed">
+            <p>
+              Görselderakama ve renklerle anlattığımız çalışmada
+              <br>
+              1- Ürünler barkod okuyucu, telefon kamerası veya elle eklenebilir. 
+              <br>
+              2- Ürünler eklendikçe otomatik olarak listeye gelir.
+              <br>
+              3- Transfer edilecek stok miktarı yazılır.
+              <br>
+              4- Kontrol Ettikten sonra Mağazaya Gönder butonuna basılır.
+              <br>
+              Bu mağaza/depo için işlem bitti. şimdi sıra transferi gönderdiğimiz mağaza/depo da. Onlar da aynı şekilde ürünleri kontrol edip kabul edebilir, kısmen (yani eksik-fazla olarak) veya reddedebilir.
+            </p>
+          </div>
+        </div>
+
+
+
+        <!-- ADIM 7 -->
+        <div class="step-block border-b border-slate-100 pb-12 last:border-0 last:pb-0">
+          <h2 class="text-2xl font-bold text-slate-800 mb-6 flex items-center gap-4">
+            <span class="flex-shrink-0 flex items-center justify-center w-12 h-12 rounded-full bg-red-600 text-white text-xl shadow-md shadow-red-600/20">8</span>
+            Transfer Gelen Mağaza için Kontrol.
+          </h2>
+          <!-- Görsel Alanı -->
+          <div class="mb-6 bg-slate-100 rounded-2xl overflow-hidden border border-slate-200 flex items-center justify-center min-h-[200px]">
+            <!-- Görseli buraya ekleyiniz. Örn: /images/destek/ornek-3.jpg -->
+            <img src="/images/destek/transfer-8.jpg" alt="Adım 7 Görseli" class="w-full h-auto object-contain" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" />
+            <span class="text-slate-400 font-medium hidden">Görsel Yeri: /images/destek/transfer-7.jpg</span>
+          </div>
+          <!-- Açıklama Alanı -->
+          <div class="text-slate-600 text-lg leading-relaxed">
+            <p>
+              Transferin Kabulü için Mağaza Gelene girilir
+              <br>Gelenlerde Bir Transfer Yapılmışsa yanında bekleyen transfer sayısı yazar..
+              <br>Örneğimizde Üsküdar Mağazadan Nişantaşı Mağazaya Yolladığımızdan gelenler Nişantaşı Mağaza ekranında görülecektir..              <br>
+              
+              </p>
+          </div>
+        </div>
+
+        <!-- ADIM 8 -->
+        <div class="step-block border-b border-slate-100 pb-12 last:border-0 last:pb-0">
+          <h2 class="text-2xl font-bold text-slate-800 mb-6 flex items-center gap-4">
+            <span class="flex-shrink-0 flex items-center justify-center w-12 h-12 rounded-full bg-red-600 text-white text-xl shadow-md shadow-red-600/20">9</span>
+            Gelen Transfer Seç ile Kontrol.
+          </h2>
+          <!-- Görsel Alanı -->
+          <div class="mb-6 bg-slate-100 rounded-2xl overflow-hidden border border-slate-200 flex items-center justify-center min-h-[200px]">
+            <!-- Görseli buraya ekleyiniz. Örn: /images/destek/ornek-3.jpg -->
+            <img src="/images/destek/transfer-9.jpg" alt="Adım 7 Görseli" class="w-full h-auto object-contain" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" />
+            <span class="text-slate-400 font-medium hidden">Görsel Yeri: /images/destek/transfer-7.jpg</span>
+          </div>
+          <!-- Açıklama Alanı -->
+          <div class="text-slate-600 text-lg leading-relaxed">
+            <p>
+              Transferin Kabulü için listeden transferlere bakılır ve kontrol edilir.
+              
+              </p>
+          </div>
+        </div>
+
+        <!-- ADIM 9 -->
+        <div class="step-block border-b border-slate-100 pb-12 last:border-0 last:pb-0">
+          <h2 class="text-2xl font-bold text-slate-800 mb-6 flex items-center gap-4">
+            <span class="flex-shrink-0 flex items-center justify-center w-12 h-12 rounded-full 
+            bg-red-600 text-white text-xl shadow-md shadow-red-600/20">10</span>
+            Gelen Transfer Seç ile Kontrol.
+          </h2>
+          <!-- Görsel Alanı -->
+          <div class="mb-6 bg-slate-100 rounded-2xl overflow-hidden border border-slate-200 flex items-center justify-center min-h-[200px]">
+            <!-- Görseli buraya ekleyiniz. Örn: /images/destek/ornek-3.jpg -->
+            <img src="/images/destek/transfer-10.jpg" alt="Adım 10 Görseli" class="w-full h-auto object-contain" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" />
+            <span class="text-slate-400 font-medium hidden">Görsel Yeri: /images/destek/transfer-10.jpg</span>
+          </div>
+          <!-- Açıklama Alanı -->
+          <div class="text-slate-600 text-lg leading-relaxed">
+            <p>
+              Transferin Kabulü için listeden transferlere bakılır ve kontrol edilir.
+              Artı (+) simgesine basarak gelen ürünler incelenir              
+              </p>
+          </div>
+        </div>
+
+        <!-- ADIM 10 -->
+        <div class="step-block border-b border-slate-100 pb-12 last:border-0 last:pb-0">
+          <h2 class="text-2xl font-bold text-slate-800 mb-6 flex items-center gap-4">
+            <span class="flex-shrink-0 flex items-center justify-center w-12 h-12 rounded-full 
+            bg-red-600 text-white text-xl shadow-md shadow-red-600/20">11</span>
+            Gelen Transfer Seç ile Kontrol.
+          </h2>
+          <!-- Görsel Alanı -->
+          <div class="mb-6 bg-slate-100 rounded-2xl overflow-hidden border border-slate-200 flex items-center justify-center min-h-[200px]">
+            <!-- Görseli buraya ekleyiniz. Örn: /images/destek/ornek-3.jpg -->
+            <img src="/images/destek/transfer-11.jpg" alt="Adım 11 Görseli" class="w-full h-auto object-contain" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" />
+            <span class="text-slate-400 font-medium hidden">Görsel Yeri: /images/destek/transfer-11.jpg</span>
+          </div>
+          <!-- Açıklama Alanı -->
+          <div class="text-slate-600 text-lg leading-relaxed">
+            <p>
+              Konrol Et butonuna basarak
+              fiziki sayımı yapılmış
+              transferin Kabulü, Reddi veya 
+              Kısmi Kabul işlemleri yapılır.              
+              </p>
+          </div>
+        </div>
+
+
+        <!-- ADIM 11 -->
+        <div class="step-block border-b border-slate-100 pb-12 last:border-0 last:pb-0">
+          <h2 class="text-2xl font-bold text-slate-800 mb-6 flex items-center gap-4">
+            <span class="flex-shrink-0 flex items-center justify-center w-12 h-12 rounded-full 
+            bg-red-600 text-white text-xl shadow-md shadow-red-600/20">12</span>
+            Transfer Kontrol ve Sayım
+          </h2>
+          <!-- Görsel Alanı -->
+          <div class="mb-6 bg-slate-100 rounded-2xl overflow-hidden border border-slate-200 flex items-center justify-center min-h-[200px]">
+            <!-- Görseli buraya ekleyiniz. Örn: /images/destek/ornek-3.jpg -->
+            <img src="/images/destek/transfer-12.jpg" alt="Adım 12 Görseli" class="w-full h-auto object-contain" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" />
+            <span class="text-slate-400 font-medium hidden">Görsel Yeri: /images/destek/transfer-12.jpg</span>
+          </div>
+          <!-- Açıklama Alanı -->
+          <div class="text-slate-600 text-lg leading-relaxed">
+            <p>
+              Miktar ile Kontrol farklı ise 
+              Kısmı olarak tamamlamak için onaylayın! seçilmelidir..
+              fark yoksa rakamlar aynen yazılır ve 
+              Transferi Kabul Et butonuna basılır..
+              Transferi hatalı buluyorsanız Geri Gönder butonuna basınız              
+              </p>
+          </div>
+        </div>
+
+
+        <!-- ADIM 13 -->
+        <div class="step-block border-b border-slate-100 pb-12 last:border-0 last:pb-0">
+          <h2 class="text-2xl font-bold text-slate-800 mb-6 flex items-center gap-4">
+            <span class="flex-shrink-0 flex items-center justify-center w-12 h-12 rounded-full 
+            bg-red-600 text-white text-xl shadow-md shadow-red-600/20">13</span>
+            Mağaza Kontrol ile Transfer Kontrol
+          </h2>
+          <!-- Görsel Alanı -->
+          <div class="mb-6 bg-slate-100 rounded-2xl overflow-hidden border border-slate-200 flex items-center justify-center min-h-[200px]">
+            <!-- Görseli buraya ekleyiniz. Örn: /images/destek/ornek-3.jpg -->
+            <img src="/images/destek/transfer-13.jpg" alt="Adım 13 Görseli" class="w-full h-auto object-contain" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" />
+            <span class="text-slate-400 font-medium hidden">Görsel Yeri: /images/destek/transfer-13.jpg</span>
+          </div>
+          <!-- Açıklama Alanı -->
+          <div class="text-slate-600 text-lg leading-relaxed">
+            <p>
+              Yapılan tüm transferleri bu ekrandan takip edebilirsiniz..             
+              </p>
+          </div>
+        </div>
+
+      </div>
+      
+      <!-- Ekstra Yardım Alanı (Zor durumda kalan kullanıcılar için) -->
+      <div class="mt-12 bg-slate-800 rounded-3xl p-8 md:p-10 flex flex-col md:flex-row items-center justify-between gap-8">
+        <div class="text-center md:text-left text-white">
+          <h3 class="text-2xl font-bold mb-2 text-yellow-400">Sorununuzu çözemediniz mi?</h3>
+          <p class="text-slate-300">Destek ekibimiz size anında yardımcı olmaktan mutluluk duyar.</p>
+        </div>
+        <a href="https://wa.me/+905325000999" class="flex-shrink-0 w-full md:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 bg-green-500 hover:bg-green-600 text-white font-bold rounded-xl transition-all shadow-lg shadow-green-500/30 hover:-translate-y-1">
+          <svg class="w-6 h-6 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          WhatsApp Destek
+        </a>
+      </div>
+
+    </div>
+  </div>
+</BaseLayout>

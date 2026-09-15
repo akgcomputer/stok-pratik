@@ -1,73 +1,10 @@
----
-// src/layouts/BaseLayout.astro
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
-import WhatsAppFloat from '../components/WhatsAppFloat.astro';
-import '../styles/global.css';
+const fs = require('fs');
+let text = fs.readFileSync('src/layouts/BaseLayout.astro', 'utf8');
 
-const { 
-  title = "Stok Pratik - KOBİ'ler İçin En İyi Ön Muhasebe ve ERP Yazılımı",
-  description = "Stok Pratik ERP ile stok yönetiminizi kolaylaştırın, e-fatura kesin, gelir gider takibi yapın. KOBİ'ler, Oto Servis ve Kuyumcular için bulut tabanlı ticari yazılım.",
-  image = "/images/site-foto/fav-stok-pratik-2.png"
-} = Astro.props;
+const scriptStart = text.indexOf('<script client:load>');
+const scriptEnd = text.indexOf('</script>', scriptStart) + '</script>'.length;
 
-const canonicalURL = new URL(Astro.url.pathname, 'https://stokpratik.com.tr');
----
-
-<!doctype html>
-<html lang="tr">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content={description} />
-    <meta name="keywords" content="stok yönetimi, stok takip, envanter yönetimi, ticari yazılım, ön muhasebe, e-fatura, oto servis programı, kuyumcu yazılımı" />
-    <title>{title}</title>
-    
-    <!-- Canonical URL -->
-    <link rel="canonical" href={canonicalURL} />
-
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content={canonicalURL} />
-    <meta property="og:title" content={title} />
-    <meta property="og:description" content={description} />
-    <meta property="og:image" content={new URL(image, canonicalURL)} />
-
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content={canonicalURL} />
-    <meta property="twitter:title" content={title} />
-    <meta property="twitter:description" content={description} />
-    <meta property="twitter:image" content={new URL(image, canonicalURL)} />
-    
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
-    
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" href="/images/site-foto/fav-stok-pratik-2.png">
-    <link rel="shortcut icon" type="image/png" href="/images/site-foto/fav-stok-pratik-2.png">
-    <link rel="apple-touch-icon" href="/images/site-foto/fav-stok-pratik-2.png">
-  </head>
-  
-  <body>
-    <!-- Header -->
-    <Header />
-    
-    <!-- Ana içerik -->
-    <main>
-      <slot />
-    </main>
-    
-    <!-- Footer -->
-    <Footer />
-    
-    <!-- WhatsApp Float Button -->
-    <WhatsAppFloat />
-    
-    <!-- Script'i client:load directive ile yükle -->
-    <script is:inline>
+const newScript = `<script client:load>
       // Mobile menu functionality
       function initMobileMenu() {
         const btn = document.getElementById('mobileMenuBtn');
@@ -189,16 +126,12 @@ const canonicalURL = new URL(Astro.url.pathname, 'https://stokpratik.com.tr');
       }
 
       // Initialize all scripts when DOM is loaded
-      
-      function initAll() {
+      document.addEventListener('DOMContentLoaded', () => {
         initMobileMenu();
         initSmoothScroll();
         initLightbox();
-      }
+      });
+    </script>`;
 
-      document.addEventListener('DOMContentLoaded', initAll);
-      document.addEventListener('astro:page-load', initAll);
-
-    </script>
-  </body>
-</html>
+text = text.substring(0, scriptStart) + newScript + text.substring(scriptEnd);
+fs.writeFileSync('src/layouts/BaseLayout.astro', text, 'utf8');

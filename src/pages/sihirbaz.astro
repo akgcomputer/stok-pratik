@@ -1,0 +1,31 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Wizard from '../react-components/Wizard';
+
+const pageTitle = "Pratik Yapay Zeka Çözüm Sihirbazı | Stok Pratik";
+const pageDescription = "İşletmeniz için en uygun Stok Pratik ekosistemini ve alternatif yazılımları yapay zeka destekli sihirbazımız ile saniyeler içinde bulun.";
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <main class="min-h-screen bg-slate-50/50 py-16 px-4">
+    <div class="max-w-7xl mx-auto mb-12 text-center">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-100 text-red-700 font-semibold text-sm mb-4">
+        <span class="relative flex h-2 w-2">
+          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+          <span class="relative inline-flex rounded-full h-2 w-2 bg-red-500"></span>
+        </span>
+        Yapay Zeka Destekli
+      </div>
+      <h1 class="text-4xl md:text-5xl font-extrabold text-slate-900 mb-6 tracking-tight">
+        İşletmeniz İçin <span class="text-red-600">En Doğru Yazılımı</span> Bulun
+      </h1>
+      <p class="text-lg text-slate-600 max-w-2xl mx-auto">
+        Kısa soruları yanıtlayın, operasyonel süreçlerinizi analiz edelim ve size en uygun, maliyet-etkin teknoloji altyapısını saniyeler içinde listeleyelim.
+      </p>
+    </div>
+
+    {/* React Component (Client Side rendered) */}
+    <Wizard client:load />
+    
+  </main>
+</BaseLayout>

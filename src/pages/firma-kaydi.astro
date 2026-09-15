@@ -1,0 +1,281 @@
+---
+// src/pages/firma-kaydi.astro
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Firma Kaydı - Stok Pratik">
+  <main class="min-h-screen bg-slate-50 py-12 px-4 flex flex-col items-center justify-center">
+    
+    <div class="max-w-3xl w-full">
+      
+      {/* Header / Title */}
+      <div class="text-center mb-10">
+        <h1 class="text-3xl md:text-4xl font-extrabold text-slate-900 mb-3 tracking-tight">
+          Hesabınızı Oluşturun
+        </h1>
+        <p class="text-slate-600 text-lg leading-relaxed">
+          Hemen kayıt olun, kullanmaya başlayın.
+        </p>
+      </div>
+
+      {/* Main Card */}
+      <div class="bg-white rounded-3xl shadow-xl shadow-slate-200/60 border border-slate-200 overflow-hidden mb-8 relative">
+        
+        {/* FORM CONTAINER */}
+        <div id="formContainer" class="p-6 md:p-10">
+          <form id="registerForm" class="space-y-8">
+            
+            {/* 1. Kişisel Bilgiler */}
+            <div class="space-y-4">
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <label for="adSoyad" class="block text-sm font-semibold text-slate-700 mb-1.5">Ad Soyad <span class="text-red-600">*</span></label>
+                  <input type="text" id="adSoyad" required placeholder="Fatih Pratik" class="w-full rounded-lg border border-slate-300 bg-slate-50 px-4 py-2.5 text-slate-900 focus:border-red-500 focus:bg-white focus:outline-none focus:ring-2 focus:ring-red-200 transition-colors" />
+                </div>
+                <div>
+                  <label for="email" class="block text-sm font-semibold text-slate-700 mb-1.5">E-posta Adresi <span class="text-red-600">*</span></label>
+                  <input type="email" id="email" required placeholder="fatih@firma.com" class="w-full rounded-lg border border-slate-300 bg-slate-50 px-4 py-2.5 text-slate-900 focus:border-red-500 focus:bg-white focus:outline-none focus:ring-2 focus:ring-red-200 transition-colors" />
+                </div>
+                <div>
+                  <label for="telefon" class="block text-sm font-semibold text-slate-700 mb-1.5">Telefon <span class="text-red-600">*</span></label>
+                  <input type="tel" id="telefon" required pattern="05[0-9]{9}" maxlength="11" minlength="11" placeholder="05XX XXX XX XX" class="phone-input w-full rounded-lg border border-slate-300 bg-slate-50 px-4 py-2.5 text-slate-900 focus:border-red-500 focus:bg-white focus:outline-none focus:ring-2 focus:ring-red-200 transition-colors" />
+                </div>
+                <div>
+                  <label for="promo" class="block text-sm font-semibold text-slate-700 mb-1.5">Promosyon Kodu</label>
+                  <input type="text" id="promo" placeholder="xxxxx" class="w-full rounded-lg border border-slate-300 bg-slate-50 px-4 py-2.5 text-slate-900 focus:border-red-500 focus:bg-white focus:outline-none focus:ring-2 focus:ring-red-200 transition-colors" />
+                  <p class="text-xs text-slate-500 mt-1">Promosyon kodunuz varsa giriniz.</p>
+                </div>
+              </div>
+            </div>
+
+            <hr class="border-slate-100" />
+
+            {/* 2. Firma Bilgileri */}
+            <div>
+              <h3 class="text-xl font-extrabold text-slate-800 mb-5">Firma Bilgileri</h3>
+              <div class="space-y-5">
+                
+                {/* Radio Buttons */}
+                <div>
+                  <label class="block text-sm font-semibold text-slate-700 mb-3">Firma Türü <span class="text-red-600">*</span></label>
+                  <div class="flex flex-col sm:flex-row gap-3">
+                    <label class="flex-1 p-3 rounded-xl border border-slate-200 bg-white cursor-pointer hover:bg-slate-50 has-[:checked]:border-red-600 has-[:checked]:bg-red-50 transition-colors text-center shadow-sm">
+                      <input type="radio" name="firmaTuru" value="Şahıs Firması" required class="sr-only" />
+                      <span class="text-slate-800 font-semibold text-sm">Şahıs Firması</span>
+                    </label>
+                    <label class="flex-1 p-3 rounded-xl border border-slate-200 bg-white cursor-pointer hover:bg-slate-50 has-[:checked]:border-red-600 has-[:checked]:bg-red-50 transition-colors text-center shadow-sm">
+                      <input type="radio" name="firmaTuru" value="Limited Şirket" class="sr-only" />
+                      <span class="text-slate-800 font-semibold text-sm">Limited Şirket</span>
+                    </label>
+                    <label class="flex-1 p-3 rounded-xl border border-slate-200 bg-white cursor-pointer hover:bg-slate-50 has-[:checked]:border-red-600 has-[:checked]:bg-red-50 transition-colors text-center shadow-sm">
+                      <input type="radio" name="firmaTuru" value="Anonim Şirket" class="sr-only" />
+                      <span class="text-slate-800 font-semibold text-sm">Anonim Şirket</span>
+                    </label>
+                  </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div>
+                    <label for="isletmeAdi" class="block text-sm font-semibold text-slate-700 mb-1.5">İşletme Adı <span class="text-red-600">*</span></label>
+                    <input type="text" id="isletmeAdi" required placeholder="Fatih Pratik Tekstil veya ABC Ltd. Şti gibi.." class="w-full rounded-lg border border-slate-300 bg-slate-50 px-4 py-2.5 text-slate-900 focus:border-red-500 focus:bg-white focus:outline-none focus:ring-2 focus:ring-red-200 transition-colors" />
+                  </div>
+                  <div>
+                    <label for="yetkiliAdi" class="block text-sm font-semibold text-slate-700 mb-1.5">İşletme Yetkilisi Adı Soyadı <span class="text-red-600">*</span></label>
+                    <input type="text" id="yetkiliAdi" required placeholder="Fatih Pratik" class="w-full rounded-lg border border-slate-300 bg-slate-50 px-4 py-2.5 text-slate-900 focus:border-red-500 focus:bg-white focus:outline-none focus:ring-2 focus:ring-red-200 transition-colors" />
+                  </div>
+                  <div>
+                    <label for="vkn" class="block text-sm font-semibold text-slate-700 mb-1.5">VKN veya TC Kimlik No <span class="text-red-600">*</span></label>
+                    <input type="text" id="vkn" required maxlength="11" placeholder="12345678900" class="number-input w-full rounded-lg border border-slate-300 bg-slate-50 px-4 py-2.5 text-slate-900 focus:border-red-500 focus:bg-white focus:outline-none focus:ring-2 focus:ring-red-200 transition-colors" />
+                    <p class="text-xs text-slate-500 mt-1">Şahıs firması ise TC girilmeli (Maks. 11 hane)</p>
+                  </div>
+                  <div>
+                    <label for="vergiDairesi" class="block text-sm font-semibold text-slate-700 mb-1.5">Vergi Dairesi <span class="text-red-600">*</span></label>
+                    <input type="text" id="vergiDairesi" required placeholder="Maltepe Vergi Dairesi" class="w-full rounded-lg border border-slate-300 bg-slate-50 px-4 py-2.5 text-slate-900 focus:border-red-500 focus:bg-white focus:outline-none focus:ring-2 focus:ring-red-200 transition-colors" />
+                  </div>
+                  <div>
+                    <label for="sektor" class="block text-sm font-semibold text-slate-700 mb-1.5">Sektörünüz Nedir?</label>
+                    <input type="text" id="sektor" placeholder="Tekstil, Gıda, Kozmetik, İmalat-Sanayi, vb." class="w-full rounded-lg border border-slate-300 bg-slate-50 px-4 py-2.5 text-slate-900 focus:border-red-500 focus:bg-white focus:outline-none focus:ring-2 focus:ring-red-200 transition-colors" />
+                  </div>
+                  <div>
+                    <label for="website" class="block text-sm font-semibold text-slate-700 mb-1.5">Web Site Adresiniz</label>
+                    <input type="text" id="website" placeholder="firma.com" class="w-full rounded-lg border border-slate-300 bg-slate-50 px-4 py-2.5 text-slate-900 focus:border-red-500 focus:bg-white focus:outline-none focus:ring-2 focus:ring-red-200 transition-colors" />
+                    <p class="text-xs text-slate-500 mt-1">Varsa giriniz.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <hr class="border-slate-100" />
+
+            {/* 3. Adres */}
+            <div>
+              <h3 class="text-xl font-extrabold text-slate-800 mb-5">Adres & İletişim</h3>
+              <div class="space-y-4">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div>
+                    <label for="sehir" class="block text-sm font-semibold text-slate-700 mb-1.5">Şehir <span class="text-red-600">*</span></label>
+                    <input type="text" id="sehir" required placeholder="İstanbul, Ankara, İzmir vs." class="w-full rounded-lg border border-slate-300 bg-slate-50 px-4 py-2.5 text-slate-900 focus:border-red-500 focus:bg-white focus:outline-none focus:ring-2 focus:ring-red-200 transition-colors" />
+                  </div>
+                  <div>
+                    <label for="ilce" class="block text-sm font-semibold text-slate-700 mb-1.5">İlçe <span class="text-red-600">*</span></label>
+                    <input type="text" id="ilce" required placeholder="Merkez, Mamak, Maltepe vs." class="w-full rounded-lg border border-slate-300 bg-slate-50 px-4 py-2.5 text-slate-900 focus:border-red-500 focus:bg-white focus:outline-none focus:ring-2 focus:ring-red-200 transition-colors" />
+                  </div>
+                </div>
+                <div>
+                  <label for="faturaAdresi" class="block text-sm font-semibold text-slate-700 mb-1.5">Fatura Adresi <span class="text-red-600">*</span></label>
+                  <textarea id="faturaAdresi" required rows="2" placeholder="Fatura adresinizi giriniz..." class="w-full rounded-lg border border-slate-300 bg-slate-50 px-4 py-2.5 text-slate-900 focus:border-red-500 focus:bg-white focus:outline-none focus:ring-2 focus:ring-red-200 transition-colors"></textarea>
+                </div>
+                <div>
+                  <label for="notlar" class="block text-sm font-semibold text-slate-700 mb-1.5">Notunuz</label>
+                  <textarea id="notlar" rows="2" placeholder="Stok Pratik'e iletmek istediğiniz notunuz varsa yazınız." class="w-full rounded-lg border border-slate-300 bg-slate-50 px-4 py-2.5 text-slate-900 focus:border-red-500 focus:bg-white focus:outline-none focus:ring-2 focus:ring-red-200 transition-colors"></textarea>
+                </div>
+              </div>
+            </div>
+
+            {/* Submit Button */}
+            <div class="pt-4">
+              <button type="submit" class="w-full rounded-xl bg-red-600 hover:bg-red-700 text-white font-extrabold text-lg py-4 px-6 shadow-xl shadow-red-600/30 transition-transform active:scale-95 flex items-center justify-center gap-2">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                Kaydet
+              </button>
+            </div>
+
+          </form>
+        </div>
+
+        {/* SUCCESS CONTAINER (Hidden by default) */}
+        <div id="successContainer" class="p-8 md:p-12 text-center hidden">
+          <div class="w-20 h-20 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto mb-6 shadow-sm">
+            <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+          </div>
+          
+          <h2 class="text-3xl font-extrabold text-slate-900 mb-4">Kaydınız Başarı İle Oluştu! 🎉</h2>
+          <p class="text-slate-600 mb-6 text-lg">
+            Son bir işlem kaldı: <br/>
+            Formu müşteri temsilcisine ileterek aktivasyonunuzu tamamlayın.
+          </p>
+          
+          <div class="bg-red-50 border border-red-100 rounded-xl p-6 mb-8 max-w-lg mx-auto">
+            <p class="text-red-800 font-medium mb-4">Aşağıdaki butona tıklayarak az önce doldurduğunuz formu WhatsApp üzerinden destek hattımıza gönderin.</p>
+            
+            <a id="whatsappBtn" href="#" class="w-full flex items-center justify-center gap-2 rounded-xl bg-[#25D366] hover:bg-[#20bd5a] text-white font-bold py-4 px-6 transition-transform hover:scale-105 active:scale-95 shadow-lg shadow-[#25D366]/30 text-lg">
+              <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 00-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+              WhatsApp'a İlet
+            </a>
+          </div>
+
+          <div class="mt-8 pt-8 border-t border-slate-200">
+            <h3 class="text-xl font-extrabold text-slate-800 mb-4">1 ay ücretsiz kullanmak ister misin?</h3>
+            <a href="/arkadasini-getir-formu" target="_blank" class="inline-flex items-center justify-center rounded-xl bg-red-600 hover:bg-red-700 text-white font-bold py-3.5 px-8 transition-transform hover:scale-105 active:scale-95 shadow-lg shadow-red-600/30">
+              Evet İsterim
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const form = document.getElementById('registerForm');
+      const formContainer = document.getElementById('formContainer');
+      const successContainer = document.getElementById('successContainer');
+      const whatsappBtn = document.getElementById('whatsappBtn');
+
+      // Phone Input Restriction
+      const phoneInputs = document.querySelectorAll('.phone-input');
+      phoneInputs.forEach(input => {
+        input.addEventListener('input', (e) => {
+          let val = e.target.value.replace(/[^0-9]/g, '');
+          if (val.length > 0 && val[0] !== '0') val = '0' + val;
+          if (val.length > 1 && val[1] !== '5') val = '05' + val.substring(2);
+          e.target.value = val;
+        });
+      });
+
+      // Number-only input restriction (VKN/TC)
+      const numberInputs = document.querySelectorAll('.number-input');
+      numberInputs.forEach(input => {
+        input.addEventListener('input', (e) => {
+          e.target.value = e.target.value.replace(/[^0-9]/g, '');
+        });
+      });
+
+      // Handle Submit
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        
+        
+      function toTitleCase(str) {
+        return str.toLocaleLowerCase('tr-TR').split(' ').map(word => {
+          if(!word) return '';
+          return word.charAt(0).toLocaleUpperCase('tr-TR') + word.slice(1);
+        }).join(' ');
+      }
+
+      // 1. Gather all data
+        const adSoyad = toTitleCase(document.getElementById('adSoyad').value.trim());
+        const email = document.getElementById('email').value.trim();
+        const telefon = document.getElementById('telefon').value.trim();
+        const promo = document.getElementById('promo').value.trim().toUpperCase() || '-';
+        
+        const firmaTuru = document.querySelector('input[name="firmaTuru"]:checked')?.value || '';
+        const isletmeAdi = toTitleCase(document.getElementById('isletmeAdi').value.trim());
+        const yetkiliAdi = toTitleCase(document.getElementById('yetkiliAdi').value.trim());
+        const vkn = document.getElementById('vkn').value.trim();
+        const vergiDairesi = toTitleCase(document.getElementById('vergiDairesi').value.trim());
+        const sektor = toTitleCase(document.getElementById('sektor').value.trim()) || '-';
+        const website = document.getElementById('website').value.trim() || '-';
+        
+        const sehir = toTitleCase(document.getElementById('sehir').value.trim());
+        const ilce = toTitleCase(document.getElementById('ilce').value.trim());
+        const faturaAdresi = toTitleCase(document.getElementById('faturaAdresi').value.trim());
+        const notlar = toTitleCase(document.getElementById('notlar').value.trim()) || '-';
+
+        // 2. Format the WhatsApp Message
+        const message = `*YENİ FİRMA KAYDI 🚀*\n\n` +
+          `*-- Kişisel Bilgiler --*\n` +
+          `👤 Ad Soyad: ${adSoyad}\n` +
+          `✉️ E-posta: ${email}\n` +
+          `📞 Telefon: ${telefon}\n` +
+          `🎁 Promo Kodu: ${promo}\n\n` +
+          `*-- Firma Bilgileri --*\n` +
+          `🏢 Firma Türü: ${firmaTuru}\n` +
+          `🏬 İşletme Adı: ${isletmeAdi}\n` +
+          `👨‍💼 Yetkili: ${yetkiliAdi}\n` +
+          `🆔 VKN/TC: ${vkn}\n` +
+          `🏛️ Vergi Dairesi: ${vergiDairesi}\n` +
+          `🏭 Sektör: ${sektor}\n` +
+          `🌐 Web Site: ${website}\n\n` +
+          `*-- Adres & Not --*\n` +
+          `📍 İl/İlçe: ${sehir} / ${ilce}\n` +
+          `📄 Fatura Adresi: ${faturaAdresi}\n` +
+          `📝 Not: ${notlar}`;
+
+        const encodedMsg = encodeURIComponent(message);
+        const targetPhone = '905325000999';
+
+        // 3. Set the WhatsApp link
+        whatsappBtn.href = `whatsapp://send?phone=${targetPhone}&text=${encodedMsg}`;
+        
+        // Ensure broad compatibility (fallback to web/api)
+        whatsappBtn.onclick = function(ev) {
+            ev.preventDefault();
+            window.open(`https://api.whatsapp.com/send?phone=${targetPhone}&text=${encodedMsg}`, '_blank');
+            setTimeout(() => {
+              window.location.href = `whatsapp://send?phone=${targetPhone}&text=${encodedMsg}`;
+            }, 500);
+        };
+
+        // 4. Show success screen
+        formContainer.classList.add('hidden');
+        successContainer.classList.remove('hidden');
+        
+        // Scroll to top
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    });
+  </script>
+
+</BaseLayout>

@@ -1,4 +1,5 @@
----
+const fs = require('fs');
+const headerContent = `---
 // src/components/Header.astro
 import SocialMedia from './SocialMedia.astro';
 ---
@@ -17,15 +18,15 @@ import SocialMedia from './SocialMedia.astro';
         
         <li class="list-none">
           <a href="/arkadasini-getir-kampanyasi" class="flex items-center gap-2 text-red-600 font-bold uppercase tracking-wider text-[13px] hover:text-red-700 transition-colors bg-red-50 px-4 py-2 rounded-lg">
-            <span class="text-base">🎁</span>
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5 2a1 1 0 011 1v1h1a1 1 0 010 2H6v1a1 1 0 01-2 0V6H3a1 1 0 010-2h1V3a1 1 0 011-1zm0 10a1 1 0 011 1v1h1a1 1 0 110 2H6v1a1 1 0 11-2 0v-1H3a1 1 0 110-2h1v-1a1 1 0 011-1zM12 2a1 1 0 01.967.744L14.146 7.2 17.5 9.134a1 1 0 010 1.732l-3.354 1.935-1.18 4.455a1 1 0 01-1.933 0L9.854 12.8 6.5 10.866a1 1 0 010-1.732l3.354-1.935 1.18-4.455A1 1 0 0112 2z" clip-rule="evenodd"></path></svg>
             1 Ay Ücretsiz Kullan
           </a>
         </li>
         
         <li class="relative group list-none h-20 flex items-center">
-          <button class="flex items-center gap-2 text-red-500 font-bold uppercase tracking-wider text-[13px] hover:text-red-400 transition-colors bg-slate-900 px-4 py-2 rounded-lg">
+          <button class="flex items-center gap-1.5 text-slate-700 font-semibold hover:text-red-600 transition-colors h-full">
             Fiyatlar ve Özellikler
-            <svg class="w-4 h-4 text-red-500 group-hover:rotate-180 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            <svg class="w-4 h-4 text-slate-400 group-hover:rotate-180 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
           </button>
           
           <!-- Mega Menu Dropdown -->
@@ -36,8 +37,6 @@ import SocialMedia from './SocialMedia.astro';
               <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2 pl-3">Yazılım Çözümleri</h4>
               <a href="/ozelliklerimiz" class="block px-3 py-2.5 rounded-lg text-slate-600 font-medium hover:bg-slate-50 hover:text-red-600 transition-colors">Özellikler</a>
               <a href="/paketlerimiz" class="block px-3 py-2.5 rounded-lg text-red-600 font-bold bg-red-50 hover:bg-red-100 transition-colors">Fiyatlar Paketler</a>
-              <a href="/arkadasini-getir-formu" class="block px-3 py-2.5 rounded-lg text-blue-700 font-bold bg-blue-50 hover:bg-blue-100 transition-colors">Arkadaşını Davet Et</a>
-              <a href="/firma-kaydi" class="block px-3 py-2.5 rounded-lg text-blue-700 font-bold bg-blue-50 hover:bg-blue-100 transition-colors">Firma Kayıt</a>
               <a href="/masraf-gir" class="block px-3 py-2.5 rounded-lg text-slate-600 font-medium hover:bg-slate-50 hover:text-red-600 transition-colors">Masraf Gir Sistemi</a>
               <a href="/oto-tamir-yazilimi" class="block px-3 py-2.5 rounded-lg text-slate-600 font-medium hover:bg-slate-50 hover:text-red-600 transition-colors">Oto Servis Yazılımı</a>
               <a href="/kuyumculuk-yazilimi" class="block px-3 py-2.5 rounded-lg text-slate-600 font-medium hover:bg-slate-50 hover:text-red-600 transition-colors">Kuyumculuk Yazılımı</a>
@@ -51,14 +50,14 @@ import SocialMedia from './SocialMedia.astro';
 
             <!-- Sütun 2 -->
             <div class="flex flex-col space-y-1">
-              
+              <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2 pl-3">Kurumsal & Destek</h4>
               <a href="/ozelliklerimiz" class="block px-3 py-2.5 rounded-lg text-slate-600 font-medium hover:bg-slate-50 hover:text-red-600 transition-colors">ERP - Üretim Yazılımı</a>
               <a href="/ozelliklerimiz" class="block px-3 py-2.5 rounded-lg text-slate-600 font-medium hover:bg-slate-50 hover:text-red-600 transition-colors">CRM - Müşteri Takip</a>
               <a href="/ozelliklerimiz" class="block px-3 py-2.5 rounded-lg text-slate-600 font-medium hover:bg-slate-50 hover:text-red-600 transition-colors">Hatırlatma Sistemi</a>
               <a href="/referanslarimiz" class="block px-3 py-2.5 rounded-lg text-slate-600 font-medium hover:bg-slate-50 hover:text-red-600 transition-colors">Referanslar</a>
               <a href="/neden-stok-pratik" class="block px-3 py-2.5 rounded-lg text-slate-600 font-medium hover:bg-slate-50 hover:text-red-600 transition-colors">Sıkça Sorulan Sorular</a>
               <a href="/ekran-goruntuleri" class="block px-3 py-2.5 rounded-lg text-slate-600 font-medium hover:bg-slate-50 hover:text-red-600 transition-colors">Program Görüntüleri</a>
-              <a href="/destek-icerikleri" class="block px-3 py-2.5 rounded-lg text-green-700 font-bold bg-green-50 hover:bg-green-100 transition-colors">Destek</a>
+              <a href="/blog" class="block px-3 py-2.5 rounded-lg text-slate-600 font-medium hover:bg-slate-50 hover:text-red-600 transition-colors">Blog ve Destek Sayfaları</a>
               <a href="/yararli-bilgiler" class="block px-3 py-2.5 rounded-lg text-slate-600 font-medium hover:bg-slate-50 hover:text-red-600 transition-colors">Yararlı Bilgiler</a>
               <div class="my-2 border-t border-slate-100"></div>
               <a href="/bayilik" class="block px-3 py-2.5 rounded-lg text-red-600 font-bold bg-red-50 hover:bg-red-100 transition-colors">Bayimiz Olun</a>
@@ -130,8 +129,6 @@ import SocialMedia from './SocialMedia.astro';
             <div id="mobileDropdownMenu" class="hidden flex-col gap-1 px-4 py-2 mt-1 bg-slate-50 rounded-xl">
               <a href="/ozelliklerimiz" class="block py-2.5 text-sm text-slate-600 font-medium">Özellikler</a>
               <a href="/paketlerimiz" class="block py-2.5 text-sm text-red-600 font-bold">Fiyatlar Paketler</a>
-              <a href="/arkadasini-getir-formu" class="block py-2.5 px-3 rounded-lg text-sm text-blue-700 font-bold bg-blue-50 mt-1">Arkadaşını Davet Et</a>
-              <a href="/firma-kaydi" class="block py-2.5 px-3 rounded-lg text-sm text-blue-700 font-bold bg-blue-50 mb-1">Firma Kayıt</a>
               <a href="/masraf-gir" class="block py-2.5 text-sm text-slate-600 font-medium">Masraf Gir Sistemi</a>
               <a href="/oto-tamir-yazilimi" class="block py-2.5 text-sm text-slate-600 font-medium">Oto Servis Yazılımı</a>
               <a href="/kuyumculuk-yazilimi" class="block py-2.5 text-sm text-slate-600 font-medium">Kuyumculuk Yazılımı</a>
@@ -147,7 +144,7 @@ import SocialMedia from './SocialMedia.astro';
               <a href="/referanslarimiz" class="block py-2.5 text-sm text-slate-600 font-medium">Referanslar</a>
               <a href="/neden-stok-pratik" class="block py-2.5 text-sm text-slate-600 font-medium">Sıkça Sorulan Sorular</a>
               <a href="/ekran-goruntuleri" class="block py-2.5 text-sm text-slate-600 font-medium">Program Görüntüleri</a>
-              <a href="/destek-icerikleri" class="block py-2.5 px-3 rounded-lg text-sm text-green-700 font-bold bg-green-50 mt-1 mb-1">Destek</a>
+              <a href="/blog" class="block py-2.5 text-sm text-slate-600 font-medium">Blog ve Destek Sayfaları</a>
               <a href="/yararli-bilgiler" class="block py-2.5 text-sm text-slate-600 font-medium">Yararlı Bilgiler</a>
               <a href="/bayilik" class="block py-2.5 text-sm text-red-600 font-bold">Bayimiz Olun</a>
               <a href="/sitemap" class="block py-2.5 text-sm text-slate-500">Site Haritası</a>
@@ -245,3 +242,6 @@ import SocialMedia from './SocialMedia.astro';
   }
   document.addEventListener('astro:page-load', initHeader);
 </script>
+`;
+
+fs.writeFileSync('src/components/Header.astro', headerContent, 'utf8');

@@ -1,0 +1,251 @@
+---
+// src/pages/arkadasini-getir-formu.astro
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Arkadaşını Getir Formu - Stok Pratik">
+  <main class="min-h-screen bg-slate-50 py-12 px-4 flex flex-col items-center justify-center">
+    
+    <div class="max-w-xl w-full">
+      
+      {/* Header / Title */}
+      <div class="text-center mb-10">
+        <h1 class="text-2xl md:text-3xl font-extrabold text-slate-900 mb-3 tracking-tight">
+          Formu Doldur, <span class="text-red-600">1 Ay Ücretsiz</span> Kullanımını Kap
+        </h1>
+        <p class="text-slate-600 text-lg leading-relaxed">
+          Kodunu Al, İşletmeni Masrafsız Yönet, WhatsApp'tan arkadaşına gönder, hediyeni anında başlat.
+        </p>
+      </div>
+
+      {/* Main Card */}
+      <div class="bg-white rounded-3xl shadow-xl shadow-slate-200/60 border border-slate-200 overflow-hidden mb-8 relative">
+        
+        {/* FORM CONTAINER */}
+        <div id="formContainer" class="p-8 md:p-10">
+          <form id="inviteForm" class="space-y-8">
+            
+            {/* Step 1: Radio Selection */}
+            <div class="flex flex-col sm:flex-row gap-4">
+              <label class="flex-1 p-4 rounded-xl border-2 border-slate-200 bg-white cursor-pointer hover:bg-slate-50 has-[:checked]:border-red-600 has-[:checked]:bg-red-50 transition-colors text-center">
+                <input type="radio" name="userStatus" value="existing" checked class="sr-only" />
+                <div>
+                  <p class="text-slate-900 font-semibold text-sm md:text-base">Stok Pratik Kullanıcısıyım</p>
+                  <p class="text-slate-500 text-xs mt-1">Davet ile 1 ay uzatmak istiyorum</p>
+                </div>
+              </label>
+
+              <label class="flex-1 p-4 rounded-xl border-2 border-slate-200 bg-white cursor-pointer hover:bg-slate-50 has-[:checked]:border-red-600 has-[:checked]:bg-red-50 transition-colors text-center">
+                <input type="radio" name="userStatus" value="new" class="sr-only" />
+                <div>
+                  <p class="text-slate-900 font-semibold text-sm md:text-base">Yeni Geçeceğim</p>
+                  <p class="text-slate-500 text-xs mt-1">1 ay hediye istiyorum</p>
+                </div>
+              </label>
+            </div>
+            
+            <hr class="border-slate-100" />
+
+            {/* Step 2: User Info */}
+            <div>
+              <h3 class="text-lg font-bold text-slate-800 mb-4">Senin Bilgilerin</h3>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <label for="userName" class="block text-sm font-semibold text-slate-700 mb-1.5">Ad Soyad</label>
+                  <input type="text" id="userName" required placeholder="Örn: Ali Dinç" class="w-full rounded-lg border border-slate-300 bg-slate-50 px-4 py-2.5 text-slate-900 focus:border-red-500 focus:bg-white focus:outline-none focus:ring-2 focus:ring-red-200 transition-colors" />
+                </div>
+                <div>
+                  <label for="userPhone" class="block text-sm font-semibold text-slate-700 mb-1.5">Telefon Numarası</label>
+                  <input type="tel" id="userPhone" name="userPhone" required pattern="05[0-9]{9}" maxlength="11" minlength="11" placeholder="05XXXXXXXXX" class="w-full rounded-lg border border-slate-300 bg-slate-50 px-4 py-2.5 text-slate-900 focus:border-red-500 focus:bg-white focus:outline-none focus:ring-2 focus:ring-red-200 transition-colors phone-input" />
+                </div>
+              </div>
+            </div>
+
+            <hr class="border-slate-100" />
+
+            {/* Step 3: Friend Info */}
+            <div>
+              <h3 class="text-lg font-bold text-slate-800 mb-4">Davet Ettiğin Arkadaşının Bilgileri</h3>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <label for="friendName" class="block text-sm font-semibold text-slate-700 mb-1.5">Arkadaşının Adı Soyadı</label>
+                  <input type="text" id="friendName" required placeholder="Örn: Veli Yılmaz" class="w-full rounded-lg border border-slate-300 bg-slate-50 px-4 py-2.5 text-slate-900 focus:border-red-500 focus:bg-white focus:outline-none focus:ring-2 focus:ring-red-200 transition-colors" />
+                </div>
+                <div>
+                  <label for="friendPhone" class="block text-sm font-semibold text-slate-700 mb-1.5">Arkadaşının Telefonu</label>
+                  <input type="tel" id="friendPhone" name="friendPhone" required pattern="05[0-9]{9}" maxlength="11" minlength="11" placeholder="05XXXXXXXXX" class="w-full rounded-lg border border-slate-300 bg-slate-50 px-4 py-2.5 text-slate-900 focus:border-red-500 focus:bg-white focus:outline-none focus:ring-2 focus:ring-red-200 transition-colors phone-input" />
+                </div>
+              </div>
+            </div>
+
+            {/* Submit Button */}
+            <button type="submit" class="w-full rounded-full bg-red-600 hover:bg-red-700 text-white font-extrabold text-lg py-4 px-6 shadow-xl shadow-red-600/30 transition-transform active:scale-95 flex items-center justify-center gap-2">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
+              Hediye Kodumu Oluştur
+            </button>
+
+          </form>
+        </div>
+
+        {/* SUCCESS CONTAINER (Hidden by default) */}
+        <div id="successContainer" class="p-8 md:p-12 text-center hidden">
+          <div class="w-20 h-20 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto mb-6 shadow-sm">
+            <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+          </div>
+          
+          <h2 class="text-3xl font-extrabold text-slate-900 mb-2">🎉 Kodunuz Hazır!</h2>
+          <p class="text-slate-600 mb-8">Davet kodunuz başarıyla oluşturuldu. Şimdi arkadaşınızla paylaşma zamanı.</p>
+          
+          {/* Coupon Box */}
+          <div class="relative bg-slate-50 border-2 border-dashed border-slate-300 rounded-2xl p-6 mb-8 max-w-sm mx-auto group hover:border-red-400 transition-colors">
+            <p class="text-sm font-semibold text-slate-500 mb-1 uppercase tracking-widest">Senin Kodun</p>
+            <p id="generatedCode" class="text-4xl font-black text-red-600 tracking-wider font-mono">KOD-BURAYA</p>
+          </div>
+          
+          {/* Actions */}
+          <div class="space-y-4">
+            <button id="copyBtn" class="w-full flex items-center justify-center gap-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold py-3.5 px-6 transition-colors border border-slate-200 active:scale-95">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"></path></svg>
+              Tek Tıkla Kopyala
+            </button>
+            
+            <a id="whatsappBtn" href="#" target="_blank" class="w-full flex items-center justify-center gap-2 rounded-xl bg-[#25D366] hover:bg-[#20bd5a] text-white font-bold py-3.5 px-6 transition-transform hover:scale-105 active:scale-95 shadow-lg shadow-[#25D366]/30">
+              <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 00-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+              WhatsApp ile Arkadaşına Gönder
+            </a>
+          </div>
+          
+          <button id="resetBtn" class="mt-8 text-sm font-semibold text-slate-500 hover:text-slate-800 underline underline-offset-2">
+            Yeni bir kod daha oluştur
+          </button>
+        </div>
+
+      </div>
+
+      {/* Info Box */}
+      <div class="bg-red-50 rounded-2xl p-6 md:p-8 border border-red-100">
+        <h4 class="text-red-900 font-extrabold text-lg mb-4 flex items-center gap-2">
+          <span>📌</span> Nasıl Aktif Olur?
+        </h4>
+        <ul class="space-y-3 text-red-800/90 text-sm md:text-base font-medium">
+          <li class="flex items-start gap-2">
+            <span class="text-red-600 mt-1">•</span> 
+            <span>Arkadaşınız WhatsApp üzerinden iletilen davet bağlantısını onaylar.</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="text-red-600 mt-1">•</span> 
+            <span>İşletme aktivasyonu tamamlandığında her iki hesabın süresi anında +1 ay uzatılır.</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="text-red-600 mt-1">•</span> 
+            <span>İster 1 arkadaşına ister 10 arkadaşına davet gönder.</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="text-red-600 mt-1">•</span> 
+            <span>İletmiş olduğun davetlerden en fazla 12 ay olarak yararlanabilirsiniz.</span>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+  </main>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const form = document.getElementById('inviteForm');
+      const formContainer = document.getElementById('formContainer');
+      const successContainer = document.getElementById('successContainer');
+      const generatedCodeEl = document.getElementById('generatedCode');
+      const copyBtn = document.getElementById('copyBtn');
+      const whatsappBtn = document.getElementById('whatsappBtn');
+      const resetBtn = document.getElementById('resetBtn');
+
+      // Phone Validation Logic
+      const phoneInputs = document.querySelectorAll('.phone-input');
+      phoneInputs.forEach(input => {
+        input.addEventListener('input', (e) => {
+          let val = e.target.value.replace(/[^0-9]/g, '');
+          if (val.length > 0 && val[0] !== '0') val = '0' + val;
+          if (val.length > 1 && val[1] !== '5') val = '05' + val.substring(2);
+          e.target.value = val;
+        });
+      });
+
+      function createCode(fullName) {
+        const charMap = { 'ç':'c', 'Ç':'C', 'ğ':'g', 'Ğ':'G', 'ı':'i', 'I':'I', 'İ':'I', 'ö':'o', 'Ö':'O', 'ş':'s', 'Ş':'S', 'ü':'u', 'Ü':'U' };
+        let cleaned = fullName.replace(/[çÇğĞıIİöÖşŞüÜ]/g, match => charMap[match] || match);
+        cleaned = cleaned.replace(/[^a-zA-Z\s]/g, '').trim();
+        const parts = cleaned.split(' ').filter(Boolean);
+        if (parts.length === 0) return 'STOK-1AY';
+        let lastName = parts.length > 1 ? parts.pop() : parts[0];
+        let firstInitial = parts.length > 0 ? parts[0].charAt(0) : '';
+        return `${lastName}${firstInitial}-1AY`.toUpperCase();
+      }
+
+      function toTitleCase(str) {
+        return str.toLocaleLowerCase('tr-TR').split(' ').map(word => {
+          if(!word) return '';
+          return word.charAt(0).toLocaleUpperCase('tr-TR') + word.slice(1);
+        }).join(' ');
+      }
+
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        
+        const userNameRaw = document.getElementById('userName').value.trim();
+        const friendNameRaw = document.getElementById('friendName').value.trim();
+        const friendPhone = document.getElementById('friendPhone').value.trim();
+        
+        const userName = toTitleCase(userNameRaw);
+        const friendName = toTitleCase(friendNameRaw);
+        const code = createCode(userNameRaw);
+        
+        generatedCodeEl.textContent = code;
+        
+        let cleanPhone = friendPhone.replace(/[^0-9]/g, '');
+        if (cleanPhone.startsWith('0')) {
+          cleanPhone = '90' + cleanPhone.substring(1);
+        } else if (!cleanPhone.startsWith('90')) {
+          cleanPhone = '90' + cleanPhone;
+        }
+        
+        const message = `Merhaba ${friendName} 👋\n\n*1 ay ücretsiz kullanman* 🎁 için Stok Pratik davet kodu üretildi (Davet kodu: ${code} ) bu kod ile sisteme giriş yapıp hemen ücretsiz kullanmaya başlayabilirsin. Dilersen sen de arkadaşın ${userName} gibi davet kodu arkadaşına ileterek ücretsiz kullanabilirsin. 🚀\n\nKayıt adresi: https://stokpratik.com.tr/firma-kaydi\nSeni de aramızda görmek isteriz.. 😊`;
+        
+        const encodedMsg = encodeURIComponent(message);
+        
+        whatsappBtn.href = `whatsapp://send?phone=${cleanPhone}&text=${encodedMsg}`;
+        
+        // Custom click handler to ensure WhatsApp opens properly on all devices
+        whatsappBtn.onclick = function(e) {
+            e.preventDefault();
+            // Open standard API link in new tab
+            window.open(`https://api.whatsapp.com/send?phone=${cleanPhone}&text=${encodedMsg}`, '_blank');
+            
+            // Attempt to trigger native protocol as fallback/primary depending on OS
+            setTimeout(() => {
+              window.location.href = `whatsapp://send?phone=${cleanPhone}&text=${encodedMsg}`;
+            }, 500);
+        };
+        
+        formContainer.classList.add('hidden');
+        successContainer.classList.remove('hidden');
+      });
+
+      copyBtn.addEventListener('click', () => {
+        const code = generatedCodeEl.textContent;
+        navigator.clipboard.writeText(code).then(() => {
+          const originalText = copyBtn.innerHTML;
+          copyBtn.innerHTML = `<svg class="w-5 h-5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Kopyalandı!`;
+          setTimeout(() => { copyBtn.innerHTML = originalText; }, 2000);
+        });
+      });
+
+      resetBtn.addEventListener('click', () => {
+        form.reset();
+        successContainer.classList.add('hidden');
+        formContainer.classList.remove('hidden');
+      });
+    });
+  </script>
+
+</BaseLayout>

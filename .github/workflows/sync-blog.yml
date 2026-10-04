@@ -31,7 +31,7 @@ jobs:
 
       - name: Drive'dan Yeni Blog Yazılarını Çek
         env:
-          BLOG_DRIVE_URL: ${{ secrets.BLOG_DRIVE_URL || vars.BLOG_DRIVE_URL || 'https://drive.google.com/file/d/1SOapjMxNNtBwo0C4wuztjqm1Xt6B06wb/view' }}
+          BLOG_DRIVE_URL: ${{ secrets.BLOG_DRIVE_URL || vars.BLOG_DRIVE_URL || 'https://docs.google.com/spreadsheets/d/1rV-vrfS7Ox5oJ63umMfCjMjxvXhdz-wpYlVkXmLx2M0/edit?usp=sharing' }}
         run: |
           node import-blog.cjs
 

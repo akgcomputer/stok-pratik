@@ -123,7 +123,7 @@ async function main() {
     if (fs.existsSync(path.join(process.cwd(), 'blog-icerikleri.xlsx'))) {
       targetArg = 'blog-icerikleri.xlsx';
     } else {
-      targetArg = 'https://drive.google.com/file/d/1SOapjMxNNtBwo0C4wuztjqm1Xt6B06wb/view';
+      targetArg = 'https://docs.google.com/spreadsheets/d/1rV-vrfS7Ox5oJ63umMfCjMjxvXhdz-wpYlVkXmLx2M0/edit?usp=sharing';
     }
   }
 

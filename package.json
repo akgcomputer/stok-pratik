@@ -6,7 +6,8 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "blog-import": "node import-blog.cjs"
   },
   "dependencies": {
     "@astrojs/cloudflare": "^12.6.12",
@@ -23,6 +24,7 @@
     "react-dom": "^19.2.7",
     "swiper": "^12.0.3",
     "tailwind-merge": "^3.6.0",
-    "tailwindcss": "^4.3.3"
+    "tailwindcss": "^4.3.3",
+    "xlsx": "^0.18.5"
   }
 }

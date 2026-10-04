@@ -23,7 +23,7 @@ function truncateWords(text, maxWords) {
 <BaseLayout title="Blog | Stok Pratik">
   <div class="blog-container">
     <h1>Stok Pratik Blog</h1>
-    <p>Ön muhasebe, stok yönetimi ve işletme verimliliği hakkında en güncel yazılar.</p>
+    <p>Birbirinden faydalı tam <span class="highlight-count">{allBlogPosts.length}</span> adet blog içeriğimiz sizleri bekliyor.</p>
     
     <div class="blog-grid">
       {shuffledPosts.map((post) => {
@@ -58,6 +58,10 @@ function truncateWords(text, maxWords) {
     font-size: 1.1rem;
     color: #666;
     margin-bottom: 40px;
+  }
+  .highlight-count {
+    color: #dc2626;
+    font-weight: 800;
   }
   .blog-grid {
     display: grid;

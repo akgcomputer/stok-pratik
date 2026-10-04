@@ -118,7 +118,14 @@ function isEnabled(val) {
 
 // Ana çalışma fonksiyonu
 async function main() {
-  const targetArg = process.argv[2] || 'blog-icerikleri.xlsx';
+  let targetArg = process.argv[2] || process.env.BLOG_DRIVE_URL;
+  if (!targetArg) {
+    if (fs.existsSync(path.join(process.cwd(), 'blog-icerikleri.xlsx'))) {
+      targetArg = 'blog-icerikleri.xlsx';
+    } else {
+      targetArg = 'https://drive.google.com/file/d/1SOapjMxNNtBwo0C4wuztjqm1Xt6B06wb/view';
+    }
+  }
 
   console.log('🚀 Blog İçe Aktarma İşlemi Başlatılıyor...');
 

@@ -1,0 +1,52 @@
+name: Otomatik Blog Senkronizasyonu
+
+on:
+  schedule:
+    # Türkiye Saati: Her gün 09:15 ve 15:15 (UTC olarak 06:15 ve 12:15)
+    - cron: '15 6,12 * * *'
+  # GitHub panelinden "Run workflow" butonu ile istendiği an elle de tetiklenebilir
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Kodu Çek (Checkout)
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Node.js Kurulumu
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Gerekli Paketleri Kur
+        run: |
+          npm install xlsx
+
+      - name: Drive'dan Yeni Blog Yazılarını Çek
+        env:
+          BLOG_DRIVE_URL: ${{ secrets.BLOG_DRIVE_URL || vars.BLOG_DRIVE_URL || 'https://drive.google.com/file/d/1SOapjMxNNtBwo0C4wuztjqm1Xt6B06wb/view' }}
+        run: |
+          node import-blog.cjs
+
+      - name: Yeni Yazıları Kaydet ve Otomatik Deploy Et (Git Push)
+        run: |
+          git config --global user.name "Stok Pratik Otomasyon Botu"
+          git config --global user.email "bot@stokpratik.com.tr"
+          
+          # Yeni veya değişen dosya var mı kontrol et
+          if [ -n "$(git status --porcelain src/content/blog/)" ]; then
+            echo "✨ Yeni blog içerikleri tespit edildi, sisteme kaydediliyor..."
+            git add src/content/blog/
+            git commit -m "🤖 [Otomatik] Yeni blog içerikleri yayına alındı [$(date +'%Y-%m-%d %H:%M')]"
+            git push
+            echo "🚀 Başarıyla GitHub'a gönderildi, site otomatik deploy oluyor!"
+          else
+            echo "ℹ️ Yeni içerik bulunamadı veya tüm yazılar zaten mevcut. Değişiklik yok."
+          fi

@@ -247,9 +247,14 @@ function truncateWords(text, maxWords) {
     const clearBtn = document.getElementById('clearSearchBtn');
     const feedback = document.getElementById('searchFeedback');
     const noResults = document.getElementById('noResultsBox');
-    const grid = document.getElementById('blogGrid');
+    if (!grid) return;
 
-    if (!input || !grid) return;
+    // İçerikleri her sayfa açılışında rastgele (random) karıştır
+    for (let i = grid.children.length; i >= 0; i--) {
+      grid.appendChild(grid.children[Math.random() * i | 0]);
+    }
+
+    if (!input) return;
 
     const cards = Array.from(grid.querySelectorAll('.blog-card'));
 

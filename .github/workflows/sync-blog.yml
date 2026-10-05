@@ -2,8 +2,8 @@ name: Otomatik Blog Senkronizasyonu
 
 on:
   schedule:
-    # Türkiye Saati: Her gün 09:15 ve 15:15 (UTC olarak 06:15 ve 12:15)
-    - cron: '15 6,12 * * *'
+    # Her 2 saatte bir (:20 geçe) otomatik kontrol et ve yeni yazı varsa hemen yayına al
+    - cron: '20 */2 * * *'
   # GitHub panelinden "Run workflow" butonu ile istendiği an elle de tetiklenebilir
   workflow_dispatch:
 
@@ -19,6 +19,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Node.js Kurulumu
         uses: actions/setup-node@v4
@@ -45,7 +46,7 @@ jobs:
             echo "✨ Yeni blog içerikleri tespit edildi, sisteme kaydediliyor..."
             git add src/content/blog/
             git commit -m "🤖 [Otomatik] Yeni blog içerikleri yayına alındı [$(date +'%Y-%m-%d %H:%M')]"
-            git push
+            git push origin main
             echo "🚀 Başarıyla GitHub'a gönderildi, site otomatik deploy oluyor!"
           else
             echo "ℹ️ Yeni içerik bulunamadı veya tüm yazılar zaten mevcut. Değişiklik yok."

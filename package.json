@@ -7,7 +7,8 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "blog-import": "node import-blog.cjs"
+    "blog-import": "node import-blog.cjs",
+    "blog-sync": "node import-blog.cjs && git add . && git commit -m \"Otomatik blog senkronizasyonu\" && git push"
   },
   "dependencies": {
     "@astrojs/cloudflare": "^12.6.12",

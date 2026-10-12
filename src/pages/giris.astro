@@ -1,0 +1,20 @@
+---
+// src/pages/giris.astro
+// stokpratik.com.tr/giris adresine gelenleri güvenle erp-eticaret subdomainine yönlendirir
+return Astro.redirect('https://erp-eticaret.stokpratik.com.tr/giris', 302);
+---
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stok Pratik Giriş - Yönlendiriliyor...</title>
+  <meta http-equiv="refresh" content="0;url=https://erp-eticaret.stokpratik.com.tr/giris">
+</head>
+<body>
+  <div style="font-family: sans-serif; text-align: center; padding: 50px;">
+    <h2>Stok Pratik Giriş Ekranına Yönlendiriliyorsunuz...</h2>
+    <p>Eğer sayfa açılmazsa <a href="https://erp-eticaret.stokpratik.com.tr/giris" style="color: #dc2626; font-weight: bold;">buraya tıklayın</a>.</p>
+  </div>
+</body>
+</html>

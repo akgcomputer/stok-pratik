@@ -6,7 +6,7 @@ date: "2026-10-17"
 ---
 Kozmetik, parfümeri ve kişisel bakım sektörü; perakendenin en hızlı dönen fakat takibi en hassas alanlarından biridir.
 
-Tek bir fondöten serisinin 12 ayrı alt tonu, bir rujun 15 ayrı rengi vardır. Üstelik cilt bakım ve organik ürünlerde "Son Kullanma Tarihi (SKT)" ve "Lot Numarası" hayati önem taşır:
+Tek bir fondöten serisinin 12 ayrı alt tonu, bir rujun 15 ayrı rengi vardır. Üstelik cilt bakım ve organik ürünlerde \'Son Kullanma Tarihi (SKT)\' ve \'Lot Numarası\' hayati önem taşır:
 - Tarihi yaklaşan pahalı bir serum rafta unutulursa doğrudan sermaye kaybına dönüşür.
 - Kasadaki satış temsilcisi yoğun saatlerde benzer ambalajlı yanlış bir ton kodunu okutursa stok dengesi bozulur.
 - Mağazada tükenen popüler bir parfüm, e-ticaret sitesinde hâlâ açık kalırsa müşteri siparişi iptal edilmek zorunda kalınır.

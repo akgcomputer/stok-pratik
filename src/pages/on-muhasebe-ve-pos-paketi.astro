@@ -1,8 +1,11 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import pricingData from '../data/pricing.json';
 
 const pageTitle = "Ön Muhasebe ve Hızlı Satış (POS) Programı | Stok Pratik";
 const pageDescription = "Bulut tabanlı ön muhasebe, barkodlu hızlı satış (POS), e-Fatura, stok ve cari takip sistemi. Stok Pratik çekirdek paketi ile işletmenizi hemen dijitalleştirin.";
+
+const { core_package, currency_symbol, vat_text } = pricingData;
 ---
 
 <BaseLayout title={pageTitle} description={pageDescription}>
@@ -18,15 +21,22 @@ const pageDescription = "Bulut tabanlı ön muhasebe, barkodlu hızlı satış (
           Ön Muhasebe & Barkodlu POS Satışını<br class="hidden sm:inline" />
           <span class="text-blue-400">Tek Ekranda ve Güvenle</span> Yönetin
         </h1>
-        <p class="text-lg sm:text-xl text-slate-300 max-w-3xl mx-auto mb-10 leading-relaxed">
+        <p class="text-lg sm:text-xl text-slate-300 max-w-3xl mx-auto mb-6 leading-relaxed">
           Karmaşık muhasebe terimlerini unutun. Stok girişinden e-Fatura kesimine, kasa/banka takibinden barkodlu kasa satışına kadar işletmenizin tüm temel operasyonu tek çatı altında.
         </p>
+
+        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-2xl bg-white/10 backdrop-blur border border-white/20 text-white text-sm font-semibold mb-8">
+          <span>Aylık Sadece</span>
+          <span class="text-xl font-black text-emerald-400">{core_package.yearly_monthly_price} {currency_symbol}</span>
+          <span>'den başlayan avantajlı fiyatlarla ({vat_text})</span>
+        </div>
+
         <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-          <a href="https://wa.me/+905325000999?text=Ön%20Muhasebe%20ve%20POS%20paketi%20için%20demo%20istiyorum." target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto px-8 py-4 bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-bold text-lg rounded-xl shadow-lg transition duration-200 text-center">
-            Ücretsiz Demo İsteyin
+          <a href="/firma-kaydi" class="w-full sm:w-auto px-8 py-4 bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-bold text-lg rounded-xl shadow-lg transition duration-200 text-center">
+            14 Gün Ücretsiz Deneyin
           </a>
-          <a href="/paketlerimiz" class="w-full sm:w-auto px-8 py-4 bg-white/10 hover:bg-white/20 text-white font-semibold text-lg rounded-xl border border-white/20 transition duration-200 text-center">
-            Paket ve Fiyatları İncele
+          <a href="/fiyatlar" class="w-full sm:w-auto px-8 py-4 bg-white/10 hover:bg-white/20 text-white font-semibold text-lg rounded-xl border border-white/20 transition duration-200 text-center">
+            Paketi ve Modülleri İncele
           </a>
         </div>
       </div>
@@ -93,10 +103,10 @@ const pageDescription = "Bulut tabanlı ön muhasebe, barkodlu hızlı satış (
     <section class="py-16 bg-slate-900 text-white text-center">
       <div class="container mx-auto px-4 max-w-3xl">
         <h2 class="text-3xl font-bold mb-4">İşletmenizi Hemen Stok Pratik ile Tanıştırın</h2>
-        <p class="text-slate-400 mb-8">Kiralama veya tek seferlik ömür boyu lisans seçeneklerimizi inceleyin.</p>
+        <p class="text-slate-400 mb-8">İhtiyacınız olan modülleri seçin, sadece kullandığınız kadar ödeyin.</p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
           <a href="/fiyatlar" class="px-8 py-3.5 bg-blue-500 hover:bg-blue-600 text-white font-bold rounded-xl transition">Paketi Yapılandır</a>
-          <a href="/ozelliklerimiz" class="px-8 py-3.5 bg-slate-800 hover:bg-slate-700 text-white font-semibold rounded-xl border border-slate-700 transition">Tüm Özellikler</a>
+          <a href="/paketlerimiz" class="px-8 py-3.5 bg-slate-800 hover:bg-slate-700 text-white font-semibold rounded-xl border border-slate-700 transition">Tüm Modül Özellikleri</a>
         </div>
       </div>
     </section>

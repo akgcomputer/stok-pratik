@@ -1,125 +1,157 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import PricingWizard from '../components/PricingWizard.jsx';
+import PricingCalculator from '../components/PricingCalculator.jsx';
+import pricingData from '../data/pricing.json';
+
+const pageTitle = "Fiyatlar & Akıllı Paket Yapılandırma | Stok Pratik Modüler ERP";
+const pageDescription = "Kullanmadığınız özelliklere para ödemeyin! Stok Pratik tek çekirdek paket ve ihtiyacınıza göre seçebileceğiniz modüler yapısıyla işletmenize en uygun fiyatı anında hesaplayın.";
+
+// Structured Data (JSON-LD) for SEO
+const schemaData = {
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "Stok Pratik Bulut Ön Muhasebe & Modüler ERP",
+  "description": pageDescription,
+  "brand": {
+    "@type": "Brand",
+    "name": "Stok Pratik"
+  },
+  "offers": {
+    "@type": "AggregateOffer",
+    "priceCurrency": pricingData.currency,
+    "lowPrice": pricingData.core_package.yearly_monthly_price,
+    "highPrice": pricingData.core_package.monthly_price,
+    "offerCount": "12",
+    "priceValidUntil": "2027-12-31"
+  }
+};
+
+const faqs = [
+  {
+    q: "StokPratik'te ek kurulum, sunucu veya bakım ücreti var mı?",
+    a: "Hayır. Stok Pratik tamamen bulut tabanlı bir sistemdir. Sunucu yatırımı, güncelleme veya kurulum bedeli ödemezsiniz. Seçtiğiniz paket tutarı dışında gizli bir maliyet bulunmaz."
+  },
+  {
+    q: "İhtiyacım olduğunda yeni bir modülü sonradan ekleyebilir miyim?",
+    a: "Kesinlikle! İşletmeniz büyüdükçe veya yeni bir satış kanalına başladığınızda (örneğin pazaryeri veya e-irsaliye) dilediğiniz modülü tek tıkla aktif edebilir, kullanmadığınız modülü bir sonraki fatura döneminde iptal edebilirsiniz."
+  },
+  {
+    q: "Yıllık ödeme avantajı nedir?",
+    a: "Yıllık peşin ödemelerde tüm çekirdek paket ve seçtiğiniz modüller üzerinde %20'ye varan kalıcı indirim tanımlanır. Böylece işletmeniz yılda binlerce lira tasarruf eder."
+  },
+  {
+    q: "14 günlük ücretsiz deneme sürecinde kredi kartı gerekiyor mu?",
+    a: "Hayır. 14 günlük tam sürüm deneme için kredi kartı bilginizi istemiyoruz. Sisteme kaydolup hemen gerçek verilerinizle çalışmaya başlayabilirsiniz."
+  },
+  {
+    q: "Mevcut muhasebe veya Excel verilerimizi içeri aktarabilir miyiz?",
+    a: "Evet. Toplu ürün, stok, müşteri ve tedarikçi carilerinizi tek tıkla Excel/CSV formatında Stok Pratik'e aktarabilir, uzman destek ekibimizden veri aktarımı konusunda ücretsiz yardım alabilirsiniz."
+  }
+];
 ---
 
-<BaseLayout title="Fiyatlar & Paket Yapılandırma | Stok Pratik">
-  <div class="fiyatlar-page">
-    <!-- Hero Section -->
-    <section class="hero-section">
-      <div class="hero-bg-glow"></div>
-      <div class="container text-center relative z-10">
-        <span class="badge">Akıllı Paket Seçimi</span>
-        <h1 class="page-title">Sadece İhtiyacınız Olanı <span class="gradient-text">Ödeyin</span></h1>
-        <p class="page-subtitle">İşletmenizin ihtiyaçlarına göre modüllerinizi seçin, size en uygun ve avantajlı paketi anında hesaplayalım.</p>
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <script type="application/ld+json" set:html={JSON.stringify(schemaData)} />
+
+  <main class="bg-slate-50 text-slate-800 antialiased min-h-screen">
+    
+    <!-- HERO SECTION -->
+    <section class="relative overflow-hidden bg-gradient-to-b from-slate-900 via-slate-900 to-slate-950 py-20 text-white border-b border-slate-800">
+      <div class="absolute inset-0 bg-[radial-gradient(#3b82f6_1px,transparent_1px)] [background-size:24px_24px] opacity-20"></div>
+      <div class="container mx-auto px-4 max-w-5xl text-center relative z-10">
+        
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 mb-6 rounded-full bg-blue-500/10 border border-blue-500/30 text-blue-300 text-xs sm:text-sm font-semibold tracking-wide">
+          <span>✨ Modüler ERP Devrimi</span>
+          <span class="w-1.5 h-1.5 rounded-full bg-blue-400"></span>
+          <span>Kullandığın Kadar Öde</span>
+        </div>
+
+        <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight mb-6 leading-tight">
+          Sadece İhtiyacınız Olanı <br class="hidden sm:inline" />
+          <span class="bg-gradient-to-r from-blue-400 via-indigo-300 to-pink-400 bg-clip-text text-transparent">
+            Seçin ve Ödeyin
+          </span>
+        </h1>
+
+        <p class="text-base sm:text-xl text-slate-300 max-w-3xl mx-auto mb-6 leading-relaxed">
+          Kullanmadığınız modüllere fahiş paket paraları ödemeyin. Temel ERP çekirdeğini alın, pazaryerinden e-faturaya, üretimden sahaya kadar dilediğiniz eklentileri ihtiyacınız kadar paketinize dahil edin.
+        </p>
+
+        <p class="text-xs sm:text-sm text-slate-400">
+          💡 Aylık {pricingData.core_package.yearly_monthly_price} ₺'den başlayan fiyatlar | Taahhütsüz esnek yapı | 14 Gün Ücretsiz Deneme
+        </p>
       </div>
     </section>
 
-    <!-- React Wizard Component (Loaded client-side) -->
-    <section class="wizard-section">
-      <div class="container">
-        <PricingWizard client:load />
+    <!-- CALCULATOR INTERACTIVE SECTION -->
+    <section class="py-14 sm:py-20 -mt-6">
+      <div class="container mx-auto px-4">
+        <PricingCalculator client:load />
       </div>
     </section>
 
-    <!-- Redirection Info -->
-    <section class="info-section">
-      <div class="container">
-        <div class="info-box-container">
-          <div class="info-icon">📋</div>
-          <div class="info-content">
-            <strong>Paket özelliklerinin tüm detaylarını incelemek ister misiniz?</strong>
-            <br />
-            Hangi modülün ne işe yaradığını, e-Fatura, stok takibi veya pazaryeri özelliklerinin kapsamını tüm detaylarıyla <a href="/paketlerimiz" class="text-indigo-600 font-semibold hover:underline">Paketlerimiz</a> sayfasında görebilirsiniz.
+    <!-- DETAILED SPECS LINK BANNER -->
+    <section class="py-10 bg-white border-y border-slate-200">
+      <div class="container mx-auto px-4 max-w-5xl">
+        <div class="p-8 rounded-3xl bg-gradient-to-r from-slate-900 to-indigo-950 text-white flex flex-col md:flex-row items-center justify-between gap-6 shadow-xl">
+          <div class="space-y-2 text-center md:text-left">
+            <span class="text-xs font-bold uppercase tracking-wider text-blue-400">Detaylı Kapsam & Rehber</span>
+            <h3 class="text-2xl font-black">Tüm Modüllerin Özelliklerini İncelemek İster misiniz?</h3>
+            <p class="text-sm text-slate-300 max-w-xl">
+              Hangi modülün neleri kapsadığını, e-Fatura, pazaryeri senkronizasyonu ve üretim modüllerinin madde madde yeteneklerini detaylı rehberimizde görün.
+            </p>
           </div>
+          <a
+            href="/paketlerimiz"
+            class="shrink-0 px-8 py-4 bg-white text-slate-950 hover:bg-slate-100 font-bold rounded-2xl shadow-lg transition-all transform hover:-translate-y-0.5 text-center"
+          >
+            Modül Özelliklerini İncele →
+          </a>
         </div>
       </div>
     </section>
-  </div>
+
+    <!-- FAQ SECTION -->
+    <section class="py-16 sm:py-24 bg-slate-50">
+      <div class="container mx-auto px-4 max-w-4xl">
+        <div class="text-center mb-12">
+          <span class="text-xs font-extrabold uppercase tracking-wider text-blue-600 mb-2 block">Merak Edilenler</span>
+          <h2 class="text-2xl sm:text-4xl font-black text-slate-900 tracking-tight">Sıkça Sorulan Sorular</h2>
+          <p class="text-slate-500 text-sm mt-2">Fiyatlandırma, lisanslama ve modül yönetimi hakkında aklınıza takılanlar.</p>
+        </div>
+
+        <div class="space-y-4">
+          {faqs.map((faq, index) => (
+            <div key={index} class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm">
+              <h3 class="text-base sm:text-lg font-bold text-slate-900 mb-2 flex items-start gap-3">
+                <span class="text-blue-600 font-black">?</span>
+                <span>{faq.q}</span>
+              </h3>
+              <p class="text-sm text-slate-600 leading-relaxed pl-6">
+                {faq.a}
+              </p>
+            </div>
+          ))}
+        </div>
+
+        <div class="mt-12 text-center">
+          <p class="text-slate-600 text-sm mb-4">
+            Farklı bir sorunuz veya işletmenize özel kurumsal ihtiyaçlarınız mı var?
+          </p>
+          <a
+            href="https://wa.me/905325000999?text=Merhaba,%20Stok%20Pratik%20fiyatlar%20ve%20mod%C3%BCller%20hakk%C4%B1nda%20dan%C4%B1%C5%9Fmak%20istiyorum."
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-sm transition-all"
+          >
+            <span>Danışmanımızla Görüşün</span>
+            <svg class="w-4 h-4 text-emerald-400" fill="currentColor" viewBox="0 0 20 20">
+              <path fillRule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
 </BaseLayout>
-
-<style>
-  .fiyatlar-page {
-    background: #f8fafc;
-    min-height: 100vh;
-    padding-bottom: 80px;
-    font-family: 'Inter', sans-serif;
-  }
-  
-  /* Hero */
-  .hero-section {
-    position: relative;
-    padding: 100px 20px 40px;
-    overflow: hidden;
-    background: #ffffff;
-    margin-bottom: 40px;
-  }
-  .hero-bg-glow {
-    position: absolute;
-    top: -50%;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 800px;
-    height: 800px;
-    background: radial-gradient(circle, rgba(99,102,241,0.15) 0%, rgba(255,255,255,0) 70%);
-    z-index: 0;
-  }
-  .badge {
-    display: inline-block;
-    padding: 6px 16px;
-    background: #eef2ff;
-    color: #4f46e5;
-    border-radius: 30px;
-    font-size: 0.9rem;
-    font-weight: 600;
-    margin-bottom: 20px;
-    box-shadow: 0 2px 10px rgba(79, 70, 229, 0.1);
-  }
-  .page-title {
-    font-size: 3rem;
-    font-weight: 800;
-    color: #0f172a;
-    line-height: 1.2;
-    margin-bottom: 20px;
-    letter-spacing: -1px;
-  }
-  .gradient-text {
-    background: linear-gradient(135deg, #4f46e5, #ec4899);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-  .page-subtitle {
-    font-size: 1.2rem;
-    color: #64748b;
-    max-width: 650px;
-    margin: 0 auto;
-  }
-
-  .wizard-section {
-    position: relative;
-    z-index: 5;
-    margin-bottom: 60px;
-  }
-
-  .info-box-container {
-    background: #fff;
-    border: 1px solid #e2e8f0;
-    border-radius: 16px;
-    padding: 24px;
-    display: flex;
-    align-items: flex-start;
-    gap: 20px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.02);
-    max-width: 1000px;
-    margin: 0 auto;
-  }
-  .info-icon {
-    font-size: 2rem;
-    line-height: 1;
-  }
-  .info-content {
-    font-size: 1rem;
-    color: #475569;
-    line-height: 1.6;
-  }
-</style>

@@ -2,10 +2,25 @@
 // src/pages/ekran-goruntuleri.astro
 import BaseLayout from '../layouts/BaseLayout.astro';
 
-// 17 Yeni ve Gerçek Ekran Görüntüsü
+// 17 Yeni ve Gerçek Ekran Görüntüsü (Kullanıcı İsteğine Göre Sıralı)
 const screenshots = [
   {
     id: 1,
+    category: "analiz-yonetim",
+    categoryLabel: "Güvenlik & Giriş",
+    badgeColor: "bg-slate-100 text-slate-800 border-slate-300",
+    src: "/images/screenshots/StokPratik_giris.png",
+    alt: "Stok Pratik Güvenli Giriş ve Kullanıcı Kimlik Doğrulama Paneli",
+    title: "Güvenli Giriş & Kullanıcı Rol Yetkilendirme",
+    description: "256-bit SSL koruması, şube bazlı oturum açma, kasiyer/müdür yetki kısıtlamaları ve log kayıtları.",
+    features: [
+      "Personele özel kısıtlı ekranlar (fiyat görme, iskonto yapma yetkileri)",
+      "Bulut altyapısıyla her cihazdan (PC, Mac, Tablet, Telefon) güvenli erişim",
+      "Otomatik yedekleme ile sıfır veri kaybı güvencesi"
+    ]
+  },
+  {
+    id: 2,
     category: "ticaret",
     categoryLabel: "Ticaret & Satış",
     badgeColor: "bg-red-50 text-red-600 border-red-200",
@@ -20,7 +35,7 @@ const screenshots = [
     ]
   },
   {
-    id: 2,
+    id: 3,
     category: "analiz-yonetim",
     categoryLabel: "Piyasa & Finans",
     badgeColor: "bg-amber-50 text-amber-700 border-amber-200",
@@ -35,7 +50,7 @@ const screenshots = [
     ]
   },
   {
-    id: 3,
+    id: 4,
     category: "ticaret",
     categoryLabel: "Ticaret & Satış",
     badgeColor: "bg-blue-50 text-blue-700 border-blue-200",
@@ -50,7 +65,7 @@ const screenshots = [
     ]
   },
   {
-    id: 4,
+    id: 5,
     category: "ticaret",
     categoryLabel: "Ödeme & Tahsilat",
     badgeColor: "bg-emerald-50 text-emerald-700 border-emerald-200",
@@ -65,7 +80,7 @@ const screenshots = [
     ]
   },
   {
-    id: 5,
+    id: 6,
     category: "finans",
     categoryLabel: "Finans & Muhasebe",
     badgeColor: "bg-purple-50 text-purple-700 border-purple-200",
@@ -80,7 +95,7 @@ const screenshots = [
     ]
   },
   {
-    id: 6,
+    id: 7,
     category: "finans",
     categoryLabel: "e-Dönüşüm",
     badgeColor: "bg-indigo-50 text-indigo-700 border-indigo-200",
@@ -95,7 +110,7 @@ const screenshots = [
     ]
   },
   {
-    id: 7,
+    id: 8,
     category: "uretim-depo",
     categoryLabel: "ERP & Üretim",
     badgeColor: "bg-orange-50 text-orange-700 border-orange-200",
@@ -110,7 +125,7 @@ const screenshots = [
     ]
   },
   {
-    id: 8,
+    id: 9,
     category: "uretim-depo",
     categoryLabel: "Depo & Lojistik",
     badgeColor: "bg-teal-50 text-teal-700 border-teal-200",
@@ -125,7 +140,7 @@ const screenshots = [
     ]
   },
   {
-    id: 9,
+    id: 10,
     category: "eticaret",
     categoryLabel: "E-Ticaret & Pazaryeri",
     badgeColor: "bg-rose-50 text-rose-700 border-rose-200",
@@ -137,21 +152,6 @@ const screenshots = [
       "Tüm pazaryerlerinden gelen siparişlerin tek ekranda toplanması",
       "Satış yapıldığında diğer kanallardaki stoğun saniyeler içinde güncellenmesi",
       "Toplu kargo barkodu ve resmi fatura basımı"
-    ]
-  },
-  {
-    id: 10,
-    category: "eticaret",
-    categoryLabel: "B2B & Saha",
-    badgeColor: "bg-cyan-50 text-cyan-700 border-cyan-200",
-    src: "/images/screenshots/depodandirekt.png",
-    alt: "Stok Pratik Depodan Direkt B2B ve Saha Satış Portalı",
-    title: "Depodan Direkt B2B & Saha Satış Portalı",
-    description: "Bayileriniz ve toptan alıcılarınız için 7/24 kapalı devre sipariş verme, cari ekstre görüntüleme ve kredi kartıyla ödeme portalı.",
-    features: [
-      "Bayiye özel kademeli iskonto ve vadeli fiyat listeleri",
-      "Saha satış personelinin plaka bazlı araç deposu üzerinden satış yapması",
-      "Kendi siparişini giren müşterilerle sıfır veri giriş yükü"
     ]
   },
   {
@@ -246,17 +246,17 @@ const screenshots = [
   },
   {
     id: 17,
-    category: "analiz-yonetim",
-    categoryLabel: "Güvenlik & Giriş",
-    badgeColor: "bg-slate-100 text-slate-800 border-slate-300",
-    src: "/images/screenshots/StokPratik_giris.png",
-    alt: "Stok Pratik Güvenli Giriş ve Kullanıcı Kimlik Doğrulama Paneli",
-    title: "Güvenli Giriş & Kullanıcı Rol Yetkilendirme",
-    description: "256-bit SSL koruması, şube bazlı oturum açma, kasiyer/müdür yetki kısıtlamaları ve log kayıtları.",
+    category: "eticaret",
+    categoryLabel: "B2B & Saha",
+    badgeColor: "bg-cyan-50 text-cyan-700 border-cyan-200",
+    src: "/images/screenshots/depodandirekt.png",
+    alt: "Stok Pratik Depodan Direkt B2B ve Saha Satış Portalı",
+    title: "Depodan Direkt B2B & Saha Satış Portalı",
+    description: "Bayileriniz ve toptan alıcılarınız için 7/24 kapalı devre sipariş verme, cari ekstre görüntüleme ve kredi kartıyla ödeme portalı.",
     features: [
-      "Personele özel kısıtlı ekranlar (fiyat görme, iskonto yapma yetkileri)",
-      "Bulut altyapısıyla her cihazdan (PC, Mac, Tablet, Telefon) güvenli erişim",
-      "Otomatik yedekleme ile sıfır veri kaybı güvencesi"
+      "Bayiye özel kademeli iskonto ve vadeli fiyat listeleri",
+      "Saha satış personelinin plaka bazlı araç deposu üzerinden satış yapması",
+      "Kendi siparişini giren müşterilerle sıfır veri giriş yükü"
     ]
   }
 ];

@@ -120,7 +120,7 @@
       "type": "toggle",
       "monthly_price": 590,
       "yearly_monthly_price": 490,
-      "badge": "Stoksuz E-Ticaret"
+      "badge": "Global Toptan E-Ticaret"
     },
     {
       "id": "hizli_pos",
@@ -218,9 +218,10 @@
     },
     {
       "id": "dropshipping",
-      "name": "DepodanDirekt Dropshipping",
+      "name": "DepodanDirekt B2B Tedarik",
+      "badge": "Global Toptan E-Ticaret",
       "icon": "📦",
-      "description": "Sermayesiz ve stoksuz e-ticaret, B2B hazır toptan ürünler ve pazaryeri aktarımı.",
+      "description": "Global toptan ürünlere erişim, B2B hazır katalog ve pazaryeri aktarımı.",
       "module_ids": ["gib_edonusum", "pazaryeri", "depodandirekt"],
       "quantities": { "pazaryeri": 1 }
     },

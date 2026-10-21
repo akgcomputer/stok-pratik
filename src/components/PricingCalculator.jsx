@@ -32,6 +32,33 @@ export default function PricingCalculator() {
 
   const { core_package, categories, modules, presets, currency_symbol, vat_text } = pricingData;
 
+  // Preset dynamic prices calculation (synced with billing cycle)
+  const presetPrices = useMemo(() => {
+    const isYearly = billingCycle === 'yearly';
+    const coreCost = isYearly ? core_package.yearly_monthly_price : core_package.monthly_price;
+
+    const prices = {};
+    presets.forEach(preset => {
+      let total = coreCost;
+      preset.module_ids.forEach(modId => {
+        const mod = modules.find(m => m.id === modId);
+        if (!mod) return;
+        const qty = (preset.quantities && preset.quantities[modId]) || mod.default || 1;
+        if (mod.type === 'toggle') {
+          total += isYearly ? mod.yearly_monthly_price : mod.monthly_price;
+        } else if (mod.type === 'quantity') {
+          total += (isYearly ? mod.yearly_monthly_price : mod.monthly_price) * qty;
+        } else if (mod.type === 'base_plus_quantity') {
+          const base = isYearly ? mod.base_yearly_monthly_price : mod.base_monthly_price;
+          const unit = isYearly ? mod.unit_yearly_monthly_price : mod.unit_monthly_price;
+          total += base + (unit * qty);
+        }
+      });
+      prices[preset.id] = total;
+    });
+    return prices;
+  }, [billingCycle, core_package, modules, presets]);
+
   // Toggle a module on/off
   const handleToggleModule = (moduleId) => {
     setActivePreset(null);
@@ -185,75 +212,179 @@ export default function PricingCalculator() {
     return `https://wa.me/905325000999?text=${encodeURIComponent(message)}`;
   }, [calculation, core_package, currency_symbol]);
 
+  // Styling presets configuration with distinct colors and tight layout
+  const presetThemeMap = {
+    on_muhasebe: {
+      border: 'border-sky-300',
+      activeBorder: 'border-sky-600 ring-2 ring-sky-500/30',
+      bg: 'bg-sky-50/60',
+      activeBg: 'bg-sky-100/90',
+      pillBg: 'bg-sky-600 text-white',
+      badgeBg: 'bg-sky-100 text-sky-800 border-sky-200'
+    },
+    eticaret_pazaryeri: {
+      border: 'border-purple-300',
+      activeBorder: 'border-purple-600 ring-2 ring-purple-500/30',
+      bg: 'bg-purple-50/60',
+      activeBg: 'bg-purple-100/90',
+      pillBg: 'bg-purple-600 text-white',
+      badgeBg: 'bg-purple-100 text-purple-800 border-purple-200'
+    },
+    dropshipping: {
+      border: 'border-amber-300',
+      activeBorder: 'border-amber-600 ring-2 ring-amber-500/30',
+      bg: 'bg-amber-50/60',
+      activeBg: 'bg-amber-100/90',
+      pillBg: 'bg-amber-600 text-white',
+      badgeBg: 'bg-amber-100 text-amber-900 border-amber-200'
+    },
+    uretim_fabrika: {
+      border: 'border-emerald-300',
+      activeBorder: 'border-emerald-600 ring-2 ring-emerald-500/30',
+      bg: 'bg-emerald-50/60',
+      activeBg: 'bg-emerald-100/90',
+      pillBg: 'bg-emerald-600 text-white',
+      badgeBg: 'bg-emerald-100 text-emerald-900 border-emerald-200'
+    }
+  };
+
   return (
     <div className="w-full max-w-7xl mx-auto">
-      {/* 1. BILLING CYCLE SWITCHER & PRESETS BAR */}
+      
+      {/* 1. BILLING CYCLE SWITCHER (SOLID HIGH CONTRAST) */}
       <div className="flex flex-col items-center justify-center mb-10">
-        {/* Monthly / Yearly Switch */}
-        <div className="inline-flex items-center p-1.5 bg-slate-900/90 backdrop-blur rounded-2xl shadow-xl border border-slate-700/80 mb-6">
+        
+        {/* Toggle Capsule with explicit dark background for 100% readability */}
+        <div 
+          className="inline-flex items-center p-2 rounded-2xl shadow-2xl mb-8"
+          style={{
+            backgroundColor: '#0f172a',
+            border: '2px solid #334155'
+          }}
+        >
+          {/* Monthly Button */}
           <button
             type="button"
             onClick={() => setBillingCycle('monthly')}
-            className={`px-6 py-3 rounded-xl font-bold text-sm transition-all duration-200 ${
+            className="px-6 sm:px-8 py-3 rounded-xl font-extrabold text-sm sm:text-base transition-all duration-200 cursor-pointer"
+            style={
               billingCycle === 'monthly'
-                ? 'bg-white text-slate-950 shadow-md scale-[1.02]'
-                : 'text-slate-300 hover:text-white'
-            }`}
+                ? {
+                    backgroundColor: '#ffffff',
+                    color: '#0f172a',
+                    boxShadow: '0 4px 14px rgba(0,0,0,0.25)',
+                    transform: 'scale(1.02)'
+                  }
+                : {
+                    backgroundColor: 'transparent',
+                    color: '#cbd5e1'
+                  }
+            }
           >
             Aylık Ödeme
           </button>
+
+          {/* Yearly Button with Discount Badge */}
           <button
             type="button"
             onClick={() => setBillingCycle('yearly')}
-            className={`relative px-6 py-3 rounded-xl font-bold text-sm transition-all duration-200 flex items-center gap-2 ${
+            className="relative px-6 sm:px-8 py-3 rounded-xl font-extrabold text-sm sm:text-base transition-all duration-200 flex items-center gap-2 cursor-pointer"
+            style={
               billingCycle === 'yearly'
-                ? 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-lg scale-[1.02]'
-                : 'text-slate-300 hover:text-white'
-            }`}
+                ? {
+                    background: 'linear-gradient(135deg, #2563eb 0%, #4f46e5 100%)',
+                    color: '#ffffff',
+                    boxShadow: '0 6px 20px rgba(37,99,235,0.45)',
+                    transform: 'scale(1.02)'
+                  }
+                : {
+                    backgroundColor: 'transparent',
+                    color: '#cbd5e1'
+                  }
+            }
           >
             <span>Yıllık Avantajlı</span>
-            <span className="bg-emerald-400 text-emerald-950 text-[11px] font-black uppercase px-2 py-0.5 rounded-full tracking-wide">
+            <span
+              className="text-[11px] font-black uppercase px-2.5 py-0.5 rounded-full tracking-wide shrink-0 shadow-sm"
+              style={{
+                backgroundColor: '#10b981',
+                color: '#022c22'
+              }}
+            >
               %20 İndirim
             </span>
           </button>
         </div>
 
-        {/* Quick Presets */}
-        <div className="w-full max-w-4xl">
-          <p className="text-center text-xs font-bold uppercase tracking-wider text-slate-400 mb-3">
-            Hızlı Paket Şablonları (Tek Tıkla Seçin)
+        {/* 2. COMPACT, COLORED PRESET CARDS WITH DYNAMIC PRICES */}
+        <div className="w-full max-w-4xl mx-auto px-2">
+          <p className="text-center text-xs font-black uppercase tracking-wider text-slate-500 mb-3">
+            Hızlı Paket Şablonları (Tek Tıkla Seçin &amp; Fiyatı Görün)
           </p>
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
+
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
             {presets.map(preset => {
               const isSelected = activePreset === preset.id;
+              const theme = presetThemeMap[preset.id] || presetThemeMap.on_muhasebe;
+              const calculatedPrice = presetPrices[preset.id];
+
               return (
                 <button
                   key={preset.id}
                   type="button"
                   onClick={() => applyPreset(preset)}
-                  className={`p-3 rounded-xl border text-left transition-all duration-200 flex flex-col justify-between ${
+                  className={`p-3.5 rounded-2xl border text-left transition-all duration-200 flex flex-col justify-between shadow-sm cursor-pointer relative ${
                     isSelected
-                      ? 'border-blue-500 bg-blue-50/80 ring-2 ring-blue-500/20 shadow-md'
-                      : 'border-slate-200 bg-white hover:border-blue-300 hover:bg-slate-50/70 shadow-sm'
+                      ? `${theme.activeBorder} ${theme.activeBg} shadow-md scale-[1.02]`
+                      : `${theme.border} ${theme.bg} hover:shadow hover:scale-[1.01]`
                   }`}
                 >
-                  <div className="flex items-center gap-2 mb-1">
-                    <span className="text-xl">{preset.icon}</span>
-                    <span className="font-bold text-xs sm:text-sm text-slate-800 leading-tight">
+                  {/* Top: Icon + Title */}
+                  <div>
+                    <div className="flex items-center justify-between mb-2">
+                      <span className="text-2xl p-1.5 bg-white rounded-xl shadow-xs border border-slate-100">
+                        {preset.icon}
+                      </span>
+                      {isSelected && (
+                        <span className="w-5 h-5 rounded-full bg-blue-600 text-white flex items-center justify-center text-xs shadow-xs">
+                          ✓
+                        </span>
+                      )}
+                    </div>
+
+                    <h5 className="font-extrabold text-xs sm:text-sm text-slate-900 leading-snug mb-1">
                       {preset.name}
+                    </h5>
+
+                    {preset.badge && (
+                      <span className={`inline-block px-1.5 py-0.5 text-[9px] font-bold rounded border mb-1.5 ${theme.badgeBg}`}>
+                        {preset.badge}
+                      </span>
+                    )}
+
+                    <p className="text-[11px] text-slate-600 leading-tight line-clamp-2 mb-3">
+                      {preset.description}
+                    </p>
+                  </div>
+
+                  {/* Bottom: Dynamic Price Pill inside preset */}
+                  <div className="pt-2 border-t border-slate-200/60 flex items-center justify-between">
+                    <span className="text-[10px] font-bold text-slate-500 uppercase tracking-wide">
+                      {billingCycle === 'yearly' ? 'Yıllıkta:' : 'Aylık:'}
+                    </span>
+                    <span className={`px-2 py-0.5 rounded-lg text-xs font-black shadow-xs ${theme.pillBg}`}>
+                      {calculatedPrice.toLocaleString('tr-TR')} ₺ <span className="text-[10px] font-normal opacity-90">/ay</span>
                     </span>
                   </div>
-                  <span className="text-[11px] text-slate-500 line-clamp-1">
-                    {preset.description}
-                  </span>
                 </button>
               );
             })}
           </div>
         </div>
+
       </div>
 
-      {/* 2. MAIN GRID: MODULE SELECTORS (LEFT 8 COLS) + STICKY SUMMARY CARD (RIGHT 4 COLS) */}
+      {/* 3. MAIN GRID: MODULE SELECTORS (LEFT 8 COLS) + STICKY SUMMARY CARD (RIGHT 4 COLS) */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
         
         {/* LEFT COLUMN: MODULE SECTIONS */}
@@ -366,7 +497,7 @@ export default function PricingCalculator() {
                             <button
                               type="button"
                               onClick={() => handleToggleModule(mod.id)}
-                              className={`shrink-0 w-6 h-6 rounded-lg flex items-center justify-center border transition-all duration-200 ${
+                              className={`shrink-0 w-6 h-6 rounded-lg flex items-center justify-center border transition-all duration-200 cursor-pointer ${
                                 isSelected
                                   ? 'bg-blue-600 border-blue-600 text-white shadow-sm'
                                   : 'bg-white border-slate-300 text-transparent hover:border-slate-400'
@@ -408,7 +539,7 @@ export default function PricingCalculator() {
                                 <button
                                   type="button"
                                   onClick={() => handleQuantityChange(mod.id, -1)}
-                                  className="w-7 h-7 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold text-sm flex items-center justify-center transition-colors"
+                                  className="w-7 h-7 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold text-sm flex items-center justify-center transition-colors cursor-pointer"
                                   disabled={qty <= (mod.min || 1)}
                                 >
                                   -
@@ -419,7 +550,7 @@ export default function PricingCalculator() {
                                 <button
                                   type="button"
                                   onClick={() => handleQuantityChange(mod.id, 1)}
-                                  className="w-7 h-7 rounded-lg bg-blue-100 hover:bg-blue-200 text-blue-900 font-bold text-sm flex items-center justify-center transition-colors"
+                                  className="w-7 h-7 rounded-lg bg-blue-100 hover:bg-blue-200 text-blue-900 font-bold text-sm flex items-center justify-center transition-colors cursor-pointer"
                                 >
                                   +
                                 </button>
@@ -444,7 +575,7 @@ export default function PricingCalculator() {
                                   <button
                                     type="button"
                                     onClick={() => handleQuantityChange(mod.id, -1)}
-                                    className="w-7 h-7 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold text-sm flex items-center justify-center transition-colors"
+                                    className="w-7 h-7 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold text-sm flex items-center justify-center transition-colors cursor-pointer"
                                     disabled={qty <= (mod.min || 1)}
                                   >
                                     -
@@ -455,7 +586,7 @@ export default function PricingCalculator() {
                                   <button
                                     type="button"
                                     onClick={() => handleQuantityChange(mod.id, 1)}
-                                    className="w-7 h-7 rounded-lg bg-blue-100 hover:bg-blue-200 text-blue-900 font-bold text-sm flex items-center justify-center transition-colors"
+                                    className="w-7 h-7 rounded-lg bg-blue-100 hover:bg-blue-200 text-blue-900 font-bold text-sm flex items-center justify-center transition-colors cursor-pointer"
                                   >
                                     +
                                   </button>

@@ -1,0 +1,256 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const pageTitle = "Özel Sektörel e-Belgeler: e-SMM, e-Müstahsil, e-Gider Pusulası, e-Adisyon | Stok Pratik";
+const pageDescription = "Sadece fatura değil! e-SMM, e-Müstahsil, e-Gider Pusulası, e-Adisyon, e-Döviz ve e-Dekont. Otomatik stopaj, tevkifat ve vergi hesaplama motoruyla GİB uyumlu tek platform.";
+
+const eDocuments = [
+  {
+    icon: "💼",
+    title: "e-Serbest Meslek Makbuzu (e-SMM)",
+    target: "Mali Müşavirler (SMMM), Avukatlar, Doktorlar, Mühendisler ve Danışmanlar",
+    taxDetail: "%20 Gelir Vergisi Stopajı + %20 KDV + KDV Tevkifatı",
+    desc: "Brütten nete veya netten brüte otomatik hesaplama motoru. Anlaşmalı net ücretinizi yazın; stopaj, KDV ve tevkifatı kuruşu kuruşuna hesaplasın. Tek tıkla GİB'e iletilir ve müvekkilinize/müşterinize PDF gider.",
+    accentColor: "border-teal-500/40 bg-teal-500/10 text-teal-400"
+  },
+  {
+    icon: "🌾",
+    title: "e-Müstahsil Makbuzu",
+    target: "Çiftçiden ve üreticiden ürün alan tüccarlar, mandıralar, fabrikalar ve komisyoncular",
+    taxDetail: "Zirai Stopaj (%2 / %4) + Mera Fonu + Borsa Tescil + SGK Bağ-Kur",
+    desc: "Brüt ürün bedeli üzerinden kanuni zirai stopajı, borsa tescil payını ve SGK kesintisini otomatik hesaplar; üreticiye ödenecek net tutarı çıkarır ve satın alınan ürünü doğrudan ERP deponuza stok olarak işler.",
+    accentColor: "border-emerald-500/40 bg-emerald-500/10 text-emerald-400"
+  },
+  {
+    icon: "📋",
+    title: "e-Gider Pusulası",
+    target: "Tüketici iadesi alan e-ticaretçiler, 2. el cihaz/araç alanlar, kuyumcular ve arızi hizmet alanlar",
+    taxDetail: "%0 (İade), %2 (Hurda Mal), %10 (Hizmet), %20 (Diğer Serbest Alım)",
+    desc: "İşlem türüne göre doğru yasal stopaj oranını otomatik uygular. Vergi mükellefi olmayan vatandaştan ürün alırken veya e-ticaret iadesi kabul ederken SMS onaylı resmi gider pusulası üretir.",
+    accentColor: "border-cyan-500/40 bg-cyan-500/10 text-cyan-400"
+  },
+  {
+    icon: "🍽️",
+    title: "e-Adisyon",
+    target: "Restoranlar, kafeler, barlar, oteller ve eğlence tesisleri",
+    taxDetail: "ETTN Numaralı Anlık GİB Kaydı + ÖKC / e-Fatura Eşleşmesi",
+    desc: "Masa açıldığı saniyede Evrensel Tekil Numaralı (ETTN) elektronik adisyon kaydı açılır; masaya eklenen siparişler anlık işlenir ve hesap kapanırken otomatik olarak e-Arşiv veya ÖKC fişiyle eşleşir.",
+    accentColor: "border-amber-500/40 bg-amber-500/10 text-amber-400"
+  },
+  {
+    icon: "💱",
+    title: "e-Döviz & Kıymetli Maden Belgesi",
+    target: "Yetkili döviz büroları, kıymetli maden alım-satımı ve kuyumcu toptancıları",
+    taxDetail: "BSMV Vergisi + Canlı Gişe Kurları + Pasaport/TCKN Doğrulama",
+    desc: "Döviz ve altın alım/satım işlemlerinde BSMV tutarını ve müşteri kimlik bilgilerini GİB şemasına uygun olarak anında resmi elektronik bordroya dönüştürür.",
+    accentColor: "border-yellow-500/40 bg-yellow-500/10 text-yellow-400"
+  },
+  {
+    icon: "📑",
+    title: "e-Dekont",
+    target: "Finansal aracılık, komisyon, faiz, masraf yansıtma ve tahsilat/tediye yapan kurumlar",
+    taxDetail: "Elektronik İmzalı Resmi Dekont + Doğrudan Cari Entegrasyonu",
+    desc: "Kağıt dekont basma ve arşivleme yükünü ortadan kaldırır. Cari hesap hareketleriyle birebir entegre olarak tahsilat ve masraf dekontlarını elektronik ortamda belgeler.",
+    accentColor: "border-indigo-500/40 bg-indigo-500/10 text-indigo-400"
+  }
+];
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <main class="bg-slate-950 text-slate-100 antialiased min-h-screen selection:bg-teal-500 selection:text-slate-950">
+    
+    <!-- 1. HERO SECTION -->
+    <section class="relative overflow-hidden pt-20 pb-24 lg:pt-28 lg:pb-32 border-b border-slate-800">
+      <div class="absolute inset-0 bg-[radial-gradient(circle_at_top,_var(--tw-gradient-stops))] from-teal-950/40 via-slate-950 to-slate-950"></div>
+      <div class="absolute top-1/4 right-1/4 w-[500px] h-[300px] bg-teal-500/10 blur-[120px] rounded-full pointer-events-none"></div>
+
+      <div class="container mx-auto px-4 lg:px-8 relative z-10 max-w-7xl">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+          
+          <!-- Sol: Başlık ve CTA -->
+          <div class="lg:col-span-6 text-center lg:text-left">
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-teal-500/10 border border-teal-500/20 text-teal-400 text-xs sm:text-sm font-semibold mb-6 backdrop-blur-md">
+              <span class="w-2 h-2 rounded-full bg-teal-400 animate-ping"></span>
+              📑 GİB Özel e-Belge Ekosistemi • 6 Resmi Belge Tek Platformda
+            </div>
+
+            <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight text-white leading-[1.1] mb-6">
+              Sadece Fatura Değil: <br/>
+              <span class="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 via-emerald-300 to-cyan-200">
+                Müstahsilden e-SMM'ye, Adisyondan Gider Pusulasına Tamamı Hazır!
+              </span>
+            </h1>
+
+            <p class="text-base sm:text-lg text-slate-300 mb-8 leading-relaxed max-w-xl mx-auto lg:mx-0">
+              Çiftçiden mal alan tüccarlar, avukat ve mali müşavirler, ikinci el/altın veya iade işlemi yapan mağazalar, restoranlar ve döviz büroları... Her meslek grubunun zorunlu GİB e-Belgesi kendi özel stopaj ve vergi matematiğiyle hazır!
+            </p>
+
+            <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+              <a 
+                href="/firma-kaydi" 
+                class="w-full sm:w-auto px-8 py-4 rounded-xl bg-gradient-to-r from-teal-500 to-emerald-500 hover:from-teal-400 hover:to-emerald-400 text-slate-950 font-bold text-base shadow-lg shadow-teal-500/30 transition-all duration-200 text-center flex items-center justify-center gap-2"
+              >
+                <span>🚀 Tüm e-Belgeleri Ücretsiz Deneyin</span>
+              </a>
+              <a 
+                href="https://erp-eticaret.stokpratik.com.tr/giris" 
+                target="_blank"
+                rel="noopener noreferrer"
+                class="w-full sm:w-auto px-8 py-4 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-200 font-semibold text-base border border-slate-700 transition-all duration-200 text-center flex items-center justify-center gap-2"
+              >
+                <span>🔐 Giriş Yap</span>
+              </a>
+            </div>
+
+            <!-- Sosyal Güven Rozetleri -->
+            <div class="mt-10 pt-8 border-t border-slate-800/80 flex flex-wrap items-center justify-center lg:justify-start gap-6 text-xs text-slate-400 font-medium">
+              <div class="flex items-center gap-2">
+                <span class="text-teal-400 font-bold">✓</span> Brütten Nete Otomatik Stopaj
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="text-teal-400 font-bold">✓</span> SGK & Borsa Kesintisi
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="text-teal-400 font-bold">✓</span> ETTN'li Resmi GİB Formatı
+              </div>
+            </div>
+          </div>
+
+          <!-- Sağ: Canlı e-SMM & e-Müstahsil Stopaj Hesaplama Kartı -->
+          <div class="lg:col-span-6">
+            <div class="relative mx-auto max-w-lg bg-slate-900/90 border border-teal-500/30 rounded-3xl p-6 sm:p-7 shadow-2xl backdrop-blur-xl">
+              
+              <div class="flex items-center justify-between border-b border-slate-800 pb-3 mb-4">
+                <div class="flex items-center gap-2">
+                  <span class="text-lg">💼</span>
+                  <span class="text-xs font-mono font-bold text-teal-300">e-Serbest Meslek Makbuzu (e-SMM) Simülatörü</span>
+                </div>
+                <span class="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-400 text-[10px] font-bold">
+                  GİB Uyumlu ✓
+                </span>
+              </div>
+
+              <!-- Hesaplayıcı Girdisi -->
+              <div class="bg-slate-950/80 rounded-2xl p-4 border border-slate-800 mb-4 space-y-2">
+                <div class="flex justify-between items-center text-xs">
+                  <span class="text-slate-400">Danışmanlık / Hizmet Bedeli:</span>
+                  <span class="font-mono font-bold text-white text-sm">20.000,00 ₺ (Brüt)</span>
+                </div>
+                <div class="text-[10px] text-teal-400">Brütten nete vergi kesintileri kuruşu kuruşuna ayrıştırıldı:</div>
+              </div>
+
+              <!-- Kesinti Tablosu -->
+              <div class="space-y-2 text-xs font-mono bg-slate-950/60 p-3 rounded-2xl border border-slate-800">
+                <div class="flex justify-between text-slate-300">
+                  <span>Brüt Hizmet Tutarı:</span>
+                  <span class="font-bold text-white">20.000,00 ₺</span>
+                </div>
+                <div class="flex justify-between text-rose-300">
+                  <span>Gelir Vergisi Stopajı (%20):</span>
+                  <span>- 4.000,00 ₺</span>
+                </div>
+                <div class="flex justify-between text-slate-300">
+                  <span>KDV Tutarı (%20):</span>
+                  <span>+ 4.000,00 ₺</span>
+                </div>
+                <div class="flex justify-between text-purple-300 bg-purple-950/30 p-1 rounded">
+                  <span>KDV Tevkifatı (5/10):</span>
+                  <span>- 2.000,00 ₺</span>
+                </div>
+                <div class="flex justify-between text-emerald-400 font-bold pt-2 border-t border-slate-800 text-sm">
+                  <span>Müşteriden Net Tahsilat:</span>
+                  <span>18.000,00 ₺</span>
+                </div>
+              </div>
+
+              <!-- Durum Bildirimi -->
+              <div class="mt-4 p-2.5 rounded-xl bg-teal-950/40 border border-teal-500/20 text-[11px] text-teal-300 flex items-center justify-between">
+                <span>📑 Makbuz Tek Tıkla İmzalanır</span>
+                <span class="text-slate-400">PDF & Karekod Hazır</span>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. 6 ÖZEL E-BELGE DETAYLARI (BENTO GRID) -->
+    <section class="py-20 lg:py-24 border-b border-slate-800 relative bg-slate-900/30">
+      <div class="container mx-auto px-4 lg:px-8 max-w-7xl">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <div class="text-teal-400 text-sm font-semibold tracking-wider uppercase mb-3">Sektörel Standartlar</div>
+          <h2 class="text-3xl sm:text-4xl font-black text-white tracking-tight mb-4">
+            Her Meslek ve Sektör İçin Özel e-Belge Çözümü
+          </h2>
+          <p class="text-slate-400 text-base leading-relaxed">
+            Mevzuatın zorunlu kıldığı tüm resmi elektronik belgeleri ek bir programa ihtiyaç duymadan yönetin.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {eDocuments.map((doc) => (
+            <div class={`bg-slate-900/70 border border-slate-800 rounded-3xl p-6 sm:p-7 hover:border-teal-500/40 transition-all duration-300 flex flex-col justify-between group`}>
+              <div>
+                <div class="flex items-center justify-between mb-4">
+                  <div class="w-12 h-12 rounded-xl bg-teal-500/10 border border-teal-500/20 text-2xl flex items-center justify-center group-hover:scale-110 transition-transform">
+                    {doc.icon}
+                  </div>
+                  <span class="text-[10px] font-mono font-bold px-2.5 py-1 rounded-full bg-slate-800 text-slate-300 border border-slate-700">
+                    GİB Resmi Belge
+                  </span>
+                </div>
+                
+                <h3 class="text-lg font-bold text-white mb-2">{doc.title}</h3>
+                <div class="text-xs text-teal-300 font-medium mb-3">{doc.target}</div>
+                
+                <div class="p-2.5 rounded-xl bg-slate-950/80 border border-slate-800 text-[11px] font-mono text-amber-300 mb-4">
+                  {doc.taxDetail}
+                </div>
+                
+                <p class="text-slate-400 text-sm leading-relaxed">{doc.desc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. ALT DÖNÜŞÜM CTA BÖLÜMÜ -->
+    <section class="py-20 lg:py-24 relative overflow-hidden">
+      <div class="absolute inset-0 bg-gradient-to-b from-slate-950 via-teal-950/20 to-slate-950"></div>
+      <div class="container mx-auto px-4 lg:px-8 max-w-5xl relative z-10 text-center">
+        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-teal-500/10 border border-teal-500/20 text-teal-400 text-xs sm:text-sm font-semibold mb-6">
+          ✨ 14 Gün Ücretsiz Deneme • Tek Tıkla Başlayın
+        </div>
+        
+        <h2 class="text-3xl sm:text-5xl font-black text-white tracking-tight mb-6">
+          Hangi Sektörde Olursanız Olun, Resmi e-Belgeniz Stok Pratik'te Hazır!
+        </h2>
+        
+        <p class="text-base sm:text-lg text-slate-300 max-w-2xl mx-auto mb-10 leading-relaxed">
+          Müstahsilden serbest meslek makbuzuna, gider pusulasından adisyona kadar işletmenizin tüm resmi belgelerini güvenle ve yasal stopaj kurallarıyla düzenleyin.
+        </p>
+
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <a 
+            href="/firma-kaydi" 
+            class="w-full sm:w-auto px-10 py-4 rounded-xl bg-gradient-to-r from-teal-500 to-emerald-500 hover:from-teal-400 hover:to-emerald-400 text-slate-950 font-bold text-base shadow-lg shadow-teal-500/30 transition-all duration-200"
+          >
+            🎁 Ücretsiz Hesabımı Oluştur
+          </a>
+          <a 
+            href="https://erp-eticaret.stokpratik.com.tr/giris" 
+            target="_blank"
+            rel="noopener noreferrer"
+            class="w-full sm:w-auto px-10 py-4 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-200 font-semibold text-base border border-slate-700 transition-all duration-200"
+          >
+            🔐 Sisteme Giriş Yap
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</BaseLayout>

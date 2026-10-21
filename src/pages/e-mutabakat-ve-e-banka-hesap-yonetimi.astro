@@ -1,0 +1,257 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const pageTitle = "e-Mutabakat (BA/BS ve Cari Bakiye) ve e-Banka Yönetimi | Stok Pratik";
+const pageDescription = "Ay sonunda yüzlerce firmayı aramak yok, 10 ayrı bankaya girmek yok! Şifresiz tek tıkla e-Mutabakat gönderin, tüm banka hesap hareketlerinizi tek ekrandan carilere işleyin.";
+
+const mutabakatSteps = [
+  {
+    step: "1",
+    title: "Tek Tıkla Toplu Gönderim",
+    desc: "Cari Bakiye Mutabakatı, BA (Alım) veya BS (Satış) listelerinizi seçin; yüzlerce müşteri ve tedarikçinize aynı anda resmi e-posta, SMS ve WhatsApp onay linki iletilsin."
+  },
+  {
+    step: "2",
+    title: "Karşı Taraf İçin Şifresiz Tek Tıkla Onay",
+    desc: "Müşteriniz veya tedarikçiniz linke tıklar; bakiyeniz tutuyorsa 'Mutabıkız ✓' butonuna basar. Tutmuyorsa kendi PDF/Excel ekstresini yükleyip itiraz notunu bırakır."
+  },
+  {
+    step: "3",
+    title: "Zaman Damgalı Hukuki Kanıt & Otomatik Hatırlatıcı",
+    desc: "Kim hangi IP adresinden, hangi gün ve saatte onayladıysa kayıt altına alınır. Yanıt vermeyen firmalara otomatik nezaket hatırlatmaları gönderilir."
+  }
+];
+
+const bankFeatures = [
+  {
+    icon: "🏦",
+    title: "Tüm Banka Hesaplarınız Tek Konsolda",
+    desc: "Farklı bankalardaki TL, USD ve EUR vadeli/vadesiz hesap bakiyelerinizi ve tüm gelen-giden hareketlerinizi tek ekrandan anlık konsolide izleyin."
+  },
+  {
+    icon: "⚡",
+    title: "Gelen Havale/EFT'yi Otomatik Cariye İşleme",
+    desc: "Hesabınıza gelen paranın açıklamasından veya gönderici VKN/IBAN bilgisinden müşterinizi otomatik tanır; tek tıkla tahsilat makbuzu kesip cari bakiyeyi kapatır."
+  },
+  {
+    icon: "📑",
+    title: "Mali Müşavir ve e-Defter Hazır Banka Fişleri",
+    desc: "Banka ekstrelerini tek tek elle muhasebe programına girme çilesi biter; tüm hareketler 102 Bankalar muhasebe kodlarıyla SMMM aktarımına hazır hale gelir."
+  }
+];
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <main class="bg-slate-950 text-slate-100 antialiased min-h-screen selection:bg-cyan-500 selection:text-slate-950">
+    
+    <!-- 1. HERO SECTION -->
+    <section class="relative overflow-hidden pt-20 pb-24 lg:pt-28 lg:pb-32 border-b border-slate-800">
+      <div class="absolute inset-0 bg-[radial-gradient(circle_at_top,_var(--tw-gradient-stops))] from-cyan-950/40 via-slate-950 to-slate-950"></div>
+      <div class="absolute top-1/4 right-1/4 w-[500px] h-[300px] bg-cyan-500/10 blur-[120px] rounded-full pointer-events-none"></div>
+
+      <div class="container mx-auto px-4 lg:px-8 relative z-10 max-w-7xl">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+          
+          <!-- Sol: Başlık ve CTA -->
+          <div class="lg:col-span-6 text-center lg:text-left">
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-xs sm:text-sm font-semibold mb-6 backdrop-blur-md">
+              <span class="w-2 h-2 rounded-full bg-cyan-400 animate-ping"></span>
+              🤝 Dijital Finans • e-Mutabakat (Cari / BA-BS) & e-Banka Yönetimi
+            </div>
+
+            <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight text-white leading-[1.1] mb-6">
+              Ay Sonunda Yüzlerce Firmayı Aramaya ve <br/>
+              <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-sky-300 to-emerald-200">
+                10 Ayrı Banka Şubesine Girmeye Son!
+              </span>
+            </h1>
+
+            <p class="text-base sm:text-lg text-slate-300 mb-8 leading-relaxed max-w-xl mx-auto lg:mx-0">
+              Stok Pratik <strong>e-Mutabakat</strong> ile tüm müşteri ve tedarikçilerinize tek tıkla resmi mutabakat gönderin; karşı taraf şifresiz tek tıkla <strong>"Mutabıkız ✓"</strong> veya <strong>"Mutabık Değiliz ✕"</strong> yanıtı versin! <strong>e-Banka</strong> ile tüm banka hesap hareketlerinizi tek ekranda birleştirip gelen EFT/Havaleleri carilere otomatik işleyin.
+            </p>
+
+            <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+              <a 
+                href="/firma-kaydi" 
+                class="w-full sm:w-auto px-8 py-4 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 font-bold text-base shadow-lg shadow-cyan-500/30 transition-all duration-200 text-center flex items-center justify-center gap-2"
+              >
+                <span>🚀 e-Mutabakat & e-Banka'yı Ücretsiz Deneyin</span>
+              </a>
+              <a 
+                href="https://erp-eticaret.stokpratik.com.tr/giris" 
+                target="_blank"
+                rel="noopener noreferrer"
+                class="w-full sm:w-auto px-8 py-4 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-200 font-semibold text-base border border-slate-700 transition-all duration-200 text-center flex items-center justify-center gap-2"
+              >
+                <span>🔐 Giriş Yap</span>
+              </a>
+            </div>
+
+            <!-- Sosyal Güven Rozetleri -->
+            <div class="mt-10 pt-8 border-t border-slate-800/80 flex flex-wrap items-center justify-center lg:justify-start gap-6 text-xs text-slate-400 font-medium">
+              <div class="flex items-center gap-2">
+                <span class="text-cyan-400 font-bold">✓</span> Şifresiz Tek Tık Onay Linki
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="text-cyan-400 font-bold">✓</span> Açık Bankacılık Konsolidasyonu
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="text-cyan-400 font-bold">✓</span> Otomatik EFT/Cari Eşleştirme
+              </div>
+            </div>
+          </div>
+
+          <!-- Sağ: Canlı Mutabakat & Banka Konsolidasyon Panosu -->
+          <div class="lg:col-span-6">
+            <div class="relative mx-auto max-w-lg bg-slate-900/90 border border-cyan-500/30 rounded-3xl p-6 sm:p-7 shadow-2xl backdrop-blur-xl">
+              
+              <!-- Üst: Banka Konsolidasyon Özeti -->
+              <div class="border-b border-slate-800 pb-4 mb-4">
+                <div class="flex justify-between items-center mb-2">
+                  <div class="text-xs font-mono font-bold text-cyan-300">🏦 Konsolide Canlı Banka Durumu</div>
+                  <span class="text-[10px] text-emerald-400 font-bold">4 Banka Bağlı ✓</span>
+                </div>
+                <div class="grid grid-cols-2 gap-2 text-xs font-mono">
+                  <div class="bg-slate-950 p-2.5 rounded-xl border border-slate-800">
+                    <div class="text-slate-400 text-[10px]">Garanti BBVA:</div>
+                    <div class="font-bold text-white">412.850 ₺</div>
+                  </div>
+                  <div class="bg-slate-950 p-2.5 rounded-xl border border-slate-800">
+                    <div class="text-slate-400 text-[10px]">İş Bankası:</div>
+                    <div class="font-bold text-white">284.100 ₺</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Alt: Canlı Mutabakat Kartı -->
+              <div class="bg-slate-950/90 rounded-2xl p-4 border border-slate-800 space-y-3">
+                <div class="flex justify-between items-center">
+                  <span class="text-xs font-bold text-white">🤝 Resmi Cari Bakiye Mutabakatı</span>
+                  <span class="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 text-[10px] font-bold">
+                    Mutabıkız ✓
+                  </span>
+                </div>
+
+                <div class="space-y-1.5 text-[11px] font-mono bg-slate-900/80 p-2.5 rounded-xl border border-slate-800/80">
+                  <div class="flex justify-between text-slate-300">
+                    <span>Firma:</span>
+                    <span class="font-sans font-bold text-white">TeknoMarket A.Ş.</span>
+                  </div>
+                  <div class="flex justify-between text-slate-300">
+                    <span>Bildirilen Bakiye:</span>
+                    <span class="font-bold text-cyan-300">184.200,00 ₺ (Borçlu)</span>
+                  </div>
+                  <div class="flex justify-between text-slate-400 text-[10px] pt-1 border-t border-slate-800">
+                    <span>Onay Tarihi & IP:</span>
+                    <span>Bugün 14:28 • IP: 85.105.•••</span>
+                  </div>
+                </div>
+
+                <div class="text-[10px] text-emerald-400 flex items-center gap-1.5">
+                  <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                  <span>Hukuki onay mektubu zaman damgalı olarak arşive kaydedildi.</span>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. e-MUTABAKAT 3 ADIMLI AKIŞI -->
+    <section class="py-20 lg:py-24 border-b border-slate-800 relative bg-slate-900/30">
+      <div class="container mx-auto px-4 lg:px-8 max-w-7xl">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <div class="text-cyan-400 text-sm font-semibold tracking-wider uppercase mb-3">Otomasyon</div>
+          <h2 class="text-3xl sm:text-4xl font-black text-white tracking-tight mb-4">
+            Telefon ve Faks Trafiğine Son: 3 Adımda e-Mutabakat
+          </h2>
+          <p class="text-slate-400 text-base leading-relaxed">
+            Müşteri ve tedarikçilerinizle ay sonu bakiye ve BA/BS mutabakatlarını saniyeler içinde tamamlayın.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {mutabakatSteps.map((s) => (
+            <div class="bg-slate-900/80 border border-slate-800 rounded-3xl p-6 sm:p-8 hover:border-cyan-500/40 transition-all duration-300 flex flex-col justify-between">
+              <div>
+                <div class="w-12 h-12 rounded-2xl bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 font-mono font-black text-xl flex items-center justify-center mb-5">
+                  {s.step}
+                </div>
+                <h3 class="text-xl font-bold text-white mb-3">{s.title}</h3>
+                <p class="text-slate-400 text-sm leading-relaxed">{s.desc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. e-BANKA YÖNETİMİ -->
+    <section class="py-20 lg:py-24 border-b border-slate-800 relative">
+      <div class="container mx-auto px-4 lg:px-8 max-w-7xl">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <div class="text-cyan-400 text-sm font-semibold tracking-wider uppercase mb-3">Açık Bankacılık</div>
+          <h2 class="text-3xl sm:text-4xl font-black text-white tracking-tight mb-4">
+            e-Banka ile Tüm Banka Hesaplarınız Tek Ekranda
+          </h2>
+          <p class="text-slate-400 text-base leading-relaxed">
+            Bankalardaki hareketleri elle işleme zahmetinden kurtulun; gelen ödemeler carilerle anında eşleşsin.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {bankFeatures.map((b) => (
+            <div class="bg-slate-900/60 border border-slate-800 rounded-3xl p-6 sm:p-8 hover:border-cyan-500/40 transition-all duration-300 flex flex-col justify-between">
+              <div>
+                <div class="w-12 h-12 rounded-2xl bg-cyan-500/10 border border-cyan-500/20 text-2xl flex items-center justify-center mb-5">
+                  {b.icon}
+                </div>
+                <h3 class="text-xl font-bold text-white mb-3">{b.title}</h3>
+                <p class="text-slate-400 text-sm leading-relaxed">{b.desc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. ALT DÖNÜŞÜM CTA BÖLÜMÜ -->
+    <section class="py-20 lg:py-24 relative overflow-hidden">
+      <div class="absolute inset-0 bg-gradient-to-b from-slate-950 via-cyan-950/20 to-slate-950"></div>
+      <div class="container mx-auto px-4 lg:px-8 max-w-5xl relative z-10 text-center">
+        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-xs sm:text-sm font-semibold mb-6">
+          ✨ 14 Gün Ücretsiz Deneme • Dakikalar İçinde Kurulum
+        </div>
+        
+        <h2 class="text-3xl sm:text-5xl font-black text-white tracking-tight mb-6">
+          Mutabakatlarınızı ve Banka Hesaplarınızı Saniyeler İçinde Eşitleyin!
+        </h2>
+        
+        <p class="text-base sm:text-lg text-slate-300 max-w-2xl mx-auto mb-10 leading-relaxed">
+          Hemen ücretsiz Stok Pratik hesabınızı oluşturun, yüzlerce firmaya tek tıkla e-Mutabakat gönderip tüm banka hareketlerinizi otomatik muhasebeleştirin.
+        </p>
+
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <a 
+            href="/firma-kaydi" 
+            class="w-full sm:w-auto px-10 py-4 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 font-bold text-base shadow-lg shadow-cyan-500/30 transition-all duration-200"
+          >
+            🎁 Ücretsiz Hesabımı Aç
+          </a>
+          <a 
+            href="https://erp-eticaret.stokpratik.com.tr/giris" 
+            target="_blank"
+            rel="noopener noreferrer"
+            class="w-full sm:w-auto px-10 py-4 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-200 font-semibold text-base border border-slate-700 transition-all duration-200"
+          >
+            🔐 Sisteme Giriş Yap
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</BaseLayout>

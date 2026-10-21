@@ -1,0 +1,249 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const pageTitle = "e-Defter, Berat Saklama ve GİB Btrans Bildirimleri | Stok Pratik";
+const pageDescription = "e-Defter berat yükleme sürelerini kaçırmaya son! Yevmiye ve Kebir defterlerini Tekdüzen Hesap Planına uygun üretin, XBRL ön denetimi ve GİB İkincil Saklama ile ceza riskini sıfırlayın.";
+
+const complianceChecks = [
+  { label: "XBRL Şema Doğrulaması", status: "Geçti ✓", desc: "GİB e-Defter standart şema testinden tam uyumla onay aldı." },
+  { label: "Borç / Alacak Denkliği", status: "Eşit (0,00 Fark) ✓", desc: "Yevmiye kayıtları matematiksel olarak tam denk doğrulandı." },
+  { label: "Zaman Damgası Kontrolü", status: "Damgalandı ✓", desc: "TÜBİTAK KamuSM zaman damgasıyla berat mühürlendi." },
+  { label: "Mali Mühür / e-İmza", status: "İmzalandı ✓", desc: "Elektronik imza sertifikası başarıyla doğrulandı." },
+  { label: "GİB İkincil Saklama", status: "Yedeklendi ✓", desc: "Berat dosyaları GİB sunucularında 10 yıl güvenle arşivlendi." },
+  { label: "Btrans Veri Paketi", status: "Hazır ✓", desc: "E-Ticaret ve taşımacılık bildirim verileri standart XML'e paketlendi." }
+];
+
+const pillars = [
+  {
+    icon: "📚",
+    title: "e-Defter & Otomatik Berat Yönetimi",
+    subtitle: "Yevmiye ve Büyük Defter (Kebir) Süreçlerinde Sıfır Hata",
+    features: [
+      {
+        head: "Otomatik Tekdüzen Muhasebe Kodlaması:",
+        text: "Faturalarınız, banka hareketleriniz, çek/senetleriniz ve masraf fişleriniz Tekdüzen Hesap Planı (100, 102, 120, 153, 191, 320, 391, 600, 770) ile otomatik eşleşir."
+      },
+      {
+        head: "Ön Denetim (Pre-Validation) Kalkanı:",
+        text: "Defter oluşturulmadan önce borç/alacak denkliğini, yevmiye madde numaralarını ve belge türlerini (invoice, check, receipt vb.) tarayarak GİB'den dönme ihtimalini sıfırlar."
+      },
+      {
+        head: "Zaman Damgalı Berat ve 10 Yıl İkincil Saklama:",
+        text: "Aylık veya geçici vergi dönemlik beratlarınızı imzalayıp GİB'e gönderin; onaylı beratları 10 yıl boyunca hem bulutta hem de GİB İkincil Saklama sunucularında yedekleyin."
+      }
+    ]
+  },
+  {
+    icon: "📡",
+    title: "GİB Btrans Bildirimleri",
+    subtitle: "Taşımacılık, Lojistik ve E-Ticaret Aracılık Bildirimleri",
+    features: [
+      {
+        head: "GİB BTRANS Veri Aktarım Köprüsü:",
+        text: "Gelir İdaresi Başkanlığı'nın sürekli bilgi verme yükümlülüğü kapsamında istediği e-ticaret aracılık ve taşımacılık verilerini standart Btrans formatında hazırlar."
+      },
+      {
+        head: "Sıfır Manuel Veri Girişi:",
+        text: "Sistemde kayıtlı irsaliye, fatura ve sevkiyat verilerini doğrudan resmi Btrans XML/JSON şemasına dönüştürür; manuel giriş hatalarını ve cezaları önler."
+      },
+      {
+        head: "GİB Referans ve İletim Raporları:",
+        text: "Gönderilen her bildirim paketinin GİB sistemlerindeki durumunu, onay kodunu ve arşiv numarasını tek ekrandan raporlayarak hukuki kanıt sunar."
+      }
+    ]
+  }
+];
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <main class="bg-slate-950 text-slate-100 antialiased min-h-screen selection:bg-blue-600 selection:text-white">
+    
+    <!-- 1. HERO SECTION -->
+    <section class="relative overflow-hidden pt-20 pb-24 lg:pt-28 lg:pb-32 border-b border-slate-800">
+      <div class="absolute inset-0 bg-[radial-gradient(circle_at_top,_var(--tw-gradient-stops))] from-blue-950/40 via-slate-950 to-slate-950"></div>
+      <div class="absolute top-1/4 right-1/4 w-[500px] h-[300px] bg-blue-500/10 blur-[120px] rounded-full pointer-events-none"></div>
+
+      <div class="container mx-auto px-4 lg:px-8 relative z-10 max-w-7xl">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+          
+          <!-- Sol: Başlık ve CTA -->
+          <div class="lg:col-span-6 text-center lg:text-left">
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs sm:text-sm font-semibold mb-6 backdrop-blur-md">
+              <span class="w-2 h-2 rounded-full bg-blue-400 animate-ping"></span>
+              📚 GİB Yasal Uyum & Denetim • e-Defter, Berat & Btrans
+            </div>
+
+            <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight text-white leading-[1.1] mb-6">
+              Yevmiye Defterinden Btrans Bildirimlerine: <br/>
+              <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-indigo-300 to-cyan-200">
+                Tüm Yasal Yükümlülükleriniz Sıfır Ceza Riskiyle Güvende!
+              </span>
+            </h1>
+
+            <p class="text-base sm:text-lg text-slate-300 mb-8 leading-relaxed max-w-xl mx-auto lg:mx-0">
+              e-Defter berat yükleme sürelerini kaçırma korkusuna, XBRL şema hatalarına ve karmaşık Btrans veri paketlerine son! Stok Pratik ile fatura, banka ve tahsilat kayıtlarınızdan tam uyumlu e-Defter ve GİB Btrans paketleri üretin; 10 yıl boyunca GİB ikincil saklama güvencesiyle arşivleyin.
+            </p>
+
+            <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+              <a 
+                href="/firma-kaydi" 
+                class="w-full sm:w-auto px-8 py-4 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-bold text-base shadow-lg shadow-blue-600/30 transition-all duration-200 text-center flex items-center justify-center gap-2"
+              >
+                <span>📚 e-Defter & Btrans'ı Ücretsiz Deneyin</span>
+              </a>
+              <a 
+                href="https://erp-eticaret.stokpratik.com.tr/giris" 
+                target="_blank"
+                rel="noopener noreferrer"
+                class="w-full sm:w-auto px-8 py-4 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-200 font-semibold text-base border border-slate-700 transition-all duration-200 text-center flex items-center justify-center gap-2"
+              >
+                <span>🔐 Giriş Yap</span>
+              </a>
+            </div>
+
+            <!-- Sosyal Güven Rozetleri -->
+            <div class="mt-10 pt-8 border-t border-slate-800/80 flex flex-wrap items-center justify-center lg:justify-start gap-6 text-xs text-slate-400 font-medium">
+              <div class="flex items-center gap-2">
+                <span class="text-blue-400 font-bold">✓</span> XBRL Şema Ön Denetimi
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="text-blue-400 font-bold">✓</span> Zaman Damgalı Berat
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="text-blue-400 font-bold">✓</span> GİB İkincil Saklama Garantisi
+              </div>
+            </div>
+          </div>
+
+          <!-- Sağ: Canlı Mevzuat Uyum Radarı Mockup'ı -->
+          <div class="lg:col-span-6">
+            <div class="relative mx-auto max-w-lg bg-slate-900/90 border border-blue-500/30 rounded-3xl p-6 sm:p-7 shadow-2xl backdrop-blur-xl">
+              
+              <div class="flex items-center justify-between border-b border-slate-800 pb-3 mb-4">
+                <div class="flex items-center gap-2">
+                  <span class="text-lg">🛡️</span>
+                  <span class="text-xs font-mono font-bold text-blue-300">GİB Mevzuat Denetim Radarı</span>
+                </div>
+                <span class="px-2.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-400 text-[10px] font-bold">
+                  %100 Uyumlu ✓
+                </span>
+              </div>
+
+              <!-- Dönem Kartı -->
+              <div class="bg-slate-950/80 rounded-2xl p-3 border border-slate-800 mb-4 flex justify-between items-center text-xs">
+                <div>
+                  <div class="text-[10px] text-slate-400">Aktif Dönem:</div>
+                  <div class="font-bold text-white">2026 / 08 (Aylık e-Defter)</div>
+                </div>
+                <div class="text-right">
+                  <div class="text-[10px] text-slate-400">Yevmiye Satırı:</div>
+                  <div class="font-mono font-bold text-amber-300">3.412 Kayıt</div>
+                </div>
+              </div>
+
+              <!-- Kontrol Maddeleri Listesi -->
+              <div class="space-y-2 text-xs">
+                {complianceChecks.map((chk) => (
+                  <div class="flex items-center justify-between p-2.5 rounded-xl bg-slate-950/60 border border-slate-800/80">
+                    <div>
+                      <div class="font-semibold text-slate-200">{chk.label}</div>
+                      <div class="text-[10px] text-slate-400">{chk.desc}</div>
+                    </div>
+                    <span class="font-mono text-emerald-400 font-bold text-[11px] shrink-0 ml-2">
+                      {chk.status}
+                    </span>
+                  </div>
+                ))}
+              </div>
+
+              <div class="mt-4 p-2.5 rounded-xl bg-blue-950/40 border border-blue-500/20 text-[11px] text-blue-300 flex items-center justify-between">
+                <span>⏱️ Son Berat Yükleme Tarihi: 30 Gün Var</span>
+                <span class="text-emerald-400 font-bold">Zamanında Teslim Güvencesi</span>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. İKİ ANA KURUMSAL SÜTUN -->
+    <section class="py-20 lg:py-24 border-b border-slate-800 relative bg-slate-900/30">
+      <div class="container mx-auto px-4 lg:px-8 max-w-7xl">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <div class="text-blue-400 text-sm font-semibold tracking-wider uppercase mb-3">Yasal Süreç Yönetimi</div>
+          <h2 class="text-3xl sm:text-4xl font-black text-white tracking-tight mb-4">
+            e-Defter ve Btrans İçin Kurumsal Güvence
+          </h2>
+          <p class="text-slate-400 text-base leading-relaxed">
+            Yasal takvimi kaçırma veya hatalı şema yükleme nedeniyle karşılaşabileceğiniz ağır usulsüzlük cezalarına son verin.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          {pillars.map((pil) => (
+            <div class="bg-slate-900/70 border border-slate-800 rounded-3xl p-6 sm:p-8 hover:border-blue-500/40 transition-all duration-300 flex flex-col justify-between">
+              <div>
+                <div class="flex items-center gap-3 mb-4">
+                  <div class="w-12 h-12 rounded-xl bg-blue-500/10 border border-blue-500/20 text-2xl flex items-center justify-center">
+                    {pil.icon}
+                  </div>
+                  <div>
+                    <h3 class="text-xl font-bold text-white">{pil.title}</h3>
+                    <div class="text-xs text-blue-300">{pil.subtitle}</div>
+                  </div>
+                </div>
+
+                <div class="space-y-4 pt-4 border-t border-slate-800">
+                  {pil.features.map((f) => (
+                    <div class="text-sm">
+                      <div class="font-bold text-slate-200 mb-1">{f.head}</div>
+                      <div class="text-slate-400 leading-relaxed text-xs sm:text-sm">{f.text}</div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. ALT DÖNÜŞÜM CTA BÖLÜMÜ -->
+    <section class="py-20 lg:py-24 relative overflow-hidden">
+      <div class="absolute inset-0 bg-gradient-to-b from-slate-950 via-blue-950/20 to-slate-950"></div>
+      <div class="container mx-auto px-4 lg:px-8 max-w-5xl relative z-10 text-center">
+        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs sm:text-sm font-semibold mb-6">
+          ✨ 14 Gün Ücretsiz Deneme • Yasal Uyum Garantisi
+        </div>
+        
+        <h2 class="text-3xl sm:text-5xl font-black text-white tracking-tight mb-6">
+          Yasal Defter ve Bildirim Süreçlerinizi Otomatik Güvenceye Alın!
+        </h2>
+        
+        <p class="text-base sm:text-lg text-slate-300 max-w-2xl mx-auto mb-10 leading-relaxed">
+          Hemen ücretsiz Stok Pratik hesabınızı açın, e-Defter ve Btrans süreçlerinizi sıfır ceza riski ve tam şema doğrulamasıyla yönetmeye başlayın.
+        </p>
+
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <a 
+            href="/firma-kaydi" 
+            class="w-full sm:w-auto px-10 py-4 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-bold text-base shadow-lg shadow-blue-600/30 transition-all duration-200"
+          >
+            🚀 Hemen Ücretsiz Kullanmaya Başla
+          </a>
+          <a 
+            href="https://erp-eticaret.stokpratik.com.tr/giris" 
+            target="_blank"
+            rel="noopener noreferrer"
+            class="w-full sm:w-auto px-10 py-4 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-200 font-semibold text-base border border-slate-700 transition-all duration-200"
+          >
+            🔐 Sisteme Giriş Yap
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</BaseLayout>

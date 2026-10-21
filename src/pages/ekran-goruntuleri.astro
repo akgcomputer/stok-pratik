@@ -2,818 +2,683 @@
 // src/pages/ekran-goruntuleri.astro
 import BaseLayout from '../layouts/BaseLayout.astro';
 
-// Ekran görüntülerinin listesi - verdiğiniz sıraya göre
+// 17 Yeni ve Gerçek Ekran Görüntüsü
 const screenshots = [
   {
     id: 1,
-    src: "/images/screenshots/Stok-pratik-ekran-1.png",
-    alt: "Stok Pratik Ana Dashboard Ekran Görüntüsü",
-    title: "Ana Kontrol Paneli",
-    description: "Tüm işlemlerinizi tek ekrandan yönetin, özet bilgiler ve hızlı erişim"
+    category: "ticaret",
+    categoryLabel: "Ticaret & Satış",
+    badgeColor: "bg-red-50 text-red-600 border-red-200",
+    src: "/images/screenshots/StokPratik_baslangic_ekrani.png",
+    alt: "Stok Pratik Başlangıç ve Yönetim Paneli Ekran Görüntüsü",
+    title: "Başlangıç Ekranı & Yönetici Özeti",
+    description: "İşletmenizin ciro, kasa durumu, kritik stoklar ve günlük satış özetlerini tek bakışta sunan akıllı kokpit.",
+    features: [
+      "Tek bakışta günlük ciro, kasa ve banka toplamları",
+      "Kritik stok seviyesine düşen ürün alarmları",
+      "Hızlı işlem kısayolları ve bekleyen siparişler"
+    ]
   },
   {
     id: 2,
-    src: "/images/screenshots/Stok-pratik-ekran-2.png",
-    alt: "Stok Pratik Detaylı Dashboard Ekranı",
-    title: "Mağazacılık Seçim Ekranı",
-    description: "Stok Pratik ile sınırsız mağaza ile tüm fiziki ve e-ticaret mağazalarınız aynı ekranda"
+    category: "analiz-yonetim",
+    categoryLabel: "Piyasa & Finans",
+    badgeColor: "bg-amber-50 text-amber-700 border-amber-200",
+    src: "/images/screenshots/StokPratik_piyasa_ekrani.png",
+    alt: "Stok Pratik Piyasa Radarı Canlı Finans Ekranı",
+    title: "Piyasa Radarı & Canlı Finans",
+    description: "Ekran değiştirmeden anlık döviz kurları, TCMB verileri, altın, emtia ve brent petrol fiyatlarını canlı takip edin.",
+    features: [
+      "USD, EUR, GBP serbest piyasa ve TCMB kurları",
+      "Gram, Çeyrek, Ons altın ve Brent Petrol fiyatları",
+      "Maliyet ve dövizli faturalandırmada anlık kur güvencesi"
+    ]
   },
   {
     id: 3,
-    src: "/images/screenshots/Stok-pratik-ekran-alis.png",
-    alt: "Stok Pratik Alış İşlemleri Ekranı",
-    title: "Alış İşlemleri",
-    description: "Tedarikçilerden ürün alımı, faturalandırma ve takip"
+    category: "ticaret",
+    categoryLabel: "Ticaret & Satış",
+    badgeColor: "bg-blue-50 text-blue-700 border-blue-200",
+    src: "/images/screenshots/StokPratik_Temel_Ticaret.png",
+    alt: "Stok Pratik Temel Ticaret Satış Alış ve Fatura Modülü",
+    title: "Temel Ticaret (Alış, Satış, Stok, Kasa)",
+    description: "Satış faturaları, tedarikçi alışları, irsaliye yönetimi, şube transferleri ve barkodlu kasa satışının merkezi kalbi.",
+    features: [
+      "Hızlı barkodlu perakende ve toptan satış kasası",
+      "Tek tıkla GİB onaylı e-Fatura / e-Arşiv faturaya dönüştürme",
+      "Merkezi kasa, şube kasaları ve tahsilat mutabakatları"
+    ]
   },
   {
     id: 4,
-    src: "/images/screenshots/Stok-pratik-ekran-cari-giderler.png",
-    alt: "Stok Pratik Cari Giderler Ekranı",
-    title: "Cari Gider Takibi",
-    description: "İşletme giderlerini detaylı takip ve analiz"
+    category: "ticaret",
+    categoryLabel: "Ödeme & Tahsilat",
+    badgeColor: "bg-emerald-50 text-emerald-700 border-emerald-200",
+    src: "/images/screenshots/StokPratik_odeme_Kuruluslari.png",
+    alt: "Stok Pratik Ödeme Kuruluşları ve Sanal POS Entegrasyonları",
+    title: "Ödeme Kuruluşları & Sanal POS",
+    description: "iyzico, PayTR, Param, N Kolay ve banka sanal POS'ları ile tek çekim veya taksitli tahsilat entegrasyonu.",
+    features: [
+      "Müşteriye SMS ve WhatsApp ile güvenli ödeme linki iletme",
+      "3D Secure altyapısıyla güvenli ve hızlı tahsilat",
+      "Tahsilat tamamlandığı anda cari bakiyenin otomatik düşmesi"
+    ]
   },
   {
     id: 5,
-    src: "/images/screenshots/Stok-pratik-ekran-cari-hesap.png",
-    alt: "Stok Pratik Cari Hesap Yönetimi",
-    title: "Cari Hesap Yönetimi",
-    description: "Müşteri ve tedarikçi hesaplarını yönetin"
+    category: "finans",
+    categoryLabel: "Finans & Muhasebe",
+    badgeColor: "bg-purple-50 text-purple-700 border-purple-200",
+    src: "/images/screenshots/StokPratik_Finans_Yonetimi.png",
+    alt: "Stok Pratik Finans Yönetimi ve Masraf Takip Ekranı",
+    title: "Finans Yönetimi & Gider Takibi (AI Destekli OCR)",
+    description: "Kasa, banka, çek/senet portföyü, amortisman ve cep telefonu kamerasıyla fiş okuyan yapay zekalı gider işleme.",
+    features: [
+      "Kamera ile çekilen fişlerin yapay zeka ile otomatik matrah/KDV kaydı",
+      "Çek ve senet portföyü vade takvimi ve alarm sistemi",
+      "Brüt kâr, net kâr ve şube bazında gerçek kârlılık analizi"
+    ]
   },
   {
     id: 6,
-    src: "/images/screenshots/Stok-pratik-ekran-cari-hizli-satis.png",
-    alt: "Stok Pratik Hızlı Satış Ekranı",
-    title: "Hızlı Satış Modülü",
-    description: "Barkod okutarak saniyeler içinde satış yapın"
+    category: "finans",
+    categoryLabel: "e-Dönüşüm",
+    badgeColor: "bg-indigo-50 text-indigo-700 border-indigo-200",
+    src: "/images/screenshots/StokPratik_e-Donusum_Mali_Musavir.png",
+    alt: "Stok Pratik e-Dönüşüm ve Mali Müşavir Entegrasyon Portalı",
+    title: "e-Dönüşüm & Mali Müşavir Portalı",
+    description: "GİB onaylı e-Fatura, e-Arşiv, e-İrsaliye ve mali müşaviriniz için tek tıkla Excel/XML mizan ve beyanname aktarımı.",
+    features: [
+      "Doğrudan özel entegratör (İzibiz, Sovos, Logo vb.) tam uyumu",
+      "Mali müşavir için tek tuşla hazır muhasebe fiş çıktısı",
+      "Kritik e-belge kontör uyarı sistemi"
+    ]
   },
   {
     id: 7,
-    src: "/images/screenshots/Stok-pratik-ekran-cari-patron-ekrani.png",
-    alt: "Stok Pratik Patron Ekranı",
-    title: "Patron Ekranı",
-    description: "Hiçbir yerde bulamayacağınız çok PRATİK bir araç, işletme sahibi için özel raporlar ve kontroller"
+    category: "uretim-depo",
+    categoryLabel: "ERP & Üretim",
+    badgeColor: "bg-orange-50 text-orange-700 border-orange-200",
+    src: "/images/screenshots/StokPratik_erp.png",
+    alt: "Stok Pratik ERP Üretim Yönetimi Reçete ve İş Emri Ekranı",
+    title: "ERP & İleri Düzey Üretim Yönetimi",
+    description: "Hammadde reçeteleri, fire oranları, operasyon adımları, iş emirleri ve fason üretim süreçlerini eksiksiz takip edin.",
+    features: [
+      "Çok seviyeli ürün ağacı (BOM) ve reçete maliyetlendirme",
+      "Üretim bandı iş emirleri ve çalışan istasyon takibi",
+      "Otomatik hammadde sarfiyatı ve mamul stok girişi"
+    ]
   },
   {
     id: 8,
-    src: "/images/screenshots/Stok-pratik-ekran-cari-tanimlamalar.png",
-    alt: "Stok Pratik Tanımlamalar Ekranı",
-    title: "Banka Haraeketleri ve Sistem Tanımlamaları",
-    description: "Banka hesabınızdaki hareketleri anlık muhasebeleştirin, EFT/Havale tüm hesap hareketleri, Ürün, müşteri, kullanıcı ve diğer temel tanımlamalar"
+    category: "uretim-depo",
+    categoryLabel: "Depo & Lojistik",
+    badgeColor: "bg-teal-50 text-teal-700 border-teal-200",
+    src: "/images/screenshots/StokPratik_Depo_Lojistik_Yonetimi.png",
+    alt: "Stok Pratik Depo ve Lojistik Yönetimi Raf Sayım Ekranı",
+    title: "Depo, Raf & Lojistik Yönetimi",
+    description: "Çoklu depo, koridor/raf adresi tanımlama, el terminaliyle kör sayım ve şubeler arası kontrollü transferler.",
+    features: [
+      "Dinamik raf ve koridor lokasyon mimarisi",
+      "Barkodlu / QR el terminali ile hatasız depo sayımı",
+      "Eksik, hasarlı ve sevkiyat kabul kontrolleri"
+    ]
   },
   {
     id: 9,
-    src: "/images/screenshots/Stok-pratik-ekran-en-cok-satan-urun.png",
-    alt: "Stok Pratik En Çok Satan Ürünler Raporu",
-    title: "Satış Analizleri",
-    description: "En çok satan ürünler, kategori bazlı analizler"
+    category: "eticaret",
+    categoryLabel: "E-Ticaret & Pazaryeri",
+    badgeColor: "bg-rose-50 text-rose-700 border-rose-200",
+    src: "/images/screenshots/StokPratik_e_Ticaret.png",
+    alt: "Stok Pratik E-Ticaret ve Pazaryeri Entegrasyonları",
+    title: "E-Ticaret & Pazaryeri Entegrasyonları",
+    description: "Trendyol, Hepsiburada, Amazon, Shopify, WooCommerce ve ikas ile sipariş, stok ve fiyatları 7/24 eşzamanlayın.",
+    features: [
+      "Tüm pazaryerlerinden gelen siparişlerin tek ekranda toplanması",
+      "Satış yapıldığında diğer kanallardaki stoğun saniyeler içinde güncellenmesi",
+      "Toplu kargo barkodu ve resmi fatura basımı"
+    ]
   },
   {
     id: 10,
-    src: "/images/screenshots/Stok-pratik-ekran-giris.png",
-    alt: "Stok Pratik Giriş Ekranı",
-    title: "Giriş Paneli",
-    description: "Güvenli kullanıcı girişi ve yetkilendirme"
+    category: "eticaret",
+    categoryLabel: "B2B & Saha",
+    badgeColor: "bg-cyan-50 text-cyan-700 border-cyan-200",
+    src: "/images/screenshots/depodandirekt.png",
+    alt: "Stok Pratik Depodan Direkt B2B ve Saha Satış Portalı",
+    title: "Depodan Direkt B2B & Saha Satış Portalı",
+    description: "Bayileriniz ve toptan alıcılarınız için 7/24 kapalı devre sipariş verme, cari ekstre görüntüleme ve kredi kartıyla ödeme portalı.",
+    features: [
+      "Bayiye özel kademeli iskonto ve vadeli fiyat listeleri",
+      "Saha satış personelinin plaka bazlı araç deposu üzerinden satış yapması",
+      "Kendi siparişini giren müşterilerle sıfır veri giriş yükü"
+    ]
   },
   {
     id: 11,
-    src: "/images/screenshots/Stok-pratik-ekran-hesaplar.png",
-    alt: "Stok Pratik Hesaplar Ekranı",
-    title: "Muhasebe Hesapları",
-    description: "Finansal hesaplar, gelir-gider takibi"
+    category: "analiz-yonetim",
+    categoryLabel: "CRM",
+    badgeColor: "bg-pink-50 text-pink-700 border-pink-200",
+    src: "/images/screenshots/StokPratik_crm.png",
+    alt: "Stok Pratik CRM Müşteri Takip Sistemi Ekran Görüntüsü",
+    title: "CRM & Müşteri İlişkileri Takip Sistemi",
+    description: "Müşteri görüşmeleri, teklifler, satış fırsatları, hatırlatıcılar ve 360° müşteri yaşam döngüsü.",
+    features: [
+      "Müşteri görüşme notları, toplantı ve görev takvimi",
+      "Teklif hazırlama, revizyon takibi ve tek tıkla siparişe çevirme",
+      "WhatsApp entegrasyonu ile hızlı bilgilendirme mesajları"
+    ]
   },
   {
     id: 12,
-    src: "/images/screenshots/Stok-pratik-ekran-magazacilik.png",
-    alt: "Stok Pratik Mağazacılık Modülü",
-    title: "Mağaza Yönetimi",
-    description: "Perakende mağaza operasyonları yönetimi"
+    category: "ik-servis",
+    categoryLabel: "İK & PDKS",
+    badgeColor: "bg-amber-50 text-amber-700 border-amber-200",
+    src: "/images/screenshots/StokPratik_QR-PDKS_ik.png",
+    alt: "Stok Pratik QR-PDKS Personel ve İnsan Kaynakları Yönetimi",
+    title: "QR-PDKS & İnsan Kaynakları Yönetimi",
+    description: "Pahalı kart okuyuculara son! Dinamik QR kod ile cep telefonundan anlık personel devam kontrolü ve bordro ön hazırlığı.",
+    features: [
+      "Personel giriş-çıkış saatleri, geç kalma ve mola süreleri",
+      "Yıllık izin, mazeret ve rapor süreçlerinin dijital onayı",
+      "Avans, prim ve maaş hesaplama bordro desteği"
+    ]
   },
   {
     id: 13,
-    src: "/images/screenshots/Stok-pratik-ekran-magaza-satislari.png",
-    alt: "Stok Pratik Mağaza Satışları",
-    title: "Mağaza Satış Raporları",
-    description: "Şube bazlı satış performansı ve analiz"
+    category: "ik-servis",
+    categoryLabel: "İK & Mobil",
+    badgeColor: "bg-yellow-50 text-yellow-800 border-yellow-200",
+    src: "/images/screenshots/StokPratik_QR-PDKS_ik-qr-okuma.png",
+    alt: "Stok Pratik QR Personel Okuma ve Anlık Devam Kontrolü",
+    title: "QR Kod ile Personel Giriş-Çıkış Terminali",
+    description: "Tablet veya akıllı telefon kamerasından saniyede okunan dinamik QR kodlar ile sahtecilikten arındırılmış PDKS.",
+    features: [
+      "Dinamik yenilenen QR kod güvenliği (fotoğraf çekip okutmayı önler)",
+      "Konum doğrulamalı mobil check-in (saha personeli için)",
+      "Gece vardiyası ve fazla mesai saatlerinin otomatik hesaplanması"
+    ]
   },
   {
     id: 14,
-    src: "/images/screenshots/Stok-pratik-ekran-satis.png",
-    alt: "Stok Pratik Satış İşlemleri",
-    title: "Satış Yönetimi",
-    description: "Müşteriye özel fiyatlandırma, kampanyalar"
+    category: "ik-servis",
+    categoryLabel: "Teknik Servis",
+    badgeColor: "bg-emerald-50 text-emerald-700 border-emerald-200",
+    src: "/images/screenshots/StokPratik_hizmet_servis.png",
+    alt: "Stok Pratik Hizmet ve Teknik Servis Yönetimi Ekranı",
+    title: "Hizmet & Teknik Servis Yönetimi",
+    description: "Arıza kabul formu, parça değişimi, servis iş emirleri ve müşteriye SMS ile canlı cihaz takip linki gönderme.",
+    features: [
+      "Cihaz seri no, aksesuar ve arıza açıklamasıyla kabul fişi",
+      "Müşteriye SMS ile canlı servis takip linki (İnceleniyor, Onarıldı, Hazır)",
+      "Kullanılan yedek parçaların servis anında stoktan otomatik düşmesi"
+    ]
   },
   {
     id: 15,
-    src: "/images/screenshots/Stok-pratik-ekran-Stok.png",
-    alt: "Stok Pratik Stok Yönetimi",
-    title: "Stok Takip Sistemi",
-    description: "Gerçek zamanlı stok takibi, uyarı sistemi"
+    category: "analiz-yonetim",
+    categoryLabel: "Raporlama & Analiz",
+    badgeColor: "bg-violet-50 text-violet-700 border-violet-200",
+    src: "/images/screenshots/StokPratik_Raporlama.png",
+    alt: "Stok Pratik Raporlama ve İleri Düzey İş Analitiği",
+    title: "Raporlama & İleri Düzey Yönetim Analitiği",
+    description: "Kâr-zarar tabloları, ürün kârlılık matrisi, mağaza ciro karşılaştırmaları ve Excel formatında anlık rapor indirme.",
+    features: [
+      "En çok satanlar, ölü stoklar ve kâr marjı en yüksek ürünler",
+      "Şube ve personel satış performans karşılaştırmaları",
+      "Tek tıkla Excel, PDF ve grafiksel görsel rapor dışa aktarımı"
+    ]
   },
   {
     id: 16,
-    src: "/images/screenshots/Stok-pratik-ekran-toptan-satis.png",
-    alt: "Stok Pratik Toptan Satış Ekranı",
-    title: "Toptan Satış Modülü",
-    description: "Büyük miktarlı alımlar için özel fiyatlandırma"
+    category: "analiz-yonetim",
+    categoryLabel: "Destek & Yardım",
+    badgeColor: "bg-blue-50 text-blue-700 border-blue-200",
+    src: "/images/screenshots/StokPratik_destek.png",
+    alt: "Stok Pratik Destek ve Canlı Yardım Merkezi",
+    title: "Destek, Yardım & Entegrasyon Merkezi",
+    description: "Adım adım video rehberler, kullanım dokümanları, uzaktan destek ve 7/24 WhatsApp teknik destek hattı.",
+    features: [
+      "Her modüle özel hazır rehber ve kullanım ipuçları",
+      "Tek tıkla canlı destek ekibine bağlanma",
+      "Sistem güncellemeleri ve yeni özellik duyuruları"
+    ]
   },
   {
     id: 17,
-    src: "/images/screenshots/Stok-pratik-ekran-Transfer.png",
-    alt: "Stok Pratik Transfer İşlemleri",
-    title: "Stok Transferi",
-    description: "Şubeler arası ürün transferi ve takibi"
+    category: "analiz-yonetim",
+    categoryLabel: "Güvenlik & Giriş",
+    badgeColor: "bg-slate-100 text-slate-800 border-slate-300",
+    src: "/images/screenshots/StokPratik_giris.png",
+    alt: "Stok Pratik Güvenli Giriş ve Kullanıcı Kimlik Doğrulama Paneli",
+    title: "Güvenli Giriş & Kullanıcı Rol Yetkilendirme",
+    description: "256-bit SSL koruması, şube bazlı oturum açma, kasiyer/müdür yetki kısıtlamaları ve log kayıtları.",
+    features: [
+      "Personele özel kısıtlı ekranlar (fiyat görme, iskonto yapma yetkileri)",
+      "Bulut altyapısıyla her cihazdan (PC, Mac, Tablet, Telefon) güvenli erişim",
+      "Otomatik yedekleme ile sıfır veri kaybı güvencesi"
+    ]
   }
 ];
 
-// Kategori etiketleri
+// Filtreleme Kategorileri
 const categories = [
-  { id: 'Stok Pratik', name: 'Stok Pratik', count: screenshots.length },
-  { id: 'Stok Pratik', name: 'Stok Pratik', count: 2 },
-  { id: 'Stok Pratik', name: 'Stok Pratik', count: 2 },
-  { id: 'Stok Pratik', name: 'Stok Pratik', count: 5 },
-  { id: 'Stok Pratik', name: 'Stok Pratik', count: 3 },
-  { id: 'Stok Pratik', name: 'Stok Pratik', count: 2 },
-  { id: 'Stok Pratik', name: 'Stok Pratik', count: 2 },
-  { id: 'Stok Pratik', name: 'Stok Pratik', count: 1 }
+  { id: 'all', name: 'Tümü', count: screenshots.length },
+  { id: 'ticaret', name: 'Ticaret & Satış', count: screenshots.filter(s => s.category === 'ticaret').length },
+  { id: 'finans', name: 'Finans & e-Dönüşüm', count: screenshots.filter(s => s.category === 'finans').length },
+  { id: 'uretim-depo', name: 'ERP & Depo', count: screenshots.filter(s => s.category === 'uretim-depo').length },
+  { id: 'eticaret', name: 'E-Ticaret & B2B', count: screenshots.filter(s => s.category === 'eticaret').length },
+  { id: 'ik-servis', name: 'İK & Teknik Servis', count: screenshots.filter(s => s.category === 'ik-servis').length },
+  { id: 'analiz-yonetim', name: 'CRM & Analiz', count: screenshots.filter(s => s.category === 'analiz-yonetim').length },
 ];
 ---
 
-<BaseLayout title="Stok Pratik Ekran Görüntüleri | Yazılımın Tüm Modülleri">
-  <!-- Hero Section -->
-  <section class="page-hero py-12">
-    <div class="container">
+<BaseLayout 
+  title="Stok Pratik Ekran Görüntüleri | Modern ERP & E-Ticaret Platformu"
+  description="Stok Pratik ERP, ön muhasebe, barkodlu satış, üretim, e-ticaret ve PDKS modüllerinin tüm gerçek ekran görüntülerini inceleyin. 14 gün ücretsiz deneyin."
+>
+  {/* Hero Section */}
+  <section class="relative bg-gradient-to-b from-slate-900 via-slate-900 to-slate-800 text-white pt-16 pb-20 overflow-hidden">
+    <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none"></div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
       <div class="text-center max-w-3xl mx-auto">
-        <h1 class="page-title">Stok Pratik Ekran Görüntüleri</h1>
-        <p class="page-subtitle">
-          Yazılımımızın tüm özelliklerini ve kullanıcı dostu arayüzünü ekran görüntüleri ile inceleyin.
-          Stok yönetiminden muhasebeye, mağazacılıktan raporlamaya kadar tüm modülleri keşfedin.
+        <span class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-bold tracking-wide uppercase bg-red-600/20 text-red-400 border border-red-500/30 mb-5">
+          <span class="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
+          Güncel Sürüm Arayüzleri
+        </span>
+        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white mb-6">
+          Stok Pratik <span class="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-orange-400">Ekran Görüntüleri</span>
+        </h1>
+        <p class="text-base sm:text-lg text-slate-300 leading-relaxed">
+          KOBİ'lerin tüm operasyonlarını tek merkezden yöneten bulut tabanlı mimari. Satıştan üretime, e-dönüşümden QR-PDKS'ye kadar tüm ekranları canlı arayüz görüntüleriyle keşfedin.
         </p>
         
-      </div>
-    </div>
-  </section>
-
-  <!-- Gallery Filters -->
-  <section class="gallery-filters py-8 bg-gray-50">
-    <div class="container">
-      <div class="filters-wrapper">
-        <div class="filter-categories">
-          {categories.map((category) => (
-            <button 
-              class="filter-btn" 
-              data-filter={category.id}
-              data-count={category.count}
-            >
-              {category.name}
-              <span class="filter-count">({category.count})</span>
-            </button>
-          ))}
+        <div class="mt-8 flex flex-wrap items-center justify-center gap-4">
+          <a 
+            href="/firma-kaydi" 
+            class="inline-flex items-center justify-center px-6 py-3.5 bg-red-600 hover:bg-red-700 text-white font-bold rounded-xl transition-all shadow-lg shadow-red-600/30 hover:scale-105 text-sm"
+          >
+            14 Gün Ücretsiz Deneyin
+            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+          </a>
+          <a 
+            href="#galeri" 
+            class="inline-flex items-center justify-center px-6 py-3.5 bg-white/10 hover:bg-white/20 text-white font-semibold rounded-xl transition-all border border-white/10 text-sm"
+          >
+            Ekranları İncele
+          </a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Gallery Grid -->
-  <section class="gallery-main py-12">
-    <div class="container">
-      <div class="gallery-grid" id="galleryGrid">
-        {screenshots.map((screenshot) => {
-          // Kategori belirleme
-          let category = 'all';
-          const titleLower = screenshot.title.toLowerCase();
-          
-          if (titleLower.includes('dashboard') || titleLower.includes('kontrol') || titleLower.includes('giriş')) {
-            category = 'Stok Pratik';
-          } else if (titleLower.includes('stok')) {
-            category = 'Stok Pratik';
-          } else if (titleLower.includes('satış') || titleLower.includes('toptan') || titleLower.includes('hızlı')) {
-            category = 'Stok Pratik';
-          } else if (titleLower.includes('muhasebe') || titleLower.includes('hesap') || titleLower.includes('gider')) {
-            category = 'Stok Pratik';
-          } else if (titleLower.includes('rapor') || titleLower.includes('analiz')) {
-            category = 'Stok Pratik';
-          } else if (titleLower.includes('mağaza')) {
-            category = 'Stok Pratik';
-          } else if (titleLower.includes('transfer')) {
-            category = 'Stok Pratik';
-          }
-          
-          return (
-            <article 
-              class="gallery-item" 
-              data-category={category}
-            >
-              <div class="gallery-card">
-                <div class="gallery-image">
-                  <img
-                    src={screenshot.src}
-                    alt={screenshot.alt}
-                    width="800"
-                    height="600"
-                    loading="lazy"
-                    class="gallery-img"
-                  />
-                  <div class="image-overlay">
-                    <button class="zoom-btn" title="Büyüt">
-                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                        <path d="M15 15L21 21M10 17C6.13401 17 3 13.866 3 10C3 6.13401 6.13401 3 10 3C13.866 3 17 6.13401 17 10C17 13.866 13.866 17 10 17Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M10 7V13M7 10H13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                      </svg>
-                    </button>
-                  </div>
-                </div>
-                <div class="gallery-content">
-                  <div class="gallery-header">
-                    <span class="gallery-badge">{category.toUpperCase()}</span>
-                    <span class="gallery-number">#{String(screenshot.id).padStart(2, '0')}</span>
-                  </div>
-                  <h3 class="gallery-title">{screenshot.title}</h3>
-                  <p class="gallery-description">{screenshot.description}</p>
-                </div>
-              </div>
-            </article>
-          );
-        })}
+  {/* Kategori Filtreleme Barı */}
+  <section id="galeri" class="sticky top-16 z-30 bg-white/95 backdrop-blur-md border-b border-slate-200 py-4 shadow-xs">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center gap-2 overflow-x-auto no-scrollbar pb-1 sm:pb-0 sm:justify-center">
+        {categories.map((cat, idx) => (
+          <button
+            type="button"
+            class={`category-filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-bold whitespace-nowrap transition-all cursor-pointer ${
+              idx === 0 
+                ? 'active bg-slate-900 text-white shadow-sm' 
+                : 'bg-slate-100 text-slate-600 hover:bg-slate-200 hover:text-slate-900'
+            }`}
+            data-category={cat.id}
+          >
+            {cat.name}
+            <span class="ml-1.5 opacity-75 text-[11px] font-normal">({cat.count})</span>
+          </button>
+        ))}
       </div>
+    </div>
+  </section>
+
+  {/* Ekran Görüntüleri Grid */}
+  <section class="py-12 sm:py-16 bg-slate-50 min-h-screen">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
-      <!-- Lightbox Modal -->
-      <div id="lightboxModal" class="lightbox-modal">
-        <div class="lightbox-content">
-          <button id="lightboxClose" class="lightbox-close" aria-label="Kapat">×</button>
-          <button id="lightboxPrev" class="lightbox-nav prev" aria-label="Önceki">‹</button>
-          <button id="lightboxNext" class="lightbox-nav next" aria-label="Sonraki">›</button>
-          <div class="lightbox-image-container">
-            <img id="lightboxImage" src="" alt="" class="lightbox-image" />
-            <div class="lightbox-info">
-              <h3 id="lightboxTitle"></h3>
-              <p id="lightboxDescription"></p>
+      <div id="screenshotsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {screenshots.map((item, index) => (
+          <div 
+            class="screenshot-card group bg-white rounded-2xl border border-slate-200/90 shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col overflow-hidden hover:-translate-y-1"
+            data-category={item.category}
+            data-index={index}
+          >
+            {/* Görsel Alanı */}
+            <div class="relative aspect-16/10 bg-slate-100 overflow-hidden cursor-pointer img-trigger">
+              <img 
+                src={item.src} 
+                alt={item.alt}
+                loading="lazy"
+                width="800"
+                height="500"
+                class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+              />
+              
+              {/* Karartma ve Büyüt Butonu */}
+              <div class="absolute inset-0 bg-slate-950/40 opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex items-center justify-center p-4">
+                <span class="inline-flex items-center gap-2 bg-white/90 backdrop-blur-xs text-slate-900 font-bold px-4 py-2 rounded-xl text-xs shadow-lg transform translate-y-2 group-hover:translate-y-0 transition-transform">
+                  <svg class="w-4 h-4 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7"/></svg>
+                  Tam Ekran İncele
+                </span>
+              </div>
+
+              {/* Kategori Rozeti */}
+              <div class="absolute top-3 left-3 z-10">
+                <span class={`inline-block px-2.5 py-1 text-[11px] font-bold rounded-lg border shadow-xs ${item.badgeColor}`}>
+                  {item.categoryLabel}
+                </span>
+              </div>
             </div>
+
+            {/* İçerik Alanı */}
+            <div class="p-6 flex-1 flex flex-col">
+              <div class="flex items-center justify-between gap-2 mb-2">
+                <span class="text-xs font-semibold text-slate-400">Modül #{String(item.id).padStart(2, '0')}</span>
+              </div>
+
+              <h2 class="text-lg font-bold text-slate-900 group-hover:text-red-600 transition-colors mb-2 line-clamp-1">
+                {item.title}
+              </h2>
+              
+              <p class="text-sm text-slate-600 leading-relaxed mb-4 line-clamp-2">
+                {item.description}
+              </p>
+
+              {/* Öne Çıkan Yetenekler (Maddeler) */}
+              <div class="mt-auto pt-4 border-t border-slate-100 space-y-2 mb-5">
+                {item.features.map(f => (
+                  <div class="flex items-start gap-2 text-xs text-slate-600">
+                    <svg class="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+                    <span class="line-clamp-1">{f}</span>
+                  </div>
+                ))}
+              </div>
+
+              {/* Alt Butonlar */}
+              <div class="flex items-center gap-2 pt-2">
+                <button
+                  type="button"
+                  class="btn-open-lightbox flex-1 inline-flex items-center justify-center px-3.5 py-2.5 rounded-xl border border-slate-200 text-slate-700 hover:bg-slate-50 hover:text-slate-900 text-xs font-bold transition-colors cursor-pointer"
+                  data-index={index}
+                >
+                  <svg class="w-3.5 h-3.5 mr-1.5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+                  Görüntüle
+                </button>
+                <a
+                  href="/firma-kaydi"
+                  class="flex-1 inline-flex items-center justify-center px-3.5 py-2.5 rounded-xl bg-red-600 hover:bg-red-700 text-white text-xs font-bold transition-colors shadow-xs shadow-red-600/20"
+                >
+                  Ücretsiz Dene
+                </a>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* Hiç Sonuç Bulunamadı Durumu */}
+      <div id="emptyState" class="hidden text-center py-20">
+        <div class="w-16 h-16 bg-slate-100 text-slate-400 rounded-full flex items-center justify-center mx-auto mb-4">
+          <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        </div>
+        <h3 class="text-lg font-bold text-slate-800 mb-1">Bu kategoride ekran görüntüsü bulunamadı</h3>
+        <p class="text-sm text-slate-500 mb-4">Lütfen diğer kategorileri inceleyin.</p>
+      </div>
+
+      {/* Alt CTA Bölümü */}
+      <div class="mt-20 bg-gradient-to-r from-slate-900 to-slate-800 rounded-3xl p-8 sm:p-12 text-white relative overflow-hidden shadow-xl">
+        <div class="absolute -right-20 -bottom-20 w-80 h-80 bg-red-600/20 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="relative z-10 max-w-2xl">
+          <span class="text-xs font-bold uppercase tracking-wider text-red-400 mb-2 block">Hemen Başlayın</span>
+          <h2 class="text-2xl sm:text-3xl font-extrabold mb-4">Tüm Bu Modülleri Kendi İşletmenizde Test Edin</h2>
+          <p class="text-slate-300 text-sm sm:text-base leading-relaxed mb-8">
+            Kredi kartı gerekmeden, 14 gün boyunca Stok Pratik'in tüm modüllerini sınırsız kullanın. Uzman ekibimiz ilk kurulumda yanınızda olsun.
+          </p>
+          <div class="flex flex-wrap items-center gap-4">
+            <a 
+              href="/firma-kaydi"
+              class="px-6 py-3.5 bg-red-600 hover:bg-red-700 text-white font-bold rounded-xl transition-all shadow-lg shadow-red-600/30 text-sm"
+            >
+              14 Gün Ücretsiz Başlayın
+            </a>
+            <a 
+              href="https://wa.me/+905325000999"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="px-6 py-3.5 bg-white/10 hover:bg-white/20 text-white font-semibold rounded-xl transition-all text-sm inline-flex items-center gap-2"
+            >
+              <svg class="w-4 h-4 text-emerald-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.275.072.376-.044c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.099.824zm-3.423-14.416c-6.627 0-12 5.373-12 12 0 2.159.57 4.184 1.564 5.938l-1.564 5.89 6.046-1.585c1.706.929 3.659 1.457 5.742 1.457 6.627 0 12-5.373 12-12 0-6.627-5.373-12-12-12z"/></svg>
+              WhatsApp Destek Hattı
+            </a>
           </div>
         </div>
       </div>
+
     </div>
   </section>
 
-  <!-- CTA Section -->
-  <section class="gallery-cta py-16 bg-primary-red-light">
-    <div class="container">
-      <div class="text-center max-w-2xl mx-auto">
-        <h2 class="cta-title">Demo İsteyin, Kendiniz Deneyin!</h2>
-        <p class="cta-text">
-          Ekran görüntüleri yeterli gelmedi mi? Canlı demo talep edin ve Stok Pratik'i 
-          kendi işletmenizde deneyimleyin.
+  {/* Lightbox Modal */}
+  <div 
+    id="lightboxModal" 
+    class="fixed inset-0 z-50 bg-slate-950/90 backdrop-blur-md hidden opacity-0 transition-opacity duration-300 flex items-center justify-center p-3 sm:p-6"
+    role="dialog"
+    aria-modal="true"
+  >
+    {/* Kapat Butonu */}
+    <button 
+      id="lightboxClose" 
+      class="absolute top-4 right-4 z-50 w-11 h-11 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-colors cursor-pointer"
+      aria-label="Kapat"
+    >
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+    </button>
+
+    {/* Önceki Butonu */}
+    <button 
+      id="lightboxPrev" 
+      class="absolute left-2 sm:left-6 top-1/2 -translate-y-1/2 z-50 w-11 h-11 sm:w-14 sm:h-14 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-colors cursor-pointer"
+      aria-label="Önceki Görsel"
+    >
+      <svg class="w-6 h-6 sm:w-8 sm:h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+    </button>
+
+    {/* Sonraki Butonu */}
+    <button 
+      id="lightboxNext" 
+      class="absolute right-2 sm:right-6 top-1/2 -translate-y-1/2 z-50 w-11 h-11 sm:w-14 sm:h-14 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-colors cursor-pointer"
+      aria-label="Sonraki Görsel"
+    >
+      <svg class="w-6 h-6 sm:w-8 sm:h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+    </button>
+
+    {/* Lightbox İçerik Kartı */}
+    <div class="max-w-6xl w-full max-h-[92vh] flex flex-col bg-slate-900 rounded-3xl border border-white/10 shadow-2xl overflow-hidden scale-95 transition-transform duration-300" id="lightboxContent">
+      {/* Üst Bilgi Barı */}
+      <div class="px-6 py-4 bg-slate-950/80 border-b border-white/10 flex items-center justify-between gap-4">
+        <div class="flex items-center gap-3">
+          <span id="modalBadge" class="px-2.5 py-1 text-xs font-bold rounded-lg bg-red-600/20 text-red-400 border border-red-500/30">
+            Modül
+          </span>
+          <h3 id="modalTitle" class="text-base sm:text-lg font-bold text-white line-clamp-1">
+            Ekran Başlığı
+          </h3>
+        </div>
+        <span id="modalCounter" class="text-xs font-semibold text-slate-400 shrink-0">
+          1 / 17
+        </span>
+      </div>
+
+      {/* Görsel Sahnesi */}
+      <div class="flex-1 min-h-0 bg-slate-950 flex items-center justify-center p-2 sm:p-4 overflow-hidden relative">
+        <img 
+          id="modalImage" 
+          src="" 
+          alt="" 
+          class="max-w-full max-h-[62vh] object-contain rounded-xl shadow-2xl transition-opacity duration-200"
+        />
+      </div>
+
+      {/* Alt Açıklama ve Aksiyon Barı */}
+      <div class="px-6 py-4 bg-slate-900 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <p id="modalDesc" class="text-xs sm:text-sm text-slate-300 leading-relaxed text-center sm:text-left max-w-3xl">
+          Modül açıklaması burada yer alır.
         </p>
-        <div class="cta-buttons mt-8">
-          <a href="https://wa.me/+905325000999?text=Merhaba,%20Stok%20Pratik%20demo%20talep%20ediyorum" 
-             class="btn btn-primary btn-lg">
-            Demo Talep Et
-          </a>
-          <a href="/paketlerimiz" class="btn btn-outline btn-lg">
-            Paketleri İncele
+        <div class="flex items-center gap-3 shrink-0 w-full sm:w-auto">
+          <a 
+            href="/firma-kaydi" 
+            class="w-full sm:w-auto px-5 py-2.5 bg-red-600 hover:bg-red-700 text-white font-bold rounded-xl text-xs sm:text-sm transition-colors text-center shadow-lg shadow-red-600/30"
+          >
+            14 Gün Ücretsiz Dene
           </a>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</BaseLayout>
 
-  <style>
-    /* Page Hero */
-    .page-hero {
-      background: linear-gradient(135deg, var(--primary-red-light) 0%, var(--bg-white) 100%);
-    }
-    
-    .page-title {
-      font-size: 3rem;
-      color: var(--primary-red);
-      margin-bottom: 1rem;
-      font-weight: 800;
-    }
-    
-    .page-subtitle {
-      font-size: 1.25rem;
-      color: var(--text-gray);
-      line-height: 1.6;
-    }
-    
-    .stats {
-      display: flex;
-      justify-content: center;
-      gap: 3rem;
-      flex-wrap: wrap;
-    }
-    
-    .stat-item {
-      text-align: center;
-    }
-    
-    .stat-number {
-      display: block;
-      font-size: 2.5rem;
-      font-weight: 700;
-      color: var(--primary-red);
-      line-height: 1;
-    }
-    
-    .stat-label {
-      font-size: 1rem;
-      color: var(--text-gray);
-      margin-top: 0.5rem;
-    }
-    
-    /* Gallery Filters */
-    .filters-wrapper {
-      display: flex;
-      flex-direction: column;
-      gap: 1.5rem;
-    }
-    
-    @media (min-width: 768px) {
-      .filters-wrapper {
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-      }
-    }
-    
-    .filter-categories {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      justify-content: center;
-    }
-    
-    .filter-btn {
-      padding: 0.5rem 1rem;
-      background: white;
-      border: 2px solid var(--secondary-light);
-      border-radius: 2rem;
-      color: var(--text-gray);
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      display: flex;
-      align-items: center;
-      gap: 0.25rem;
-    }
-    
-    .filter-btn:hover,
-    .filter-btn.active {
-      background: var(--primary-red);
-      border-color: var(--primary-red);
-      color: white;
-    }
-    
-    .filter-count {
-      font-size: 0.85rem;
-      opacity: 0.8;
-    }
-    
-    /* Gallery Grid */
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 2rem;
-    }
-    
-    .gallery-item {
-      opacity: 1;
-      transform: translateY(0);
-      transition: all 0.3s ease;
-    }
-    
-    .gallery-item.hidden {
-      opacity: 0;
-      transform: translateY(20px);
-      position: absolute;
-      visibility: hidden;
-    }
-    
-    .gallery-card {
-      background: white;
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-      box-shadow: var(--shadow-md);
-      transition: all 0.3s ease;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-    }
-    
-    .gallery-card:hover {
-      transform: translateY(-8px);
-      box-shadow: var(--shadow-lg);
-    }
-    
-    .gallery-image {
-      position: relative;
-      overflow: hidden;
-      aspect-ratio: 16/10;
-      background: #f8fafc;
-    }
-    
-    .gallery-img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.5s ease;
-    }
-    
-    .gallery-card:hover .gallery-img {
-      transform: scale(1.05);
-    }
-    
-    .image-overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: rgba(0, 0, 0, 0.3);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    }
-    
-    .gallery-card:hover .image-overlay {
-      opacity: 1;
-    }
-    
-    .zoom-btn {
-      width: 50px;
-      height: 50px;
-      background: white;
-      border: none;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      color: var(--primary-red);
-      transition: all 0.3s ease;
-    }
-    
-    .zoom-btn:hover {
-      background: var(--primary-red);
-      color: white;
-      transform: scale(1.1);
-    }
-    
-    .gallery-content {
-      padding: 1.5rem;
-      flex-grow: 1;
-      display: flex;
-      flex-direction: column;
-    }
-    
-    .gallery-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 0.75rem;
-    }
-    
-    .gallery-badge {
-      background: var(--primary-red-light);
-      color: var(--primary-red);
-      padding: 0.25rem 0.75rem;
-      border-radius: 1rem;
-      font-size: 0.75rem;
-      font-weight: 600;
-    }
-    
-    .gallery-number {
-      font-size: 0.875rem;
-      color: var(--text-light);
-      font-weight: 600;
-    }
-    
-    .gallery-title {
-      font-size: 1.25rem;
-      color: var(--text-dark);
-      margin-bottom: 0.5rem;
-      font-weight: 700;
-    }
-    
-    .gallery-description {
-      color: var(--text-gray);
-      font-size: 0.95rem;
-      line-height: 1.5;
-      margin-top: auto;
-    }
-    
-    /* Lightbox Modal */
-    .lightbox-modal {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: rgba(0, 0, 0, 0.9);
-      z-index: 9999;
-      display: none;
-      align-items: center;
-      justify-content: center;
-      padding: 2rem;
-    }
-    
-    .lightbox-modal.active {
-      display: flex;
-    }
-    
-    .lightbox-content {
-      position: relative;
-      max-width: 90vw;
-      max-height: 90vh;
-    }
-    
-    .lightbox-close {
-      position: absolute;
-      top: -40px;
-      right: 0;
-      background: none;
-      border: none;
-      color: white;
-      font-size: 2.5rem;
-      cursor: pointer;
-      z-index: 10000;
-      padding: 0.5rem;
-      line-height: 1;
-    }
-    
-    .lightbox-nav {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      background: rgba(255, 255, 255, 0.2);
-      border: none;
-      color: white;
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      cursor: pointer;
-      font-size: 1.5rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: background 0.3s ease;
-    }
-    
-    .lightbox-nav:hover {
-      background: rgba(255, 255, 255, 0.3);
-    }
-    
-    .lightbox-nav.prev {
-      left: -60px;
-    }
-    
-    .lightbox-nav.next {
-      right: -60px;
-    }
-    
-    .lightbox-image-container {
-      background: white;
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-      max-height: 80vh;
-    }
-    
-    .lightbox-image {
-      width: 100%;
-      height: auto;
-      max-height: 60vh;
-      object-fit: contain;
-      display: block;
-    }
-    
-    .lightbox-info {
-      padding: 1.5rem;
-      background: white;
-    }
-    
-    .lightbox-info h3 {
-      font-size: 1.5rem;
-      color: var(--text-dark);
-      margin-bottom: 0.5rem;
-    }
-    
-    .lightbox-info p {
-      color: var(--text-gray);
-      line-height: 1.5;
-    }
-    
-    /* CTA Section */
-    .gallery-cta {
-      text-align: center;
-    }
-    
-    .cta-title {
-      font-size: 2.5rem;
-      color: var(--primary-red);
-      margin-bottom: 1rem;
-    }
-    
-    .cta-text {
-      font-size: 1.25rem;
-      color: var(--text-gray);
-      line-height: 1.6;
-    }
-    
-    .cta-buttons {
-      display: flex;
-      gap: 1rem;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-    
-    .btn-lg {
-      padding: 0.875rem 2rem;
-      font-size: 1.125rem;
-    }
-    
-    /* Responsive */
-    @media (max-width: 768px) {
-      .page-title {
-        font-size: 2.5rem;
-      }
-      
-      .gallery-grid {
-        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-        gap: 1.5rem;
-      }
-      
-      .lightbox-nav.prev {
-        left: 10px;
-      }
-      
-      .lightbox-nav.next {
-        right: 10px;
-      }
-      
-      .lightbox-close {
-        top: 10px;
-        right: 10px;
-      }
-      
-      .stats {
-        gap: 2rem;
-      }
-      
-      .stat-number {
-        font-size: 2rem;
-      }
-    }
-    
-    @media (max-width: 480px) {
-      .gallery-grid {
-        grid-template-columns: 1fr;
-      }
-      
-      .filter-categories {
-        justify-content: flex-start;
-        overflow-x: auto;
-        padding-bottom: 0.5rem;
-      }
-      
-      .cta-buttons {
-        flex-direction: column;
-      }
-      
-      .btn-lg {
-        width: 100%;
-      }
-    }
-  </style>
+<script is:inline define:vars={{ screenshotsData: screenshots }}>
+  function initGallery() {
+    const filterButtons = document.querySelectorAll('.category-filter-btn');
+    const cards = document.querySelectorAll('.screenshot-card');
+    const emptyState = document.getElementById('emptyState');
 
-  <script>
-    // Filter functionality
-    document.addEventListener('DOMContentLoaded', () => {
-      const filterButtons = document.querySelectorAll('.filter-btn');
-      const galleryItems = document.querySelectorAll('.gallery-item');
-      const lightboxModal = document.getElementById('lightboxModal');
-      const lightboxImage = document.getElementById('lightboxImage');
-      const lightboxTitle = document.getElementById('lightboxTitle');
-      const lightboxDescription = document.getElementById('lightboxDescription');
-      const lightboxClose = document.getElementById('lightboxClose');
-      const lightboxPrev = document.getElementById('lightboxPrev');
-      const lightboxNext = document.getElementById('lightboxNext');
-      const zoomButtons = document.querySelectorAll('.zoom-btn');
-      
-      let currentImageIndex = 0;
-      const images = Array.from(galleryItems);
-      
-      // Filter functionality
-      filterButtons.forEach(button => {
-        button.addEventListener('click', () => {
-          // Update active button
-          filterButtons.forEach(btn => btn.classList.remove('active'));
-          button.classList.add('active');
-          
-          const filterValue = button.getAttribute('data-filter');
-          
-          // Filter items
-          galleryItems.forEach(item => {
-            const itemCategory = item.getAttribute('data-category');
-            
-            if (filterValue === 'all' || itemCategory === filterValue) {
-              item.classList.remove('hidden');
-              setTimeout(() => {
-                item.style.opacity = '1';
-                item.style.transform = 'translateY(0)';
-              }, 10);
-            } else {
-              item.style.opacity = '0';
-              item.style.transform = 'translateY(20px)';
-              setTimeout(() => {
-                item.classList.add('hidden');
-              }, 300);
-            }
-          });
+    // Kategori Filtreleme Mantığı
+    filterButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const cat = btn.getAttribute('data-category');
+
+        filterButtons.forEach(b => {
+          b.classList.remove('active', 'bg-slate-900', 'text-white', 'shadow-sm');
+          b.classList.add('bg-slate-100', 'text-slate-600');
         });
-      });
-      
-      // Set first filter button as active
-      if (filterButtons.length > 0) {
-        filterButtons[0].classList.add('active');
-      }
-      
-      // Lightbox functionality
-      function openLightbox(index) {
-        const item = images[index];
-        const img = item.querySelector('.gallery-img');
-        const title = item.querySelector('.gallery-title').textContent;
-        const description = item.querySelector('.gallery-description').textContent;
-        
-        lightboxImage.src = img.src;
-        lightboxImage.alt = img.alt;
-        lightboxTitle.textContent = title;
-        lightboxDescription.textContent = description;
-        lightboxModal.classList.add('active');
-        document.body.style.overflow = 'hidden';
-        currentImageIndex = index;
-      }
-      
-      function closeLightbox() {
-        lightboxModal.classList.remove('active');
-        document.body.style.overflow = '';
-      }
-      
-      function showNextImage() {
-        currentImageIndex = (currentImageIndex + 1) % images.length;
-        openLightbox(currentImageIndex);
-      }
-      
-      function showPrevImage() {
-        currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
-        openLightbox(currentImageIndex);
-      }
-      
-      // Event listeners for zoom buttons
-      zoomButtons.forEach((button, index) => {
-        button.addEventListener('click', (e) => {
-          e.stopPropagation();
-          openLightbox(index);
-        });
-      });
-      
-      // Event listeners for lightbox controls
-      lightboxClose.addEventListener('click', closeLightbox);
-      lightboxPrev.addEventListener('click', showPrevImage);
-      lightboxNext.addEventListener('click', showNextImage);
-      
-      // Close lightbox when clicking outside
-      lightboxModal.addEventListener('click', (e) => {
-        if (e.target === lightboxModal) {
-          closeLightbox();
-        }
-      });
-      
-      // Keyboard navigation
-      document.addEventListener('keydown', (e) => {
-        if (!lightboxModal.classList.contains('active')) return;
-        
-        switch(e.key) {
-          case 'Escape':
-            closeLightbox();
-            break;
-          case 'ArrowLeft':
-            showPrevImage();
-            break;
-          case 'ArrowRight':
-            showNextImage();
-            break;
-        }
-      });
-      
-      // Click on gallery item to open lightbox
-      galleryItems.forEach((item, index) => {
-        item.addEventListener('click', (e) => {
-          if (!e.target.closest('.zoom-btn')) {
-            openLightbox(index);
+        btn.classList.add('active', 'bg-slate-900', 'text-white', 'shadow-sm');
+        btn.classList.remove('bg-slate-100', 'text-slate-600');
+
+        let visibleCount = 0;
+        cards.forEach(card => {
+          const itemCat = card.getAttribute('data-category');
+          if (cat === 'all' || itemCat === cat) {
+            card.classList.remove('hidden');
+            visibleCount++;
+          } else {
+            card.classList.add('hidden');
           }
         });
+
+        if (emptyState) {
+          if (visibleCount === 0) {
+            emptyState.classList.remove('hidden');
+          } else {
+            emptyState.classList.add('hidden');
+          }
+        }
       });
     });
-  </script>
-</BaseLayout>
+
+    // Lightbox Mantığı
+    const modal = document.getElementById('lightboxModal');
+    const modalContent = document.getElementById('lightboxContent');
+    const closeBtn = document.getElementById('lightboxClose');
+    const prevBtn = document.getElementById('lightboxPrev');
+    const nextBtn = document.getElementById('lightboxNext');
+    const modalImg = document.getElementById('modalImage');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalDesc = document.getElementById('modalDesc');
+    const modalBadge = document.getElementById('modalBadge');
+    const modalCounter = document.getElementById('modalCounter');
+
+    let currentIndex = 0;
+
+    function updateModal(index) {
+      if (!screenshotsData || !screenshotsData[index]) return;
+      currentIndex = index;
+      const data = screenshotsData[index];
+
+      modalImg.style.opacity = '0.3';
+      modalImg.src = data.src;
+      modalImg.alt = data.alt;
+      modalTitle.textContent = data.title;
+      modalDesc.textContent = data.description;
+      modalBadge.textContent = data.categoryLabel;
+      modalCounter.textContent = `${index + 1} / ${screenshotsData.length}`;
+
+      modalImg.onload = () => {
+        modalImg.style.opacity = '1';
+      };
+    }
+
+    function openModal(index) {
+      updateModal(index);
+      modal.classList.remove('hidden');
+      requestAnimationFrame(() => {
+        modal.classList.remove('opacity-0');
+        modal.classList.add('opacity-100');
+        modalContent.classList.remove('scale-95');
+        modalContent.classList.add('scale-100');
+      });
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+      modal.classList.remove('opacity-100');
+      modal.classList.add('opacity-0');
+      modalContent.classList.remove('scale-100');
+      modalContent.classList.add('scale-95');
+      setTimeout(() => {
+        modal.classList.add('hidden');
+        document.body.style.overflow = '';
+      }, 250);
+    }
+
+    function showPrev() {
+      const newIndex = (currentIndex - 1 + screenshotsData.length) % screenshotsData.length;
+      updateModal(newIndex);
+    }
+
+    function showNext() {
+      const newIndex = (currentIndex + 1) % screenshotsData.length;
+      updateModal(newIndex);
+    }
+
+    // Kart tıklamaları
+    document.querySelectorAll('.img-trigger, .btn-open-lightbox').forEach(el => {
+      el.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const card = el.closest('.screenshot-card');
+        const idx = parseInt(card.getAttribute('data-index') || '0', 10);
+        openModal(idx);
+      });
+    });
+
+    if (closeBtn) closeBtn.addEventListener('click', closeModal);
+    if (prevBtn) prevBtn.addEventListener('click', (e) => { e.stopPropagation(); showPrev(); });
+    if (nextBtn) nextBtn.addEventListener('click', (e) => { e.stopPropagation(); showNext(); });
+
+    // Modal dışına tıklayınca kapat
+    if (modal) {
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal || e.target.classList.contains('flex-1')) {
+          closeModal();
+        }
+      });
+    }
+
+    // Klavye kontrolleri
+    document.addEventListener('keydown', (e) => {
+      if (modal.classList.contains('hidden')) return;
+      if (e.key === 'Escape') closeModal();
+      if (e.key === 'ArrowLeft') showPrev();
+      if (e.key === 'ArrowRight') showNext();
+    });
+  }
+
+  // Sayfa yüklendiğinde ve Astro transition'larında başlat
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initGallery);
+  } else {
+    initGallery();
+  }
+  document.addEventListener('astro:page-load', initGallery);
+</script>

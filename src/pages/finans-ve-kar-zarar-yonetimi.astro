@@ -1,0 +1,180 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const pageTitle = "Finans Yönetimi, Gerçek Kâr/Zarar ve Canlı Piyasa Radarı | Stok Pratik";
+const pageDescription = "Cironun ötesine geçin: SMM maliyetleri, pazaryeri komisyonları, kargo giderleri ve vergiler sonrası net kârınızı anlık hesaplayın. Canlı piyasa radarı ile kur riskini sıfırlayın.";
+
+const features = [
+  {
+    icon: "📊",
+    title: "Gerçek Zamanlı Kar / Zarar Tablosu",
+    desc: "Satılan malın maliyeti (SMM), işletme giderleri, personel masrafları ve vergiler sonrası net işletme kârı tek ekranda.",
+    items: [
+      "Brüt kâr marjı ile net kâr marjı arasındaki farkı anlık görme",
+      "Kargo, komisyon ve paketleme masraflarını kâr hesabına dahil etme",
+      "Günlük, haftalık, aylık ve yıllık kârlılık trend raporları"
+    ]
+  },
+  {
+    icon: "📡",
+    title: "Canlı Piyasa Radarı (Döviz, Altın, Emtia, Kripto)",
+    desc: "Programın üst bandında ve canlı piyasa ekranında anlık kurları izleyin, maliyetlerinizi kur dalgalanmalarına karşı koruyun.",
+    items: [
+      "Canlı USD, EUR, Gram Altın, Gümüş ve Brent Petrol takibi",
+      "Dövizli stokların güncel kur ile anlık TL değerleme hesabı",
+      "Kurdaki ani değişimlerde liste fiyatı güncelleme bildirimleri"
+    ]
+  },
+  {
+    icon: "💧",
+    title: "Nakit Akışı (Cash Flow) ve Likidite Takibi",
+    desc: "Kasadaki nakit, bankadaki mevduat, bekleyen POS blokeleri ve vadesi yaklaşan ödemeleri tek grafikte izleyin.",
+    items: [
+      "Önümüzdeki 30 günün nakit giriş ve çıkış projeksiyonu",
+      "Kredi kartı POS blokelerinin hesaplara geçiş günleri ve valör takibi",
+      "Finansal darboğazları günler öncesinden haber veren likidite uyarısı"
+    ]
+  },
+  {
+    icon: "🎯",
+    title: "Ürün ve Kategori Bazlı Kârlılık Analizi",
+    desc: "Hangi ürünün veya hangi markanın ciro değil, gerçekten net para kazandırdığını saniyeler içinde tespit edin.",
+    items: [
+      "En çok kâr bırakan 'Yıldız Ürünler' ve atıl sermaye bağlayan ürünler",
+      "Kategori ve marka bazlı kâr marjı karşılaştırma cetveli",
+      "Zararına satan veya kâr marjı eriyen ürünlerde anında ikaz"
+    ]
+  },
+  {
+    icon: "🧾",
+    title: "KDV Dengesi ve Vergi Öngörüsü",
+    desc: "Ay sonu vergi sürprizleriyle karşılaşmamak için indirilecek KDV ve hesaplanan KDV farkını anlık izleyin.",
+    items: [
+      "Ay içinde tahakkuk edecek tahmini KDV tutarını önceden görme",
+      "Masraf ve alış faturalarının KDV avantajını anında bilançoya yansıtma",
+      "Mali müşavirinizle mutabakatı kolaylaştıran resmi KDV icmal tablosu"
+    ]
+  },
+  {
+    icon: "📱",
+    title: "Tek Tıkla Finansal Özet ve Yönetici Panosu",
+    desc: "İster cep telefonunuzdan ister bilgisayarınızdan şirketin finansal röntgenini tek tıkla çekin.",
+    items: [
+      "Patron Yönetici Özeti: Bugün ne kadar sattık, ne kadar tahsil ettik, kârımız ne?",
+      "Grafiksel göstergelerle anlaşılır, karmaşadan uzak yönetim kokpiti",
+      "Yetkilendirilmiş yöneticilere özel şifreli finansal görünüm"
+    ]
+  }
+];
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <main class="bg-slate-50 text-slate-800 antialiased min-h-screen">
+    
+    <!-- 1. HERO SECTION (Emerald & Slate Theme) -->
+    <section class="relative overflow-hidden bg-gradient-to-b from-slate-900 via-emerald-950/40 to-slate-900 py-20 sm:py-24 text-white border-b border-emerald-900/40">
+      <div class="absolute inset-0 bg-[radial-gradient(#10b981_1px,transparent_1px)] [background-size:24px_24px] opacity-20"></div>
+      
+      <div class="container mx-auto px-4 lg:px-8 relative z-10 max-w-5xl text-center">
+        <!-- Badge -->
+        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500/10 border border-emerald-400/30 text-emerald-300 text-xs sm:text-sm font-semibold mb-6 backdrop-blur-md">
+          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+          Temel Ticaret • Finansal Yönetim & Kar/Zarar Analizi
+        </div>
+
+        <!-- Main Heading -->
+        <h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-tight mb-6">
+          Sadece Cironuzu Değil, Cebinizde Kalan <br/>
+          <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-300 to-white">
+            Gerçek Net Kârınızı Anlık Görün!
+          </span>
+        </h1>
+
+        <!-- Subtitle -->
+        <p class="text-base sm:text-xl text-slate-300 max-w-3xl mx-auto mb-10 leading-relaxed font-normal">
+          Çok satış yapmak her zaman kâr etmek değildir. Stok Pratik Finans Yönetimi ile alış maliyetlerinizi, işletme giderlerinizi, pazaryeri kesintilerini ve döviz kurlarını tek ekranda birleştirerek gerçek net kârınızı saniyesi saniyesine izleyin.
+        </p>
+
+        <!-- CTA Buttons -->
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <a href="https://erp-eticaret.stokpratik.com.tr/giris" class="w-full sm:w-auto px-8 py-4 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-extrabold rounded-xl shadow-lg shadow-emerald-500/30 transition-all transform hover:-translate-y-0.5 text-center text-base">
+            🚀 Hemen Giriş Yap & Ücretsiz Başla
+          </a>
+          <a href="/firma-kaydi" class="w-full sm:w-auto px-8 py-4 bg-white/10 hover:bg-white/20 text-white border border-white/20 font-bold rounded-xl transition-all text-center text-base backdrop-blur-sm">
+            🎁 14 Gün Ücretsiz Deneyin
+          </a>
+        </div>
+
+        <div class="mt-8 flex items-center justify-center gap-6 text-xs text-slate-400">
+          <span class="flex items-center gap-1.5">✓ Net Kâr / Zarar Tablosu</span>
+          <span class="flex items-center gap-1.5">✓ Canlı Döviz ve Piyasa Radarı</span>
+          <span class="flex items-center gap-1.5">✓ Gelecek Nakit Akışı Projeksiyonu</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. ÖNE ÇIKAN KABİLİYETLER (6 KART) -->
+    <section class="py-20 bg-slate-50">
+      <div class="container mx-auto px-4 lg:px-8 max-w-6xl">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <span class="text-emerald-600 font-bold uppercase tracking-wider text-xs">Finansal Netlik</span>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-2">
+            İşletmenizin Finansal Röntgende Tam Kontrol
+          </h2>
+          <p class="text-slate-600 mt-3 text-base sm:text-lg">
+            Görünmeyen giderler, unutulan komisyonlar ve kur dalgalanmaları kârınızı eritmesin. Tüm finansal akışı anlık yönetin.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {features.map((item) => (
+            <div class="bg-white rounded-2xl p-7 border border-slate-200/80 shadow-sm hover:shadow-xl hover:border-emerald-300 transition-all duration-300 flex flex-col justify-between">
+              <div>
+                <div class="w-12 h-12 rounded-xl bg-emerald-50 border border-emerald-100 flex items-center justify-center text-2xl mb-5">
+                  {item.icon}
+                </div>
+                <h3 class="text-xl font-bold text-slate-900 mb-3">{item.title}</h3>
+                <p class="text-slate-600 text-sm leading-relaxed mb-6">{item.desc}</p>
+              </div>
+              <ul class="space-y-2.5 pt-4 border-t border-slate-100 text-xs text-slate-700 font-medium">
+                {item.items.map((sub) => (
+                  <li class="flex items-start gap-2">
+                    <span class="text-emerald-600 font-bold">✓</span>
+                    <span>{sub}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. ALT KAPANIŞ ÇAĞRISI (BOTTOM CTA) -->
+    <section class="py-20 bg-gradient-to-br from-slate-950 via-emerald-950/60 to-slate-900 text-white text-center relative overflow-hidden">
+      <div class="absolute inset-0 bg-[radial-gradient(#10b981_1px,transparent_1px)] [background-size:20px_20px] opacity-20"></div>
+      
+      <div class="container mx-auto px-4 lg:px-8 relative z-10 max-w-3xl">
+        <span class="inline-block px-4 py-1.5 rounded-full bg-emerald-500/20 border border-emerald-400/30 text-emerald-300 text-xs font-bold uppercase tracking-wider mb-4">
+          Finansal Pusula • Sıfır Risk
+        </span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold mb-4">
+          İşletmenizin Finansal Pusulasını Elinize Alın!
+        </h2>
+        <p class="text-slate-300 text-base sm:text-lg mb-8 leading-relaxed">
+          Finansal tablolarınızı ve gerçek kârınızı görmek için hemen ücretsiz hesabınızı oluşturun, geleceğinizi güvenle planlayın.
+        </p>
+
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <a href="https://erp-eticaret.stokpratik.com.tr/giris" class="w-full sm:w-auto px-8 py-4 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-extrabold rounded-xl shadow-xl shadow-emerald-500/30 transition-all text-center">
+            🚀 Hemen Giriş Yapın & Başlayın
+          </a>
+          <a href="/firma-kaydi" class="w-full sm:w-auto px-8 py-4 bg-white/10 hover:bg-white/20 text-white border border-white/20 font-bold rounded-xl transition-all text-center">
+            🎁 14 Gün Ücretsiz Deneyin
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</BaseLayout>

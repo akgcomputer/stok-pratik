@@ -1,0 +1,286 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const pageTitle = "Ön Muhasebe ve Cari Hesap Yönetimi Programı | Stok Pratik";
+const pageDescription = "Müşteri ve tedarikçi borç/alacak takibi, çoklu döviz bakiye, açık hesap risk limiti, vade yaşlandırma ve WhatsApp PDF cari ekstre gönderimi. Hemen ücretsiz deneyin!";
+
+const features = [
+  {
+    icon: "👤",
+    title: "360° Müşteri, Tedarikçi & Potansiyel Cari Kartları",
+    desc: "Vergi Dairesi, VKN/TCKN, e-Fatura mükellefiyet durumu, iletişim, adres ve özel fiyat grubu tanımlama tek ekranda.",
+    items: [
+      "Tek tıkla resmi GİB e-Fatura mükellefi sorgulama",
+      "Müşteriye özel iskonto ve toptan/perakende fiyat grubu atama",
+      "Geçmiş sipariş, alış/satış faturaları ve tahsilat dökümü"
+    ]
+  },
+  {
+    icon: "💱",
+    title: "Çoklu Döviz (TL, USD, EUR, GBP) Bakiye Takibi",
+    desc: "Dövizle çalışan müşterileriniz ve tedarikçileriniz için kur farkı karmaşası olmadan döviz bazlı alacak ve borç izleme.",
+    items: [
+      "Cari bazında bağımsız para birimi tanımlama",
+      "Güncel TCMB döviz kurlarıyla TL karşılığı anlık değerleme",
+      "Dövizli işlemler için kur farkı hesaplama ve raporlama"
+    ]
+  },
+  {
+    icon: "🛡️",
+    title: "Açık Hesap Risk Limiti ve Kredi Kontrolü",
+    desc: "Her cariye özel borç/risk limiti belirleyin; limit aşıldığında satış ve fatura ekranında otomatik uyarı mekanizması devreye girsin.",
+    items: [
+      "Maksimum açık hesap kredi limiti ve vade günü kısıtlaması",
+      "Risk limiti aşıldığında satış temsilcisini anında kilitleme veya onay sorma",
+      "Karşılıksız çek veya protestolu senet riskini anında görme"
+    ]
+  },
+  {
+    icon: "📱",
+    title: "Tek Tıkla PDF Cari Ekstre & WhatsApp Paylaşımı",
+    desc: "İstenilen tarih aralığında detaylı (ürün kalemli veya özet) PDF Cari Ekstre oluşturup müşteriye WhatsApp veya E-posta ile gönderin.",
+    items: [
+      "Kurumsal şirket logonuz ve banka IBAN'larınızla profesyonel A4 PDF",
+      "Müşterinin cep telefonuna doğrudan açılabilir WhatsApp ekstre linki",
+      "Tarih, evrak no, borç, alacak ve bakiye kırılımlı şeffaf mutabakat"
+    ]
+  },
+  {
+    icon: "⏳",
+    title: "Cari Yaşlandırma ve Tahsilat Hatırlatıcı",
+    desc: "30-60-90+ gün geciken açık hesap alacakları tek ekranda renk kodlarıyla listeyin, tahsilat performansınızı maksimuma çıkarın.",
+    items: [
+      "Vadesi geçen ve yaklaşan alacakların otomatik yaşlandırma cetveli",
+      "Geciken ödemeler için otomatik SMS ve WhatsApp hatırlatma şablonu",
+      "Tahsilat sorumlusu ve plasiyer bazlı performans takibi"
+    ]
+  },
+  {
+    icon: "🔗",
+    title: "CariNET B2B ve Linkle Tahsilat Entegrasyonu",
+    desc: "Müşterinizin kendi ekstresini online görmesini sağlayın veya tek tıkla güvenli ödeme linki gönderip kredi kartıyla tahsil edin.",
+    items: [
+      "Müşteriye özel şifreli online ekstre ve sipariş görüntüleme portalı",
+      "Tek tıkla SMS/WhatsApp ile kredi kartı ödeme linki (3D Secure)",
+      "Tahsilat yapıldığı anda cari bakiyenin otomatik kapanması"
+    ]
+  }
+];
+
+const faqs = [
+  {
+    q: "Cari hesaplarımı Excel'den toplu aktarabilir miyim?",
+    a: "Evet. Stok Pratik'in hazır Excel şablonu sayesinde binlerce müşteri ve tedarikçi kaydınızı, açılış bakiyeleriyle birlikte saniyeler içinde içeri aktarabilirsiniz."
+  },
+  {
+    q: "Kullanmaya başlamak ücretli mi?",
+    a: "Hayır. Hemen 30 saniye içinde ücretsiz hesap oluşturarak Temel Ticaret ve Cari modüllerini 14 gün boyunca kredi kartsız deneyimleyebilirsiniz."
+  },
+  {
+    q: "Müşterilerim kendi ekstrelerini cep telefonundan görebilir mi?",
+    a: "Evet. Tek tıkla oluşturduğunuz WhatsApp linki veya CariNET portalı üzerinden müşterileriniz güncel hesap özetlerini şeffaf şekilde anlık olarak inceleyebilir."
+  },
+  {
+    q: "Dövizli carilerde kur farkı nasıl hesaplanır?",
+    a: "Fatura kesim tarihindeki kur ile tahsilat tarihindeki kur farkını sistem otomatik ayrıştırır; cari bakiyesinde kur farkı faturası ihtiyacını anında raporlar."
+  }
+];
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <main class="bg-slate-50 text-slate-800 antialiased min-h-screen">
+    
+    <!-- 1. HERO SECTION (Indigo / Blue Theme) -->
+    <section class="relative overflow-hidden bg-gradient-to-b from-slate-900 via-indigo-950 to-slate-900 py-20 sm:py-24 text-white border-b border-indigo-900/50">
+      <div class="absolute inset-0 bg-[radial-gradient(#6366f1_1px,transparent_1px)] [background-size:24px_24px] opacity-25"></div>
+      
+      <div class="container mx-auto px-4 lg:px-8 relative z-10 max-w-5xl text-center">
+        <!-- Badge -->
+        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-500/10 border border-indigo-400/30 text-indigo-300 text-xs sm:text-sm font-semibold mb-6 backdrop-blur-md">
+          <span class="w-2 h-2 rounded-full bg-indigo-400 animate-pulse"></span>
+          Temel Ticaret • Ön Muhasebe & Cari Hesap Yönetimi
+        </div>
+
+        <!-- Main Heading -->
+        <h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-tight mb-6">
+          Veresiye Defterlerini ve Karmaşık Excel'i Unutun: <br/>
+          <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-sky-300 to-white">
+            Müşteri ve Tedarikçi Bakiyeleriniz Cebinizde!
+          </span>
+        </h1>
+
+        <!-- Subtitle -->
+        <p class="text-base sm:text-xl text-slate-300 max-w-3xl mx-auto mb-10 leading-relaxed font-normal">
+          Kimden ne kadar alacağınız var, hangi tedarikçiye ne zaman ödeme yapılacak, kimin vadesi geçti? Stok Pratik Ön Muhasebe ve Cari Hesap modülü ile tüm alacak-verecek takibinizi bulutta, sıfır hata ile yönetin.
+        </p>
+
+        <!-- CTA Buttons -->
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <a href="https://erp-eticaret.stokpratik.com.tr/giris" class="w-full sm:w-auto px-8 py-4 bg-indigo-600 hover:bg-indigo-500 text-white font-bold rounded-xl shadow-lg shadow-indigo-600/30 transition-all transform hover:-translate-y-0.5 text-center text-base">
+            🚀 Hemen Giriş Yap & Ücretsiz Başla
+          </a>
+          <a href="/firma-kaydi" class="w-full sm:w-auto px-8 py-4 bg-white/10 hover:bg-white/20 text-white border border-white/20 font-bold rounded-xl transition-all text-center text-base backdrop-blur-sm">
+            🎁 14 Gün Ücretsiz Deneyin
+          </a>
+        </div>
+
+        <div class="mt-8 flex items-center justify-center gap-6 text-xs text-slate-400">
+          <span class="flex items-center gap-1.5">✓ Kredi Kartı Gerekmez</span>
+          <span class="flex items-center gap-1.5">✓ 30 Saniyede Kurulumsuz Başla</span>
+          <span class="flex items-center gap-1.5">✓ Bulut Yedekleme Dahil</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. SORUN VS ÇÖZÜM BÖLÜMÜ -->
+    <section class="py-16 bg-white border-b border-slate-200">
+      <div class="container mx-auto px-4 lg:px-8 max-w-5xl">
+        <div class="text-center mb-12">
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900">
+            Geleneksel Veresiye Takibi vs. Stok Pratik Çözümü
+          </h2>
+          <p class="text-slate-600 mt-2">Finansal kör noktalardan kurtulun, nakit akışınızı kontrol altına alın.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <!-- Sorun Kutusu -->
+          <div class="p-6 rounded-2xl bg-rose-50 border border-rose-200">
+            <div class="flex items-center gap-3 mb-4">
+              <span class="text-2xl">❌</span>
+              <h3 class="text-lg font-bold text-rose-900">Eski Yöntemlerin Tehlikeleri</h3>
+            </div>
+            <ul class="space-y-3 text-sm text-rose-800">
+              <li class="flex items-start gap-2">
+                <span>•</span>
+                <span>Unutulan açık hesaplar yüzünden ay sonunda buharlaşan alacaklar.</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span>•</span>
+                <span>Tedarikçi ödeme tarihleri karışınca yaşanan ticari itibar kaybı ve cezalar.</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span>•</span>
+                <span>Müşteriye bakiye hatırlatırken yaşanan anlaşmazlıklar ve kanıtsız ekstreler.</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span>•</span>
+                <span>Dövizli borçlarda değişen kurları hesaplayamama ve zarar etme riski.</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Çözüm Kutusu -->
+          <div class="p-6 rounded-2xl bg-emerald-50 border border-emerald-200">
+            <div class="flex items-center gap-3 mb-4">
+              <span class="text-2xl">✅</span>
+              <h3 class="text-lg font-bold text-emerald-900">Stok Pratik ile Akıllı Çözüm</h3>
+            </div>
+            <ul class="space-y-3 text-sm text-emerald-800">
+              <li class="flex items-start gap-2">
+                <span>•</span>
+                <span>360° Cari Kartları ile tüm alacak/borç dengesi saniyesinde cebinizde.</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span>•</span>
+                <span>Vade yaşlandırma ve otomatik hatırlatıcılar ile geciken tek bir kuruş kalmaz.</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span>•</span>
+                <span>Tek tıkla WhatsApp üzerinden resmi, şeffaf ve profesyonel PDF Cari Ekstre iletimi.</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span>•</span>
+                <span>Çoklu döviz motoru ile kur farklarını otomatik takip eden akıllı altyapı.</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. ÖNE ÇIKAN KABİLİYETLER (6 KART) -->
+    <section id="ozellikler" class="py-20 bg-slate-50">
+      <div class="container mx-auto px-4 lg:px-8 max-w-6xl">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <span class="text-indigo-600 font-bold uppercase tracking-wider text-xs">Uçtan Uca Yetenekler</span>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-2">
+            Ön Muhasebe ve Cari Yönetiminde İhtiyacınız Olan Her Şey
+          </h2>
+          <p class="text-slate-600 mt-3 text-base sm:text-lg">
+            Karmaşık muhasebe terimlerini bir kenara bırakın. Esnaf ve KOBİ'lerin dilinden anlayan, pratik ve hatasız yönetim araçları.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {features.map((item, idx) => (
+            <div class="bg-white rounded-2xl p-7 border border-slate-200/80 shadow-sm hover:shadow-xl hover:border-indigo-300 transition-all duration-300 flex flex-col justify-between">
+              <div>
+                <div class="w-12 h-12 rounded-xl bg-indigo-50 border border-indigo-100 flex items-center justify-center text-2xl mb-5">
+                  {item.icon}
+                </div>
+                <h3 class="text-xl font-bold text-slate-900 mb-3">{item.title}</h3>
+                <p class="text-slate-600 text-sm leading-relaxed mb-6">{item.desc}</p>
+              </div>
+              <ul class="space-y-2.5 pt-4 border-t border-slate-100 text-xs text-slate-700 font-medium">
+                {item.items.map((sub) => (
+                  <li class="flex items-start gap-2">
+                    <span class="text-indigo-500 font-bold">✓</span>
+                    <span>{sub}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. SSS BÖLÜMÜ -->
+    <section class="py-16 bg-white border-t border-slate-200">
+      <div class="container mx-auto px-4 lg:px-8 max-w-4xl">
+        <div class="text-center mb-12">
+          <span class="text-indigo-600 font-bold uppercase tracking-wider text-xs">Merak Edilenler</span>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 mt-2">
+            Sıkça Sorulan Sorular
+          </h2>
+        </div>
+
+        <div class="space-y-4">
+          {faqs.map((faq) => (
+            <div class="p-6 rounded-2xl bg-slate-50 border border-slate-200">
+              <h3 class="text-base sm:text-lg font-bold text-slate-900 mb-2">{faq.q}</h3>
+              <p class="text-slate-600 text-sm leading-relaxed">{faq.a}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. ALT KAPANIŞ ÇAĞRISI (BOTTOM CTA) -->
+    <section class="py-20 bg-gradient-to-br from-indigo-900 via-slate-900 to-indigo-950 text-white text-center relative overflow-hidden">
+      <div class="absolute inset-0 bg-[radial-gradient(#6366f1_1px,transparent_1px)] [background-size:20px_20px] opacity-20"></div>
+      
+      <div class="container mx-auto px-4 lg:px-8 relative z-10 max-w-3xl">
+        <span class="inline-block px-4 py-1.5 rounded-full bg-indigo-500/20 border border-indigo-400/30 text-indigo-300 text-xs font-bold uppercase tracking-wider mb-4">
+          Sıfır Risk • Kolay Başlangıç
+        </span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold mb-4">
+          Alacaklarınızı Tahsil Etmeyi Şansa Bırakmayın!
+        </h2>
+        <p class="text-slate-300 text-base sm:text-lg mb-8 leading-relaxed">
+          Kurulum yok, kredi kartı gerekmez. 30 saniyede hesabınızı açın ve cari hesaplarınızı hemen buluttan yönetmeye başlayın.
+        </p>
+
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <a href="https://erp-eticaret.stokpratik.com.tr/giris" class="w-full sm:w-auto px-8 py-4 bg-indigo-500 hover:bg-indigo-400 text-white font-bold rounded-xl shadow-xl shadow-indigo-500/30 transition-all text-center">
+            🚀 Hemen Giriş Yapın & Başlayın
+          </a>
+          <a href="/firma-kaydi" class="w-full sm:w-auto px-8 py-4 bg-white/10 hover:bg-white/20 text-white border border-white/20 font-bold rounded-xl transition-all text-center">
+            🎁 14 Gün Ücretsiz Hesap Açın
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</BaseLayout>

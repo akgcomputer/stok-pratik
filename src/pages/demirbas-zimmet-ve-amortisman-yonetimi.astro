@@ -1,0 +1,180 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const pageTitle = "Demirbaş, Personel Zimmet ve VUK Amortisman Yönetimi | Stok Pratik";
+const pageDescription = "Şirket varlıklarını personele zimmetleyin, resmi A4 zimmet formu yazdırın. VUK uyumlu Normal, Azalan Bakiyeler ve Kıst amortisman hesaplayın. Hemen ücretsiz deneyin!";
+
+const features = [
+  {
+    icon: "🧮",
+    title: "VUK Uyumlu Otomatik Amortisman Hesaplama",
+    desc: "Mevzuata tam uyumlu Normal, Azalan Bakiyeler ve binek araçlar için Kıst Amortisman tabloları.",
+    items: [
+      "Normal (Eşit Paylı) ve Azalan Bakiyeler (%50 Hızlandırılmış) amortisman",
+      "Binek araçlar için VUK Md. 320 Kıst Amortisman otomatik ay hesabı",
+      "Yıllara göre faydalı ömür, yıllık ayrılan pay ve net defter değeri cetveli"
+    ]
+  },
+  {
+    icon: "📋",
+    title: "Personel Zimmet Takibi & Resmi A4 Zimmet Formu",
+    desc: "Laptop, cep telefonu, el terminali ve şirket araçlarını personele zimmetleyin; ıslak imzalı form üretin.",
+    items: [
+      "Teslim anında tek tıkla ıslak imzaya hazır Resmi Personel Zimmet Tutanağı",
+      "Zimmet devir geçmişi: Hangi cihaz daha önce kimdeydi, ne zaman teslim edildi?",
+      "İşten ayrılan personelin üzerindeki tüm aktif zimmetleri anında listeleme"
+    ]
+  },
+  {
+    icon: "🏷️",
+    title: "Barkodlu & QR Kodlu Demirbaş Etiketleme",
+    desc: "Her demirbaşa özel envanter kodu ve QR barkod basarak yıllık demirbaş sayımlarını dakikalara indirin.",
+    items: [
+      "Tek tıkla dayanıklı termal etiket ve demirbaş barkodu yazdırma",
+      "Mobil telefon kamerasıyla barkodu okutup demirbaş kartını anında açma",
+      "Oda, departman veya kat bazlı pratik demirbaş sayım kontrolü"
+    ]
+  },
+  {
+    icon: "🚗",
+    title: "Bakım, Onarım, Kasko, Sigorta ve Muayene Takvimi",
+    desc: "Şirket araçlarının ve makinelerin kritik tarihlerini unutmayın; yaklaşan sürelerde otomatik uyarı alın.",
+    items: [
+      "TÜVTÜRK muayene, Trafik Sigortası ve Kasko bitiş tarihi uyarıları",
+      "Makinelerin periyodik bakım aralıkları ve parça değişim kayıtları",
+      "Yapılan bakım ve tamir masraflarını demirbaş kartına maliyet olarak işleme"
+    ]
+  },
+  {
+    icon: "🧾",
+    title: "Alış Faturasından Doğrudan Demirbaş Üretme",
+    desc: "Tedarikçiden gelen sabit kıymet alış faturasını tek tıkla demirbaş envanterine dönüştürün.",
+    items: [
+      "Alış tarihi, fatura no, KDV tutarı ve tedarikçi bilgilerini otomatik çekme",
+      "Satın alma bedelini başlangıç maliyeti olarak sisteme kaydetme",
+      "Mükerrer veri girişini sıfırlayan akıllı ERP entegrasyonu"
+    ]
+  },
+  {
+    icon: "📉",
+    title: "Net Defter Değeri & Hurda/Satış Çıkış Raporu",
+    desc: "Şirketin reel sabit kıymet gücünü, birikmiş amortismanını ve kalan faydalı ömürlerini anlık izleyin.",
+    items: [
+      "Güncel Net Defter Değeri (Maliyet - Birikmiş Amortisman) raporu",
+      "Ömrünü tamamlayan varlıklar için Hurdaya Ayırma veya Satış Çıkışı kaydı",
+      "Satış yapıldığında kâr/zarar farkının otomatik muhasebeleştirilmesi"
+    ]
+  }
+];
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <main class="bg-slate-50 text-slate-800 antialiased min-h-screen">
+    
+    <!-- 1. HERO SECTION (Rose & Graphite Theme) -->
+    <section class="relative overflow-hidden bg-gradient-to-b from-slate-900 via-rose-950/30 to-slate-900 py-20 sm:py-24 text-white border-b border-rose-900/40">
+      <div class="absolute inset-0 bg-[radial-gradient(#f43f5e_1px,transparent_1px)] [background-size:24px_24px] opacity-20"></div>
+      
+      <div class="container mx-auto px-4 lg:px-8 relative z-10 max-w-5xl text-center">
+        <!-- Badge -->
+        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-rose-500/10 border border-rose-400/30 text-rose-300 text-xs sm:text-sm font-semibold mb-6 backdrop-blur-md">
+          <span class="w-2 h-2 rounded-full bg-rose-400 animate-pulse"></span>
+          Temel Ticaret • Demirbaş, Zimmet & VUK Amortisman Yönetimi
+        </div>
+
+        <!-- Main Heading -->
+        <h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-tight mb-6">
+          Şirketinizin Varlıklarını Personele Zimmetleyin, <br/>
+          <span class="text-transparent bg-clip-text bg-gradient-to-r from-rose-400 via-pink-300 to-white">
+            VUK Uyumlu Amortismanı Otomatik Hesaplayın!
+          </span>
+        </h1>
+
+        <!-- Subtitle -->
+        <p class="text-base sm:text-xl text-slate-300 max-w-3xl mx-auto mb-10 leading-relaxed font-normal">
+          Bilgisayarlar kimde zimmetli, hangi aracın sigortası veya muayenesi yaklaşıyor, hangi makinenin ne kadar amortisman payı kaldı? Stok Pratik Demirbaş modülü ile şirket varlıklarınızı kuruşu kuruşuna koruyun.
+        </p>
+
+        <!-- CTA Buttons -->
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <a href="https://erp-eticaret.stokpratik.com.tr/giris" class="w-full sm:w-auto px-8 py-4 bg-rose-600 hover:bg-rose-500 text-white font-extrabold rounded-xl shadow-lg shadow-rose-600/30 transition-all transform hover:-translate-y-0.5 text-center text-base">
+            🚀 Hemen Giriş Yap & Ücretsiz Başla
+          </a>
+          <a href="/firma-kaydi" class="w-full sm:w-auto px-8 py-4 bg-white/10 hover:bg-white/20 text-white border border-white/20 font-bold rounded-xl transition-all text-center text-base backdrop-blur-sm">
+            🎁 14 Gün Ücretsiz Deneyin
+          </a>
+        </div>
+
+        <div class="mt-8 flex items-center justify-center gap-6 text-xs text-slate-400">
+          <span class="flex items-center gap-1.5">✓ VUK Uyumlu Kıst & Azalan Amortisman</span>
+          <span class="flex items-center gap-1.5">✓ Resmi Zimmet Tutanağı Çıktısı</span>
+          <span class="flex items-center gap-1.5">✓ Araç Muayene & Kasko Takvimi</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. ÖNE ÇIKAN KABİLİYETLER (6 KART) -->
+    <section class="py-20 bg-slate-50">
+      <div class="container mx-auto px-4 lg:px-8 max-w-6xl">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <span class="text-rose-600 font-bold uppercase tracking-wider text-xs">Varlık Güvenliği</span>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-2">
+            Demirbaş ve Sabit Kıymetlerde Sıfır Hata
+          </h2>
+          <p class="text-slate-600 mt-3 text-base sm:text-lg">
+            Personel zimmetlerinden amortisman defterine, muayene takviminden hurda çıkışına kadar eksiksiz kontrol.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {features.map((item) => (
+            <div class="bg-white rounded-2xl p-7 border border-slate-200/80 shadow-sm hover:shadow-xl hover:border-rose-300 transition-all duration-300 flex flex-col justify-between">
+              <div>
+                <div class="w-12 h-12 rounded-xl bg-rose-50 border border-rose-100 flex items-center justify-center text-2xl mb-5">
+                  {item.icon}
+                </div>
+                <h3 class="text-xl font-bold text-slate-900 mb-3">{item.title}</h3>
+                <p class="text-slate-600 text-sm leading-relaxed mb-6">{item.desc}</p>
+              </div>
+              <ul class="space-y-2.5 pt-4 border-t border-slate-100 text-xs text-slate-700 font-medium">
+                {item.items.map((sub) => (
+                  <li class="flex items-start gap-2">
+                    <span class="text-rose-600 font-bold">✓</span>
+                    <span>{sub}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. ALT KAPANIŞ ÇAĞRISI (BOTTOM CTA) -->
+    <section class="py-20 bg-gradient-to-br from-slate-950 via-rose-950/50 to-slate-900 text-white text-center relative overflow-hidden">
+      <div class="absolute inset-0 bg-[radial-gradient(#f43f5e_1px,transparent_1px)] [background-size:20px_20px] opacity-20"></div>
+      
+      <div class="container mx-auto px-4 lg:px-8 relative z-10 max-w-3xl">
+        <span class="inline-block px-4 py-1.5 rounded-full bg-rose-500/20 border border-rose-400/30 text-rose-300 text-xs font-bold uppercase tracking-wider mb-4">
+          Resmi Mevzuat Uyumlu
+        </span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold mb-4">
+          Şirket Varlıklarınızı ve Zimmetlerinizi Güvenceye Alın!
+        </h2>
+        <p class="text-slate-300 text-base sm:text-lg mb-8 leading-relaxed">
+          Hemen ücretsiz hesap açın, demirbaşlarınızı ve personel zimmetlerinizi profesyonelce yönetmeye bugün başlayın.
+        </p>
+
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <a href="https://erp-eticaret.stokpratik.com.tr/giris" class="w-full sm:w-auto px-8 py-4 bg-rose-600 hover:bg-rose-500 text-white font-extrabold rounded-xl shadow-xl shadow-rose-600/30 transition-all text-center">
+            🚀 Hemen Giriş Yapın & Başlayın
+          </a>
+          <a href="/firma-kaydi" class="w-full sm:w-auto px-8 py-4 bg-white/10 hover:bg-white/20 text-white border border-white/20 font-bold rounded-xl transition-all text-center">
+            🎁 14 Gün Ücretsiz Deneyin
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</BaseLayout>

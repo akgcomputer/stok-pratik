@@ -1,0 +1,217 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const pageTitle = "Yapay Zeka ile Fiş Okuma (AI OCR) ve Masraf Yönetimi | Stok Pratik";
+const pageDescription = "Fişin fotoğrafını çekin, yapay zeka saniyeler içinde firma adı, tarih, KDV ve tutarı okuyup muhasebeleştirsin. Bulut fiş arşivi ve araç masraf takibi. Hemen ücretsiz deneyin!";
+
+const steps = [
+  {
+    step: "01",
+    icon: "📸",
+    title: "Fotoğraf Çek veya Yükle",
+    desc: "Cep telefonunuzun kamerasıyla yazar kasa fişinin fotoğrafını anında çekin veya galeriden/PDF olarak sisteme yükleyin."
+  },
+  {
+    step: "02",
+    icon: "🤖",
+    title: "Yapay Zeka (AI OCR) Analizi",
+    desc: "Stok Pratik AI motoru saniyeler içinde Satıcı Unvanı, Tarih, Fiş No, KDV Oranı/Tutarı ve Genel Toplamı hatasız ayrıştırır."
+  },
+  {
+    step: "03",
+    icon: "✨",
+    title: "Tek Tıkla Onay & Vergi Avantajı",
+    desc: "Masraf kategorisi (Akaryakıt, Yemek, Kargo vb.) otomatik belirlenir; indirilecek KDV doğrudan şirketinizin vergi avantajına eklenir!"
+  }
+];
+
+const features = [
+  {
+    icon: "💰",
+    title: "Kayıp Fişlerden Doğan Vergi Kaybına Son",
+    desc: "İşletmelerin en büyük gizli zararı ceplerde kaybolan fişlerdir. Anında fotoğrafla kayıt altına alarak KDV ve vergi matrahınızı koruyun.",
+    items: [
+      "Ay sonunda kaybolan fiş karmaşasını ve vergi ziyanını sıfırlama",
+      "KDV indirimini son kuruşuna kadar resmi kayıtlara geçirme",
+      "Personelin cepten yaptığı harcamaları anında onaylama"
+    ]
+  },
+  {
+    icon: "🚗",
+    title: "Detaylı Masraf Kategorileri & Şube/Plaka Eşleştirme",
+    desc: "Giderleri sadece kaydetmekle kalmayın; hangi şubeye veya hangi şirket aracına ait olduğunu kuruşu kuruşuna ayırın.",
+    items: [
+      "Kira, Elektrik, Akaryakıt, Yemek, Kargo, Reklam ve Bakım kategorileri",
+      "Araç plakası bazlı akaryakıt ve servis harcaması takibi",
+      "Şube ve departman bazlı masraf bütçe karşılaştırması"
+    ]
+  },
+  {
+    icon: "🔁",
+    title: "Tekrarlayan (Periyodik) Gider Takibi",
+    desc: "Kira, internet, yazılım aboneliği ve sigorta gibi her ay düzenli tekrarlayan giderleri otomatik oluşturun.",
+    items: [
+      "Aylık veya yıllık periyotlarla otomatik masraf kaydı üretme",
+      "Vadesi gelen periyodik ödemeler için önceden hatırlatma bildirimi",
+      "Gelecek ayların sabit gider projeksiyonunu tek tıkla görme"
+    ]
+  },
+  {
+    icon: "☁️",
+    title: "Dijital Fiş Arşivi (Cloudflare R2 Saklama)",
+    desc: "Okutulan her fişin yüksek çözünürlüklü orijinal fotoğrafı masraf kaydıyla eşleşerek bulutta ömür boyu saklanır.",
+    items: [
+      "Solan termal yazar kasa fişlerinin silinme riskine karşı dijital kalkan",
+      "Mali müşavirinizin tek tıkla tüm fiş fotoğraflarını inceleyebilmesi",
+      "Vergi denetimlerinde saniyeler içinde kanıtlayıcı evraka ulaşma"
+    ]
+  },
+  {
+    icon: "💳",
+    title: "Ödenmiş / Ödenecek Gider Takibi",
+    desc: "Nakit/kredi kartıyla anında ödenen fişler ile daha sonra tedarikçiye ödenecek gider faturalarını ayrı yönetin.",
+    items: [
+      "Kasa veya şirket kredi kartından anında düşen peşin masraflar",
+      "Vadeli gider faturalarının cari borç kaydına otomatik aktarımı",
+      "Hangi personele ne kadar masraf iadesi yapılacağını listeleme"
+    ]
+  }
+];
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <main class="bg-slate-50 text-slate-800 antialiased min-h-screen">
+    
+    <!-- 1. HERO SECTION (Purple & Violet Theme) -->
+    <section class="relative overflow-hidden bg-gradient-to-b from-slate-900 via-purple-950/40 to-slate-900 py-20 sm:py-24 text-white border-b border-purple-900/40">
+      <div class="absolute inset-0 bg-[radial-gradient(#a855f7_1px,transparent_1px)] [background-size:24px_24px] opacity-20"></div>
+      
+      <div class="container mx-auto px-4 lg:px-8 relative z-10 max-w-5xl text-center">
+        <!-- Badge -->
+        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-500/10 border border-purple-400/30 text-purple-300 text-xs sm:text-sm font-semibold mb-6 backdrop-blur-md">
+          <span class="w-2 h-2 rounded-full bg-purple-400 animate-pulse"></span>
+          Temel Ticaret • Yapay Zeka Destekli Masraf & Fiş Yönetimi
+        </div>
+
+        <!-- Main Heading -->
+        <h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-tight mb-6">
+          Fişin Fotoğrafını Çekin, Yapay Zeka <br/>
+          <span class="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-fuchsia-300 to-white">
+            Saniyeler İçinde Masrafı Kaydetsin!
+          </span>
+        </h1>
+
+        <!-- Subtitle -->
+        <p class="text-base sm:text-xl text-slate-300 max-w-3xl mx-auto mb-10 leading-relaxed font-normal">
+          Ceplerde kaybolan akaryakıt, yemek, kargo ve market fişlerine son! Stok Pratik'in yerleşik Yapay Zeka (AI OCR) motoru ile fişin fotoğrafını yükleyin; firma adını, tarihi, fiş numarasını, KDV oranını ve tutarını otomatik okuyup muhasebeleştirsin.
+        </p>
+
+        <!-- CTA Buttons -->
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <a href="https://erp-eticaret.stokpratik.com.tr/giris" class="w-full sm:w-auto px-8 py-4 bg-purple-600 hover:bg-purple-500 text-white font-extrabold rounded-xl shadow-lg shadow-purple-600/30 transition-all transform hover:-translate-y-0.5 text-center text-base">
+            📸 Hemen Giriş Yap & Fişini Okut
+          </a>
+          <a href="/firma-kaydi" class="w-full sm:w-auto px-8 py-4 bg-white/10 hover:bg-white/20 text-white border border-white/20 font-bold rounded-xl transition-all text-center text-base backdrop-blur-sm">
+            🎁 14 Gün Ücretsiz Deneyin
+          </a>
+        </div>
+
+        <div class="mt-8 flex items-center justify-center gap-6 text-xs text-slate-400">
+          <span class="flex items-center gap-1.5">✓ Yapay Zeka (AI OCR)</span>
+          <span class="flex items-center gap-1.5">✓ Otomatik KDV Ayrıştırma</span>
+          <span class="flex items-center gap-1.5">✓ Dijital Bulut Fiş Arşivi</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. 3 ADIMDA YAPAY ZEKA FİŞ OKUMA -->
+    <section class="py-16 bg-white border-b border-slate-200">
+      <div class="container mx-auto px-4 lg:px-8 max-w-6xl">
+        <div class="text-center mb-14">
+          <span class="text-purple-600 font-bold uppercase tracking-wider text-xs">Yıldırım Hızında İşlem</span>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 mt-1">
+            3 Kolay Adımda Fişten Muhasebeye
+          </h2>
+          <p class="text-slate-600 mt-2 text-sm sm:text-base">Klavyeye dokunmadan, sadece fotoğraf çekerek şirket giderlerinizi kaydedin.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {steps.map((st) => (
+            <div class="relative p-7 rounded-2xl bg-gradient-to-b from-purple-50/50 to-white border border-purple-200/70 shadow-sm hover:shadow-lg transition-all">
+              <span class="absolute top-5 right-5 text-3xl font-extrabold text-purple-200">{st.step}</span>
+              <div class="w-12 h-12 rounded-xl bg-purple-100 flex items-center justify-center text-2xl mb-4 text-purple-700">
+                {st.icon}
+              </div>
+              <h3 class="text-lg font-bold text-slate-900 mb-2">{st.title}</h3>
+              <p class="text-slate-600 text-sm leading-relaxed">{st.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. ÖNE ÇIKAN KABİLİYETLER (5 KART) -->
+    <section class="py-20 bg-slate-50">
+      <div class="container mx-auto px-4 lg:px-8 max-w-6xl">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <span class="text-purple-600 font-bold uppercase tracking-wider text-xs">Akıllı Masraf Yönetimi</span>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-2">
+            Giderlerinizi Kontrol Altına Alın, Vergiden Kazanın
+          </h2>
+          <p class="text-slate-600 mt-3 text-base sm:text-lg">
+            Şirket harcamalarını araç plakaları ve departmanlarla eşleştirin; bütçenizi tek bakışta yönetin.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {features.map((item) => (
+            <div class="bg-white rounded-2xl p-7 border border-slate-200/80 shadow-sm hover:shadow-xl hover:border-purple-300 transition-all duration-300 flex flex-col justify-between">
+              <div>
+                <div class="w-12 h-12 rounded-xl bg-purple-50 border border-purple-100 flex items-center justify-center text-2xl mb-5">
+                  {item.icon}
+                </div>
+                <h3 class="text-xl font-bold text-slate-900 mb-3">{item.title}</h3>
+                <p class="text-slate-600 text-sm leading-relaxed mb-6">{item.desc}</p>
+              </div>
+              <ul class="space-y-2.5 pt-4 border-t border-slate-100 text-xs text-slate-700 font-medium">
+                {item.items.map((sub) => (
+                  <li class="flex items-start gap-2">
+                    <span class="text-purple-600 font-bold">✓</span>
+                    <span>{sub}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. ALT KAPANIŞ ÇAĞRISI (BOTTOM CTA) -->
+    <section class="py-20 bg-gradient-to-br from-slate-950 via-purple-950/60 to-slate-900 text-white text-center relative overflow-hidden">
+      <div class="absolute inset-0 bg-[radial-gradient(#a855f7_1px,transparent_1px)] [background-size:20px_20px] opacity-20"></div>
+      
+      <div class="container mx-auto px-4 lg:px-8 relative z-10 max-w-3xl">
+        <span class="inline-block px-4 py-1.5 rounded-full bg-purple-500/20 border border-purple-400/30 text-purple-300 text-xs font-bold uppercase tracking-wider mb-4">
+          Yapay Zeka Destekli Otomasyon
+        </span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold mb-4">
+          Masraf Fişlerini Tek Tek Elle Girmeye Veda Edin!
+        </h2>
+        <p class="text-slate-300 text-base sm:text-lg mb-8 leading-relaxed">
+          Yapay zeka destekli masraf yönetimini hemen ücretsiz deneyin, ilk fişinizi saniyeler içinde taratıp farkı yaşayın.
+        </p>
+
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <a href="https://erp-eticaret.stokpratik.com.tr/giris" class="w-full sm:w-auto px-8 py-4 bg-purple-600 hover:bg-purple-500 text-white font-extrabold rounded-xl shadow-xl shadow-purple-600/30 transition-all text-center">
+            🚀 Hemen Giriş Yapın & Başlayın
+          </a>
+          <a href="/firma-kaydi" class="w-full sm:w-auto px-8 py-4 bg-white/10 hover:bg-white/20 text-white border border-white/20 font-bold rounded-xl transition-all text-center">
+            🎁 14 Gün Ücretsiz Deneyin
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</BaseLayout>

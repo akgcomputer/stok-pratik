@@ -1,0 +1,180 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const pageTitle = "Çek, Senet, Kasa ve Banka Portföy Takip Programı | Stok Pratik";
+const pageDescription = "Müşteri ve borç çek/senetleri, ciro takibi, banka tahsil/teminat, çoklu kasa-banka hesapları, POS blokeleri ve otomatik vade takvimi. Hemen ücretsiz deneyin!";
+
+const features = [
+  {
+    icon: "🏦",
+    title: "Çoklu Kasa ve Banka Hesap Yönetimi",
+    desc: "Merkez kasa, şube kasaları ve tüm banka hesaplarınızı (TL, USD, EUR) ayrı ayrı tanımlayın.",
+    items: [
+      "Farklı şube ve departmanlar için bağımsız kasa bakiyesi tutma",
+      "Banka IBAN bilgilerini satış faturalarına otomatik ekleme",
+      "Kasa ve bankalar arasındaki anlık nakit durumunu tek ekranda konsolide etme"
+    ]
+  },
+  {
+    icon: "📜",
+    title: "Çekler Portföyü ve Ciro Takibi",
+    desc: "Müşteriden alınan çekleri kaydedin; tedarikçiye ciro edin veya bankaya tahsile/teminata verin.",
+    items: [
+      "Portföydeki, cirodaki, tahsildeki ve teminattaki çekleri ayrı statülerde izleme",
+      "Karşılıksız veya protestolu çek durumlarında anında cari hesaba risk yansıtma",
+      "Çek bordrosu oluşturma ve çek arkası ciro zincirini dijital olarak kaydetme"
+    ]
+  },
+  {
+    icon: "📑",
+    title: "Senetler Portföyü ve Taksitli Alacak Yönetimi",
+    desc: "Müşteri senetlerini ve kendi borç senetlerinizi vade tarihleriyle kaydedin, parçalı tahsilat yapın.",
+    items: [
+      "Taksitli satışlarda tek tıkla sıralı senet paketi ve ödeme planı oluşturma",
+      "Kısmi (parçalı) tahsilatları senet bakiyesinden otomatik düşme",
+      "Resmi senet tahsilat makbuzu ve senet döküm bordrosu yazdırma"
+    ]
+  },
+  {
+    icon: "📅",
+    title: "Vade Uyarı Takvimi ve Finansal Risk Raporu",
+    desc: "Bu hafta ve bu ay ödenecek veya tahsil edilecek evrakları önceden bildiren akıllı takvim.",
+    items: [
+      "Vade gününe göre renk kodlu (Kırmızı: Gecikmiş, Sarı: Yaklaşan) uyarı takvimi",
+      "Yaklaşan çek ödemeleri için mobil ve e-posta bildirimleri",
+      "Tahsili geciken evrakların müşteri bazında risk analizi"
+    ]
+  },
+  {
+    icon: "🔄",
+    title: "Kasa-Banka Virman ve Tahsilat/Tediye Makbuzları",
+    desc: "Kasadan bankaya, bankadan kasaya para aktarımlarını ve resmi makbuzları tek tıkla düzenleyin.",
+    items: [
+      "Hesaplar arası virman işlemlerinde kur farkı ve masraf kaydı",
+      "Müşteriye anında teslim edilebilen kurumsal tahsilat makbuzu çıktısı",
+      "Tedarikçi ödemelerinde tediye makbuzu ile imza altına alma"
+    ]
+  },
+  {
+    icon: "💳",
+    title: "POS Bloke ve Komisyon Takibi",
+    desc: "Fiziki pos ve sanal POS tahsilatlarının banka komisyonlarını ve hesaba geçiş vadelerini izleyin.",
+    items: [
+      "Banka bazlı POS komisyon oranları ve erken bloke çözme maliyetleri",
+      "Hangi gün hangi banka hesabına kaç TL POS parası geçeceğini görme",
+      "Tahsilatın banka hesabına geçtiği anda otomatik bakiye eşitleme"
+    ]
+  }
+];
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <main class="bg-slate-50 text-slate-800 antialiased min-h-screen">
+    
+    <!-- 1. HERO SECTION (Cyan & Blue Theme) -->
+    <section class="relative overflow-hidden bg-gradient-to-b from-slate-900 via-cyan-950/40 to-slate-900 py-20 sm:py-24 text-white border-b border-cyan-900/40">
+      <div class="absolute inset-0 bg-[radial-gradient(#06b6d4_1px,transparent_1px)] [background-size:24px_24px] opacity-20"></div>
+      
+      <div class="container mx-auto px-4 lg:px-8 relative z-10 max-w-5xl text-center">
+        <!-- Badge -->
+        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-cyan-500/10 border border-cyan-400/30 text-cyan-300 text-xs sm:text-sm font-semibold mb-6 backdrop-blur-md">
+          <span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
+          Temel Ticaret • Kasa, Banka & Çek/Senet Portföyü
+        </div>
+
+        <!-- Main Heading -->
+        <h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-tight mb-6">
+          Kasa, Banka, Çek ve Senetleriniz Tek Ekranda: <br/>
+          <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-sky-300 to-white">
+            Hiçbir Vade Tarihini Kaçırmayın!
+          </span>
+        </h1>
+
+        <!-- Subtitle -->
+        <p class="text-base sm:text-xl text-slate-300 max-w-3xl mx-auto mb-10 leading-relaxed font-normal">
+          Müşteriden alınan çekler, tedarikçiye ciro edilen evraklar, bankada tahsildeki senetler ve çoklu kasa/banka hesaplarınız... Hepsini Stok Pratik ile uçtan uca, sıfır hatayla kayıt altına alın.
+        </p>
+
+        <!-- CTA Buttons -->
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <a href="https://erp-eticaret.stokpratik.com.tr/giris" class="w-full sm:w-auto px-8 py-4 bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-extrabold rounded-xl shadow-lg shadow-cyan-500/30 transition-all transform hover:-translate-y-0.5 text-center text-base">
+            🚀 Hemen Giriş Yap & Ücretsiz Başla
+          </a>
+          <a href="/firma-kaydi" class="w-full sm:w-auto px-8 py-4 bg-white/10 hover:bg-white/20 text-white border border-white/20 font-bold rounded-xl transition-all text-center text-base backdrop-blur-sm">
+            🎁 14 Gün Ücretsiz Deneyin
+          </a>
+        </div>
+
+        <div class="mt-8 flex items-center justify-center gap-6 text-xs text-slate-400">
+          <span class="flex items-center gap-1.5">✓ Çek/Senet Ciro & Tahsil Takibi</span>
+          <span class="flex items-center gap-1.5">✓ Vade Uyarı Takvimi</span>
+          <span class="flex items-center gap-1.5">✓ POS Bloke & Valör Hesabı</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. ÖNE ÇIKAN KABİLİYETLER (6 KART) -->
+    <section class="py-20 bg-slate-50">
+      <div class="container mx-auto px-4 lg:px-8 max-w-6xl">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <span class="text-cyan-600 font-bold uppercase tracking-wider text-xs">Portföy Güvenliği</span>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-2">
+            Finansal Evraklarınızı ve Kasalarınızı Şansa Bırakmayın
+          </h2>
+          <p class="text-slate-600 mt-3 text-base sm:text-lg">
+            Hangi evrak nerede, kimden alındı, kime ciro edildi veya bankaya ne zaman verilecek? Hepsi tek ekranda organize.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {features.map((item) => (
+            <div class="bg-white rounded-2xl p-7 border border-slate-200/80 shadow-sm hover:shadow-xl hover:border-cyan-300 transition-all duration-300 flex flex-col justify-between">
+              <div>
+                <div class="w-12 h-12 rounded-xl bg-cyan-50 border border-cyan-100 flex items-center justify-center text-2xl mb-5">
+                  {item.icon}
+                </div>
+                <h3 class="text-xl font-bold text-slate-900 mb-3">{item.title}</h3>
+                <p class="text-slate-600 text-sm leading-relaxed mb-6">{item.desc}</p>
+              </div>
+              <ul class="space-y-2.5 pt-4 border-t border-slate-100 text-xs text-slate-700 font-medium">
+                {item.items.map((sub) => (
+                  <li class="flex items-start gap-2">
+                    <span class="text-cyan-600 font-bold">✓</span>
+                    <span>{sub}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. ALT KAPANIŞ ÇAĞRISI (BOTTOM CTA) -->
+    <section class="py-20 bg-gradient-to-br from-slate-950 via-cyan-950/60 to-slate-900 text-white text-center relative overflow-hidden">
+      <div class="absolute inset-0 bg-[radial-gradient(#06b6d4_1px,transparent_1px)] [background-size:20px_20px] opacity-20"></div>
+      
+      <div class="container mx-auto px-4 lg:px-8 relative z-10 max-w-3xl">
+        <span class="inline-block px-4 py-1.5 rounded-full bg-cyan-500/20 border border-cyan-400/30 text-cyan-300 text-xs font-bold uppercase tracking-wider mb-4">
+          Hatasız Nakit & Evrak Yönetimi
+        </span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold mb-4">
+          Çek, Senet ve Kasalarınızı Hatasız Yönetin!
+        </h2>
+        <p class="text-slate-300 text-base sm:text-lg mb-8 leading-relaxed">
+          Karmaşık defterleri ve excel sayfalarını bırakın, Stok Pratik ile finansal evraklarınızı bugün ücretsiz dijitalleştirin.
+        </p>
+
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <a href="https://erp-eticaret.stokpratik.com.tr/giris" class="w-full sm:w-auto px-8 py-4 bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-extrabold rounded-xl shadow-xl shadow-cyan-500/30 transition-all text-center">
+            🚀 Hemen Giriş Yapın & Başlayın
+          </a>
+          <a href="/firma-kaydi" class="w-full sm:w-auto px-8 py-4 bg-white/10 hover:bg-white/20 text-white border border-white/20 font-bold rounded-xl transition-all text-center">
+            🎁 14 Gün Ücretsiz Deneyin
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</BaseLayout>

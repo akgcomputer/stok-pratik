@@ -1,0 +1,318 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const pageTitle = "CariNET B2B Bayi Sipariş, Online Tahsilat ve Ekstre Portalı | Stok Pratik";
+const pageDescription = "Bayileriniz telefonla stok sormasın! CariNET B2B Bayi Portalı ile bayileriniz 7/24 kendi şifreleriyle girsin, özel iskontolu fiyatlarla sipariş geçsin ve 3D Secure ile cari borcunu ödesin.";
+
+const comparisonBefore = [
+  "Sabahtan akşama kadar 'Şu ürün var mı?', 'Bana kaça olur?', 'Ekstremi atar mısın?' telefonları.",
+  "WhatsApp'tan gelen ses kayıtları, silinen mesajlar ve yanlış koli adediyle açılan siparişler.",
+  "Vadesi geçen alacakları tahsil etmek için tek tek bayileri arama, IBAN gönderme ve sahte dekont riski.",
+  "Depodaki gerçek stokla plasiyerin söylediği stoğun uyuşmaması sonucu yaşanan teslimat krizleri."
+];
+
+const comparisonAfter = [
+  "Bayiniz gece 23:00'te bile canlı stoğunuzu ve kendisine özel kademeli fiyatını görerek hatasız sipariş geçer.",
+  "Verilen sipariş doğrudan ERP ana ekranınıza ve depo toplama listesine otomatik işlenir.",
+  "Bayi kendi cari ekstresini, faturalarını ve kalan vadesini dilediği an PDF olarak indirir.",
+  "Kredi kartına taksit avantajıyla bayiniz kendi ekranından 3D Secure ile borcunu öder, bakiye anında düşer."
+];
+
+const carinetFeatures = [
+  {
+    icon: "🔐",
+    title: "Bayiye Özel Şifreli Giriş & Gizli Fiyatlar",
+    desc: "Toptan fiyatlarınız dış dünyaya ve rakiplerinize tamamen kapalıdır. Yalnızca kullanıcı adı ve şifre tanımladığınız bayiler kendi iskonto grubuna göre giriş yapabilir.",
+    colSpan: "lg:col-span-1"
+  },
+  {
+    icon: "📦",
+    title: "Koli, Palet ve Minimum Sipariş Kuralları",
+    desc: "Bayiniz sipariş girerken ürünün koli/palet katlarını ve kademeli miktar indirimlerini canlı görür; minimum sipariş adedinin altında sepet oluşturması engellenir.",
+    colSpan: "lg:col-span-1"
+  },
+  {
+    icon: "💳",
+    title: "3D Secure Online Cari E-Tahsilat",
+    desc: "PayTR, iyzico, Param ve banka sanal posları ile entegre. Bayiniz açık hesap borcunu veya yeni sipariş tutarını kredi kartıyla tek çekim veya taksitle 7/24 öder.",
+    colSpan: "lg:col-span-1"
+  },
+  {
+    icon: "📍",
+    title: "Canlı Sipariş Durumu & Kargo Takibi",
+    desc: "Bayiniz siparişinin 'Onaylandı', 'Hazırlanıyor', 'Sevk Edildi / Kargoda' veya 'Teslim Edildi' durumunu ve kargo takip numarasını canlı panelinden izler.",
+    colSpan: "lg:col-span-1"
+  },
+  {
+    icon: "🔄",
+    title: "Canlı Depo & Stok Entegrasyonu",
+    desc: "Yalnızca 'B2B Toptan Satışa Açık' olarak işaretlediğiniz ve stoğu bulunan ürünler vitrinde listelenir; biten ürünler için tedarik cezası riski sıfırlanır.",
+    colSpan: "lg:col-span-1"
+  },
+  {
+    icon: "⚡",
+    title: "Sıfır Kurulum & Sıfır Sunucu Maliyeti",
+    desc: "Ayrı bir B2B e-ticaret sitesi yaptırmak için yüz binlerce lira harcamanıza gerek yok! Stok Pratik altyapısı içinde CariNET B2B portalınız 1 dakikada kullanıma hazırdır.",
+    colSpan: "lg:col-span-1"
+  }
+];
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <main class="bg-slate-950 text-slate-100 antialiased min-h-screen selection:bg-emerald-500 selection:text-slate-950">
+    
+    <!-- 1. HERO SECTION -->
+    <section class="relative overflow-hidden pt-20 pb-24 lg:pt-28 lg:pb-32 border-b border-slate-800">
+      <div class="absolute inset-0 bg-[radial-gradient(circle_at_top,_var(--tw-gradient-stops))] from-emerald-950/30 via-slate-950 to-slate-950"></div>
+      <div class="absolute top-1/4 right-1/4 w-[500px] h-[300px] bg-emerald-500/10 blur-[120px] rounded-full pointer-events-none"></div>
+
+      <div class="container mx-auto px-4 lg:px-8 relative z-10 max-w-7xl">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+          
+          <!-- Sol: Başlık ve CTA -->
+          <div class="lg:col-span-6 text-center lg:text-left">
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs sm:text-sm font-semibold mb-6 backdrop-blur-md">
+              <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+              🤝 B2B Bayi Portalı • Stok Pratik CariNET Kapalı Devre Sipariş & Tahsilat
+            </div>
+
+            <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight text-white leading-[1.1] mb-6">
+              Bayileriniz Telefonla Fiyat Sormasın: <br/>
+              <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-200">
+                CariNET ile 7/24 Sipariş Alsın, Borcunu Ödesin!
+              </span>
+            </h1>
+
+            <p class="text-base sm:text-lg text-slate-300 mb-8 leading-relaxed max-w-xl mx-auto lg:mx-0">
+              Her bayinize ve toptan müşterinize özel bir kullanıcı adı ve şifre tanımlayın. Müşteriniz bilgisayarından veya cep telefonundan kendi <strong>CariNET B2B Portalına</strong> girsin; kendisine özel iskontolu fiyatlarla sepete ürün eklesin, geçmiş faturalarını incelesin ve kredi kartıyla cari bakiyesini kapatsın!
+            </p>
+
+            <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+              <a 
+                href="/firma-kaydi" 
+                class="w-full sm:w-auto px-8 py-4 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-slate-950 font-bold text-base shadow-lg shadow-emerald-500/30 transition-all duration-200 text-center flex items-center justify-center gap-2"
+              >
+                <span>🤝 B2B CariNET Portalınızı Ücretsiz Açın</span>
+              </a>
+              <a 
+                href="https://erp-eticaret.stokpratik.com.tr/giris" 
+                target="_blank"
+                rel="noopener noreferrer"
+                class="w-full sm:w-auto px-8 py-4 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-200 font-semibold text-base border border-slate-700 transition-all duration-200 text-center flex items-center justify-center gap-2"
+              >
+                <span>🔐 Giriş Yap</span>
+              </a>
+            </div>
+
+            <!-- Sosyal Güven Rozetleri -->
+            <div class="mt-10 pt-8 border-t border-slate-800/80 flex flex-wrap items-center justify-center lg:justify-start gap-6 text-xs text-slate-400 font-medium">
+              <div class="flex items-center gap-2">
+                <span class="text-emerald-400 font-bold">✓</span> Bayiye Özel Şifreli Giriş
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="text-emerald-400 font-bold">✓</span> 3D Secure Kredi Kartı E-Tahsilat
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="text-emerald-400 font-bold">✓</span> 7/24 Otomatik Sipariş Kabulü
+              </div>
+            </div>
+          </div>
+
+          <!-- Sağ: Canlı Bayi Portalı Mockup'ı -->
+          <div class="lg:col-span-6">
+            <div class="relative mx-auto max-w-lg bg-slate-900/90 border border-emerald-500/30 rounded-3xl p-6 sm:p-7 shadow-2xl backdrop-blur-xl">
+              
+              <!-- Bayi Karşılama ve Cari Bakiye Üst Barı -->
+              <div class="bg-slate-950/90 rounded-2xl p-4 border border-slate-800 mb-4">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                  <div>
+                    <div class="text-[10px] text-emerald-400 font-semibold uppercase tracking-wider">CariNET Yetkili Bayi Girişi</div>
+                    <div class="text-sm font-bold text-white">Anadolu Yapı Market Ltd. Şti.</div>
+                  </div>
+                  <div class="text-left sm:text-right">
+                    <div class="text-[10px] text-slate-400">Güncel Cari Bakiye</div>
+                    <div class="font-mono text-base font-bold text-amber-300">42.500,00 ₺</div>
+                  </div>
+                </div>
+
+                <div class="mt-3 pt-3 border-t border-slate-800 flex justify-between items-center text-xs">
+                  <span class="text-slate-400 text-[11px]">Son Vade: 15 Gün Kaldı</span>
+                  <div class="px-3 py-1 rounded-lg bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 font-bold text-[11px] flex items-center gap-1 cursor-pointer">
+                    <span>💳 Kart ile Borç Kapat</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Bayi Portalı 3 Sekme -->
+              <div class="grid grid-cols-3 gap-1 bg-slate-950 p-1 rounded-xl border border-slate-800 mb-4 text-[10px] text-center font-medium">
+                <div class="p-2 rounded-lg bg-emerald-500/10 text-emerald-300 border border-emerald-500/30 font-bold">
+                  🛍️ Toptan Katalog
+                </div>
+                <div class="p-2 rounded-lg text-slate-400">
+                  📦 Siparişlerim
+                </div>
+                <div class="p-2 rounded-lg text-slate-400">
+                  📑 Ekstre & Fatura
+                </div>
+              </div>
+
+              <!-- Örnek Bayi Ürün Kartı -->
+              <div class="bg-slate-950/70 rounded-2xl p-3.5 border border-slate-800 flex items-center justify-between gap-3 mb-4">
+                <div class="flex items-center gap-3">
+                  <div class="w-12 h-12 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center text-xl">
+                    🔧
+                  </div>
+                  <div>
+                    <div class="text-xs font-bold text-white">Silikonize Derz Dolgu 500gr</div>
+                    <div class="text-[10px] text-slate-400">Koli İçi: 24 Adet • Stok: 48 Koli Var</div>
+                    <div class="text-[11px] font-mono text-emerald-400 font-bold">145,00 ₺ / Koli</div>
+                  </div>
+                </div>
+
+                <div class="px-3 py-1.5 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 text-slate-950 font-bold text-[11px] text-center shadow-md">
+                  +1 Koli Ekle
+                </div>
+              </div>
+
+              <!-- Canlı Durum Bildirimi -->
+              <div class="p-2.5 rounded-xl bg-emerald-950/40 border border-emerald-500/20 text-[11px] text-emerald-300 flex items-center gap-2">
+                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                <span>Bayinizin girdiği sipariş anında merkeze ve depo emrine düşer.</span>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. ÖNCESİ & SONRASI KARŞILAŞTIRMASI -->
+    <section class="py-20 lg:py-24 border-b border-slate-800 relative bg-slate-900/40">
+      <div class="container mx-auto px-4 lg:px-8 max-w-7xl">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <div class="text-emerald-400 text-sm font-semibold tracking-wider uppercase mb-3">Dönüşüm Rehberi</div>
+          <h2 class="text-3xl sm:text-4xl font-black text-white tracking-tight mb-4">
+            CariNET B2B Portalı İşletmenize Ne Kazandırır?
+          </h2>
+          <p class="text-slate-400 text-base leading-relaxed">
+            Telefonla fiyat ve stok sorma devrini bitirin, bayilerinize profesyonel bir B2B e-ticaret deneyimi sunun.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          
+          <!-- ❌ Öncesi -->
+          <div class="bg-rose-950/10 border border-rose-500/20 rounded-2xl p-6 sm:p-8">
+            <div class="flex items-center gap-3 mb-6">
+              <div class="w-10 h-10 rounded-xl bg-rose-500/10 text-rose-400 flex items-center justify-center font-bold text-xl">
+                ✕
+              </div>
+              <div>
+                <h3 class="text-lg font-bold text-white">CariNET Öncesi</h3>
+                <div class="text-xs text-rose-400 font-medium">Klasik Telefon, WhatsApp & Defter Düzeni</div>
+              </div>
+            </div>
+
+            <ul class="space-y-4 text-sm text-slate-300">
+              {comparisonBefore.map((item) => (
+                <li class="flex items-start gap-3">
+                  <span class="text-rose-400 font-bold shrink-0 mt-0.5">✕</span>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <!-- ✅ Sonrası -->
+          <div class="bg-emerald-950/20 border border-emerald-500/30 rounded-2xl p-6 sm:p-8">
+            <div class="flex items-center gap-3 mb-6">
+              <div class="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center font-bold text-xl">
+                ✓
+              </div>
+              <div>
+                <h3 class="text-lg font-bold text-white">CariNET Sonrası</h3>
+                <div class="text-xs text-emerald-400 font-medium">7/24 Kesintisiz Dijital B2B Bayi Ekosistemi</div>
+              </div>
+            </div>
+
+            <ul class="space-y-4 text-sm text-slate-200">
+              {comparisonAfter.map((item) => (
+                <li class="flex items-start gap-3">
+                  <span class="text-emerald-400 font-bold shrink-0 mt-0.5">✓</span>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. CARİNET'İN 6 KURUMSAL ÖZELLİĞİ (BENTO GRID) -->
+    <section class="py-20 lg:py-24 border-b border-slate-800 relative">
+      <div class="container mx-auto px-4 lg:px-8 max-w-7xl">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <div class="text-emerald-400 text-sm font-semibold tracking-wider uppercase mb-3">Kurumsal Altyapı</div>
+          <h2 class="text-3xl sm:text-4xl font-black text-white tracking-tight mb-4">
+            CariNET'in Öne Çıkan 6 Güçlü Özelliği
+          </h2>
+          <p class="text-slate-400 text-base leading-relaxed">
+            Ayrı bir web yazılımına gerek olmadan, Stok Pratik ERP'nizin doğrudan bir parçası olarak çalışır.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {carinetFeatures.map((feat) => (
+            <div class={`${feat.colSpan} bg-slate-900/60 border border-slate-800 rounded-2xl p-6 sm:p-7 hover:border-emerald-500/40 transition-all duration-300 flex flex-col justify-between group`}>
+              <div>
+                <div class="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-2xl flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
+                  {feat.icon}
+                </div>
+                <h3 class="text-lg font-bold text-white mb-2.5">{feat.title}</h3>
+                <p class="text-slate-400 text-sm leading-relaxed">{feat.desc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. ALT DÖNÜŞÜM CTA BÖLÜMÜ -->
+    <section class="py-20 lg:py-24 relative overflow-hidden">
+      <div class="absolute inset-0 bg-gradient-to-b from-slate-950 via-emerald-950/20 to-slate-950"></div>
+      <div class="container mx-auto px-4 lg:px-8 max-w-5xl relative z-10 text-center">
+        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs sm:text-sm font-semibold mb-6">
+          ✨ 14 Gün Ücretsiz Deneme • Dakikalar İçinde Canlıda
+        </div>
+        
+        <h2 class="text-3xl sm:text-5xl font-black text-white tracking-tight mb-6">
+          Bayilerinize Kendi Markanızla 7/24 Açık Bir Toptan Mağaza Sunun!
+        </h2>
+        
+        <p class="text-base sm:text-lg text-slate-300 max-w-2xl mx-auto mb-10 leading-relaxed">
+          Hemen ücretsiz Stok Pratik hesabınızı açın, carilerinize B2B portal yetkisi vererek bugün online toptan sipariş ve kredi kartı tahsilatı almaya başlayın.
+        </p>
+
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <a 
+            href="/firma-kaydi" 
+            class="w-full sm:w-auto px-10 py-4 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-slate-950 font-bold text-base shadow-lg shadow-emerald-500/30 transition-all duration-200"
+          >
+            🚀 Hemen Ücretsiz Kullanmaya Başla
+          </a>
+          <a 
+            href="https://erp-eticaret.stokpratik.com.tr/giris" 
+            target="_blank"
+            rel="noopener noreferrer"
+            class="w-full sm:w-auto px-10 py-4 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-200 font-semibold text-base border border-slate-700 transition-all duration-200"
+          >
+            🔐 Sisteme Giriş Yap
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</BaseLayout>

@@ -1,0 +1,267 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const pageTitle = "DepodanDirekt.com Global B2B Toptan Satış ve İhracat | Stok Pratik";
+const pageDescription = "Deponuzdaki ürünleri Türkiye'nin ve dünyanın toptan alıcılarına açın! Stok Pratik ile DepodanDirekt.com %100 entegre: tek tıkla koli/palet ihracat vitrini, birebir Excel uyumu ve anlık sipariş köprüsü.";
+
+const opportunities = [
+  {
+    icon: "🏭",
+    title: "Perakende Değil, Yüksek Hacimli Koli ve Palet Satışı",
+    desc: "Tek bir siparişte 1 adet değil; 50 adet, 10 koli veya 2 palet satış yaparak kargo paketleme ve operasyonel maliyetinizi minimuma indirin, cironuzu katlayın."
+  },
+  {
+    icon: "🌍",
+    title: "Yurt İçi Toptan + Sınır Ötesi B2B İhracat Köprüsü",
+    desc: "Türkiye'nin 81 ilindeki perakende mağaza ve toptancılara ulaşmanın yanı sıra, Türk ürünlerini toptan satın almak isteyen yurt dışı kurumsal alıcılara doğrudan deponuzdan ihracat yapın."
+  },
+  {
+    icon: "📋",
+    title: "%100 Birebir Excel ve Veri Uyumluluğu",
+    desc: "Stok Pratik'in toplu ürün yükleme Excel şablonu (Barkod, Stok Kodu, Model, Marka, Kategori, Fiyat, Koli/Palet, Görseller vb.) DepodanDirekt.com ile birebir eşleşir. Çift iş yapmadan tek Excel ile hazır olun!"
+  },
+  {
+    icon: "🔄",
+    title: "Otomatik Stok, Fiyat ve Sipariş Senkronizasyonu",
+    desc: "Deponuzda satılan ürünün stoğu DepodanDirekt.com'da anında güncellenir. Pazaryerinden gelen toptan siparişler anında Stok Pratik ekranınıza düşer, tek tıkla sevk irsaliyesi ve faturası basılır."
+  }
+];
+
+const targetAudiences = [
+  {
+    icon: "🏗️",
+    title: "İmalatçılar ve Fabrika Sahipleri",
+    desc: "Ürettiğiniz ürünleri aracı komisyonlarına ve tahsilat risklerine boğulmadan doğrudan Türkiye ve dünya genelindeki mağazalara, toptancılara ve kurumsal alıcılara toptan satın.",
+    colSpan: "lg:col-span-1"
+  },
+  {
+    icon: "🚢",
+    title: "İthalatçılar ve Ana Distribütörler",
+    desc: "Konteyner bazında ithal ettiğiniz ürünleri koli ve palet bazlı kademeli fiyatlarla hızla nakde çevirin, depoda bekleyen stok maliyetinden kurtulun.",
+    colSpan: "lg:col-span-1"
+  },
+  {
+    icon: "📦",
+    title: "Bölge Toptancıları ve Dağıtıcılar",
+    desc: "Gıda, ambalaj, hırdavat, tekstil, kozmetik, kırtasiye veya züccaciye sektöründe faaliyet gösteriyorsanız, sadece kendi bölgenize değil 81 ile ve yurt dışına toptan sevkiyat yapın.",
+    colSpan: "lg:col-span-1"
+  }
+];
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <main class="bg-slate-950 text-slate-100 antialiased min-h-screen selection:bg-cyan-500 selection:text-slate-950">
+    
+    <!-- 1. HERO SECTION -->
+    <section class="relative overflow-hidden pt-20 pb-24 lg:pt-28 lg:pb-32 border-b border-slate-800">
+      <div class="absolute inset-0 bg-[radial-gradient(circle_at_top,_var(--tw-gradient-stops))] from-cyan-950/30 via-slate-950 to-slate-950"></div>
+      <div class="absolute top-1/4 right-1/4 w-[500px] h-[300px] bg-cyan-500/10 blur-[120px] rounded-full pointer-events-none"></div>
+
+      <div class="container mx-auto px-4 lg:px-8 relative z-10 max-w-7xl">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+          
+          <!-- Sol: Başlık ve CTA -->
+          <div class="lg:col-span-6 text-center lg:text-left">
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-xs sm:text-sm font-semibold mb-6 backdrop-blur-md">
+              <span class="w-2 h-2 rounded-full bg-cyan-400 animate-ping"></span>
+              🌐 Global B2B Pazaryeri • DepodanDirekt.com Toptan Satış & İhracat
+            </div>
+
+            <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight text-white leading-[1.1] mb-6">
+              Deponuzdaki Ürünleri Dünyanın Toptan Alıcılarına Açın: <br/>
+              <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-sky-300 to-blue-200">
+                Üreticiden ve Toptancıdan Doğrudan B2B İhracat!
+              </span>
+            </h1>
+
+            <p class="text-base sm:text-lg text-slate-300 mb-8 leading-relaxed max-w-xl mx-auto lg:mx-0">
+              Perakende pazaryerlerinde tek tek ürün kargolamakla yetinmeyin! Stok Pratik ile <strong>DepodanDirekt.com</strong> tam entegre çalışır. Ürün kartınızda "B2B Toptan" seçeneğini işaretleyin; koli, palet ve minimum sipariş fiyatlarınız anında DepodanDirekt.com B2B pazaryerinde binlerce mağazanın, kurumsal satın almacının ve yurt dışı alıcının karşısına çıksın!
+            </p>
+
+            <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+              <a 
+                href="/firma-kaydi" 
+                class="w-full sm:w-auto px-8 py-4 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 font-bold text-base shadow-lg shadow-cyan-500/30 transition-all duration-200 text-center flex items-center justify-center gap-2"
+              >
+                <span>🌐 DepodanDirekt'e Ücretsiz Bağlanın</span>
+              </a>
+              <a 
+                href="https://erp-eticaret.stokpratik.com.tr/giris" 
+                target="_blank"
+                rel="noopener noreferrer"
+                class="w-full sm:w-auto px-8 py-4 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-200 font-semibold text-base border border-slate-700 transition-all duration-200 text-center flex items-center justify-center gap-2"
+              >
+                <span>🔐 Giriş Yap</span>
+              </a>
+            </div>
+
+            <!-- Sosyal Güven Rozetleri -->
+            <div class="mt-10 pt-8 border-t border-slate-800/80 flex flex-wrap items-center justify-center lg:justify-start gap-6 text-xs text-slate-400 font-medium">
+              <div class="flex items-center gap-2">
+                <span class="text-cyan-400 font-bold">✓</span> %100 Birebir Excel Eşleşmesi
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="text-cyan-400 font-bold">✓</span> Koli & Palet Sipariş Akışı
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="text-cyan-400 font-bold">✓</span> Otomatik Sevk İrsaliyesi
+              </div>
+            </div>
+          </div>
+
+          <!-- Sağ: Çift Yönlü B2B Köprü Simülasyonu -->
+          <div class="lg:col-span-6">
+            <div class="relative mx-auto max-w-lg bg-slate-900/90 border border-cyan-500/30 rounded-3xl p-6 sm:p-7 shadow-2xl backdrop-blur-xl">
+              
+              <div class="flex items-center justify-between border-b border-slate-800 pb-3 mb-5">
+                <div class="text-xs font-mono font-bold text-cyan-400">Canlı B2B API Entegrasyonu</div>
+                <div class="flex items-center gap-2">
+                  <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping"></span>
+                  <span class="text-[10px] text-emerald-400 font-bold">Aktif Köprü</span>
+                </div>
+              </div>
+
+              <!-- Sol Kutu: Stok Pratik ERP Kartı -->
+              <div class="bg-slate-950/80 rounded-2xl p-4 border border-slate-800 mb-3">
+                <div class="flex items-center justify-between mb-2">
+                  <span class="text-xs font-bold text-white">📦 Stok Pratik ERP Ürün Kartı</span>
+                  <span class="px-2 py-0.5 rounded bg-blue-500/20 text-blue-300 text-[10px] font-semibold">Toptan Aktif</span>
+                </div>
+                <div class="grid grid-cols-2 gap-2 text-[11px] font-mono text-slate-300">
+                  <div class="p-1.5 rounded bg-slate-900 border border-slate-800">Koli İçi: 25 Adet</div>
+                  <div class="p-1.5 rounded bg-slate-900 border border-slate-800">Palet: 250 Adet</div>
+                  <div class="p-1.5 rounded bg-slate-900 border border-slate-800">Min Sipariş: 50 Adet</div>
+                  <div class="p-1.5 rounded bg-slate-900 border border-slate-800">Hazırlık: 2 İş Günü</div>
+                </div>
+              </div>
+
+              <!-- Canlı Senkronizasyon Oku -->
+              <div class="my-2 py-2 px-3 rounded-xl bg-cyan-950/40 border border-cyan-500/30 text-center flex items-center justify-center gap-2 text-xs font-bold text-cyan-300">
+                <span>⚡</span>
+                <span>Tek Tıkla Senkronizasyon & Anlık Sipariş Köprüsü</span>
+                <span>⚡</span>
+              </div>
+
+              <!-- Sağ Kutu: DepodanDirekt.com Vitrini -->
+              <div class="bg-slate-950/80 rounded-2xl p-4 border border-slate-800 mt-3">
+                <div class="flex items-center justify-between mb-2">
+                  <span class="text-xs font-bold text-cyan-300">🌐 DepodanDirekt.com B2B Vitrini</span>
+                  <span class="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 text-[10px] font-semibold">Yayında ✓</span>
+                </div>
+                <div class="space-y-1.5 text-[11px]">
+                  <div class="flex justify-between text-slate-300">
+                    <span>Hedef Kitle:</span>
+                    <span class="font-semibold text-white">81 İl Mağazaları + Yurt Dışı İhracat</span>
+                  </div>
+                  <div class="flex justify-between text-slate-300">
+                    <span>Gelen Toptan Sipariş:</span>
+                    <span class="font-bold text-amber-300 font-mono">10 Koli (250 Adet)</span>
+                  </div>
+                  <div class="text-[10px] text-emerald-400 pt-1 border-t border-slate-800">
+                    ✓ Sipariş Stok Pratik'e düştü, stok depodan rezerve edildi!
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. NEDEN DEPODANDİREKT.COM + STOK PRATİK? -->
+    <section class="py-20 lg:py-24 border-b border-slate-800 relative bg-slate-900/40">
+      <div class="container mx-auto px-4 lg:px-8 max-w-7xl">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <div class="text-cyan-400 text-sm font-semibold tracking-wider uppercase mb-3">Stratejik Avantajlar</div>
+          <h2 class="text-3xl sm:text-4xl font-black text-white tracking-tight mb-4">
+            Neden DepodanDirekt.com + Stok Pratik?
+          </h2>
+          <p class="text-slate-400 text-base leading-relaxed">
+            Tek tek perakende kargo hazırlama zahmetine girmeden, yüksek hacimli toptan ticaretin gücünden yararlanın.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {opportunities.map((item) => (
+            <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-6 hover:border-cyan-500/40 transition-all duration-300 flex flex-col justify-between group">
+              <div>
+                <div class="w-12 h-12 rounded-xl bg-cyan-500/10 border border-cyan-500/20 text-2xl flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
+                  {item.icon}
+                </div>
+                <h3 class="text-lg font-bold text-white mb-2 leading-snug">{item.title}</h3>
+                <p class="text-slate-400 text-sm leading-relaxed">{item.desc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. KİMLER İÇİN TASARLANDI? (BENTO GRID) -->
+    <section class="py-20 lg:py-24 border-b border-slate-800 relative">
+      <div class="container mx-auto px-4 lg:px-8 max-w-7xl">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <div class="text-cyan-400 text-sm font-semibold tracking-wider uppercase mb-3">Hedef Sektörler</div>
+          <h2 class="text-3xl sm:text-4xl font-black text-white tracking-tight mb-4">
+            DepodanDirekt.com Kimler İçin İdeal?
+          </h2>
+          <p class="text-slate-400 text-base leading-relaxed">
+            Üretim bandından veya ithalat gümrüğünden çıkan ürünleri doğrudan kurumsal alıcılara ulaştırın.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {targetAudiences.map((target) => (
+            <div class={`${target.colSpan} bg-slate-900/60 border border-slate-800 rounded-2xl p-6 sm:p-7 hover:border-cyan-500/40 transition-all duration-300 flex flex-col justify-between group`}>
+              <div>
+                <div class="w-12 h-12 rounded-xl bg-cyan-500/10 border border-cyan-500/20 text-2xl flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
+                  {target.icon}
+                </div>
+                <h3 class="text-lg font-bold text-white mb-2.5">{target.title}</h3>
+                <p class="text-slate-400 text-sm leading-relaxed">{target.desc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. ALT DÖNÜŞÜM CTA BÖLÜMÜ -->
+    <section class="py-20 lg:py-24 relative overflow-hidden">
+      <div class="absolute inset-0 bg-gradient-to-b from-slate-950 via-cyan-950/20 to-slate-950"></div>
+      <div class="container mx-auto px-4 lg:px-8 max-w-5xl relative z-10 text-center">
+        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-xs sm:text-sm font-semibold mb-6">
+          ✨ 14 Gün Ücretsiz Deneme • Sıfır Başlangıç Riski
+        </div>
+        
+        <h2 class="text-3xl sm:text-5xl font-black text-white tracking-tight mb-6">
+          Toptan Satışta Yeni Müşteriler Bulmanın En Hızlı Yolu!
+        </h2>
+        
+        <p class="text-base sm:text-lg text-slate-300 max-w-2xl mx-auto mb-10 leading-relaxed">
+          Hemen ücretsiz Stok Pratik hesabınızı oluşturun, ürünlerinizi bugün DepodanDirekt.com B2B ekosistemine bağlayarak Türkiye ve dünyaya toptan satışa başlayın.
+        </p>
+
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <a 
+            href="/firma-kaydi" 
+            class="w-full sm:w-auto px-10 py-4 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 font-bold text-base shadow-lg shadow-cyan-500/30 transition-all duration-200"
+          >
+            🚀 Hemen Ücretsiz Kullanmaya Başla
+          </a>
+          <a 
+            href="https://erp-eticaret.stokpratik.com.tr/giris" 
+            target="_blank"
+            rel="noopener noreferrer"
+            class="w-full sm:w-auto px-10 py-4 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-200 font-semibold text-base border border-slate-700 transition-all duration-200"
+          >
+            🔐 Sisteme Giriş Yap
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</BaseLayout>

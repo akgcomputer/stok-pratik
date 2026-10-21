@@ -1,0 +1,333 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const pageTitle = "Linkle Sat ve Kredi Kartıyla Ödeme Al | Stok Pratik Bulut ERP";
+const pageDescription = "Web siteniz olmasa bile 10 saniyede satış yapın! WhatsApp, SMS veya Instagram'dan güvenli ödeme linki gönderin, müşteriniz kredi kartıyla tek çekim veya taksitle ödesin.";
+
+const useCases = [
+  {
+    icon: "📱",
+    title: "Instagram, TikTok & WhatsApp Sosyal Ticareti",
+    desc: "Karmaşık e-ticaret sitesi kurma maliyetlerine ve sepet terklerine son! DM'den veya WhatsApp'tan müşterinize doğrudan ürün ödeme linkini iletin, satışı anında nakde çevirin."
+  },
+  {
+    icon: "🏢",
+    title: "B2B Vadesi Geçen Alacak & Cari Tahsilat Linki",
+    desc: "Toptan veya veresiye müşterinize cari hesap ekstresiyle birlikte ödeme linki gönderin. Müşteriniz şirket kartıyla tek çekim veya taksitle ödesin, cari bakiyesi otomatik kapansın."
+  },
+  {
+    icon: "🔧",
+    title: "Teknik Servis, Kapora & Özel İmalat Siparişleri",
+    desc: "Tamiratı tamamlanan cihazlar, mobilya montajları veya özel üretim siparişleri için kapora ve bakiye tahsilat linki oluşturun, tahsilatı peşin garantiye alın."
+  },
+  {
+    icon: "🚚",
+    title: "Kapıda Temassız Teslimat & Saha Tahsilatı",
+    desc: "Saha kuryeleriniz veya servis elemanlarınız yanlarında pahalı fiziki POS cihazı taşımadan müşteriye SMS veya QR kodla anında link sunsun, tahsilat saniyeler içinde tamamlansın."
+  }
+];
+
+const technicalAdvantages = [
+  {
+    icon: "💳",
+    title: "Çoklu Sanal POS ve Ödeme Kuruluşu Entegrasyonu",
+    desc: "PayTR, iyzico, Param, Sipay, Ödüyo ve doğrudan banka sanal posları ile tam entegre çalışın. İşletmeniz için en avantajlı komisyon oranlarıyla ödeme alın.",
+    colSpan: "lg:col-span-2"
+  },
+  {
+    icon: "⚡",
+    title: "Otomatik Stok ve Ön Muhasebe Entegrasyonu",
+    desc: "Link üzerinden ödeme yapıldığı saniyede ürün depodan düşer, cari hesaba tahsilat işlenir ve dilerseniz resmi e-Arşiv faturanız otomatik kesilir.",
+    colSpan: "lg:col-span-1"
+  },
+  {
+    icon: "🎯",
+    title: "Tek Kullanımlık veya Çoklu Satış Linki",
+    desc: "İster tek bir müşterinin borcuna özel tek kullanımlık link, ister sosyal medyada binlerce kişiye aynı ürünü satabileceğiniz sınırsız ödeme linki üretin.",
+    colSpan: "lg:col-span-1"
+  },
+  {
+    icon: "📊",
+    title: "Taksit ve Komisyon Seçenekleri",
+    desc: "Tüm kredi kartlarına 2'den 12'ye kadar taksit imkanı sunun. POS komisyonunu ister ürün fiyatına dahil edin, isterseniz taksitli ödeyen müşteriye yansıtın.",
+    colSpan: "lg:col-span-1"
+  },
+  {
+    icon: "👁️",
+    title: "Link Görüntüleme ve Canlı Takip",
+    desc: "Müşteri linki tıkladı mı, ödeme ekranını açtı mı, kart limitinden dolayı hata mı aldı? Tüm işlem adımlarını kontrol panelinizden anlık izleyin.",
+    colSpan: "lg:col-span-1"
+  },
+  {
+    icon: "🛡️",
+    title: "256-Bit SSL & %100 3D Secure Koruması",
+    desc: "Tüm işlemler banka seviyesinde PCI-DSS standartlarında ve SMS onaylı 3D Secure ile korunur. Sahte havale dekontlarına ve ters ibraz (chargeback) riskine son.",
+    colSpan: "lg:col-span-3"
+  }
+];
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <main class="bg-slate-950 text-slate-100 antialiased min-h-screen selection:bg-rose-500 selection:text-white">
+    
+    <!-- 1. HERO SECTION -->
+    <section class="relative overflow-hidden pt-20 pb-24 lg:pt-28 lg:pb-32 border-b border-slate-800">
+      <div class="absolute inset-0 bg-[radial-gradient(circle_at_top,_var(--tw-gradient-stops))] from-rose-950/30 via-slate-950 to-slate-950"></div>
+      <div class="absolute top-1/4 right-1/4 w-[500px] h-[300px] bg-rose-500/10 blur-[120px] rounded-full pointer-events-none"></div>
+
+      <div class="container mx-auto px-4 lg:px-8 relative z-10 max-w-7xl">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+          
+          <!-- Sol: Başlık, Açıklama ve CTA -->
+          <div class="lg:col-span-6 text-center lg:text-left">
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-rose-500/10 border border-rose-500/20 text-rose-400 text-xs sm:text-sm font-semibold mb-6 backdrop-blur-md">
+              <span class="w-2 h-2 rounded-full bg-rose-400 animate-ping"></span>
+              🔗 Temel Ticaret • Tek Tıkla Sipariş & 3D Secure Kredi Kartı Tahsilat Linki
+            </div>
+
+            <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight text-white leading-[1.1] mb-6">
+              Web Siteniz Olmasa Bile <br/>
+              <span class="text-transparent bg-clip-text bg-gradient-to-r from-rose-400 via-pink-300 to-amber-200">
+                10 Saniyede Satış Yapın ve Tahsil Edin!
+              </span>
+            </h1>
+
+            <p class="text-base sm:text-lg text-slate-300 mb-8 leading-relaxed max-w-xl mx-auto lg:mx-0">
+              "IBAN atın göndereyim" deyip vazgeçen müşterileri kaybetmeyin. Stok Pratik ile tek tıkla güvenli ödeme linki oluşturun; WhatsApp, Instagram veya SMS ile paylaşın, müşteriniz kredi kartıyla tek çekim veya taksitle ödesin, stok ve cari hesabınız anında güncellensin.
+            </p>
+
+            <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+              <a 
+                href="/firma-kaydi" 
+                class="w-full sm:w-auto px-8 py-4 rounded-xl bg-gradient-to-r from-rose-600 to-pink-600 hover:from-rose-500 hover:to-pink-500 text-white font-bold text-base shadow-lg shadow-rose-600/30 transition-all duration-200 text-center flex items-center justify-center gap-2"
+              >
+                <span>🚀 Hemen Ücretsiz Başla — İlk Linkini Oluştur</span>
+              </a>
+              <a 
+                href="https://erp-eticaret.stokpratik.com.tr/giris" 
+                target="_blank"
+                rel="noopener noreferrer"
+                class="w-full sm:w-auto px-8 py-4 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-200 font-semibold text-base border border-slate-700 transition-all duration-200 text-center flex items-center justify-center gap-2"
+              >
+                <span>🔐 Giriş Yap</span>
+              </a>
+            </div>
+
+            <!-- Sosyal Güven Rozetleri -->
+            <div class="mt-10 pt-8 border-t border-slate-800/80 flex flex-wrap items-center justify-center lg:justify-start gap-6 text-xs text-slate-400 font-medium">
+              <div class="flex items-center gap-2">
+                <span class="text-rose-400 font-bold">✓</span> 3D Secure SMS Doğrulama
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="text-rose-400 font-bold">✓</span> PayTR, iyzico, Param Uyumlu
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="text-rose-400 font-bold">✓</span> Sıfır Kodlama & Anında Başlangıç
+              </div>
+            </div>
+          </div>
+
+          <!-- Sağ: Canlı İkili Mobil Ekran Mockup'ı (WhatsApp + 3D Secure Checkout) -->
+          <div class="lg:col-span-6 relative">
+            <div class="relative mx-auto max-w-lg lg:max-w-none flex flex-col sm:flex-row gap-4 items-center justify-center">
+              
+              <!-- Ekran 1: WhatsApp Sohbet Ekranı Mockup -->
+              <div class="w-full sm:w-[260px] bg-slate-900 border border-slate-800 rounded-3xl p-3 shadow-2xl relative z-10 backdrop-blur-xl">
+                <!-- Üst Bar -->
+                <div class="bg-emerald-900/60 rounded-2xl p-2.5 mb-3 flex items-center gap-2 border border-emerald-500/20">
+                  <div class="w-8 h-8 rounded-full bg-emerald-700 flex items-center justify-center text-xs font-bold text-white">SP</div>
+                  <div class="leading-tight">
+                    <div class="text-xs font-bold text-white">Stok Pratik Mağaza</div>
+                    <div class="text-[10px] text-emerald-300">çevrimiçi</div>
+                  </div>
+                </div>
+
+                <!-- Sohbet Balonları -->
+                <div class="space-y-2.5 text-[11px]">
+                  <div class="bg-slate-800/90 text-slate-200 rounded-2xl rounded-tl-none p-2.5 max-w-[90%] border border-slate-700/50">
+                    Merhaba, beğendiğiniz Bluetooth Kulaklık için siparişinizi hazırladık! 🎧
+                  </div>
+
+                  <div class="bg-emerald-950/80 text-emerald-100 border border-emerald-500/30 rounded-2xl rounded-tr-none p-2.5 ml-auto max-w-[95%] space-y-1.5">
+                    <div class="font-semibold text-rose-300">💳 Güvenli Ödeme Linkiniz:</div>
+                    <div class="bg-slate-950/80 p-2 rounded-lg text-[10px] font-mono text-rose-400 break-all border border-slate-800">
+                      https://stokpratik.link/pay/7841
+                    </div>
+                    <div class="text-[9px] text-slate-300">Tutar: 1.250,00 ₺ (Kredi Kartı / Taksit)</div>
+                  </div>
+
+                  <div class="bg-slate-800/90 text-slate-200 rounded-2xl rounded-tl-none p-2.5 max-w-[85%] border border-slate-700/50 flex items-center gap-1.5">
+                    <span>Ödemeyi kartla tamamladım, teşekkürler! 👍</span>
+                  </div>
+
+                  <div class="bg-emerald-950/80 text-emerald-100 border border-emerald-500/30 rounded-2xl rounded-tr-none p-2 ml-auto max-w-[90%] text-[10px] flex items-center gap-1">
+                    <span class="text-emerald-400 font-bold">✓✓</span> Ödeme onaylandı! Faturanız kesildi.
+                  </div>
+                </div>
+              </div>
+
+              <!-- Ekran 2: 3D Secure Ödeme Sayfası Mockup -->
+              <div class="w-full sm:w-[280px] bg-slate-900 border border-rose-500/30 rounded-3xl p-4 shadow-2xl relative z-20 backdrop-blur-xl">
+                <div class="flex items-center justify-between border-b border-slate-800 pb-2 mb-3">
+                  <div class="flex items-center gap-1.5">
+                    <span class="text-rose-400 text-sm">🔒</span>
+                    <span class="text-[11px] font-bold text-white">Güvenli 3D Ödeme</span>
+                  </div>
+                  <span class="px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-400 text-[9px] font-semibold">256-Bit SSL</span>
+                </div>
+
+                <!-- Tutar Özeti -->
+                <div class="bg-slate-950/80 rounded-xl p-2.5 border border-slate-800 mb-3 text-center">
+                  <div class="text-[10px] text-slate-400 uppercase font-medium">Ödenecek Tutar</div>
+                  <div class="text-xl font-black text-rose-400 tracking-tight">1.250,00 ₺</div>
+                  <div class="text-[10px] text-slate-400">Kablosuz Kulaklık V5.3 (Siyah)</div>
+                </div>
+
+                <!-- Kart Formu Simülasyonu -->
+                <div class="space-y-2 text-[10px]">
+                  <div>
+                    <label class="block text-slate-400 mb-0.5 text-[9px]">Kart Üzerindeki İsim</label>
+                    <div class="bg-slate-950 border border-slate-800 rounded-lg p-1.5 text-slate-300 font-mono">AHMET YILMAZ</div>
+                  </div>
+                  <div>
+                    <label class="block text-slate-400 mb-0.5 text-[9px]">Kart Numarası</label>
+                    <div class="bg-slate-950 border border-slate-800 rounded-lg p-1.5 text-slate-300 font-mono flex justify-between items-center">
+                      <span>5428 •••• •••• 9012</span>
+                      <span class="text-rose-400 font-bold text-[9px]">Mastercard</span>
+                    </div>
+                  </div>
+                  <div class="grid grid-cols-2 gap-2">
+                    <div>
+                      <label class="block text-slate-400 mb-0.5 text-[9px]">SKT</label>
+                      <div class="bg-slate-950 border border-slate-800 rounded-lg p-1.5 text-slate-300 font-mono text-center">08 / 28</div>
+                    </div>
+                    <div>
+                      <label class="block text-slate-400 mb-0.5 text-[9px]">CVC</label>
+                      <div class="bg-slate-950 border border-slate-800 rounded-lg p-1.5 text-slate-300 font-mono text-center">•••</div>
+                    </div>
+                  </div>
+
+                  <!-- Taksit Seçenekleri -->
+                  <div class="pt-1">
+                    <label class="block text-slate-400 mb-1 text-[9px]">Ödeme Planı</label>
+                    <div class="grid grid-cols-2 gap-1.5 text-[9px]">
+                      <div class="p-1.5 rounded-lg border border-rose-500/50 bg-rose-500/10 text-rose-300 text-center font-bold">
+                        Tek Çekim (1.250 ₺)
+                      </div>
+                      <div class="p-1.5 rounded-lg border border-slate-800 bg-slate-950 text-slate-400 text-center">
+                        3 Taksit (435 ₺ x 3)
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Ödeme Butonu -->
+                  <div class="pt-2">
+                    <div class="w-full py-2.5 rounded-xl bg-gradient-to-r from-rose-500 to-pink-500 text-white font-bold text-[11px] text-center shadow-md shadow-rose-500/20">
+                      🛡️ 3D Secure ile Güvenle Öde
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. KULLANIM SENARYOLARI (USE CASES) -->
+    <section class="py-20 lg:py-24 border-b border-slate-800 relative bg-slate-900/40">
+      <div class="container mx-auto px-4 lg:px-8 max-w-7xl">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <div class="text-rose-400 text-sm font-semibold tracking-wider uppercase mb-3">Çok Yönlü Çözüm</div>
+          <h2 class="text-3xl sm:text-4xl font-black text-white tracking-tight mb-4">
+            Hangi İşletmeler İçin İdeal?
+          </h2>
+          <p class="text-slate-400 text-base leading-relaxed">
+            Perakende satıcılardan toptancılara, saha servislerinden sosyal medya butiklerine kadar her sektörde saniyeler içinde tahsilat yapın.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {useCases.map((item) => (
+            <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-6 hover:border-rose-500/40 transition-all duration-300 flex flex-col justify-between group">
+              <div>
+                <div class="w-12 h-12 rounded-xl bg-rose-500/10 border border-rose-500/20 text-2xl flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
+                  {item.icon}
+                </div>
+                <h3 class="text-lg font-bold text-white mb-2 leading-snug">{item.title}</h3>
+                <p class="text-slate-400 text-sm leading-relaxed">{item.desc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. TEKNİK AVANTAJLAR (BENTO GRID) -->
+    <section class="py-20 lg:py-24 border-b border-slate-800 relative">
+      <div class="container mx-auto px-4 lg:px-8 max-w-7xl">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <div class="text-rose-400 text-sm font-semibold tracking-wider uppercase mb-3">Teknik Üstünlük</div>
+          <h2 class="text-3xl sm:text-4xl font-black text-white tracking-tight mb-4">
+            Sadece Bir Link Değil, Tam Entegre Finans Motoru
+          </h2>
+          <p class="text-slate-400 text-base leading-relaxed">
+            Stok Pratik Linkle Satış modülü, arka plandaki ön muhasebe ve depo yönetiminizle doğrudan haberleşir.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          {technicalAdvantages.map((adv) => (
+            <div class={`${adv.colSpan} bg-slate-900/60 border border-slate-800 rounded-2xl p-6 sm:p-8 hover:border-rose-500/40 transition-all duration-300 flex flex-col justify-between group`}>
+              <div>
+                <div class="w-12 h-12 rounded-xl bg-rose-500/10 border border-rose-500/20 text-2xl flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
+                  {adv.icon}
+                </div>
+                <h3 class="text-xl font-bold text-white mb-3">{adv.title}</h3>
+                <p class="text-slate-400 text-sm sm:text-base leading-relaxed">{adv.desc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. DÖNÜŞÜM CTA BÖLÜMÜ (BOTTOM BANNER) -->
+    <section class="py-20 lg:py-24 relative overflow-hidden">
+      <div class="absolute inset-0 bg-gradient-to-b from-slate-950 via-rose-950/20 to-slate-950"></div>
+      <div class="container mx-auto px-4 lg:px-8 max-w-5xl relative z-10 text-center">
+        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-rose-500/10 border border-rose-500/20 text-rose-400 text-xs sm:text-sm font-semibold mb-6">
+          ✨ 14 Gün Ücretsiz Deneme • Kredi Kartı Gerekmez
+        </div>
+        
+        <h2 class="text-3xl sm:text-5xl font-black text-white tracking-tight mb-6">
+          Her Mesajı Satışa, Her Alacağı Nakde Dönüştürün!
+        </h2>
+        
+        <p class="text-base sm:text-lg text-slate-300 max-w-2xl mx-auto mb-10 leading-relaxed">
+          Kredi kartı tahsilat linkinizi saniyeler içinde oluşturun, müşterilerinize güvenli ve taksitli ödeme konforu sunarak cironuzu katlayın.
+        </p>
+
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <a 
+            href="/firma-kaydi" 
+            class="w-full sm:w-auto px-10 py-4 rounded-xl bg-gradient-to-r from-rose-600 to-pink-600 hover:from-rose-500 hover:to-pink-500 text-white font-bold text-base shadow-lg shadow-rose-600/30 transition-all duration-200"
+          >
+            🚀 Hemen Ücretsiz Deneyin
+          </a>
+          <a 
+            href="https://erp-eticaret.stokpratik.com.tr/giris" 
+            target="_blank"
+            rel="noopener noreferrer"
+            class="w-full sm:w-auto px-10 py-4 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-200 font-semibold text-base border border-slate-700 transition-all duration-200"
+          >
+            🔐 Sisteme Giriş Yap
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</BaseLayout>

@@ -1,0 +1,293 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const pageTitle = "Dokunmatik & Barkodlu Hızlı POS Satış Ekranı | Stok Pratik";
+const pageDescription = "Kasada kuyruk bekletmeyen 0.2 saniyede barkod okuyan süper hızlı perakende satış ekranı. Market, butik, nalbur, kırtasiye uyumlu, parçalı ödeme ve maliyet kilitli.";
+
+const sectors = [
+  {
+    icon: "🛒",
+    name: "Market, Bakkal & Şarküteri",
+    subtitle: "Sırada 5 müşteri beklerken saniyelerin önemi var!",
+    desc: "Barkodsuz ekmek, su, poşet ve manav ürünleri için Resimli Hızlı Tuşlar. Cüzdanını unutan müşteri için 'Fiş Beklet (Parka Al)' ve tek tuşla Veresiye Defteri (Cariye Yaz) desteği.",
+    tags: ["Resimli Tuşlar", "Fiş Park Etme", "Veresiye / Açık Hesap"]
+  },
+  {
+    icon: "🔩",
+    name: "Nalbur, Hırdavat & Yapı Market",
+    subtitle: "Binlerce çeşit vida, boya, boru ve usta açık hesapları!",
+    desc: "Metre, kilogram, paket veya adet birimli esnek satış. Ustayla pazarlık anında Maliyet Koruma Kilidi sayesinde alış fiyatının altına inmeyi kesin engelleyen koruma.",
+    tags: ["Metre / Kg Satış", "Maliyet Koruma Kilidi", "Şantiye Carisi"]
+  },
+  {
+    icon: "👗",
+    name: "Tekstil, Butik & Ayakkabı",
+    subtitle: "Aynı gömleğin 5 rengi, 6 bedeni ve indirimler!",
+    desc: "Barkod okutulduğunda renk ve beden varyantını saniyede seçme, hızlı iade/değişim alma ve satışı yapan tezgahtara otomatik prim hesaplama.",
+    tags: ["Renk/Beden Matrisi", "Hızlı Değişim", "Tezgahtar Primi"]
+  },
+  {
+    icon: "💄",
+    name: "Kozmetik, Bijuteri & Hediyelik",
+    subtitle: "Barkodu sığmayan küçük ürünler ve kampanya paketleri!",
+    desc: "Tek tıkla otomatik EAN-13 barkod basımı. 3'lü hediye seti (Bundle Ürün) satıldığında içindeki ürünlerin stoklarından otomatik düşme ve pazaryeri eşitleme.",
+    tags: ["Otomatik EAN-13", "Bundle Set Ürün", "Canlı Pazaryeri"]
+  },
+  {
+    icon: "📚",
+    name: "Kırtasiye, Oyuncak & Kitabevi",
+    subtitle: "Okul sezonunda yoğun kasa trafiği ve binlerce barkod!",
+    desc: "Global barkod arama motoru ve pratik dokunmatik kategoriler ile en yoğun okul açılış günlerinde bile sıfır takılma ve milisaniyelik ardışık satış.",
+    tags: ["Global Barkod Arama", "Hatasız Seri Okutma", "Kitap/Kırtasiye"]
+  },
+  {
+    icon: "🔧",
+    name: "Oto Yedek Parça & Teknik Ürün",
+    subtitle: "OEM stok kodu, muadil ürün arama ve kademeli fiyatlar!",
+    desc: "Sadece barkodla değil, OEM stok kodu veya parça adıyla anlık arama. Perakende müşteriye liste fiyatı, sanayi ustasına özel toptan fiyat uygulama.",
+    tags: ["OEM Kod Arama", "Muadil Parça", "Kademeli Fiyat"]
+  }
+];
+
+const bentoFeatures = [
+  {
+    icon: "💳",
+    title: "Parçalı (Karma) Tahsilat",
+    desc: "Müşteri 1.000 ₺'lik sepetin 400 ₺'sini Nakit, 600 ₺'sini Kredi Kartı ile mi ödemek istiyor? Tek tıkla bölün ve tamamlayın.",
+    colSpan: "lg:col-span-1"
+  },
+  {
+    icon: "🛡️",
+    title: "Sıfır Zarar (Maliyet Kilidi)",
+    desc: "Kasiyer yanlışlıkla alış maliyetinin altında bir indirim uygularsa sistem anında kırmızı alarm verir ve zararına satışı kilitler.",
+    colSpan: "lg:col-span-2"
+  },
+  {
+    icon: "⏸️",
+    title: "Fiş Bekletme (Parka Alma)",
+    desc: "Reyondan ek ürün almaya giden müşterinin sepetini tek tıkla beklemeye alın; arkadaki müşterinin satışına kesintisiz devam edin.",
+    colSpan: "lg:col-span-1"
+  },
+  {
+    icon: "📱",
+    title: "Dokunmatik, Klavye & El Terminali",
+    desc: "İster dokunmatik POS monitöründe, ister normal bilgisayarda klavye kısayollarıyla (F2, F12), ister tablette veya telefonda çalışın.",
+    colSpan: "lg:col-span-1"
+  },
+  {
+    icon: "📊",
+    title: "Anlık Kasa Z Raporu",
+    desc: "Gün sonunda kasadaki nakit, kredi kartı, veresiye ve yapılan iskontoları kuruşu kuruşuna tek tıkla denetleyin.",
+    colSpan: "lg:col-span-1"
+  },
+  {
+    icon: "⚡",
+    title: "Pazaryerleriyle Canlı Entegre",
+    desc: "Kasada son 1 adet kalan ürünü sattığınız anda Trendyol ve Hepsiburada stoğu otomatik '0' olur; tedarik cezası riskini sıfırlar.",
+    colSpan: "lg:col-span-3"
+  }
+];
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <main class="bg-slate-950 text-slate-100 antialiased min-h-screen selection:bg-emerald-600 selection:text-white">
+    
+    <!-- 1. HERO SECTION -->
+    <section class="relative overflow-hidden pt-20 pb-24 lg:pt-28 lg:pb-32 border-b border-slate-800">
+      <div class="absolute inset-0 bg-[radial-gradient(circle_at_top,_var(--tw-gradient-stops))] from-emerald-900/20 via-slate-950 to-slate-950"></div>
+      <div class="absolute top-1/4 right-1/4 w-[500px] h-[300px] bg-emerald-500/10 blur-[120px] rounded-full pointer-events-none"></div>
+
+      <div class="container mx-auto px-4 lg:px-8 relative z-10 max-w-7xl">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+          
+          <!-- Sol: Başlık ve CTA -->
+          <div class="lg:col-span-6 text-center lg:text-left">
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs sm:text-sm font-semibold mb-6 backdrop-blur-md">
+              <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+              ⚡ Temel Ticaret • Dokunmatik & Barkodlu Hızlı POS Ekranı
+            </div>
+
+            <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight text-white leading-[1.1] mb-6">
+              Kasada Kuyruk Bekletmeyen, <br/>
+              <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-300 to-white">
+                0.2 Saniyede Barkod Okuyan Süper Hızlı Satış Ekranı!
+              </span>
+            </h1>
+
+            <p class="text-base sm:text-lg text-slate-400 max-w-xl mb-8 leading-relaxed">
+              Karmaşık menüler içinde kaybolmadan; barkodu okutun, nakit veya kredi kartına dokunun ve satışı tamamlayın! Marketten nalbura, tekstilden kırtasiyeye kadar her işletmenin hızına ayak uyduran, <strong>Maliyet Koruma Kilitli</strong> yeni nesil POS.
+            </p>
+
+            <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+              <a href="https://erp-eticaret.stokpratik.com.tr/giris" class="w-full sm:w-auto px-8 py-4 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-extrabold rounded-xl shadow-lg shadow-emerald-500/30 transition-all transform hover:-translate-y-0.5 text-center text-base">
+                ⚡ Hızlı POS'u Ücretsiz Aç & Başla
+              </a>
+              <a href="#sektorler" class="w-full sm:w-auto px-7 py-4 bg-slate-900 hover:bg-slate-800 text-slate-200 border border-slate-700 font-bold rounded-xl transition-all text-center text-base">
+                🛒 Sektörünüze Göre Nasıl Çalışır?
+              </a>
+            </div>
+
+            <div class="mt-8 flex items-center justify-center lg:justify-start gap-6 text-xs text-slate-400 font-medium">
+              <span class="flex items-center gap-1.5"><span class="text-emerald-400">✓</span> Dokunmatik & Klavye Kısayollu</span>
+              <span class="flex items-center gap-1.5"><span class="text-emerald-400">✓</span> Parçalı Tahsilat</span>
+              <span class="flex items-center gap-1.5"><span class="text-emerald-400">✓</span> Sıfır Zarar Kalkanı</span>
+            </div>
+          </div>
+
+          <!-- Sağ: Canlı POS Ekranı Mockup Simülasyonu -->
+          <div class="lg:col-span-6">
+            <div class="rounded-2xl bg-slate-900 p-6 border border-slate-800 shadow-2xl shadow-emerald-950/40 backdrop-blur-xl">
+              <!-- POS Top Bar -->
+              <div class="flex items-center justify-between pb-4 border-b border-slate-800 mb-4 text-xs">
+                <div class="flex items-center gap-2">
+                  <span class="px-2.5 py-1 rounded bg-emerald-500/20 text-emerald-400 font-extrabold">KASA 1 • MERKEZ</span>
+                  <span class="text-slate-400">Kasiyer: Ahmet Y.</span>
+                </div>
+                <div class="flex items-center gap-2 font-mono text-slate-400">
+                  <span class="px-2 py-0.5 rounded bg-slate-800 text-slate-300">F2: Barkod</span>
+                  <span class="px-2 py-0.5 rounded bg-slate-800 text-slate-300">F12: Satış</span>
+                </div>
+              </div>
+
+              <!-- Barkod Arama Çubuğu -->
+              <div class="relative mb-4">
+                <input 
+                  type="text" 
+                  value="8690123456789 - Sızma Zeytinyağı 5L" 
+                  readonly 
+                  class="w-full bg-slate-950 border border-emerald-500/40 rounded-xl px-4 py-3 text-sm text-emerald-400 font-mono focus:outline-none"
+                />
+                <span class="absolute right-3 top-3 text-xs px-2 py-1 rounded bg-emerald-500 text-slate-950 font-black">0.2 sn</span>
+              </div>
+
+              <!-- Sepet Kalemleri -->
+              <div class="space-y-2 mb-5">
+                <div class="flex items-center justify-between p-3 rounded-lg bg-slate-950/70 border border-slate-800/80 text-xs">
+                  <div>
+                    <span class="font-bold text-white block">Sızma Zeytinyağı 5L (Teneke)</span>
+                    <span class="text-slate-400">1 Adet x 450,00 ₺ • KDV %10</span>
+                  </div>
+                  <span class="font-extrabold text-sm text-white">450,00 ₺</span>
+                </div>
+                <div class="flex items-center justify-between p-3 rounded-lg bg-slate-950/70 border border-slate-800/80 text-xs">
+                  <div>
+                    <span class="font-bold text-white block">Organik Baldo Pirinç 1 Kg</span>
+                    <span class="text-slate-400">2 Adet x 65,00 ₺ • KDV %1</span>
+                  </div>
+                  <span class="font-extrabold text-sm text-white">130,00 ₺</span>
+                </div>
+              </div>
+
+              <!-- Toplam Tutar ve Hızlı Aksiyonlar -->
+              <div class="p-4 rounded-xl bg-slate-950 border border-slate-800 mb-4">
+                <div class="flex items-baseline justify-between">
+                  <span class="text-xs uppercase tracking-wider text-slate-400 font-bold">Ödenecek Tutar</span>
+                  <span class="text-2xl font-black text-emerald-400">580,00 ₺</span>
+                </div>
+              </div>
+
+              <!-- Ödeme Butonları Grid -->
+              <div class="grid grid-cols-3 gap-2 mb-3">
+                <button class="py-2.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-white text-xs font-bold transition">💵 Nakit</button>
+                <button class="py-2.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-white text-xs font-bold transition">💳 Kredi Kartı</button>
+                <button class="py-2.5 rounded-lg bg-amber-500/20 text-amber-300 text-xs font-bold border border-amber-500/30">⏸️ Parka Al</button>
+              </div>
+
+              <!-- Dev Satışı Tamamla Butonu -->
+              <a href="https://erp-eticaret.stokpratik.com.tr/giris" class="block w-full py-4 bg-emerald-500 hover:bg-emerald-400 text-slate-950 text-center font-black rounded-xl text-base shadow-lg shadow-emerald-500/30 transition">
+                SATIŞI TAMAMLA & FİŞ YAZDIR (F12) ➔
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. SEKTÖRLERE GÖRE HIZLI POS SENARYOLARI -->
+    <section id="sektorler" class="py-24 bg-slate-900/50 border-b border-slate-800">
+      <div class="container mx-auto px-4 lg:px-8 max-w-6xl">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <span class="text-emerald-400 font-bold uppercase tracking-wider text-xs">Sektörel Uyumluluk</span>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-white mt-2">
+            Hangi Sektörde Olursanız Olun, Sizin Hızınızda
+          </h2>
+          <p class="text-slate-400 mt-3 text-base">
+            Esnafın ve mağazacının dilini bilen, sektöre özel ihtiyaçları tek tıkla çözen pratik kasa fonksiyonları.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {sectors.map((s) => (
+            <div class="p-7 rounded-2xl bg-slate-900 border border-slate-800 hover:border-emerald-500/40 transition-all flex flex-col justify-between group">
+              <div>
+                <span class="text-4xl block mb-4 group-hover:scale-110 transition-transform">{s.icon}</span>
+                <h3 class="text-lg font-bold text-white mb-1">{s.name}</h3>
+                <p class="text-xs font-semibold text-emerald-400 mb-3 italic">"{s.subtitle}"</p>
+                <p class="text-xs text-slate-400 leading-relaxed mb-6">{s.desc}</p>
+              </div>
+              <div class="flex flex-wrap gap-1.5 pt-4 border-t border-slate-800">
+                {s.tags.map((t) => (
+                  <span class="px-2 py-0.5 rounded bg-slate-800 text-[11px] font-medium text-slate-300">
+                    {t}
+                  </span>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. KASADAKİ 6 KRİTİK ÖZELLİK (BENTO GRID) -->
+    <section class="py-24 bg-slate-950">
+      <div class="container mx-auto px-4 lg:px-8 max-w-6xl">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <span class="text-emerald-400 font-bold uppercase tracking-wider text-xs">Kasa Süper Güçleri</span>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-white mt-2">
+            Kasanızı Güçlendiren 6 Akıllı Yetenek
+          </h2>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          {bentoFeatures.map((b) => (
+            <div class={`${b.colSpan} p-7 rounded-2xl bg-slate-900 border border-slate-800 hover:border-slate-700 transition-all flex flex-col justify-between`}>
+              <div>
+                <span class="text-3xl block mb-3">{b.icon}</span>
+                <h3 class="text-lg font-bold text-white mb-2">{b.title}</h3>
+                <p class="text-sm text-slate-400 leading-relaxed">{b.desc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. ALT KAPANIŞ ÇAĞRISI (BOTTOM CTA) -->
+    <section class="py-24 bg-gradient-to-b from-slate-900 via-emerald-950 to-slate-950 text-white text-center relative overflow-hidden border-t border-slate-800">
+      <div class="absolute inset-0 bg-[radial-gradient(#10b981_1px,transparent_1px)] [background-size:24px_24px] opacity-20"></div>
+      
+      <div class="container mx-auto px-4 lg:px-8 relative z-10 max-w-3xl">
+        <span class="inline-block px-4 py-1.5 rounded-full bg-emerald-500/20 border border-emerald-400/30 text-emerald-300 text-xs font-bold uppercase tracking-wider mb-4">
+          Ek Donanım Şart Değil
+        </span>
+        <h2 class="text-3xl sm:text-5xl font-extrabold mb-5 text-white">
+          Pahalı POS Yazılımlarına Binlerce Lira Ödemeyin!
+        </h2>
+        <p class="text-slate-300 text-base sm:text-lg mb-8 leading-relaxed">
+          Mevcut bilgisayarınız, tabletiniz veya barkod okuyucunuzla hemen bugün ücretsiz kullanmaya başlayın; kasa hızınızı katlayın.
+        </p>
+
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <a href="https://erp-eticaret.stokpratik.com.tr/giris" class="w-full sm:w-auto px-8 py-4 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black rounded-xl shadow-xl shadow-emerald-500/30 transition-all text-center">
+            🚀 Hemen Giriş Yapın & Kullanın
+          </a>
+          <a href="/firma-kaydi" class="w-full sm:w-auto px-8 py-4 bg-white/10 hover:bg-white/20 text-white border border-white/20 font-bold rounded-xl transition-all text-center">
+            🎁 14 Gün Ücretsiz Deneyin
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</BaseLayout>

@@ -1,0 +1,542 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const pageTitle = "Özellikler | Stok Pratik Bulut ERP, Ön Muhasebe & E-Ticaret Platformu";
+const pageDescription = "Ön muhasebeden pazaryerlerine, üretimden saha satışa tam entegre yeni nesil Bulut ERP. Sıfır zarar kalkanı, 20 dakikada bir pazaryeri bekçisi ve 12 modüler güç merkezi.";
+
+// 4 Temel Vaat / Koruma Kalkanları
+const shields = [
+  {
+    icon: "🛡️",
+    title: "Sıfır Zarar Kalkanı",
+    subtitle: "Maliyet Koruma Kilidi",
+    desc: "Alış maliyetinin altında ürün fiyatlamasını ve zararına satışı hem tezgahta hem de pazaryerlerinde otomatik olarak engeller.",
+    color: "from-blue-600 to-indigo-700",
+    border: "border-blue-500/30"
+  },
+  {
+    icon: "⏱️",
+    title: "Pazaryeri Bekçisi",
+    subtitle: "20 Dakikada Bir Canlı Senkronizasyon",
+    desc: "Trendyol, Hepsiburada ve tüm satış kanallarınızla stok, fiyat ve siparişleri siz uyurken bile her 20 dakikada bir otomatik eşitler.",
+    color: "from-amber-500 to-orange-600",
+    border: "border-amber-500/30"
+  },
+  {
+    icon: "🚨",
+    title: "Tedarik Cezası Kalkanı",
+    subtitle: "Emniyet Stoğu Koruması",
+    desc: "Depo stoğunuz kritik sınırın altına indiğinde pazaryerlerine anında 0 stok basarak ceza riskini sıfırlar ve mağaza puanınızı korur.",
+    color: "from-rose-600 to-red-700",
+    border: "border-rose-500/30"
+  },
+  {
+    icon: "🧩",
+    title: "Modüler Mimari",
+    subtitle: "Kullandığın Kadar Büyüt",
+    desc: "Sadece ihtiyacınız olan omurgayı kurun; işiniz büyüdükçe E-Ticaret, Üretim, WMS Depo, PDKS veya B2B modüllerini tek tıkla ekleyin.",
+    color: "from-emerald-600 to-teal-700",
+    border: "border-emerald-500/30"
+  }
+];
+
+// 12 Ana Kategori
+const categories = [
+  {
+    id: "stok-katalog",
+    filter: "muhasebe-finans",
+    num: "01",
+    tag: "Ana Paket",
+    title: "Akıllı Stok, Ürün ve Katalog Yönetimi",
+    icon: "📦",
+    screenshot: "/images/screenshots/StokPratik_Temel_Ticaret.png",
+    lead: "Tüm ürün portföyünüzü varyantları, çoklu barkodları ve kademeli toptan fiyatlarıyla tek merkezden yönetin.",
+    features: [
+      { name: "Zengin Ürün Kartları", detail: "Barkod, Stok Kodu, Muhasebe Kodu, Marka, Kategori, Desi, KDV ve 5'li HD görsel desteği." },
+      { name: "Otomatik EAN-13 Barkod Üretici", detail: "Barkodu olmayan ürünler için çakışmayan ulusal standartta EAN-13 barkod basımı." },
+      { name: "Varyant & Paket (Bundle) Yönetimi", detail: "Renk, beden, ölçü kırılımları ve birden çok ürünü birleştiren set ürün kurgusu." },
+      { name: "Kademeli Toptan Fiyatlama", detail: "Adet, Koli, Palet ve Konteyner bazlı otomatik kurallı toptan satış fiyat listeleri." },
+      { name: "Excel ile Saniyeler İçinde Toplu Aktarım", detail: "Binlerce ürünü Excel/CSV şablonuyla anında içe veya dışa aktarın." }
+    ]
+  },
+  {
+    id: "cari-alis-satis",
+    filter: "muhasebe-finans",
+    num: "02",
+    tag: "Ana Paket",
+    title: "Cari Hesaplar & Alış/Satış Yönetimi",
+    icon: "🤝",
+    screenshot: "/images/screenshots/StokPratik_Temel_Ticaret.png",
+    lead: "Müşteri ve tedarikçilerinizin 360° finansal hareketlerini, risk limitlerini ve faturalarını hatasız takip edin.",
+    features: [
+      { name: "360° Müşteri & Tedarikçi Takibi", detail: "Açık hesap, dövizli bakiye, risk limiti ve cari yaşlandırma analizi." },
+      { name: "Alış ve Satış Faturaları", detail: "Saniyeler içinde faturalama, geçmiş alış maliyetini görme ve dinamik stok güncelleme." },
+      { name: "İrsaliye Yönetimi", detail: "Gelen ve giden mal sevk irsaliyeleri, araç/plaka/şoför kaydı ve tek tıkla faturaya dönüşüm." },
+      { name: "WhatsApp & PDF Ekstre Paylaşımı", detail: "Müşterinize tek tıkla şık PDF cari ekstre veya A4 fatura belgesini WhatsApp'tan iletin." }
+    ]
+  },
+  {
+    id: "finans-masraf",
+    filter: "muhasebe-finans",
+    num: "03",
+    tag: "Finans & Masraf",
+    title: "Finans, Kasa, Banka, Çek/Senet & Yapay Zekâ Masraf",
+    icon: "💰",
+    screenshot: "/images/screenshots/StokPratik_Finans_Yonetimi.png",
+    lead: "Şirketinizin nakit akışını, banka hesaplarını ve yapay zekâlı OCR fiş okuma teknolojisiyle masraflarınızı kontrol altına alın.",
+    features: [
+      { name: "Çoklu Kasa ve Banka Hesapları", detail: "TL, USD, EUR, GBP hesapları, IBAN yönetimi, virman ve anlık konsolide bakiye." },
+      { name: "Yapay Zekâ (AI OCR) Fiş Okuma", detail: "Masraf fişlerinin fotoğrafını çekin; tarih, KDV, matrah ve firma adını yapay zeka otomatik okusun." },
+      { name: "Çek ve Senet Portföyü", detail: "Müşteri çek/senedi, kendi kıymetli evraklarımız, ciro, bankaya tahsilat ve vade uyarı takvimi." },
+      { name: "Canlı Piyasa Radarı", detail: "Serbest piyasa ve TCMB döviz, altın, petrol ve kripto verileriyle anlık kâr/zarar koruması." }
+    ]
+  },
+  {
+    id: "eticaret-pazaryeri",
+    filter: "eticaret-pazaryeri",
+    num: "04",
+    tag: "Çok Satan Modül",
+    title: "E-Ticaret ve Pazaryeri Entegrasyon Merkezi",
+    icon: "🛒",
+    screenshot: "/images/screenshots/StokPratik_e_Ticaret.png",
+    lead: "Trendyol ve Hepsiburada başta olmak üzere tüm pazaryerlerinizi tek merkezden yönetin, siparişleri anında kargolayın.",
+    features: [
+      { name: "Çift Yönlü Canlı Entegrasyon", detail: "Trendyol, Hepsiburada sipariş, canlı stok, fiyat ve müşteri soru-cevaplarını tek ekranda toplayın." },
+      { name: "100x150 mm Termal Kargo Barkodu", detail: "Tek tıkla ortak formatlı termal kargo etiketi basın; fatura linkini pazaryerine otomatik iletin." },
+      { name: "Pazaryeri Eşleşme & Fiyat Masası", detail: "Kanal bazlı % komisyon ekleme, +₺ kargo ekleme, Canlı Çakışma Dedektörü ve zorunlu özellikleri otomatik tamamlama." },
+      { name: "İade Masası & Hak Ediş Mutabakatı", detail: "Pazaryeri iadelerini sağlam veya hasarlı stok olarak ayırın, net komisyon ve hakediş kârınızı ölçün." },
+      { name: "Genişleyen Global Ekosistem", detail: "Amazon, N11, PttAVM, Çiçeksepeti, Etsy, Ozon, AliExpress, Temu, eBay ve Walmart vizyonu." }
+    ]
+  },
+  {
+    id: "b2b-toptan",
+    filter: "eticaret-pazaryeri",
+    num: "05",
+    tag: "B2B Ekosistemi",
+    title: "B2B Toptan Satış: CariNET & DepodanDirekt",
+    icon: "🌐",
+    screenshot: "/images/screenshots/depodandirekt.png",
+    lead: "Bayilerinize 7/24 toptan sipariş portalı sunun; toptan ürünlerinizi Türkiye'nin B2B ihracat ağında sergileyin.",
+    features: [
+      { name: "Stok Pratik B2B CariNET Portalı", detail: "Bayilere özel şifreli portal; kendi bakiye ve faturalarını görme, özel iskonto ile sipariş verme ve sanal POS ile tahsilat." },
+      { name: "DepodanDirekt B2B Pazaryeri", detail: "Toptan ürünlerinizi koli/palet bazında DepodanDirekt ağına aktararak yeni alıcılarla buluşturun." },
+      { name: "Linkle Sat & Ödeme Al", detail: "Müşterinize WhatsApp veya SMS ile güvenli 3D Secure ödeme linki gönderin, tahsilat anında cariye işlensin." }
+    ]
+  },
+  {
+    id: "e-donusum-smmm",
+    filter: "muhasebe-finans",
+    num: "06",
+    tag: "Resmi Uyum",
+    title: "e-Dönüşüm & Mali Müşavir (SMMM) Köprüsü",
+    icon: "🏛️",
+    screenshot: "/images/screenshots/StokPratik_e-Donusum_Mali_Musavir.png",
+    lead: "14 alt modülde GİB onaylı e-Belge altyapısı ve mali müşavirinizle tek tıkla dijital defter/veri mutabakatı.",
+    features: [
+      { name: "Tam Kapsamlı e-Belge Yönetimi", detail: "e-Fatura, e-Arşiv, e-İrsaliye, e-Defter, e-SMM, e-Müstahsil, e-Gider Pusulası, e-Döviz ve e-Adisyon." },
+      { name: "e-Mutabakat & e-Banka", detail: "Tek tıkla BA/BS ve Cari Bakiye mutabakat mektupları gönderimi ve anlık onay takibi." },
+      { name: "SMMM Özel e-Aktarım", detail: "Mali müşavirinizin kullandığı Luca, Logo, Mikro, Zirve, Eta programlarına tek tıkla kusursuz fiş aktarımı." }
+    ]
+  },
+  {
+    id: "magaza-pos",
+    filter: "magaza-pos",
+    num: "07",
+    tag: "Perakende & Saha",
+    title: "Perakende Mağazacılık, Hızlı POS ve Mobil Sıcak Satış",
+    icon: "🏬",
+    screenshot: "/images/screenshots/StokPratik_giris.png",
+    lead: "Dokunmatik kasada saniyeler içinde perakende satış yapın; sahadaki araçlarınızı mobil şube gibi yönetin.",
+    features: [
+      { name: "Dokunmatik Hızlı POS Ekranı", detail: "Barkod okuyucu ve terazi uyumlu; nakit, kredi kartı, parçalı tahsilat, veresiye ve fiş bekletme." },
+      { name: "Mobil Sıcak Satış & Araç Stok", detail: "Ticari araç plakasına özel mobil mağaza, araç yükleme/boşaltma fişi ve sahada anında fatura basımı." },
+      { name: "Fiyat Gör Kiosk & Mağaza TV", detail: "Müşteriler için anlık barkodlu fiyat sorgulama ekranı ve mağaza içi kampanya yayın modu." }
+    ]
+  },
+  {
+    id: "uretim-erp",
+    filter: "uretim-depo",
+    num: "08",
+    tag: "Üretim & MRP",
+    title: "Üretim (ERP), Ürün Ağacı (BOM) & Fabrika Şablonları",
+    icon: "⚙️",
+    screenshot: "/images/screenshots/StokPratik_erp.png",
+    lead: "Çok seviyeli reçetelerle hammadde sarfiyatını, işçilik maliyetlerini ve aşamalı üretim emirlerini canlı takip edin.",
+    features: [
+      { name: "Akıllı Reçete (BOM) ve Maliyet Motoru", detail: "Hammadde, yarı mamul, fire oranı, işçilik saati ve makine amortismanı ile net birim maliyet hesabı." },
+      { name: "Hızlı ve Aşamalı İş Emirleri", detail: "Tek tıkla hammaddeyi düşüp mamulü stoğa alan hızlı üretim veya istasyon bazlı operasyon takibi." },
+      { name: "Hazır Sektörel Fabrika Şablonları", detail: "Tekstil, Metal İmalat, Gıda/Kimya/Kozmetik ve Mobilya için hazır endüstriyel reçete kalıpları." }
+    ]
+  },
+  {
+    id: "depo-wms",
+    filter: "uretim-depo",
+    num: "09",
+    tag: "Lojistik & WMS",
+    title: "Depo & Lojistik Yönetimi (WMS)",
+    icon: "📦",
+    screenshot: "/images/screenshots/StokPratik_Depo_Lojistik_Yonetimi.png",
+    lead: "Raf, koridor ve göz adreslemesiyle depodaki her ürünü saniyeler içinde bulun, sevkiyat hatalarını sıfırlayın.",
+    features: [
+      { name: "Raf, Koridor ve Göz Tanımları", detail: "3 boyutlu depo lokasyon adreslemesi ve her ürünün depodaki tam yerini anında bulma." },
+      { name: "Barkodlu Mal Kabul & Toplama", detail: "Gelen malları barkod okutarak raflara yerleştirme ve en kısa rotayla sipariş toplama emirleri." },
+      { name: "Paketleme & Sevkiyat Masası", detail: "Yanlış ürün gönderimini sıfırlayan barkod doğrulamalı koli paketleme ve depolar arası sevk." }
+    ]
+  },
+  {
+    id: "qr-pdks-ik",
+    filter: "ik-kurumsal",
+    num: "10",
+    tag: "PDKS & İK",
+    title: "QR-PDKS, Personel Puantaj ve İK Yönetimi",
+    icon: "⏱️",
+    screenshot: "/images/screenshots/StokPratik_QR-PDKS_ik.png",
+    lead: "Pahalı parmak izi cihazlarına son! 15 saniyede bir yenilenen dinamik kiosk QR kod ile mobil mesai takibi.",
+    features: [
+      { name: "Dinamik Kiosk QR ile Giriş/Çıkış", detail: "Kopyalanamaz dinamik QR kod, GPS konum doğrulaması ve cihaz kilidi ile güvenli personel takibi." },
+      { name: "Otomatik SGK Puantaj Cetveli", detail: "Geç kalma, erken çıkma, fazla mesai ve devamsızlıkları otomatik hesaplayan aylık bordro tablosu." },
+      { name: "İzin ve Avans Yönetimi", detail: "Personelin cep telefonundan izin veya avans talep etmesi ve yönetici mobil onay mekanizması." }
+    ]
+  },
+  {
+    id: "teknik-servis-demirbas",
+    filter: "ik-kurumsal",
+    num: "11",
+    tag: "Servis & Varlık",
+    title: "Teknik Servis, Garanti, Plaka Sicil & Demirbaş",
+    icon: "🛠️",
+    screenshot: "/images/screenshots/StokPratik_hizmet_servis.png",
+    lead: "Servis süreçlerini canlı takip linkiyle müşterinize sunun, şirket demirbaşlarının VUK amortismanını yönetin.",
+    features: [
+      { name: "Teknik Servis & Online Durum Takibi", detail: "Cihaz kabul, arıza tespiti, yedek parça sarfiyatı ve müşteriye özel online canlı takip linki." },
+      { name: "Seri No & Garanti Sorgulama", detail: "Satılan veya servise gelen cihazların seri no/IMEI bazlı garanti ve geçmiş işlem kaydı." },
+      { name: "Demirbaş & VUK Amortismanı", detail: "Personel zimmet tutanakları, bakım takvimleri ve Normal/Azalan/Kıst amortisman hesapları." },
+      { name: "Sektörel Ekosistem Modülleri", detail: "Oto Servisler için Plaka Sicil ve Restoranlar için LezzetSTOP dijital adisyon entegrasyonu." }
+    ]
+  },
+  {
+    id: "raporlama-guvenlik",
+    filter: "ik-kurumsal",
+    num: "12",
+    tag: "Kurumsal Altyapı",
+    title: "40+ Kurumsal Raporlama ve Güvenlik Mimarisi",
+    icon: "📊",
+    screenshot: "/images/screenshots/StokPratik_Raporlama.png",
+    lead: "Patron özet raporlarından bilanço ve RFM analizine kadar 40'tan fazla canlı rapor ve KVKK uyumlu veri güvenliği.",
+    features: [
+      { name: "40+ Hazır Canlı Rapor", detail: "Bilanço, Gelir Tablosu, Mizan, KDV İcmali, Yaşlandırma, Z Raporu, Stok Değerleme ve CRM Satış Hunisi." },
+      { name: "Gelişmiş Rol ve Yetkilendirme", detail: "Kullanıcı bazlı menü, buton, şube ve işlem kısıtlamaları ile personel yetki mimarisi." },
+      { name: "Güvenlik & Tek Tıkla Veri İndirme", detail: "20 dakikalık hareketsizlikte otomatik oturum kapatma ve tüm şirket verilerini tek tıkla JSON olarak yedekleme." }
+    ]
+  }
+];
+
+// Filtre seçenekleri
+const filterTabs = [
+  { id: "all", label: "Tümü (12 Modül)", icon: "✨" },
+  { id: "muhasebe-finans", label: "Ön Muhasebe & Finans", icon: "💰" },
+  { id: "eticaret-pazaryeri", label: "E-Ticaret & Pazaryeri", icon: "🛒" },
+  { id: "uretim-depo", label: "Üretim & Depo", icon: "🏭" },
+  { id: "magaza-pos", label: "Mağaza & POS", icon: "🏬" },
+  { id: "ik-kurumsal", label: "İK & Kurumsal", icon: "🛡️" }
+];
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <main class="bg-slate-50 text-slate-800 antialiased min-h-screen">
+    
+    <!-- 1. HERO SECTION -->
+    <section class="relative overflow-hidden bg-gradient-to-b from-slate-900 via-slate-900 to-indigo-950 py-20 sm:py-24 text-white border-b border-slate-800">
+      <div class="absolute inset-0 bg-[radial-gradient(#3b82f6_1px,transparent_1px)] [background-size:24px_24px] opacity-20"></div>
+      <div class="container mx-auto px-4 max-w-5xl text-center relative z-10">
+        
+        {/* Upper Badge */}
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 mb-6 rounded-full bg-blue-500/15 border border-blue-400/30 text-blue-300 text-xs sm:text-sm font-bold tracking-wide">
+          <span>🚀 Yeni Nesil Bulut ERP</span>
+          <span class="w-1.5 h-1.5 rounded-full bg-blue-400"></span>
+          <span>Ön Muhasebe • E-Ticaret • Üretim • B2B</span>
+        </div>
+
+        {/* Main Heading */}
+        <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight mb-6 leading-tight">
+          Tek Ekrandan Tüm İşletmenizi Yönetin:<br />
+          <span class="bg-gradient-to-r from-blue-400 via-indigo-300 to-pink-400 bg-clip-text text-transparent">
+            Ön Muhasebeden Pazaryerlerine, Üretimden Sıcak Satışa Tam Entegre Bulut ERP
+          </span>
+        </h1>
+
+        {/* Sub-description */}
+        <p class="text-base sm:text-xl text-slate-300 max-w-3xl mx-auto mb-10 leading-relaxed">
+          Stok Pratik; esnaf, KOBİ, toptancı, e-ticaret satıcısı ve üreticiler için geliştirilmiş; kurulum gerektirmeyen, yüksek hızlı bulut altyapısıyla çalışan uçtan uca işletme yönetim platformudur.
+        </p>
+
+        {/* Action Buttons */}
+        <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+          <a
+            href="https://erp-eticaret.stokpratik.com.tr/giris"
+            class="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-black text-base rounded-2xl shadow-xl shadow-blue-500/30 transition-all transform hover:-translate-y-0.5 text-center flex items-center justify-center gap-2"
+          >
+            <span>Hemen Kullanmaya Başlayın (Giriş)</span>
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+          </a>
+          <a
+            href="/firma-kaydi"
+            class="w-full sm:w-auto px-8 py-4 bg-white/10 hover:bg-white/20 text-white font-bold text-base rounded-2xl border border-white/25 transition-all text-center backdrop-blur"
+          >
+            14 Gün Ücretsiz Deneyin
+          </a>
+          <a
+            href="#moduller"
+            class="w-full sm:w-auto px-6 py-4 text-slate-400 hover:text-white font-semibold text-sm transition-colors text-center"
+          >
+            Modülleri İnceleyin ↓
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 2. SHIELDS / 4 TEMEL VAAT SECTION -->
+    <section class="py-14 sm:py-16 -mt-8 relative z-20">
+      <div class="container mx-auto px-4 max-w-6xl">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+          {shields.map((shield, idx) => (
+            <div
+              key={idx}
+              class={`rounded-3xl p-6 bg-slate-900 text-white border ${shield.border} shadow-xl hover:shadow-2xl transition-all duration-300 flex flex-col justify-between`}
+            >
+              <div>
+                <div class="flex items-center justify-between mb-4">
+                  <span class="text-3xl p-3 rounded-2xl bg-white/10 border border-white/10 shadow-sm">{shield.icon}</span>
+                  <span class="text-[10px] font-black uppercase tracking-wider px-2 py-0.5 rounded-full bg-white/10 text-slate-300">
+                    Kalkan #{idx + 1}
+                  </span>
+                </div>
+                <h3 class="text-lg font-black text-white leading-snug mb-1">
+                  {shield.title}
+                </h3>
+                <p class="text-xs font-bold text-blue-300 mb-2">
+                  {shield.subtitle}
+                </p>
+                <p class="text-xs text-slate-400 leading-relaxed">
+                  {shield.desc}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. INTERACTIVE CATEGORY FILTER TABS -->
+    <section id="moduller" class="py-10">
+      <div class="container mx-auto px-4 max-w-6xl">
+        
+        <div class="text-center max-w-3xl mx-auto mb-10">
+          <span class="text-xs font-black uppercase tracking-wider text-blue-600 block mb-2">Modüler Mimari</span>
+          <h2 class="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight">
+            12 Ana Güç Merkezi: Eksiksiz ERP Yetenekleri
+          </h2>
+          <p class="text-slate-600 text-sm sm:text-base mt-2">
+            İşletmenizin ihtiyacı olan modülü seçin veya tüm yetenekleri kategorilerine göre inceleyin.
+          </p>
+        </div>
+
+        {/* Filter Tab Buttons */}
+        <div class="flex flex-wrap items-center justify-center gap-2 mb-12">
+          {filterTabs.map(tab => (
+            <button
+              key={tab.id}
+              type="button"
+              data-filter={tab.id}
+              class={`filter-btn px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all duration-200 cursor-pointer flex items-center gap-2 border ${
+                tab.id === 'all'
+                  ? 'bg-slate-900 text-white border-slate-900 shadow-md active'
+                  : 'bg-white text-slate-700 border-slate-200 hover:border-blue-400 hover:bg-slate-50'
+              }`}
+            >
+              <span>{tab.icon}</span>
+              <span>{tab.label}</span>
+            </button>
+          ))}
+        </div>
+
+        {/* 12 Category Cards Grid */}
+        <div class="space-y-12" id="categoriesContainer">
+          {categories.map((cat) => (
+            <div
+              key={cat.id}
+              data-category={cat.filter}
+              class="module-card bg-white rounded-3xl border border-slate-200 shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden"
+            >
+              <div class="p-6 sm:p-10">
+                
+                {/* Header row */}
+                <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-6 border-b border-slate-100">
+                  <div class="flex items-start sm:items-center gap-4">
+                    <span class="text-3xl sm:text-4xl p-3 bg-blue-50 rounded-2xl shrink-0">{cat.icon}</span>
+                    <div>
+                      <div class="flex items-center gap-2 mb-1">
+                        <span class="text-xs font-black text-blue-600 uppercase tracking-wider">{cat.num}. BÖLÜM</span>
+                        <span class="px-2 py-0.5 rounded-full text-[10px] font-extrabold bg-slate-100 text-slate-700 border border-slate-200">{cat.tag}</span>
+                      </div>
+                      <h3 class="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">
+                        {cat.title}
+                      </h3>
+                    </div>
+                  </div>
+
+                  <a
+                    href="https://erp-eticaret.stokpratik.com.tr/giris"
+                    class="shrink-0 inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-slate-900 hover:bg-blue-600 text-white text-xs sm:text-sm font-bold transition-colors text-center"
+                  >
+                    <span>Bu Modülü Canlı Gör</span>
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                  </a>
+                </div>
+
+                {/* Lead Description */}
+                <p class="text-slate-600 text-sm sm:text-base my-6 leading-relaxed">
+                  {cat.lead}
+                </p>
+
+                {/* Visual / Screenshot + Feature Bullets Grid */}
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center pt-2">
+                  
+                  {/* Left: Features Grid (7 cols) */}
+                  <div class="lg:col-span-7 space-y-3.5">
+                    {cat.features.map((feat, fIdx) => (
+                      <div key={fIdx} class="p-3.5 rounded-2xl bg-slate-50/70 border border-slate-200/70 flex items-start gap-3 hover:bg-white hover:border-blue-300 transition-colors">
+                        <div class="p-1 rounded-full bg-blue-600 text-white shrink-0 mt-0.5">
+                          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
+                          </svg>
+                        </div>
+                        <div>
+                          <h4 class="text-sm font-bold text-slate-900 leading-snug">
+                            {feat.name}
+                          </h4>
+                          <p class="text-xs text-slate-600 leading-relaxed mt-0.5">
+                            {feat.detail}
+                          </p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Right: Screenshot Preview (5 cols) */}
+                  <div class="lg:col-span-5">
+                    <div class="rounded-2xl border border-slate-200 bg-slate-100 p-2 shadow-inner group overflow-hidden">
+                      <div class="overflow-hidden rounded-xl bg-white border border-slate-200/80">
+                        <img
+                          src={cat.screenshot}
+                          alt={`${cat.title} ekran görüntüsü`}
+                          loading="lazy"
+                          class="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-300"
+                        />
+                      </div>
+                      <div class="p-2 text-center">
+                        <span class="text-[11px] text-slate-500 font-medium">
+                          Stok Pratik Panel Ekran Görüntüsü
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+
+              </div>
+            </div>
+          ))}
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 4. FINAL CTA SECTION (NO PRICING - FOCUSED ON LOGGING IN AND FREE TRIAL) -->
+    <section class="py-20 bg-slate-900 text-white border-t border-slate-800 relative overflow-hidden">
+      <div class="absolute inset-0 bg-gradient-to-r from-blue-900/30 to-indigo-900/30 pointer-events-none"></div>
+      <div class="container mx-auto px-4 max-w-4xl text-center relative z-10">
+        
+        <span class="inline-block px-4 py-1.5 mb-6 text-xs font-black uppercase tracking-wider text-blue-300 bg-blue-950/80 border border-blue-500/30 rounded-full">
+          🚀 Bulut ERP Özgürlüğü
+        </span>
+
+        <h2 class="text-3xl sm:text-5xl font-black mb-6 leading-tight">
+          İşletmenizi Stok Pratik'in Yeni Nesil Gücüyle Yönetmeye Hazır mısınız?
+        </h2>
+
+        <p class="text-slate-300 text-base sm:text-lg max-w-2xl mx-auto mb-10 leading-relaxed">
+          Kurulum yok, sunucu masrafı yok. Dakikalar içinde şirketinizi açın, internetin olduğu her cihazdan canlı kullanmaya başlayın.
+        </p>
+
+        <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+          <a
+            href="https://erp-eticaret.stokpratik.com.tr/giris"
+            class="w-full sm:w-auto px-9 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-extrabold text-base rounded-2xl shadow-xl shadow-blue-500/25 transition-all transform hover:-translate-y-0.5 text-center flex items-center justify-center gap-2"
+          >
+            <span>Sisteme Giriş Yapın (Hemen Başlayın)</span>
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+          </a>
+          <a
+            href="/firma-kaydi"
+            class="w-full sm:w-auto px-8 py-4 bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-black text-base rounded-2xl shadow-lg transition-all text-center"
+          >
+            14 Gün Ücretsiz Deneyin
+          </a>
+          <a
+            href="https://wa.me/905325000999?text=Merhaba,%20Stok%20Pratik%20%C3%B6zellikleri%20ve%20canl%C4%B1%20demo%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum."
+            target="_blank"
+            rel="noopener noreferrer"
+            class="w-full sm:w-auto px-6 py-4 bg-white/10 hover:bg-white/20 text-white font-bold text-sm rounded-2xl border border-white/20 transition-all text-center flex items-center justify-center gap-2"
+          >
+            <svg class="w-4 h-4 text-emerald-400" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>
+            <span>Danışmandan Canlı Demo İsteyin</span>
+          </a>
+        </div>
+
+        <div class="mt-8 pt-8 border-t border-slate-800 text-xs text-slate-500">
+          Kredi kartı gerekmez • Anında aktivasyon • Bulut yedekleme ve uzman destek dahildir.
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+</BaseLayout>
+
+{/* Client script for interactive category filtering */}
+<script>
+  function setupFeatureFilters() {
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const cards = document.querySelectorAll('.module-card');
+
+    filterButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const filter = btn.getAttribute('data-filter');
+
+        // Update active button classes
+        filterButtons.forEach(b => {
+          b.classList.remove('bg-slate-900', 'text-white', 'border-slate-900', 'shadow-md', 'active');
+          b.classList.add('bg-white', 'text-slate-700', 'border-slate-200');
+        });
+
+        btn.classList.add('bg-slate-900', 'text-white', 'border-slate-900', 'shadow-md', 'active');
+        btn.classList.remove('bg-white', 'text-slate-700', 'border-slate-200');
+
+        // Show/hide cards
+        cards.forEach(card => {
+          const category = card.getAttribute('data-category');
+          if (filter === 'all' || category === filter) {
+            (card as HTMLElement).style.display = 'block';
+          } else {
+            (card as HTMLElement).style.display = 'none';
+          }
+        });
+      });
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', setupFeatureFilters);
+  document.addEventListener('astro:page-load', setupFeatureFilters);
+</script>

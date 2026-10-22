@@ -2,302 +2,475 @@
 // src/pages/index.astro
 import BaseLayout from '../layouts/BaseLayout.astro';
 
-const pageTitle = "Stok Pratik — Türkiye'nin Ticaret İşletim Sistemi | Bulut ERP, E-Ticaret, POS & B2B";
-const pageDescription = "Kasiyeriniz barkod okuturken Trendyol stoğunuz düşsün, plasiyeriniz sahada fatura kessin, yapay zeka fişleri okurken mali müşaviriniz tek tıkla e-Defter hazırlasın. Türkiye'nin en kapsamlı bulut ticaret işletim sistemi.";
+const pageTitle = "Stok Pratik — Türkiye'nin Ticaret İşletim Sistemi | Bulut ERP, E-Ticaret, POS & Sektörel Çözümler";
+const pageDescription = "Mağaza POS kasasından 37+ pazaryerine, üretim reçetesinden B2B toptana, 17'li e-Dönüşümden QR-PDKS personel takibine ve 5 dikey sektörel yazılıma kadar tek ekranda ticaret işletim sistemi.";
 
+// Rakamlarla Güç Bandı Verileri
 const stats = [
-  { value: "40+", label: "Entegre Kurumsal Modül", desc: "Ön muhasebeden üretime tek veritabanı" },
-  { value: "37+", label: "Pazaryeri & E-İhracat", desc: "Trendyol, Amazon, Etsy, Ozon canlı senkron" },
-  { value: "17", label: "GİB e-Dönüşüm Belgesi", desc: "e-Fatura, e-Arşiv, e-İrsaliye, e-Defter ve SMMM" },
-  { value: "10 Sn", label: "Stok Senkronizasyonu", desc: "Mağazada satılan ürün saniyesinde internette biter" },
-  { value: "%100", label: "Veri Özgürlüğü & KVKK", desc: "İstediğiniz an tüm verinizi Excel ile dışa aktarın" }
+  { value: "40+", label: "Kurumsal Rapor", desc: "Finans, stok, kâr analizi" },
+  { value: "37+", label: "Pazaryeri & Global", desc: "Trendyol, Amazon, Hepsiburada" },
+  { value: "17", label: "e-Dönüşüm & SMMM", desc: "GİB, Luca, Zirve entegre" },
+  { value: "10 Sn", label: "Stok Senkronu", desc: "Çift yönlü anlık eşitleme" },
+  { value: "%100", label: "Bulut & KVKK", desc: "Sıfır donanım ve kurulum" }
 ];
 ---
 
 <BaseLayout title={pageTitle} description={pageDescription}>
-  <main class="bg-slate-950 text-slate-100 antialiased min-h-screen selection:bg-indigo-500 selection:text-white">
+  <main class="min-h-screen bg-[#060A17] text-slate-100 overflow-hidden font-sans selection:bg-indigo-500 selection:text-white">
     
-    <!-- 1. HERO SECTION -->
-    <section class="relative overflow-hidden pt-12 pb-24 lg:pt-20 lg:pb-32 border-b border-slate-800">
-      <!-- Arka Plan Gradyan ve Işık Efektleri -->
-      <div class="absolute inset-0 bg-[radial-gradient(circle_at_top,_var(--tw-gradient-stops))] from-indigo-950/40 via-slate-950 to-slate-950"></div>
-      <div class="absolute top-1/4 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-indigo-500/10 blur-[140px] rounded-full pointer-events-none"></div>
+    <!-- 1. HERO BÖLÜMÜ: TİCARET İŞLETİM SİSTEMİ VİTRİNİ -->
+    <section class="relative pt-16 pb-16 lg:pt-24 lg:pb-20 bg-gradient-to-b from-[#060A17] via-[#0A1026] to-[#0F172A] border-b border-slate-800">
+      
+      <!-- Dekoratif Arka Plan Işıkları -->
+      <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-[450px] bg-gradient-to-b from-indigo-600/15 via-purple-600/10 to-transparent blur-[120px] pointer-events-none"></div>
+      <div class="absolute -top-32 -left-32 w-80 h-80 bg-blue-500/10 rounded-full blur-[100px] pointer-events-none"></div>
+      <div class="absolute top-1/2 -right-32 w-80 h-80 bg-emerald-500/10 rounded-full blur-[100px] pointer-events-none"></div>
 
-      <div class="container mx-auto px-4 lg:px-8 relative z-10 max-w-7xl">
-        <div class="text-center max-w-4xl mx-auto mb-12">
-          
-          <!-- Üst Rozet -->
-          <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 text-xs sm:text-sm font-semibold mb-6 backdrop-blur-md">
-            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-            ⚡ 8 AYRI YAZILIM PARASI ÖDEMEYİN • TEK BULUT HESABIYLA TÜM ŞİRKETİNİZİ YÖNETİN
+      <div class="container mx-auto px-4 lg:px-8 max-w-7xl relative z-10">
+        
+        <!-- Üst Rozet & Başlık -->
+        <div class="text-center max-w-4xl mx-auto mb-10">
+          <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-500/10 border border-indigo-500/30 text-indigo-300 text-xs sm:text-sm font-semibold uppercase tracking-wider mb-6 shadow-inner backdrop-blur-md">
+            <span>⚡ Türkiye'nin İlk Bütünleşik Ticaret İşletim Sistemi</span>
           </div>
 
-          <!-- Ana Başlık (H1) -->
-          <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight text-white leading-[1.1] mb-6">
-            Perakendeden Toptana, Pazaryerinden Üretime: <br/>
-            <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-purple-300 to-emerald-300">
-              İşletmenizin Tüm Gücü Tek Ekranda.
-            </span>
+          <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight text-white leading-[1.15] mb-6">
+            Sadece Ön Muhasebe Değil; <br class="hidden sm:inline" />
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-sky-300 to-emerald-400">
+              Şirketinizin Tüm Ticari Hayatı
+            </span> <br class="hidden sm:inline" />
+            Tek Bir Bulut Ekosistemde.
           </h1>
 
-          <!-- Alt Başlık -->
-          <p class="text-base sm:text-lg lg:text-xl text-slate-300 mb-10 leading-relaxed max-w-3xl mx-auto">
-            Kasiyeriniz barkod okuturken Trendyol stoğunuz düşsün, plasiyeriniz sahada fatura keserken bayiniz CariNET'ten 12 taksitle ödeme yapsın, yapay zeka masraf fişlerinizi okurken mali müşaviriniz tek tıkla e-Defter hazırlasın. Kurulum yok, sunucu masrafı yok!
+          <p class="text-base sm:text-xl lg:text-2xl text-slate-300 font-normal leading-relaxed max-w-3xl mx-auto mb-8">
+            Fiziksel mağaza kasasından 37+ pazaryerine, imalat reçetesinden B2B bayi ağına, e-Faturadan 15 sn dinamik QR-PDKS personel takibine kadar tüm ticari operasyonunuz tek ekranda.
           </p>
 
-          <!-- Hero CTA Butonları -->
+          <!-- Hızlı Eylem Butonları -->
           <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-4">
             <a 
               href="/firma-kaydi" 
-              class="w-full sm:w-auto px-8 py-4 rounded-xl bg-gradient-to-r from-indigo-600 via-indigo-500 to-emerald-600 hover:from-indigo-500 hover:to-emerald-500 text-white font-bold text-base shadow-xl shadow-indigo-600/30 hover:scale-[1.02] transition-all text-center"
+              class="w-full sm:w-auto px-8 py-4 rounded-xl bg-gradient-to-r from-indigo-600 via-indigo-500 to-emerald-600 hover:from-indigo-500 hover:to-emerald-500 text-white font-bold text-base sm:text-lg shadow-xl shadow-indigo-600/30 hover:scale-[1.02] transition-all text-center"
             >
               🚀 30 Saniyede Ücretsiz Hesabınızı Açın
             </a>
             <a 
               href="#live-os" 
-              class="w-full sm:w-auto px-8 py-4 rounded-xl bg-slate-900/80 hover:bg-slate-800 text-slate-200 font-semibold text-base border border-slate-700/80 hover:border-slate-600 transition-all text-center flex items-center justify-center gap-2"
+              class="w-full sm:w-auto px-8 py-4 rounded-xl bg-slate-900/90 hover:bg-slate-800 text-slate-200 font-bold text-base sm:text-lg border border-slate-700/80 hover:border-slate-500 transition-all text-center flex items-center justify-center gap-2 shadow-lg"
             >
               <span>🎯 7 Canlı Senaryoyu İnceleyin</span>
+              <span>↓</span>
             </a>
           </div>
-          <p class="text-xs text-slate-400">Kredi kartı gerekmez • 14 gün ücretsiz deneme • Tüm modüller anında aktif</p>
-
-        </div>
-
-        <!-- 🖥️ HERO MERKEZ GÖRSELİ: 7 SENARYOLU CANLI EKRAN DEĞİŞTİRİCİ (LIVE OS SWITCHER) -->
-        <div class="mt-8 max-w-6xl mx-auto" id="live-os">
-          <div class="bg-slate-900/90 rounded-2xl border border-indigo-500/30 shadow-2xl p-4 sm:p-6 backdrop-blur-xl relative overflow-hidden">
-            <div class="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-indigo-500 via-purple-500 to-emerald-500"></div>
-
-            <!-- Sekme Seçici Butonları -->
-            <div class="flex items-center gap-2 pb-4 border-b border-slate-800 overflow-x-auto text-xs font-semibold mb-6">
-              <button data-target="tab-pos" class="os-tab-btn active px-3.5 py-2 rounded-lg bg-indigo-600 text-white shadow whitespace-nowrap">
-                🛒 Mağaza & Hızlı POS
-              </button>
-              <button data-target="tab-pazaryeri" class="os-tab-btn px-3.5 py-2 rounded-lg bg-slate-950 text-slate-400 hover:text-white whitespace-nowrap">
-                🌐 37+ Pazaryeri & E-İhracat
-              </button>
-              <button data-target="tab-b2b" class="os-tab-btn px-3.5 py-2 rounded-lg bg-slate-950 text-slate-400 hover:text-white whitespace-nowrap">
-                🤝 B2B Toptan, CariNET & DepodanDirekt
-              </button>
-              <button data-target="tab-muhasebe" class="os-tab-btn px-3.5 py-2 rounded-lg bg-slate-950 text-slate-400 hover:text-white whitespace-nowrap">
-                🧾 Ön Muhasebe & AI OCR
-              </button>
-              <button data-target="tab-uretim" class="os-tab-btn px-3.5 py-2 rounded-lg bg-slate-950 text-slate-400 hover:text-white whitespace-nowrap">
-                🏭 Üretim ERP & Depo WMS
-              </button>
-              <button data-target="tab-pdks" class="os-tab-btn px-3.5 py-2 rounded-lg bg-slate-950 text-slate-400 hover:text-white whitespace-nowrap">
-                📲 QR-PDKS & Puantaj
-              </button>
-              <button data-target="tab-bi" class="os-tab-btn px-3.5 py-2 rounded-lg bg-slate-950 text-slate-400 hover:text-white whitespace-nowrap">
-                🧠 Patron BI Kokpiti
-              </button>
-            </div>
-
-            <!-- 1. Senaryo: Mağaza & Hızlı POS -->
-            <div id="tab-pos" class="os-content-panel block">
-              <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 text-xs">
-                <div class="lg:col-span-8 bg-slate-950 p-4 rounded-xl border border-slate-800">
-                  <div class="flex items-center justify-between pb-3 border-b border-slate-800 mb-3">
-                    <span class="font-bold text-white flex items-center gap-2">
-                      <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
-                      Hızlı Satış Kasa #1 • Kadıköy Merkez Mağaza
-                    </span>
-                    <span class="text-slate-400 font-mono">Barkod: 8690123456789</span>
-                  </div>
-                  <div class="space-y-2 mb-3">
-                    <div class="flex justify-between items-center p-2 rounded bg-slate-900 border border-slate-800 text-slate-200">
-                      <span>• Erkek Slim Fit Gömlek (Mavi / M Beden)</span>
-                      <span class="font-mono font-bold text-white">450,00 ₺</span>
-                    </div>
-                    <div class="flex justify-between items-center p-2 rounded bg-slate-900 border border-slate-800 text-slate-200">
-                      <span>• Deri Kemer (Siyah / 110 cm)</span>
-                      <span class="font-mono font-bold text-white">220,00 ₺</span>
-                    </div>
-                  </div>
-                  <div class="pt-2 border-t border-slate-800 flex justify-between items-center">
-                    <span class="text-slate-400">Genel Toplam (KDV Dahil):</span>
-                    <span class="text-xl font-black text-emerald-400 font-mono">670,00 ₺</span>
-                  </div>
-                </div>
-                <div class="lg:col-span-4 bg-slate-950 p-4 rounded-xl border border-slate-800 flex flex-col justify-between">
-                  <div>
-                    <div class="font-bold text-indigo-400 mb-2">⚡ Anlık Ekosistem Etkisi:</div>
-                    <p class="text-slate-300 text-[11px] leading-relaxed mb-3">
-                      Kasada satılan gömlek Kadıköy deposundan düştü; <strong>Trendyol ve Hepsiburada stokları 10 saniye içinde otomatik güncellendi</strong>.
-                    </p>
-                  </div>
-                  <div class="p-2.5 bg-indigo-950/40 rounded-lg border border-indigo-500/30 text-[11px] text-indigo-200">
-                    ✓ Parçalı Ödeme: 200 ₺ Nakit + 470 ₺ Kredi Kartı ile fiş kesildi.
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- 2. Senaryo: 37+ Pazaryeri & E-İhracat -->
-            <div id="tab-pazaryeri" class="os-content-panel hidden">
-              <div class="grid grid-cols-1 lg:grid-cols-3 gap-3 text-xs">
-                <div class="bg-slate-950 p-3.5 rounded-xl border border-orange-500/30">
-                  <div class="flex justify-between items-center font-bold text-orange-400 mb-2">
-                    <span>🛍️ Trendyol Siparişi</span>
-                    <span class="font-mono">#TY-98412</span>
-                  </div>
-                  <div class="text-slate-300 mb-1">Kablosuz Bluetooth Kulaklık (Siyah)</div>
-                  <div class="text-[10px] text-slate-400 font-mono">Kargo Kodu: TY-KRG-8812 • e-Fatura Gönderildi</div>
-                </div>
-                <div class="bg-slate-950 p-3.5 rounded-xl border border-amber-500/30">
-                  <div class="flex justify-between items-center font-bold text-amber-400 mb-2">
-                    <span>📦 Amazon Global</span>
-                    <span class="font-mono">#AMZ-DE-441</span>
-                  </div>
-                  <div class="text-slate-300 mb-1">El Yapımı Deri Cüzdan (Almanya)</div>
-                  <div class="text-[10px] text-slate-400 font-mono">ETGB Mikro İhracat • EUR Fatura Hazır</div>
-                </div>
-                <div class="bg-slate-950 p-3.5 rounded-xl border border-emerald-500/30">
-                  <div class="flex justify-between items-center font-bold text-emerald-400 mb-2">
-                    <span>⚡ 10 Sn Otomatik Senkron</span>
-                    <span class="text-emerald-400 font-bold">Aktif</span>
-                  </div>
-                  <p class="text-slate-300 text-[11px]">
-                    37 pazaryeri tek stok havuzuna bağlı. Çifte satış (overbooking) riski sıfır!
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <!-- 3. Senaryo: B2B Toptan, CariNET & DepodanDirekt -->
-            <div id="tab-b2b" class="os-content-panel hidden">
-              <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 text-xs">
-                <div class="bg-slate-950 p-4 rounded-xl border border-slate-800">
-                  <div class="font-bold text-white mb-2 flex items-center justify-between">
-                    <span>🤝 CariNET Bayi Portalı: Ege Dağıtım Ltd.</span>
-                    <span class="text-indigo-400 font-mono font-bold">A Grubu Bayi</span>
-                  </div>
-                  <div class="text-slate-300 text-[11px] space-y-1 mb-3">
-                    <div>• 1 Koli (12 Adet) Alımda: 150,00 ₺ / Adet</div>
-                    <div>• 1 Palet (120 Adet) Alımda: 132,00 ₺ / Adet</div>
-                    <div class="text-emerald-400">✓ Kademeli Toptan Fiyat Motoru ve Maliyet Kilidi Devrede</div>
-                  </div>
-                </div>
-                <div class="bg-slate-950 p-4 rounded-xl border border-slate-800">
-                  <div class="font-bold text-white mb-2">🌐 DepodanDirekt.com Toptan Ağı</div>
-                  <p class="text-slate-300 text-[11px] mb-2 leading-relaxed">
-                    Ürünlerinizi tek tıkla DepodanDirekt B2B toptan pazaryerinde yayınlayın, Türkiye genelindeki binlerce kurumsal alıcıya doğrudan toptan satış yapın.
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <!-- 4. Senaryo: Ön Muhasebe & AI OCR -->
-            <div id="tab-muhasebe" class="os-content-panel hidden">
-              <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 text-xs">
-                <div class="bg-slate-950 p-4 rounded-xl border border-purple-500/30">
-                  <div class="flex items-center justify-between mb-2">
-                    <span class="font-bold text-purple-400">🤖 Yapay Zeka (AI OCR) Fiş Okuma</span>
-                    <span class="text-[10px] text-emerald-400 font-mono">3 Saniyede Okundu</span>
-                  </div>
-                  <div class="space-y-1 text-slate-300 text-[11px]">
-                    <div>• Akaryakıt Fişi: 1.850,00 ₺</div>
-                    <div>• Ayrıştırılan KDV (%20): 308,33 ₺</div>
-                    <div>• Gider Hesabı: 770 Taşıt Masrafları (Otomatik Eklendi)</div>
-                  </div>
-                </div>
-                <div class="bg-slate-950 p-4 rounded-xl border border-slate-800">
-                  <div class="font-bold text-white mb-2">🏛️ 17'li e-Dönüşüm & SMMM Köprüsü</div>
-                  <p class="text-slate-300 text-[11px] leading-relaxed">
-                    e-Fatura, e-Arşiv, e-İrsaliye, e-SMM ve e-Defter tek tıkla GİB'e iletilir; Luca, Zirve ve Logo programlarına hazır Excel mizanı üretilir.
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <!-- 5. Senaryo: Üretim ERP & Depo WMS -->
-            <div id="tab-uretim" class="os-content-panel hidden">
-              <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 text-xs">
-                <div class="flex justify-between items-center font-bold text-white mb-2">
-                  <span>⚙️ Üretim Reçetesi (BOM) • Mamul: Deri Koltuk #DK-01</span>
-                  <span class="text-emerald-400 font-mono">Gerçek Maliyet: 4.820 ₺</span>
-                </div>
-                <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 text-[11px] text-slate-300">
-                  <div class="p-2 bg-slate-900 rounded border border-slate-800">• 6 m² Hakiki Deri (-6m² Depo)</div>
-                  <div class="p-2 bg-slate-900 rounded border border-slate-800">• 1 Adet Ahşap İskelet (-1Ad)</div>
-                  <div class="p-2 bg-slate-900 rounded border border-slate-800">• İşçilik & Makine Amortismanı</div>
-                </div>
-              </div>
-            </div>
-
-            <!-- 6. Senaryo: QR-PDKS & Puantaj -->
-            <div id="tab-pdks" class="os-content-panel hidden">
-              <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 text-xs">
-                <div class="bg-slate-950 p-4 rounded-xl border border-cyan-500/30">
-                  <div class="flex justify-between items-center font-bold text-cyan-400 mb-2">
-                    <span>⏱️ 15 Sn Dinamik Kiosk QR</span>
-                    <span class="text-emerald-400 font-mono font-bold animate-pulse">Yeni Kod: 08s</span>
-                  </div>
-                  <p class="text-slate-300 text-[11px]">
-                    Fotoğrafı çekilemez, dışarıdan okutulamaz. GPS geofence ve cihaz kilidiyle sıfır donanım maliyetli personel takibi!
-                  </p>
-                </div>
-                <div class="bg-slate-950 p-4 rounded-xl border border-slate-800">
-                  <div class="font-bold text-white mb-2">📋 SGK 30 Günlük Puantaj Matrisi</div>
-                  <p class="text-slate-300 text-[11px]">
-                    Normal çalışma, fazla mesai (%50 / %100), izin ve geç kalma süreleri otomatik hesaplanır, imzalı A4 çıktı ve SMMM Excel aktarımı hazır.
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <!-- 7. Senaryo: Patron BI Kokpiti -->
-            <div id="tab-bi" class="os-content-panel hidden">
-              <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
-                <div class="bg-slate-950 p-3.5 rounded-xl border border-emerald-500/30">
-                  <div class="text-[10px] text-slate-400 font-mono">Net Dönem Kârı</div>
-                  <div class="text-lg font-black text-emerald-400 font-mono mt-1">285.000 ₺</div>
-                  <div class="text-[10px] text-slate-400 mt-0.5">Komisyon ve masraflar düşüldü</div>
-                </div>
-                <div class="bg-slate-950 p-3.5 rounded-xl border border-amber-500/30">
-                  <div class="text-[10px] text-slate-400 font-mono">ABC Pareto Analizi</div>
-                  <div class="text-lg font-black text-amber-300 font-mono mt-1">%80 Ciro</div>
-                  <div class="text-[10px] text-slate-400 mt-0.5">Top 120 altın ürün getirdi</div>
-                </div>
-                <div class="bg-slate-950 p-3.5 rounded-xl border border-purple-500/30">
-                  <div class="text-[10px] text-slate-400 font-mono">Maliyet Altı Kalkanı</div>
-                  <div class="text-lg font-black text-purple-300 font-mono mt-1">0 Zarar</div>
-                  <div class="text-[10px] text-slate-400 mt-0.5">Zararına satış tamamen kilitli</div>
-                </div>
-              </div>
-            </div>
-
-          </div>
+          <p class="text-sm text-slate-400">Kredi kartı gerekmez • 14 gün ücretsiz tam deneme • Tüm modüller anında aktif</p>
         </div>
 
       </div>
     </section>
 
-    <!-- 2. RAKAMLARLA STOK PRATİK GÜCÜ (METRİK BANDI) -->
-    <section class="py-12 bg-slate-900/60 border-b border-slate-800">
+
+    <!-- 2. 🖥️ CANLI İŞLETİM SİSTEMİ SİMÜLATÖRÜ (TAM GENİŞLİK BEYAZ ZEMİN) -->
+    <section class="w-full bg-white py-16 border-y border-slate-200 text-slate-800 relative z-20 shadow-sm" id="live-os">
+      <div class="container mx-auto px-4 lg:px-8 max-w-7xl">
+        
+        <!-- Bölüm Başlığı -->
+        <div class="text-center max-w-3xl mx-auto mb-10">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-indigo-50 border border-indigo-200 text-indigo-700 text-xs font-bold uppercase tracking-wider mb-3">
+            <span>⚡ CANLI İŞLETİM SİSTEMİ DENEYİMİ</span>
+          </div>
+          <h2 class="text-2xl sm:text-4xl font-black text-slate-900 tracking-tight">
+            Türkiye'nin Ticaret İşletim Sistemi — Canlı Sahne
+          </h2>
+          <p class="text-base sm:text-lg text-slate-600 mt-3 leading-relaxed">
+            Bir işletmenin tüm gününü tek panelde yöneten 7 kritik operasyonel senaryoyu butonlara tıklayarak canlı test edin:
+          </p>
+        </div>
+
+        <!-- Sekme Seçici Butonları (GERÇEK TACTILE BUTONLAR) -->
+        <div class="flex items-center justify-start lg:justify-center gap-3 pb-4 overflow-x-auto mb-8 no-scrollbar">
+          <button data-target="tab-pos" class="os-tab-btn active flex items-center gap-2 px-5 py-3.5 rounded-xl font-bold text-sm sm:text-base border-2 border-indigo-600 bg-indigo-600 text-white shadow-lg shadow-indigo-600/25 transition-all whitespace-nowrap cursor-pointer">
+            <span class="text-lg">🛒</span> Mağaza & Hızlı POS
+          </button>
+          <button data-target="tab-pazaryeri" class="os-tab-btn flex items-center gap-2 px-5 py-3.5 rounded-xl font-bold text-sm sm:text-base border-2 border-slate-200 bg-slate-50 text-slate-700 hover:bg-slate-100 hover:border-slate-300 shadow-sm transition-all whitespace-nowrap cursor-pointer">
+            <span class="text-lg">🌐</span> 37+ Pazaryeri & E-İhracat
+          </button>
+          <button data-target="tab-b2b" class="os-tab-btn flex items-center gap-2 px-5 py-3.5 rounded-xl font-bold text-sm sm:text-base border-2 border-slate-200 bg-slate-50 text-slate-700 hover:bg-slate-100 hover:border-slate-300 shadow-sm transition-all whitespace-nowrap cursor-pointer">
+            <span class="text-lg">🤝</span> B2B Toptan, CariNET & DepodanDirekt
+          </button>
+          <button data-target="tab-muhasebe" class="os-tab-btn flex items-center gap-2 px-5 py-3.5 rounded-xl font-bold text-sm sm:text-base border-2 border-slate-200 bg-slate-50 text-slate-700 hover:bg-slate-100 hover:border-slate-300 shadow-sm transition-all whitespace-nowrap cursor-pointer">
+            <span class="text-lg">🧾</span> Ön Muhasebe & AI OCR
+          </button>
+          <button data-target="tab-uretim" class="os-tab-btn flex items-center gap-2 px-5 py-3.5 rounded-xl font-bold text-sm sm:text-base border-2 border-slate-200 bg-slate-50 text-slate-700 hover:bg-slate-100 hover:border-slate-300 shadow-sm transition-all whitespace-nowrap cursor-pointer">
+            <span class="text-lg">🏭</span> Üretim ERP & Depo WMS
+          </button>
+          <button data-target="tab-pdks" class="os-tab-btn flex items-center gap-2 px-5 py-3.5 rounded-xl font-bold text-sm sm:text-base border-2 border-slate-200 bg-slate-50 text-slate-700 hover:bg-slate-100 hover:border-slate-300 shadow-sm transition-all whitespace-nowrap cursor-pointer">
+            <span class="text-lg">📲</span> QR-PDKS & Puantaj
+          </button>
+          <button data-target="tab-bi" class="os-tab-btn flex items-center gap-2 px-5 py-3.5 rounded-xl font-bold text-sm sm:text-base border-2 border-slate-200 bg-slate-50 text-slate-700 hover:bg-slate-100 hover:border-slate-300 shadow-sm transition-all whitespace-nowrap cursor-pointer">
+            <span class="text-lg">🧠</span> Patron BI Kokpiti
+          </button>
+        </div>
+
+        <!-- 7 İNTERAKTİF SENARYO PANELİ (Pencere Tasarımı) -->
+        <div class="bg-slate-900 rounded-3xl border border-slate-800 shadow-2xl p-6 sm:p-8 text-white relative overflow-hidden">
+          <div class="absolute top-0 inset-x-0 h-1.5 bg-gradient-to-r from-indigo-500 via-purple-500 to-emerald-500"></div>
+
+          <!-- 1. Senaryo: Mağaza & Hızlı POS -->
+          <div id="tab-pos" class="os-content-panel block">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+              <div class="lg:col-span-7 bg-slate-950 p-6 rounded-2xl border border-slate-800">
+                <div class="flex items-center justify-between pb-4 border-b border-slate-800 mb-4">
+                  <span class="font-bold text-base text-white flex items-center gap-2">
+                    <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                    Hızlı Satış Kasa #1 • Kadıköy Merkez Mağaza
+                  </span>
+                  <span class="text-slate-400 font-mono text-sm">Barkod: 8690123456789</span>
+                </div>
+                <div class="space-y-3 mb-4">
+                  <div class="flex justify-between items-center p-3 rounded-xl bg-slate-900 border border-slate-800 text-slate-200 text-sm sm:text-base">
+                    <span>• Erkek Slim Fit Gömlek (Mavi / M Beden)</span>
+                    <span class="font-mono font-bold text-white">450,00 ₺</span>
+                  </div>
+                  <div class="flex justify-between items-center p-3 rounded-xl bg-slate-900 border border-slate-800 text-slate-200 text-sm sm:text-base">
+                    <span>• Deri Kemer (Siyah / 110 cm)</span>
+                    <span class="font-mono font-bold text-white">220,00 ₺</span>
+                  </div>
+                </div>
+                <div class="pt-3 border-t border-slate-800 flex justify-between items-center">
+                  <span class="text-slate-300 font-medium text-sm sm:text-base">Genel Toplam (KDV Dahil):</span>
+                  <span class="text-2xl sm:text-3xl font-black text-emerald-400 font-mono">670,00 ₺</span>
+                </div>
+              </div>
+
+              <div class="lg:col-span-5 flex flex-col justify-between space-y-4">
+                <div class="bg-slate-950 p-6 rounded-2xl border border-indigo-500/30">
+                  <div class="font-bold text-indigo-400 text-base mb-2">⚡ 10 Saniye Otomatik Ekosistem Etkisi:</div>
+                  <p class="text-slate-300 text-sm sm:text-base leading-relaxed mb-4">
+                    Kasada satılan gömlek Kadıköy fiziki mağaza rafından düştü; <strong>Trendyol, Hepsiburada, Amazon ve B2B toptan stokları 10 saniye içinde otomatik senkronize oldu</strong>.
+                  </p>
+                  <div class="p-3 bg-indigo-950/60 rounded-xl border border-indigo-500/40 text-xs sm:text-sm text-indigo-200 font-medium">
+                    ✓ Parçalı Ödeme: 200 ₺ Nakit + 470 ₺ Kredi Kartı ile anında resmi e-Arşiv Fatura kesildi.
+                  </div>
+                </div>
+                <a href="/hizli-satis" class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-sm transition">
+                  Dokunmatik POS Modülünü Keşfet →
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- 2. Senaryo: 37+ Pazaryeri & E-İhracat -->
+          <div id="tab-pazaryeri" class="os-content-panel hidden">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
+              <div class="bg-slate-950 p-5 rounded-2xl border border-orange-500/30">
+                <div class="flex justify-between items-center font-bold text-orange-400 text-base mb-2">
+                  <span>🛍️ Trendyol Siparişi</span>
+                  <span class="font-mono text-sm">#TY-98412</span>
+                </div>
+                <div class="text-slate-200 text-sm sm:text-base font-semibold mb-2">Kablosuz Bluetooth Kulaklık (Siyah)</div>
+                <div class="text-xs text-slate-400 font-mono">Kargo Kodu: TY-KRG-8812 • e-Fatura Gönderildi</div>
+              </div>
+              <div class="bg-slate-950 p-5 rounded-2xl border border-amber-500/30">
+                <div class="flex justify-between items-center font-bold text-amber-400 text-base mb-2">
+                  <span>📦 Amazon Global</span>
+                  <span class="font-mono text-sm">#AMZ-DE-441</span>
+                </div>
+                <div class="text-slate-200 text-sm sm:text-base font-semibold mb-2">El Yapımı Deri Cüzdan (Almanya)</div>
+                <div class="text-xs text-slate-400 font-mono">ETGB Mikro İhracat • EUR Fatura Hazır</div>
+              </div>
+              <div class="bg-slate-950 p-5 rounded-2xl border border-emerald-500/30 flex flex-col justify-between">
+                <div>
+                  <div class="flex justify-between items-center font-bold text-emerald-400 text-base mb-2">
+                    <span>⚡ 10 Sn Otomatik Senkron</span>
+                    <span class="text-emerald-400 text-xs px-2 py-0.5 rounded bg-emerald-950 border border-emerald-500/30 font-bold">Aktif</span>
+                  </div>
+                  <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+                    Sipariş düştüğü anda kargo fişi yazıcıdan çıkar, fatura kesilir, stoklar tüm kanallarda kilitlenir.
+                  </p>
+                </div>
+                <a href="/pazaryeri" class="text-emerald-400 font-bold text-xs sm:text-sm hover:underline mt-3 inline-block">
+                  Pazaryeri Modülünü İncele →
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- 3. Senaryo: B2B Toptan, CariNET & DepodanDirekt -->
+          <div id="tab-b2b" class="os-content-panel hidden">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+              <div class="lg:col-span-7 bg-slate-950 p-6 rounded-2xl border border-slate-800">
+                <div class="flex justify-between items-center pb-3 border-b border-slate-800 mb-3 font-mono text-sm">
+                  <span class="text-indigo-400 font-bold">Bayi Kodu: BAYI-ANKARA-06</span>
+                  <span class="text-emerald-400 font-bold">Platin Bayi İskontosu (%35)</span>
+                </div>
+                <div class="space-y-2 text-sm text-slate-300 mb-4">
+                  <div class="flex justify-between p-2.5 rounded bg-slate-900">
+                    <span>• 50 Koli Endüstriyel Streç Film (Palet Siparişi)</span>
+                    <span class="font-mono text-white font-bold">12.500,00 ₺</span>
+                  </div>
+                  <div class="flex justify-between p-2.5 rounded bg-slate-900">
+                    <span>• Açık Hesap Kalan Kredi Limiti:</span>
+                    <span class="font-mono text-emerald-400 font-bold">85.000,00 ₺ (Onaylandı)</span>
+                  </div>
+                </div>
+                <div class="text-xs text-slate-400">
+                  Bayi kendi ekranından 12 taksit Sanal POS ile ödedi; sipariş doğrudan depoda sevkiyat emrine dönüştü.
+                </div>
+              </div>
+              <div class="lg:col-span-5 bg-slate-950 p-6 rounded-2xl border border-blue-500/30">
+                <div class="font-bold text-blue-400 text-base mb-2">🌐 DepodanDirekt.com B2B Ağı:</div>
+                <p class="text-slate-300 text-sm leading-relaxed mb-4">
+                  Ürünlerinizi Türkiye genelindeki binlerce toptancı ve bayiye kapalı devre B2B vitriniyle toptan satın; vadeli alacaklarınızı CariNET ile güvene alın.
+                </p>
+                <a href="/b2b" class="inline-flex items-center gap-2 text-blue-400 hover:text-blue-300 font-bold text-sm">
+                  B2B Portali Detayları →
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- 4. Senaryo: Ön Muhasebe & AI OCR (Görsel Önizlemeli) -->
+          <div id="tab-muhasebe" class="os-content-panel hidden">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+              <div class="lg:col-span-7 bg-slate-950 p-6 rounded-2xl border border-slate-800">
+                <div class="font-bold text-emerald-400 text-base mb-3 flex items-center gap-2">
+                  <span>🤖 Yapay Zeka AI OCR Fiş Analizi (Tamamlandı)</span>
+                </div>
+                <div class="p-4 rounded-xl bg-slate-900 border border-slate-800 font-mono text-sm text-slate-200 space-y-2 mb-4">
+                  <div class="text-emerald-300 font-bold">✓ Satıcı: Opet Petrolcülük A.Ş. • Fiş No: 0042</div>
+                  <div>• Akaryakıt Fişi: 1.850,00 ₺</div>
+                  <div>• Ayrıştırılan KDV (%20): 308,33 ₺</div>
+                  <div>• Gider Hesabı: 770 Taşıt Masrafları (Otomatik Eklendi)</div>
+                </div>
+                <div class="text-xs text-slate-400">
+                  Cep telefonundan çekilen fotoğraf 3 saniyede taranıp resmi kayıtlara geçirildi; kayıp fiş ziyanı sıfırlandı.
+                </div>
+              </div>
+              <div class="lg:col-span-5 bg-slate-950 p-4 rounded-2xl border border-purple-500/30 text-center">
+                <img 
+                  src="/images/site-foto/stok-pratik-efatura.jpg" 
+                  alt="Stok Pratik e-Fatura ve Muhasebe Arayüzü" 
+                  class="w-full h-44 object-cover rounded-xl border border-slate-800 mb-3 shadow" 
+                  loading="lazy"
+                />
+                <div class="font-bold text-white text-sm mb-1">🏛️ 17'li e-Dönüşüm & SMMM Portalı</div>
+                <p class="text-slate-400 text-xs mb-3">
+                  e-Fatura, e-Arşiv, e-İrsaliye; Luca ve Zirve formatında tek tıkla mizan transferi.
+                </p>
+                <a href="/e-donusum" class="text-purple-400 hover:text-purple-300 font-bold text-xs sm:text-sm">
+                  e-Dönüşüm Merkezini İncele →
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- 5. Senaryo: Üretim ERP & Depo WMS -->
+          <div id="tab-uretim" class="os-content-panel hidden">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+              <div class="lg:col-span-7 bg-slate-950 p-6 rounded-2xl border border-slate-800">
+                <div class="flex justify-between items-center font-bold text-white text-base mb-3 pb-2 border-b border-slate-800">
+                  <span>⚙️ Üretim Reçetesi (BOM) • Mamul: Deri Koltuk #DK-01</span>
+                  <span class="text-emerald-400 font-mono">Birim Maliyet: 4.820 ₺</span>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs sm:text-sm text-slate-300 mb-4">
+                  <div class="p-3 bg-slate-900 rounded-xl border border-slate-800">• 6 m² Hakiki Deri (-6m² Depo)</div>
+                  <div class="p-3 bg-slate-900 rounded-xl border border-slate-800">• 1 Adet İskelet (-1Ad Depo)</div>
+                  <div class="p-3 bg-slate-900 rounded-xl border border-slate-800">• İşçilik & Makine Payı</div>
+                </div>
+                <p class="text-xs text-slate-400">
+                  4 istasyonlu hat takibiyle fireler hesaplanır, mamul otomatik depoya girerken reçetedeki hammaddeler anında düşer.
+                </p>
+              </div>
+              <div class="lg:col-span-5 bg-slate-950 p-4 rounded-2xl border border-orange-500/30 text-center">
+                <img 
+                  src="/images/site-foto/Stok-pratik-genel.png" 
+                  alt="Stok Pratik Genel Yönetim ve Üretim Ekranı" 
+                  class="w-full h-44 object-cover rounded-xl border border-slate-800 mb-3 shadow" 
+                  loading="lazy"
+                />
+                <div class="font-bold text-orange-400 text-sm mb-1">Fabrika, İstasyon ve WMS Depo</div>
+                <a href="/uretim" class="text-orange-400 hover:text-orange-300 font-bold text-xs sm:text-sm inline-block">
+                  Üretim ERP Modülünü Aç →
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- 6. Senaryo: QR-PDKS & Puantaj -->
+          <div id="tab-pdks" class="os-content-panel hidden">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+              <div class="bg-slate-950 p-6 rounded-2xl border border-cyan-500/30">
+                <div class="flex justify-between items-center font-bold text-cyan-400 text-base mb-3">
+                  <span>⏱️ 15 Sn Dinamik Kiosk QR</span>
+                  <span class="text-emerald-400 font-mono font-bold animate-pulse text-sm">Yeni Kod: 08s</span>
+                </div>
+                <p class="text-slate-300 text-sm sm:text-base leading-relaxed mb-4">
+                  Fotoğrafı çekilemez, evden okutulamaz. GPS geofence mesafe kontrolü ve cihaz parmak izi kilidiyle sıfır donanım maliyetli personel takibi!
+                </p>
+                <div class="text-xs text-cyan-300 font-mono">HMAC-SHA256 Şifreleme • Tablet / Ekran Kiosk Uyumlu</div>
+              </div>
+              <div class="bg-slate-950 p-6 rounded-2xl border border-slate-800 flex flex-col justify-between">
+                <div>
+                  <div class="font-bold text-white text-base mb-2">📋 SGK 30 Günlük Puantaj Matrisi</div>
+                  <p class="text-slate-300 text-sm sm:text-base leading-relaxed mb-3">
+                    Normal çalışma, fazla mesai (%50 / %100), izin ve geç kalma süreleri otomatik hesaplanır, imzalı A4 çıktı ve SMMM Excel aktarımı anında hazır.
+                  </p>
+                </div>
+                <a href="/pdks" class="text-cyan-400 font-bold text-sm hover:underline mt-2">
+                  QR-PDKS Personel Takip Detayları →
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- 7. Senaryo: Patron BI Kokpiti -->
+          <div id="tab-bi" class="os-content-panel hidden">
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              <div class="bg-slate-950 p-5 rounded-2xl border border-emerald-500/30">
+                <div class="text-xs text-slate-400 font-mono uppercase tracking-wider">Net Dönem Kârı</div>
+                <div class="text-2xl font-black text-emerald-400 font-mono mt-2">285.000 ₺</div>
+                <div class="text-xs text-slate-400 mt-1">Pazaryeri komisyonları ve giderler düşüldü</div>
+              </div>
+              <div class="bg-slate-950 p-5 rounded-2xl border border-amber-500/30">
+                <div class="text-xs text-slate-400 font-mono uppercase tracking-wider">ABC Pareto Analizi</div>
+                <div class="text-2xl font-black text-amber-300 font-mono mt-2">%80 Ciro</div>
+                <div class="text-xs text-slate-400 mt-1">En çok satan 120 altın ürün getirdi</div>
+              </div>
+              <div class="bg-slate-950 p-5 rounded-2xl border border-purple-500/30">
+                <div class="text-xs text-slate-400 font-mono uppercase tracking-wider">Maliyet Altı Kalkanı</div>
+                <div class="text-2xl font-black text-purple-300 font-mono mt-2">0 Zarar</div>
+                <div class="text-xs text-slate-400 mt-1">Zararına satış sistemsel olarak kilitli</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- 3. RAKAMLARLA STOK PRATİK GÜCÜ (METRİK BANDI) -->
+    <section class="py-14 bg-slate-900/70 border-b border-slate-800">
       <div class="container mx-auto px-4 lg:px-8 max-w-7xl">
         <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 text-center">
           {stats.map((s) => (
-            <div class="p-4 rounded-xl bg-slate-950/60 border border-slate-800/80">
-              <div class="text-3xl lg:text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-emerald-400 font-mono">
+            <div class="p-5 rounded-2xl bg-slate-950/70 border border-slate-800/80 hover:border-indigo-500/30 transition">
+              <div class="text-3xl lg:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-sky-300 to-emerald-400 font-mono">
                 {s.value}
               </div>
-              <div class="text-xs font-bold text-white mt-1">{s.label}</div>
-              <div class="text-[11px] text-slate-400 mt-0.5">{s.desc}</div>
+              <div class="text-sm sm:text-base font-bold text-white mt-2">{s.label}</div>
+              <div class="text-xs sm:text-sm text-slate-400 mt-1">{s.desc}</div>
             </div>
           ))}
         </div>
       </div>
     </section>
 
-    <!-- 3. ESKİ PARÇALI DÜZEN VS STOK PRATİK (MALİYET & ZAMAN KALKANI) -->
-    <section class="py-20 border-b border-slate-800">
+
+    <!-- 4. FOTOĞRAFLI GÖRSEL VİTRİN BÖLÜMÜ (BEYAZ ZEMİNDE ERP & e-FATURA EKRANLARI) -->
+    <section class="py-20 bg-slate-50 border-b border-slate-200 text-slate-900">
+      <div class="container mx-auto px-4 lg:px-8 max-w-7xl">
+        
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-100 text-emerald-800 text-xs font-bold uppercase tracking-wider mb-3">
+            <span>🛡️ GERÇEK BULUT ARAYÜZÜ</span>
+          </div>
+          <h2 class="text-2xl sm:text-4xl font-black text-slate-900 tracking-tight">
+            Karmaşık Değil; Sezgisel, Hızlı ve Güvenilir Ekranlar
+          </h2>
+          <p class="text-base sm:text-lg text-slate-600 mt-3 leading-relaxed">
+            Stok Pratik, yüzlerce saatlik eğitim gerektiren eski nesil programların aksine, 5 dakikada kavranabilen sade bir ticaret deneyimi sunar.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch mb-12">
+          
+          <!-- Kart 1: Stok Pratik Genel Yönetim Ekranı -->
+          <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-xl flex flex-col justify-between group hover:border-indigo-400 transition-all">
+            <div>
+              <div class="overflow-hidden rounded-2xl border border-slate-100 mb-6 bg-slate-100 shadow-inner">
+                <img 
+                  src="/images/site-foto/Stok-pratik-genel.png" 
+                  alt="Stok Pratik Genel Bulut ERP Paneli" 
+                  class="w-full h-64 object-cover object-top group-hover:scale-105 transition-transform duration-500" 
+                  loading="lazy"
+                />
+              </div>
+              <h3 class="text-xl sm:text-2xl font-extrabold text-slate-900 mb-3">
+                Çok Şubeli, Depolu & Pazaryeri Entegre Çekirdek ERP
+              </h3>
+              <p class="text-slate-600 text-sm sm:text-base leading-relaxed mb-4">
+                Tüm mağazalarınızın anlık kasa hareketleri, şubeler arası ürün transferleri, minimum stok alarmları ve kritik bakiye analizleri tek bir ana kumanda merkezinde.
+              </p>
+            </div>
+            <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
+              <span class="text-xs font-bold text-slate-400 uppercase tracking-wider">Merkezi Yönetim</span>
+              <a href="/ozellikler" class="text-sm font-bold text-indigo-600 hover:text-indigo-800 flex items-center gap-1">
+                Tüm Özellikleri İncele →
+              </a>
+            </div>
+          </div>
+
+          <!-- Kart 2: e-Dönüşüm & Fatura Yönetimi -->
+          <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-xl flex flex-col justify-between group hover:border-emerald-400 transition-all">
+            <div>
+              <div class="overflow-hidden rounded-2xl border border-slate-100 mb-6 bg-slate-100 shadow-inner">
+                <img 
+                  src="/images/site-foto/stok-pratik-efatura.jpg" 
+                  alt="Stok Pratik e-Fatura ve e-Arşiv Ekranı" 
+                  class="w-full h-64 object-cover object-top group-hover:scale-105 transition-transform duration-500" 
+                  loading="lazy"
+                />
+              </div>
+              <h3 class="text-xl sm:text-2xl font-extrabold text-slate-900 mb-3">
+                GİB Standartlarında UBL-TR 1.2 Resmi e-Fatura Motoru
+              </h3>
+              <p class="text-slate-600 text-sm sm:text-base leading-relaxed mb-4">
+                17 özel entegratör desteğiyle 10 saniyede e-Fatura, e-Arşiv ve e-İrsaliye düzenleyin. Kontör maliyeti fatura başına sadece ~0.70₺ - 0.90₺!
+              </p>
+            </div>
+            <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
+              <span class="text-xs font-bold text-slate-400 uppercase tracking-wider">GİB Uyumlu</span>
+              <a href="/e-donusum" class="text-sm font-bold text-emerald-600 hover:text-emerald-800 flex items-center gap-1">
+                e-Dönüşüm Merkezine Git →
+              </a>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Güvenlik ve Lisans Damgası (Stok-Pratik-logo-2 Kullanımı) -->
+        <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-6">
+          <div class="flex items-center gap-4">
+            <img 
+              src="/images/site-foto/Stok-Pratik-logo-2.png" 
+              alt="Stok Pratik Doğrulanmış Bulut Güvencesi" 
+              class="h-12 w-auto object-contain shrink-0" 
+              loading="lazy"
+            />
+            <div>
+              <div class="text-base font-bold text-slate-900">Doğrulanmış Bulut Güvenliği & KVKK Tam Uyumu</div>
+              <div class="text-xs sm:text-sm text-slate-500">Verileriniz Türkiye lokasyonlu Tier-3 veri merkezlerinde 256-bit SSL şifrelemeyle korunur.</div>
+            </div>
+          </div>
+          <div class="flex items-center gap-3">
+            <span class="px-3 py-1.5 rounded-lg bg-emerald-50 text-emerald-700 text-xs font-bold border border-emerald-200">✓ Günlük Bulut Yedekleme</span>
+            <span class="px-3 py-1.5 rounded-lg bg-indigo-50 text-indigo-700 text-xs font-bold border border-indigo-200">✓ %100 Veri Kilitsiz (Excel Export)</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- 5. ESKİ PARÇALI DÜZEN VS STOK PRATİK (MALİYET & ZAMAN KALKANI) -->
+    <section class="py-20 border-b border-slate-800 bg-[#090E1D]">
       <div class="container mx-auto px-4 lg:px-8 max-w-6xl">
         <div class="text-center max-w-3xl mx-auto mb-16">
           <h2 class="text-xs uppercase tracking-widest text-rose-400 font-bold mb-3">Maliyet ve Zaman Kalkanı</h2>
           <h3 class="text-3xl sm:text-4xl font-extrabold text-white">Neden 7 Ayrı Yazılıma Servet Ödemeyi Bırakmalısınız?</h3>
-          <p class="text-slate-400 mt-4 text-base">
+          <p class="text-slate-300 mt-4 text-base sm:text-lg">
             Farklı firmalardan alınan ve birbirini tutmayan kopuk yazılımlar işletmenizi hem yavaşlatır hem de sermayenizi tüketir.
           </p>
         </div>
@@ -305,70 +478,70 @@ const stats = [
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
           
           <!-- Sol: Eski Parçalı Düzen -->
-          <div class="bg-rose-950/20 border border-rose-500/30 rounded-2xl p-6 sm:p-8 flex flex-col justify-between">
+          <div class="bg-rose-950/20 border border-rose-500/30 rounded-3xl p-6 sm:p-8 flex flex-col justify-between">
             <div>
               <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-rose-500/20 text-rose-400 text-xs font-bold mb-6 border border-rose-500/30">
                 ❌ ESKİ PARÇALI VE KOPUK DÜZEN
               </div>
-              <ul class="space-y-4 text-sm text-slate-300">
+              <ul class="space-y-4 text-base sm:text-lg text-slate-300">
                 <li class="flex items-start gap-3">
-                  <span class="text-rose-400 text-lg">✕</span>
-                  <span>Ön muhasebe için ayrı, pazaryeri entegratörü için ayrı aylık abonelik.</span>
+                  <span class="text-rose-400 text-xl font-bold">✕</span>
+                  <span>Ön muhasebe için ayrı, pazaryeri entegratörü için ayrı aylık abonelikler.</span>
                 </li>
                 <li class="flex items-start gap-3">
-                  <span class="text-rose-400 text-lg">✕</span>
-                  <span>Mağaza POS kasası için terminal başı lisans ve kurulum ücretleri.</span>
+                  <span class="text-rose-400 text-xl font-bold">✕</span>
+                  <span>Mağaza POS kasası için terminal başı lisans ve yıllık bakım ücretleri.</span>
                 </li>
                 <li class="flex items-start gap-3">
-                  <span class="text-rose-400 text-lg">✕</span>
+                  <span class="text-rose-400 text-xl font-bold">✕</span>
                   <span>B2B bayi portalı için binlerce dolar yazılım masrafı.</span>
                 </li>
                 <li class="flex items-start gap-3">
-                  <span class="text-rose-400 text-lg">✕</span>
+                  <span class="text-rose-400 text-xl font-bold">✕</span>
                   <span>PDKS parmak izi ve kart cihazları için pahalı donanım masrafı.</span>
                 </li>
                 <li class="flex items-start gap-3">
-                  <span class="text-rose-400 text-lg">✕</span>
+                  <span class="text-rose-400 text-xl font-bold">✕</span>
                   <span>Mağazada satılan son ürünün internette 'stokta var' kalıp ceza yedirmesi.</span>
                 </li>
               </ul>
             </div>
-            <div class="mt-6 pt-4 border-t border-rose-500/20 text-xs text-rose-300 font-mono">
-              Tahmini Aylık Kayıp: 35.000 ₺+ ve Yüzlerce Saat Excel Angaryası
+            <div class="mt-6 pt-4 border-t border-rose-500/20 text-sm text-rose-300 font-mono font-bold">
+              Tahmini Yıllık Kayıp: 240.000 ₺+ ve Yüzlerce Saat Excel Angaryası
             </div>
           </div>
 
           <!-- Sağ: Stok Pratik Tek Ekosistem -->
-          <div class="bg-emerald-950/20 border border-emerald-500/30 rounded-2xl p-6 sm:p-8 flex flex-col justify-between shadow-2xl relative overflow-hidden">
+          <div class="bg-emerald-950/20 border border-emerald-500/30 rounded-3xl p-6 sm:p-8 flex flex-col justify-between shadow-2xl relative overflow-hidden">
             <div class="absolute top-0 right-0 w-32 h-32 bg-emerald-500/10 blur-3xl pointer-events-none"></div>
             <div>
               <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-400 text-xs font-bold mb-6 border border-emerald-500/30">
                 ✅ STOK PRATİK: TEK MERKEZ, TEK VERİTABANI
               </div>
-              <ul class="space-y-4 text-sm text-slate-200">
+              <ul class="space-y-4 text-base sm:text-lg text-slate-200">
                 <li class="flex items-start gap-3">
-                  <span class="text-emerald-400 text-lg font-bold">✓</span>
+                  <span class="text-emerald-400 text-xl font-bold">✓</span>
                   <span><strong>11 Departman, 40+ Modül:</strong> Tek bir hesapla tüm şirketinizi yönetin.</span>
                 </li>
                 <li class="flex items-start gap-3">
-                  <span class="text-emerald-400 text-lg font-bold">✓</span>
+                  <span class="text-emerald-400 text-xl font-bold">✓</span>
                   <span><strong>10 Saniye Otomatik Stok Senkronu:</strong> Mağazada satılan ürün Trendyol'da biter.</span>
                 </li>
                 <li class="flex items-start gap-3">
-                  <span class="text-emerald-400 text-lg font-bold">✓</span>
+                  <span class="text-emerald-400 text-xl font-bold">✓</span>
                   <span><strong>Dahili B2B & CariNET:</strong> Bayileriniz 7/24 girip 12 taksitle ödeme yapsın.</span>
                 </li>
                 <li class="flex items-start gap-3">
-                  <span class="text-emerald-400 text-lg font-bold">✓</span>
+                  <span class="text-emerald-400 text-xl font-bold">✓</span>
                   <span><strong>Cihazsız Dinamik QR-PDKS:</strong> 15 saniyede değişen şifreli personel takibi.</span>
                 </li>
                 <li class="flex items-start gap-3">
-                  <span class="text-emerald-400 text-lg font-bold">✓</span>
+                  <span class="text-emerald-400 text-xl font-bold">✓</span>
                   <span><strong>Sıfır Kurulum & Bulut Güvencesi:</strong> İstediğiniz bilgisayar, tablet veya cepten açın.</span>
                 </li>
               </ul>
             </div>
-            <div class="mt-6 pt-4 border-t border-emerald-500/20 text-xs text-emerald-300 font-mono font-bold">
+            <div class="mt-6 pt-4 border-t border-emerald-500/20 text-sm text-emerald-300 font-mono font-bold">
               Sonuç: Tek Fatura, Sıfır Kopukluk, %100 Hızlı ve Güvenli Ticaret
             </div>
           </div>
@@ -377,13 +550,14 @@ const stats = [
       </div>
     </section>
 
-    <!-- 4. 11 BÖLÜMLÜK MEGA EKOSİSTEM GEZGİNİ (BENTO VİTRİNİ) -->
-    <section class="py-20 bg-slate-900/40 border-b border-slate-800" id="ekosistem">
+
+    <!-- 6. 11 BÖLÜMLÜK MEGA EKOSİSTEM GEZGİNİ (BENTO VİTRİNİ) -->
+    <section class="py-20 bg-[#060A17] border-b border-slate-800" id="ekosistem">
       <div class="container mx-auto px-4 lg:px-8 max-w-7xl">
         <div class="text-center max-w-3xl mx-auto mb-16">
           <h2 class="text-xs uppercase tracking-widest text-indigo-400 font-bold mb-3">Bütünleşik Mimari</h2>
           <h3 class="text-3xl sm:text-4xl font-extrabold text-white">11 Kritik Ticari Departman Tek Çatıda</h3>
-          <p class="text-slate-400 mt-4 text-base">
+          <p class="text-slate-300 mt-4 text-base sm:text-lg">
             İşletmenizin hangi alanda güçlenmeye ihtiyacı varsa, Stok Pratik o alana özel eksiksiz bir çözüm paketi sunar.
           </p>
         </div>
@@ -396,12 +570,12 @@ const stats = [
               <div class="w-12 h-12 rounded-xl bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 flex items-center justify-center text-2xl mb-4">
                 💳
               </div>
-              <h4 class="text-lg font-bold text-white mb-2">1. Ön Muhasebe & AI Finans</h4>
-              <p class="text-slate-400 text-xs leading-relaxed mb-4">
+              <h4 class="text-xl font-bold text-white mb-2">1. Ön Muhasebe & AI Finans</h4>
+              <p class="text-slate-300 text-sm leading-relaxed mb-4">
                 Dövizli cari, risk limiti kalkanı, çek/senet ciro zinciri, VUK amortisman ve <strong>Yapay Zeka (AI OCR)</strong> ile 3 saniyede fiş okuma.
               </p>
             </div>
-            <div class="pt-3 border-t border-slate-800/80 flex flex-wrap gap-2 text-[11px]">
+            <div class="pt-3 border-t border-slate-800/80 flex flex-wrap gap-3 text-xs sm:text-sm font-semibold">
               <a href="/on-muhasebe-ve-cari-hesap-yonetimi" class="text-indigo-400 hover:underline">Ön Muhasebe ➔</a>
               <a href="/yapay-zeka-fis-okuma-masraf-yonetimi" class="text-indigo-400 hover:underline">AI OCR Fiş ➔</a>
             </div>
@@ -413,13 +587,13 @@ const stats = [
               <div class="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 flex items-center justify-center text-2xl mb-4">
                 🏪
               </div>
-              <h4 class="text-lg font-bold text-white mb-2">2. Çok Şubeli Mağaza & POS</h4>
-              <p class="text-slate-400 text-xs leading-relaxed mb-4">
-                Market, nalbur, butik için ultra hızlı dokunmatik kasa, plasiyer araç içi sıcak satış, Fiyat Gör Kiosk ve Mağaza TV dijital menü.
+              <h4 class="text-xl font-bold text-white mb-2">2. Çok Şubeli Mağaza & POS</h4>
+              <p class="text-slate-300 text-sm leading-relaxed mb-4">
+                Market, nalbur, butik için ultra hızlı dokunmatik kasa, plasiyer araç içi sıcak satış, Fiyat Gör Kiosk ve Mağaza TV dijital kampanya panosu.
               </p>
             </div>
-            <div class="pt-3 border-t border-slate-800/80 flex flex-wrap gap-2 text-[11px]">
-              <a href="/cok-subeli-ve-cok-katli-magazacilik-yonetimi" class="text-emerald-400 hover:underline">Şube Yönetimi ➔</a>
+            <div class="pt-3 border-t border-slate-800/80 flex flex-wrap gap-3 text-xs sm:text-sm font-semibold">
+              <a href="/hizli-satis" class="text-emerald-400 hover:underline">Hızlı Satış POS ➔</a>
               <a href="/mobil-sicak-satis-ve-saha-dagitim-lojistigi" class="text-emerald-400 hover:underline">Mobil Sıcak Satış ➔</a>
             </div>
           </div>
@@ -430,13 +604,13 @@ const stats = [
               <div class="w-12 h-12 rounded-xl bg-orange-500/10 border border-orange-500/20 text-orange-400 flex items-center justify-center text-2xl mb-4">
                 🌐
               </div>
-              <h4 class="text-lg font-bold text-white mb-2">3. 37+ Pazaryeri & E-İhracat</h4>
-              <p class="text-slate-400 text-xs leading-relaxed mb-4">
+              <h4 class="text-xl font-bold text-white mb-2">3. 37+ Pazaryeri & E-İhracat</h4>
+              <p class="text-slate-300 text-sm leading-relaxed mb-4">
                 Trendyol, Hepsiburada, Amazon, Etsy, Ozon, Shopify entegrasyonu. 10 saniye otomatik stok senkronizasyonu ve tek tıkla kargo barkodu.
               </p>
             </div>
-            <div class="pt-3 border-t border-slate-800/80 flex flex-wrap gap-2 text-[11px]">
-              <a href="/e-ticaret-ve-pazaryeri-entegrasyonu" class="text-orange-400 hover:underline">Pazaryerleri ➔</a>
+            <div class="pt-3 border-t border-slate-800/80 flex flex-wrap gap-3 text-xs sm:text-sm font-semibold">
+              <a href="/pazaryeri" class="text-orange-400 hover:underline">Pazaryerleri ➔</a>
               <a href="/pazaryeri-ihracat" class="text-orange-400 hover:underline">E-İhracat ➔</a>
             </div>
           </div>
@@ -447,14 +621,14 @@ const stats = [
               <div class="w-12 h-12 rounded-xl bg-amber-500/10 border border-amber-500/20 text-amber-400 flex items-center justify-center text-2xl mb-4">
                 📦
               </div>
-              <h4 class="text-lg font-bold text-white mb-2">4. B2B Toptan & CariNET</h4>
-              <p class="text-slate-400 text-xs leading-relaxed mb-4">
-                Koli/palet kademeli fiyat motoru, maliyet kilidi, 7/24 CariNET bayi tahsilat portalı ve DepodanDirekt.com toptan satış ağı.
+              <h4 class="text-xl font-bold text-white mb-2">4. B2B Toptan & CariNET</h4>
+              <p class="text-slate-300 text-sm leading-relaxed mb-4">
+                Koli/palet kademeli fiyat motoru, maliyet kilidi, 7/24 CariNET bayi tahsilat portalı ve DepodanDirekt toptan satış ağı.
               </p>
             </div>
-            <div class="pt-3 border-t border-slate-800/80 flex flex-wrap gap-2 text-[11px]">
-              <a href="/akilli-toptan-fiyat-kademeli-iskonto-ve-maliyet-kilidi" class="text-amber-400 hover:underline">Kademeli Fiyat ➔</a>
-              <a href="/b2b-bayi-siparis-sistemi" class="text-amber-400 hover:underline">CariNET Bayi ➔</a>
+            <div class="pt-3 border-t border-slate-800/80 flex flex-wrap gap-3 text-xs sm:text-sm font-semibold">
+              <a href="/b2b" class="text-amber-400 hover:underline">B2B Bayi Portalı ➔</a>
+              <a href="/toptan-satis" class="text-amber-400 hover:underline">Toptan Satış ➔</a>
             </div>
           </div>
 
@@ -464,14 +638,14 @@ const stats = [
               <div class="w-12 h-12 rounded-xl bg-purple-500/10 border border-purple-500/20 text-purple-400 flex items-center justify-center text-2xl mb-4">
                 🏛️
               </div>
-              <h4 class="text-lg font-bold text-white mb-2">5. 17'li e-Dönüşüm & SMMM</h4>
-              <p class="text-slate-400 text-xs leading-relaxed mb-4">
-                e-Fatura, e-Arşiv, e-İrsaliye, e-SMM, e-Defter, GİB Btrans ve Luca/Zirve/Logo mali müşavir muhasebe fiş aktarım köprüsü.
+              <h4 class="text-xl font-bold text-white mb-2">5. 17'li e-Dönüşüm & SMMM</h4>
+              <p class="text-slate-300 text-sm leading-relaxed mb-4">
+                e-Fatura, e-Arşiv, e-İrsaliye, e-SMM, e-Defter ve Luca/Zirve/Logo mali müşavir muhasebe fiş aktarım köprüsü.
               </p>
             </div>
-            <div class="pt-3 border-t border-slate-800/80 flex flex-wrap gap-2 text-[11px]">
-              <a href="/e-donusum-merkezi-e-fatura-e-arsiv-e-irsaliye" class="text-purple-400 hover:underline">e-Dönüşüm ➔</a>
-              <a href="/e-defter-berat-saklama-ve-gib-btrans-bildirimleri" class="text-purple-400 hover:underline">e-Defter & SMMM ➔</a>
+            <div class="pt-3 border-t border-slate-800/80 flex flex-wrap gap-3 text-xs sm:text-sm font-semibold">
+              <a href="/e-donusum" class="text-purple-400 hover:underline">e-Dönüşüm ➔</a>
+              <a href="/smmm" class="text-purple-400 hover:underline">SMMM Portalı ➔</a>
             </div>
           </div>
 
@@ -481,13 +655,13 @@ const stats = [
               <div class="w-12 h-12 rounded-xl bg-sky-500/10 border border-sky-500/20 text-sky-400 flex items-center justify-center text-2xl mb-4">
                 ⚙️
               </div>
-              <h4 class="text-lg font-bold text-white mb-2">6. Üretim ERP & Depo WMS</h4>
-              <p class="text-slate-400 text-xs leading-relaxed mb-4">
+              <h4 class="text-xl font-bold text-white mb-2">6. Üretim ERP & Depo WMS</h4>
+              <p class="text-slate-300 text-sm leading-relaxed mb-4">
                 BOM ürün ağacı reçeteleri, fire ve gerçek birim maliyet motoru; el terminaliyle koridor-raf-göz adresli akıllı depo yönetimi.
               </p>
             </div>
-            <div class="pt-3 border-t border-slate-800/80 flex flex-wrap gap-2 text-[11px]">
-              <a href="/uretim-erp-urun-agaci-bom-ve-gercek-maliyet-motoru" class="text-sky-400 hover:underline">Üretim ERP ➔</a>
+            <div class="pt-3 border-t border-slate-800/80 flex flex-wrap gap-3 text-xs sm:text-sm font-semibold">
+              <a href="/uretim" class="text-sky-400 hover:underline">Üretim ERP ➔</a>
               <a href="/wms-depo-yonetimi" class="text-sky-400 hover:underline">Depo WMS ➔</a>
             </div>
           </div>
@@ -498,33 +672,31 @@ const stats = [
               <div class="w-12 h-12 rounded-xl bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 flex items-center justify-center text-2xl mb-4">
                 ⏱️
               </div>
-              <h4 class="text-lg font-bold text-white mb-2">7. QR-PDKS & İK Yönetimi</h4>
-              <p class="text-slate-400 text-xs leading-relaxed mb-4">
+              <h4 class="text-xl font-bold text-white mb-2">7. QR-PDKS & İK Yönetimi</h4>
+              <p class="text-slate-300 text-sm leading-relaxed mb-4">
                 15 saniyede yenilenen kripto QR ile personel giriş-çıkışı, 30 günlük SGK puantaj cetveli, cepten izin/avans onayı ve canlı mesai radarı.
               </p>
             </div>
-            <div class="pt-3 border-t border-slate-800/80 flex flex-wrap gap-2 text-[11px]">
-              <a href="/qr-pdks-kriptografik-personel-takip-sistemi" class="text-cyan-400 hover:underline">QR-PDKS ➔</a>
-              <a href="/sgk-personel-puantaj-cetveli-ve-mesai-hesaplama" class="text-cyan-400 hover:underline">Puantaj ➔</a>
-              <a href="/insan-kaynaklari-vardiya-prim-ve-zimmet-yonetimi" class="text-cyan-400 hover:underline">360° İK ➔</a>
+            <div class="pt-3 border-t border-slate-800/80 flex flex-wrap gap-3 text-xs sm:text-sm font-semibold">
+              <a href="/pdks" class="text-cyan-400 hover:underline">QR-PDKS ➔</a>
+              <a href="/sgk-personel-puantaj-cetveli-ve-mesai-hesaplama" class="text-cyan-400 hover:underline">SGK Puantaj ➔</a>
             </div>
           </div>
 
-          <!-- 8. CRM & Teknik Servis -->
+          <!-- 8. CRM & Satış Hunisi -->
           <div class="bg-slate-950/80 rounded-2xl border border-slate-800 p-6 flex flex-col justify-between hover:border-rose-500/40 transition">
             <div>
               <div class="w-12 h-12 rounded-xl bg-rose-500/10 border border-rose-500/20 text-rose-400 flex items-center justify-center text-2xl mb-4">
-                🛠️
+                🤝
               </div>
-              <h4 class="text-lg font-bold text-white mb-2">8. CRM, Servis & Garanti</h4>
-              <p class="text-slate-400 text-xs leading-relaxed mb-4">
-                5 sütunlu Kanban satış hunisi, müşteriye canlı SMS/WhatsApp onarım takip linki ve Seri No/IMEI bazlı tekil garanti doğrulama motoru.
+              <h4 class="text-xl font-bold text-white mb-2">8. CRM, Teklif & Satış Hunisi</h4>
+              <p class="text-slate-300 text-sm leading-relaxed mb-4">
+                5 sütunlu Kanban satış hunisi, tekliften faturaya tek tıkla dönüşüm köprüsü ve Seri No/IMEI bazlı tekil garanti doğrulama motoru.
               </p>
             </div>
-            <div class="pt-3 border-t border-slate-800/80 flex flex-wrap gap-2 text-[11px]">
-              <a href="/crm-satis-hunisi-ve-musteri-gorusmeleri" class="text-rose-400 hover:underline">CRM Satış ➔</a>
+            <div class="pt-3 border-t border-slate-800/80 flex flex-wrap gap-3 text-xs sm:text-sm font-semibold">
+              <a href="/crm" class="text-rose-400 hover:underline">CRM Satış Hunisi ➔</a>
               <a href="/teknik-servis-yonetimi-ve-online-cihaz-takip" class="text-rose-400 hover:underline">Teknik Servis ➔</a>
-              <a href="/seri-no-imei-ve-garanti-takip-sistemi" class="text-rose-400 hover:underline">Garanti Takip ➔</a>
             </div>
           </div>
 
@@ -532,34 +704,33 @@ const stats = [
           <div class="bg-slate-950/80 rounded-2xl border border-slate-800 p-6 flex flex-col justify-between hover:border-indigo-500/40 transition">
             <div>
               <div class="w-12 h-12 rounded-xl bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 flex items-center justify-center text-2xl mb-4">
-                🧠
+                📊
               </div>
-              <h4 class="text-lg font-bold text-white mb-2">9. 40+ Rapor & Patron BI</h4>
-              <p class="text-slate-400 text-xs leading-relaxed mb-4">
+              <h4 class="text-xl font-bold text-white mb-2">9. 40+ Rapor & Patron BI</h4>
+              <p class="text-slate-300 text-sm leading-relaxed mb-4">
                 ABC Pareto kârlılık piramidi, RFM müşteri sadakat matrisi, net kâr köprüsü, alacak yaşlandırma ve tek tıkla Excel/PDF çıktıları.
               </p>
             </div>
-            <div class="pt-3 border-t border-slate-800/80 flex flex-wrap gap-2 text-[11px]">
-              <a href="/kurumsal-raporlama-merkezi-40-hazir-rapor" class="text-indigo-400 hover:underline">40+ Rapor ➔</a>
-              <a href="/is-zekasi-bi-ve-yonetici-karar-destek-merkezi" class="text-indigo-400 hover:underline">Patron BI ➔</a>
+            <div class="pt-3 border-t border-slate-800/80 flex flex-wrap gap-3 text-xs sm:text-sm font-semibold">
+              <a href="/raporlar" class="text-indigo-400 hover:underline">40+ Rapor Merkezi ➔</a>
+              <a href="/piyasa-radari" class="text-indigo-400 hover:underline">Piyasa Radarı ➔</a>
             </div>
           </div>
 
-          <!-- 10. 5 Sektörel Dikey Yazılım -->
+          <!-- 10. Plaka Sicil & Sektörel Dikey Yazılımlar -->
           <div class="bg-slate-950/80 rounded-2xl border border-slate-800 p-6 flex flex-col justify-between hover:border-teal-500/40 transition">
             <div>
               <div class="w-12 h-12 rounded-xl bg-teal-500/10 border border-teal-500/20 text-teal-400 flex items-center justify-center text-2xl mb-4">
-                🚀
+                🚗
               </div>
-              <h4 class="text-lg font-bold text-white mb-2">10. 5 Sektörel Dikey Yazılım</h4>
-              <p class="text-slate-400 text-xs leading-relaxed mb-4">
-                Plaka Sicil Oto Servis, LezzetSTOP Restoran e-Adisyon, Otel/Villa Rezervasyon, Sağlık & Klinik Randevu ve Eğitim Taksit/Senet Yönetimi.
+              <h4 class="text-xl font-bold text-white mb-2">10. Plaka Sicil & Sektörel Çözümler</h4>
+              <p class="text-slate-300 text-sm leading-relaxed mb-4">
+                Plaka Sicil Oto Servis, LezzetSTOP Restoran e-Adisyon, Otel/Villa Rezervasyon, Sağlık Klinik Randevu ve 20+ sektörel dikey yazılım.
               </p>
             </div>
-            <div class="pt-3 border-t border-slate-800/80 flex flex-wrap gap-2 text-[11px]">
-              <a href="/plaka-sicil-oto-servis-ve-arac-gecmisi" class="text-teal-400 hover:underline">Oto Servis ➔</a>
-              <a href="/lezzetstop-yemek-pazaryeri-ve-restoran-otomasyonu" class="text-teal-400 hover:underline">Restoran ➔</a>
-              <a href="/otel-bungalov-villa-rezervasyon-yonetim-sistemi" class="text-teal-400 hover:underline">Rezervasyon ➔</a>
+            <div class="pt-3 border-t border-slate-800/80 flex flex-wrap gap-3 text-xs sm:text-sm font-semibold">
+              <a href="/plakasicil" class="text-teal-400 hover:underline">Plaka Sicil Oto Servis ➔</a>
+              <a href="/sektor/ambalaj-ve-plastik" class="text-teal-400 hover:underline">20+ Sektör ➔</a>
             </div>
           </div>
 
@@ -569,12 +740,12 @@ const stats = [
               <div class="w-12 h-12 rounded-xl bg-slate-800 border border-slate-700 text-slate-300 flex items-center justify-center text-2xl mb-4">
                 🛡️
               </div>
-              <h4 class="text-lg font-bold text-white mb-2">11. "Yanındayız" — Siber Güvenlik, Sanal POS & Veri Özgürlüğü</h4>
-              <p class="text-slate-400 text-xs leading-relaxed mb-4">
+              <h4 class="text-xl font-bold text-white mb-2">11. Siber Güvenlik, Sanal POS & Veri Özgürlüğü</h4>
+              <p class="text-slate-300 text-sm leading-relaxed mb-4">
                 Cloudflare Edge WAF koruması, 20 dk otomatik oturum kalkanı, granüler rol yetkilendirmesi ile alış maliyeti gizleme, PayTR/iyzico/Param sanal POS entegrasyonu ve tek tıkla %100 Excel veri yedekleme özgürlüğü.
               </p>
             </div>
-            <div class="pt-3 border-t border-slate-800/80 flex flex-wrap gap-3 text-[11px]">
+            <div class="pt-3 border-t border-slate-800/80 flex flex-wrap gap-4 text-xs sm:text-sm font-semibold">
               <span class="text-emerald-400">✓ PayTR, iyzico, Param Entegre</span>
               <span class="text-indigo-400">✓ Canlı Kurulum & Eğitim Desteği</span>
               <span class="text-cyan-400">✓ %100 Veri Kilitsiz</span>
@@ -585,9 +756,9 @@ const stats = [
       </div>
     </section>
 
-    <!-- 5. FİNAL DÖNÜŞÜM CTA ALANI -->
-    <section class="py-24 relative overflow-hidden">
-      <div class="absolute inset-0 bg-gradient-to-b from-slate-950 via-indigo-950/40 to-slate-950"></div>
+
+    <!-- 7. FİNAL DÖNÜŞÜM CTA ALANI -->
+    <section class="py-24 relative overflow-hidden bg-gradient-to-b from-[#060A17] to-slate-950">
       <div class="container mx-auto px-4 lg:px-8 max-w-5xl relative z-10 text-center">
         <div class="p-8 sm:p-16 rounded-3xl bg-slate-900/90 border border-indigo-500/30 shadow-2xl relative backdrop-blur-xl">
           <div class="w-16 h-16 rounded-2xl bg-gradient-to-tr from-indigo-600 to-emerald-500 text-white flex items-center justify-center text-3xl mx-auto mb-6 shadow-lg shadow-indigo-500/20">
@@ -599,7 +770,7 @@ const stats = [
               Tüm Şirketinizi Stok Pratik'e Taşıyın.
             </span>
           </h3>
-          <p class="text-slate-300 text-base sm:text-lg max-w-2xl mx-auto mb-8 leading-relaxed">
+          <p class="text-slate-300 text-base sm:text-xl max-w-2xl mx-auto mb-8 leading-relaxed">
             Kurulum ücreti yok, sunucu masrafı yok, taahhüt yok. Mevcut Excel ürün ve cari listenizi 5 dakikada içeri aktarın, uzman ekibimizden ücretsiz canlı kurulum eğitimi alın.
           </p>
           <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -611,18 +782,18 @@ const stats = [
             </a>
             <a 
               href="/egitim-talebi" 
-              class="w-full sm:w-auto px-8 py-4 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold text-lg border border-slate-700 transition-all"
+              class="w-full sm:w-auto px-8 py-4 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold text-lg border border-slate-700 transition-all"
             >
               🎓 Canlı Demo & Eğitim İsteyin
             </a>
             <a 
               href="/ozellikler" 
-              class="w-full sm:w-auto px-6 py-4 rounded-xl bg-transparent hover:bg-slate-800/60 text-slate-300 font-medium text-base transition-all"
+              class="w-full sm:w-auto px-6 py-4 rounded-xl bg-transparent hover:bg-slate-800/60 text-slate-300 font-semibold text-base transition-all"
             >
               Tüm Özellikleri Keşfet →
             </a>
           </div>
-          <p class="text-xs text-slate-400 mt-6">Kredi kartı gerekmez • 14 gün ücretsiz tam sürüm • 7/24 kesintisiz bulut erişimi</p>
+          <p class="text-sm text-slate-400 mt-6">Kredi kartı gerekmez • 14 gün ücretsiz tam sürüm • 7/24 kesintisiz bulut erişimi</p>
         </div>
       </div>
     </section>
@@ -652,13 +823,13 @@ const stats = [
           btn.addEventListener('click', () => {
             const targetId = btn.getAttribute('data-target');
             
-            // Tab stillerini güncelle
+            // Tab stillerini güncelle (Tactile Buton Stilleri)
             tabBtns.forEach(b => {
-              b.classList.remove('active', 'bg-indigo-600', 'text-white', 'shadow');
-              b.classList.add('bg-slate-950', 'text-slate-400');
+              b.classList.remove('active', 'bg-indigo-600', 'text-white', 'border-indigo-600', 'shadow-lg', 'shadow-indigo-600/25');
+              b.classList.add('bg-slate-50', 'text-slate-700', 'border-slate-200', 'shadow-sm');
             });
-            btn.classList.add('active', 'bg-indigo-600', 'text-white', 'shadow');
-            btn.classList.remove('bg-slate-950', 'text-slate-400');
+            btn.classList.add('active', 'bg-indigo-600', 'text-white', 'border-indigo-600', 'shadow-lg', 'shadow-indigo-600/25');
+            btn.classList.remove('bg-slate-50', 'text-slate-700', 'border-slate-200', 'shadow-sm');
 
             // Panelleri aç/kapa
             panels.forEach(p => {

@@ -1,0 +1,347 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const pageTitle = "İş Zekası (BI) ve Patron Karar Destek Kokpiti | Stok Pratik";
+const pageDescription = "Şirketinizi sezgilerle değil, veriyle yönetin! ABC Pareto kârlılık piramidi, RFM müşteri sadakat matrisi, kanal bazlı net kâr köprüsü ve 90 günlük nakit akış projeksiyonu.";
+
+const biEngines = [
+  {
+    icon: "🏆",
+    title: "ABC (Pareto 80/20) Ürün ve Stok Kârlılık Motoru",
+    question: "Depomdaki binlerce çeşit üründen hangisi gerçekten kâr bırakıyor?",
+    desc: "Ürünlerinizi 3 stratejik sınıfa ayırır: A Grubu cironuzun %80'ini sırtlayan altın ürünler, B Grubu düzenli satan dengeli ürünler, C Grubu ise depoyu işgal eden sermaye yükü ürünlerdir. Sistem C grubu için anında indirim/kampanya önerir.",
+    color: "from-amber-500/20 to-amber-950/40 border-amber-500/30 text-amber-400"
+  },
+  {
+    icon: "💎",
+    title: "RFM Müşteri Değeri & Kayıp Önleme (Churn) Matrisi",
+    question: "En kârlı VIP müşterilerim kim ve hangilerini kaybetmek üzereyim?",
+    desc: "Tüm carilerinizi Recency (son sipariş), Frequency (alışveriş sıklığı) ve Monetary (toplam harcama) ekseninde puanlar. Uzun süredir sipariş vermeyen yüksek cirolu müşterileri '🚨 Kayıp Riski — Bugün Ara!' uyarısıyla satış ekibinizin önüne çıkarır.",
+    color: "from-blue-500/20 to-blue-950/40 border-blue-500/30 text-blue-400"
+  },
+  {
+    icon: "⚖️",
+    title: "Kanal Bazlı Gerçek Net Kârlılık Kıyaslama Motoru",
+    question: "Trendyol'da mı, fiziksel mağazada mı yoksa B2B toptanda mı daha kârlıyım?",
+    desc: "Sadece brüt ciroya aldanmayın! Alış maliyeti, pazaryeri komisyonu, kargo kesintisi, iade oranı ve personel masraflarını düşerek her satış kanalının cebinize bıraktığı gerçek net kâr marjını (%) yan yana kıyaslar.",
+    color: "from-emerald-500/20 to-emerald-950/40 border-emerald-500/30 text-emerald-400"
+  },
+  {
+    icon: "🔭",
+    title: "30-60-90 Günlük Nakit Akışı & Likidite Projeksiyonu",
+    question: "Önümüzdeki ay maaş, kira, vergi ve çek ödemeleri için kasada nakit kalacak mı?",
+    desc: "Kasa/banka bakiyenizi, vadesi gelecek müşteri çeklerini, pazaryeri hak ediş takvimini ve ödenecek tedarikçi faturalarını birleştirerek gelecek 90 günün nakit açığını veya fazlasını bugünden simüle eder.",
+    color: "from-purple-500/20 to-purple-950/40 border-purple-500/30 text-purple-400"
+  }
+];
+
+const faqs = [
+  {
+    q: "İş Zekası (BI) modülünü kullanmak için veri analisti veya yazılımcı gerekir mi?",
+    a: "Kesinlikle hayır! Stok Pratik BI Kokpiti, kod yazma veya karmaşık SQL sorguları gerektirmez. Satış, alış ve fatura verilerinizi arka planda otomatik analiz eder ve patronun/yöneticinin tek bakışta anlayacağı sade grafiklerle sunar."
+  },
+  {
+    q: "ABC analizi stok siparişlerimizde nasıl para kazandırır?",
+    a: "Sermayenizi hiç satmayan 'C Grubu' ürünlere bağlamanızı engeller. En çok kâr getiren 'A Grubu' ürünlerde ise emniyet stoğu uyarısı vererek 'yok satma' kaynaklı ciro kaybını sıfıra indirir."
+  },
+  {
+    q: "Kanal bazlı net kâr kıyaslamasında pazaryeri iade ve kargo masrafları hesaba katılır mı?",
+    a: "Evet! Çoğu işletme pazaryerlerinde yüksek ciro yaptığını sanırken iadeler ve desi aşım faturaları yüzünden zarar eder. Stok Pratik BI motoru tüm lojistik ve komisyon kesintilerini düşerek net cep kârınızı ortaya çıkarır."
+  },
+  {
+    q: "RFM matrisi müşterilerimizi nasıl gruplar?",
+    a: "Müşterilerinizi Şampiyonlar (VIP), Sadık Müşteriler, Yeni Umutlar, Uykuya Dalanlar ve Kayıp Riski Olanlar şeklinde 5 gruba ayırır. Örneğin 60 gündür alışveriş yapmayan eski bir VIP müşterinize sistem tek tıkla özel kampanya mesajı oluşturmanızı sağlar."
+  },
+  {
+    q: "Nakit akış projeksiyonu dövizli çek ve borçları da kapsar mı?",
+    a: "Evet. Dolar ve Euro cinsinden alacak ve borçlarınızı güncel TCMB döviz kurlarıyla TL karşılığına çevirerek kombine nakit akış tablonuza yansıtır."
+  }
+];
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <main class="bg-slate-950 text-slate-100 antialiased min-h-screen selection:bg-purple-500 selection:text-white">
+    
+    <!-- 1. HERO SECTION -->
+    <section class="relative overflow-hidden pt-20 pb-24 lg:pt-28 lg:pb-32 border-b border-slate-800">
+      <div class="absolute inset-0 bg-[radial-gradient(circle_at_top,_var(--tw-gradient-stops))] from-purple-950/40 via-slate-950 to-slate-950"></div>
+      <div class="absolute top-1/4 right-1/4 w-[550px] h-[320px] bg-purple-500/10 blur-[130px] rounded-full pointer-events-none"></div>
+
+      <div class="container mx-auto px-4 lg:px-8 relative z-10 max-w-7xl">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+          
+          <!-- Sol: Başlık ve CTA -->
+          <div class="lg:col-span-5 text-center lg:text-left">
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-500/10 border border-purple-500/20 text-purple-400 text-xs sm:text-sm font-semibold mb-6 backdrop-blur-md">
+              <span class="w-2 h-2 rounded-full bg-purple-400 animate-pulse"></span>
+              🧠 İş Zekası (BI) & Karar Destek • Patronlar İçin Stratejik Kokpit
+            </div>
+
+            <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight text-white leading-[1.1] mb-6">
+              Rakamları Konuşturun: <br/>
+              <span class="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-300 to-amber-300">
+                Şirketinizi Sezgilerle Değil, BI Verileriyle Yönetin!
+              </span>
+            </h1>
+
+            <p class="text-base sm:text-lg text-slate-300 mb-8 leading-relaxed max-w-xl mx-auto lg:mx-0">
+              Hangi %20'lik ürün grubunuz cironuzun %80'ini sırtlıyor? Hangi VIP müşteriniz sessizce rakibe kayıyor? Stok Pratik <strong>İş Zekası (BI) Karar Destek Merkezi</strong>, binlerce satırlık veriyi saniyeler içinde şirket kârınızı artıran aksiyonlara dönüştürür!
+            </p>
+
+            <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 mb-8">
+              <a 
+                href="/firma-kaydi" 
+                class="w-full sm:w-auto px-8 py-4 rounded-xl bg-gradient-to-r from-purple-600 via-purple-500 to-pink-600 hover:from-purple-500 hover:to-pink-500 text-white font-bold text-base shadow-lg shadow-purple-600/30 hover:scale-[1.02] transition-all text-center"
+              >
+                🧠 İş Zekası Kokpitini Açın
+              </a>
+              <a 
+                href="#bi-engines" 
+                class="w-full sm:w-auto px-8 py-4 rounded-xl bg-slate-900/80 hover:bg-slate-800 text-slate-200 font-semibold text-base border border-slate-700/80 hover:border-slate-600 transition-all text-center flex items-center justify-center gap-2"
+              >
+                <span>📈 4 Stratejik BI Motorunu İncele</span>
+              </a>
+            </div>
+
+            <div class="flex items-center justify-center lg:justify-start gap-6 text-xs text-slate-400">
+              <span class="flex items-center gap-1.5"><svg class="w-4 h-4 text-emerald-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg> ABC Pareto 80/20</span>
+              <span class="flex items-center gap-1.5"><svg class="w-4 h-4 text-emerald-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg> RFM Sadakat Matrisi</span>
+              <span class="flex items-center gap-1.5"><svg class="w-4 h-4 text-emerald-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg> Gerçek Net Kâr Köprüsü</span>
+            </div>
+          </div>
+
+          <!-- Sağ: Canlı Yönetici BI Kokpiti (ABC Piramidi + Kâr Köprüsü Mockup) -->
+          <div class="lg:col-span-7">
+            <div class="bg-slate-900/90 rounded-2xl border border-purple-500/30 p-5 shadow-2xl relative overflow-hidden backdrop-blur-xl">
+              <div class="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-purple-500 via-pink-500 to-amber-500"></div>
+
+              <!-- Üst Kokpit Başlığı -->
+              <div class="flex items-center justify-between pb-3 border-b border-slate-800 mb-4">
+                <div class="flex items-center gap-2">
+                  <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                  <span class="text-xs font-mono font-bold text-white uppercase tracking-wider">YÖNETİCİ KARAR DESTEK KOKPİTİ</span>
+                </div>
+                <span class="text-[10px] bg-purple-500/20 text-purple-300 px-2 py-0.5 rounded font-mono">Ekim 2026 Dönemi</span>
+              </div>
+
+              <!-- 2 Sütunlu BI Veri Görselleştirme: ABC Piramidi + Net Kâr Köprüsü -->
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                
+                <!-- 1. Kutu: Canlı ABC Pareto Piramidi -->
+                <div class="bg-slate-950 p-4 rounded-xl border border-slate-800">
+                  <div class="flex items-center justify-between mb-3">
+                    <span class="text-xs font-bold text-white">🏆 ABC Ürün Kârlılık Piramidi</span>
+                    <span class="text-[10px] text-amber-400 font-mono">Pareto 80/20</span>
+                  </div>
+
+                  <!-- Piramit Katmanları -->
+                  <div class="space-y-2 text-xs">
+                    <!-- A Grubu -->
+                    <div class="p-2 rounded-lg bg-emerald-950/40 border border-emerald-500/40">
+                      <div class="flex justify-between items-center font-bold text-emerald-400">
+                        <span>🟢 A Grubu (Altın Ürünler)</span>
+                        <span class="font-mono">%80 Ciro</span>
+                      </div>
+                      <div class="text-[10px] text-slate-400 mt-0.5">Top 120 Ürün • Asla Stok Bitmemeli</div>
+                    </div>
+
+                    <!-- B Grubu -->
+                    <div class="p-2 rounded-lg bg-amber-950/30 border border-amber-500/30">
+                      <div class="flex justify-between items-center font-bold text-amber-300">
+                        <span>🟡 B Grubu (Dengeli Ürünler)</span>
+                        <span class="font-mono">%15 Ciro</span>
+                      </div>
+                      <div class="text-[10px] text-slate-400 mt-0.5">380 Ürün • Standart Stok Devir Hızı</div>
+                    </div>
+
+                    <!-- C Grubu -->
+                    <div class="p-2 rounded-lg bg-rose-950/30 border border-rose-500/30">
+                      <div class="flex justify-between items-center font-bold text-rose-400">
+                        <span>🔴 C Grubu (Sermaye Yükü)</span>
+                        <span class="font-mono">%5 Ciro</span>
+                      </div>
+                      <div class="text-[10px] text-slate-400 mt-0.5">1.250 Ürün • 🚨 Kampanya ile Erit!</div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- 2. Kutu: Gerçek Zamanlı Net Kâr Köprüsü (Waterfall) -->
+                <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 flex flex-col justify-between">
+                  <div>
+                    <div class="flex items-center justify-between mb-3">
+                      <span class="text-xs font-bold text-white">📊 Net Kâr Köprüsü</span>
+                      <span class="text-[10px] text-emerald-400 font-mono font-bold">%23,75 Net Marj</span>
+                    </div>
+
+                    <div class="space-y-1.5 text-[11px]">
+                      <div class="flex justify-between items-center text-slate-200">
+                        <span>Brüt Satış Cirosu:</span>
+                        <span class="font-mono font-bold">1.200.000 ₺</span>
+                      </div>
+                      <div class="flex justify-between items-center text-rose-400">
+                        <span>(-) Mal Alış Maliyeti (SMM):</span>
+                        <span class="font-mono">-680.000 ₺</span>
+                      </div>
+                      <div class="flex justify-between items-center text-rose-400">
+                        <span>(-) Faaliyet & Personel Masrafı:</span>
+                        <span class="font-mono">-160.000 ₺</span>
+                      </div>
+                      <div class="flex justify-between items-center text-rose-400">
+                        <span>(-) Pazaryeri & Kargo Komisyonu:</span>
+                        <span class="font-mono">-75.000 ₺</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="pt-2 border-t border-slate-800 mt-2">
+                    <div class="flex justify-between items-center text-xs font-black text-emerald-400">
+                      <span>Cepte Kalan Net Kâr:</span>
+                      <span class="font-mono text-sm">285.000 ₺</span>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+              <!-- Alt RFM Canlı Alarm Şeridi -->
+              <div class="p-3 bg-purple-950/30 rounded-xl border border-purple-500/20 text-xs flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 text-purple-200">
+                <span class="flex items-center gap-2">
+                  <span class="text-rose-400 text-sm">🚨</span>
+                  <strong>RFM Churn Alarmı:</strong> Son 60 gündür sipariş vermeyen 3 VIP Müşteri tespit edildi (Toplam Potansiyel Risk: 420.000 ₺). Satış ekibine görev atandı!
+                </span>
+                <span class="text-[10px] bg-purple-500/20 text-purple-300 px-2 py-0.5 rounded font-mono shrink-0">Aksiyon Alındı</span>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. ŞİRKET SAHİPLERİNİN EN ÇOK KULLANDIĞI 4 BI MOTORU -->
+    <section class="py-20 bg-slate-900/40 border-b border-slate-800" id="bi-engines">
+      <div class="container mx-auto px-4 lg:px-8 max-w-7xl">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <h2 class="text-xs uppercase tracking-widest text-purple-400 font-bold mb-3">Yönetici Kokpiti</h2>
+          <h3 class="text-3xl sm:text-4xl font-extrabold text-white">Şirket Sahiplerinin En Çok Kullandığı 4 Stratejik BI Motoru</h3>
+          <p class="text-slate-400 mt-4 text-base">
+            Karmaşık tablolarda kaybolmayın. Karar destek algoritmaları işletmenizin kârını artıracak en doğru hamleleri önünüze getirir.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {biEngines.map((engine) => (
+            <div class={`bg-gradient-to-br ${engine.color} rounded-2xl border p-8 flex flex-col justify-between`}>
+              <div>
+                <div class="w-14 h-14 rounded-2xl bg-slate-950/60 border border-slate-800 text-3xl flex items-center justify-center mb-6">
+                  {engine.icon}
+                </div>
+                <h4 class="text-2xl font-bold text-white mb-2">{engine.title}</h4>
+                <div class="p-3 bg-slate-950/60 rounded-xl border border-slate-800 text-xs text-slate-300 italic mb-4">
+                  ❓ <strong>Kritik Soru:</strong> "{engine.question}"
+                </div>
+                <p class="text-slate-300 text-sm leading-relaxed mb-6">
+                  {engine.desc}
+                </p>
+              </div>
+
+              <div class="pt-4 border-t border-slate-800/80 flex items-center justify-between text-xs">
+                <span class="text-white font-semibold">Canlı BI Görselleştirmesi Aktif</span>
+                <span class="text-purple-300 font-mono font-bold">Gerçek Zamanlı ➔</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. SIKÇA SORULAN SORULAR (FAQ) -->
+    <section class="py-20 border-b border-slate-800">
+      <div class="container mx-auto px-4 lg:px-8 max-w-4xl">
+        <div class="text-center mb-12">
+          <h2 class="text-xs uppercase tracking-widest text-purple-400 font-bold mb-2">Merak Edilenler</h2>
+          <h3 class="text-3xl font-extrabold text-white">İş Zekası (BI) Hakkında Sıkça Sorulan Sorular</h3>
+        </div>
+
+        <div class="space-y-4">
+          {faqs.map((faq, index) => (
+            <div class="bg-slate-900/60 rounded-xl border border-slate-800 p-6">
+              <h4 class="text-base font-bold text-white mb-2 flex items-center gap-2">
+                <span class="text-purple-400 font-mono">Q{index + 1}.</span> {faq.q}
+              </h4>
+              <p class="text-slate-300 text-sm leading-relaxed pl-7">
+                {faq.a}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. DÖNÜŞÜM CTA BÖLÜMÜ -->
+    <section class="py-20 relative overflow-hidden">
+      <div class="absolute inset-0 bg-gradient-to-b from-slate-950 via-purple-950/30 to-slate-950"></div>
+      <div class="container mx-auto px-4 lg:px-8 max-w-5xl relative z-10 text-center">
+        <div class="p-8 sm:p-14 rounded-3xl bg-slate-900/90 border border-purple-500/30 shadow-2xl relative backdrop-blur-xl">
+          <div class="w-16 h-16 rounded-2xl bg-purple-500/20 border border-purple-500/40 text-purple-400 flex items-center justify-center text-3xl mx-auto mb-6">
+            🧠
+          </div>
+          <h3 class="text-3xl sm:text-5xl font-black text-white mb-6 tracking-tight">
+            Şirketinizi Bir Veri Bilimcisi Keskinliğiyle Yönetin! <br/>
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-300 to-amber-300">
+              Stok Pratik BI ile Büyümenizi Güvenceye Alın.
+            </span>
+          </h3>
+          <p class="text-slate-300 text-base sm:text-lg max-w-2xl mx-auto mb-8">
+            Kurulum gerektirmeyen Stok Pratik İş Zekası (BI) kokpitini hemen 14 gün boyunca ücretsiz deneyimleyin.
+          </p>
+          <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <a 
+              href="/firma-kaydi" 
+              class="w-full sm:w-auto px-8 py-4 rounded-xl bg-gradient-to-r from-purple-600 via-purple-500 to-pink-600 hover:from-purple-500 hover:to-pink-500 text-white font-bold text-lg shadow-xl shadow-purple-600/30 hover:scale-[1.02] transition-all"
+            >
+              🚀 Hemen Ücretsiz Kullanmaya Başla
+            </a>
+            <a 
+              href="https://erp-eticaret.stokpratik.com.tr/giris" 
+              class="w-full sm:w-auto px-8 py-4 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold text-lg border border-slate-700 transition-all"
+            >
+              Giriş Yap
+            </a>
+          </div>
+          <p class="text-xs text-slate-400 mt-6">Kredi kartı gerekmez • 1 dakikada şirket hesabı açın • Canlı veri senkronu</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SCHEMA JSON-LD -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Stok Pratik İş Zekası (BI) ve Karar Destek Kokpiti",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Web, iOS, Android",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "TRY"
+      },
+      "description": pageDescription
+    })} />
+
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": faqs.map(f => ({
+        "@type": "Question",
+        "name": f.q,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": f.a
+        }
+      }))
+    })} />
+
+  </main>
+</BaseLayout>

@@ -1,0 +1,372 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const pageTitle = "40+ Kurumsal Raporlama Merkezi | Stok Pratik Bulut ERP";
+const pageDescription = "Muhasebeci veya bilgi işlemden rapor beklemeye son! 5 ana departmanda 40'tan fazla hazır kurumsal analiz raporu, canlı bilanço, nakit akışı ve tek tıkla Excel/PDF çıktısı.";
+
+const reportCategories = [
+  {
+    id: "finans",
+    name: "💳 Muhasebe & Finans",
+    badge: "11 Rapor",
+    desc: "Bilanço, gelir tablosu, TDHP mizan, KDV icmali ve nakit akışı tek ekranda.",
+    reports: [
+      { name: "Özet Bilanço (Aktif / Pasif Dengesi)", question: "Şirketin net varlığı ve borç dengesi ne durumda?", tags: ["Canlı Tablo", "PDF / Excel", "Resmi"] },
+      { name: "Gelir Tablosu (Brüt Satış ➔ Net Kâr)", question: "Gerçek faaliyet kârımız ve satılan malın maliyeti (SMM) nedir?", tags: ["Dönemsel", "Grafik Destekli"] },
+      { name: "Genel Geçici Mizan (TDHP Uyumlu)", question: "100 Kasa'dan 770 Genel Yönetim'e kadar hesap hareketleri ne durumda?", tags: ["Mizan", "SMMM Uyumlu"] },
+      { name: "KDV İcmal & Beyanname Özet Raporu", question: "%1, %10, %20 oranlarında ne kadar KDV ödenecek veya devretti?", tags: ["Vergi Radarı", "Aylık"] },
+      { name: "Cari Hesap Yaşlandırma (Aging) Analizi", question: "Kimin borcu 30, 60, 90 günü aştı, batık riski var mı?", tags: ["Vade Takibi", "Kritik"] },
+      { name: "Nakit Akışı (Cash Flow) & Kasa/Banka", question: "Kasamızda ve bankalarda şu an net ne kadar nakit var?", tags: ["Likidite", "Anlık"] },
+      { name: "Çek / Senet Vade Risk Raporu", question: "Bu hafta ve bu ay tahsil edilecek veya ödenecek çekler hangileri?", tags: ["Portföy", "Risk Analizi"] }
+    ]
+  },
+  {
+    id: "magaza",
+    name: "🏬 Mağazacılık & Perakende",
+    badge: "9 Rapor",
+    desc: "Şube kasaları, saatlik ciro ısı haritası ve sepet ortalaması kontrolü.",
+    reports: [
+      { name: "Gün Sonu Kasa Z Raporu & Vardiya Özeti", question: "Şubede gün boyu nakit, kart ve veresiye ne kadar satış yapıldı?", tags: ["Kasa Z", "Vardiya"] },
+      { name: "Saatlik & Günlük Mağaza Yoğunluk Isı Haritası", question: "Müşteriler en çok hangi saatlerde alışveriş yapıyor?", tags: ["Isı Haritası", "Personel Planı"] },
+      { name: "Sepet Ortalaması (AOV) & İskonto Denetimi", question: "Kasiyerler ne kadar indirim yaptı, hangi fişler iptal edildi?", tags: ["Denetim", "Hile Önleme"] },
+      { name: "En Çok Satan & En Kârlı Ürünler (Top 50)", question: "Mağazanın lokomotif ürünleri hangileri, hangi ürün raf işgal ediyor?", tags: ["Top 50", "Pareto"] },
+      { name: "Pazaryeri Komisyon & Net Hak Ediş Raporu", question: "Trendyol, Hepsiburada kesintileri sonrası hesaba net ne kadar geçecek?", tags: ["E-Ticaret", "Pazaryeri"] }
+    ]
+  },
+  {
+    id: "erp",
+    name: "🏭 ERP, Depo & Tedarik",
+    badge: "8 Rapor",
+    desc: "Envanter değerleme, atıl ölü stok radarı ve kritik emniyet seviyeleri.",
+    reports: [
+      { name: "Envanter Stok Değerleme Raporu", question: "Depodaki malların toplam alış maliyeti ve perakende satış değeri kaç TL?", tags: ["Envanter", "Maliyet"] },
+      { name: "Atıl (Hareketsiz / Ölü) Stok Radarı", question: "Son 90 gündür hiç satılmayan ve parayı bağlayan ürünler hangileri?", tags: ["Kayıp Önleme", "Acil İndirim"] },
+      { name: "Kritik Stok & Acil Tedarik Sipariş Listesi", question: "Emniyet stoğunun altına inen ve tükenmek üzere olan ürünler hangileri?", tags: ["Otomatik Sipariş", "Emniyet"] },
+      { name: "Üretim Emirleri, Fire & Reçete (BOM) Sapması", question: "Üretimde planlanan hammadde ile harcanan fire tutarı uyuşuyor mu?", tags: ["Üretim ERP", "Maliyet"] }
+    ]
+  },
+  {
+    id: "crm",
+    name: "👥 CRM, Satış & İK",
+    badge: "7 Rapor",
+    desc: "Satış hunisi dönüşümü, plasiyer primleri ve PDKS mesai cetvelleri.",
+    reports: [
+      { name: "Satış Hunisi (Pipeline) & Teklif Dönüşüm Oranı", question: "Verilen tekliflerin yüzde kaçı faturaya ve tahsilata döndü?", tags: ["Conversion", "Pipeline"] },
+      { name: "RFM Müşteri Sadakat & Churn Segmentasyonu", question: "Hangi VIP müşterilerimiz son 60 gündür sipariş vermeyi kesti?", tags: ["Kayıp Müşteri", "RFM"] },
+      { name: "Satış Temsilcisi / Plasiyer Ciro & Prim Hakedişi", question: "Hangi satış elemanımız bu ay şirkete ne kadar net kâr kazandırdı?", tags: ["Prim Motoru", "Performans"] },
+      { name: "QR-PDKS Aylık Devamlılık & Fazla Mesai Özeti", question: "Hangi personel ne kadar mesai yaptı, kim kaç gün izin kullandı?", tags: ["SGK Puantaj", "Bordro"] }
+    ]
+  },
+  {
+    id: "edonusum",
+    name: "🏛️ E-Dönüşüm & Resmi",
+    badge: "5 Rapor",
+    desc: "GİB posta kutusu, kontör sarfiyatı ve BA/BS mutabakat dökümleri.",
+    reports: [
+      { name: "Gelen / Giden e-Fatura & e-İrsaliye Durum Raporu", question: "GİB'e iletilen faturaların kaçı onaylandı, reddedilen var mı?", tags: ["GİB UBL-TR", "Anlık Durum"] },
+      { name: "E-Belge Kontör Tüketim & Kalan Bakiye Raporu", question: "Bu ay kaç kontör harcandı, ne zaman yeni kontör yüklenmeli?", tags: ["Kontör", "Tasarruf"] },
+      { name: "BA / BS Formu Mutabakat Listesi", question: "Vergi dairesine verilecek 5.000 TL üzeri alış/satış listesi hazır mı?", tags: ["Resmi", "Mali Müşavir"] }
+    ]
+  }
+];
+
+const faqs = [
+  {
+    q: "Tüm raporları Excel ve PDF formatında indirebilir miyiz?",
+    a: "Evet. Stok Pratik'teki 40'tan fazla kurumsal raporun tamamı tek tıkla standart Microsoft Excel (.xlsx) veya resmi kaşeli/imzalı A4 PDF formatında dışa aktarılabilir."
+  },
+  {
+    q: "Şubelerimizin veya depolarımızın raporlarını ayrı ayrı alabilir miyiz?",
+    a: "Kesinlikle! Her raporda filtreleme paneli bulunur; tarih aralığı, şube, depo, kasa, döviz cinsi veya plasiyer bazında saniyeler içinde özel raporlar üretebilirsiniz."
+  },
+  {
+    q: "Raporlardaki veriler anlık canlı mı yoksa gün sonu devrini mi beklemek gerekir?",
+    a: "Tamamen canlıdır! Kasada yapılan bir satış, depoya giren bir irsaliye veya kesilen bir e-fatura saniyesinde tüm finansal mizan, gelir tablosu ve stok değerleme raporlarına anında yansır."
+  },
+  {
+    q: "Her çalışanın şirket kârını veya maliyet raporlarını görmesini engelleyebilir miyiz?",
+    a: "Evet. Granüler rol yetkilendirmesi sayesinde her kullanıcının hangi raporları görüp hangilerini göremeyeceğini tek tıkla sınırlandırabilirsiniz. Örneğin bir kasiyer sadece kendi Z raporunu görebilirken, genel mizan ve kâr tablolarını yalnızca şirket sahibi görebilir."
+  },
+  {
+    q: "Mali müşavirimize (SMMM) doğrudan rapor ve mizan çıktısı gönderebilir miyiz?",
+    a: "Evet. Tekdüzen Hesap Planı'na (TDHP) %100 uyumlu genel geçici mizan, KDV icmali ve BA/BS raporları mali müşavirinizin muhasebe yazılımına doğrudan yüklenebilecek Excel formatında hazırdır."
+  }
+];
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <main class="bg-slate-950 text-slate-100 antialiased min-h-screen selection:bg-indigo-500 selection:text-white">
+    
+    <!-- 1. HERO SECTION -->
+    <section class="relative overflow-hidden pt-20 pb-24 lg:pt-28 lg:pb-32 border-b border-slate-800">
+      <div class="absolute inset-0 bg-[radial-gradient(circle_at_top,_var(--tw-gradient-stops))] from-indigo-950/40 via-slate-950 to-slate-950"></div>
+      <div class="absolute top-1/4 right-1/4 w-[550px] h-[320px] bg-indigo-500/10 blur-[130px] rounded-full pointer-events-none"></div>
+
+      <div class="container mx-auto px-4 lg:px-8 relative z-10 max-w-7xl">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+          
+          <!-- Sol: Başlık ve CTA -->
+          <div class="lg:col-span-5 text-center lg:text-left">
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 text-xs sm:text-sm font-semibold mb-6 backdrop-blur-md">
+              <span class="w-2 h-2 rounded-full bg-indigo-400 animate-pulse"></span>
+              📊 Kurumsal Raporlama Merkezi • 5 Departmanda 40+ Hazır Rapor
+            </div>
+
+            <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight text-white leading-[1.1] mb-6">
+              Rapor Beklemeye Son: <br/>
+              <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-purple-300 to-emerald-300">
+                40+ Kurumsal Rapor 1 Saniyede Ekranınızda!
+              </span>
+            </h1>
+
+            <p class="text-base sm:text-lg text-slate-300 mb-8 leading-relaxed max-w-xl mx-auto lg:mx-0">
+              "Bu ay ne kadar KDV ödeyeceğiz?", "Hangi şubemiz daha kârlı?", "Depoda 6 aydır uyuyan ürünler hangileri?" Stok Pratik ile 40'tan fazla kurumsal analiz raporunu anlık filtreleyin; tek tıkla Excel veya PDF olarak indirin!
+            </p>
+
+            <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 mb-8">
+              <a 
+                href="/firma-kaydi" 
+                class="w-full sm:w-auto px-8 py-4 rounded-xl bg-gradient-to-r from-indigo-600 via-indigo-500 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white font-bold text-base shadow-lg shadow-indigo-600/30 hover:shadow-indigo-600/50 hover:scale-[1.02] transition-all text-center"
+              >
+                📊 40+ Raporu Ücretsiz Deneyin
+              </a>
+              <a 
+                href="#report-catalog" 
+                class="w-full sm:w-auto px-8 py-4 rounded-xl bg-slate-900/80 hover:bg-slate-800 text-slate-200 font-semibold text-base border border-slate-700/80 hover:border-slate-600 transition-all text-center flex items-center justify-center gap-2"
+              >
+                <span>🗂️ 5 Ana Rapor Kategorisini Gör</span>
+              </a>
+            </div>
+
+            <div class="flex items-center justify-center lg:justify-start gap-6 text-xs text-slate-400">
+              <span class="flex items-center gap-1.5"><svg class="w-4 h-4 text-emerald-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg> Canlı Gerçek Zamanlı</span>
+              <span class="flex items-center gap-1.5"><svg class="w-4 h-4 text-emerald-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg> Tek Tık Excel & PDF</span>
+              <span class="flex items-center gap-1.5"><svg class="w-4 h-4 text-emerald-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg> TDHP ve GİB Uyumlu</span>
+            </div>
+          </div>
+
+          <!-- Sağ: İnteraktif Rapor Kütüphanesi & Canlı Yaşlandırma Önizleme Mockup'ı -->
+          <div class="lg:col-span-7">
+            <div class="bg-slate-900/90 rounded-2xl border border-indigo-500/30 p-5 shadow-2xl relative overflow-hidden backdrop-blur-xl">
+              <div class="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-indigo-500 via-purple-500 to-emerald-500"></div>
+
+              <!-- Üst Sekme Çubuğu Mockup'ı -->
+              <div class="flex items-center justify-between gap-2 pb-3 border-b border-slate-800 mb-4 overflow-x-auto text-xs">
+                <span class="px-2.5 py-1 rounded bg-indigo-600 text-white font-bold whitespace-nowrap">💳 Muhasebe & Finans (11)</span>
+                <span class="px-2.5 py-1 rounded bg-slate-950 text-slate-400 hover:text-white whitespace-nowrap">🏬 Mağaza (9)</span>
+                <span class="px-2.5 py-1 rounded bg-slate-950 text-slate-400 hover:text-white whitespace-nowrap">🏭 ERP & Depo (8)</span>
+                <span class="px-2.5 py-1 rounded bg-slate-950 text-slate-400 hover:text-white whitespace-nowrap">👥 CRM & İK (7)</span>
+                <span class="px-2.5 py-1 rounded bg-slate-950 text-slate-400 hover:text-white whitespace-nowrap">🏛️ E-Belge (5)</span>
+              </div>
+
+              <!-- Örnek Canlı Rapor: Cari Yaşlandırma Analizi -->
+              <div class="bg-slate-950 rounded-xl border border-indigo-500/30 p-4 mb-4">
+                <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 mb-3">
+                  <div>
+                    <h3 class="text-sm font-bold text-white flex items-center gap-2">
+                      <span>📊 Cari Hesap Yaşlandırma (Aging) Raporu</span>
+                      <span class="px-1.5 py-0.5 rounded text-[10px] bg-emerald-500/20 text-emerald-400 font-mono">Canlı Veri</span>
+                    </h3>
+                    <p class="text-[11px] text-slate-400">Tüm şubeler • 120 Müşteri Alacağı Analizi</p>
+                  </div>
+                  <div class="flex items-center gap-2 text-xs">
+                    <span class="px-2 py-1 rounded bg-slate-800 text-slate-200 border border-slate-700 flex items-center gap-1 cursor-pointer">
+                      📥 Excel (.xlsx)
+                    </span>
+                    <span class="px-2 py-1 rounded bg-indigo-950/60 text-indigo-300 border border-indigo-500/30 flex items-center gap-1 cursor-pointer">
+                      📄 PDF
+                    </span>
+                  </div>
+                </div>
+
+                <!-- Yaşlandırma Barları -->
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 mb-3 text-xs">
+                  <div class="bg-slate-900 p-2.5 rounded-lg border border-slate-800">
+                    <div class="text-[10px] text-slate-400">0 - 30 Gün (Normal)</div>
+                    <div class="text-sm font-black text-white font-mono mt-0.5">340.500 ₺</div>
+                    <div class="text-[10px] text-emerald-400 mt-1">%68 Vadesi Yakın</div>
+                  </div>
+                  <div class="bg-slate-900 p-2.5 rounded-lg border border-slate-800">
+                    <div class="text-[10px] text-slate-400">31 - 60 Gün (Takipte)</div>
+                    <div class="text-sm font-black text-amber-300 font-mono mt-0.5">110.200 ₺</div>
+                    <div class="text-[10px] text-amber-400 mt-1">%22 Aranacak</div>
+                  </div>
+                  <div class="bg-slate-900 p-2.5 rounded-lg border border-slate-800">
+                    <div class="text-[10px] text-slate-400">61 - 90 Gün (Kritik)</div>
+                    <div class="text-sm font-black text-orange-400 font-mono mt-0.5">35.800 ₺</div>
+                    <div class="text-[10px] text-orange-400 mt-1">%7 Vade Aşımı</div>
+                  </div>
+                  <div class="bg-slate-900 p-2.5 rounded-lg border border-slate-800">
+                    <div class="text-[10px] text-slate-400">90+ Gün (Şüpheli)</div>
+                    <div class="text-sm font-black text-rose-400 font-mono mt-0.5">14.500 ₺</div>
+                    <div class="text-[10px] text-rose-400 mt-1">🚨 Yasal İhtar</div>
+                  </div>
+                </div>
+
+                <!-- Mini Grafik İlerleme Barı -->
+                <div class="w-full bg-slate-800 h-2.5 rounded-full overflow-hidden flex">
+                  <div style="width: 68%" class="bg-emerald-500"></div>
+                  <div style="width: 22%" class="bg-amber-500"></div>
+                  <div style="width: 7%" class="bg-orange-500"></div>
+                  <div style="width: 3%" class="bg-rose-500"></div>
+                </div>
+              </div>
+
+              <!-- Hızlı Arama & Filtre Çubuğu -->
+              <div class="p-2.5 bg-slate-950 rounded-xl border border-slate-800 flex items-center justify-between text-xs text-slate-400">
+                <span class="flex items-center gap-2">
+                  <span>🔍</span> Rapor Ara: <strong class="text-slate-200">"KDV İcmali", "Ölü Stok", "Z Raporu", "Nakit Akışı"...</strong>
+                </span>
+                <span class="text-indigo-400 font-mono font-bold">40/40 Aktif</span>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. 5 ANA DEPARTMANDA 40+ RAPOR VİTRİNİ -->
+    <section class="py-20 bg-slate-900/40 border-b border-slate-800" id="report-catalog">
+      <div class="container mx-auto px-4 lg:px-8 max-w-7xl">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <h2 class="text-xs uppercase tracking-widest text-indigo-400 font-bold mb-3">Kapsamlı Rapor Kütüphanesi</h2>
+          <h3 class="text-3xl sm:text-4xl font-extrabold text-white">5 Departmanda Kurumsal Yönetim İçin Tasarlanan 40+ Rapor</h3>
+          <p class="text-slate-400 mt-4 text-base">
+            Her rapor işletmenizin en kritik sorusunu net bir cevaba dönüştürür. Kararları tahminle değil, anlık veriyle alın.
+          </p>
+        </div>
+
+        <div class="space-y-12">
+          {reportCategories.map((cat) => (
+            <div class="bg-slate-950/80 rounded-2xl border border-slate-800 p-6 sm:p-8">
+              <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 pb-4 border-b border-slate-800/80 mb-6">
+                <div>
+                  <h4 class="text-xl sm:text-2xl font-bold text-white flex items-center gap-2">
+                    {cat.name}
+                  </h4>
+                  <p class="text-slate-400 text-sm mt-1">{cat.desc}</p>
+                </div>
+                <span class="px-3 py-1 rounded-full bg-indigo-500/20 text-indigo-300 font-mono font-bold text-xs border border-indigo-500/30">
+                  {cat.badge}
+                </span>
+              </div>
+
+              <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                {cat.reports.map((rep) => (
+                  <div class="bg-slate-900/70 rounded-xl border border-slate-800/80 p-4 hover:border-indigo-500/40 transition-all flex flex-col justify-between">
+                    <div>
+                      <h5 class="text-white font-bold text-sm mb-1.5">{rep.name}</h5>
+                      <p class="text-slate-400 text-xs leading-relaxed italic mb-3">
+                        "{rep.question}"
+                      </p>
+                    </div>
+                    <div class="flex items-center justify-between pt-2 border-t border-slate-800 text-[10px]">
+                      <div class="flex items-center gap-1.5">
+                        {rep.tags.map((tag) => (
+                          <span class="px-1.5 py-0.5 rounded bg-slate-800 text-slate-300 border border-slate-700">
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                      <span class="text-indigo-400 font-semibold cursor-pointer">Önizle ➔</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. SIKÇA SORULAN SORULAR (FAQ) -->
+    <section class="py-20 border-b border-slate-800">
+      <div class="container mx-auto px-4 lg:px-8 max-w-4xl">
+        <div class="text-center mb-12">
+          <h2 class="text-xs uppercase tracking-widest text-indigo-400 font-bold mb-2">Merak Edilenler</h2>
+          <h3 class="text-3xl font-extrabold text-white">Kurumsal Raporlama Hakkında Sıkça Sorulan Sorular</h3>
+        </div>
+
+        <div class="space-y-4">
+          {faqs.map((faq, index) => (
+            <div class="bg-slate-900/60 rounded-xl border border-slate-800 p-6">
+              <h4 class="text-base font-bold text-white mb-2 flex items-center gap-2">
+                <span class="text-indigo-400 font-mono">Q{index + 1}.</span> {faq.q}
+              </h4>
+              <p class="text-slate-300 text-sm leading-relaxed pl-7">
+                {faq.a}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. DÖNÜŞÜM CTA BÖLÜMÜ -->
+    <section class="py-20 relative overflow-hidden">
+      <div class="absolute inset-0 bg-gradient-to-b from-slate-950 via-indigo-950/30 to-slate-950"></div>
+      <div class="container mx-auto px-4 lg:px-8 max-w-5xl relative z-10 text-center">
+        <div class="p-8 sm:p-14 rounded-3xl bg-slate-900/90 border border-indigo-500/30 shadow-2xl relative backdrop-blur-xl">
+          <div class="w-16 h-16 rounded-2xl bg-indigo-500/20 border border-indigo-500/40 text-indigo-400 flex items-center justify-center text-3xl mx-auto mb-6">
+            📊
+          </div>
+          <h3 class="text-3xl sm:text-5xl font-black text-white mb-6 tracking-tight">
+            Karanlıkta El Yordamıyla Değil, <br/>
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-purple-300 to-emerald-300">
+              40+ Net Raporla Yönünüzü Belirleyin!
+            </span>
+          </h3>
+          <p class="text-slate-300 text-base sm:text-lg max-w-2xl mx-auto mb-8">
+            Stok Pratik Raporlama Merkezi ile işletmenizin tüm finansal, operasyonel ve perakende performansını 1 saniyede analiz edin.
+          </p>
+          <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <a 
+              href="/firma-kaydi" 
+              class="w-full sm:w-auto px-8 py-4 rounded-xl bg-gradient-to-r from-indigo-600 via-indigo-500 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white font-bold text-lg shadow-xl shadow-indigo-600/30 hover:scale-[1.02] transition-all"
+            >
+              🚀 Hemen Ücretsiz Kullanmaya Başla
+            </a>
+            <a 
+              href="https://erp-eticaret.stokpratik.com.tr/giris" 
+              class="w-full sm:w-auto px-8 py-4 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold text-lg border border-slate-700 transition-all"
+            >
+              Giriş Yap
+            </a>
+          </div>
+          <p class="text-xs text-slate-400 mt-6">Kredi kartı gerekmez • Excel & PDF dışa aktarım hazır</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SCHEMA JSON-LD -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Stok Pratik 40+ Kurumsal Raporlama Merkezi",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Web, iOS, Android",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "TRY"
+      },
+      "description": pageDescription
+    })} />
+
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": faqs.map(f => ({
+        "@type": "Question",
+        "name": f.q,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": f.a
+        }
+      }))
+    })} />
+
+  </main>
+</BaseLayout>

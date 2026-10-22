@@ -1,0 +1,279 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const pageTitle = "Sektörel İmalat Reçeteleri ve Hazır Fabrika Şablonları | Stok Pratik";
+const pageDescription = "Sıfırdan reçete kurmaya son! Tekstil, metal, kimya/kozmetik ve mobilya hazır BOM şablonlarını tek tıkla işletmenize kopyalayın, dakikalar içinde üretime başlayın.";
+
+const sectors = [
+  {
+    icon: "✂️",
+    name: "Tekstil & Konfeksiyon",
+    subtitle: "Varyant, Beden & Kumaş Fireli Reçeteler",
+    product: "Basic Pamuklu T-Shirt / 3 İplik Sweatshirt",
+    materials: [
+      "30/1 Süprem Pamuk Kumaş (0.22 kg/adet)",
+      "Ribana Yaka Örgüsü & Dikiş İpliği",
+      "Baskılı Beden Etiketi & Yıkama Talimatı",
+      "OPP Jelatin Koruma Poşeti & Koli"
+    ],
+    engineering: "%5 - %8 Pastal serim ve kesim firesi otomatik hesaplanır. Fason nakış/baskı atölyesi iş emriyle takip edilir.",
+    stations: "Kesimhane ➔ Fason Baskı ➔ Dikim Bandı ➔ Ütü / Paket ➔ Kalite Kontrol",
+    accent: "border-indigo-500/40 bg-indigo-500/10 text-indigo-400"
+  },
+  {
+    icon: "⚙️",
+    name: "Metal İşleme & Makine",
+    subtitle: "Çok Seviyeli Montajlı ve Sac BOM Ağacı",
+    product: "Endüstriyel Çelik Elektrik Panosu (60x80x25 cm)",
+    materials: [
+      "1.50 mm DKP Sac Plaka (14.2 kg/adet)",
+      "Elektrostatik Toz Boya (RAL 7035 Gri)",
+      "EPDM Sıvı Poliüretan İzolasyon Contası",
+      "İspanyolet Kilit, Gizli Menteşe & Civata Grubu"
+    ],
+    engineering: "CNC fiber lazer kesim hurda firesi (%7) ve abkant büküm tezgah amortisman payı otomatik yansıtılır.",
+    stations: "CNC Lazer Kesim ➔ Abkant Büküm ➔ Gazaltı Kaynak ➔ Fırın Boya ➔ Montaj",
+    accent: "border-blue-500/40 bg-blue-500/10 text-blue-400"
+  },
+  {
+    icon: "🧪",
+    name: "Gıda, Kimya & Kozmetik",
+    subtitle: "Oransal Formül & Dinamik Kazan Partisi (% Batch)",
+    product: "Antibakteriyel Sıvı El Sabunu (1.000 Litre Kazan / 2.000 Adet 500ml)",
+    materials: [
+      "Deiyonize Arıtılmış Su (820 kg)",
+      "Sodyum Lauret Sülfat SLES %70 (110 kg)",
+      "Cocamidopropyl Betaine & Gliserin",
+      "500ml PET Şişe, Sıvı Sabun Pompası & Etiket"
+    ],
+    engineering: "% Oransal formül sayesinde 500 Litre veya 5.000 Litre kazan hacmine göre hammaddeler anında ölçeklenir.",
+    stations: "Homojenizasyon Reaktörü ➔ Laboratuvar pH Testi ➔ Otomatik Dolum Bandı ➔ Kolileme",
+    accent: "border-teal-500/40 bg-teal-500/10 text-teal-400"
+  },
+  {
+    icon: "🪑",
+    name: "Mobilya, Panel & Ahşap",
+    subtitle: "Ölçüye, m² Plakaya ve Aksesuara Dayalı BOM",
+    product: "2 Kapaklı Mutfak Alt Dolabı (80x72x56 cm)",
+    materials: [
+      "18mm Beyaz Suntalam / MDF Lam (2.85 m²)",
+      "8mm Kanal Arkalık MDF & 0.80mm PVC Kenar Bandı",
+      "Frenli Samet Menteşe Grubu (4 Adet)",
+      "Minifiks Bağlantı Seti, Ayarlanabilir Ayak & Kulp"
+    ],
+    engineering: "Plaka ebatlama testere firesi (%6) ve kenar bantlama metre sarfiyatı otomatik hesaplanır.",
+    stations: "Ebatlama Testeresi ➔ Kenar Bantlama ➔ CNC Çoklu Delik ➔ Demonte Paketleme",
+    accent: "border-amber-500/40 bg-amber-500/10 text-amber-400"
+  }
+];
+
+const copySteps = [
+  {
+    num: "1",
+    title: "Şablonu Seç ve BOM Ağacını İncele",
+    desc: "Sektörünüze en uygun hazır şablonun hammadde listesini, fire oranlarını ve istasyon sürelerini ekranda teknik şema olarak önizleyin."
+  },
+  {
+    num: "2",
+    title: "'İşletmeme Kopyala' Butonuna Tıklayın",
+    desc: "Tek bir tıkla şablondaki tüm hammadde kartları, mamul kartı ve üretim rotası saniyeler içinde kendi Stok Pratik hesabınıza aktarılsın."
+  },
+  {
+    num: "3",
+    title: "Kendi Ölçü ve Maliyetlerinize Göre Özelleştirin",
+    desc: "Kullandığınız kumaş gramajını, sac kalınlığını veya hammadde alış fiyatlarınızı kendi fabrikanıza göre güncelleyip anında üretime başlayın."
+  }
+];
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <main class="bg-slate-950 text-slate-100 antialiased min-h-screen selection:bg-blue-500 selection:text-slate-950">
+    
+    <!-- 1. HERO SECTION -->
+    <section class="relative overflow-hidden pt-20 pb-24 lg:pt-28 lg:pb-32 border-b border-slate-800">
+      <div class="absolute inset-0 bg-[radial-gradient(circle_at_top,_var(--tw-gradient-stops))] from-blue-950/40 via-slate-950 to-slate-950"></div>
+      <div class="absolute top-1/4 right-1/4 w-[500px] h-[300px] bg-blue-500/10 blur-[120px] rounded-full pointer-events-none"></div>
+
+      <div class="container mx-auto px-4 lg:px-8 relative z-10 max-w-7xl">
+        <div class="text-center max-w-4xl mx-auto">
+          
+          <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs sm:text-sm font-semibold mb-6 backdrop-blur-md">
+            <span class="w-2 h-2 rounded-full bg-blue-400 animate-ping"></span>
+            ✨ Sektörel Fabrika Kurulum Merkezi • Tek Tıkla Kopyalanabilir BOM Şablonları
+          </div>
+
+          <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight text-white leading-[1.1] mb-6">
+            Sıfırdan Ürün Ağacı Kurmakla Haftalar Harcamayın: <br/>
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-sky-300 to-emerald-200">
+              Sektörünüzü Seçin, Hazır Fabrika Reçetesini 1 Tıkla Kopyalayın!
+            </span>
+          </h1>
+
+          <p class="text-base sm:text-lg text-slate-300 mb-8 leading-relaxed max-w-2xl mx-auto">
+            Her imalat sektörünün dili bambaşkadır. Tekstilde pastal firesi, metalde CNC lazer ve abkant büküm, kimyada 1 tonluk kazan formülü, mobilyada suntalam m² hesabı kullanılır. Stok Pratik'in mühendisler tarafından hazırlanmış <strong>Endüstriyel Reçete Kütüphanesi</strong> ile fabrikanızı dakikalar içinde dijitalleştirin!
+          </p>
+
+          <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <a 
+              href="/firma-kaydi" 
+              class="w-full sm:w-auto px-8 py-4 rounded-xl bg-gradient-to-r from-blue-600 to-sky-600 hover:from-blue-500 hover:to-sky-500 text-white font-bold text-base shadow-lg shadow-blue-600/30 transition-all duration-200 text-center flex items-center justify-center gap-2"
+            >
+              <span>✨ Sektör Şablonlarını Ücretsiz Kopyalayın</span>
+            </a>
+            <a 
+              href="https://erp-eticaret.stokpratik.com.tr/giris" 
+              target="_blank"
+              rel="noopener noreferrer"
+              class="w-full sm:w-auto px-8 py-4 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-200 font-semibold text-base border border-slate-700 transition-all duration-200 text-center flex items-center justify-center gap-2"
+            >
+              <span>🔐 Giriş Yap</span>
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. 4 SEKTÖR — CANLI BLUEPRINT LABORATUVARI -->
+    <section class="py-20 lg:py-24 border-b border-slate-800 relative bg-slate-900/30">
+      <div class="container mx-auto px-4 lg:px-8 max-w-7xl">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <div class="text-blue-400 text-sm font-semibold tracking-wider uppercase mb-3">Teknik Mühendislik Kütüphanesi</div>
+          <h2 class="text-3xl sm:text-4xl font-black text-white tracking-tight mb-4">
+            4 Ana İmalat Sektörü İçin Hazır Reçeteler
+          </h2>
+          <p class="text-slate-400 text-base leading-relaxed">
+            Hammadde sarfiyatı, fire oranları ve istasyon rotaları eksiksiz tanımlanmış endüstriyel şablonlar.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          {sectors.map((sec) => (
+            <div class="bg-slate-900/80 border border-slate-800 rounded-3xl p-6 sm:p-8 hover:border-blue-500/40 transition-all duration-300 flex flex-col justify-between group">
+              <div>
+                
+                <!-- Başlık -->
+                <div class="flex items-center justify-between border-b border-slate-800 pb-4 mb-4">
+                  <div class="flex items-center gap-3">
+                    <span class="text-3xl">{sec.icon}</span>
+                    <div>
+                      <h3 class="text-xl font-bold text-white">{sec.name}</h3>
+                      <div class="text-xs text-blue-300 font-medium">{sec.subtitle}</div>
+                    </div>
+                  </div>
+                  <span class="px-2.5 py-1 rounded-full bg-blue-500/20 text-blue-300 text-[10px] font-mono font-bold">
+                    Hazır BOM
+                  </span>
+                </div>
+
+                <!-- Örnek Ürün -->
+                <div class="bg-slate-950 p-3 rounded-2xl border border-slate-800/80 mb-4">
+                  <div class="text-[10px] text-slate-400 uppercase font-mono">Örnek Mamul:</div>
+                  <div class="text-sm font-bold text-white">{sec.product}</div>
+                </div>
+
+                <!-- Hammaddeler -->
+                <div class="space-y-1.5 mb-4 text-xs font-mono">
+                  <div class="text-[10px] text-slate-400 uppercase font-sans font-semibold">Gereken Başlıca Hammaddeler:</div>
+                  {sec.materials.map((m) => (
+                    <div class="flex items-center gap-2 text-slate-300 bg-slate-950/60 p-2 rounded-xl border border-slate-800/60">
+                      <span class="text-blue-400">▪</span>
+                      <span>{m}</span>
+                    </div>
+                  ))}
+                </div>
+
+                <!-- Mühendislik ve İstasyon -->
+                <div class="space-y-2 text-xs bg-blue-950/20 p-3.5 rounded-2xl border border-blue-500/20 mb-4">
+                  <div>
+                    <span class="text-blue-300 font-bold">İstasyon Rotası:</span>
+                    <span class="text-slate-200 ml-1">{sec.stations}</span>
+                  </div>
+                  <div>
+                    <span class="text-amber-300 font-bold">Mühendislik Detayı:</span>
+                    <span class="text-slate-300 ml-1">{sec.engineering}</span>
+                  </div>
+                </div>
+
+              </div>
+
+              <!-- Aksiyon Butonu -->
+              <a 
+                href="/firma-kaydi"
+                class="w-full py-3 rounded-xl bg-gradient-to-r from-blue-600 to-sky-600 hover:from-blue-500 hover:to-sky-500 text-white font-bold text-xs text-center flex items-center justify-center gap-2 shadow-md"
+              >
+                <span>✨ Bu Şablonu İşletmeme Kopyala</span>
+              </a>
+
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. NASIL ÇALIŞIR? 3 ADIMLI AKIŞ -->
+    <section class="py-20 lg:py-24 border-b border-slate-800 relative">
+      <div class="container mx-auto px-4 lg:px-8 max-w-7xl">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <div class="text-blue-400 text-sm font-semibold tracking-wider uppercase mb-3">Kolay Kurulum</div>
+          <h2 class="text-3xl sm:text-4xl font-black text-white tracking-tight mb-4">
+            3 Adımda Hazır Fabrika Reçetesini Kopyalayın
+          </h2>
+          <p class="text-slate-400 text-base leading-relaxed">
+            Tek tek ürün kartı veya hammadde oluşturmaya gerek olmadan sisteminizi dakikalar içinde ayağa kaldırın.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {copySteps.map((step) => (
+            <div class="bg-slate-900/60 border border-slate-800 rounded-3xl p-6 sm:p-8 hover:border-blue-500/40 transition-all duration-300 flex flex-col justify-between">
+              <div>
+                <div class="w-12 h-12 rounded-2xl bg-blue-500/10 border border-blue-500/20 text-blue-400 font-mono font-black text-xl flex items-center justify-center mb-5">
+                  {step.num}
+                </div>
+                <h3 class="text-xl font-bold text-white mb-3">{step.title}</h3>
+                <p class="text-slate-400 text-sm leading-relaxed">{step.desc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. ALT DÖNÜŞÜM CTA BÖLÜMÜ -->
+    <section class="py-20 lg:py-24 relative overflow-hidden">
+      <div class="absolute inset-0 bg-gradient-to-b from-slate-950 via-blue-950/20 to-slate-950"></div>
+      <div class="container mx-auto px-4 lg:px-8 max-w-5xl relative z-10 text-center">
+        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs sm:text-sm font-semibold mb-6">
+          ✨ 14 Gün Ücretsiz Deneme • Tüm Şablonlar Dahil
+        </div>
+        
+        <h2 class="text-3xl sm:text-5xl font-black text-white tracking-tight mb-6">
+          Sektörünüzün Hazır Fabrika Şablonu Sizi Bekliyor!
+        </h2>
+        
+        <p class="text-base sm:text-lg text-slate-300 max-w-2xl mx-auto mb-10 leading-relaxed">
+          Hemen ücretsiz hesabınızı açın, sektörünüze uygun hazır reçeteyi tek tıkla hesabınıza kopyalayarak ilk üretim emrinizi bugün verin.
+        </p>
+
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <a 
+            href="/firma-kaydi" 
+            class="w-full sm:w-auto px-10 py-4 rounded-xl bg-gradient-to-r from-blue-600 to-sky-600 hover:from-blue-500 hover:to-sky-500 text-white font-bold text-base shadow-lg shadow-blue-600/30 transition-all duration-200"
+          >
+            🚀 Ücretsiz Hesap Aç ve Şablonları Kopyala
+          </a>
+          <a 
+            href="https://erp-eticaret.stokpratik.com.tr/giris" 
+            target="_blank"
+            rel="noopener noreferrer"
+            class="w-full sm:w-auto px-10 py-4 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-200 font-semibold text-base border border-slate-700 transition-all duration-200"
+          >
+            🔐 Sisteme Giriş Yap
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</BaseLayout>

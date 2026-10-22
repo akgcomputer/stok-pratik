@@ -1,0 +1,246 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const pageTitle = "Depo ve Lojistik Yönetimi (WMS) | Stok Pratik Bulut ERP";
+const pageDescription = "Adresli raf sistemi, en kısa rotalı barkodlu sipariş toplama ve paketleme masası. Deponuzdaki arama karmaşasına ve yanlış ürün cezalarına son!";
+
+const wmsModules = [
+  {
+    step: "1",
+    icon: "🏷️",
+    title: "Raf, Koridor ve Göz Lokasyon Tanımları",
+    subtitle: "Deponuzun Dijital Haritasını Çıkarın: Her Metrekare Numaralı ve Barkodlu!",
+    desc: "Merkez depo, soğuk hava deposu, hammadde ambarı veya kat depolarınız için Bölge ➔ Koridor ➔ Raf ➔ Kat ➔ Göz (Örn: A-02-03-B) adres kodları oluşturun. Raflara yapıştıracağınız barkod/QR etiketlerini tek tıkla basın; hangi rafta kaç adet ürün olduğunu ve doluluk kapasitesini canlı izleyin."
+  },
+  {
+    step: "2",
+    icon: "📥",
+    title: "Barkodlu Mal Kabul & Rafa Yerleştirme (Put-Away)",
+    subtitle: "Tedarikçiden Gelen Malı Kapıda Sayın, Doğru Rafa Hatasız Yerleştirin!",
+    desc: "Kamyondan inen kolileri okutarak alış irsaliyesi ve sipariş emriyle anında karşılaştırın; eksik veya fazla gelen ürünleri kapıda yakalayın. Ürün barkodu okutulduğunda sistem personelinize 'A Koridoru, 2. Raf, 3. Göz' yönlendirmesini ekranda gösterir; doğru rafa okutularak konulur."
+  },
+  {
+    step: "3",
+    icon: "🛒",
+    title: "Barkodlu Sipariş Toplama (Wave & Route Picking)",
+    subtitle: "Depo İçinde Boşuna Kilometrelerce Yürümeyin: En Kısa Rota ile 3 Kat Hızlı!",
+    desc: "Trendyol, Hepsiburada veya B2B toptan siparişleri geldiğinde sistem ürünleri koridor ve raf sırasına göre dizer. Toplama personeli tek geçişte onlarca siparişi toplar. Barkodu okutmadan sepete atamayacağı için yanlış renk, beden veya model gönderme riski %0'a iner!"
+  },
+  {
+    step: "4",
+    icon: "🚚",
+    title: "Paketleme & Sevkiyat Masası (Packing & Dispatch)",
+    subtitle: "Koli Kapanmadan Son Kontrol ve Tek Tıkla Kargo/İrsaliye Etiketi!",
+    desc: "Toplanan ürünler paketleme masasına geldiğinde son kez kontrol barkoduyla teyit edilir. Sistem aynı anda 100x150 mm taşıyıcı kargo barkodunu veya kamyon/palet sevk etiketini otomatik basar; sipariş kargoya hazır hale gelir."
+  },
+  {
+    step: "5",
+    icon: "🔄",
+    title: "Depo İçi Hareketler, Sayım & Şubeler Arası Transfer",
+    subtitle: "Raflar Arası Taşıma, Araç Depolarına Sevk ve Hızlı Barkodlu Sayım!",
+    desc: "Bir ürünü üst raftan alt toplama gözüne indirdiğinizde (Replenishment) veya Merkez Depodan mağaza ve sıcak satış araç deposuna transfer ettiğinizde saniyeler içinde işleyin. Kör sayım moduyla personelin gerçek sayıyı görmeden barkodla saymasını sağlayın."
+  }
+];
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <main class="bg-slate-950 text-slate-100 antialiased min-h-screen selection:bg-lime-500 selection:text-slate-950">
+    
+    <!-- 1. HERO SECTION -->
+    <section class="relative overflow-hidden pt-20 pb-24 lg:pt-28 lg:pb-32 border-b border-slate-800">
+      <div class="absolute inset-0 bg-[radial-gradient(circle_at_top,_var(--tw-gradient-stops))] from-lime-950/30 via-slate-950 to-slate-950"></div>
+      <div class="absolute top-1/4 right-1/4 w-[500px] h-[300px] bg-lime-500/10 blur-[120px] rounded-full pointer-events-none"></div>
+
+      <div class="container mx-auto px-4 lg:px-8 relative z-10 max-w-7xl">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+          
+          <!-- Sol: Başlık ve CTA -->
+          <div class="lg:col-span-6 text-center lg:text-left">
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-lime-500/10 border border-lime-500/20 text-lime-400 text-xs sm:text-sm font-semibold mb-6 backdrop-blur-md">
+              <span class="w-2 h-2 rounded-full bg-lime-400 animate-ping"></span>
+              📦 Depo & Lojistik (WMS) • Adresli Raf, Barkodlu Toplama & Sevkiyat
+            </div>
+
+            <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight text-white leading-[1.1] mb-6">
+              "Bu Ürün Hangi Raftaydı?" Karmaşasına ve <br/>
+              <span class="text-transparent bg-clip-text bg-gradient-to-r from-lime-400 via-emerald-300 to-yellow-200">
+                Yanlış Ürün Gönderme Cezalarına Son!
+              </span>
+            </h1>
+
+            <p class="text-base sm:text-lg text-slate-300 mb-8 leading-relaxed max-w-xl mx-auto lg:mx-0">
+              Deponuzu sadece "eski personelin bildiği" bir yer olmaktan çıkarın! Stok Pratik WMS ile her koridoru, rafı ve gözü barkodlayın (A-01-04). İşe yeni başlayan personeliniz bile cep telefonu ekranındaki <strong>En Kısa Yürüyüş Rotasını</strong> takip ederek siparişleri 3 kat hızlı ve <strong>%0 hata</strong> ile toplasın!
+            </p>
+
+            <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+              <a 
+                href="/firma-kaydi" 
+                class="w-full sm:w-auto px-8 py-4 rounded-xl bg-gradient-to-r from-lime-500 to-emerald-500 hover:from-lime-400 hover:to-emerald-400 text-slate-950 font-bold text-base shadow-lg shadow-lime-500/30 transition-all duration-200 text-center flex items-center justify-center gap-2"
+              >
+                <span>📦 Depo Yönetimini Ücretsiz Başlatın</span>
+              </a>
+              <a 
+                href="https://erp-eticaret.stokpratik.com.tr/giris" 
+                target="_blank"
+                rel="noopener noreferrer"
+                class="w-full sm:w-auto px-8 py-4 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-200 font-semibold text-base border border-slate-700 transition-all duration-200 text-center flex items-center justify-center gap-2"
+              >
+                <span>🔐 Giriş Yap</span>
+              </a>
+            </div>
+
+            <!-- Sosyal Güven Rozetleri -->
+            <div class="mt-10 pt-8 border-t border-slate-800/80 flex flex-wrap items-center justify-center lg:justify-start gap-6 text-xs text-slate-400 font-medium">
+              <div class="flex items-center gap-2">
+                <span class="text-lime-400 font-bold">✓</span> Akıllı Koridor & Raf Adresleme
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="text-lime-400 font-bold">✓</span> Barkodsuz Toplama Engeli (%0 Hata)
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="text-lime-400 font-bold">✓</span> Cep Telefonuyla Tam Uyumlu
+              </div>
+            </div>
+          </div>
+
+          <!-- Sağ: Canlı WMS Raf Haritası & Barkodlu Toplama Simülatörü -->
+          <div class="lg:col-span-6">
+            <div class="relative mx-auto max-w-lg bg-slate-900/90 border border-lime-500/30 rounded-3xl p-6 sm:p-7 shadow-2xl backdrop-blur-xl">
+              
+              <!-- Üst Bar: Aktif Lokasyon & Görev -->
+              <div class="flex items-center justify-between border-b border-slate-800 pb-3 mb-4">
+                <div class="flex items-center gap-2">
+                  <span class="w-2.5 h-2.5 rounded-full bg-lime-400 animate-pulse"></span>
+                  <span class="text-xs font-mono font-bold text-slate-200">El Terminali • Dalga Toplama (Pick List)</span>
+                </div>
+                <span class="px-2 py-0.5 rounded bg-lime-500/20 text-lime-400 text-[10px] font-bold">
+                  Sipariş #4812
+                </span>
+              </div>
+
+              <!-- Raf Adres Kartı (Karekodlu) -->
+              <div class="bg-slate-950 p-4 rounded-2xl border border-slate-800 mb-4">
+                <div class="flex items-center justify-between mb-2">
+                  <span class="text-[10px] font-mono uppercase text-slate-400">Hedef Raf Lokasyonu:</span>
+                  <span class="text-[10px] text-lime-400 font-bold">Koridor A ➔ Raf 02</span>
+                </div>
+                
+                <div class="flex items-center justify-between">
+                  <div class="text-2xl sm:text-3xl font-black font-mono tracking-wider text-lime-300">
+                    A-02-03-B
+                  </div>
+                  <div class="px-3 py-1 rounded-lg bg-slate-900 border border-slate-800 text-[11px] font-mono text-slate-300">
+                    Kat: 3 • Göz: B
+                  </div>
+                </div>
+              </div>
+
+              <!-- Toplanacak Ürün Detayı -->
+              <div class="bg-slate-950/70 p-3.5 rounded-2xl border border-slate-800 space-y-2 mb-4 text-xs">
+                <div class="flex justify-between items-center">
+                  <span class="font-bold text-white">Kablosuz Bluetooth Kulaklık (Siyah)</span>
+                  <span class="font-mono font-bold text-lime-400">12 Adet Alınacak</span>
+                </div>
+                
+                <!-- Barkod Lazer Taraması Mockup -->
+                <div class="p-2.5 rounded-xl bg-slate-900 border border-emerald-500/40 flex items-center justify-between font-mono text-[11px]">
+                  <div class="flex items-center gap-2 text-slate-300">
+                    <span class="text-red-500 animate-pulse">━</span>
+                    <span>8690123456789</span>
+                  </div>
+                  <span class="text-emerald-400 font-bold">Barkod Doğrulandı ✓</span>
+                </div>
+              </div>
+
+              <!-- En Kısa Rota Bilgi Çubuğu -->
+              <div class="p-3 rounded-xl bg-lime-950/40 border border-lime-500/20 text-xs text-lime-300 flex items-center gap-2.5">
+                <span class="text-base">🧭</span>
+                <span class="leading-tight">
+                  <strong>En Kısa Rota Aktif:</strong> Bir sonraki ürün 4 metre ileride: <strong>A-03-01-A</strong> rafında sizi bekliyor.
+                </span>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. WMS 5 TEMEL MODÜLÜ -->
+    <section class="py-20 lg:py-24 border-b border-slate-800 relative bg-slate-900/30">
+      <div class="container mx-auto px-4 lg:px-8 max-w-7xl">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <div class="text-lime-400 text-sm font-semibold tracking-wider uppercase mb-3">Lojistik Omurga</div>
+          <h2 class="text-3xl sm:text-4xl font-black text-white tracking-tight mb-4">
+            Depo & Lojistik Yönetiminin 5 Temel Aşaması
+          </h2>
+          <p class="text-slate-400 text-base leading-relaxed">
+            Mal kabulden rafa yerleştirmeye, rotalı toplamadan sevk masasına kadar sıfır hatalı lojistik operasyonu.
+          </p>
+        </div>
+
+        <div class="space-y-8">
+          {wmsModules.map((m) => (
+            <div class="bg-slate-900/80 border border-slate-800 rounded-3xl p-6 sm:p-8 hover:border-lime-500/40 transition-all duration-300">
+              <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+                
+                <div class="lg:col-span-4 flex items-center gap-4">
+                  <div class="w-14 h-14 rounded-2xl bg-lime-500/10 border border-lime-500/20 text-lime-400 font-mono font-black text-2xl flex items-center justify-center shrink-0">
+                    {m.step}
+                  </div>
+                  <div>
+                    <div class="text-2xl mb-1">{m.icon}</div>
+                    <h3 class="text-xl font-bold text-white">{m.title}</h3>
+                  </div>
+                </div>
+
+                <div class="lg:col-span-8">
+                  <div class="text-xs font-semibold text-lime-300 mb-2">{m.subtitle}</div>
+                  <p class="text-slate-400 text-sm sm:text-base leading-relaxed">{m.desc}</p>
+                </div>
+
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. ALT DÖNÜŞÜM CTA BÖLÜMÜ -->
+    <section class="py-20 lg:py-24 relative overflow-hidden">
+      <div class="absolute inset-0 bg-gradient-to-b from-slate-950 via-lime-950/20 to-slate-950"></div>
+      <div class="container mx-auto px-4 lg:px-8 max-w-5xl relative z-10 text-center">
+        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-lime-500/10 border border-lime-500/20 text-lime-400 text-xs sm:text-sm font-semibold mb-6">
+          📦 14 Gün Ücretsiz Deneme • Cep Telefonlarıyla Uyumlu
+        </div>
+        
+        <h2 class="text-3xl sm:text-5xl font-black text-white tracking-tight mb-6">
+          Deponuzdaki Kaosu Bugün Düzenli Bir Lojistik Merkezine Dönüştürün!
+        </h2>
+        
+        <p class="text-base sm:text-lg text-slate-300 max-w-2xl mx-auto mb-10 leading-relaxed">
+          Pahalı el terminali yatırımları yapmadan, mevcut akıllı telefonlarınız ve barkod okuyucularınızla hemen ücretsiz kullanmaya başlayın.
+        </p>
+
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <a 
+            href="/firma-kaydi" 
+            class="w-full sm:w-auto px-10 py-4 rounded-xl bg-gradient-to-r from-lime-500 to-emerald-500 hover:from-lime-400 hover:to-emerald-400 text-slate-950 font-bold text-base shadow-lg shadow-lime-500/30 transition-all duration-200"
+          >
+            🚀 Hemen Ücretsiz Kullanmaya Başla
+          </a>
+          <a 
+            href="https://erp-eticaret.stokpratik.com.tr/giris" 
+            target="_blank"
+            rel="noopener noreferrer"
+            class="w-full sm:w-auto px-10 py-4 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-200 font-semibold text-base border border-slate-700 transition-all duration-200"
+          >
+            🔐 Sisteme Giriş Yap
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</BaseLayout>

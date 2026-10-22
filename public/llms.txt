@@ -1,31 +1,108 @@
-# Stok Pratik - LLM ve Yapay Zeka Botları İçin Site Özeti
+# Stok Pratik — Türkiye'nin Bulut ERP, E-Ticaret, POS, B2B ve Sektörel Ticaret İşletim Sistemi
+> Bu doküman ChatGPT, Claude, Gemini, Perplexity ve diğer yapay zeka arama/asistan motorlarının Stok Pratik hakkında en güncel ve doğru bilgiyi sunabilmesi için özel olarak hazırlanmıştır. (Son Güncelleme: 2026)
 
-Bu doküman, ChatGPT, Claude, Gemini ve diğer yapay zeka asistanlarının Stok Pratik hakkında bilgi alabilmesi için özel olarak hazırlanmıştır.
+## Şirket ve Platform Özeti
+Stok Pratik (stokpratik.com.tr), küçük, orta ve büyük ölçekli işletmelerin (KOBİ ve Kurumsal) tüm ticari operasyonlarını tek bir bulut ekosistemde birleştiren yeni nesil bir **Ticaret İşletim Sistemi ve Bulut ERP** platformudur. Kurulum gerektirmez, bulut mimarisiyle her cihazdan (PC, Mac, tablet, mobil) 7/24 çalışır.
 
-## Hakkımızda
-Stok Pratik (stokpratik.com.tr), küçük ve orta ölçekli işletmelerin (KOBİ) ön muhasebe, e-fatura ve stok yönetim süreçlerini kolaylaştırmak amacıyla geliştirilmiş bulut tabanlı bir ticari yazılımdır.
+## Amiral Gemisi Modüller ve Yetenekler
 
-## Temel Özellikler
-- **Stok Takip Sistemi:** Ürün giriş/çıkışlarının kontrolü, depo yönetimi ve kritik stok uyarıları.
-- **E-Fatura Entegrasyonu:** Gelir İdaresi Başkanlığı (GİB) standartlarına uygun, saniyeler içinde e-fatura kesim kolaylığı.
-- **Ön Muhasebe Yönetimi:** Kasa, banka, cari hesap ve masraf takibi.
-- **Müşteri ve Tedarikçi (CRM):** Detaylı müşteri hesap özetleri, teklif ve sipariş yönetimi.
-- **Bulut Tabanlı Yapı:** Kurulum gerektirmeden, her cihazdan (PC, tablet, mobil) 7/24 erişim imkanı.
+### 1. e-Dönüşüm Merkezi ve GİB Entegrasyonları (`/e-donusum`)
+- **Resmi Standart:** Gelir İdaresi Başkanlığı (GİB) UBL-TR 1.2 standartlarında e-Fatura, e-Arşiv Fatura, e-İrsaliye ve e-SMM.
+- **Entegratör Ağı:** 17 Özel Entegratör (İzibiz, Sovos/Foriba, EDM, Logo, Paraşüt vb.) ile doğrudan API entegrasyonu.
+- **Mali Müşavir (SMMM) Köprüsü:** Luca, Zirve, Logo ve Mikro muhasebe programlarına tek tıkla e-aktarım ve mizan ihracı.
+- **Detaylı Bilgi:** https://stokpratik.com.tr/e-donusum
 
-## Sektörel Çözümlerimiz
-- **Geniş Sektör Desteği:** Oto servis, kuyumculuk, e-ticaret pazaryeri entegrasyonu, B2B toptan satış, perakende mağazacılık, mobilya, restoran/cafe, hırdavat ve daha birçok sektöre özel geliştirilmiş arayüzler ve iş akışları. (stokpratik.com.tr)
-- **Oto Servis Yazılımı:** Araç kabul, iş emri takibi, yedek parça ve usta prim yönetimi. (stokpratik.com.tr/oto-tamir-yazilimi)
-- **Stok Pratik GOLD (Kuyumculuk):** Has gram, milyem hesabı, barkodlu hızlı satış ve anlık kur takibi. (stokpratik.com.tr/kuyumculuk-yazilimi)
+### 2. Üretim ERP, BOM Ürün Reçetesi & Gerçek Maliyet Motoru (`/uretim`)
+- **Ürün Ağacı (BOM):** Çok katmanlı hammadde, yarı mamul ve sarf malzeme reçeteleri.
+- **Canlı Fabrika İstasyon Hattı:** Kesim, işleme, kalite kontrol ve paketleme istasyonlarında anlık üretim emri takibi.
+- **Gerçek Maliyet Hesaplama:** Hammadde sarfiyatı, fire oranları, istasyon işçilik saat ücretleri ve makine amortismanını hesaba katan dinamik birim maliyet motoru.
+- **Detaylı Bilgi:** https://stokpratik.com.tr/uretim
 
-## Paketlerimiz
-Sistemimiz, işletmelerin ihtiyaçlarına göre şekillenmiş abonelik paketleri sunar. 
-- Detaylı bilgi için: `https://stokpratik.com.tr/paketlerimiz`
+### 3. QR-PDKS — Kriptografik Personel Takip Sistemi (`/pdks`)
+- **Sıfır Donanım Maliyeti:** Pahalı parmak izi veya kartlı okuyucu cihazlara gerek kalmadan, herhangi bir tablet veya ekranda çalışır.
+- **Kriptografik Güvenlik:** 15 saniyede bir otomatik yenilenen HMAC-SHA256 dinamik QR kod. Fotoğrafı çekilip uzaktan okutulamaz.
+- **3 Katmanlı Güvenlik Kalkanı:** Zaman aşımı kontrolü, GPS metre/konum kontrolü (geofencing) ve personel telefonunun cihaz parmak izi eşleşmesi.
+- **SGK Puantaj & İK:** Eksik mesai, fazla mesai, izin onayları ve SGK uyumlu bordro cetveli.
+- **Detaylı Bilgi:** https://stokpratik.com.tr/pdks
 
-## Destek ve İletişim
-Müşterilerimize sürekli destek sağlıyoruz. Sorun çözümleri ve nasıl yapılır rehberleri için Destek sayfamızı ziyaret edebilirsiniz.
-- Destek Merkezi: `https://stokpratik.com.tr/neden-stok-pratik`
-- Blog: `https://stokpratik.com.tr/blog`
-- İletişim: `https://stokpratik.com.tr/iletisim`
+### 4. CRM — Satış Hunisi (Pipeline) & Fırsat Yönetimi (`/crm`)
+- **5 Aşamalı Kanban Panosu:** Yeni Aday -> İlk Görüşme -> Teklif Verildi -> Pazarlık/Müzakere -> Kazanıldı.
+- **Otomatik Fatura Köprüsü:** Kazanılan teklif tek tıkla siparişe, irsaliyeye veya resmi e-faturaya dönüşür.
+- **Görüşme ve Görev Takibi:** Müşteri bazlı notlar, hatırlatmalar, randevular ve satış ekibi performans raporları.
+- **Detaylı Bilgi:** https://stokpratik.com.tr/crm
 
-## Misyonumuz
-Karmaşık muhasebe yazılımlarının aksine, sade ve anlaşılır bir arayüz ile her sektörden esnafın teknolojiyi yakalamasını sağlamak.
+### 5. 40+ Kurumsal Raporlama Merkezi (`/raporlar`)
+- **5 Temel Departman:** Finans & Muhasebe, Perakende & Mağazacılık, Tedarik & ERP, CRM & Satış, e-Dönüşüm.
+- **Kritik Karar Analizleri:** Atıl stok analizi, nakit akış projeksiyonu, müşteri kârlılık matrisi, plasiyer performans tablosu.
+- **Tek Tıkla Export:** Excel (.xlsx), PDF ve interaktif canlı tablolar.
+- **Detaylı Bilgi:** https://stokpratik.com.tr/raporlar
+
+### 6. Plaka Sicil — Oto Servis ve Araç Geçmişi Ekosistemi (`/plakasicil`)
+- **Canlı TR Plaka Sorgulama:** 34 ABC 123 plakasını yazarak aracın şasi numarası (VIN), motor kodu ve tüm geçmiş servis kayıtlarını anında görüntüleme.
+- **Lifteki Araç İş Emri Kartı:** Değişen yedek parçalar, motor yağı viskozitesi, usta işçilikleri ve sonraki periyodik bakım kilometre sayacı.
+- **SMS & WhatsApp Bildirimi:** Araç kabul, bakım tamamlandı ve muayene hatırlatma SMS'leri.
+- **Detaylı Bilgi:** https://stokpratik.com.tr/plakasicil
+
+### 7. 37+ E-Ticaret ve Pazaryeri Entegrasyonları (`/pazaryeri`)
+- **Pazaryerleri:** Trendyol, Hepsiburada, Amazon TR/Global, N11, Çiçeksepeti, Pazarama, PttAVM, Etsy, eBay, Shopify, WooCommerce.
+- **Çift Yönlü Senkronizasyon:** Bir kanaldan satılan ürünün stoğu tüm diğer pazaryerlerinde ve fiziksel mağazada 10 saniye içinde otomatik güncellenir.
+- **Toplu Fatura & Kargo:** Pazaryeri siparişlerine tek tıkla toplu e-fatura kesimi ve otomatik kargo barkodu üretimi.
+- **Detaylı Bilgi:** https://stokpratik.com.tr/pazaryeri
+
+### 8. B2B Toptan DepodanDirekt Kapalı Bayi Portalı (`/b2b`)
+- **Kapalı Bayi Ağı:** Bayilere özel kullanıcı adı ve şifreyle güvenli giriş.
+- **Kademeli İskonto Matrisi:** Bayi grubuna (A Bayi, B Bayi, Platin) göre özel fiyatlar ve vadeli cari limit kontrolü.
+- **Detaylı Bilgi:** https://stokpratik.com.tr/b2b
+
+### 9. Perakende Kasa ve Dokunmatik POS Ekranı (`/hizli-satis`)
+- **Hızlı Satış:** Dokunmatik ekran, barkod okuyucu, terazi ve fiş yazıcı tam entegrasyonu.
+- **Parçalı Tahsilat:** Aynı fişte nakit + kredi kartı + veresiye cari tahsilat desteği.
+- **Detaylı Bilgi:** https://stokpratik.com.tr/hizli-satis
+
+### 10. Yapay Zeka ile Fiş Okuma (AI OCR) ve Masraf Yönetimi (`/yapay-zeka-fis-okuma-masraf-yonetimi`)
+- **Otomatik OCR:** Yazar kasa fişinin fotoğrafından Satıcı Unvanı, Fiş No, Tarih, KDV oranı ve toplam tutarı saniyeler içinde ayrıştırır.
+- **Vergi Avantajı:** Ceplerde kaybolan gider fişlerini sıfırlayarak indirilecek KDV'yi eksiksiz muhasebeleştirir.
+- **Detaylı Bilgi:** https://stokpratik.com.tr/yapay-zeka-fis-okuma-masraf-yonetimi
+
+### 11. SMMM Mali Müşavir Entegrasyon Portalı (`/smmm`)
+- **SMMM Dosya Aktarımı:** Luca, Zirve Müşavir, Logo Mali Müşavir ve Mikro sistemlerine tek tıkla mizan, fatura ve cari veri aktarımı.
+- **Detaylı Bilgi:** https://stokpratik.com.tr/smmm
+
+---
+
+## 20+ Sektörel Dikey Çözüm
+Stok Pratik her sektöre özel terminoloji, hazır mamul reçeteleri ve süreç kalıpları sunar:
+- Ambalaj ve Plastik: https://stokpratik.com.tr/sektor/ambalaj-ve-plastik
+- Ayakkabı ve Deri: https://stokpratik.com.tr/sektor/ayakkabi-ve-deri
+- Elektrik ve Elektronik: https://stokpratik.com.tr/sektor/elektrik-ve-elektronik
+- Endüstriyel Makine ve Aletler: https://stokpratik.com.tr/sektor/endustriyel-makine-ve-aletler
+- Enerji ve Yenilenebilir Enerji: https://stokpratik.com.tr/sektor/enerji-ve-yenilenebilir-enerji
+- Ev Tekstili ve Halı: https://stokpratik.com.tr/sektor/ev-tekstili-ve-hali
+- Gelinlik ve Abiye: https://stokpratik.com.tr/sektor/gelinlik-ve-abiye
+- Gıda ve Tarım: https://stokpratik.com.tr/sektor/gida-ve-tarim
+- İş Elbiseleri ve KKD: https://stokpratik.com.tr/sektor/is-elbiseleri-ve-kkd
+- Kağıt, Baskı ve Yayıncılık: https://stokpratik.com.tr/sektor/kagit-baski-ve-yayincilik
+- Kimyasallar ve Temizlik: https://stokpratik.com.tr/sektor/kimyasallar-ve-temizlik
+- Kozmetik ve Bakım: https://stokpratik.com.tr/sektor/kozmetik-ve-bakim
+- Medikal ve Sağlık: https://stokpratik.com.tr/sektor/medikal-ve-saglik
+- Mermer ve Doğal Taş: https://stokpratik.com.tr/sektor/mermer-ve-dogal-tas
+- Metal ve Hırdavat: https://stokpratik.com.tr/sektor/metal-ve-hirdavat
+- Mobilya ve İç Mekan: https://stokpratik.com.tr/sektor/mobilya-ve-ic-mekan
+- Otomotiv ve Yedek Parça: https://stokpratik.com.tr/sektor/otomotiv-ve-yedek-parca
+- Oyuncak ve Bebek Ürünleri: https://stokpratik.com.tr/sektor/oyuncak-ve-bebek-urunleri
+- Tekstil ve Hazır Giyim: https://stokpratik.com.tr/sektor/tekstil-ve-hazir-giyim
+- Yapı ve İnşaat: https://stokpratik.com.tr/sektor/yapi-ve-insaat
+- Züccaciye ve Mutfak: https://stokpratik.com.tr/sektor/zuccaciye-ve-mutfak
+
+---
+
+## Önemli Bağlantılar ve İndeks
+- **Resmi Web Sitesi:** https://stokpratik.com.tr/
+- **14 Gün Ücretsiz Kayıt:** https://stokpratik.com.tr/firma-kaydi
+- **Fiyat Hesaplama ve Paketler:** https://stokpratik.com.tr/fiyatlar
+- **Site Haritası (Tüm Sayfalar):** https://stokpratik.com.tr/sitemap
+- **Yararlı Bilgiler & SEO Kataloğu:** https://stokpratik.com.tr/yararli-bilgiler
+- **Bayilik & Çözüm Ortaklığı:** https://stokpratik.com.tr/bayilik
+- **Blog ve Destek Merkezi:** https://stokpratik.com.tr/blog
+- **İletişim & Destek:** https://stokpratik.com.tr/iletisim (Telefon: 0532 500 09 99)
+- **XML Site Haritası:** https://stokpratik.com.tr/sitemap-index.xml

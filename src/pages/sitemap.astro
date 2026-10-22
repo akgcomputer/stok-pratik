@@ -1,693 +1,623 @@
 ---
 // src/pages/sitemap.astro
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const blogPosts = await getCollection('blog');
+const destekPosts = await getCollection('destek');
+
+// Sort alphabetically
+const sortedBlog = blogPosts.sort((a, b) => a.data.title.localeCompare(b.data.title));
+const sortedDestek = destekPosts.sort((a, b) => a.data.title.localeCompare(b.data.title));
+
+const totalDynamicArticles = blogPosts.length + destekPosts.length;
 ---
 
-<BaseLayout title="Site Haritası - Stok Pratik Online Muhasebe, Mağazacılık ve ERP">
+<BaseLayout 
+  title="Site Haritası (Sitemap) — Stok Pratik Bulut ERP, E-Ticaret, POS & Sektörel Çözümler"
+  description="Stok Pratik platformundaki tüm sayfalar, e-Dönüşüm, Üretim ERP, QR-PDKS, CRM, 40+ Raporlar, Plaka Sicil, Pazaryeri entegrasyonları, sektörel çözümler ve blog rehberlerinin tam site haritası."
+>
   <!-- Hero Section -->
-  <section class="hero-section py-12 bg-gradient-to-br from-gray-50 to-white">
-    <div class="container">
-      <div class="text-center max-w-4xl mx-auto">
-        <h1 class="text-3xl md:text-4xl font-bold mb-4 text-gray-800">
-          Site Haritası
-        </h1>
-        <p class="text-lg text-gray-600 mb-6">
-          Stok Pratik Online Muhasebe, Mağazacılık ve ERP'nin tüm sayfalarına buradan kolayca ulaşabilirsiniz.
-        </p>
+  <section class="py-16 bg-gradient-to-br from-slate-900 via-indigo-950 to-slate-900 text-white relative overflow-hidden border-b border-slate-800">
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(99,102,241,0.15),transparent_50%)]"></div>
+    <div class="container mx-auto px-4 relative z-10 text-center max-w-4xl">
+      <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-indigo-500/20 text-indigo-300 text-xs font-semibold uppercase tracking-wider mb-4 border border-indigo-500/30">
+        <span>🗺️ Tam Kapsamlı Site İndeksi</span>
+        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+        <span>SEO & AI Uyumlu</span>
+      </div>
+      <h1 class="text-3xl md:text-5xl font-black mb-4 tracking-tight">
+        Stok Pratik <span class="bg-gradient-to-r from-indigo-400 via-sky-300 to-emerald-400 bg-clip-text text-transparent">Site Haritası</span>
+      </h1>
+      <p class="text-base md:text-lg text-slate-300 max-w-2xl mx-auto leading-relaxed mb-8">
+        Bulut ERP, E-Ticaret, Dokunmatik POS, e-Dönüşüm, QR-PDKS, CRM, 20+ Sektörel Çözüm ve yüzlerce rehber içeriğin tamamına tek bir noktadan kolayca ulaşın.
+      </p>
+
+      <!-- Instant Search Filter -->
+      <div class="max-w-xl mx-auto relative">
+        <span class="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-lg">🔍</span>
+        <input 
+          type="text" 
+          id="sitemap-search" 
+          placeholder="Sayfa adı veya modül ara (örn: PDKS, BOM, e-Fatura, Otomotiv, B2B)..." 
+          class="w-full pl-12 pr-4 py-3.5 rounded-xl bg-slate-800/90 text-white border border-slate-700 focus:outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-500/40 text-sm shadow-xl transition-all"
+        />
+        <span id="search-counter" class="absolute right-4 top-1/2 -translate-y-1/2 text-xs font-medium text-slate-400 hidden"></span>
       </div>
     </div>
   </section>
 
-  <!-- Site Haritası İçerik -->
-  <section class="sitemap-content py-12 bg-white">
-    <div class="container">
-      <!-- Ana Sayfalar -->
-      <div class="mb-12">
-        <h2 class="text-2xl font-bold mb-6 pb-3 border-b border-gray-200 text-gray-800">
-          Ana Sayfalar
-        </h2>
-        <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          <li>
-            <a href="/" class="sitemap-link">
-              <span class="mr-2">🏠</span>
-              Ana Sayfa
-            </a>
-          </li>
-          <li>
-            <a href="/iletisim" class="sitemap-link">
-              <span class="mr-2">📞</span>
-              İletişim
-            </a>
-          </li>
-          <li>
-            <a href="/referanslarimiz" class="sitemap-link">
-              <span class="mr-2">⭐</span>
-              Referanslarımız
-            </a>
-          </li>
-          <li>
-            <a href="/neden-stok-pratik" class="sitemap-link">
-              <span class="mr-2">❓</span>
-              Neden Stok Pratik?
-            </a>
-          </li>
-          <li>
-            <a href="/ozellikler" class="sitemap-link">
-              <span class="mr-2">✨</span>
-              Özelliklerimiz
-            </a>
-          </li>
-          <li>
-            <a href="/paketlerimiz" class="sitemap-link">
-              <span class="mr-2">📦</span>
-              Paketlerimiz
-            </a>
-          </li>
-        </ul>
+  <!-- Quick Links Strip -->
+  <div class="bg-slate-800 text-slate-300 border-b border-slate-700 py-3 text-xs md:text-sm">
+    <div class="container mx-auto px-4 flex flex-wrap items-center justify-between gap-4">
+      <div class="flex items-center gap-4 flex-wrap">
+        <span class="font-semibold text-white flex items-center gap-1.5">
+          <span>⚡ Hızlı Bölümler:</span>
+        </span>
+        <a href="#amiral-moduller" class="hover:text-indigo-300 transition">🚀 Yeni Amiral Modüller</a>
+        <a href="#e-donusum" class="hover:text-indigo-300 transition">🏛️ e-Dönüşüm</a>
+        <a href="#uretim-erp" class="hover:text-indigo-300 transition">🏭 Üretim ERP</a>
+        <a href="#qr-pdks" class="hover:text-indigo-300 transition">⏱️ QR-PDKS</a>
+        <a href="#oto-servis" class="hover:text-indigo-300 transition">🚗 Plaka Sicil</a>
+        <a href="#sektorler" class="hover:text-indigo-300 transition">📦 20+ Sektör</a>
+        <a href="#blog-destek" class="hover:text-indigo-300 transition">📰 Blog ({totalDynamicArticles})</a>
       </div>
-
-            <!-- Yeni Eklenen Sayfalar ve Kampanyalar -->
-      <div class="mb-12">
-        <h2 class="text-2xl font-bold mb-6 pb-3 border-b border-gray-200 text-gray-800">
-          Kampanyalar ve Yeni Çözümler
-        </h2>
-        <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          <li>
-            <a href="/arkadasini-getir-kampanyasi" class="sitemap-link">
-              <span class="mr-2">🎁</span>
-              1 Ay Ücretsiz Kullan Kampanyası
-            </a>
-          </li>
-          <li>
-            <a href="/arkadasini-getir-formu" class="sitemap-link">
-              <span class="mr-2">📝</span>
-              Arkadaşını Davet Et Formu
-            </a>
-          </li>
-          <li>
-            <a href="/firma-kaydi" class="sitemap-link">
-              <span class="mr-2">🏢</span>
-              Firma Kayıt Sistemi
-            </a>
-          </li>
-          <li>
-            <a href="/masraf-gir" class="sitemap-link">
-              <span class="mr-2">💰</span>
-              Masraf Gir Sistemi
-            </a>
-          </li>
-          <li>
-            <a href="/oto-tamir-yazilimi" class="sitemap-link">
-              <span class="mr-2">🚗</span>
-              Oto Servis Yazılımı
-            </a>
-          </li>
-          <li>
-            <a href="/kuyumculuk-yazilimi" class="sitemap-link">
-              <span class="mr-2">💎</span>
-              Kuyumculuk Yazılımı
-            </a>
-          </li>
-          <li>
-            <a href="/bayilik" class="sitemap-link">
-              <span class="mr-2">🤝</span>
-              Bayimiz Olun
-            </a>
-          </li>
-          <li>
-            <a href="/blog" class="sitemap-link">
-              <span class="mr-2">📰</span>
-              Blog ve Destek
-            </a>
-          </li>
-          <li>
-            <a href="/yararli-bilgiler" class="sitemap-link">
-              <span class="mr-2">💡</span>
-              Yararlı Bilgiler
-            </a>
-          </li>
-        </ul>
-      </div>
-
-<!-- ERP ve Çekirdek Sistemler -->
-      <div class="mb-12">
-        <h2 class="text-2xl font-bold mb-6 pb-3 border-b border-gray-200 text-gray-800">
-          ERP ve Çekirdek Sistemler
-        </h2>
-        <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          <li>
-            <a href="/erp-sistemi" class="sitemap-link">
-              <span class="mr-2">🏢</span>
-              ERP Sistemi
-            </a>
-          </li>
-          <li>
-            <a href="/stok-yonetimi" class="sitemap-link">
-              <span class="mr-2">📦</span>
-              Stok Yönetimi
-            </a>
-          </li>
-          <li>
-            <a href="/stok-takip-sistemi" class="sitemap-link">
-              <span class="mr-2">🔍</span>
-              Stok Takip Sistemi
-            </a>
-          </li>
-          <li>
-            <a href="/muhasebe-yazilimi" class="sitemap-link">
-              <span class="mr-2">📒</span>
-              Muhasebe Yazılımı
-            </a>
-          </li>
-          <li>
-            <a href="/bulut-muhasebe-sistemi" class="sitemap-link">
-              <span class="mr-2">☁️</span>
-              Bulut Muhasebe Sistemi
-            </a>
-          </li>
-          <li>
-            <a href="/kobi-muhasebe-programi" class="sitemap-link">
-              <span class="mr-2">🏪</span>
-              KOBİ Muhasebe Programı
-            </a>
-          </li>
-        </ul>
-      </div>
-
-      <!-- CRM ve Müşteri Yönetimi -->
-      <div class="mb-12">
-        <h2 class="text-2xl font-bold mb-6 pb-3 border-b border-gray-200 text-gray-800">
-          CRM ve Müşteri Yönetimi
-        </h2>
-        <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          <li>
-            <a href="/crm" class="sitemap-link">
-              <span class="mr-2">📇</span>
-              CRM
-            </a>
-          </li>
-          <li>
-            <a href="/crm-sistemleri" class="sitemap-link">
-              <span class="mr-2">🤝</span>
-              CRM Sistemleri
-            </a>
-          </li>
-          <li>
-            <a href="/musteri-hizmetleri" class="sitemap-link">
-              <span class="mr-2">👩‍💼</span>
-              Müşteri Hizmetleri
-            </a>
-          </li>
-        </ul>
-      </div>
-
-      <!-- Üretim ve Proje Yönetimi -->
-      <div class="mb-12">
-        <h2 class="text-2xl font-bold mb-6 pb-3 border-b border-gray-200 text-gray-800">
-          Üretim ve Proje Yönetimi
-        </h2>
-        <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          <li>
-            <a href="/uretim-yonetimi" class="sitemap-link">
-              <span class="mr-2">🏭</span>
-              Üretim Yönetimi
-            </a>
-          </li>
-          <li>
-            <a href="/proje-yonetimi" class="sitemap-link">
-              <span class="mr-2">📋</span>
-              Proje Yönetimi
-            </a>
-          </li>
-          <li>
-            <a href="/kalite-kontrol-sistemi" class="sitemap-link">
-              <span class="mr-2">✅</span>
-              Kalite Kontrol Sistemi
-            </a>
-          </li>
-        </ul>
-      </div>
-
-      <!-- Satış ve Mağaza Yönetimi -->
-      <div class="mb-12">
-        <h2 class="text-2xl font-bold mb-6 pb-3 border-b border-gray-200 text-gray-800">
-          Satış ve Mağaza Yönetimi
-        </h2>
-        <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          <li>
-            <a href="/satis-yonetimi" class="sitemap-link">
-              <span class="mr-2">💰</span>
-              Satış Yönetimi
-            </a>
-          </li>
-          <li>
-            <a href="/magaza-otomasyonu" class="sitemap-link">
-              <span class="mr-2">🏪</span>
-              Mağaza Otomasyonu
-            </a>
-          </li>
-          <li>
-            <a href="/magaza-yonetim-yazilimi" class="sitemap-link">
-              <span class="mr-2">👨‍💼</span>
-              Mağaza Yönetim Yazılımı
-            </a>
-          </li>
-          <li>
-            <a href="/e-ticaret-entegrasyonu" class="sitemap-link">
-              <span class="mr-2">🛒</span>
-              E-Ticaret Entegrasyonu
-            </a>
-          </li>
-        </ul>
-      </div>
-
-      <!-- Sektörel Çözümler (YENİ EKLENDİ) -->
-      <div class="mb-12">
-        <h2 class="text-2xl font-bold mb-6 pb-3 border-b border-gray-200 text-gray-800">
-          Sektörel Çözümler
-        </h2>
-        <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          <li>
-            <a href="/e-ticaret-pazaryeri-entegrasyonu" class="sitemap-link">
-              <span class="mr-2">🛍️</span>
-              Pazaryeri Entegrasyonu
-            </a>
-          </li>
-          <li>
-            <a href="/b2b-toptan-satis-sistemi" class="sitemap-link">
-              <span class="mr-2">🛒</span>
-              B2B Toptan Satış Portalı
-            </a>
-          </li>
-          <li>
-            <a href="/barkodlu-magaza-pos-programi" class="sitemap-link">
-              <span class="mr-2">🏪</span>
-              Mağaza POS ve Hızlı Satış
-            </a>
-          </li>
-          <li>
-            <a href="/hirdavat-yapi-market-yazilimi" class="sitemap-link">
-              <span class="mr-2">🔨</span>
-              Hırdavat ve Yapı Market Programı
-            </a>
-          </li>
-          <li>
-            <a href="/bulut-on-muhasebe-e-fatura" class="sitemap-link">
-              <span class="mr-2">🧾</span>
-              Bulut Ön Muhasebe ve e-Fatura
-            </a>
-          </li>
-          <li>
-            <a href="/kozmetik-magaza-yazilimi" class="sitemap-link">
-              <span class="mr-2">💄</span>
-              Kozmetik ve Parfümeri Programı
-            </a>
-          </li>
-          <li>
-            <a href="/gida-market-sarkuteri-yazilimi" class="sitemap-link">
-              <span class="mr-2">🥩</span>
-              Market ve Şarküteri Kasa Programı
-            </a>
-          </li>
-          <li>
-            <a href="/mobilya-zuccaciye-ev-esyasi-yazilimi" class="sitemap-link">
-              <span class="mr-2">🛋️</span>
-              Mobilya ve Züccaciye Mağaza Yazılımı
-            </a>
-          </li>
-          <li>
-            <a href="/uretim-takip-mrp-programi" class="sitemap-link">
-              <span class="mr-2">🏭</span>
-              İmalat ve Üretim (MRP) Programı
-            </a>
-          </li>
-          <li>
-            <a href="/kitap-kirtasiye-oyuncak-yazilimi" class="sitemap-link">
-              <span class="mr-2">📚</span>
-              Kırtasiye ve Oyuncak Stok Programı
-            </a>
-          </li>
-        </ul>
-      </div>
-
-      <!-- Muhasebe Çözümleri -->
-      <div class="mb-12">
-        <h2 class="text-2xl font-bold mb-6 pb-3 border-b border-gray-200 text-gray-800">
-          Muhasebe Çözümleri
-        </h2>
-        <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          <li>
-            <a href="/online-muhasebe-programi" class="sitemap-link">
-              <span class="mr-2">💻</span>
-              Online Muhasebe Programı
-            </a>
-          </li>
-          <li>
-            <a href="/otomatik-muhasebe-yazilimi" class="sitemap-link">
-              <span class="mr-2">⚡</span>
-              Otomatik Muhasebe Yazılımı
-            </a>
-          </li>
-          <li>
-            <a href="/e-fatura" class="sitemap-link">
-              <span class="mr-2">🧾</span>
-              E-Fatura
-            </a>
-          </li>
-        </ul>
-      </div>
-
-      <!-- Mobil ve Saha Çözümleri -->
-      <div class="mb-12">
-        <h2 class="text-2xl font-bold mb-6 pb-3 border-b border-gray-200 text-gray-800">
-          Mobil ve Saha Çözümleri
-        </h2>
-        <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          <li>
-            <a href="/mobil-saha-uygulamasi" class="sitemap-link">
-              <span class="mr-2">📱</span>
-              Mobil Saha Uygulaması
-            </a>
-          </li>
-        </ul>
-      </div>
-
-      <!-- Bakım ve Teknik Servis -->
-      <div class="mb-12">
-        <h2 class="text-2xl font-bold mb-6 pb-3 border-b border-gray-200 text-gray-800">
-          Bakım ve Teknik Servis
-        </h2>
-        <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          <li>
-            <a href="/bakim-onarim-yonetimi" class="sitemap-link">
-              <span class="mr-2">🔧</span>
-              Bakım Onarım Yönetimi
-            </a>
-          </li>
-          <li>
-            <a href="/teknik-servis-yonetimi" class="sitemap-link">
-              <span class="mr-2">🛠️</span>
-              Teknik Servis Yönetimi
-            </a>
-          </li>
-        </ul>
-      </div>
-
-      <!-- İnsan Kaynakları ve İş Gücü -->
-      <div class="mb-12">
-        <h2 class="text-2xl font-bold mb-6 pb-3 border-b border-gray-200 text-gray-800">
-          İnsan Kaynakları ve İş Gücü
-        </h2>
-        <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          <li>
-            <a href="/is-gucu-planlama" class="sitemap-link">
-              <span class="mr-2">👷</span>
-              İş Gücü Planlama
-            </a>
-          </li>
-        </ul>
-      </div>
-
-      <!-- Pazarlama ve Otomasyon -->
-      <div class="mb-12">
-        <h2 class="text-2xl font-bold mb-6 pb-3 border-b border-gray-200 text-gray-800">
-          Pazarlama ve Otomasyon
-        </h2>
-        <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          <li>
-            <a href="/pazarlama-otomasyonu" class="sitemap-link">
-              <span class="mr-2">📣</span>
-              Pazarlama Otomasyonu
-            </a>
-          </li>
-        </ul>
-      </div>
-
-      <!-- Raporlama ve Analiz -->
-      <div class="mb-12">
-        <h2 class="text-2xl font-bold mb-6 pb-3 border-b border-gray-200 text-gray-800">
-          Raporlama ve Analiz
-        </h2>
-        <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          <li>
-            <a href="/raporlama-analiz" class="sitemap-link">
-              <span class="mr-2">📊</span>
-              Raporlama & Analiz
-            </a>
-          </li>
-        </ul>
-      </div>
-
-      <!-- Demo ve Ekran Görüntüleri -->
-      <div class="mb-12">
-        <h2 class="text-2xl font-bold mb-6 pb-3 border-b border-gray-200 text-gray-800">
-          Demo ve Ekran Görüntüleri
-        </h2>
-        <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          <li>
-            <a href="/ekran-goruntuleri" class="sitemap-link">
-              <span class="mr-2">🖼️</span>
-              Ekran Görüntüleri
-            </a>
-          </li>
-        </ul>
-      </div>
-
-      <!-- Partnerlik ve İş Birlikleri -->
-      <div class="mb-12">
-        <h2 class="text-2xl font-bold mb-6 pb-3 border-b border-gray-200 text-gray-800">
-          Partnerlik ve İş Birlikleri
-        </h2>
-        <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          <li>
-            <a href="/partnerlik-programi" class="sitemap-link">
-              <span class="mr-2">🤝</span>
-              Partnerlik Programı
-            </a>
-          </li>
-        </ul>
-      </div>
-
-      <!-- Politikalar -->
-      <div class="mb-12">
-        <h2 class="text-2xl font-bold mb-6 pb-3 border-b border-gray-200 text-gray-800">
-          Politikalar
-        </h2>
-        <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          <li>
-            <a href="/bilgi-guvenligi-politikamiz" class="sitemap-link">
-              <span class="mr-2">🔒</span>
-              Bilgi Güvenliği Politikamız
-            </a>
-          </li>
-          <li>
-            <a href="/cerez-politikasi" class="sitemap-link">
-              <span class="mr-2">🍪</span>
-              Çerez Politikası
-            </a>
-          </li>
-          <li>
-            <a href="/kisisel-veriler-politikasi" class="sitemap-link">
-              <span class="mr-2">📝</span>
-              Kişisel Veriler Politikası
-            </a>
-          </li>
-        </ul>
+      <div class="flex items-center gap-3">
+        <a href="/sitemap-index.xml" target="_blank" class="text-sky-400 hover:text-sky-300 font-mono text-xs flex items-center gap-1 underline">
+          <span>XML Sitemap</span> ↗
+        </a>
+        <span class="text-slate-600">•</span>
+        <a href="/llms.txt" target="_blank" class="text-emerald-400 hover:text-emerald-300 font-mono text-xs flex items-center gap-1 underline">
+          <span>llms.txt (AI)</span> ↗
+        </a>
       </div>
     </div>
-  </section>
+  </div>
 
-  <!-- Yardım Bölümü -->
-  <section class="help-section py-12 bg-gray-50">
-    <div class="container">
-      <div class="max-w-3xl mx-auto text-center">
-        <h2 class="text-2xl font-bold mb-6 text-gray-800">Eksik Bir Sayfa mı Var?</h2>
-        <p class="text-gray-600 mb-8">
-          Listede göremediğiniz bir sayfa varsa veya yardıma ihtiyacınız olursa bizimle iletişime geçin.
-        </p>
-        <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <a 
-            href="/iletisim" 
-            class="btn btn-primary"
-          >
-            <span class="mr-2">📧</span>
-            İletişim Sayfasına Git
+  <!-- Sitemap Body -->
+  <main class="py-12 bg-slate-50 min-h-screen">
+    <div class="container mx-auto px-4 max-w-6xl space-y-12">
+
+      <!-- 1. AMİRAL GEMİSİ MODÜLLER (Yeni Nesil Landing Page'ler) -->
+      <section id="amiral-moduller" class="sitemap-category-group bg-white rounded-2xl p-6 md:p-8 shadow-sm border border-slate-200">
+        <div class="flex items-center justify-between mb-6 pb-4 border-b border-slate-100 flex-wrap gap-2">
+          <div class="flex items-center gap-3">
+            <span class="text-2xl p-2 rounded-xl bg-indigo-50 text-indigo-600">🚀</span>
+            <div>
+              <h2 class="text-xl md:text-2xl font-bold text-slate-900">Amiral Gemisi Çözümler & Yeni Nesil Modüller</h2>
+              <p class="text-xs md:text-sm text-slate-500">Stok Pratik'in yeni nesil interaktif landing page sayfaları ve dikey iş modülleri</p>
+            </div>
+          </div>
+          <span class="px-2.5 py-1 rounded-full bg-indigo-100 text-indigo-700 text-xs font-bold">11 Temel Modül</span>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <a href="/e-donusum" class="sitemap-card group border-indigo-200 hover:border-indigo-400 hover:shadow-md">
+            <div class="flex items-start gap-3">
+              <span class="text-2xl">🏛️</span>
+              <div>
+                <div class="font-bold text-slate-900 group-hover:text-indigo-600 transition flex items-center gap-1.5">
+                  e-Dönüşüm Merkezi
+                  <span class="text-[10px] uppercase font-bold px-1.5 py-0.5 rounded bg-emerald-100 text-emerald-700">Yeni</span>
+                </div>
+                <div class="text-xs text-slate-500 mt-1">e-Fatura, e-Arşiv, e-İrsaliye, GİB UBL-TR & SMMM Köprüsü</div>
+                <div class="text-[11px] font-mono text-indigo-500 mt-2">/e-donusum</div>
+              </div>
+            </div>
           </a>
-          <a 
-            href="tel:+905325000999" 
-            class="btn btn-secondary"
-          >
-            <span class="mr-2">📞</span>
-            Hemen Ara: 0532 500 09 99
+
+          <a href="/uretim" class="sitemap-card group border-orange-200 hover:border-orange-400 hover:shadow-md">
+            <div class="flex items-start gap-3">
+              <span class="text-2xl">⚙️</span>
+              <div>
+                <div class="font-bold text-slate-900 group-hover:text-orange-600 transition flex items-center gap-1.5">
+                  Üretim ERP & BOM Reçetesi
+                  <span class="text-[10px] uppercase font-bold px-1.5 py-0.5 rounded bg-orange-100 text-orange-700">Yeni</span>
+                </div>
+                <div class="text-xs text-slate-500 mt-1">Ürün Ağacı, İstasyon Takibi & Gerçek Maliyet Motoru</div>
+                <div class="text-[11px] font-mono text-orange-500 mt-2">/uretim</div>
+              </div>
+            </div>
+          </a>
+
+          <a href="/pdks" class="sitemap-card group border-cyan-200 hover:border-cyan-400 hover:shadow-md">
+            <div class="flex items-start gap-3">
+              <span class="text-2xl">⏱️</span>
+              <div>
+                <div class="font-bold text-slate-900 group-hover:text-cyan-600 transition flex items-center gap-1.5">
+                  15 Sn QR-PDKS Personel Takip
+                  <span class="text-[10px] uppercase font-bold px-1.5 py-0.5 rounded bg-cyan-100 text-cyan-700">Yeni</span>
+                </div>
+                <div class="text-xs text-slate-500 mt-1">Kriptografik Kiosk, GPS & Cihaz Kilitli Sıfır Donanım PDKS</div>
+                <div class="text-[11px] font-mono text-cyan-600 mt-2">/pdks</div>
+              </div>
+            </div>
+          </a>
+
+          <a href="/crm" class="sitemap-card group border-rose-200 hover:border-rose-400 hover:shadow-md">
+            <div class="flex items-start gap-3">
+              <span class="text-2xl">🤝</span>
+              <div>
+                <div class="font-bold text-slate-900 group-hover:text-rose-600 transition flex items-center gap-1.5">
+                  CRM Satış Hunisi (Pipeline)
+                  <span class="text-[10px] uppercase font-bold px-1.5 py-0.5 rounded bg-rose-100 text-rose-700">Yeni</span>
+                </div>
+                <div class="text-xs text-slate-500 mt-1">Kanban Fırsat Yönetimi, Teklif & Otomatik Fatura Köprüsü</div>
+                <div class="text-[11px] font-mono text-rose-500 mt-2">/crm</div>
+              </div>
+            </div>
+          </a>
+
+          <a href="/raporlar" class="sitemap-card group border-indigo-200 hover:border-indigo-400 hover:shadow-md">
+            <div class="flex items-start gap-3">
+              <span class="text-2xl">📊</span>
+              <div>
+                <div class="font-bold text-slate-900 group-hover:text-indigo-600 transition flex items-center gap-1.5">
+                  40+ Kurumsal Raporlama Merkezi
+                  <span class="text-[10px] uppercase font-bold px-1.5 py-0.5 rounded bg-indigo-100 text-indigo-700">Yeni</span>
+                </div>
+                <div class="text-xs text-slate-500 mt-1">5 Departmanda Finans, Perakende, Tedarik, CRM & e-Dönüşüm</div>
+                <div class="text-[11px] font-mono text-indigo-500 mt-2">/raporlar</div>
+              </div>
+            </div>
+          </a>
+
+          <a href="/plakasicil" class="sitemap-card group border-amber-200 hover:border-amber-400 hover:shadow-md">
+            <div class="flex items-start gap-3">
+              <span class="text-2xl">🚗</span>
+              <div>
+                <div class="font-bold text-slate-900 group-hover:text-amber-600 transition flex items-center gap-1.5">
+                  Plaka Sicil Oto Servis & Geçmiş
+                  <span class="text-[10px] uppercase font-bold px-1.5 py-0.5 rounded bg-amber-100 text-amber-700">Yeni</span>
+                </div>
+                <div class="text-xs text-slate-500 mt-1">Canlı Plaka Sorgulama, İş Emri & Yedek Parça Ekosistemi</div>
+                <div class="text-[11px] font-mono text-amber-600 mt-2">/plakasicil</div>
+              </div>
+            </div>
+          </a>
+
+          <a href="/pazaryeri" class="sitemap-card group border-purple-200 hover:border-purple-400 hover:shadow-md">
+            <div class="flex items-start gap-3">
+              <span class="text-2xl">🛍️</span>
+              <div>
+                <div class="font-bold text-slate-900 group-hover:text-purple-600 transition flex items-center gap-1.5">
+                  37+ Pazaryeri Entegratörü
+                </div>
+                <div class="text-xs text-slate-500 mt-1">Trendyol, Hepsiburada, Amazon, N11 Çift Yönlü Stok Eşitleme</div>
+                <div class="text-[11px] font-mono text-purple-500 mt-2">/pazaryeri</div>
+              </div>
+            </div>
+          </a>
+
+          <a href="/b2b" class="sitemap-card group border-blue-200 hover:border-blue-400 hover:shadow-md">
+            <div class="flex items-start gap-3">
+              <span class="text-2xl">🏢</span>
+              <div>
+                <div class="font-bold text-slate-900 group-hover:text-blue-600 transition flex items-center gap-1.5">
+                  B2B Toptan DepodanDirekt
+                </div>
+                <div class="text-xs text-slate-500 mt-1">Kapalı Bayi Portalı, Kademeli İskonto & Cari Limit Siparişi</div>
+                <div class="text-[11px] font-mono text-blue-500 mt-2">/b2b</div>
+              </div>
+            </div>
+          </a>
+
+          <a href="/hizli-satis" class="sitemap-card group border-emerald-200 hover:border-emerald-400 hover:shadow-md">
+            <div class="flex items-start gap-3">
+              <span class="text-2xl">⚡</span>
+              <div>
+                <div class="font-bold text-slate-900 group-hover:text-emerald-600 transition flex items-center gap-1.5">
+                  Dokunmatik POS & Hızlı Satış
+                </div>
+                <div class="text-xs text-slate-500 mt-1">Barkodlu Perakende Kasa, Parçalı Tahsilat & Fiş/Fatura</div>
+                <div class="text-[11px] font-mono text-emerald-600 mt-2">/hizli-satis</div>
+              </div>
+            </div>
+          </a>
+
+          <a href="/smmm" class="sitemap-card group border-teal-200 hover:border-teal-400 hover:shadow-md">
+            <div class="flex items-start gap-3">
+              <span class="text-2xl">⚖️</span>
+              <div>
+                <div class="font-bold text-slate-900 group-hover:text-teal-600 transition flex items-center gap-1.5">
+                  SMMM Mali Müşavir Portalı
+                </div>
+                <div class="text-xs text-slate-500 mt-1">Zirve, Luca, Logo Uyumlu Tek Tıkla Mizan ve e-Aktarım</div>
+                <div class="text-[11px] font-mono text-teal-600 mt-2">/smmm</div>
+              </div>
+            </div>
+          </a>
+
+          <a href="/yapay-zeka-fis-okuma-masraf-yonetimi" class="sitemap-card group border-violet-200 hover:border-violet-400 hover:shadow-md">
+            <div class="flex items-start gap-3">
+              <span class="text-2xl">🤖</span>
+              <div>
+                <div class="font-bold text-slate-900 group-hover:text-violet-600 transition flex items-center gap-1.5">
+                  Yapay Zeka AI Fiş Okuma
+                  <span class="text-[10px] uppercase font-bold px-1.5 py-0.5 rounded bg-violet-100 text-violet-700">AI OCR</span>
+                </div>
+                <div class="text-xs text-slate-500 mt-1">Fotoğraftan KDV, Tutar, Firma Okuma & Masraf Otomasyonu</div>
+                <div class="text-[11px] font-mono text-violet-500 mt-2">/yapay-zeka-fis-okuma-masraf-yonetimi</div>
+              </div>
+            </div>
           </a>
         </div>
+      </section>
+
+      <!-- 2. e-DÖNÜŞÜM & MALİ YAZILIMLAR -->
+      <section id="e-donusum" class="sitemap-category-group bg-white rounded-2xl p-6 md:p-8 shadow-sm border border-slate-200">
+        <div class="flex items-center gap-3 mb-6 pb-4 border-b border-slate-100">
+          <span class="text-2xl p-2 rounded-xl bg-purple-50 text-purple-600">🏛️</span>
+          <div>
+            <h2 class="text-xl md:text-2xl font-bold text-slate-900">e-Dönüşüm, e-Belgeler ve Ön Muhasebe</h2>
+            <p class="text-xs md:text-sm text-slate-500">GİB mevzuatına tam uyumlu elektronik belge ve muhasebe çözümleri</p>
+          </div>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+          <a href="/e-fatura" class="sitemap-item"><span>📄</span> e-Fatura Çözümü</a>
+          <a href="/e-arsiv-fatura" class="sitemap-item"><span>🧾</span> e-Arşiv Fatura Sistemi</a>
+          <a href="/e-irsaliye" class="sitemap-item"><span>🚚</span> e-İrsaliye ve Lojistik</a>
+          <a href="/ozel-sektorel-e-belgeler-e-smm-e-mustahsil-e-gider-pusulasi" class="sitemap-item"><span>📜</span> Özel Sektörel e-Belgeler (e-SMM, Müstahsil)</a>
+          <a href="/mali-musavir-smmm-koprusu-ve-e-aktarim" class="sitemap-item"><span>🔗</span> Mali Müşavir SMMM Köprüsü</a>
+          <a href="/bulut-on-muhasebe-e-fatura" class="sitemap-item"><span>☁️</span> Bulut Ön Muhasebe ve e-Fatura</a>
+          <a href="/online-muhasebe-programi" class="sitemap-item"><span>💻</span> Online Muhasebe Programı</a>
+          <a href="/otomatik-muhasebe-yazilimi" class="sitemap-item"><span>⚡</span> Otomatik Muhasebe Yazılımı</a>
+          <a href="/kobi-muhasebe-programi" class="sitemap-item"><span>🏪</span> KOBİ Muhasebe Programı</a>
+          <a href="/on-muhasebe-ve-cari-hesap-yonetimi" class="sitemap-item"><span>💳</span> Ön Muhasebe & Cari Hesap</a>
+          <a href="/on-muhasebe-ve-pos-paketi" class="sitemap-item"><span>📦</span> Ön Muhasebe ve POS Paketi</a>
+          <a href="/ucretsiz-muhasebe-programi" class="sitemap-item"><span>🎁</span> Ücretsiz Muhasebe Deneyimi</a>
+        </div>
+      </section>
+
+      <!-- 3. ÜRETİM ERP & BOM -->
+      <section id="uretim-erp" class="sitemap-category-group bg-white rounded-2xl p-6 md:p-8 shadow-sm border border-slate-200">
+        <div class="flex items-center gap-3 mb-6 pb-4 border-b border-slate-100">
+          <span class="text-2xl p-2 rounded-xl bg-orange-50 text-orange-600">🏭</span>
+          <div>
+            <h2 class="text-xl md:text-2xl font-bold text-slate-900">Üretim ERP, BOM ve İmalat Yönetimi</h2>
+            <p class="text-xs md:text-sm text-slate-500">Hammadde, reçete, fire, makine amortismanı ve istasyon maliyetleri</p>
+          </div>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+          <a href="/uretim-erp-urun-agaci-bom-ve-gercek-maliyet-motoru" class="sitemap-item"><span>⚙️</span> BOM Ürün Ağacı & Maliyet Motoru</a>
+          <a href="/uretim-takip-mrp-programi" class="sitemap-item"><span>🏭</span> Üretim Takip ve MRP Programı</a>
+          <a href="/sektorel-imalat-receteleri-ve-hazir-fabrika-sablonlari" class="sitemap-item"><span>📐</span> Sektörel İmalat Reçeteleri</a>
+          <a href="/uretim-erp" class="sitemap-item"><span>🏗️</span> Bulut Üretim ERP</a>
+          <a href="/uretim-yonetimi" class="sitemap-item"><span>📋</span> Üretim Planlama & İş Emirleri</a>
+          <a href="/proje-yonetimi" class="sitemap-item"><span>📌</span> Proje ve Aşama Yönetimi</a>
+        </div>
+      </section>
+
+      <!-- 4. QR-PDKS & İNSAN KAYNAKLARI -->
+      <section id="qr-pdks" class="sitemap-category-group bg-white rounded-2xl p-6 md:p-8 shadow-sm border border-slate-200">
+        <div class="flex items-center gap-3 mb-6 pb-4 border-b border-slate-100">
+          <span class="text-2xl p-2 rounded-xl bg-cyan-50 text-cyan-600">⏱️</span>
+          <div>
+            <h2 class="text-xl md:text-2xl font-bold text-slate-900">QR-PDKS, Puantaj ve Personel Yönetimi</h2>
+            <p class="text-xs md:text-sm text-slate-500">15 saniye dinamik kiosk QR, GPS metre kilitli ve donanımsız personel takibi</p>
+          </div>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+          <a href="/qr-pdks-kriptografik-personel-takip-sistemi" class="sitemap-item"><span>🔒</span> Kriptografik QR-PDKS Giriş/Çıkış</a>
+          <a href="/personel-canli-ihlal-takibi-ve-mesai-radari" class="sitemap-item"><span>📡</span> Canlı İhlal Takibi & Mesai Radarı</a>
+          <a href="/personel-izin-ve-maas-avansi-onay-merkezi" class="sitemap-item"><span>📝</span> Personel İzin & Avans Onay Merkezi</a>
+          <a href="/sgk-personel-puantaj-cetveli-ve-mesai-hesaplama" class="sitemap-item"><span>📑</span> SGK Puantaj Cetveli & Bordro</a>
+          <a href="/pdks-puantaj" class="sitemap-item"><span>📅</span> Canlı Puantaj Takvimi</a>
+          <a href="/pdks-takip" class="sitemap-item"><span>⏱️</span> Günlük Giriş / Çıkış Takibi</a>
+          <a href="/pdks-onaylar" class="sitemap-item"><span>✅</span> Yönetici İzin Onayları</a>
+          <a href="/qr-pdks" class="sitemap-item"><span>📱</span> Kiosk QR Ekranı</a>
+          <a href="/is-gucu-planlama" class="sitemap-item"><span>👥</span> İş Gücü ve Vardiya Planlama</a>
+        </div>
+      </section>
+
+      <!-- 5. PLAKA SİCİL & OTO SERVİS -->
+      <section id="oto-servis" class="sitemap-category-group bg-white rounded-2xl p-6 md:p-8 shadow-sm border border-slate-200">
+        <div class="flex items-center gap-3 mb-6 pb-4 border-b border-slate-100">
+          <span class="text-2xl p-2 rounded-xl bg-amber-50 text-amber-600">🚗</span>
+          <div>
+            <h2 class="text-xl md:text-2xl font-bold text-slate-900">Plaka Sicil Oto Servis, Ekspertiz ve Bakım Ekosistemi</h2>
+            <p class="text-xs md:text-sm text-slate-500">TR plaka sorgulama, şasi/motor no, iş emri ve yedek parça yönetimi</p>
+          </div>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+          <a href="/plaka-sicil-oto-servis-ve-arac-gecmisi" class="sitemap-item"><span>🔎</span> Ulusal Araç Bakım Sicili & Geçmişi</a>
+          <a href="/oto-servis-ve-yedek-parca-yazilimi" class="sitemap-item"><span>🛠️</span> Oto Servis ve Yedek Parça Yazılımı</a>
+          <a href="/oto-tamir-yazilimi" class="sitemap-item"><span>🔧</span> Oto Tamir ve Bakım İş Emri</a>
+          <a href="/masraf-gir" class="sitemap-item"><span>⛽</span> Araç Plaka Masraf Girişi</a>
+          <a href="/teknik-servis-yonetimi-ve-online-cihaz-takip" class="sitemap-item"><span>📲</span> Cihaz & Servis Durum Takibi</a>
+          <a href="/bakim-onarim-yonetimi" class="sitemap-item"><span>🧰</span> Bakım Onarım Yönetimi</a>
+        </div>
+      </section>
+
+      <!-- 6. PAZARYERİ, E-TİCARET, B2B & DEPO WMS -->
+      <section id="pazaryeri-b2b" class="sitemap-category-group bg-white rounded-2xl p-6 md:p-8 shadow-sm border border-slate-200">
+        <div class="flex items-center gap-3 mb-6 pb-4 border-b border-slate-100">
+          <span class="text-2xl p-2 rounded-xl bg-blue-50 text-blue-600">🛍️</span>
+          <div>
+            <h2 class="text-xl md:text-2xl font-bold text-slate-900">Pazaryeri, E-Ticaret, B2B Toptan ve WMS Depo</h2>
+            <p class="text-xs md:text-sm text-slate-500">Çok kanallı satış, kapalı toptan bayi ağı, raf ve seri no yönetimi</p>
+          </div>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+          <a href="/e-ticaret-pazaryeri-entegrasyonu" class="sitemap-item"><span>🔄</span> Pazaryeri Entegrasyon Sistemi</a>
+          <a href="/pazaryeri-ihracat" class="sitemap-item"><span>🌍</span> E-İhracat ve Global Pazaryerleri</a>
+          <a href="/b2b-toptan-satis-sistemi" class="sitemap-item"><span>💼</span> B2B Toptan Satış Portalı</a>
+          <a href="/toptan-satis" class="sitemap-item"><span>📦</span> Toptan Satış Yönetimi</a>
+          <a href="/toptan-fiyat-belirleme" class="sitemap-item"><span>💲</span> Toptan Kademeli Fiyatlandırma</a>
+          <a href="/wms-depo-yonetimi" class="sitemap-item"><span>🏬</span> WMS Gelişmiş Depo Yönetimi</a>
+          <a href="/seri-no-imei-ve-garanti-takip-sistemi" class="sitemap-item"><span>🔢</span> Seri No, IMEI & Garanti Takibi</a>
+          <a href="/stok-takip-sistemi" class="sitemap-item"><span>📦</span> Barkodlu Stok Takip Sistemi</a>
+          <a href="/stok-yonetimi" class="sitemap-item"><span>📊</span> Stok & Envanter Yönetimi</a>
+          <a href="/linkle-sat-ve-odeme-al" class="sitemap-item"><span>🔗</span> Linkle Satış & Online Tahsilat</a>
+          <a href="/mobil-saha-uygulamasi" class="sitemap-item"><span>📱</span> Mobil Saha Plasiyer Uygulaması</a>
+          <a href="/mobil-sicak-satis-ve-saha-dagitim-lojistigi" class="sitemap-item"><span>🚚</span> Mobil Sıcak Satış & Sevkiyat</a>
+        </div>
+      </section>
+
+      <!-- 7. MAĞAZACILIK, POS & PERAKENDE -->
+      <section id="magaza-pos" class="sitemap-category-group bg-white rounded-2xl p-6 md:p-8 shadow-sm border border-slate-200">
+        <div class="flex items-center gap-3 mb-6 pb-4 border-b border-slate-100">
+          <span class="text-2xl p-2 rounded-xl bg-emerald-50 text-emerald-600">🏪</span>
+          <div>
+            <h2 class="text-xl md:text-2xl font-bold text-slate-900">Mağazacılık, POS ve Hızlı Satış</h2>
+            <p class="text-xs md:text-sm text-slate-500">Perakende mağaza kasası, restoran, otel ve klinik rezervasyonları</p>
+          </div>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+          <a href="/barkodlu-magaza-pos-programi" class="sitemap-item"><span>⚡</span> Dokunmatik Mağaza POS Ekranı</a>
+          <a href="/magaza-otomasyonu" class="sitemap-item"><span>🏪</span> Mağaza Otomasyonu</a>
+          <a href="/magaza-yonetim-yazilimi" class="sitemap-item"><span>🏢</span> Mağaza Yönetim Yazılımı</a>
+          <a href="/magaza-tv-dijital-kampanya-ve-fiyat-panosu" class="sitemap-item"><span>📺</span> Mağaza TV Fiyat & Kampanya Panosu</a>
+          <a href="/restoran-pos" class="sitemap-item"><span>🍽️</span> Restoran & Cafe POS Kasa</a>
+          <a href="/lezzetstop-yemek-pazaryeri-ve-restoran-otomasyonu" class="sitemap-item"><span>🍕</span> LezzetStop Yemek Entegrasyonu</a>
+          <a href="/rezervasyon" class="sitemap-item"><span>🛎️</span> Genel Rezervasyon Yönetimi</a>
+          <a href="/otel-bungalov-villa-rezervasyon-yonetim-sistemi" class="sitemap-item"><span>🏨</span> Otel, Villa & Bungalov Takibi</a>
+          <a href="/saglik-randevu-klinik-ve-hasta-takip-sistemi" class="sitemap-item"><span>🏥</span> Klinik & Hasta Randevu Takibi</a>
+        </div>
+      </section>
+
+      <!-- 8. CRM, SATIŞ VE ANALİTİK -->
+      <section id="crm-analitik" class="sitemap-category-group bg-white rounded-2xl p-6 md:p-8 shadow-sm border border-slate-200">
+        <div class="flex items-center gap-3 mb-6 pb-4 border-b border-slate-100">
+          <span class="text-2xl p-2 rounded-xl bg-rose-50 text-rose-600">🤝</span>
+          <div>
+            <h2 class="text-xl md:text-2xl font-bold text-slate-900">CRM, Satış Hunisi ve Finansal Analitik</h2>
+            <p class="text-xs md:text-sm text-slate-500">Müşteri adayları, teklif süreçleri, kurumsal raporlar ve piyasa kurları</p>
+          </div>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+          <a href="/satis-hunisi" class="sitemap-item"><span>🎯</span> Satış Hunisi (Pipeline) Simülatörü</a>
+          <a href="/crm-sistemleri" class="sitemap-item"><span>📇</span> Bulut CRM Sistemleri</a>
+          <a href="/musteri-hizmetleri" class="sitemap-item"><span>👩‍💼</span> Müşteri Hizmetleri ve İletişim</a>
+          <a href="/satis-yonetimi" class="sitemap-item"><span>📈</span> B2B ve B2C Satış Yönetimi</a>
+          <a href="/raporlama-analiz" class="sitemap-item"><span>📊</span> Yönetici Raporları & Analiz</a>
+          <a href="/piyasa-radari" class="sitemap-item"><span>📡</span> Piyasa Radarı & Anlık Finans</a>
+          <a href="/pazarlama-otomasyonu" class="sitemap-item"><span>📣</span> Pazarlama Otomasyonu</a>
+        </div>
+      </section>
+
+      <!-- 9. 20+ SEKTÖREL DİKEY ÇÖZÜMLER -->
+      <section id="sektorler" class="sitemap-category-group bg-white rounded-2xl p-6 md:p-8 shadow-sm border border-slate-200">
+        <div class="flex items-center justify-between mb-6 pb-4 border-b border-slate-100 flex-wrap gap-2">
+          <div class="flex items-center gap-3">
+            <span class="text-2xl p-2 rounded-xl bg-amber-50 text-amber-600">📦</span>
+            <div>
+              <h2 class="text-xl md:text-2xl font-bold text-slate-900">20+ Sektörel Dikey Çözümler</h2>
+              <p class="text-xs md:text-sm text-slate-500">Her sektöre özel terminoloji, hazır reçeteler, özel alanlar ve entegrasyonlar</p>
+            </div>
+          </div>
+          <span class="px-2.5 py-1 rounded-full bg-amber-100 text-amber-700 text-xs font-bold">21 Sektör</span>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+          <a href="/sektor/ambalaj-ve-plastik" class="sitemap-item"><span>📦</span> Ambalaj ve Plastik</a>
+          <a href="/sektor/ayakkabi-ve-deri" class="sitemap-item"><span>👞</span> Ayakkabı ve Deri</a>
+          <a href="/sektor/elektrik-ve-elektronik" class="sitemap-item"><span>⚡</span> Elektrik ve Elektronik</a>
+          <a href="/sektor/endustriyel-makine-ve-aletler" class="sitemap-item"><span>⚙️</span> Endüstriyel Makine ve Aletler</a>
+          <a href="/sektor/enerji-ve-yenilenebilir-enerji" class="sitemap-item"><span>☀️</span> Enerji & Yenilenebilir Enerji</a>
+          <a href="/sektor/ev-tekstili-ve-hali" class="sitemap-item"><span>🛋️</span> Ev Tekstili ve Halı</a>
+          <a href="/sektor/gelinlik-ve-abiye" class="sitemap-item"><span>👗</span> Gelinlik ve Abiye</a>
+          <a href="/sektor/gida-ve-tarim" class="sitemap-item"><span>🌾</span> Gıda ve Tarım</a>
+          <a href="/sektor/is-elbiseleri-ve-kkd" class="sitemap-item"><span>🦺</span> İş Elbiseleri ve KKD</a>
+          <a href="/sektor/kagit-baski-ve-yayincilik" class="sitemap-item"><span>🖨️</span> Kağıt, Baskı ve Yayıncılık</a>
+          <a href="/sektor/kimyasallar-ve-temizlik" class="sitemap-item"><span>🧪</span> Kimyasallar ve Temizlik</a>
+          <a href="/sektor/kozmetik-ve-bakim" class="sitemap-item"><span>💄</span> Kozmetik ve Bakım</a>
+          <a href="/sektor/medikal-ve-saglik" class="sitemap-item"><span>🩺</span> Medikal ve Sağlık</a>
+          <a href="/sektor/mermer-ve-dogal-tas" class="sitemap-item"><span>🪨</span> Mermer ve Doğal Taş</a>
+          <a href="/sektor/metal-ve-hirdavat" class="sitemap-item"><span>🔨</span> Metal ve Hırdavat</a>
+          <a href="/sektor/mobilya-ve-ic-mekan" class="sitemap-item"><span>🪑</span> Mobilya ve İç Mekan</a>
+          <a href="/sektor/otomotiv-ve-yedek-parca" class="sitemap-item"><span>🏎️</span> Otomotiv ve Yedek Parça</a>
+          <a href="/sektor/oyuncak-ve-bebek-urunleri" class="sitemap-item"><span>🧸</span> Oyuncak ve Bebek Ürünleri</a>
+          <a href="/sektor/tekstil-ve-hazir-giyim" class="sitemap-item"><span>👕</span> Tekstil ve Hazır Giyim</a>
+          <a href="/sektor/yapi-ve-insaat" class="sitemap-item"><span>🏗️</span> Yapı ve İnşaat</a>
+          <a href="/sektor/zuccaciye-ve-mutfak" class="sitemap-item"><span>🍽️</span> Züccaciye ve Mutfak</a>
+        </div>
+      </section>
+
+      <!-- 10. DİNAMİK BLOG VE DESTEK REHBERLERİ -->
+      <section id="blog-destek" class="sitemap-category-group bg-white rounded-2xl p-6 md:p-8 shadow-sm border border-slate-200">
+        <div class="flex items-center justify-between mb-6 pb-4 border-b border-slate-100 flex-wrap gap-2">
+          <div class="flex items-center gap-3">
+            <span class="text-2xl p-2 rounded-xl bg-emerald-50 text-emerald-600">📰</span>
+            <div>
+              <h2 class="text-xl md:text-2xl font-bold text-slate-900">Blog, Destek ve Nasıl Yapılır Rehberleri</h2>
+              <p class="text-xs md:text-sm text-slate-500">Kullanım kılavuzları, video anlatımlar, mevzuat rehberleri ve ipuçları</p>
+            </div>
+          </div>
+          <span class="px-2.5 py-1 rounded-full bg-emerald-100 text-emerald-700 text-xs font-bold">{totalDynamicArticles} Rehber Makale</span>
+        </div>
+
+        <div class="space-y-6">
+          <div>
+            <h3 class="text-sm font-bold uppercase tracking-wider text-slate-400 mb-3 flex items-center gap-2">
+              <span>📚 Destek ve Nasıl Yapılır Makaleleri ({sortedDestek.length})</span>
+            </h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2.5 max-h-96 overflow-y-auto pr-2 custom-scrollbar">
+              {sortedDestek.map((post) => (
+                <a href={`/destek/${post.slug}`} class="sitemap-item text-xs">
+                  <span>📖</span> <span class="truncate">{post.data.title}</span>
+                </a>
+              ))}
+            </div>
+          </div>
+
+          <div class="pt-4 border-t border-slate-100">
+            <h3 class="text-sm font-bold uppercase tracking-wider text-slate-400 mb-3 flex items-center gap-2">
+              <span>✍️ Blog Yazıları ve Sektörel Analizler ({sortedBlog.length})</span>
+            </h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2.5 max-h-96 overflow-y-auto pr-2 custom-scrollbar">
+              {sortedBlog.map((post) => (
+                <a href={`/blog/${post.data.category || 'genel'}/${post.slug}`} class="sitemap-item text-xs">
+                  <span>📰</span> <span class="truncate">{post.data.title}</span>
+                </a>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 11. KURUMSAL, ARAÇLAR VE YASAL BİLGİLER -->
+      <section id="kurumsal" class="sitemap-category-group bg-white rounded-2xl p-6 md:p-8 shadow-sm border border-slate-200">
+        <div class="flex items-center gap-3 mb-6 pb-4 border-b border-slate-100">
+          <span class="text-2xl p-2 rounded-xl bg-slate-100 text-slate-700">🏢</span>
+          <div>
+            <h2 class="text-xl md:text-2xl font-bold text-slate-900">Kurumsal, Araçlar ve Yasal Belgeler</h2>
+            <p class="text-xs md:text-sm text-slate-500">Kayıt formları, fiyat tarifeleri, sözleşmeler ve sistem durum sayfaları</p>
+          </div>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+          <a href="/" class="sitemap-item font-semibold text-indigo-600"><span>🏠</span> Ana Sayfa</a>
+          <a href="/firma-kaydi" class="sitemap-item font-semibold text-emerald-600"><span>✨</span> 14 Gün Ücretsiz Firma Kaydı</a>
+          <a href="/fiyatlar" class="sitemap-item font-semibold text-amber-600"><span>💰</span> Fiyat Hesaplama & Paketler</a>
+          <a href="/paketlerimiz" class="sitemap-item"><span>📦</span> Paket Karşılaştırma</a>
+          <a href="/bayilik" class="sitemap-item font-semibold text-rose-600"><span>🤝</span> Bayimiz Olun (Bayilik Portalı)</a>
+          <a href="/partnerlik-programi" class="sitemap-item"><span>💼</span> Partnerlik Programı</a>
+          <a href="/yararli-bilgiler" class="sitemap-item font-semibold text-yellow-600"><span>💡</span> Yararlı Bilgiler Listesi</a>
+          <a href="/iletisim" class="sitemap-item"><span>📞</span> İletişim & Canlı Destek</a>
+          <a href="/referanslarimiz" class="sitemap-item"><span>⭐</span> Referanslarımız</a>
+          <a href="/musteri-yorumlari" class="sitemap-item"><span>💬</span> Müşteri Yorumları</a>
+          <a href="/neden-stok-pratik" class="sitemap-item"><span>❓</span> Neden Stok Pratik?</a>
+          <a href="/ozellikler" class="sitemap-item"><span>✨</span> Tüm Özellikler Kataloğu</a>
+          <a href="/surum-notlari" class="sitemap-item"><span>🚀</span> Sürüm Notları (Changelog)</a>
+          <a href="/kvkk" class="sitemap-item"><span>🛡️</span> KVKK Aydınlatma Metni</a>
+          <a href="/gizlilik-politikasi" class="sitemap-item"><span>🔒</span> Gizlilik Politikası</a>
+          <a href="/bilgi-guvenligi-politikamiz" class="sitemap-item"><span>🔐</span> Bilgi Güvenliği Politikamız</a>
+          <a href="/cerez-politikasi" class="sitemap-item"><span>🍪</span> Çerez Politikası</a>
+          <a href="/kullanim-kosullari" class="sitemap-item"><span>📜</span> Kullanım Koşulları</a>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Help & Contact CTA -->
+  <section class="py-12 bg-slate-900 text-white border-t border-slate-800">
+    <div class="container mx-auto px-4 max-w-4xl text-center">
+      <h3 class="text-2xl font-bold mb-3">Aradığınız Sayfayı Bulamadınız mı?</h3>
+      <p class="text-slate-400 text-sm max-w-xl mx-auto mb-6">
+        Stok Pratik uzman ekibi ihtiyaç duyduğunuz modül veya kurumsal entegrasyonu sizin için hemen planlasın.
+      </p>
+      <div class="flex flex-wrap items-center justify-center gap-4">
+        <a href="/iletisim" class="px-6 py-3 rounded-xl bg-indigo-600 hover:bg-indigo-500 font-bold text-sm transition shadow-lg shadow-indigo-600/30">
+          📩 Canlı Destek ve İletişim
+        </a>
+        <a href="tel:+905325000999" class="px-6 py-3 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 font-bold text-sm transition">
+          📞 0532 500 09 99
+        </a>
       </div>
     </div>
   </section>
 
   <style>
-    :global(body) {
-      scroll-behavior: smooth;
-    }
-
-    /* Container */
-    .container {
-      width: 100%;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 1rem;
-    }
-
-    /* Site Haritası Linkleri */
-    .sitemap-link {
-      display: flex;
-      align-items: center;
-      padding: 0.75rem 1rem;
-      background-color: white;
-      border: 1px solid #e5e7eb;
-      border-radius: 0.5rem;
-      color: #374151;
+    .sitemap-card {
+      display: block;
+      padding: 1rem;
+      background-color: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 0.75rem;
       text-decoration: none;
       transition: all 0.2s ease;
-      font-weight: 500;
-      min-height: 48px;
     }
-
-    .sitemap-link:hover {
-      background-color: #f3f4f6;
-      border-color: #d1d5db;
-      transform: translateY(-2px);
-      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-      color: #111827;
-    }
-
-    .sitemap-link:focus {
-      outline: 2px solid #10b981;
-      outline-offset: 2px;
-    }
-
-    /* Butonlar */
-    .btn {
-      display: inline-flex;
+    .sitemap-item {
+      display: flex;
       align-items: center;
-      justify-content: center;
-      padding: 0.75rem 1.5rem;
+      gap: 0.5rem;
+      padding: 0.625rem 0.875rem;
+      background-color: #f8fafc;
+      border: 1px solid #e2e8f0;
       border-radius: 0.5rem;
-      font-weight: 600;
+      color: #334155;
+      font-size: 0.875rem;
+      font-weight: 500;
       text-decoration: none;
-      transition: all 0.3s ease;
-      border: 2px solid transparent;
-      cursor: pointer;
+      transition: all 0.15s ease;
     }
-
-    .btn-primary {
-      background-color: #10b981;
-      color: white;
+    .sitemap-item:hover {
+      background-color: #ffffff;
+      border-color: #6366f1;
+      color: #4338ca;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
     }
-
-    .btn-primary:hover {
-      background-color: #059669;
-      transform: translateY(-2px);
-      box-shadow: 0 10px 25px rgba(16, 185, 129, 0.2);
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 6px;
     }
-
-    .btn-secondary {
-      background-color: white;
-      color: #374151;
-      border: 2px solid #d1d5db;
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: #f1f5f9;
+      border-radius: 4px;
     }
-
-    .btn-secondary:hover {
-      background-color: #f9fafb;
-      border-color: #9ca3af;
-      transform: translateY(-2px);
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 4px;
     }
-
-    /* Utility Classes */
-    .py-12 { padding-top: 3rem; padding-bottom: 3rem; }
-    .mb-4 { margin-bottom: 1rem; }
-    .mb-6 { margin-bottom: 1.5rem; }
-    .mb-8 { margin-bottom: 2rem; }
-    .mb-12 { margin-bottom: 3rem; }
-    .mr-2 { margin-right: 0.5rem; }
-    .text-center { text-align: center; }
-    .text-lg { font-size: 1.125rem; line-height: 1.75rem; }
-    .text-xl { font-size: 1.25rem; line-height: 1.75rem; }
-    .text-2xl { font-size: 1.5rem; line-height: 2rem; }
-    .text-3xl { font-size: 1.875rem; line-height: 2.25rem; }
-    .text-4xl { font-size: 2.25rem; line-height: 2.5rem; }
-    .font-bold { font-weight: 700; }
-    .rounded-lg { border-radius: 0.5rem; }
-    .bg-white { background-color: white; }
-    .bg-gray-50 { background-color: #f9fafb; }
-    .from-gray-50 { --tw-gradient-from: #f9fafb; }
-    .to-white { --tw-gradient-to: white; }
-    .text-gray-800 { color: #1f2937; }
-    .text-gray-600 { color: #4b5563; }
-    .border-b { border-bottom-width: 1px; }
-    .border-gray-200 { border-color: #e5e7eb; }
-    .flex { display: flex; }
-    .flex-col { flex-direction: column; }
-    .items-center { align-items: center; }
-    .justify-center { justify-content: center; }
-    .mx-auto { margin-left: auto; margin-right: auto; }
-    .max-w-3xl { max-width: 48rem; }
-    .max-w-4xl { max-width: 56rem; }
-    .gap-4 { gap: 1rem; }
-
-    /* Grid */
-    .grid { display: grid; }
-    .grid-cols-1 { grid-template-columns: repeat(1, minmax(0, 1fr)); }
-    .gap-4 { gap: 1rem; }
-
-    /* Background Gradients */
-    .bg-gradient-to-br { background-image: linear-gradient(to bottom right, var(--tw-gradient-stops)); }
-    .bg-clip-text { -webkit-background-clip: text; background-clip: text; }
-    .text-transparent { color: transparent; }
-
-    /* Responsive */
-    @media (min-width: 768px) {
-      .md\:grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-      .md\:grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
     }
-
-    @media (min-width: 1024px) {
-      .lg\:grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-    }
-
-    @media (max-width: 640px) {
-      .hero-section h1 {
-        font-size: 2rem;
-      }
-      
-      .help-section .flex {
-        flex-direction: column;
-      }
-    }
-
-    /* Scroll Animasyon */
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(10px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .sitemap-link {
-      animation: fadeIn 0.3s ease-out forwards;
-      opacity: 0;
-    }
-
-    /* Her bölüm için farklı animasyon gecikmeleri */
-    .mb-12:nth-child(1) .sitemap-link:nth-child(1) { animation-delay: 0.1s; }
-    .mb-12:nth-child(1) .sitemap-link:nth-child(2) { animation-delay: 0.2s; }
-    .mb-12:nth-child(1) .sitemap-link:nth-child(3) { animation-delay: 0.3s; }
-    .mb-12:nth-child(1) .sitemap-link:nth-child(4) { animation-delay: 0.4s; }
-    .mb-12:nth-child(1) .sitemap-link:nth-child(5) { animation-delay: 0.5s; }
-    .mb-12:nth-child(1) .sitemap-link:nth-child(6) { animation-delay: 0.6s; }
   </style>
+
+  <script is:inline>
+    // Fast client-side sitemap search
+    document.addEventListener('DOMContentLoaded', () => {
+      const searchInput = document.getElementById('sitemap-search');
+      const counter = document.getElementById('search-counter');
+      const allItems = document.querySelectorAll('.sitemap-item, .sitemap-card');
+      const categories = document.querySelectorAll('.sitemap-category-group');
+
+      if (!searchInput) return;
+
+      searchInput.addEventListener('input', (e) => {
+        const query = e.target.value.trim().toLowerCase();
+        let matchCount = 0;
+
+        if (!query) {
+          allItems.forEach(el => el.style.display = '');
+          categories.forEach(cat => cat.style.display = '');
+          if (counter) counter.classList.add('hidden');
+          return;
+        }
+
+        allItems.forEach(el => {
+          const text = el.textContent.toLowerCase();
+          const href = el.getAttribute('href') || '';
+          if (text.includes(query) || href.toLowerCase().includes(query)) {
+            el.style.display = '';
+            matchCount++;
+          } else {
+            el.style.display = 'none';
+          }
+        });
+
+        // Hide empty category boxes
+        categories.forEach(cat => {
+          const visibleChildren = cat.querySelectorAll('.sitemap-item:not([style*="display: none"]), .sitemap-card:not([style*="display: none"])');
+          cat.style.display = visibleChildren.length > 0 ? '' : 'none';
+        });
+
+        if (counter) {
+          counter.textContent = `${matchCount} sonuç bulundu`;
+          counter.classList.remove('hidden');
+        }
+      });
+    });
+  </script>
 </BaseLayout>

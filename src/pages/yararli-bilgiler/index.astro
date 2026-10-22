@@ -1,4 +1,5 @@
 ---
+// src/pages/yararli-bilgiler/index.astro
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
 import seoTitles from '../../data/seo-titles.json';
@@ -12,116 +13,394 @@ const allExistingPosts = [...allBlogPosts, ...allDestekPosts].sort((a, b) => {
   return a.data.title.localeCompare(b.data.title);
 });
 
-// For numbering
-let counter = 1;
+// Yeni eklenen amiral çözümler
+const flagships = [
+  {
+    icon: "🏛️",
+    title: "e-Dönüşüm Merkezi: e-Fatura, e-Arşiv & e-İrsaliye",
+    tag: "GİB Standartlarında UBL-TR 1.2",
+    badgeColor: "bg-purple-100 text-purple-700 border-purple-200",
+    url: "/e-donusum",
+    desc: "17 özel entegratör (İzibiz, Sovos, EDM vb.) ve SMMM köprüsüyle 10 saniyede resmi e-Fatura kesin, gelen faturaları tek tıkla muhasebeleştirin."
+  },
+  {
+    icon: "⚙️",
+    title: "Üretim ERP, BOM Ürün Reçetesi & Gerçek Maliyet",
+    tag: "Endüstriyel MRP Motoru",
+    badgeColor: "bg-orange-100 text-orange-700 border-orange-200",
+    url: "/uretim",
+    desc: "Hammadde sarfiyatı, fire oranları, istasyon işçilikleri ve makine amortismanını hesaba katan 4 istasyonlu canlı üretim bandı ve birim maliyet motoru."
+  },
+  {
+    icon: "⏱️",
+    title: "QR-PDKS (15 Saniyede Bir Kriptografik Personel Takip)",
+    tag: "Sıfır Donanım • Kopyalanamaz",
+    badgeColor: "bg-cyan-100 text-cyan-700 border-cyan-200",
+    url: "/pdks",
+    desc: "Pahalı parmak izi cihazlarına son! 15 saniyede değişen HMAC-SHA256 dinamik QR, GPS metre kontrolü ve cihaz parmak izi kilitli personel takip sistemi."
+  },
+  {
+    icon: "🤝",
+    title: "CRM — Satış Hunisi (Pipeline) & Teklif Köprüsü",
+    tag: "5 Aşamalı Kanban Panosu",
+    badgeColor: "bg-rose-100 text-rose-700 border-rose-200",
+    url: "/crm",
+    desc: "Aday müşteriden ilk görüşmeye, tekliften müzakereye ve tek tıkla resmi faturaya dönüşen akıllı müşteri ilişkileri ve satış hunisi yönetimi."
+  },
+  {
+    icon: "📊",
+    title: "40+ Kurumsal Raporlama Merkezi",
+    tag: "5 Departmanda Hazır Analiz",
+    badgeColor: "bg-indigo-100 text-indigo-700 border-indigo-200",
+    url: "/raporlar",
+    desc: "Muhasebe, Perakende, Tedarik Zinciri, CRM ve e-Dönüşüm departmanlarında atıl stoktan nakit akışına anlık Excel ve PDF kurumsal raporlar."
+  },
+  {
+    icon: "🚗",
+    title: "Plaka Sicil — Oto Servis ve Araç Geçmişi",
+    tag: "Ulusal TR Plaka Sicili",
+    badgeColor: "bg-amber-100 text-amber-700 border-amber-200",
+    url: "/plakasicil",
+    desc: "34 ABC 123 plakasını yazın; şasi no, kilometre geçmişi, değişen yedek parçalar ve periyodik bakım takvimi 1 saniyede ekrana gelsin."
+  },
+  {
+    icon: "🛍️",
+    title: "37+ E-Ticaret ve Pazaryeri Entegratörü",
+    tag: "10 Sn Çift Yönlü Eşitleme",
+    badgeColor: "bg-purple-100 text-purple-700 border-purple-200",
+    url: "/pazaryeri",
+    desc: "Trendyol, Hepsiburada, Amazon, N11, Çiçeksepeti ve WooCommerce siparişlerini tek ekranda toplayın; stokları 10 saniyede otomatik güncelleyin."
+  },
+  {
+    icon: "🏢",
+    title: "B2B Toptan DepodanDirekt Kapalı Bayi Ağı",
+    tag: "Özel İskonto & Cari Limit",
+    badgeColor: "bg-blue-100 text-blue-700 border-blue-200",
+    url: "/b2b",
+    desc: "Bayilerinize özel şifreli B2B sipariş portali. Bayi grubuna özel kademeli fiyat listeleri, vadeli bakiye kontrolü ve anlık depo rezervasyonu."
+  },
+  {
+    icon: "⚡",
+    title: "Dokunmatik Kasa POS ve Hızlı Satış",
+    tag: "Barkodlu Perakende Kasası",
+    badgeColor: "bg-emerald-100 text-emerald-700 border-emerald-200",
+    url: "/hizli-satis",
+    desc: "Dokunmatik ekran, barkod okuyucu, terazi ve fiş yazıcıyla tam entegre çalışan; elektrik/internet kesintisinde bile aksamayan perakende POS kasası."
+  },
+  {
+    icon: "⚖️",
+    title: "SMMM Mali Müşavir Entegrasyon Portalı",
+    tag: "Tek Tıkla Mizan & e-Aktarım",
+    badgeColor: "bg-teal-100 text-teal-700 border-teal-200",
+    url: "/smmm",
+    desc: "Mali müşavirinize her ay klasör klasör evrak göndermeye son! Zirve, Luca, Logo ve Mikro formatında tek tıkla Excel/XML veri transferi."
+  },
+  {
+    icon: "🤖",
+    title: "Yapay Zeka AI OCR Fiş Okuma & Masraf Yönetimi",
+    tag: "Giderlerinizi Kurtarın",
+    badgeColor: "bg-violet-100 text-violet-700 border-violet-200",
+    url: "/yapay-zeka-fis-okuma-masraf-yonetimi",
+    desc: "Fişin fotoğrafını cep telefonunuzla çekin, Stok Pratik AI motoru firma adı, tarih, KDV ve genel toplamı hatasız ayrıştırıp muhasebeleştirsin."
+  }
+];
+
+// Sektörel Dikey Çözümler Listesi
+const sectors = [
+  { name: "Ambalaj ve Plastik", slug: "ambalaj-ve-plastik", icon: "📦" },
+  { name: "Ayakkabı ve Deri", slug: "ayakkabi-ve-deri", icon: "👞" },
+  { name: "Elektrik ve Elektronik", slug: "elektrik-ve-elektronik", icon: "⚡" },
+  { name: "Endüstriyel Makine ve Aletler", slug: "endustriyel-makine-ve-aletler", icon: "⚙️" },
+  { name: "Enerji ve Yenilenebilir Enerji", slug: "enerji-ve-yenilenebilir-enerji", icon: "☀️" },
+  { name: "Ev Tekstili ve Halı", slug: "ev-tekstili-ve-hali", icon: "🛋️" },
+  { name: "Gelinlik ve Abiye", slug: "gelinlik-ve-abiye", icon: "👗" },
+  { name: "Gıda ve Tarım", slug: "gida-ve-tarim", icon: "🌾" },
+  { name: "İş Elbiseleri ve KKD", slug: "is-elbiseleri-ve-kkd", icon: "🦺" },
+  { name: "Kağıt, Baskı ve Yayıncılık", slug: "kagit-baski-ve-yayincilik", icon: "🖨️" },
+  { name: "Kimyasallar ve Temizlik", slug: "kimyasallar-ve-temizlik", icon: "🧪" },
+  { name: "Kozmetik ve Bakım", slug: "kozmetik-ve-bakim", icon: "💄" },
+  { name: "Medikal ve Sağlık", slug: "medikal-ve-saglik", icon: "🩺" },
+  { name: "Mermer ve Doğal Taş", slug: "mermer-ve-dogal-tas", icon: "🪨" },
+  { name: "Metal ve Hırdavat", slug: "metal-ve-hirdavat", icon: "🔨" },
+  { name: "Mobilya ve İç Mekan", slug: "mobilya-ve-ic-mekan", icon: "🪑" },
+  { name: "Otomotiv ve Yedek Parça", slug: "otomotiv-ve-yedek-parca", icon: "🏎️" },
+  { name: "Oyuncak ve Bebek Ürünleri", slug: "oyuncak-ve-bebek-urunleri", icon: "🧸" },
+  { name: "Tekstil ve Hazır Giyim", slug: "tekstil-ve-hazir-giyim", icon: "👕" },
+  { name: "Yapı ve İnşaat", slug: "yapi-ve-insaat", icon: "🏗️" },
+  { name: "Züccaciye ve Mutfak", slug: "zuccaciye-ve-mutfak", icon: "🍽️" }
+];
 ---
 
-<BaseLayout title="Yararlı Bilgiler - SEO Liste">
-  <div class="seo-list-container">
-    <h1>Yararlı Bilgiler</h1>
-    <p class="description">Bu sayfada, sistemde bulunan mevcut içeriklerimiz listelenmektedir. İstifadenize sunarız..</p>
-    
-    <h2>Mevcut İçerikleriniz (1 - {allExistingPosts.length})</h2>
-    <ul class="existing-list">
-      {allExistingPosts.map(post => {
-        const url = post.collection === 'blog' 
-          ? `/blog/${post.data.category || 'genel'}/${post.slug}`
-          : `/destek/${post.slug}`;
-        
-        return (
-          <li>
-            <span class="counter">{counter++}.</span>
-            <a href={url} target="_blank" rel="noopener noreferrer">{post.data.title}</a>
-          </li>
-        );
-      })}
-    </ul>
+<BaseLayout 
+  title="Yararlı Bilgiler, Yeni Nesil ERP Modülleri ve SEO Bilgi Bankası | Stok Pratik"
+  description="Stok Pratik'in e-Dönüşüm, Üretim ERP, QR-PDKS, CRM, 40+ Raporlar, Plaka Sicil, Pazaryeri ve 20+ sektörel çözüm sayfaları ile zengin KOBİ rehber kataloğu."
+>
+  <!-- Hero Section -->
+  <section class="py-16 bg-gradient-to-br from-slate-900 via-slate-800 to-indigo-950 text-white relative overflow-hidden border-b border-slate-700">
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(99,102,241,0.2),transparent_50%)]"></div>
+    <div class="container mx-auto px-4 relative z-10 text-center max-w-4xl">
+      <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-amber-500/20 text-amber-300 text-xs font-semibold uppercase tracking-wider mb-4 border border-amber-500/30">
+        <span>💡 Stok Pratik Bilgi Bankası & Çözüm Kataloğu</span>
+      </div>
+      <h1 class="text-3xl md:text-5xl font-black mb-4 tracking-tight">
+        Yararlı Bilgiler ve <span class="bg-gradient-to-r from-amber-400 via-sky-300 to-emerald-400 bg-clip-text text-transparent">Yeni Nesil Çözümler</span>
+      </h1>
+      <p class="text-base md:text-lg text-slate-300 max-w-2xl mx-auto leading-relaxed mb-8">
+        Stok Pratik Bulut ERP'nin en son amiral çözümleri, e-Dönüşüm mevzuatları, üretim reçeteleri, QR-PDKS teknolojisi, 20+ sektörel dikey yazılım ve kapsamlı SEO rehber kütüphanesi.
+      </p>
 
-    <hr />
+      <!-- Quick Nav Buttons -->
+      <div class="flex flex-wrap items-center justify-center gap-3">
+        <a href="#yeni-moduller" class="px-5 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 font-bold text-xs md:text-sm transition shadow-lg shadow-indigo-600/30 flex items-center gap-1.5">
+          <span>🚀</span> Yeni Nesil Modüller ({flagships.length})
+        </a>
+        <a href="#sektorel-cozumler" class="px-5 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-600 font-bold text-xs md:text-sm transition flex items-center gap-1.5">
+          <span>📦</span> 20+ Sektörel Çözüm
+        </a>
+        <a href="#mevcut-rehberler" class="px-5 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-600 font-bold text-xs md:text-sm transition flex items-center gap-1.5">
+          <span>📚</span> Rehber Makaleleri ({allExistingPosts.length})
+        </a>
+        <a href="/sitemap" class="px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 font-bold text-xs md:text-sm transition shadow-lg shadow-emerald-600/30 flex items-center gap-1.5">
+          <span>🗺️</span> Tam Site Haritası
+        </a>
+      </div>
+    </div>
+  </section>
 
-    <h2>Yeni Üretilen SEO Odaklı Başlıklar ({counter} - {counter + seoTitles.length - 1}) 💡</h2>
-    <ul class="new-list">
-      {seoTitles.map(title => (
-        <li>
-          <span class="counter">{counter++}.</span>
-          <span class="title-text">{title}</span>
-        </li>
-      ))}
-    </ul>
-  </div>
+  <!-- Main Content -->
+  <main class="py-12 bg-slate-50 min-h-screen">
+    <div class="container mx-auto px-4 max-w-6xl space-y-16">
+
+      <!-- BÖLÜM 1: YENİ NESİL AMİRAL GEMİSİ MODÜLLER (LANDING PAGES) -->
+      <section id="yeni-moduller" class="scroll-mt-8">
+        <div class="flex items-center justify-between mb-8 pb-4 border-b border-slate-200 flex-wrap gap-4">
+          <div>
+            <div class="flex items-center gap-2 text-indigo-600 font-bold text-sm uppercase tracking-wider mb-1">
+              <span>🚀 Stok Pratik Amiral Gemisi</span>
+            </div>
+            <h2 class="text-2xl md:text-3xl font-extrabold text-slate-900">
+              Yeni Nesil Çözümler & İnteraktif Modüller
+            </h2>
+            <p class="text-slate-600 text-sm mt-1">
+              Her biri işletmenizin farklı bir operasyonel yükünü sıfırlamak üzere özel olarak tasarlandı.
+            </p>
+          </div>
+          <span class="px-3 py-1.5 rounded-full bg-emerald-100 text-emerald-800 text-xs font-bold border border-emerald-200">
+            {flagships.length} Özel Landing Page
+          </span>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {flagships.map((item) => (
+            <div class="bg-white rounded-2xl p-6 border border-slate-200 hover:border-indigo-400 hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
+              <div>
+                <div class="flex items-start justify-between gap-3 mb-4">
+                  <span class="text-3xl p-3 rounded-xl bg-slate-50 border border-slate-100 group-hover:scale-110 transition-transform">
+                    {item.icon}
+                  </span>
+                  <span class={`text-[11px] font-bold px-2.5 py-1 rounded-full border ${item.badgeColor}`}>
+                    {item.tag}
+                  </span>
+                </div>
+                <h3 class="font-bold text-lg text-slate-900 group-hover:text-indigo-600 transition mb-2">
+                  <a href={item.url} class="focus:outline-none">
+                    {item.title}
+                  </a>
+                </h3>
+                <p class="text-slate-600 text-xs md:text-sm leading-relaxed mb-4">
+                  {item.desc}
+                </p>
+              </div>
+
+              <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
+                <span class="font-mono text-xs text-indigo-500 font-semibold">{item.url}</span>
+                <a 
+                  href={item.url} 
+                  class="inline-flex items-center gap-1 text-xs font-bold text-indigo-600 group-hover:text-indigo-700 transition"
+                >
+                  <span>Sayfayı Keşfet</span>
+                  <span>→</span>
+                </a>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- BÖLÜM 2: 20+ SEKTÖREL DİKEY ÇÖZÜMLER -->
+      <section id="sektorel-cozumler" class="scroll-mt-8 bg-white rounded-3xl p-6 md:p-10 border border-slate-200 shadow-sm">
+        <div class="flex items-center justify-between mb-8 pb-4 border-b border-slate-100 flex-wrap gap-4">
+          <div class="flex items-center gap-3">
+            <span class="text-3xl p-2.5 rounded-2xl bg-amber-50 text-amber-600">📦</span>
+            <div>
+              <h2 class="text-2xl md:text-3xl font-extrabold text-slate-900">
+                20+ Sektörel Dikey ERP & Yönetim Yazılımı
+              </h2>
+              <p class="text-slate-600 text-sm mt-1">
+                İşletmenizin sektörüne özel terminoloji, hazır mamul reçeteleri ve süreç kalıpları.
+              </p>
+            </div>
+          </div>
+          <span class="px-3 py-1.5 rounded-full bg-amber-100 text-amber-800 text-xs font-bold border border-amber-200">
+            21 Farklı Sektör
+          </span>
+        </div>
+
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-3">
+          {sectors.map((sec) => (
+            <a 
+              href={`/sektor/${sec.slug}`}
+              class="flex flex-col items-center justify-center p-3 text-center rounded-xl bg-slate-50 border border-slate-200 hover:bg-indigo-50 hover:border-indigo-300 hover:shadow-sm transition group"
+            >
+              <span class="text-2xl mb-1.5 group-hover:scale-110 transition-transform">{sec.icon}</span>
+              <span class="text-xs font-semibold text-slate-800 group-hover:text-indigo-600 leading-tight">
+                {sec.name}
+              </span>
+            </a>
+          ))}
+        </div>
+      </section>
+
+      <!-- BÖLÜM 3: MEVCUT CANLI REHBER & DESTEK İÇERİKLERİ -->
+      <section id="mevcut-rehberler" class="scroll-mt-8 bg-white rounded-3xl p-6 md:p-10 border border-slate-200 shadow-sm">
+        <div class="flex items-center justify-between mb-6 pb-4 border-b border-slate-100 flex-wrap gap-4">
+          <div class="flex items-center gap-3">
+            <span class="text-3xl p-2.5 rounded-2xl bg-emerald-50 text-emerald-600">📚</span>
+            <div>
+              <h2 class="text-2xl font-extrabold text-slate-900">
+                Mevcut Rehber, Blog & Destek İçerikleri
+              </h2>
+              <p class="text-slate-600 text-sm mt-1">
+                Kullanım kılavuzları, videolu anlatımlar ve pratik ERP çözümleri.
+              </p>
+            </div>
+          </div>
+          <span class="px-3 py-1.5 rounded-full bg-emerald-100 text-emerald-800 text-xs font-bold border border-emerald-200">
+            {allExistingPosts.length} Canlı Makale
+          </span>
+        </div>
+
+        <!-- Quick filter for posts -->
+        <div class="mb-6">
+          <input 
+            type="text" 
+            id="post-filter" 
+            placeholder="Makale başlıklarında ara..." 
+            class="w-full md:max-w-md px-4 py-2.5 rounded-xl border border-slate-300 text-sm focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100"
+          />
+        </div>
+
+        <ul class="grid grid-cols-1 md:grid-cols-2 gap-3" id="post-list">
+          {allExistingPosts.map((post, idx) => {
+            const url = post.collection === 'blog' 
+              ? `/blog/${post.data.category || 'genel'}/${post.slug}`
+              : `/destek/${post.slug}`;
+            const typeLabel = post.collection === 'blog' ? 'Blog' : 'Destek';
+            const typeClass = post.collection === 'blog' ? 'bg-sky-100 text-sky-700' : 'bg-emerald-100 text-emerald-700';
+            
+            return (
+              <li class="post-item">
+                <a 
+                  href={url} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  class="flex items-start gap-3 p-3 rounded-xl bg-slate-50 border border-slate-200 hover:bg-white hover:border-indigo-400 hover:shadow-sm transition group"
+                >
+                  <span class="text-xs font-mono text-slate-400 font-bold min-w-6 pt-0.5">{idx + 1}.</span>
+                  <div class="flex-1">
+                    <div class="text-xs md:text-sm font-semibold text-slate-800 group-hover:text-indigo-600 transition leading-snug">
+                      {post.data.title}
+                    </div>
+                  </div>
+                  <span class={`text-[10px] font-bold px-2 py-0.5 rounded uppercase tracking-wider shrink-0 ${typeClass}`}>
+                    {typeLabel}
+                  </span>
+                </a>
+              </li>
+            );
+          })}
+        </ul>
+      </section>
+
+      <!-- BÖLÜM 4: YENİ ÜRETİLEN SEO ODAKLI BAŞLIKLAR -->
+      <section id="seo-basliklar" class="scroll-mt-8 bg-white rounded-3xl p-6 md:p-10 border border-slate-200 shadow-sm">
+        <div class="flex items-center justify-between mb-6 pb-4 border-b border-slate-100 flex-wrap gap-4">
+          <div class="flex items-center gap-3">
+            <span class="text-3xl p-2.5 rounded-2xl bg-amber-50 text-amber-600">💡</span>
+            <div>
+              <h2 class="text-2xl font-extrabold text-slate-900">
+                SEO Odaklı KOBİ ve Ticaret Başlıkları
+              </h2>
+              <p class="text-slate-600 text-sm mt-1">
+                KOBİ'lerin Google'da en çok arattığı ön muhasebe, stok, e-dönüşüm ve maliyet optimizasyon konuları.
+              </p>
+            </div>
+          </div>
+          <span class="px-3 py-1.5 rounded-full bg-amber-100 text-amber-800 text-xs font-bold border border-amber-200">
+            {seoTitles.length} Konu Başlığı
+          </span>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 max-h-96 overflow-y-auto pr-2 custom-scrollbar">
+          {seoTitles.map((title, idx) => (
+            <div class="flex items-start gap-2.5 p-2.5 rounded-lg bg-slate-50 border border-slate-100 text-xs leading-relaxed text-slate-700">
+              <span class="text-amber-500 font-bold font-mono">#{idx + 1}</span>
+              <span>{title}</span>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- Bottom Banner: Site Haritası'na Yönlendirme -->
+      <div class="bg-gradient-to-r from-indigo-900 via-slate-900 to-indigo-950 rounded-3xl p-8 text-white text-center border border-indigo-800 shadow-xl">
+        <h3 class="text-2xl font-bold mb-2">Tüm Sayfaları Tek Bir Listede Görmek İster misiniz?</h3>
+        <p class="text-slate-300 text-sm max-w-xl mx-auto mb-6">
+          Sitedeki tüm kurumsal, yasal, sektörel ve amiral modül bağlantılarını barındıran canlı arama özellikli interaktif site haritasını inceleyin.
+        </p>
+        <a 
+          href="/sitemap" 
+          class="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl bg-indigo-500 hover:bg-indigo-400 text-white font-bold text-sm transition shadow-lg shadow-indigo-500/30"
+        >
+          <span>🗺️ İnteraktif Site Haritası'na Git</span>
+          <span>→</span>
+        </a>
+      </div>
+
+    </div>
+  </main>
+
+  <style>
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 6px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: #f1f5f9;
+      border-radius: 4px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 4px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
+  </style>
+
+  <script is:inline>
+    // Live filter for existing posts
+    document.addEventListener('DOMContentLoaded', () => {
+      const filterInput = document.getElementById('post-filter');
+      const postItems = document.querySelectorAll('.post-item');
+
+      if (!filterInput) return;
+
+      filterInput.addEventListener('input', (e) => {
+        const query = e.target.value.trim().toLowerCase();
+        postItems.forEach(item => {
+          const text = item.textContent.toLowerCase();
+          item.style.display = text.includes(query) ? '' : 'none';
+        });
+      });
+    });
+  </script>
 </BaseLayout>
-
-<style>
-  .seo-list-container {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 100px 20px;
-    font-family: 'Inter', sans-serif;
-  }
-  
-  h1 {
-    font-size: 2rem;
-    color: #111;
-    margin-bottom: 10px;
-  }
-  
-  .description {
-    color: #555;
-    margin-bottom: 40px;
-    font-size: 1.1rem;
-    line-height: 1.5;
-  }
-  
-  h2 {
-    font-size: 1.5rem;
-    color: #333;
-    margin: 40px 0 20px;
-    border-bottom: 2px solid #eaeaea;
-    padding-bottom: 10px;
-  }
-  
-  ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-  
-  li {
-    margin-bottom: 12px;
-    font-size: 1.1rem;
-    display: flex;
-    align-items: flex-start;
-    gap: 10px;
-    line-height: 1.4;
-  }
-  
-  .counter {
-    font-weight: bold;
-    color: #888;
-    min-width: 40px;
-  }
-  
-  .existing-list a {
-    color: #2563eb;
-    text-decoration: none;
-  }
-  
-  .existing-list a:hover {
-    text-decoration: underline;
-  }
-  
-  .new-list .title-text {
-    color: #111;
-  }
-  
-  hr {
-    border: none;
-    border-top: 1px solid #ddd;
-    margin: 60px 0;
-  }
-  
-  /* Disable user select on counters so only text is copied */
-  .counter {
-    user-select: none;
-  }
-</style>

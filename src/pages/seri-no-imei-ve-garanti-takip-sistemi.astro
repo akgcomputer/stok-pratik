@@ -1,0 +1,320 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const pageTitle = "Seri No, IMEI ve Garanti Süresi Takip Sistemi | Stok Pratik";
+const pageDescription = "'Bu cihazı bizden mi almıştı?' şüphesine 1 saniyede son! Seri numarası, IMEI ve barkodla anlık garanti sorgulama, fatura eşleşmesi ve sahte iade kalkanı.";
+
+const warrantyFeatures = [
+  {
+    icon: "🔢",
+    title: "Seri No / IMEI / MAC Adresi Bazlı Tekil İzleme",
+    desc: "Bilgisayar, cep telefonu, beyaz eşya, kombi, makine, batarya, saat veya medikal cihazlar gibi her bir adedi kendine özel seri numarası taşıyan ürünleri tekil kimliğiyle takip edin."
+  },
+  {
+    icon: "⏳",
+    title: "Otomatik Garanti Başlangıç & Canlı Kalan Gün Sayacı",
+    desc: "Satış faturası kesildiği gün ürünün garantisi (12, 24 veya 36 ay) otomatik başlar. Sistem kaç gün kaldığını canlı geri sayım çubuğuyla takip eder, süresi bitenleri kırmızı alarm ile işaretler."
+  },
+  {
+    icon: "🚫",
+    title: "Sahte İade & Başka Mağazadan Alınan Ürün Kalkanı",
+    desc: "Başka satıcıdan bozuk ürün alıp faturasız olarak sizin mağazanıza garantiye veya iadeye getiren kötü niyetli suistimalleri, seri numarasını 1 saniyede sorgulayarak tamamen engelleyin."
+  },
+  {
+    icon: "🛠️",
+    title: "Teknik Servis Modülü ile Doğrudan Bağlantılı",
+    desc: "Garantisi devam eden arızalı ürün geldiğinde tek tıkla 'Garanti İçi (Ücretsiz) Servis Fişi' oluşturun; garantisi bitmişse otomatik olarak 'Ücretli Onarım' statüsünde kabul edin."
+  },
+  {
+    icon: "📄",
+    title: "Resmi Garanti Belgesi & Uzatılmış Garanti Satışı",
+    desc: "Satış anında müşteriye kaşeli/imzalı A4 Resmi Garanti Belgesi çıktısı verin. Dilerseniz +1 Yıl veya +2 Yıl uzatılmış ek garanti paketleri satarak işletmenize ek kâr yaratın."
+  }
+];
+
+const faqs = [
+  {
+    q: "Ürünlerin seri numaralarını sisteme nasıl tanıtırız?",
+    a: "Tedarikçiden mal kabulü yaparken veya fatura girişi sırasında barkod okuyucuyla seri numaralarını seri şekilde okutabilirsiniz. Excel listesiyle toplu Seri No / IMEI yüklemesi de desteklenir."
+  },
+  {
+    q: "Satış yaparken hangi seri numarasının hangi müşteriye satıldığı nasıl eşleşir?",
+    a: "Satış ekranında ürün barkodu okutulduğunda sistem sizden satılan ürünün Seri Numarasını veya IMEI kodunu okutmanızı ister. Böylece kesilen fatura, müşteri carisi ve seri numarası kalıcı olarak kilitlenir."
+  },
+  {
+    q: "Müşteri garanti fişini veya faturasını kaybettiyse garanti sorgulaması yapılabilir mi?",
+    a: "Evet! Müşterinin elinde hiçbir kağıt olmasa bile ürünün arkasındaki Seri No, IMEI veya müşterinin cep telefonu numarasını girerek ürünün satış tarihine, fatura kopyasına ve kalan garanti gününe anında ulaşabilirsiniz."
+  },
+  {
+    q: "Birden fazla yıl garanti verilen ürünlerde parçaya göre garanti süresi ayrılabilir mi?",
+    a: "Evet. Örneğin cihazın kendisi 24 ay, motor veya kompresörü 5 yıl, bataryası ise 6 ay garanti kapsamındaysa, ürün kartında bileşen bazlı garanti süreleri tanımlanabilir."
+  },
+  {
+    q: "Seri numarası takibi stok sayımında kolaylık sağlar mı?",
+    a: "Kesinlikle. Depo sayımı yaparken el terminaliyle seri numaralarını okutarak hangi seri numaralı ürünün depoda eksik olduğunu, hangisinin sevk edildiğini veya konsinye verildiğini eksiksiz görebilirsiniz."
+  }
+];
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <main class="bg-slate-950 text-slate-100 antialiased min-h-screen selection:bg-amber-500 selection:text-slate-950">
+    
+    <!-- 1. HERO SECTION -->
+    <section class="relative overflow-hidden pt-20 pb-24 lg:pt-28 lg:pb-32 border-b border-slate-800">
+      <div class="absolute inset-0 bg-[radial-gradient(circle_at_top,_var(--tw-gradient-stops))] from-amber-950/40 via-slate-950 to-slate-950"></div>
+      <div class="absolute top-1/4 right-1/4 w-[550px] h-[320px] bg-amber-500/10 blur-[130px] rounded-full pointer-events-none"></div>
+
+      <div class="container mx-auto px-4 lg:px-8 relative z-10 max-w-7xl">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+          
+          <!-- Sol: Başlık ve CTA -->
+          <div class="lg:col-span-6 text-center lg:text-left">
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-400 text-xs sm:text-sm font-semibold mb-6 backdrop-blur-md">
+              <span class="w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span>
+              🛡️ Hizmet & Servis • Seri No, IMEI & Garanti Doğrulama Motoru
+            </div>
+
+            <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight text-white leading-[1.1] mb-6">
+              "Bu Ürünü Bizden mi Almıştı?" <br/>
+              <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-orange-300 to-emerald-300">
+                Şüphesine 1 Saniyede Kesin Yanıt!
+              </span>
+            </h1>
+
+            <p class="text-base sm:text-lg text-slate-300 mb-8 leading-relaxed max-w-xl mx-auto lg:mx-0">
+              Müşteri elinde arızalı bir cihazla geldiğinde eski fatura klasörlerini karıştırmayın! Ürün üzerindeki <strong>Seri Numarasını, IMEI kodunu veya Müşteri Telefonunu</strong> okutun; satış tarihini, faturasını, garantisinin bitmesine kaç gün kaldığını anında görün.
+            </p>
+
+            <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 mb-8">
+              <a 
+                href="/firma-kaydi" 
+                class="w-full sm:w-auto px-8 py-4 rounded-xl bg-gradient-to-r from-amber-500 via-orange-500 to-amber-600 hover:from-amber-400 hover:to-orange-400 text-slate-950 font-black text-base shadow-lg shadow-amber-500/30 hover:scale-[1.02] transition-all text-center"
+              >
+                🛡️ Garanti Takip Sistemini Başlatın
+              </a>
+              <a 
+                href="#garanti-sorgu" 
+                class="w-full sm:w-auto px-8 py-4 rounded-xl bg-slate-900/80 hover:bg-slate-800 text-slate-200 font-semibold text-base border border-slate-700/80 hover:border-slate-600 transition-all text-center flex items-center justify-center gap-2"
+              >
+                <span>🔍 Canlı Garanti Sorgulama Ekranı</span>
+              </a>
+            </div>
+
+            <div class="flex items-center justify-center lg:justify-start gap-6 text-xs text-slate-400">
+              <span class="flex items-center gap-1.5"><svg class="w-4 h-4 text-emerald-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg> Sahte İade Engeli</span>
+              <span class="flex items-center gap-1.5"><svg class="w-4 h-4 text-emerald-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg> Otomatik Gün Sayacı</span>
+              <span class="flex items-center gap-1.5"><svg class="w-4 h-4 text-emerald-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg> Teknik Servis Entegre</span>
+            </div>
+          </div>
+
+          <!-- Sağ: Canlı Seri No / Garanti Sorgulama Simülatörü Mockup'ı -->
+          <div class="lg:col-span-6" id="garanti-sorgu">
+            <div class="bg-slate-900/90 rounded-2xl border border-amber-500/30 p-6 shadow-2xl relative overflow-hidden backdrop-blur-xl">
+              <div class="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-amber-500 via-orange-500 to-emerald-500"></div>
+
+              <!-- Sorgulama Arama Barı -->
+              <div class="mb-5">
+                <label class="text-xs font-mono text-amber-400 font-bold block mb-1.5">
+                  🔍 CANLI SERİ NO / IMEI / TELEFON SORGULAMA:
+                </label>
+                <div class="flex items-center gap-2 bg-slate-950 border border-amber-500/40 rounded-xl px-3 py-2.5">
+                  <span class="text-slate-400">🏷️</span>
+                  <input 
+                    type="text" 
+                    value="SN-2025-98412-TR" 
+                    readonly 
+                    class="bg-transparent text-white font-mono font-bold text-sm w-full focus:outline-none"
+                  />
+                  <span class="px-2.5 py-1 bg-amber-500 text-slate-950 font-bold text-xs rounded-lg">Sorgula</span>
+                </div>
+              </div>
+
+              <!-- İki Farklı Sonuç Kartı (Karşılaştırmalı) -->
+              <div class="space-y-4">
+                
+                <!-- 1. Sonuç: GARANTİSİ DEVAM EDEN CİHAZ (Yeşil Kalkan) -->
+                <div class="bg-slate-950 rounded-xl border border-emerald-500/40 p-4 relative overflow-hidden">
+                  <div class="flex items-center justify-between mb-3">
+                    <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xs border border-emerald-500/30">
+                      🟢 GARANTİ DEVAM EDİYOR
+                    </span>
+                    <span class="text-emerald-400 font-mono font-bold text-xs">Kalan: 412 Gün</span>
+                  </div>
+
+                  <div class="grid grid-cols-2 gap-2 text-xs mb-3">
+                    <div>
+                      <div class="text-[10px] text-slate-400">Ürün:</div>
+                      <div class="font-bold text-white truncate">Sony Alpha 7 IV Kamera</div>
+                    </div>
+                    <div>
+                      <div class="text-[10px] text-slate-400">Müşteri:</div>
+                      <div class="text-slate-200 truncate">Hakan Yıldırım (0542 *** 88)</div>
+                    </div>
+                    <div>
+                      <div class="text-[10px] text-slate-400">Fatura Tarihi / No:</div>
+                      <div class="text-slate-200">12 Ara 2025 • GIB-7819</div>
+                    </div>
+                    <div>
+                      <div class="text-[10px] text-slate-400">Garanti Bitiş:</div>
+                      <div class="text-emerald-400 font-semibold">12 Ara 2027 (24 Ay)</div>
+                    </div>
+                  </div>
+
+                  <!-- Garanti İlerleme Çubuğu -->
+                  <div class="w-full bg-slate-800 h-2 rounded-full overflow-hidden mb-2">
+                    <div class="bg-gradient-to-r from-emerald-500 to-teal-400 h-full w-[43%]"></div>
+                  </div>
+
+                  <div class="flex items-center justify-between text-[11px] pt-2 border-t border-slate-800/80">
+                    <span class="text-slate-400">Teknik Servis Statüsü:</span>
+                    <span class="text-emerald-400 font-bold">✓ Ücretsiz Garanti Kapsamı</span>
+                  </div>
+                </div>
+
+                <!-- 2. Sonuç: GARANTİSİ BİTMİŞ CİHAZ (Kırmızı Alarm) -->
+                <div class="bg-slate-950/60 rounded-xl border border-rose-500/30 p-3.5 opacity-85">
+                  <div class="flex items-center justify-between mb-2">
+                    <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-rose-500/20 text-rose-400 font-bold text-[11px] border border-rose-500/30">
+                      🔴 GARANTİ SÜRESİ DOLMUŞ
+                    </span>
+                    <span class="text-rose-400 font-mono text-xs">38 Gün Önce Bitti</span>
+                  </div>
+
+                  <div class="flex items-center justify-between text-xs text-slate-300">
+                    <span>Samsung Galaxy S22 Ultra (SN-3841)</span>
+                    <span class="text-amber-400 font-semibold text-[11px]">➔ Ücretli Onarıma Yönlendir</span>
+                  </div>
+                </div>
+
+              </div>
+
+              <!-- Alt Güvenlik Bildirimi -->
+              <div class="mt-4 p-2.5 bg-amber-950/20 rounded-lg border border-amber-500/20 text-[11px] text-amber-200/90 flex items-center gap-2">
+                <span>🛡️</span>
+                <span><strong>Sahte İade Engellendi:</strong> Seri numarası veritabanınızla eşleşmeyen hiçbir cihaz servis veya iadeye kabul edilemez.</span>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. 5 KRİTİK GARANTİ YETENEĞİ -->
+    <section class="py-20 bg-slate-900/40 border-b border-slate-800">
+      <div class="container mx-auto px-4 lg:px-8 max-w-7xl">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <h2 class="text-xs uppercase tracking-widest text-amber-400 font-bold mb-3">Tam Kontrol • Sıfır Şüphe</h2>
+          <h3 class="text-3xl sm:text-4xl font-extrabold text-white">İşletmenizi Koruyan 5 Kritik Garanti Takip Özelliği</h3>
+          <p class="text-slate-400 mt-4 text-base">
+            Satılan her cihazın kimliğini koruyun, müşteriye kurumsal güven verin ve garanti suistimallerinin önüne geçin.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {warrantyFeatures.map((item, index) => (
+            <div class="bg-slate-950/80 rounded-2xl border border-slate-800 p-6 flex flex-col justify-between hover:border-amber-500/40 transition-all">
+              <div>
+                <div class="w-12 h-12 rounded-xl bg-amber-500/10 border border-amber-500/20 text-amber-400 flex items-center justify-center text-2xl mb-4">
+                  {item.icon}
+                </div>
+                <div class="text-xs font-mono text-amber-400 font-bold mb-1">ÖZELLİK 0{index + 1}</div>
+                <h4 class="text-lg font-bold text-white mb-2">{item.title}</h4>
+                <p class="text-slate-400 text-sm leading-relaxed">{item.desc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. SIKÇA SORULAN SORULAR (FAQ) -->
+    <section class="py-20 border-b border-slate-800">
+      <div class="container mx-auto px-4 lg:px-8 max-w-4xl">
+        <div class="text-center mb-12">
+          <h2 class="text-xs uppercase tracking-widest text-amber-400 font-bold mb-2">Merak Edilenler</h2>
+          <h3 class="text-3xl font-extrabold text-white">Garanti Takip Sistemi Hakkında Sıkça Sorulan Sorular</h3>
+        </div>
+
+        <div class="space-y-4">
+          {faqs.map((faq, index) => (
+            <div class="bg-slate-900/60 rounded-xl border border-slate-800 p-6">
+              <h4 class="text-base font-bold text-white mb-2 flex items-center gap-2">
+                <span class="text-amber-400 font-mono">Q{index + 1}.</span> {faq.q}
+              </h4>
+              <p class="text-slate-300 text-sm leading-relaxed pl-7">
+                {faq.a}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. DÖNÜŞÜM CTA BÖLÜMÜ -->
+    <section class="py-20 relative overflow-hidden">
+      <div class="absolute inset-0 bg-gradient-to-b from-slate-950 via-amber-950/30 to-slate-950"></div>
+      <div class="container mx-auto px-4 lg:px-8 max-w-5xl relative z-10 text-center">
+        <div class="p-8 sm:p-14 rounded-3xl bg-slate-900/90 border border-amber-500/30 shadow-2xl relative backdrop-blur-xl">
+          <div class="w-16 h-16 rounded-2xl bg-amber-500/20 border border-amber-500/40 text-amber-400 flex items-center justify-center text-3xl mx-auto mb-6">
+            🛡️
+          </div>
+          <h3 class="text-3xl sm:text-5xl font-black text-white mb-6 tracking-tight">
+            Sattığınız Her Ürünün Kimliğini ve Garantisini Güvenceye Alın! <br/>
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-orange-300 to-emerald-300">
+              Stok Pratik ile Sahte İadelere ve Belirsizliğe Son Verin.
+            </span>
+          </h3>
+          <p class="text-slate-300 text-base sm:text-lg max-w-2xl mx-auto mb-8">
+            Hemen ücretsiz Stok Pratik hesabınızı açın, seri numaralı garanti ve teknik servis takibini dakikalar içinde başlatın.
+          </p>
+          <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <a 
+              href="/firma-kaydi" 
+              class="w-full sm:w-auto px-8 py-4 rounded-xl bg-gradient-to-r from-amber-500 via-orange-500 to-amber-600 hover:from-amber-400 hover:to-orange-400 text-slate-950 font-black text-lg shadow-xl shadow-amber-500/30 hover:scale-[1.02] transition-all"
+            >
+              🚀 Hemen Ücretsiz Kullanmaya Başla
+            </a>
+            <a 
+              href="https://erp-eticaret.stokpratik.com.tr/giris" 
+              class="w-full sm:w-auto px-8 py-4 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold text-lg border border-slate-700 transition-all"
+            >
+              Giriş Yap
+            </a>
+          </div>
+          <p class="text-xs text-slate-400 mt-6">Kredi kartı gerekmez • Barkod okuyucu ve el terminalleriyle tam uyumlu</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SCHEMA JSON-LD -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Stok Pratik Seri No, IMEI ve Garanti Takip Sistemi",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Web, iOS, Android",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "TRY"
+      },
+      "description": pageDescription
+    })} />
+
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": faqs.map(f => ({
+        "@type": "Question",
+        "name": f.q,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": f.a
+        }
+      }))
+    })} />
+
+  </main>
+</BaseLayout>

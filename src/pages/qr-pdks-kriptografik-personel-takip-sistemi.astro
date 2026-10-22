@@ -1,0 +1,313 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const pageTitle = "Yeni Nesil QR-PDKS: Kriptografik Personel Takip Sistemi | Stok Pratik";
+const pageDescription = "Cihazsız, kopyalanamaz, konum ve cihaz kilitli QR-PDKS. 15 saniyede bir yenilenen kriptografik QR kod ve GPS doğrulaması ile 'arkadaşımın yerine bastım' hilelerine son!";
+
+const securityShields = [
+  {
+    icon: "🛡️",
+    badge: "1. Güvenlik Katmanı",
+    title: "15 Saniyede Bir Yenilenen Kriptografik QR (HMAC-SHA256)",
+    whyNotPaper: "Neden Sabit Kağıt QR Değil?",
+    whyNotPaperDesc: "Duvarda asılı sabit kağıt bir QR kodun fotoğrafını çeken personel, sabah yataktan çıkmadan veya otobüsteyken o fotoğrafı okutup 'işe geldim' gösterebilir.",
+    solution: "Stok Pratik Kiosk ekranındaki QR kod her 15 saniyede bir zaman damgası ve tek kullanımlık kriptografik imza (nonce + HMAC) ile yeniden üretilir. 16. saniyede eski QR kod tamamen geçersiz olur; ekran fotoğrafı çekilip paylaşılamaz!",
+    accent: "border-cyan-500/30 bg-cyan-950/20 text-cyan-400"
+  },
+  {
+    icon: "📍",
+    badge: "2. Güvenlik Katmanı",
+    title: "Metre Hassasiyetinde GPS Coğrafi Çit (Geofence)",
+    whyNotPaper: "Uzaktan Girişleri Nasıl Engeller?",
+    whyNotPaperDesc: "Personel henüz servisteyken veya yolun karşısındaki kafedeyken giriş yapmaya çalışırsa konum doğrulamasına takılır.",
+    solution: "Her şubenizin veya fabrikanızın harita koordinatlarını ve izin verilen yarıçapını (Örn: 50 metre) belirlersiniz. Personel bu dairenin dışındaysa mesafe anında hesaplanır, işlem reddedilir ve yöneticiye 'Konum Dışı Deneme' ihlali düşer.",
+    accent: "border-emerald-500/30 bg-emerald-950/20 text-emerald-400"
+  },
+  {
+    icon: "📱",
+    badge: "3. Güvenlik Katmanı",
+    title: "Cihaz Parmak İzi Kilidi (Device Binding)",
+    whyNotPaper: "'Telefonumu Arkadaşıma Verdim' Hilesine Son!",
+    whyNotPaperDesc: "İşyerindeki bir personel kendi telefonundan çıkış yapıp gelmeyen arkadaşının hesabıyla giriş yapmaya kalkarsa sistem anında yakalar.",
+    solution: "Her personelin hesabı ilk girişte kendi telefonunun donanım kimliğiyle eşleşir ve kilitlenir. Başka bir cihazdan veya arkadaşının telefonundan giriş denendiğinde yetkisiz cihaz uyarısıyla işlem durdurulur.",
+    accent: "border-blue-500/30 bg-blue-950/20 text-blue-400"
+  }
+];
+
+const comparisons = [
+  {
+    feature: "Donanım Maliyeti",
+    classic: "Şube başı 15.000 - 40.000 ₺ (Cihaz, adaptör, turnike)",
+    stokpratik: "0 ₺ (Herhangi bir eski tablet, telefon veya kasiyer PC)"
+  },
+  {
+    feature: "KVKK Uyumluluğu",
+    classic: "Biyometrik veri (parmak izi/yüz) nedeniyle ağır ceza riski",
+    stokpratik: "%100 KVKK Uyumlu (Biyometrik veri toplanmaz)"
+  },
+  {
+    feature: "Hile Engelleme",
+    classic: "Kart devretme veya parmak izi okuma hataları",
+    stokpratik: "15s Kriptografik QR + GPS Konum + Cihaz Kilidi"
+  },
+  {
+    feature: "Kurulum Süresi",
+    classic: "Haftalar süren kablolama, statik IP ve montaj",
+    stokpratik: "Kiosk URL'sini açın, 10 saniyede canlıya alın"
+  },
+  {
+    feature: "Çok Şube & Mobil Saha",
+    classic: "Her şubeye ayrı cihaz ve sunucu bağlantısı gerekir",
+    stokpratik: "Sınırsız şube, mağaza ve saha personeli tek ekranda"
+  }
+];
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <main class="bg-slate-950 text-slate-100 antialiased min-h-screen selection:bg-cyan-500 selection:text-slate-950">
+    
+    <!-- 1. HERO SECTION -->
+    <section class="relative overflow-hidden pt-20 pb-24 lg:pt-28 lg:pb-32 border-b border-slate-800">
+      <div class="absolute inset-0 bg-[radial-gradient(circle_at_top,_var(--tw-gradient-stops))] from-cyan-950/40 via-slate-950 to-slate-950"></div>
+      <div class="absolute top-1/4 right-1/4 w-[500px] h-[300px] bg-cyan-500/10 blur-[120px] rounded-full pointer-events-none"></div>
+
+      <div class="container mx-auto px-4 lg:px-8 relative z-10 max-w-7xl">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+          
+          <!-- Sol: Başlık ve CTA -->
+          <div class="lg:col-span-6 text-center lg:text-left">
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-xs sm:text-sm font-semibold mb-6 backdrop-blur-md">
+              <span class="w-2 h-2 rounded-full bg-cyan-400 animate-ping"></span>
+              ⏱️ QR-PDKS ve İK • Sıfır Donanım Maliyetli Personel Takibi
+            </div>
+
+            <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight text-white leading-[1.1] mb-6">
+              Pahalı Parmak İzi Cihazlarına ve <br/>
+              <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-teal-300 to-emerald-200">
+                "Arkadaşımın Yerine Bastım" Hilelerine Son!
+              </span>
+            </h1>
+
+            <p class="text-base sm:text-lg text-slate-300 mb-8 leading-relaxed max-w-xl mx-auto lg:mx-0">
+              Kapı girişine koyacağınız herhangi bir tableti veya ekranı <strong>/kiosk</strong> moduyla Akıllı PDKS İstasyonuna dönüştürün! Ekrandaki QR kod her <strong>15 saniyede bir kriptografik olarak (HMAC-SHA256)</strong> değişir. Fotoğrafı çekilip paylaşılamaz, GPS sınırları dışından okutulamaz ve başka personelin telefonundan giriş yapılamaz!
+            </p>
+
+            <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+              <a 
+                href="/firma-kaydi" 
+                class="w-full sm:w-auto px-8 py-4 rounded-xl bg-gradient-to-r from-cyan-500 to-teal-500 hover:from-cyan-400 hover:to-teal-400 text-slate-950 font-bold text-base shadow-lg shadow-cyan-500/30 transition-all duration-200 text-center flex items-center justify-center gap-2"
+              >
+                <span>⏱️ QR-PDKS'yi Ücretsiz Başlatın</span>
+              </a>
+              <a 
+                href="https://erp-eticaret.stokpratik.com.tr/giris" 
+                target="_blank"
+                rel="noopener noreferrer"
+                class="w-full sm:w-auto px-8 py-4 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-200 font-semibold text-base border border-slate-700 transition-all duration-200 text-center flex items-center justify-center gap-2"
+              >
+                <span>🔐 Giriş Yap</span>
+              </a>
+            </div>
+
+            <!-- Sosyal Güven Rozetleri -->
+            <div class="mt-10 pt-8 border-t border-slate-800/80 flex flex-wrap items-center justify-center lg:justify-start gap-6 text-xs text-slate-400 font-medium">
+              <div class="flex items-center gap-2">
+                <span class="text-cyan-400 font-bold">✓</span> 0 ₺ Donanım Yatırımı
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="text-cyan-400 font-bold">✓</span> %100 KVKK Uyumlu
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="text-cyan-400 font-bold">✓</span> Sahte Konum & Cihaz Kilidi
+              </div>
+            </div>
+          </div>
+
+          <!-- Sağ: Canlı 15 Saniye Kiosk QR & 3'lü Doğrulama Mockup'ı -->
+          <div class="lg:col-span-6">
+            <div class="relative mx-auto max-w-lg bg-slate-900/90 border border-cyan-500/30 rounded-3xl p-6 sm:p-7 shadow-2xl backdrop-blur-xl">
+              
+              <!-- Üst Kiosk Başlığı & Canlı Geri Sayım Barı -->
+              <div class="flex items-center justify-between border-b border-slate-800 pb-3 mb-4">
+                <div class="flex items-center gap-2">
+                  <span class="w-2.5 h-2.5 rounded-full bg-cyan-400 animate-pulse"></span>
+                  <span class="text-xs font-mono font-bold text-slate-200">Giriş Kiosk Terminali (/kiosk)</span>
+                </div>
+                <div class="flex items-center gap-1.5 px-3 py-1 rounded-full bg-cyan-500/20 text-cyan-300 font-mono text-xs font-bold border border-cyan-500/30">
+                  <span>⏱️ Kalan Süre:</span>
+                  <span class="text-amber-300">08s</span>
+                </div>
+              </div>
+
+              <!-- Ortadaki Dinamik QR Kartı -->
+              <div class="bg-white text-slate-900 rounded-2xl p-4 flex flex-col items-center justify-center mb-4 text-center shadow-inner">
+                <div class="text-[10px] uppercase tracking-wider font-bold text-slate-500 mb-1">
+                  Kriptografik Güvenli QR Kod
+                </div>
+                
+                <!-- QR Görsel Çizimi -->
+                <div class="w-36 h-36 bg-slate-900 rounded-xl p-3 flex flex-col justify-between items-center text-white my-1 border-2 border-cyan-500">
+                  <div class="w-full flex justify-between text-[11px] font-mono tracking-widest">
+                    <span>■ ■ ■</span>
+                    <span>■ ■ ■</span>
+                  </div>
+                  <div class="text-[9px] font-mono text-cyan-400 font-bold bg-slate-800 px-2 py-0.5 rounded">
+                    HMAC-SHA256
+                  </div>
+                  <div class="w-full flex justify-between text-[11px] font-mono tracking-widest">
+                    <span>■ ■ ■</span>
+                    <span>■ ■ ■</span>
+                  </div>
+                </div>
+
+                <div class="text-[9px] font-mono text-slate-500 mt-1">
+                  Nonce: 84a9f201 • İmza: e3b0c44298fc1c149afb...
+                </div>
+              </div>
+
+              <!-- 3 Katmanlı Canlı Doğrulama Sonuçları -->
+              <div class="space-y-1.5 text-xs font-mono bg-slate-950/80 p-3 rounded-2xl border border-slate-800">
+                <div class="flex justify-between items-center text-slate-300">
+                  <span>1. Kriptografik Süre:</span>
+                  <span class="text-emerald-400 font-bold">Zamanında Okutuldu ✓</span>
+                </div>
+                <div class="flex justify-between items-center text-slate-300">
+                  <span>2. GPS Konum Doğrulama:</span>
+                  <span class="text-emerald-400 font-bold">Şube İçi (14m) ✓</span>
+                </div>
+                <div class="flex justify-between items-center text-slate-300">
+                  <span>3. Cihaz Parmak İzi:</span>
+                  <span class="text-emerald-400 font-bold">Kayıtlı Cihaz ✓</span>
+                </div>
+              </div>
+
+              <!-- Onay Bildirimi -->
+              <div class="mt-3 p-2.5 rounded-xl bg-emerald-950/40 border border-emerald-500/20 text-[11px] text-emerald-300 flex items-center justify-between">
+                <span>👤 Ahmet Yılmaz (08:31:14)</span>
+                <span class="font-bold">Giriş Kaydedildi ✓</span>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. HİLEYİ %100 ENGELLEYEN 3 DEMİR KALKAN -->
+    <section class="py-20 lg:py-24 border-b border-slate-800 relative bg-slate-900/30">
+      <div class="container mx-auto px-4 lg:px-8 max-w-7xl">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <div class="text-cyan-400 text-sm font-semibold tracking-wider uppercase mb-3">Güvenlik Mimarisi</div>
+          <h2 class="text-3xl sm:text-4xl font-black text-white tracking-tight mb-4">
+            Suiistimali Sıfırlayan 3 Katmanlı Koruma Kalkanı
+          </h2>
+          <p class="text-slate-400 text-base leading-relaxed">
+            Kağıt QR kodların ve parmak izi kopyalama hilelerinin yarattığı tüm güvenlik açıklarını kapatın.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          {securityShields.map((s) => (
+            <div class="bg-slate-900/80 border border-slate-800 rounded-3xl p-6 sm:p-8 hover:border-cyan-500/40 transition-all duration-300 flex flex-col justify-between group">
+              <div>
+                <div class="flex items-center justify-between mb-4">
+                  <div class="w-12 h-12 rounded-xl bg-cyan-500/10 border border-cyan-500/20 text-2xl flex items-center justify-center">
+                    {s.icon}
+                  </div>
+                  <span class="text-[10px] font-mono font-bold px-2.5 py-1 rounded-full bg-slate-800 text-cyan-300 border border-slate-700">
+                    {s.badge}
+                  </span>
+                </div>
+
+                <h3 class="text-lg font-bold text-white mb-4">{s.title}</h3>
+
+                <div class="p-3 rounded-2xl bg-rose-950/20 border border-rose-500/20 mb-4">
+                  <div class="text-xs font-bold text-rose-300 mb-1">{s.whyNotPaper}</div>
+                  <div class="text-xs text-slate-400 leading-relaxed">{s.whyNotPaperDesc}</div>
+                </div>
+
+                <div class="p-3.5 rounded-2xl bg-slate-950 border border-slate-800">
+                  <div class="text-xs font-bold text-emerald-400 mb-1">Stok Pratik Çözümü:</div>
+                  <div class="text-xs text-slate-300 leading-relaxed">{s.solution}</div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. KARŞILAŞTIRMA TABLOSU -->
+    <section class="py-20 lg:py-24 border-b border-slate-800 relative">
+      <div class="container mx-auto px-4 lg:px-8 max-w-5xl">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <div class="text-cyan-400 text-sm font-semibold tracking-wider uppercase mb-3">Maliyet ve Güvenlik</div>
+          <h2 class="text-3xl sm:text-4xl font-black text-white tracking-tight mb-4">
+            Klasik Parmak İzi Cihazı vs. Stok Pratik QR-PDKS
+          </h2>
+          <p class="text-slate-400 text-base leading-relaxed">
+            On binlerce liralık cihaz masraflarını ve KVKK idari cezalarını sıfıra indirin.
+          </p>
+        </div>
+
+        <div class="overflow-x-auto">
+          <table class="w-full text-left text-sm border-collapse">
+            <thead>
+              <tr class="border-b border-slate-800 text-slate-400 font-mono text-xs uppercase">
+                <th class="py-4 px-4">Kriter</th>
+                <th class="py-4 px-4 text-rose-400">Klasik Parmak İzi / Yüz Tanıma</th>
+                <th class="py-4 px-4 text-cyan-400">Stok Pratik QR-PDKS</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-800/80">
+              {comparisons.map((c) => (
+                <tr class="hover:bg-slate-900/40">
+                  <td class="py-4 px-4 font-bold text-white">{c.feature}</td>
+                  <td class="py-4 px-4 text-slate-400">{c.classic}</td>
+                  <td class="py-4 px-4 text-emerald-300 font-semibold">{c.stokpratik}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. ALT DÖNÜŞÜM CTA BÖLÜMÜ -->
+    <section class="py-20 lg:py-24 relative overflow-hidden">
+      <div class="absolute inset-0 bg-gradient-to-b from-slate-950 via-cyan-950/20 to-slate-950"></div>
+      <div class="container mx-auto px-4 lg:px-8 max-w-5xl relative z-10 text-center">
+        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-xs sm:text-sm font-semibold mb-6">
+          ⏱️ 14 Gün Ücretsiz Deneme • Sıfır Cihaz Maliyeti
+        </div>
+        
+        <h2 class="text-3xl sm:text-5xl font-black text-white tracking-tight mb-6">
+          Bugün Cihaz Satın Almadan Personel Takibine Başlayın!
+        </h2>
+        
+        <p class="text-base sm:text-lg text-slate-300 max-w-2xl mx-auto mb-10 leading-relaxed">
+          Hemen ücretsiz Stok Pratik hesabınızı açın; herhangi bir tablet veya ekranda kiosk modunu başlatarak kopyalanamaz QR-PDKS konforuna bugün geçin.
+        </p>
+
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <a 
+            href="/firma-kaydi" 
+            class="w-full sm:w-auto px-10 py-4 rounded-xl bg-gradient-to-r from-cyan-500 to-teal-500 hover:from-cyan-400 hover:to-teal-400 text-slate-950 font-bold text-base shadow-lg shadow-cyan-500/30 transition-all duration-200"
+          >
+            🚀 Ücretsiz Hesabımı Aç ve Kiosk'u Başlat
+          </a>
+          <a 
+            href="https://erp-eticaret.stokpratik.com.tr/giris" 
+            target="_blank"
+            rel="noopener noreferrer"
+            class="w-full sm:w-auto px-10 py-4 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-200 font-semibold text-base border border-slate-700 transition-all duration-200"
+          >
+            🔐 Sisteme Giriş Yap
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</BaseLayout>

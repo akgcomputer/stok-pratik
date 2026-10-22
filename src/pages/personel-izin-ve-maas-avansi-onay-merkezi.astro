@@ -1,0 +1,408 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const pageTitle = "Personel İzin ve Maaş Avansı Onay Merkezi | Stok Pratik";
+const pageDescription = "Koridorda ayaküstü izin istemelere ve kağıt dilekçe aramaya son! Personel mobilden talep etsin, yönetici tek tıkla onaylasın; izinler SGK puantajına, avanslar kasa ve bordroya otomatik işlensin.";
+
+const leaveTypes = [
+  { code: "Yİ", name: "Yıllık Ücretli İzin", badge: "bg-emerald-500/20 text-emerald-400 border-emerald-500/30", desc: "Kıdem yılına göre kanuni hakedişten düşer, SGK bildirgesinde tam prim sayılır." },
+  { code: "Mİ", name: "Mazeret İzni", badge: "bg-blue-500/20 text-blue-400 border-blue-500/30", desc: "Evlilik (3 gün), babalık (5 gün), vefat (3 gün) gibi özel kanuni mazeret izinleri." },
+  { code: "Üİ", name: "Ücretsiz İzin", badge: "bg-amber-500/20 text-amber-400 border-amber-500/30", desc: "SGK puantajında 'Eksik Gün' kodu ile işaretlenir, bordrodan kesinti yapılır." },
+  { code: "R", name: "İstirahat & Sağlık Raporu", badge: "bg-purple-500/20 text-purple-400 border-purple-500/30", desc: "Doktor raporu görseliyle birlikte sisteme yüklenir, iş göremezlik sürecine dahil olur." }
+];
+
+const advanceSteps = [
+  {
+    step: "01",
+    title: "Personel Mobilden Talep Eder",
+    desc: "Herhangi bir uygulama indirmeden, telefon tarayıcısından tek tıkla avans tutarını ve gerekçesini girer."
+  },
+  {
+    step: "02",
+    title: "Yöneticiye Anlık Bildirim Ulaşır",
+    desc: "Yönetici ekranında personelin mevcut maaşı, bu ayki avans limiti ve kasa/banka nakit durumu aynı anda gösterilir."
+  },
+  {
+    step: "03",
+    title: "Tek Tıkla Onay & Kasa Çıkışı",
+    desc: "Onay verildiği an nakit ödenecekse Merkez Kasadan, havale ise Banka hesabından otomatik gider fişi kesilir."
+  },
+  {
+    step: "04",
+    title: "Maaş Bordrosundan Otomatik Mahsup",
+    desc: "Ay sonunda Excel'de not aramaya gerek kalmaz; ödenen avans personelin net hakedişinden kuruşu kuruşuna düşülür."
+  }
+];
+
+const faqs = [
+  {
+    q: "Personel izin veya avans istemek için telefonuna özel bir uygulama indirmek zorunda mı?",
+    a: "Hayır! Stok Pratik responsive bulut mimarisi sayesinde personel, kendisine tanımlanan güvenli mobil panel linkine telefonunun internet tarayıcısından (Safari, Chrome vb.) girerek saniyeler içinde talebini iletebilir."
+  },
+  {
+    q: "Onaylanan bir izin, ay sonundaki SGK puantaj cetveline nasıl yansır?",
+    a: "Yöneticinin onayladığı izin türü (Yıllık İzin, Rapor, Ücretsiz İzin), ilgili personelin o günkü puantaj kutusuna otomatik olarak resmi SGK koduyla (Yİ, R, Üİ) işlenir. Manuel veri girmeye gerek kalmaz."
+  },
+  {
+    q: "Avans ödemesi şirket bankasından EFT yapıldığında muhasebe bunu takip eder mi?",
+    a: "Kesinlikle! Avans onaylanırken 'Ödeme Yöntemi: Banka Havalesi' ve ilgili banka hesabı seçildiğinde, Stok Pratik Finans modülündeki banka bakiyeniz anında güncellenir ve personelin cari hesabına borç kaydedilir."
+  },
+  {
+    q: "Personelin hak ettiği yıllık izin gününü sistem kıdemine göre kendisi hesaplar mı?",
+    a: "Evet. Personelin işe başlama tarihine göre İş Kanunu'ndaki 14, 20 veya 26 günlük yıllık izin hakediş hakları her çalışma yılında otomatik tanımlanır; onaylanan her gün kalan izin bakiyesinden anında düşer."
+  },
+  {
+    q: "Departman şefi onaylamadan Genel Müdür onayına gitmesini engelleyebilir miyiz?",
+    a: "Evet! Stok Pratik'te hiyerarşik onay akışı kurabilirsiniz. Örneğin Mağaza Müdürü onay verdikten sonra talep İK Direktörüne veya Muhasebeye düşer; yetkisiz onayların önüne geçilir."
+  }
+];
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <main class="bg-slate-950 text-slate-100 antialiased min-h-screen selection:bg-indigo-500 selection:text-white">
+    
+    <!-- 1. HERO SECTION -->
+    <section class="relative overflow-hidden pt-20 pb-24 lg:pt-28 lg:pb-32 border-b border-slate-800">
+      <div class="absolute inset-0 bg-[radial-gradient(circle_at_top,_var(--tw-gradient-stops))] from-indigo-950/40 via-slate-950 to-slate-950"></div>
+      <div class="absolute top-1/4 right-1/4 w-[500px] h-[300px] bg-indigo-500/10 blur-[130px] rounded-full pointer-events-none"></div>
+
+      <div class="container mx-auto px-4 lg:px-8 relative z-10 max-w-7xl">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+          
+          <!-- Sol: Başlık ve CTA -->
+          <div class="lg:col-span-6 text-center lg:text-left">
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 text-xs sm:text-sm font-semibold mb-6 backdrop-blur-md">
+              <span class="w-2 h-2 rounded-full bg-indigo-400 animate-pulse"></span>
+              📝 QR-PDKS ve İK • Mobil Personel Öz-Servis İzin & Maaş Avansı
+            </div>
+
+            <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight text-white leading-[1.1] mb-6">
+              Koridorda İzin İstemelere Son: <br/>
+              <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-purple-300 to-pink-200">
+                Personel Mobilden Talep Etsin, Siz Tek Tıkla Onaylayın!
+              </span>
+            </h1>
+
+            <p class="text-base sm:text-lg text-slate-300 mb-8 leading-relaxed max-w-xl mx-auto lg:mx-0">
+              "Kaç gün yıllık iznim kaldı?", "Geçen ay ne kadar avans çekmişti?" sorularına son. Personel mobilden talebini iletsin, yöneticinin ekranına canlı düşsün. Onaylanan izin anında <strong>SGK Puantajına</strong>, onaylanan avans anında <strong>Kasa ve Maaş Bordrosuna</strong> otomatik işlensin!
+            </p>
+
+            <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 mb-8">
+              <a 
+                href="/firma-kaydi" 
+                class="w-full sm:w-auto px-8 py-4 rounded-xl bg-gradient-to-r from-indigo-600 via-indigo-500 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white font-bold text-base shadow-lg shadow-indigo-600/30 hover:shadow-indigo-600/50 hover:scale-[1.02] transition-all text-center"
+              >
+                🚀 14 Gün Ücretsiz Deneyin
+              </a>
+              <a 
+                href="#dual-preview" 
+                class="w-full sm:w-auto px-8 py-4 rounded-xl bg-slate-900/80 hover:bg-slate-800 text-slate-200 font-semibold text-base border border-slate-700/80 hover:border-slate-600 transition-all text-center flex items-center justify-center gap-2"
+              >
+                <span>📲 Çift Ekranlı Onay Sistemini İncele</span>
+              </a>
+            </div>
+
+            <div class="flex items-center justify-center lg:justify-start gap-6 text-xs text-slate-400">
+              <span class="flex items-center gap-1.5"><svg class="w-4 h-4 text-emerald-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg> Uygulama Kurulumu Gerekmez</span>
+              <span class="flex items-center gap-1.5"><svg class="w-4 h-4 text-emerald-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg> Otomatik Puantaj & Bordro</span>
+            </div>
+          </div>
+
+          <!-- Sağ: Çift Ekranlı İnteraktif Mockup (Mobil Personel + Masaüstü Yönetici) -->
+          <div class="lg:col-span-6" id="dual-preview">
+            <div class="relative grid grid-cols-1 md:grid-cols-2 gap-4">
+              
+              <!-- 1. Ekran: Personel Mobil Ekranı -->
+              <div class="bg-slate-900/90 rounded-2xl border border-indigo-500/30 p-4 shadow-2xl relative overflow-hidden">
+                <div class="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-indigo-500 to-purple-500"></div>
+                <div class="flex items-center justify-between pb-3 border-b border-slate-800 mb-3">
+                  <div class="flex items-center gap-2">
+                    <span class="text-xs bg-indigo-500/20 text-indigo-400 px-2 py-0.5 rounded font-mono font-bold">📱 Personel Ekranı</span>
+                  </div>
+                  <span class="text-[10px] text-slate-400">Can Berk Yılmaz</span>
+                </div>
+
+                <!-- Sekmeler -->
+                <div class="grid grid-cols-2 gap-1 bg-slate-950 p-1 rounded-lg mb-3 text-xs">
+                  <button class="py-1.5 rounded text-center text-slate-400 hover:text-white font-medium">🏝️ İzin Talebi</button>
+                  <button class="py-1.5 rounded text-center bg-indigo-600 text-white font-bold shadow">💵 Maaş Avansı</button>
+                </div>
+
+                <!-- İzin/Avans Özeti -->
+                <div class="bg-slate-950/60 rounded-lg p-2.5 border border-slate-800 mb-3 text-xs">
+                  <div class="flex justify-between items-center text-slate-400 text-[11px] mb-1">
+                    <span>Kalan Yıllık İzin:</span>
+                    <span class="text-emerald-400 font-bold">11 Gün (14 Hak)</span>
+                  </div>
+                  <div class="flex justify-between items-center text-slate-400 text-[11px]">
+                    <span>Bu Ayki Avans Limiti:</span>
+                    <span class="text-indigo-400 font-bold">15.000 ₺</span>
+                  </div>
+                </div>
+
+                <!-- Talep Formu Mockup -->
+                <div class="space-y-2 text-xs">
+                  <div>
+                    <label class="text-[10px] text-slate-400 block mb-0.5">İstenen Avans Tutarı (₺)</label>
+                    <div class="w-full bg-slate-950 border border-indigo-500/40 rounded px-2.5 py-1.5 text-white font-bold text-sm">
+                      5.000,00 ₺
+                    </div>
+                  </div>
+                  <div>
+                    <label class="text-[10px] text-slate-400 block mb-0.5">Talep Gerekçesi</label>
+                    <div class="w-full bg-slate-950 border border-slate-800 rounded px-2.5 py-1 text-slate-300 text-[11px]">
+                      Okul taksiti ödemesi için avans talebi
+                    </div>
+                  </div>
+                  <div>
+                    <label class="text-[10px] text-slate-400 block mb-0.5">Ödeme Tarihi / Şekli</label>
+                    <div class="flex justify-between items-center bg-slate-950 border border-slate-800 rounded px-2 py-1 text-[11px] text-slate-300">
+                      <span>25 Ekim 2026</span>
+                      <span class="text-slate-400 text-[10px]">Banka Havalesi</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="mt-4 pt-3 border-t border-slate-800">
+                  <div class="w-full py-2 bg-emerald-500/20 border border-emerald-500/40 text-emerald-400 text-center rounded-lg text-xs font-bold flex items-center justify-center gap-1.5">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+                    Talep Gönderildi (Onay Bekliyor)
+                  </div>
+                </div>
+              </div>
+
+              <!-- 2. Ekran: Yönetici Onay Masası -->
+              <div class="bg-slate-900/90 rounded-2xl border border-purple-500/30 p-4 shadow-2xl relative overflow-hidden flex flex-col justify-between">
+                <div class="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-purple-500 to-pink-500"></div>
+                <div>
+                  <div class="flex items-center justify-between pb-3 border-b border-slate-800 mb-3">
+                    <div class="flex items-center gap-2">
+                      <span class="text-xs bg-purple-500/20 text-purple-400 px-2 py-0.5 rounded font-mono font-bold">⚡ Yönetici Onay Paneli</span>
+                    </div>
+                    <span class="text-[10px] bg-amber-500/20 text-amber-400 px-1.5 py-0.5 rounded">1 Bekleyen</span>
+                  </div>
+
+                  <!-- Yönetici Doğrulama Kontrolleri -->
+                  <div class="bg-slate-950/80 rounded-xl p-3 border border-slate-800/80 mb-3">
+                    <div class="text-xs font-bold text-white mb-2 flex items-center justify-between">
+                      <span>Can Berk Yılmaz</span>
+                      <span class="text-indigo-400 font-mono">5.000 ₺</span>
+                    </div>
+
+                    <div class="space-y-1 text-[11px] text-slate-300">
+                      <div class="flex items-center gap-1.5 text-emerald-400">
+                        <span>✓</span> <span>Aylık avans limiti uygun (15.000 ₺)</span>
+                      </div>
+                      <div class="flex items-center gap-1.5 text-emerald-400">
+                        <span>✓</span> <span>Geçmiş ödenmemiş avans borcu yok</span>
+                      </div>
+                      <div class="flex items-center gap-1.5 text-emerald-400">
+                        <span>✓</span> <span>Banka bakiyesi ödeme için yeterli</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Onay Aksiyon Butonları -->
+                  <div class="grid grid-cols-2 gap-2 mb-3">
+                    <button class="py-2 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs flex items-center justify-center gap-1 shadow">
+                      <span>✓</span> Tek Tıkla Onayla
+                    </button>
+                    <button class="py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-semibold">
+                      ✕ Reddet / Açıklama
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Otomatik Tetiklenen Süreçler -->
+                <div class="bg-slate-950 rounded-lg p-2.5 border border-purple-500/20 text-[10px] text-slate-400 space-y-1">
+                  <div class="font-bold text-purple-300 text-[11px] mb-1">⚡ Onay Anında Otomatik Gerçekleşenler:</div>
+                  <div class="flex items-center gap-1 text-slate-300">
+                    <span class="text-purple-400">1.</span> Banka / Kasa hesabından 5.000 ₺ gider fişi kesilir.
+                  </div>
+                  <div class="flex items-center gap-1 text-slate-300">
+                    <span class="text-purple-400">2.</span> Ekim 2026 Maaş Bordrosu "Avanslar" sütununa eklenir.
+                  </div>
+                  <div class="flex items-center gap-1 text-slate-300">
+                    <span class="text-purple-400">3.</span> Personele onay SMS ve anlık bildirim gider.
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. İKİ DİJİTAL DÖNGÜ (İZİN DÖNGÜSÜ & AVANS DÖNGÜSÜ) -->
+    <section class="py-20 bg-slate-900/50 border-b border-slate-800">
+      <div class="container mx-auto px-4 lg:px-8 max-w-7xl">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <h2 class="text-xs uppercase tracking-widest text-indigo-400 font-bold mb-3">Sıfır Kağıt • Sıfır İletişim Hatası</h2>
+          <h3 class="text-3xl sm:text-4xl font-extrabold text-white">İzin ve Avans Sürecinde 2 Büyük Otomasyon Döngüsü</h3>
+          <p class="text-slate-400 mt-4 text-base">
+            Personeliniz ile muhasebe ve İK departmanı arasındaki tüm sürtünmeyi ortadan kaldırın. Her talep kurallara bağlı olarak denetlenir ve onaylanır.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          
+          <!-- Döngü 1: İzin Yönetimi -->
+          <div class="bg-slate-950/80 rounded-2xl border border-indigo-500/20 p-8 shadow-xl relative overflow-hidden">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded bg-indigo-500/10 text-indigo-400 text-xs font-bold mb-4">
+              🏝️ DÖNGÜ 1: DİJİTAL İZİN SÜRECİ
+            </div>
+            <h4 class="text-2xl font-bold text-white mb-4">
+              Talep ➔ Yetkili Onayı ➔ Otomatik SGK Puantajı & İmzalı Form
+            </h4>
+            <p class="text-slate-300 text-sm mb-6 leading-relaxed">
+              Personel izin istediğinde geriye dönük izin cetvellerini karıştırmayın. Sistem kalan günleri otomatik hesaplar, onaylanan izin resmi puantaja anında işlenir.
+            </p>
+
+            <div class="space-y-3 mb-6">
+              {leaveTypes.map((item) => (
+                <div class="p-3 bg-slate-900 rounded-xl border border-slate-800/80 flex items-start gap-3">
+                  <span class={`px-2 py-1 rounded text-xs font-mono font-bold border ${item.badge}`}>
+                    {item.code}
+                  </span>
+                  <div>
+                    <h5 class="text-white text-sm font-bold">{item.name}</h5>
+                    <p class="text-slate-400 text-xs mt-0.5">{item.desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div class="p-4 bg-indigo-950/30 rounded-xl border border-indigo-500/30 text-xs text-indigo-200">
+              <strong class="text-white block mb-1">📄 Tek Tıkla Resmi İzin Formu Çıktısı:</strong>
+              İş Kanunu denetimleri için personele imzalatılması gereken "Yıllık İzin Talep ve Onay Formu", tarih ve kalan gün detaylarıyla birlikte tek tıkla A4 PDF olarak yazdırılmaya hazırdır.
+            </div>
+          </div>
+
+          <!-- Döngü 2: Maaş Avansı Yönetimi -->
+          <div class="bg-slate-950/80 rounded-2xl border border-purple-500/20 p-8 shadow-xl relative overflow-hidden">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded bg-purple-500/10 text-purple-400 text-xs font-bold mb-4">
+              💵 DÖNGÜ 2: MAAŞ AVANSI VE FİNANS ENTEGRASYONU
+            </div>
+            <h4 class="text-2xl font-bold text-white mb-4">
+              Talep ➔ Bakiye Kontrolü ➔ Kasa/Banka Çıkışı ➔ Maaş Mahsubu
+            </h4>
+            <p class="text-slate-300 text-sm mb-6 leading-relaxed">
+              Kayıt dışı verilen avansların ay sonunda unutulması, şirket kasasında açık çıkması veya personele mükerrer maaş ödenmesi riski tamamen tarihe karışıyor.
+            </p>
+
+            <div class="space-y-4 mb-6">
+              {advanceSteps.map((step) => (
+                <div class="flex items-start gap-4">
+                  <div class="w-8 h-8 rounded-lg bg-purple-500/20 border border-purple-500/40 text-purple-400 font-mono font-bold flex items-center justify-center text-sm shrink-0">
+                    {step.step}
+                  </div>
+                  <div>
+                    <h5 class="text-white text-sm font-bold">{step.title}</h5>
+                    <p class="text-slate-400 text-xs mt-0.5">{step.desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div class="p-4 bg-purple-950/30 rounded-xl border border-purple-500/30 text-xs text-purple-200">
+              <strong class="text-white block mb-1">⚖️ Kuruşu Kuruşuna Ay Sonu Mutabakatı:</strong>
+              Maaş günü geldiğinde Stok Pratik, personelin toplam hak edişinden o ay çekilen tüm nakit ve banka avanslarını otomatik mahsup eder; net ödenecek bordro tek tıkla mali müşavirinize aktarılır.
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. SIKÇA SORULAN SORULAR (FAQ) -->
+    <section class="py-20 border-b border-slate-800">
+      <div class="container mx-auto px-4 lg:px-8 max-w-4xl">
+        <div class="text-center mb-12">
+          <h2 class="text-xs uppercase tracking-widest text-indigo-400 font-bold mb-2">Merak Edilenler</h2>
+          <h3 class="text-3xl font-extrabold text-white">İzin ve Avans Sistemi Hakkında Sıkça Sorulan Sorular</h3>
+        </div>
+
+        <div class="space-y-4">
+          {faqs.map((faq, index) => (
+            <div class="bg-slate-900/60 rounded-xl border border-slate-800 p-6">
+              <h4 class="text-base font-bold text-white mb-2 flex items-center gap-2">
+                <span class="text-indigo-400 font-mono">Q{index + 1}.</span> {faq.q}
+              </h4>
+              <p class="text-slate-300 text-sm leading-relaxed pl-7">
+                {faq.a}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. DÖNÜŞÜM CTA BÖLÜMÜ -->
+    <section class="py-20 relative overflow-hidden">
+      <div class="absolute inset-0 bg-gradient-to-b from-slate-950 via-indigo-950/30 to-slate-950"></div>
+      <div class="container mx-auto px-4 lg:px-8 max-w-5xl relative z-10 text-center">
+        <div class="p-8 sm:p-14 rounded-3xl bg-slate-900/90 border border-indigo-500/30 shadow-2xl relative backdrop-blur-xl">
+          <div class="w-16 h-16 rounded-2xl bg-indigo-500/20 border border-indigo-500/40 text-indigo-400 flex items-center justify-center text-3xl mx-auto mb-6">
+            📱
+          </div>
+          <h3 class="text-3xl sm:text-5xl font-black text-white mb-6 tracking-tight">
+            İzin Formları ve Avans Makbuzlarıyla Vakit Kaybetmeyin, <br/>
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-purple-300 to-pink-200">
+              Tüm İK Onaylarınızı Cebinize Taşıyın!
+            </span>
+          </h3>
+          <p class="text-slate-300 text-base sm:text-lg max-w-2xl mx-auto mb-8">
+            Stok Pratik Bulut ERP ile personelinizin izin ve avans taleplerini dakikalar içinde dijitalleştirin; SGK puantajınızı ve şirket kasanızı hatasız yönetin.
+          </p>
+          <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <a 
+              href="/firma-kaydi" 
+              class="w-full sm:w-auto px-8 py-4 rounded-xl bg-gradient-to-r from-indigo-600 via-indigo-500 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white font-bold text-lg shadow-xl shadow-indigo-600/30 hover:scale-[1.02] transition-all"
+            >
+              🚀 14 Gün Ücretsiz Başlayın
+            </a>
+            <a 
+              href="https://erp-eticaret.stokpratik.com.tr/giris" 
+              class="w-full sm:w-auto px-8 py-4 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold text-lg border border-slate-700 transition-all"
+            >
+              Giriş Yap
+            </a>
+          </div>
+          <p class="text-xs text-slate-400 mt-6">Kredi kartı gerekmez • 1 dakikada şirket hesabı açın • Canlı destek hazır</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SCHEMA JSON-LD -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Stok Pratik Personel İzin ve Avans Onay Merkezi",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Web, iOS, Android",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "TRY"
+      },
+      "description": pageDescription
+    })} />
+
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": faqs.map(f => ({
+        "@type": "Question",
+        "name": f.q,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": f.a
+        }
+      }))
+    })} />
+
+  </main>
+</BaseLayout>

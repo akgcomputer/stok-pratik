@@ -1,17 +1,17 @@
 ---
-// src/pages/fiyatlar.astro - Stok Pratik Modern SaaS Fiyatlandırma & Modüler Hesaplayıcı
+// src/pages/fiyatlar.astro - Stok Pratik Şeffaf Fiyatlandırma & Modüler Paket Yapılandırma
 import BaseLayout from '../layouts/BaseLayout.astro';
-import PricingCalculator from '../components/PricingCalculator.jsx';
+import ModernPricingCalculator from '../components/ModernPricingCalculator.jsx';
 import pricingData from '../data/pricing.json';
 
-const pageTitle = "Fiyatlar & Akıllı Paket Yapılandırma | Stok Pratik Bulut ERP";
-const pageDescription = "1 Ay ücretsiz tam sürüm deneyin! Kullanmadığınız özelliklere para ödemeyin. İster hazır KOBİ ve ERP paketlerini seçin, ister interaktif modüler hesaplayıcıyla kendi fiyatınızı 30 saniyede belirleyin.";
+const pageTitle = "Fiyatlar & Paketler | Stok Pratik Bulut ERP";
+const pageDescription = "1 Ay ücretsiz tam sürüm deneyin! Kredi kartı gerekmez. Başlangıç, KOBİ Pro ve Kurumsal ERP hazır paketleri veya ihtiyacınıza özel modül seçimiyle net fiyatınızı anında hesaplayın.";
 
 // Structured Data (JSON-LD) for SEO
 const schemaData = {
   "@context": "https://schema.org",
   "@type": "Product",
-  "name": "Stok Pratik Bulut Ön Muhasebe & Modüler ERP",
+  "name": "Stok Pratik Bulut ERP Fiyatlandırma",
   "description": pageDescription,
   "brand": {
     "@type": "Brand",
@@ -19,107 +19,39 @@ const schemaData = {
   },
   "offers": {
     "@type": "AggregateOffer",
-    "priceCurrency": pricingData.currency,
-    "lowPrice": 390,
+    "priceCurrency": "TL",
+    "lowPrice": 490,
     "highPrice": 1990,
     "offerCount": "3",
     "priceValidUntil": "2027-12-31"
   }
 };
 
-const readyPackages = [
-  {
-    id: "baslangic",
-    name: "Başlangıç & Ön Muhasebe",
-    badge: "Mikro İşletmeler & Esnaf",
-    subtitle: "Temel cari, stok, fatura ve kasa takibi için en pratik çözüm.",
-    monthlyPrice: 490,
-    yearlyMonthlyPrice: 390,
-    capacity: "1 Kullanıcı • 1 Depo",
-    isPopular: false,
-    features: [
-      "Stok & Ürün Kartları Yönetimi",
-      "Cari Hesaplar (Müşteri & Tedarikçi)",
-      "Alış ve Satış Faturaları Takibi",
-      "Kasa & Vadesiz Banka Hesapları",
-      "Kritik Stok & Ödeme Hatırlatıcı",
-      "Masaüstü, Tablet ve Mobil Tam Uyum",
-      "Otomatik Bulut Yedekleme & Ücretsiz Güncellemeler"
-    ],
-    ctaText: "1 Ay Ücretsiz Başla",
-    ctaUrl: "/firma-kaydi"
-  },
-  {
-    id: "kobi_pro",
-    name: "KOBİ Pro & E-Ticaret",
-    badge: "⭐ En Çok Tercih Edilen",
-    subtitle: "Pazaryerlerinde ve fiziki mağazasında büyüyen KOBİ'lerin tam donanımlı paketi.",
-    monthlyPrice: 1290,
-    yearlyMonthlyPrice: 990,
-    capacity: "3 Kullanıcı • 2 Depo",
-    isPopular: true,
-    features: [
-      "Başlangıç paketindeki tüm özellikler",
-      "37+ Pazaryeri Entegrasyonu (Trendyol, Amazon, Hepsiburada vb.)",
-      "GİB Onaylı E-Fatura, E-Arşiv & E-İrsaliye",
-      "Hızlı Satış Dokunmatik Barkod POS Ekranı",
-      "Banka Hesap Entegrasyonu & Canlı Ekstre",
-      "B2B Bayi Sipariş Portalı & CariNET Köprüsü",
-      "Çoklu Depo Yönetimi & Şubeler Arası Transfer",
-      "Öncelikli Telefon ve WhatsApp Destek Hattı"
-    ],
-    ctaText: "1 Ay Ücretsiz Başla",
-    ctaUrl: "/firma-kaydi"
-  },
-  {
-    id: "kurumsal_erp",
-    name: "Kurumsal ERP & Üretim",
-    badge: "Fabrika & Büyük İşletmeler",
-    subtitle: "Reçeteli üretim, saha satışı ve gelişmiş WMS depo süreçleri için uçtan uca kontrol.",
-    monthlyPrice: 2490,
-    yearlyMonthlyPrice: 1990,
-    capacity: "10 Kullanıcı • 5 Depo • Sınırsız Şube",
-    isPopular: false,
-    features: [
-      "KOBİ Pro paketindeki tüm özellikler",
-      "Üretim ERP, Ürün Reçetesi (BOM) & Gerçek Maliyet Motoru",
-      "15 Saniyede Dinamik QR-PDKS Personel Takibi",
-      "Yapay Zekâ (Gemini AI) Fiş & Masraf OCR Okuma",
-      "Saha Satış / Plasiyer Araç İçi Mobil Depo Takibi",
-      "Konsolide Patron BI Analiz & Raporlama Kokpiti",
-      "DepodanDirekt Global B2B Toptan Ağı Erişimi",
-      "Özel Müşteri Temsilcisi & VIP Kurulum Danışmanlığı"
-    ],
-    ctaText: "1 Ay Ücretsiz Başla",
-    ctaUrl: "/firma-kaydi"
-  }
-];
-
 const sectoralShortcuts = [
-  { title: "🚗 Oto Servis & Ekspertiz", desc: "Plaka sicil, iş emri, şasi no ve periyodik bakım takibi.", url: "/oto-tamir-yazilimi" },
-  { title: "💎 Kuyumcu & Sarraf", desc: "Gram, milyem, has altın kuru ve anlık canlı fiyat senkronizasyonu.", url: "/kuyumculuk-yazilimi" },
-  { title: "👗 Butik & Tekstil", desc: "Renk-beden-kavela varyant matrisi ve asortili mağaza POS kasası.", url: "/tekstil-ve-magazacilik-yazilimi" },
-  { title: "🍽️ Kafe & Restoran", desc: "Adisyon, masa planı, mutfak ekranı ve reçeteli porsiyon maliyeti.", url: "/kafe-ve-restoran-adisyon-sistemi" },
-  { title: "📦 Toptan & Dağıtım B2B", desc: "Bayi sipariş portalı, vadeli bakiye limiti ve plasiyer araç satışı.", url: "/b2b-toptan-satis-sistemi" },
-  { title: "⚙️ Üretim & İmalat", desc: "Hammadde reçetesi, istasyon takibi ve anlık birim maliyet motoru.", url: "/uretim-erp-urun-agaci-bom-ve-gercek-maliyet-motoru" }
+  { title: "🚗 Oto Servis & Ekspertiz", desc: "Plaka sicil, iş emri, şasi no ve periyodik bakım takibi.", url: "https://stokpratik.com.tr/oto-tamir-yazilimi" },
+  { title: "💎 Kuyumcu & Sarraf", desc: "Gram, milyem, has altın kuru ve anlık canlı fiyat senkronizasyonu.", url: "https://stokpratik.com.tr/kuyumculuk-yazilimi" },
+  { title: "👗 Butik & Tekstil", desc: "Renk-beden-kavela varyant matrisi ve asortili mağaza POS kasası.", url: "https://stokpratik.com.tr/tekstil-ve-magazacilik-yazilimi" },
+  { title: "🍽️ Kafe & Restoran", desc: "Adisyon, masa planı, mutfak ekranı ve reçeteli porsiyon maliyeti.", url: "https://stokpratik.com.tr/kafe-ve-restoran-adisyon-sistemi" },
+  { title: "📦 Toptan & Dağıtım B2B", desc: "Bayi sipariş portalı, vadeli bakiye limiti ve plasiyer araç satışı.", url: "https://stokpratik.com.tr/b2b-toptan-satis-sistemi" },
+  { title: "⚙️ Üretim & İmalat", desc: "Hammadde reçetesi, istasyon takibi ve anlık birim maliyet motoru.", url: "https://stokpratik.com.tr/uretim-erp-urun-agaci-bom-ve-gercek-maliyet-motoru" }
 ];
 
 const faqs = [
   {
     q: "StokPratik'te ek kurulum, sunucu veya gizli bakım ücreti var mı?",
-    a: "Kesinlikle hayır. Stok Pratik %100 bulut tabanlı modern bir sistemdir. Sunucu yatırımı, donanım masrafı, sürüm güncelleme veya kurulum bedeli ödemezsiniz. Seçtiğiniz paket tutarı dışında sürpriz bir maliyet çıkmaz."
+    a: "Kesinlikle hayır. Stok Pratik %100 bulut tabanlı bir sistemdir. Sunucu yatırımı, donanım masrafı, sürüm güncelleme veya kurulum bedeli ödemezsiniz. Seçtiğiniz paket tutarı dışında sürpriz bir maliyet çıkmaz."
   },
   {
     q: "1 Ay ücretsiz kullanım sürecinde kredi kartı gerekiyor mu?",
     a: "Hayır. 1 aylık tam sürüm deneme için kesinlikle kredi kartı bilgisi istemiyoruz. Sisteme 1 dakikada kaydolup firmanızın gerçek verileriyle çalışmaya hemen başlayabilirsiniz."
   },
   {
-    q: "İhtiyacım olduğunda yeni bir modülü sonradan ekleyebilir miyim?",
-    a: "Evet! İşletmeniz büyüdükçe veya yeni bir satış kanalına başladığınızda (örneğin Trendyol pazaryeri, e-irsaliye veya üretim modülü) dilediğiniz modülü tek tıkla aktif edebilirsiniz. Kullanmadığınız modülleri dilediğiniz zaman devre dışı bırakabilirsiniz."
+    q: "Ödemeler nasıl yapılıyor?",
+    a: "Tüm paketlerimizde ve ek modüllerde fiyatlar aylık karşılığı olarak belirtilmiş olup, yıllık peşin olarak faturalandırılır. Böylece yıl boyunca fiyat artışından etkilenmezsiniz."
   },
   {
-    q: "Yıllık ödeme avantajı nedir?",
-    a: "Yıllık peşin ödemelerde paketler ve modüller üzerinde %20'ye varan kalıcı indirim sağlanır. Örneğin aylık 490 ₺ olan çekirdek paket, yıllık alımda ayda sadece 390 ₺'ye gelir."
+    q: "İhtiyacım olduğunda yeni bir modülü sonradan ekleyebilir miyim?",
+    a: "Evet! İşletmeniz büyüdükçe veya yeni bir satış kanalına başladığınızda (örneğin Trendyol pazaryeri, e-irsaliye veya üretim modülü) dilediğiniz modülü tek tıkla aktif edebilirsiniz. Kullanmadığınız modülleri dilediğiniz zaman devre dışı bırakabilirsiniz."
   },
   {
     q: "E-Fatura kontör maliyetleri nedir?",
@@ -135,177 +67,70 @@ const faqs = [
 <BaseLayout title={pageTitle} description={pageDescription}>
   <script type="application/ld+json" set:html={JSON.stringify(schemaData)} />
 
-  <main class="bg-white text-slate-800 antialiased min-h-screen">
+  <main class="bg-slate-50/60 text-slate-800 antialiased min-h-screen">
     
-    <!-- HERO SECTION -->
-    <section class="relative overflow-hidden bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 py-16 sm:py-24 text-white border-b border-slate-800">
-      <div class="absolute inset-0 bg-[radial-gradient(#ef4444_1px,transparent_1px)] [background-size:28px_28px] opacity-15"></div>
-      
-      <div class="container mx-auto px-4 lg:px-8 max-w-5xl text-center relative z-10">
-        
-        <!-- Üst Rozet -->
-        <div class="inline-flex items-center gap-2 px-4 py-1.5 mb-6 rounded-full bg-red-500/15 border border-red-500/30 text-red-300 text-xs sm:text-sm font-bold tracking-wide">
-          <span>🎁 1 Ay Tam Sürüm Ücretsiz Kullanım</span>
-          <span class="w-1.5 h-1.5 rounded-full bg-red-400"></span>
-          <span>Kredi Kartı Gerekmez</span>
-        </div>
+    <!-- EN ÜST ÇARPICI 1 AY ÜCRETSİZ BANNERI -->
+    <div class="w-full bg-gradient-to-r from-red-600 via-rose-600 to-red-600 text-white py-3.5 px-4 text-center shadow-md">
+      <div class="container mx-auto flex items-center justify-center gap-2 flex-wrap">
+        <span class="text-base sm:text-xl font-black tracking-wide">
+          🎁 1 Ay Tam Sürüm Ücretsiz Kullanım — Kredi Kartı Gerekmez!
+        </span>
+        <a 
+          href="https://stokpratik.com.tr/firma-kaydi" 
+          class="inline-flex items-center gap-1 bg-white text-red-600 hover:bg-red-50 font-black px-4 py-1 rounded-full text-xs sm:text-sm shadow-sm transition-transform hover:scale-105"
+        >
+          <span>Hemen Başlayın</span>
+          <span>→</span>
+        </a>
+      </div>
+    </div>
 
-        <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight mb-6 leading-tight">
-          İşletmenize En Uygun Çözümü Seçin, <br class="hidden sm:inline" />
-          <span class="bg-gradient-to-r from-red-400 via-rose-300 to-amber-300 bg-clip-text text-transparent">
-            Sadece Kullandığınızı Ödeyin
-          </span>
+    <!-- BAŞLIK & AÇIKLAMA (SADE, FİYAT ODAKLI) -->
+    <section class="pt-10 pb-6 text-center">
+      <div class="container mx-auto px-4 max-w-4xl">
+        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 tracking-tight mb-3">
+          Şeffaf ve Esnek ERP Fiyatlandırması
         </h1>
-
-        <p class="text-base sm:text-xl text-slate-300 max-w-3xl mx-auto mb-8 leading-relaxed">
-          Kullanmadığınız modüllere fahiş lisans bedelleri ödemeye son! İster popüler hazır KOBİ paketlerimizden birini seçin, ister modüler hesaplayıcıyla kendi özel paketinizi kurun.
+        <p class="text-slate-600 text-sm sm:text-base max-w-2xl mx-auto leading-relaxed">
+          Tüm paketlerimizde yıllık peşin ödeme esastır. İhtiyacınıza uygun hazır paketi seçin veya dilediğiniz ek modülleri işaretleyerek net toplamınızı anında belirleyin.
         </p>
-
-        <!-- Güvence Rozetleri -->
-        <div class="flex items-center justify-center gap-4 sm:gap-8 text-xs sm:text-sm text-slate-300 font-semibold flex-wrap">
-          <span class="flex items-center gap-1.5"><span class="text-emerald-400">✓</span> Sıfır Kurulum Bedeli</span>
-          <span class="flex items-center gap-1.5"><span class="text-emerald-400">✓</span> Yıllık Bakım Ücreti Yok</span>
-          <span class="flex items-center gap-1.5"><span class="text-emerald-400">✓</span> Ücretsiz Veri Aktarım Desteği</span>
-          <span class="flex items-center gap-1.5"><span class="text-emerald-400">✓</span> 7/24 Kesintisiz Destek</span>
-        </div>
-
       </div>
     </section>
 
-    <!-- 3 HAZIR SAAS PAKET KARTI (MİKRO, KOBİ PRO, KURUMSAL ERP) -->
-    <section class="py-16 sm:py-20 -mt-10 relative z-20">
-      <div class="container mx-auto px-4 lg:px-8">
-        
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch max-w-7xl mx-auto">
-          {readyPackages.map((pkg) => (
-            <div class={`rounded-3xl p-8 flex flex-col justify-between transition-all duration-300 ${
-              pkg.isPopular 
-                ? 'bg-white border-2 border-red-500 shadow-2xl shadow-red-600/15 relative lg:-translate-y-4 ring-4 ring-red-500/10' 
-                : 'bg-white border border-slate-200/90 shadow-lg hover:shadow-xl hover:border-slate-300'
-            }`}>
-              
-              <div>
-                <!-- Üst Rozet -->
-                <div class="flex items-center justify-between mb-4">
-                  <span class={`text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full ${
-                    pkg.isPopular ? 'bg-red-600 text-white' : 'bg-slate-100 text-slate-700'
-                  }`}>
-                    {pkg.badge}
-                  </span>
-                  <span class="text-xs font-semibold text-slate-500">
-                    {pkg.capacity}
-                  </span>
-                </div>
-
-                <h3 class="text-2xl font-extrabold text-slate-900 mb-2">
-                  {pkg.name}
-                </h3>
-                
-                <p class="text-slate-600 text-sm leading-relaxed mb-6">
-                  {pkg.subtitle}
-                </p>
-
-                <!-- Fiyat Kutusu -->
-                <div class="bg-slate-50 rounded-2xl p-5 mb-6 border border-slate-100">
-                  <div class="flex items-baseline gap-2">
-                    <span class="text-4xl sm:text-5xl font-black text-slate-900 tracking-tight">
-                      {pkg.yearlyMonthlyPrice} ₺
-                    </span>
-                    <span class="text-sm font-semibold text-slate-500">/ ay</span>
-                  </div>
-                  <div class="text-xs text-slate-500 mt-1 flex items-center justify-between">
-                    <span>Yıllık alımda geçerlidir</span>
-                    <span class="text-slate-400 line-through">Aylık: {pkg.monthlyPrice} ₺</span>
-                  </div>
-                </div>
-
-                <!-- Özellikler Listesi -->
-                <div class="space-y-3 mb-8">
-                  <div class="text-xs font-bold text-slate-400 uppercase tracking-wider">Paket Kapsamı:</div>
-                  <ul class="space-y-2.5 text-sm text-slate-700 m-0 p-0 list-none">
-                    {pkg.features.map((feat) => (
-                      <li class="flex items-start gap-2.5">
-                        <span class={`font-bold mt-0.5 ${pkg.isPopular ? 'text-red-600' : 'text-emerald-600'}`}>✓</span>
-                        <span class="leading-snug">{feat}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-
-              <!-- CTA Buton -->
-              <div>
-                <a 
-                  href={pkg.ctaUrl}
-                  class={`w-full py-4 px-6 rounded-full font-extrabold text-center transition-all flex items-center justify-center gap-2 group text-base ${
-                    pkg.isPopular 
-                      ? 'bg-red-600 hover:bg-red-700 text-white shadow-lg shadow-red-600/30' 
-                      : 'bg-slate-900 hover:bg-slate-800 text-white'
-                  }`}
-                >
-                  <span>{pkg.ctaText}</span>
-                  <span class="group-hover:translate-x-1 transition-transform">→</span>
-                </a>
-                <div class="text-center mt-2.5 text-xs text-slate-400 font-medium">
-                  Kredi kartsız anında kurulum
-                </div>
-              </div>
-
-            </div>
-          ))}
-        </div>
-
-      </div>
-    </section>
-
-    <!-- İNTERAKTİF HESAPLAYICI BÖLÜMÜ -->
-    <section class="py-14 sm:py-20 bg-slate-50 border-y border-slate-200" id="hesaplayici">
-      <div class="container mx-auto px-4 max-w-7xl">
-        
-        <div class="text-center max-w-3xl mx-auto mb-12">
-          <div class="inline-flex items-center gap-2 bg-red-100 text-red-600 font-bold text-xs uppercase tracking-wider px-3.5 py-1.5 rounded-full mb-3">
-            🧮 Esnek & Modüler Yapı
-          </div>
-          <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
-            Kendi Paketinizi Kendiniz Oluşturun
-          </h2>
-          <p class="text-slate-600 text-base sm:text-lg mt-3">
-            Sadece ihtiyacınız olan eklentileri işaretleyin. Açtığınız veya kapattığınız her modülün maliyetini anlık olarak şeffafça hesaplayın.
-          </p>
-        </div>
-
-        <PricingCalculator client:load />
-
+    <!-- ENTEGRE PAKET & MODÜL HESAPLAYICI -->
+    <section class="pb-16 sm:pb-24">
+      <div class="container mx-auto px-4 lg:px-8 max-w-7xl">
+        <ModernPricingCalculator client:load />
       </div>
     </section>
 
     <!-- SEKTÖREL ÇÖZÜM PAKETLERİ HIZLI GEÇİŞ KARTLARI -->
-    <section class="py-16 sm:py-20 bg-white border-b border-slate-200">
+    <section class="py-14 sm:py-20 bg-white border-y border-slate-200">
       <div class="container mx-auto px-4 lg:px-8 max-w-6xl">
         
-        <div class="text-center max-w-3xl mx-auto mb-12">
+        <div class="text-center max-w-3xl mx-auto mb-10">
           <div class="inline-flex items-center gap-2 bg-slate-100 text-slate-700 font-bold text-xs uppercase tracking-wider px-3.5 py-1.5 rounded-full mb-3">
-            🏢 Dikey Uzmanlık
+            🏢 Sektörel Dikey Çözümler
           </div>
-          <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
-            Sektörünüze Özel Hazır Yazılım Çözümleri
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
+            Sektörünüze Özel Hazır Çözümler
           </h2>
-          <p class="text-slate-600 text-base sm:text-lg mt-3">
-            Genel muhasebe programları yerine doğrudan sektörünüzün dinamiklerine göre hazırlanmış modülleri inceleyin.
+          <p class="text-slate-600 text-sm sm:text-base mt-2">
+            İşletmenizin faaliyet alanına özel olarak optimize edilmiş dikey yazılım sayfalarımızı inceleyin.
           </p>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
           {sectoralShortcuts.map((sec) => (
             <a 
               href={sec.url}
-              class="p-6 rounded-2xl border border-slate-200/80 hover:border-red-400 hover:shadow-lg transition-all group bg-slate-50/50 hover:bg-white flex flex-col justify-between"
+              class="p-5 rounded-2xl border border-slate-200 hover:border-red-400 hover:shadow-md transition-all group bg-slate-50/50 hover:bg-white flex flex-col justify-between"
             >
               <div>
-                <h3 class="text-lg font-bold text-slate-900 group-hover:text-red-600 transition-colors mb-2">
+                <h3 class="text-base font-bold text-slate-900 group-hover:text-red-600 transition-colors mb-1.5">
                   {sec.title}
                 </h3>
-                <p class="text-slate-600 text-sm leading-relaxed mb-4">
+                <p class="text-slate-600 text-xs leading-relaxed mb-3">
                   {sec.desc}
                 </p>
               </div>
@@ -320,24 +145,21 @@ const faqs = [
     </section>
 
     <!-- SIKÇA SORULAN SORULAR (SSS) -->
-    <section class="py-16 sm:py-20 bg-slate-50 border-b border-slate-200">
+    <section class="py-14 sm:py-20 bg-slate-50">
       <div class="container mx-auto px-4 max-w-4xl">
         
-        <div class="text-center mb-12">
+        <div class="text-center mb-10">
           <div class="inline-flex items-center gap-2 bg-red-100 text-red-600 font-bold text-xs uppercase tracking-wider px-3.5 py-1.5 rounded-full mb-3">
             ❓ Şeffaf Yanıtlar
           </div>
-          <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
-            Fiyatlandırma Hakkında Sıkça Sorulan Sorular
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
+            Fiyatlandırma Hakkında Merak Edilenler
           </h2>
-          <p class="text-slate-600 text-base mt-2">
-            Aklınıza takılan her konuyu şeffaflıkla yanıtlıyoruz.
-          </p>
         </div>
 
         <div class="space-y-4">
           {faqs.map((faq) => (
-            <div class="bg-white rounded-2xl p-6 border border-slate-200/90 shadow-sm">
+            <div class="bg-white rounded-2xl p-6 border border-slate-200/90 shadow-xs">
               <h3 class="text-base sm:text-lg font-bold text-slate-900 mb-2">
                 {faq.q}
               </h3>
@@ -348,37 +170,6 @@ const faqs = [
           ))}
         </div>
 
-      </div>
-    </section>
-
-    <!-- FINAL CALL TO ACTION -->
-    <section class="py-16 sm:py-20 bg-gradient-to-r from-red-600 via-rose-600 to-red-700 text-white text-center relative overflow-hidden">
-      <div class="container mx-auto px-4 max-w-4xl relative z-10">
-        <h2 class="text-3xl sm:text-5xl font-black tracking-tight mb-4">
-          Stok Pratik'i 1 Ay Boyunca Ücretsiz Deneyin
-        </h2>
-        <p class="text-red-100 text-base sm:text-xl max-w-2xl mx-auto mb-8 leading-relaxed">
-          Kredi kartı gerekmez. Ekibimiz verilerinizi ücretsiz aktarsın, işletmenizin bulut gücüyle büyümesini ilk günden izleyin.
-        </p>
-
-        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-          <a 
-            href="/firma-kaydi"
-            class="w-full sm:w-auto px-9 py-4 bg-white text-red-600 hover:bg-slate-100 font-extrabold rounded-full text-base transition-all shadow-xl shadow-black/20 flex items-center justify-center gap-2 group"
-          >
-            <span>Hemen 1 Ay Ücretsiz Başla</span>
-            <span class="group-hover:translate-x-1 transition-transform">→</span>
-          </a>
-
-          <a 
-            href="https://wa.me/+905325000999?text=Merhaba,%20Stok%20Pratik%20paketleri%20hakkında%20bilgi%20ve%20teklif%20almak%20istiyorum."
-            target="_blank"
-            rel="noopener noreferrer"
-            class="w-full sm:w-auto px-8 py-4 bg-red-800/60 hover:bg-red-800 text-white font-bold rounded-full text-base border border-white/20 transition-all flex items-center justify-center gap-2"
-          >
-            <span>💬 Satış Uzmanıyla WhatsApp'ta Görüşün</span>
-          </a>
-        </div>
       </div>
     </section>
 

@@ -3,234 +3,186 @@
   "currency_symbol": "₺",
   "vat_rate": 0.20,
   "vat_text": "Fiyatlara KDV dahil değildir.",
-  "yearly_discount_badge": "%20'ye Varan İndirim",
-  "support_note": "Tüm paketlerimizde ücretsiz kurulum, kesintisiz bulut yedekleme ve uzman teknik destek dahildir.",
-  "core_package": {
-    "id": "core",
-    "name": "StokPratik Çekirdek Paket",
-    "subtitle": "Temel Ön Muhasebe & ERP Omurgası",
-    "monthly_price": 490,
-    "yearly_monthly_price": 390,
-    "yearly_total_price": 4680,
-    "is_required": true,
-    "included_capacity": {
-      "users": 1,
-      "warehouses": 1
-    },
-    "features": [
-      "Stok & Ürün Kartları Yönetimi",
-      "Depo Giriş / Çıkış ve Kritik Stok Uyarıları",
-      "Cari Hesaplar (Müşteri & Tedarikçi Takibi)",
-      "Alış ve Satış Faturası Kayıtları",
-      "Kasa ve Vadesiz Banka Hesap Takibi",
-      "Temel Finans ve Stok Durum Raporları",
-      "1 Kullanıcı ve 1 Ana Depo Dahil"
-    ]
-  },
-  "categories": [
+  "billing_period_note": "Fiyatlar aylık karşılıkları gösterilmekte olup, yıllık peşin olarak faturalandırılır.",
+  "packages": [
     {
-      "id": "finans",
-      "title": "Finans & Muhasebe Eklentileri",
-      "description": "Nakit akışı, yasal e-belgeler ve akıllı gider yönetimi",
-      "icon": "💰"
+      "id": "baslangic",
+      "name": "Başlangıç & Ön Muhasebe",
+      "badge": "Mikro İşletmeler & Esnaf",
+      "monthly_price": 490,
+      "yearly_total_price": 5880,
+      "capacity": "1 Kullanıcı • 1 Depo",
+      "is_popular": false,
+      "included_modules": ["depodandirekt"],
+      "features": [
+        "Stok & Ürün Kartları Yönetimi",
+        "Cari Hesaplar (Müşteri & Tedarikçi)",
+        "Alış ve Satış Faturaları Takibi",
+        "Kasa & Vadesiz Banka Hesapları",
+        "DepodanDirekt Global B2B Toptan Ağı Erişimi",
+        "Kritik Stok & Ödeme Hatırlatıcı",
+        "Masaüstü, Tablet ve Mobil Tam Uyum",
+        "Otomatik Bulut Yedekleme & Ücretsiz Destek"
+      ]
     },
     {
-      "id": "eticaret",
-      "title": "E-Ticaret, Tedarik & Perakende",
-      "description": "Çok kanallı satış, pazaryeri senkronizasyonu ve kasa çözümleri",
-      "icon": "🛍️"
+      "id": "kobi_pro",
+      "name": "KOBİ Pro & E-Ticaret",
+      "badge": "⭐ En Çok Tercih Edilen",
+      "monthly_price": 990,
+      "yearly_total_price": 11880,
+      "capacity": "3 Kullanıcı • 2 Depo",
+      "is_popular": true,
+      "included_modules": ["gib_edonusum", "hizli_pos", "depodandirekt"],
+      "features": [
+        "Başlangıç paketindeki tüm özellikler",
+        "GİB Onaylı E-Fatura, E-Arşiv & E-İrsaliye",
+        "Hızlı Satış Dokunmatik Barkod POS",
+        "DepodanDirekt Global B2B Toptan Ağı Erişimi",
+        "Banka Entegrasyonu & Canlı Ekstre",
+        "B2B Bayi Sipariş Portalı & CariNET Köprüsü",
+        "Çoklu Depo Yönetimi & Şubeler Arası Transfer",
+        "Öncelikli Telefon ve WhatsApp Destek Hattı",
+        "💡 37+ Pazaryeri Entegrasyonu isteğe bağlı adet başı eklenebilir"
+      ]
     },
     {
-      "id": "uretim_saha",
-      "title": "Saha, Üretim & İnsan Kaynakları",
-      "description": "Reçeteli üretim, personel puantajı ve araçlı saha satışı",
-      "icon": "🏭"
-    },
-    {
-      "id": "kapasite",
-      "title": "Kapasite & Ekstra Tanımlar",
-      "description": "Ek kullanıcı lisansları ve ilave şube/depo ihtiyaçları",
-      "icon": "⚡"
+      "id": "kurumsal_erp",
+      "name": "Kurumsal ERP & Üretim",
+      "badge": "Fabrika & Büyük İşletmeler",
+      "monthly_price": 1990,
+      "yearly_total_price": 23880,
+      "capacity": "10 Kullanıcı • 5 Depo • Sınırsız Şube",
+      "is_popular": false,
+      "included_modules": ["gib_edonusum", "hizli_pos", "depodandirekt", "uretim_mrp", "masraf_ocr", "pdks"],
+      "features": [
+        "KOBİ Pro paketindeki tüm özellikler",
+        "Üretim ERP & Reçete (Maliyet Motoru)",
+        "15 Sn Dinamik QR-PDKS Personel Takibi (5 Kişi Dahil)",
+        "Yapay Zekâ (Gemini AI) Fiş & Masraf OCR Okuma",
+        "DepodanDirekt Global B2B Toptan Ağı Erişimi",
+        "Saha Satış / Plasiyer Araç İçi Mobil Depo Desteği",
+        "Konsolide Patron BI Analiz & Raporlama Kokpiti",
+        "Özel Müşteri Temsilcisi & VIP Kurulum Danışmanlığı"
+      ]
     }
   ],
   "modules": [
     {
-      "id": "cek_senet",
-      "category": "finans",
-      "name": "Çek & Senet Yönetimi",
-      "description": "Müşteri çeki/senedi, ciro, tahsilat, teminat ve vade/risk takibi.",
-      "icon": "📜",
-      "type": "toggle",
-      "monthly_price": 250,
-      "yearly_monthly_price": 200,
-      "badge": "Finansal Güvence"
+      "id": "masraf_ocr",
+      "name": "Gelir/Gider & Akıllı Masraf (AI OCR)",
+      "icon": "🤖",
+      "price": 250,
+      "type": "toggle"
     },
     {
-      "id": "masraf_ocr",
-      "category": "finans",
-      "name": "Gelir/Gider & Akıllı Masraf (AI OCR)",
-      "description": "Şirket giderleri, personel masraf fişleri ve Yapay Zekâ ile fotoğraftan otomatik fiş okuma.",
-      "icon": "🤖",
-      "type": "toggle",
-      "monthly_price": 250,
-      "yearly_monthly_price": 200,
-      "badge": "Yapay Zekâ Destekli"
+      "id": "cek_senet",
+      "name": "Çek & Senet Yönetimi",
+      "icon": "📜",
+      "price": 250,
+      "type": "toggle"
     },
     {
       "id": "gib_edonusum",
-      "category": "finans",
-      "name": "GİB e-Dönüşüm Modülü",
-      "description": "e-Fatura, e-Arşiv, e-İrsaliye, e-SMM ve e-Müstahsil doğrudan entegrasyonu.",
+      "name": "GİB E-Dönüşüm (E-Fatura, E-Arşiv, E-İrsaliye)",
       "icon": "🧾",
-      "type": "toggle",
-      "monthly_price": 190,
-      "yearly_monthly_price": 150,
-      "badge": "Resmi Standart"
-    },
-    {
-      "id": "demirbas",
-      "category": "finans",
-      "name": "Demirbaş & Sabit Kıymet",
-      "description": "Şirket varlıkları, personele zimmet takibi ve VUK amortisman hesaplama.",
-      "icon": "🏷️",
-      "type": "toggle",
-      "monthly_price": 190,
-      "yearly_monthly_price": 150
+      "price": 250,
+      "type": "toggle"
     },
     {
       "id": "pazaryeri",
-      "category": "eticaret",
-      "name": "Pazaryeri Entegrasyonu",
-      "description": "Trendyol, Hepsiburada, N11 vb. çift yönlü canlı stok/fiyat, termal kargo barkodu, otomatik fatura ve kâr mutabakatı.",
+      "name": "37+ Pazaryeri Entegrasyonu (Trendyol, Amazon vb.)",
       "icon": "🌐",
+      "price": 250,
       "type": "quantity",
-      "unit_label": "Mağaza Başı",
+      "unit_label": "Pazaryeri Başı",
       "min": 1,
-      "default": 1,
-      "monthly_price": 490,
-      "yearly_monthly_price": 390,
-      "badge": "Çok Satan"
-    },
-    {
-      "id": "depodandirekt",
-      "category": "eticaret",
-      "name": "DepodanDirekt B2B Tedarik",
-      "description": "Binlerce hazır toptan ürüne erişim, tek tıkla ERP ve pazaryerlerine aktarım, otomatik sipariş yönetimi.",
-      "icon": "📦",
-      "type": "toggle",
-      "monthly_price": 590,
-      "yearly_monthly_price": 490,
-      "badge": "Global Toptan E-Ticaret"
+      "default": 1
     },
     {
       "id": "hizli_pos",
-      "category": "eticaret",
-      "name": "Hızlı Perakende POS & Kasa",
-      "description": "Barkod okuyucu ve terazi uyumlu dokunmatik kasa ekranı, parçalı tahsilat ve hızlı fiş basımı.",
-      "icon": "🖥️",
-      "type": "toggle",
-      "monthly_price": 290,
-      "yearly_monthly_price": 240
+      "name": "Hızlı Satış Dokunmatik Barkod POS",
+      "icon": "🛒",
+      "price": 250,
+      "type": "toggle"
     },
     {
       "id": "uretim_mrp",
-      "category": "uretim_saha",
-      "name": "Üretim & MRP Modülü",
-      "description": "Ürün reçeteleri (BOM), hammadde sarfiyatı, üretim iş emirleri, fire ve maliyet analizi.",
+      "name": "Üretim ERP & Reçete (Maliyet Motoru)",
       "icon": "⚙️",
-      "type": "toggle",
-      "monthly_price": 690,
-      "yearly_monthly_price": 550,
-      "badge": "İmalatçılara Özel"
+      "price": 490,
+      "type": "toggle"
     },
     {
       "id": "pdks",
-      "category": "uretim_saha",
-      "name": "PDKS & Personel Puantaj",
-      "description": "QR/konum ile giriş-çıkış, vardiya, mesai, izin ve maaş puantaj yönetimi.",
+      "name": "15 Sn Dinamik QR-PDKS (Personel Takip)",
       "icon": "👥",
-      "type": "base_plus_quantity",
-      "base_monthly_price": 190,
-      "base_yearly_monthly_price": 150,
+      "price": 100,
+      "type": "quantity",
       "unit_label": "Personel Başı",
-      "unit_monthly_price": 35,
-      "unit_yearly_monthly_price": 25,
       "min": 1,
-      "default": 5,
-      "badge": "QR / Mobil Takip"
+      "default": 5
     },
     {
-      "id": "plasiyer",
-      "category": "uretim_saha",
-      "name": "Mobil Saha Satış (Plasiyer)",
-      "description": "Plaka bazlı araç stoğu, sıcak/soğuk saha satışı, mobil tahsilat ve rota takibi.",
-      "icon": "🚚",
-      "type": "quantity",
-      "unit_label": "Araç / Plasiyer Başı",
-      "min": 1,
-      "default": 1,
-      "monthly_price": 390,
-      "yearly_monthly_price": 320,
-      "badge": "Saha Ekipleri"
+      "id": "depodandirekt",
+      "name": "DepodanDirekt B2B Toptan Tedarik Portalı",
+      "icon": "📦",
+      "price": 250,
+      "type": "toggle"
+    },
+    {
+      "id": "demirbas",
+      "name": "Demirbaş & Sabit Kıymet / Amortisman",
+      "icon": "🏷️",
+      "price": 100,
+      "type": "toggle"
     },
     {
       "id": "ek_kullanici",
-      "category": "kapasite",
       "name": "Ek Kullanıcı Lisansı",
-      "description": "Ana paketteki 1 kullanıcıya ilave her yeni sistem kullanıcısı için.",
       "icon": "👤",
+      "price": 100,
       "type": "quantity",
       "unit_label": "Kullanıcı Başı",
       "min": 1,
-      "default": 1,
-      "monthly_price": 120,
-      "yearly_monthly_price": 95
+      "default": 1
     },
     {
       "id": "ek_depo",
-      "category": "kapasite",
       "name": "Ek Şube / Depo Lisansı",
-      "description": "Ana depoya ilave her yeni fiziksel mağaza, şube veya depo için.",
       "icon": "🏢",
+      "price": 250,
       "type": "quantity",
-      "unit_label": "Şube/Depo Başı",
+      "unit_label": "Depo Başı",
       "min": 1,
-      "default": 1,
-      "monthly_price": 150,
-      "yearly_monthly_price": 120
-    }
-  ],
-  "presets": [
-    {
-      "id": "on_muhasebe",
-      "name": "Sadece Ön Muhasebe",
-      "icon": "📊",
-      "description": "KOBİ ve mikro işletmeler için temel finans, stok ve cari omurga.",
-      "module_ids": []
+      "default": 1
     },
     {
-      "id": "eticaret_pazaryeri",
-      "name": "E-Ticaret & Pazaryeri",
-      "icon": "🛍️",
-      "description": "Trendyol & Hepsiburada satan işletmelere tam entegrasyon ve resmi e-fatura.",
-      "module_ids": ["gib_edonusum", "pazaryeri"],
-      "quantities": { "pazaryeri": 1 }
+      "id": "ek_magaza",
+      "name": "Ek Mağaza Lisansı",
+      "icon": "🏬",
+      "price": 250,
+      "type": "quantity",
+      "unit_label": "Mağaza Başı",
+      "min": 1,
+      "default": 1
     },
     {
-      "id": "dropshipping",
-      "name": "DepodanDirekt B2B Tedarik",
-      "badge": "Global Toptan E-Ticaret",
-      "icon": "📦",
-      "description": "Global toptan ürünlere erişim, B2B hazır katalog ve pazaryeri aktarımı.",
-      "module_ids": ["gib_edonusum", "pazaryeri", "depodandirekt"],
-      "quantities": { "pazaryeri": 1 }
+      "id": "plasiyer",
+      "name": "Saha Satış / Plasiyer Araç İçi Mobil Depo",
+      "icon": "🚚",
+      "price": 250,
+      "type": "quantity",
+      "unit_label": "Plasiyer Başı",
+      "min": 1,
+      "default": 1
     },
     {
-      "id": "uretim_fabrika",
-      "name": "Üretim & Fabrika",
-      "icon": "🏭",
-      "description": "Hammadde sarfiyatı, reçeteler, sabit kıymet ve otomatik yapay zekâ masraf takibi.",
-      "module_ids": ["uretim_mrp", "demirbas", "masraf_ocr"]
+      "id": "sayim_modulu",
+      "name": "Sayım Modülü",
+      "icon": "📋",
+      "price": 250,
+      "type": "toggle"
     }
   ]
 }

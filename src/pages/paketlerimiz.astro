@@ -1,61 +1,48 @@
 ---
+// src/pages/paketlerimiz.astro - Stok Pratik Paketler ve Modül Yetenekleri (Fiyatsız Özellik Vitrini)
 import BaseLayout from '../layouts/BaseLayout.astro';
 import pricingData from '../data/pricing.json';
 
-const pageTitle = "Paketlerimiz & Modül Özellikleri | Stok Pratik Modüler ERP";
-const pageDescription = "Stok Pratik'in tek çekirdek paket ve seçmeli modüllerden oluşan esnek yapısını keşfedin. İhtiyacınız olan modülleri seçin, işletmenizi gereksiz yazılım maliyetlerinden kurtarın.";
+const pageTitle = "Paketlerimiz & Modül Yetenekleri | Stok Pratik Bulut ERP";
+const pageDescription = "Stok Pratik'in 3 ana paketi ve zengin modüler ekosistemini keşfedin. Başlangıç, KOBİ Pro ve Kurumsal ERP çözümleriyle işletmenize en uygun mimariyi inceleyin.";
 
-const { core_package, categories, modules, currency_symbol, vat_text } = pricingData;
+const { packages, modules } = pricingData;
 
-// Extended detailed feature checklists for each module in /paketlerimiz
+// Her modül için detaylı yetenek ve özellik kontrol listesi (Fiyatsız vitrin için)
 const detailedModuleSpecs: Record<string, string[]> = {
-  cek_senet: [
-    "Müşteri ve tedarikçi çek/senet bordroları",
-    "Tahsilata veya teminata bankaya verme işlemleri",
-    "Çek ciro etme ve parçalı takip mekanizması",
-    "Otomatik vade ve risk kontrolü",
-    "Vadesi yaklaşan kıymetli evraklar için bildirim sistemi"
-  ],
   masraf_ocr: [
-    "Cep telefonu kamerasıyla fiş ve fatura tarama",
-    "Yapay Zekâ ile KDV, matrah, tarih ve firma unvanı okuma",
-    "Personel masraf harcama bildirimleri ve onay süreci",
-    "Kategori bazlı masraf ve şirket gider raporlaması",
-    "Tek tıkla gider kaydını muhasebeye ve kasaya işleme"
+    "Akıllı telefon kamerasıyla anında fiş ve fatura tarama",
+    "Yapay Zekâ (Gemini AI) ile KDV, matrah, tarih ve firma unvanını hatasız okuma",
+    "Personel masraf harcama bildirimleri ve departman onay mekanizması",
+    "Kategori bazlı gider analizi ve bütçe aşım alarmları",
+    "Tek tıkla gider kaydını muhasebeye, kasaya ve cariye işleme"
+  ],
+  cek_senet: [
+    "Müşteri ve tedarikçi çek/senet bordroları yönetimi",
+    "Bankaya tahsilata veya teminata verme işlemleri",
+    "Çek ciro etme ve parçalı takip mekanizması",
+    "Otomatik vade ve risk kontrol takvimi",
+    "Vadesi yaklaşan kıymetli evraklar için anlık bildirim sistemi"
   ],
   gib_edonusum: [
     "GİB onaylı resmi e-Fatura ve e-Arşiv faturası düzenleme",
-    "Gelen ticari ve temel e-faturaları sisteme otomatik çekme",
-    "Resmi e-İrsaliye ve sevk süreçleri yönetimi",
+    "Gelen ticari ve temel e-faturaları sisteme otomatik çekme ve onaylama",
+    "Resmi e-İrsaliye ve araç/sevk süreçleri yönetimi",
     "Serbest Meslek Makbuzu (e-SMM) ve e-Müstahsil makbuzu",
     "Müşterilere e-posta veya SMS ile otomatik fatura linki iletimi"
   ],
-  demirbas: [
-    "Şirket demirbaş ve sabit kıymet kartları oluşturma",
-    "Personel veya şubeye zimmet ataması ve takip tutanağı",
-    "VUK mevzuatına uygun doğrusal ve azalan amortisman hesabı",
-    "Bakım, onarım ve garanti süreleri takibi",
-    "Demirbaş elden çıkarma veya hurdaya ayırma muhasebe kaydı"
-  ],
   pazaryeri: [
-    "Trendyol, Hepsiburada, N11 ve Çiçeksepeti çift yönlü canlı senkronizasyon",
+    "Trendyol, Hepsiburada, Amazon, N11 ve Çiçeksepeti çift yönlü canlı senkronizasyon",
     "Ortak stok havuzu ve pazaryerlerine özel kritik emniyet stoğu",
     "Tek tıkla 100x150 mm termal kargo barkodu ve sevk etiketi basımı",
     "Sipariş anında otomatik e-fatura kesilip pazaryeri sistemine iletilmesi",
-    "İade masası ile eksik/kusurlu gelen siparişlerin kontrolü",
+    "İade masası ile eksik/kusurlu gelen siparişlerin barkodlu kontrolü",
     "Pazaryeri komisyon ve kargo kesintileri sonrası net hakediş (kâr) analizi",
     "Müşteri soru-cevaplarını ERP panelinden anlık yanıtlama"
   ],
-  depodandirekt: [
-    "Binlerce hazır toptan ürüne sıfır sermaye ile erişim (Global Toptan E-Ticaret)",
-    "Tek tıkla ürünleri kendi ERP stoğunuza ve pazaryeri mağazalarınıza yükleme",
-    "Toptancı depolarındaki anlık stok ve fiyat değişimlerinin otomatik güncellenmesi",
-    "Satış gerçekleştikçe siparişin toptancıya otomatik iletilmesi",
-    "Kendi logonuz ve faturanız ile müşteriye doğrudan depodan kargolama"
-  ],
   hizli_pos: [
-    "Dokunmatik ekran ve barkod okuyucu destekli saniyeler içinde satış",
-    "Barkodsuz popüler ürünler için hızlı dokunmatik butonlar",
+    "Dokunmatik ekran ve barkod okuyucu destekli saniyeler içinde perakende satış",
+    "Barkodsuz popüler ürünler için hızlı dokunmatik resimli butonlar",
     "Parçalı tahsilat (Nakit + Kredi Kartı + Açık Hesap bölebilme)",
     "Elektronik terazi ve barkodlu terazi etiketleri entegrasyonu",
     "Müşteri ekranı (fiyat gör) desteği ve gün sonu Z raporu / kasa mutabakatı"
@@ -68,11 +55,40 @@ const detailedModuleSpecs: Record<string, string[]> = {
     "Gelecek siparişlere göre hammadde ihtiyaç (MRP) planlaması"
   ],
   pdks: [
-    "Karekod (QR Kod) veya GPS lokasyon doğrulaması ile mobil giriş-çıkış",
+    "15 Saniyede dinamik değişen Karekod (QR Kod) veya GPS ile mobil giriş-çıkış",
     "Vardiya planlama, esnek çalışma saatleri ve mola kontrolleri",
     "Haftalık ve aylık fazla mesai, eksik gün ve gecikme puantajı",
     "Personel yıllık izin, rapor ve mazeret izin onay mekanizması",
     "Ay sonunda muhasebeye hazır bordro puantaj dökümü aktarımı"
+  ],
+  depodandirekt: [
+    "Binlerce hazır toptan ürüne sıfır sermaye ile erişim (Global B2B Toptan Ağı)",
+    "Tek tıkla ürünleri kendi ERP stoğunuza ve pazaryeri mağazalarınıza yükleme",
+    "Toptancı depolarındaki anlık stok ve fiyat değişimlerinin otomatik güncellenmesi",
+    "Satış gerçekleştikçe siparişin toptancıya otomatik iletilmesi",
+    "Kendi logonuz ve faturanız ile müşteriye doğrudan depodan kargolama"
+  ],
+  demirbas: [
+    "Şirket demirbaş ve sabit kıymet kartları oluşturma",
+    "Personel veya şubeye zimmet ataması ve takip tutanağı",
+    "VUK mevzuatına uygun doğrusal ve azalan amortisman hesabı",
+    "Bakım, onarım ve garanti süreleri takibi",
+    "Demirbaş elden çıkarma veya hurdaya ayırma muhasebe kaydı"
+  ],
+  ek_kullanici: [
+    "Ana paketteki kullanıcılara ilave sınırsız yeni personel yetkilendirmesi",
+    "Modül, menü, işlem ve buton bazlı detaylı rol yetki matrisi",
+    "Kullanıcı bazlı log ve yapılan işlem geçmişi kayıtları"
+  ],
+  ek_depo: [
+    "Ana depoya ilave yeni bölgesel depo, lojistik merkezi veya antrepo tanımı",
+    "Depolar arası sevk irsaliyesi ve transfer onay mekanizması",
+    "Depo bazında anlık stok miktarları ve kritik seviye kontrolleri"
+  ],
+  ek_magaza: [
+    "Fiziksel perakende mağazaları ve AVM şubeleri için bağımsız kasa/stok yönetimi",
+    "Mağazalar arası ürün transferi ve konsolide ciro karşılaştırması",
+    "Mağaza personeli yetkilendirmesi ve gün sonu kasa kapama takibi"
   ],
   plasiyer: [
     "Her ticari aracın sisteme bağımsız mobil şube/depo olarak tanımlanması",
@@ -81,15 +97,11 @@ const detailedModuleSpecs: Record<string, string[]> = {
     "Bluetooth mobil termal yazıcı ile araç başında fiş ve irsaliye basımı",
     "Müşteri ziyaret rotaları ve anlık saha tahsilat makbuzu düzenleme"
   ],
-  ek_kullanici: [
-    "Ana paketteki 1 kullanıcıya ilave sınırsız yeni personel yetkilendirmesi",
-    "Modül, işlem ve buton bazlı detaylı rol yetki yönetimi",
-    "Kullanıcı bazlı log ve yapılan işlem geçmişi kayıtları"
-  ],
-  ek_depo: [
-    "Ana depoya ilave yeni fiziksel mağaza, AVM şubesi veya bölgesel depo tanımı",
-    "Şubeler/depolar arası sevk irsaliyesi ve stok transfer onayları",
-    "Şube bazında bağımsız kâr/zarar ve ciro performansı raporlaması"
+  sayim_modulu: [
+    "Kamera veya el terminali ile hızlı ve hatasız barkodlu depo sayımı",
+    "Sistem stoğu ile fiziksel sayım arasındaki farkların anında raporlanması",
+    "Sayım fazlası ve sayım eksiği fişlerinin tek tıkla otomatik oluşturulması",
+    "Kör sayım (personelin mevcut miktarı görmeden sayması) desteği"
   ]
 };
 ---
@@ -97,7 +109,7 @@ const detailedModuleSpecs: Record<string, string[]> = {
 <BaseLayout title={pageTitle} description={pageDescription}>
   <main class="bg-slate-50 text-slate-800 antialiased min-h-screen">
     
-    <!-- HERO -->
+    <!-- HERO HEADER -->
     <section class="relative overflow-hidden bg-gradient-to-b from-slate-900 via-slate-900 to-slate-950 py-20 text-white border-b border-slate-800">
       <div class="container mx-auto px-4 max-w-5xl text-center relative z-10">
         <span class="inline-block px-4 py-1.5 mb-6 text-sm font-semibold tracking-wide text-blue-300 bg-blue-950/80 border border-blue-500/30 rounded-full">
@@ -107,7 +119,7 @@ const detailedModuleSpecs: Record<string, string[]> = {
           <span class="text-red-500">Paketlerimiz ve</span> <span class="bg-gradient-to-r from-blue-400 to-indigo-300 bg-clip-text text-transparent">Modül Yetenekleri</span>
         </h1>
         <p class="text-base sm:text-xl text-slate-300 max-w-3xl mx-auto mb-8 leading-relaxed">
-          Stok Pratik'te karmaşık ve pahalı paket dayatmaları yok! İşletmenizin çekirdek ERP omurgasını kurun, büyüdükçe ihtiyacınız olan eklentileri tek tıkla sisteminize dahil edin.
+          Stok Pratik'te karmaşık ve gereksiz maliyet dayatmaları yok! İşletmenizin ölçeğine uygun ana paketi seçin, büyüdükçe ihtiyacınız olan yetenek modüllerini tek tıkla sisteminize dahil edin.
         </p>
         
         <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
@@ -118,165 +130,191 @@ const detailedModuleSpecs: Record<string, string[]> = {
             Fiyat Hesaplayıcıya Git (Kendi Paketini Kur) →
           </a>
           <a
-            href="/firma-kaydi"
+            href="https://stokpratik.com.tr/firma-kaydi"
             class="w-full sm:w-auto px-8 py-4 bg-white/10 hover:bg-white/20 text-white font-semibold text-base rounded-2xl border border-white/20 transition duration-200 text-center"
           >
-            14 Gün Ücretsiz Başla
+            🎁 1 Ay Ücretsiz Kullan
           </a>
         </div>
       </div>
     </section>
 
-    <!-- SECTION 1: CORE PACKAGE (ZORUNLU ÇEKİRDEK) -->
+    <!-- SECTION 1: 3 ANA PAKET VİTRİNİ (FİYATSIZ - ÖZELLİK VE KAPASİTE ODAKLI) -->
     <section class="py-16 sm:py-20">
       <div class="container mx-auto px-4 max-w-6xl">
-        <div class="bg-gradient-to-br from-slate-900 via-slate-800 to-indigo-950 text-white rounded-3xl p-8 sm:p-12 shadow-2xl border border-indigo-500/30 relative overflow-hidden">
-          <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-8 pb-8 border-b border-slate-700/80">
-            <div>
-              <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-blue-500/20 text-blue-300 border border-blue-400/30 text-xs font-bold uppercase tracking-wider mb-3">
-                🔒 İşletmenizin Temel Omurgası
-              </div>
-              <h2 class="text-3xl sm:text-4xl font-black text-white">
-                {core_package.name}
-              </h2>
-              <p class="text-slate-300 text-base mt-2 max-w-2xl">
-                {core_package.subtitle}. Her işletmenin stok, cari, finans ve satış yönetimini eksiksiz yürütebilmesi için özel olarak tasarlandı.
-              </p>
-            </div>
+        <div class="text-center max-w-3xl mx-auto mb-14">
+          <span class="text-xs font-black uppercase tracking-wider text-blue-600 block mb-2">Çözüm Yelpazemiz</span>
+          <h2 class="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight">
+            İşletmenizin Ölçeğine Uygun 3 Ana Çözüm
+          </h2>
+          <p class="text-slate-600 text-base mt-3">
+            Esnaf ve mikro işletmelerden, çok şubeli fabrikalara kadar her seviyeye özel tasarlanmış optimize altyapı.
+          </p>
+        </div>
 
-            <div class="lg:text-right bg-slate-800/90 lg:bg-transparent p-6 lg:p-0 rounded-2xl border border-slate-700 lg:border-0 shrink-0">
-              <div class="flex items-baseline lg:justify-end gap-2">
-                <span class="text-4xl sm:text-5xl font-black text-white">
-                  {core_package.yearly_monthly_price} {currency_symbol}
-                </span>
-                <span class="text-slate-300 font-medium text-base">/ ay</span>
-              </div>
-              <p class="text-xs text-blue-300 mt-1 font-semibold">
-                Yıllık ödemede aylık (Aylık ödemede {core_package.monthly_price} ₺/ay)
-              </p>
-              <p class="text-[11px] text-slate-400 mt-0.5">
-                {vat_text}
-              </p>
-            </div>
-          </div>
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
+          {packages && packages.map((pkg) => {
+            const isPopular = pkg.is_popular;
 
-          <div class="pt-8">
-            <h3 class="text-sm font-bold uppercase tracking-wider text-blue-400 mb-6">
-              Çekirdek Pakette Standart Olarak Sunulan Özellikler:
-            </h3>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-              {core_package.features.map((feature, idx) => (
-                <div key={idx} class="p-4 rounded-2xl bg-white/5 border border-white/10 flex items-start gap-3">
-                  <div class="p-1 rounded-full bg-emerald-500/20 text-emerald-400 mt-0.5 shrink-0">
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
-                    </svg>
+            return (
+              <div
+                key={pkg.id}
+                class={`flex flex-col justify-between rounded-3xl p-8 transition-all duration-300 relative ${
+                  isPopular
+                    ? 'bg-gradient-to-b from-blue-900 to-slate-900 text-white shadow-2xl border-2 border-blue-400 ring-4 ring-blue-500/20 lg:-translate-y-2'
+                    : 'bg-white text-slate-900 shadow-lg border border-slate-200 hover:shadow-xl'
+                }`}
+              >
+                {/* Popülerlik Rozeti */}
+                {pkg.badge && (
+                  <div class="mb-4">
+                    <span
+                      class={`inline-block px-3 py-1 text-xs font-black rounded-full uppercase tracking-wider ${
+                        isPopular
+                          ? 'bg-amber-400 text-slate-950 shadow-md'
+                          : 'bg-blue-50 text-blue-700 border border-blue-200'
+                      }`}
+                    >
+                      {pkg.badge}
+                    </span>
                   </div>
-                  <span class="text-sm text-slate-200 font-medium">{feature}</span>
+                )}
+
+                <div>
+                  <h3 class={`text-2xl font-black tracking-tight mb-2 ${isPopular ? 'text-white' : 'text-slate-900'}`}>
+                    {pkg.name}
+                  </h3>
+                  
+                  {/* Kapasite Rozeti */}
+                  <div class={`inline-flex items-center gap-2 px-3 py-1.5 rounded-xl text-xs font-bold mb-6 ${
+                    isPopular ? 'bg-white/10 text-blue-200 border border-white/10' : 'bg-slate-100 text-slate-700'
+                  }`}>
+                    <span>⚡ {pkg.capacity}</span>
+                  </div>
+
+                  <div class={`h-px w-full mb-6 ${isPopular ? 'bg-white/10' : 'bg-slate-100'}`} />
+
+                  {/* Özellik Listesi */}
+                  <div class="space-y-3.5 mb-8">
+                    <span class={`text-xs font-black uppercase tracking-wider block mb-3 ${
+                      isPopular ? 'text-blue-300' : 'text-slate-500'
+                    }`}>
+                      Paket Yetenekleri:
+                    </span>
+                    {pkg.features.map((feat, idx) => (
+                      <div key={idx} class="flex items-start gap-2.5 text-sm leading-snug">
+                        <div class={`p-1 rounded-full shrink-0 mt-0.5 ${
+                          isPopular ? 'bg-blue-400/20 text-blue-300' : 'bg-emerald-100 text-emerald-600'
+                        }`}>
+                          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
+                          </svg>
+                        </div>
+                        <span class={isPopular ? 'text-slate-200 font-medium' : 'text-slate-700 font-medium'}>
+                          {feat}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
                 </div>
-              ))}
-            </div>
-          </div>
+
+                {/* Aksiyon Butonları */}
+                <div class="pt-6 border-t border-slate-200/20 space-y-3">
+                  <a
+                    href="/fiyatlar"
+                    class={`block w-full py-3.5 px-4 rounded-xl text-center text-sm font-bold transition-all shadow-md ${
+                      isPopular
+                        ? 'bg-blue-500 hover:bg-blue-400 text-white'
+                        : 'bg-slate-900 hover:bg-slate-800 text-white'
+                    }`}
+                  >
+                    Fiyatları Gör & Yapılandır →
+                  </a>
+                  <a
+                    href="https://stokpratik.com.tr/firma-kaydi"
+                    class={`block w-full py-2.5 px-4 rounded-xl text-center text-xs font-semibold transition-all ${
+                      isPopular
+                        ? 'text-blue-200 hover:text-white bg-white/5 hover:bg-white/10'
+                        : 'text-slate-600 hover:text-slate-900 bg-slate-100 hover:bg-slate-200'
+                    }`}
+                  >
+                    1 Ay Ücretsiz Başla
+                  </a>
+                </div>
+              </div>
+            );
+          })}
         </div>
       </div>
     </section>
 
-    <!-- SECTION 2: OPTIONAL MODULAR ADD-ONS -->
-    <section class="py-10 pb-24">
+    <!-- SECTION 2: GENİŞLETİLEBİLİR MODÜL YETENEKLERİ (FİYATSIZ VİTRİN) -->
+    <section class="py-12 pb-24 bg-white border-t border-slate-200">
       <div class="container mx-auto px-4 max-w-6xl">
         <div class="text-center max-w-3xl mx-auto mb-16">
-          <span class="text-xs font-black uppercase tracking-wider text-blue-600 block mb-2">Genişletilebilir Modüller</span>
+          <span class="text-xs font-black uppercase tracking-wider text-blue-600 block mb-2">Modüler Yetenekler</span>
           <h2 class="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight">
-            İhtiyacınıza Göre Ekleyebileceğiniz Modüller
+            İhtiyacınıza Göre Ekleyebileceğiniz Güçlü Modüller
           </h2>
           <p class="text-slate-600 text-base mt-3">
-            Aşağıdaki tüm modüller çekirdek pakete tam entegre çalışır. Yalnızca operasyonunuzun ihtiyaç duyduğu modülleri aktif edebilirsiniz.
+            Tüm modüller Stok Pratik omurgasına %100 entegre çalışır. İşletmeniz büyüdükçe yalnızca operasyonunuzun ihtiyaç duyduğu modülleri aktif edebilirsiniz.
           </p>
         </div>
 
-        <div class="space-y-16">
-          {categories.map(category => {
-            const catModules = modules.filter(m => m.category === category.id);
-            if (catModules.length === 0) return null;
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {modules && modules.map((mod) => {
+            const specs = detailedModuleSpecs[mod.id] || [];
 
             return (
-              <div key={category.id} class="bg-white rounded-3xl p-6 sm:p-10 border border-slate-200 shadow-sm">
-                <div class="flex items-center gap-3.5 mb-8 pb-5 border-b border-slate-100">
-                  <span class="text-3xl p-3 bg-blue-50 rounded-2xl">{category.icon}</span>
-                  <div>
-                    <h3 class="text-2xl font-black text-slate-900 tracking-tight">
-                      {category.title}
-                    </h3>
-                    <p class="text-sm text-slate-500 mt-0.5">
-                      {category.description}
-                    </p>
+              <div
+                key={mod.id}
+                class="flex flex-col justify-between p-6 sm:p-8 rounded-3xl border border-slate-200 bg-slate-50/60 hover:bg-white hover:border-blue-400 hover:shadow-lg transition-all duration-200"
+              >
+                <div>
+                  <div class="flex items-start gap-4 mb-4">
+                    <span class="text-3xl p-3 bg-white rounded-2xl border border-slate-200 shadow-sm shrink-0">
+                      {mod.icon}
+                    </span>
+                    <div>
+                      <h3 class="text-xl font-black text-slate-900 leading-snug">
+                        {mod.name}
+                      </h3>
+                      <div class="flex items-center gap-2 mt-1">
+                        <span class="inline-block px-2.5 py-0.5 text-[11px] font-bold rounded-md bg-blue-50 text-blue-700 border border-blue-100">
+                          {mod.type === 'quantity' ? `${mod.unit_label || 'Adet'} Bazlı Esnek Ölçek` : 'Aç/Kapa Bağımsız Modül'}
+                        </span>
+                      </div>
+                    </div>
                   </div>
+
+                  {specs.length > 0 && (
+                    <div class="space-y-2.5 my-5 pt-4 border-t border-slate-200">
+                      <span class="text-xs font-bold text-slate-800 uppercase tracking-wide block mb-3">
+                        Neler İçerir ve Yetenekleri:
+                      </span>
+                      {specs.map((item, i) => (
+                        <div key={i} class="flex items-start gap-2.5 text-xs sm:text-sm text-slate-600 leading-relaxed">
+                          <svg class="w-4 h-4 text-emerald-600 mt-0.5 shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                          </svg>
+                          <span>{item}</span>
+                        </div>
+                      ))}
+                    </div>
+                  )}
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                  {catModules.map(mod => {
-                    const specs = detailedModuleSpecs[mod.id] || [];
-                    const displayPrice = mod.yearly_monthly_price || mod.base_yearly_monthly_price;
-                    const monthlyStandard = mod.monthly_price || mod.base_monthly_price;
-
-                    return (
-                      <div key={mod.id} class="flex flex-col justify-between p-6 sm:p-7 rounded-2xl border border-slate-200/90 bg-slate-50/50 hover:bg-white hover:border-blue-400 hover:shadow-md transition-all duration-200">
-                        <div>
-                          <div class="flex items-start justify-between gap-3 mb-3">
-                            <div class="flex items-center gap-3">
-                              <span class="text-3xl p-2 bg-white rounded-xl border border-slate-200/70 shadow-sm">{mod.icon}</span>
-                              <div>
-                                <h4 class="text-lg font-bold text-slate-900 leading-snug">
-                                  {mod.name}
-                                </h4>
-                                {mod.badge && (
-                                  <span class="inline-block px-2 py-0.5 text-[11px] font-bold rounded-md bg-indigo-50 text-indigo-700 border border-indigo-100 mt-1">
-                                    {mod.badge}
-                                  </span>
-                                )}
-                              </div>
-                            </div>
-
-                            <div class="text-right shrink-0">
-                              <span class="text-xl font-black text-slate-950">
-                                +{displayPrice} {currency_symbol}
-                              </span>
-                              <span class="text-xs text-slate-500 font-medium block">/ ay</span>
-                            </div>
-                          </div>
-
-                          <p class="text-sm text-slate-600 mb-5 leading-relaxed">
-                            {mod.description}
-                          </p>
-
-                          {specs.length > 0 && (
-                            <div class="space-y-2 mb-6 pt-4 border-t border-slate-200/70">
-                              <span class="text-xs font-bold text-slate-700 uppercase tracking-wide block mb-2">
-                                Neler İçerir?
-                              </span>
-                              {specs.map((item, i) => (
-                                <div key={i} class="flex items-start gap-2 text-xs sm:text-sm text-slate-600">
-                                  <svg class="w-4 h-4 text-blue-600 mt-0.5 shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
-                                  </svg>
-                                  <span>{item}</span>
-                                </div>
-                              ))}
-                            </div>
-                          )}
-                        </div>
-
-                        <div class="pt-4 border-t border-slate-200/80 flex items-center justify-between text-xs text-slate-500">
-                          <span>
-                            {mod.unit_label ? `${mod.unit_label} bazlı fiyatlandırma` : 'Sabit modül ücreti'}
-                          </span>
-                          <span class="font-semibold text-blue-700">
-                            Aylık ödemede: +{monthlyStandard} {currency_symbol}/ay
-                          </span>
-                        </div>
-                      </div>
-                    );
-                  })}
+                <div class="pt-5 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-3">
+                  <span class="text-xs text-slate-500 font-medium">
+                    Tam Entegre & Bulut Uyumlu
+                  </span>
+                  <a
+                    href="/fiyatlar"
+                    class="text-xs font-bold text-blue-600 hover:text-blue-800 flex items-center gap-1 group"
+                  >
+                    <span>Fiyat & Hesaplayıcıda Yapılandır</span>
+                    <span class="group-hover:translate-x-0.5 transition-transform">→</span>
+                  </a>
                 </div>
               </div>
             );
@@ -284,26 +322,28 @@ const detailedModuleSpecs: Record<string, string[]> = {
         </div>
 
         {/* BOTTOM ACTION CARD */}
-        <div class="mt-16 p-8 sm:p-12 rounded-3xl bg-gradient-to-r from-blue-900 to-indigo-950 text-white text-center shadow-xl">
-          <h3 class="text-2xl sm:text-3xl font-black mb-3">
-            Hangi Modüllere İhtiyacınız Olduğunu Hemen Seçin
-          </h3>
-          <p class="text-slate-300 text-sm sm:text-base max-w-2xl mx-auto mb-8">
-            İnteraktif hesaplayıcımız ile işletmenizin bütçesine en uygun paketi saniyeler içinde oluşturabilir, anında 14 gün ücretsiz denemeye başlayabilirsiniz.
-          </p>
-          <div class="flex flex-col sm:flex-row gap-4 justify-center">
-            <a
-              href="/fiyatlar"
-              class="px-8 py-4 bg-white text-slate-950 hover:bg-slate-100 font-extrabold text-base rounded-2xl shadow-lg transition-all"
-            >
-              Fiyat Hesaplayıcıyı Aç →
-            </a>
-            <a
-              href="/firma-kaydi"
-              class="px-8 py-4 bg-blue-600 hover:bg-blue-500 text-white font-bold text-base rounded-2xl transition-all"
-            >
-              14 Gün Ücretsiz Kaydol
-            </a>
+        <div class="mt-20 p-8 sm:p-12 rounded-3xl bg-gradient-to-r from-blue-900 via-indigo-950 to-slate-950 text-white text-center shadow-2xl relative overflow-hidden">
+          <div class="relative z-10">
+            <h3 class="text-2xl sm:text-4xl font-black mb-4 tracking-tight">
+              İşletmenizin İhtiyaçlarına Göre Paketinizi Belirleyin
+            </h3>
+            <p class="text-slate-300 text-sm sm:text-base max-w-2xl mx-auto mb-8 leading-relaxed">
+              İnteraktif fiyat hesaplayıcımız ile işletmenizin ölçeğine ve bütçesine en uygun paketi saniyeler içinde oluşturabilir, anında 1 ay ücretsiz denemeye başlayabilirsiniz.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+              <a
+                href="/fiyatlar"
+                class="w-full sm:w-auto px-8 py-4 bg-white text-slate-950 hover:bg-slate-100 font-extrabold text-base rounded-2xl shadow-xl transition-all text-center"
+              >
+                Fiyat Hesaplayıcıyı Aç →
+              </a>
+              <a
+                href="https://stokpratik.com.tr/firma-kaydi"
+                class="w-full sm:w-auto px-8 py-4 bg-blue-600 hover:bg-blue-500 text-white font-bold text-base rounded-2xl shadow-lg transition-all text-center"
+              >
+                1 Ay Ücretsiz Kaydol
+              </a>
+            </div>
           </div>
         </div>
 

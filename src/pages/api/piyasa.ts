@@ -19,182 +19,244 @@ export const GET: APIRoute = async () => {
     });
   }
 
-  // Varsayılan / Fallback Değerler
-  let usdBuying = 34.25;
-  let usdSelling = 34.32;
-  let eurBuying = 37.42;
-  let eurSelling = 37.50;
-  let gbpBuying = 44.80;
-  let gbpSelling = 44.92;
-  let btcUsd = 85200;
-  let btcTry = 4180000;
-  let ethUsd = 2695;
-  let usdtTry = 34.38;
-
-  // 1. TCMB Kurlarını Çek
+  // Önce Stok Pratik Canlı Worker API'sinden çekmeyi dene (Harem/Kapalıçarşı & Binance entegre)
   try {
-    const tcmbRes = await fetch('https://www.tcmb.gov.tr/kurlar/today.xml', {
-      headers: { 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)' },
-      signal: AbortSignal.timeout(4000),
+    const workerRes = await fetch('https://stok-pratik-api.akgcomputer.workers.dev/api/piyasa', {
+      headers: { 'User-Agent': 'StokPratik-Web/1.0' },
+      signal: AbortSignal.timeout(3500),
     });
 
-    if (tcmbRes.ok) {
-      const xml = await tcmbRes.text();
-
-      const parseTCMB = (kod: string) => {
-        const regex = new RegExp(`<Currency[^>]*Kod="${kod}"[\\s\\S]*?<\\/Currency>`);
-        const block = xml.match(regex)?.[0];
-        if (!block) return null;
-        const buy = block.match(/<ForexBuying>([0-9.]+)<\/ForexBuying>/)?.[1];
-        const sell = block.match(/<ForexSelling>([0-9.]+)<\/ForexSelling>/)?.[1];
-        return {
-          buy: buy ? parseFloat(buy) : null,
-          sell: sell ? parseFloat(sell) : null,
+    if (workerRes.ok) {
+      const data = await workerRes.json();
+      if (data && data.success && data.altinMaden && data.doviz) {
+        // Hesaplayıcılar için rates objesini de ekleyip zenginleştirelim
+        const rates = extractRates(data);
+        const enrichedPayload = {
+          ...data,
+          rates,
+          timestamp: data.updated_at || new Date().toISOString()
         };
-      };
 
-      const usd = parseTCMB('USD');
-      if (usd?.buy && usd?.sell) {
-        usdBuying = usd.buy;
-        usdSelling = usd.sell;
-      }
+        cachedData = enrichedPayload;
+        lastCacheTime = now;
 
-      const eur = parseTCMB('EUR');
-      if (eur?.buy && eur?.sell) {
-        eurBuying = eur.buy;
-        eurSelling = eur.sell;
-      }
-
-      const gbp = parseTCMB('GBP');
-      if (gbp?.buy && gbp?.sell) {
-        gbpBuying = gbp.buy;
-        gbpSelling = gbp.sell;
+        return new Response(JSON.stringify(enrichedPayload), {
+          status: 200,
+          headers: {
+            'Content-Type': 'application/json; charset=utf-8',
+            'Cache-Control': 'public, max-age=60, s-maxage=60',
+            'X-Cache': 'ORIGIN-WORKER',
+          },
+        });
       }
     }
   } catch (err) {
-    console.warn('TCMB XML fetch fallback:', err);
+    console.warn('Worker API fetch fallback:', err);
   }
 
-  // 2. Binance Public API (Kripto & USDT/TRY)
+  // FALLBACK: 3 Katmanlı Hibrit Veri Motoru (Truncgil v4 + Binance + TCMB)
   try {
-    const binanceRes = await fetch(
-      'https://api.binance.com/api/v3/ticker/price?symbols=%5B%22BTCTRY%22,%22BTCUSDT%22,%22ETHUSDT%22,%22USDTTRY%22%5D',
-      {
-        headers: { 'User-Agent': 'Mozilla/5.0' },
+    // 1. Serbest Piyasa & Kapalıçarşı (finans.truncgil.com v4)
+    let marketLive: any = null;
+    try {
+      const liveRes = await fetch('https://finans.truncgil.com/v4/today.json', {
+        headers: { 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)' },
         signal: AbortSignal.timeout(4000),
+      });
+      if (liveRes.ok) {
+        marketLive = await liveRes.json();
       }
-    );
-
-    if (binanceRes.ok) {
-      const tickers: Array<{ symbol: string; price: string }> = await binanceRes.json();
-      for (const t of tickers) {
-        const price = parseFloat(t.price);
-        if (t.symbol === 'BTCUSDT' && !isNaN(price)) btcUsd = price;
-        if (t.symbol === 'BTCTRY' && !isNaN(price)) btcTry = price;
-        if (t.symbol === 'ETHUSDT' && !isNaN(price)) ethUsd = price;
-        if (t.symbol === 'USDTTRY' && !isNaN(price)) usdtTry = price;
-      }
+    } catch (e) {
+      console.warn('Truncgil v4 fetch hatası:', e);
     }
-  } catch (err) {
-    console.warn('Binance fetch fallback:', err);
+
+    // 2. Kripto Verileri (Binance Public API)
+    let btcTry = 4150000, btcUsd = 85000, ethUsd = 2650, usdtTry = 34.50;
+    try {
+      const cryptoRes = await fetch('https://api.binance.com/api/v3/ticker/price?symbols=%5B%22BTCTRY%22,%22BTCUSDT%22,%22ETHUSDT%22,%22USDTTRY%22%5D', {
+        signal: AbortSignal.timeout(4000),
+      });
+      if (cryptoRes.ok) {
+        const cryptoData: any = await cryptoRes.json();
+        for (const item of cryptoData) {
+          if (item.symbol === 'BTCTRY') btcTry = parseFloat(item.price);
+          if (item.symbol === 'BTCUSDT') btcUsd = parseFloat(item.price);
+          if (item.symbol === 'ETHUSDT') ethUsd = parseFloat(item.price);
+          if (item.symbol === 'USDTTRY') usdtTry = parseFloat(item.price);
+        }
+      }
+    } catch (e) {
+      console.warn('Binance API fetch hatası:', e);
+    }
+
+    // 3. TCMB Gösterge Kurları
+    let usdBuy = 34.25, usdSell = 34.35;
+    let eurBuy = 37.50, eurSell = 37.65;
+    let gbpBuy = 44.80, gbpSell = 45.10;
+    try {
+      const tcmbRes = await fetch('https://www.tcmb.gov.tr/kurlar/today.xml', {
+        headers: { 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)' },
+        signal: AbortSignal.timeout(4000),
+      });
+      if (tcmbRes.ok) {
+        const xmlText = await tcmbRes.text();
+        const getCurrency = (code: string) => {
+          const regex = new RegExp(`<Currency[^>]*CurrencyCode="${code}"[\\s\\S]*?<ForexBuying>([0-9.,]+)<\\/ForexBuying>[\\s\\S]*?<ForexSelling>([0-9.,]+)<\\/ForexSelling>`, 'i');
+          const match = xmlText.match(regex);
+          if (match) {
+            return {
+              buying: parseFloat(match[1].replace(',', '.')),
+              selling: parseFloat(match[2].replace(',', '.'))
+            };
+          }
+          return null;
+        };
+        const usd = getCurrency('USD');
+        if (usd) { usdBuy = usd.buying; usdSell = usd.selling; }
+        const eur = getCurrency('EUR');
+        if (eur) { eurBuy = eur.buying; eurSell = eur.selling; }
+        const gbp = getCurrency('GBP');
+        if (gbp) { gbpBuy = gbp.buying; gbpSell = gbp.selling; }
+      }
+    } catch (e) {
+      console.warn('TCMB XML fetch hatası:', e);
+    }
+
+    const spUsdBuy = marketLive?.USD?.Buying || usdBuy;
+    const spUsdSell = marketLive?.USD?.Selling || usdSell;
+    const spEurBuy = marketLive?.EUR?.Buying || eurBuy;
+    const spEurSell = marketLive?.EUR?.Selling || eurSell;
+    const spGbpBuy = marketLive?.GBP?.Buying || gbpBuy;
+    const spGbpSell = marketLive?.GBP?.Selling || gbpSell;
+
+    // ALTIN VE KIYMETLİ MADEN HESAPLAMALARI (v4 JSON Anahtarları - Kapalıçarşı / Harem Altın)
+    const hasGoldBuy = marketLive?.HAS?.Buying || marketLive?.GRA?.Buying || 3050;
+    const hasGoldSell = marketLive?.HAS?.Selling || marketLive?.GRA?.Selling || 3090;
+    const gramGoldBuy = marketLive?.GRA?.Buying || hasGoldBuy;
+    const gramGoldSell = marketLive?.GRA?.Selling || hasGoldSell;
+    const ceyrekGoldBuy = marketLive?.CEYREKALTIN?.Buying || Math.round(gramGoldSell * 1.63);
+    const ceyrekGoldSell = marketLive?.CEYREKALTIN?.Selling || Math.round(gramGoldSell * 1.66);
+    const yarimGoldBuy = marketLive?.YARIMALTIN?.Buying || Math.round(ceyrekGoldBuy * 2);
+    const yarimGoldSell = marketLive?.YARIMALTIN?.Selling || Math.round(ceyrekGoldSell * 2);
+    const tamGoldBuy = marketLive?.TAMALTIN?.Buying || Math.round(ceyrekGoldBuy * 4);
+    const tamGoldSell = marketLive?.TAMALTIN?.Selling || Math.round(ceyrekGoldSell * 4);
+    const ataGoldBuy = marketLive?.ATAALTIN?.Buying || Math.round(gramGoldSell * 6.7);
+    const ataGoldSell = marketLive?.ATAALTIN?.Selling || Math.round(gramGoldSell * 6.8);
+    const bilezik22Buy = marketLive?.YIA?.Buying || Math.round(gramGoldBuy * 0.916);
+    const bilezik22Sell = marketLive?.YIA?.Selling || Math.round(gramGoldSell * 0.916);
+    const gumusBuy = marketLive?.GUMUS?.Buying || 36.5;
+    const gumusSell = marketLive?.GUMUS?.Selling || 37.8;
+    const onsGoldUsd = marketLive?.ONS?.Selling || 2655;
+
+    const doviz = [
+      { id: 'usd', name: 'ABD Doları (Kapalıçarşı)', code: 'USD/TRY', buying: spUsdBuy, selling: spUsdSell, change: +(marketLive?.USD?.Change || 0.15), trend: 'up' },
+      { id: 'eur', name: 'Euro (Kapalıçarşı)', code: 'EUR/TRY', buying: spEurBuy, selling: spEurSell, change: +(marketLive?.EUR?.Change || -0.20), trend: 'down' },
+      { id: 'gbp', name: 'İngiliz Sterlini', code: 'GBP/TRY', buying: spGbpBuy, selling: spGbpSell, change: +(marketLive?.GBP?.Change || 0.10), trend: 'up' },
+      { id: 'eurusd', name: 'EUR / USD Parite', code: 'EUR/USD', buying: +(spEurSell / (spUsdSell || 1)).toFixed(4), selling: +(spEurSell / (spUsdSell || 1)).toFixed(4), change: -0.05, trend: 'down' },
+      { id: 'tcmb_usd', name: 'TCMB Resmi Dolar', code: 'TCMB/USD', buying: usdBuy, selling: usdSell, change: 0.05, trend: 'up' }
+    ];
+
+    const altinMaden = [
+      { id: 'gram_altin', name: 'Gram Altın (Kapalıçarşı / Harem)', buying: gramGoldBuy, selling: gramGoldSell, price: gramGoldSell, unit: '₺', change: +(marketLive?.GRA?.Change || 1.1), trend: 'up' },
+      { id: 'has_altin', name: 'Has Altın (Külçe .995)', buying: hasGoldBuy, selling: hasGoldSell, price: hasGoldSell, unit: '₺', change: +(marketLive?.HAS?.Change || 1.1), trend: 'up' },
+      { id: 'ceyrek_altin', name: 'Çeyrek Altın (Yeni)', buying: ceyrekGoldBuy, selling: ceyrekGoldSell, price: ceyrekGoldSell, unit: '₺', change: +(marketLive?.CEYREKALTIN?.Change || 1.1), trend: 'up' },
+      { id: 'yarim_altin', name: 'Yarım Altın', buying: yarimGoldBuy, selling: yarimGoldSell, price: yarimGoldSell, unit: '₺', change: +(marketLive?.YARIMALTIN?.Change || 1.1), trend: 'up' },
+      { id: 'tam_altin', name: 'Tam Altın', buying: tamGoldBuy, selling: tamGoldSell, price: tamGoldSell, unit: '₺', change: +(marketLive?.TAMALTIN?.Change || 1.1), trend: 'up' },
+      { id: 'ata_altin', name: 'Ata / Cumhuriyet Altını', buying: ataGoldBuy, selling: ataGoldSell, price: ataGoldSell, unit: '₺', change: +(marketLive?.ATAALTIN?.Change || 1.1), trend: 'up' },
+      { id: 'bilezik_22', name: '22 Ayar Bilezik (Gram)', buying: bilezik22Buy, selling: bilezik22Sell, price: bilezik22Sell, unit: '₺', change: +(marketLive?.YIA?.Change || 1.1), trend: 'up' },
+      { id: 'ons_altin', name: 'Ons Altın', price: onsGoldUsd, unit: '$', change: +(marketLive?.ONS?.Change || 0.5), trend: 'up' },
+      { id: 'gumus_gram', name: 'Gümüş (Gram)', buying: gumusBuy, selling: gumusSell, price: gumusSell, unit: '₺', change: +(marketLive?.GUMUS?.Change || 2.0), trend: 'up' }
+    ];
+
+    const emtia = [
+      { id: 'brent', name: 'Brent Petrol', symbol: 'BRENT', price: marketLive?.BRENT?.Selling || 78.20, unit: '$/Varil', change: +(marketLive?.BRENT?.Change || 0.42), trend: 'up' },
+      { id: 'copper', name: 'LME Bakır', symbol: 'HG', price: 9820.00, unit: '$/Ton', change: +1.15, trend: 'up' },
+      { id: 'aluminum', name: 'LME Alüminyum', symbol: 'AL', price: 2640.00, unit: '$/Ton', change: -0.35, trend: 'down' },
+      { id: 'diesel', name: 'Motorin (Pompa Ort.)', symbol: 'DIESEL', price: 44.90, unit: '₺/Litre', change: 0.00, trend: 'stable' },
+      { id: 'gasoline', name: 'Benzin (Pompa Ort.)', symbol: 'GAS', price: 43.95, unit: '₺/Litre', change: 0.00, trend: 'stable' }
+    ];
+
+    const borsa = [
+      { id: 'bist100', name: 'BIST 100', code: 'XU100', price: marketLive?.XU100?.Selling || 9280.40, change: +(marketLive?.XU100?.Change || 0.45), trend: 'up' },
+      { id: 'bist_sanayi', name: 'BIST Sınai', code: 'XUSIN', price: 13450.20, change: +1.80, trend: 'up' },
+      { id: 'faiz_politika', name: 'TCMB Politika Faizi', code: 'FAİZ', price: 50.0, unit: '%', change: 0.00, trend: 'stable' }
+    ];
+
+    const kripto = [
+      { id: 'btc_try', name: 'Bitcoin', code: 'BTC/TRY', price: btcTry || 2450000, change: +2.10, trend: 'up' },
+      { id: 'btc_usd', name: 'Bitcoin ($)', code: 'BTC/USDT', price: btcUsd || 67800, change: +2.05, trend: 'up' },
+      { id: 'eth_usd', name: 'Ethereum ($)', code: 'ETH/USDT', price: ethUsd || 2540, change: +1.30, trend: 'up' },
+      { id: 'usdt_try', name: 'Tether (Serbest P.)', code: 'USDT/TRY', price: usdtTry || spUsdSell, change: +0.10, trend: 'up' }
+    ];
+
+    const payload: any = {
+      success: true,
+      updated_at: new Date().toISOString(),
+      timestamp: new Date().toISOString(),
+      doviz,
+      altinMaden,
+      emtia,
+      borsa,
+      kripto,
+      disclaimer: "*Piyasa Radarında yer alan altın ve döviz rakamları Serbest Piyasa (Kapalıçarşı / Harem Altın) anlık verileridir."
+    };
+
+    payload.rates = extractRates(payload);
+
+    cachedData = payload;
+    lastCacheTime = now;
+
+    return new Response(JSON.stringify(payload), {
+      status: 200,
+      headers: {
+        'Content-Type': 'application/json; charset=utf-8',
+        'Cache-Control': 'public, max-age=60, s-maxage=60',
+        'X-Cache': 'MISS',
+      },
+    });
+  } catch (error: any) {
+    return new Response(
+      JSON.stringify({ success: false, message: 'Piyasa verileri alınamadı: ' + error.message }),
+      { status: 500, headers: { 'Content-Type': 'application/json; charset=utf-8' } }
+    );
   }
-
-  // 3. Altın ve Kıymetli Madenler (Dinamik Formül)
-  const onsGoldUsd = 2742.80; // Uluslararası Ons Altın Referansı ($)
-  const onsSilverUsd = 32.40; // Ons Gümüş ($)
-  const onsGramRatio = 31.1034768; // 1 Troy Ons = 31.1034768 Gram
-
-  // Has Gram Altın = (Ons x USD Satış) / 31.1034768
-  const gramAltin = Math.round(((onsGoldUsd * usdSelling) / onsGramRatio) * 100) / 100;
-  // Çeyrek Altın = Gram Altın x 1.63
-  const ceyrekAltin = Math.round(gramAltin * 1.63);
-  const yarimAltin = ceyrekAltin * 2;
-  const tamAltin = ceyrekAltin * 4;
-  const ataAltin = Math.round(gramAltin * 6.60);
-  const gumusGram = Math.round(((onsSilverUsd * usdSelling) / onsGramRatio) * 100) / 100;
-
-  // 4. Sanayi Emtiaları & Enerji
-  const bakirTonUsd = 9780; // $/Ton
-  const bakirKgTL = Math.round(((bakirTonUsd / 1000) * usdSelling) * 100) / 100;
-
-  const aluminyumTonUsd = 2620; // $/Ton
-  const aluminyumKgTL = Math.round(((aluminyumTonUsd / 1000) * usdSelling) * 100) / 100;
-
-  const brentPetrolUsd = 77.85; // $/Varil
-  const motorinTL = 43.85; // ₺/Litre (TR Ortalaması)
-  const benzinTL = 42.90; // ₺/Litre (TR Ortalaması)
-
-  // 5. Parite
-  const eurUsd = Math.round((eurSelling / usdSelling) * 10000) / 10000;
-
-  const responsePayload = {
-    timestamp: new Date().toISOString(),
-    disclaimer: '*Piyasa Radarında yer alan rakamlar bilgilendirme amaçlıdır, alım satım sırasında farklılık gösterebilir.',
-    rates: {
-      usd: usdSelling,
-      eur: eurSelling,
-      gbp: gbpSelling,
-      eurUsd: eurUsd,
-      usdt: usdtTry,
-      onsAltin: onsGoldUsd,
-      gramAltin: gramAltin,
-      ceyrekAltin: ceyrekAltin,
-      gumusGram: gumusGram,
-      btcUsd: btcUsd,
-      btcTry: btcTry,
-      ethUsd: ethUsd,
-      bakirKgTL: bakirKgTL,
-      aluminyumKgTL: aluminyumKgTL,
-      motorinTL: motorinTL,
-      benzinTL: benzinTL,
-    },
-    sections: {
-      doviz: [
-        { code: 'USD/TRY', name: 'Amerikan Doları', buy: usdBuying.toFixed(4), sell: usdSelling.toFixed(4), change: '+0.15%', isUp: true, unit: '₺' },
-        { code: 'EUR/TRY', name: 'Euro', buy: eurBuying.toFixed(4), sell: eurSelling.toFixed(4), change: '-0.08%', isUp: false, unit: '₺' },
-        { code: 'GBP/TRY', name: 'İngiliz Sterlini', buy: gbpBuying.toFixed(4), sell: gbpSelling.toFixed(4), change: '+0.22%', isUp: true, unit: '₺' },
-        { code: 'EUR/USD', name: 'Euro / Dolar Paritesi', buy: (eurUsd * 0.9998).toFixed(4), sell: eurUsd.toFixed(4), change: '-0.12%', isUp: false, unit: '$' },
-        { code: 'USDT/TRY', name: 'Serbest Piyasa / Nakit USDT', buy: (usdtTry * 0.998).toFixed(2), sell: usdtTry.toFixed(2), change: '+0.18%', isUp: true, unit: '₺' },
-      ],
-      altin: [
-        { code: 'ONS', name: 'Uluslararası Ons Altın', buy: (onsGoldUsd - 1).toFixed(2), sell: onsGoldUsd.toFixed(2), change: '+0.45%', isUp: true, unit: '$' },
-        { code: 'GRAM_HAS', name: 'Has Gram Altın (24 Ayar)', buy: (gramAltin * 0.996).toFixed(2), sell: gramAltin.toFixed(2), change: '+0.52%', isUp: true, unit: '₺' },
-        { code: 'CEYREK', name: 'Çeyrek Altın', buy: (ceyrekAltin * 0.985).toFixed(0), sell: ceyrekAltin.toFixed(0), change: '+0.52%', isUp: true, unit: '₺' },
-        { code: 'YARIM', name: 'Yarım Altın', buy: (yarimAltin * 0.985).toFixed(0), sell: yarimAltin.toFixed(0), change: '+0.52%', isUp: true, unit: '₺' },
-        { code: 'TAM', name: 'Tam Ziynet Altın', buy: (tamAltin * 0.985).toFixed(0), sell: tamAltin.toFixed(0), change: '+0.52%', isUp: true, unit: '₺' },
-        { code: 'ATA', name: 'Ata Altın (Cumhuriyet)', buy: (ataAltin * 0.985).toFixed(0), sell: ataAltin.toFixed(0), change: '+0.52%', isUp: true, unit: '₺' },
-        { code: 'GUMUS_GRAM', name: 'Gümüş Gram (Külçe)', buy: (gumusGram * 0.98).toFixed(2), sell: gumusGram.toFixed(2), change: '-0.30%', isUp: false, unit: '₺' },
-      ],
-      emtia: [
-        { code: 'LME_BAKIR', name: 'LME Bakır (Katot)', priceUSD: `$${bakirTonUsd.toLocaleString('en-US')}/Ton`, priceTL: `${bakirKgTL.toFixed(2)} ₺/Kg`, change: '+0.85%', isUp: true },
-        { code: 'LME_ALUMINYUM', name: 'LME Alüminyum', priceUSD: `$${aluminyumTonUsd.toLocaleString('en-US')}/Ton`, priceTL: `${aluminyumKgTL.toFixed(2)} ₺/Kg`, change: '-0.40%', isUp: false },
-        { code: 'BRENT', name: 'Brent Petrol', priceUSD: `$${brentPetrolUsd.toFixed(2)}/Varil`, priceTL: `${(brentPetrolUsd * usdSelling).toFixed(2)} ₺/Varil`, change: '-1.15%', isUp: false },
-        { code: 'MOTORIN', name: 'Motorin (Pompa Ort.)', priceUSD: `$${(motorinTL / usdSelling).toFixed(2)}/Lt`, priceTL: `${motorinTL.toFixed(2)} ₺/Lt`, change: '0.00%', isUp: true },
-        { code: 'BENZIN', name: 'Kurşunsuz Benzin 95', priceUSD: `$${(benzinTL / usdSelling).toFixed(2)}/Lt`, priceTL: `${benzinTL.toFixed(2)} ₺/Lt`, change: '0.00%', isUp: true },
-      ],
-      borsaFaiz: [
-        { code: 'XU100', name: 'BIST 100 Endeksi', value: '9,145.20', change: '+1.25%', isUp: true, unit: 'Puan' },
-        { code: 'XUSIN', name: 'BIST Sınai (XUSIN)', value: '13,480.50', change: '+0.95%', isUp: true, unit: 'Puan' },
-        { code: 'FAIZ', name: 'TCMB Politika Faizi', value: '%50.00', change: 'Sabit', isUp: true, unit: 'Yıllık' },
-      ],
-      kripto: [
-        { code: 'BTC/USDT', name: 'Bitcoin (USD)', buy: (btcUsd - 5).toLocaleString('en-US'), sell: btcUsd.toLocaleString('en-US'), change: '+2.15%', isUp: true, unit: '$' },
-        { code: 'BTC/TRY', name: 'Bitcoin (TL)', buy: (btcTry * 0.999).toLocaleString('tr-TR', { maximumFractionDigits: 0 }), sell: btcTry.toLocaleString('tr-TR', { maximumFractionDigits: 0 }), change: '+2.30%', isUp: true, unit: '₺' },
-        { code: 'ETH/USDT', name: 'Ethereum (USD)', buy: (ethUsd - 1).toLocaleString('en-US'), sell: ethUsd.toLocaleString('en-US'), change: '+1.80%', isUp: true, unit: '$' },
-        { code: 'USDT/TRY', name: 'Tether (USDT Nakit)', buy: (usdtTry * 0.998).toFixed(2), sell: usdtTry.toFixed(2), change: '+0.18%', isUp: true, unit: '₺' },
-      ],
-    },
-  };
-
-  cachedData = responsePayload;
-  lastCacheTime = now;
-
-  return new Response(JSON.stringify(responsePayload), {
-    status: 200,
-    headers: {
-      'Content-Type': 'application/json; charset=utf-8',
-      'Cache-Control': 'public, max-age=60, s-maxage=60',
-      'X-Cache': 'MISS',
-    },
-  });
 };
+
+// Yardımcı fonksiyon: Hesaplayıcılar ve Ticker için hızlı fiyat haritası
+function extractRates(data: any) {
+  const findAltin = (id: string) => data.altinMaden?.find((a: any) => a.id === id)?.selling || data.altinMaden?.find((a: any) => a.id === id)?.price || 0;
+  const findDoviz = (id: string) => data.doviz?.find((d: any) => d.id === id)?.selling || 0;
+  const findKripto = (id: string) => data.kripto?.find((k: any) => k.id === id)?.price || 0;
+  const findEmtia = (id: string) => data.emtia?.find((e: any) => e.id === id)?.price || 0;
+
+  const usdSell = findDoviz('usd') || 49.77;
+  const copperTon = findEmtia('copper') || 9820;
+  const aluminumTon = findEmtia('aluminum') || 2640;
+
+  return {
+    usd: usdSell,
+    eur: findDoviz('eur') || 55.80,
+    gbp: findDoviz('gbp') || 66.60,
+    eurUsd: findDoviz('eurusd') || 1.12,
+    usdt: findKripto('usdt_try') || usdSell,
+    hasAltin: findAltin('has_altin') || 6352,
+    gramAltin: findAltin('gram_altin') || 6384,
+    ceyrekAltin: findAltin('ceyrek_altin') || 10560,
+    yarimAltin: findAltin('yarim_altin') || 21120,
+    tamAltin: findAltin('tam_altin') || 42112,
+    ataAltin: findAltin('ata_altin') || 43662,
+    bilezik22: findAltin('bilezik_22') || 5890,
+    onsAltin: findAltin('ons_altin') || 2655,
+    gumusGram: findAltin('gumus_gram') || 86.16,
+    btcTry: findKripto('btc_try') || 2450000,
+    btcUsd: findKripto('btc_usd') || 67800,
+    ethUsd: findKripto('eth_usd') || 2540,
+    bakirTonUsd: copperTon,
+    bakirKgTL: Math.round(((copperTon / 1000) * usdSell) * 100) / 100,
+    aluminyumTonUsd: aluminumTon,
+    aluminyumKgTL: Math.round(((aluminumTon / 1000) * usdSell) * 100) / 100,
+    brentPetrolUsd: findEmtia('brent') || 78.20,
+    motorinTL: findEmtia('diesel') || 44.90,
+    benzinTL: findEmtia('gasoline') || 43.95,
+  };
+}

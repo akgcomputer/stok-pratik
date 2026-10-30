@@ -174,45 +174,45 @@ const reasons = [
         <div class="lg:col-span-8 bg-slate-50/80 border border-slate-200/90 rounded-3xl p-6 sm:p-10 relative overflow-hidden flex flex-col justify-between shadow-sm">
           
           <!-- SLIDE ITEMS WRAPPER -->
-          <div id="heroSliderTrack" class="relative min-h-[380px] sm:min-h-[400px]">
+          <div id="heroSliderTrack" class="relative min-h-[520px] xs:min-h-[490px] sm:min-h-[460px] md:min-h-[380px] lg:min-h-[400px]">
             {slides.map((slide, idx) => (
               <div 
-                class={`hero-slide transition-all duration-700 absolute inset-0 flex flex-col md:flex-row items-center gap-6 sm:gap-8 ${idx === 0 ? 'opacity-100 z-10 translate-x-0' : 'opacity-0 z-0 translate-x-12 pointer-events-none'}`}
+                class={`hero-slide transition-all duration-700 absolute inset-0 flex flex-col md:flex-row items-center justify-between md:justify-center gap-4 sm:gap-6 md:gap-8 ${idx === 0 ? 'opacity-100 z-10 translate-x-0' : 'opacity-0 z-0 translate-x-12 pointer-events-none'}`}
                 data-slide-index={idx}
               >
                 <!-- Metin Alanı (Sol) -->
-                <div class="w-full md:w-7/12 flex flex-col items-start justify-center text-left">
-                  <div class="inline-flex items-center gap-2 bg-red-100/80 text-red-700 text-xs sm:text-sm font-bold px-3.5 py-1.5 rounded-full mb-4">
+                <div class="w-full md:w-7/12 flex flex-col items-start justify-center text-left shrink-0 md:shrink">
+                  <div class="inline-flex items-center gap-2 bg-red-100/80 text-red-700 text-xs sm:text-sm font-bold px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-full mb-2 sm:mb-4">
                     <span>{slide.badge}</span>
                   </div>
                   
-                  <h1 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 tracking-tight leading-tight mb-4">
+                  <h1 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-extrabold text-slate-900 tracking-tight leading-snug sm:leading-tight mb-2 sm:mb-4">
                     {slide.title}
                   </h1>
                   
-                  <p class="text-slate-600 text-sm sm:text-base leading-relaxed mb-6">
+                  <p class="text-slate-600 text-xs sm:text-sm md:text-base leading-relaxed mb-4 sm:mb-6 line-clamp-3 sm:line-clamp-none">
                     {slide.description}
                   </p>
                   
                   <a 
                     href={slide.buttonUrl}
-                    class="inline-flex items-center gap-2 px-6 py-3.5 bg-red-600 hover:bg-red-700 text-white font-bold rounded-full text-sm sm:text-base transition-all shadow-md shadow-red-600/20 group"
+                    class="inline-flex items-center gap-2 px-5 py-2.5 sm:px-6 sm:py-3.5 bg-red-600 hover:bg-red-700 text-white font-bold rounded-full text-xs sm:text-sm md:text-base transition-all shadow-md shadow-red-600/20 group"
                   >
                     <span>{slide.buttonText}</span>
                     <span class="group-hover:translate-x-1 transition-transform">→</span>
                   </a>
                 </div>
 
-                <!-- Resim Alanı (Sağ) -->
-                <div class="w-full md:w-5/12 h-64 md:h-80 relative rounded-2xl overflow-hidden shadow-lg border border-slate-200/60 bg-white">
+                <!-- Resim Alanı (Sağ) - Mobilde 4:3 oran ile tam görünüm, masaüstünde tam yükseklik -->
+                <div class="w-full md:w-5/12 aspect-[4/3] md:aspect-auto md:h-80 relative rounded-2xl overflow-hidden shadow-md md:shadow-lg border border-slate-200/70 bg-slate-100/80 shrink-0 flex items-center justify-center">
                   <img 
                     src={slide.image} 
                     alt={slide.alt} 
-                    class="w-full h-full object-cover object-center transform hover:scale-105 transition-transform duration-700"
+                    class="w-full h-full object-contain md:object-cover object-center transform hover:scale-105 transition-transform duration-700"
                     loading={idx === 0 ? "eager" : "lazy"}
                     fetchpriority={idx === 0 ? "high" : "auto"}
                   />
-                  <div class="absolute inset-0 bg-gradient-to-t from-slate-950/20 via-transparent to-transparent"></div>
+                  <div class="absolute inset-0 bg-gradient-to-t from-slate-950/20 via-transparent to-transparent pointer-events-none"></div>
                 </div>
               </div>
             ))}

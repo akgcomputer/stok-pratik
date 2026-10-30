@@ -90,7 +90,7 @@ export default function App() {
           className="hidden sm:inline-flex items-center gap-2 bg-gradient-to-r from-teal-700 to-cyan-700 hover:from-teal-800 hover:to-cyan-800 text-white font-bold text-xs px-4 py-2.5 rounded-full shadow-lg hover:shadow-xl transition-all hover:scale-105 cursor-pointer"
         >
           <Sparkles className="w-3.5 h-3.5 text-amber-300" />
-          <span>14 Gün Ücretsiz Dene</span>
+          <span>1 Ay Tam Sürüm Ücretsiz Dene</span>
         </button>
       </div>
     </div>

@@ -22,4 +22,4 @@ Geleneksel veresiye defteri tutma alışkanlığı, sayfa kaybolmaları, okunama
 Dijital cari takip programları sayesinde müşterilerinize özel borç/alacak kartları açabilir, vade günü geldiğinde otomatik SMS ile bilgilendirme yapabilirsiniz.
 
 
-Siz de veresiye karmaşasına son vermek için [Stok Pratik Özelliklerimiz](https://stokpratik.com.tr/ozelliklerimiz) ve [Stok Pratik Paketlerimiz](https://stokpratik.com.tr/paketlerimiz) sayfalarını inceleyebilirsiniz. Hemen [14 Gün Ücretsiz Deneyin](https://stokpratik.com.tr/14-gun-ucretsiz-deneyin) veya [İletişim](https://stokpratik.com.tr/iletisim) üzerinden ekibimizle görüşün.
+Siz de veresiye karmaşasına son vermek için [Stok Pratik Özelliklerimiz](https://stokpratik.com.tr/ozelliklerimiz) ve [Stok Pratik Paketlerimiz](https://stokpratik.com.tr/paketlerimiz) sayfalarını inceleyebilirsiniz. Hemen [1 Ay Tam Sürüm Ücretsiz Kullanım](https://stokpratik.com.tr/firma-kaydi) veya [İletişim](https://stokpratik.com.tr/iletisim) üzerinden ekibimizle görüşün.

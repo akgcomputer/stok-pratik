@@ -51,7 +51,7 @@ export const DemoModal: React.FC<DemoModalProps> = ({ isOpen, onClose }) => {
 
           <div className="flex items-center gap-2 mb-2">
             <span className="bg-amber-400 text-slate-950 text-[10px] font-extrabold uppercase px-2.5 py-0.5 rounded-full">
-              14 Gün Ücretsiz
+              1 Ay Tam Sürüm Ücretsiz
             </span>
             <span className="text-teal-200 text-xs font-semibold">
               Kredi Kartı Gerekmez
@@ -186,7 +186,7 @@ export const DemoModal: React.FC<DemoModalProps> = ({ isOpen, onClose }) => {
                     <span>Oluşturuluyor...</span>
                   ) : (
                     <>
-                      <span>14 Gün Ücretsiz Demo Başlat</span>
+                      <span>1 Ay Tam Sürüm Ücretsiz Başlat</span>
                       <Send className="w-4 h-4" />
                     </>
                   )}

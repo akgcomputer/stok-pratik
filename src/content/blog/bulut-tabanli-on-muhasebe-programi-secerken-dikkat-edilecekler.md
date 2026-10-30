@@ -33,4 +33,4 @@ Birçok işletme sahibi günlük koşturmaca içerisinde şu engellerle karşıl
 Konuyla ilgili daha detaylı bilgi için [Küçük İşletmeler İçin Ön Muhasebe Nasıl Tutulur?](https://stokpratik.com.tr/blog/muhasebe-sistemleri/kucuk-isletmeler-icin-on-muhasebe-nasil-tutulur) rehberimizi de okuyabilirsiniz.
 
 
-İşletmenize en uygun çözümleri keşfetmek için [Stok Pratik Özelliklerimiz](https://stokpratik.com.tr/ozelliklerimiz) ve [Stok Pratik Paketlerimiz](https://stokpratik.com.tr/paketlerimiz) sayfalarını inceleyebilir, sistemimizi [14 Gün Ücretsiz Deneyin](https://stokpratik.com.tr/14-gun-ucretsiz-deneyin) imkanıyla hemen test edebilirsiniz. Sorularınız için [İletişim](https://stokpratik.com.tr/iletisim) sayfamızdan ekibimize ulaşabilirsiniz.
+İşletmenize en uygun çözümleri keşfetmek için [Stok Pratik Özelliklerimiz](https://stokpratik.com.tr/ozelliklerimiz) ve [Stok Pratik Paketlerimiz](https://stokpratik.com.tr/paketlerimiz) sayfalarını inceleyebilir, sistemimizi [1 Ay Tam Sürüm Ücretsiz Kullanım](https://stokpratik.com.tr/firma-kaydi) imkanıyla hemen test edebilirsiniz. Sorularınız için [İletişim](https://stokpratik.com.tr/iletisim) sayfamızdan ekibimize ulaşabilirsiniz.

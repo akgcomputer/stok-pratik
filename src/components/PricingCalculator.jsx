@@ -704,7 +704,7 @@ export default function PricingCalculator() {
                 href={trialLink}
                 className="w-full py-4 px-6 rounded-2xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-extrabold text-sm sm:text-base text-center block shadow-lg shadow-blue-500/25 transition-all duration-200 transform hover:-translate-y-0.5"
               >
-                14 Gün Ücretsiz Dene
+                1 Ay Tam Sürüm Ücretsiz Dene
               </a>
 
               {/* Secondary: WhatsApp Quick Quote */}

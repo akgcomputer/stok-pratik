@@ -166,9 +166,9 @@ Sektörünüzden işletmelerin Stok Pratik ile başarı hikayelerini görmek iç
 
 ---
 
-## **🆓 14 Gün Ücretsiz Deneme Fırsatı**
+## **🎁 1 Ay Tam Sürüm Ücretsiz Kullanım • Kredi Kartı Gerekmez**
 
-Stok Pratik’i hiçbir risk almadan, üstelik kredi kartı bilgisi vermeden **14 gün boyunca ücretsiz** deneyin. Kurulum derdi yok, ek donanım gerekmez. Sadece kaydolun, tüm üretim ve ERP modüllerini test edin ve işletmenizi dijitalleştirmenin ne kadar kolay olduğunu görün.
+Stok Pratik’i hiçbir risk almadan, üstelik kredi kartı bilgisi vermeden **1 ay boyunca tam sürüm ücretsiz** deneyin. Kurulum derdi yok, ek donanım gerekmez. Sadece kaydolun, tüm üretim ve ERP modüllerini test edin ve işletmenizi dijitalleştirmenin ne kadar kolay olduğunu görün.
 
 ---
 

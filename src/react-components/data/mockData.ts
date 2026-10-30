@@ -224,8 +224,8 @@ export const WHY_US = [
   },
   {
     icon: 'ShieldCheck',
-    title: '14 Gün Ücretsiz Deneme',
-    desc: 'Kredi kartı bilgisi vermeden, hiçbir taahhüt altına girmeden kendi ürün ve varyantlarınızla 14 gün boyunca sistemi test edin.'
+    title: '1 Ay Tam Sürüm Ücretsiz Kullanım • Kredi Kartı Gerekmez',
+    desc: 'Kredi kartı bilgisi vermeden, hiçbir taahhüt altına girmeden kendi ürün ve varyantlarınızla 1 ay boyunca sistemi test edin.'
   },
   {
     icon: 'Headphones',

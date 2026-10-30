@@ -58,7 +58,7 @@ export const CtaSection: React.FC<CtaSectionProps> = ({ onOpenDemoModal }) => {
             </h2>
 
             <p className="text-lg text-teal-100/90 leading-relaxed max-w-xl">
-              14 gün ücretsiz, taahhüt yok, kredi kartı bilgisi gerekmez. Kendi ürünlerinizi ve renk-beden varyantlarınızı sisteme girin, farkı bizzat görün.
+              1 Ay Tam Sürüm Ücretsiz Kullanım • Kredi Kartı Gerekmez, taahhüt yok. Kendi ürünlerinizi ve renk-beden varyantlarınızı sisteme girin, farkı bizzat görün.
             </p>
 
             {/* Checklist */}

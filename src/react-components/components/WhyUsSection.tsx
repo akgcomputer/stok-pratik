@@ -103,7 +103,7 @@ export const WhyUsSection: React.FC<WhyUsSectionProps> = ({ onOpenDemoModal }) =
                 onClick={onOpenDemoModal}
                 className="w-full py-3 rounded-xl bg-white text-teal-900 hover:bg-teal-50 font-bold text-sm shadow-md transition-all flex items-center justify-center gap-2 cursor-pointer"
               >
-                <span>14 Gün Ücretsiz Başla</span>
+                <span>1 Ay Tam Sürüm Ücretsiz Başla</span>
                 <ArrowRight className="w-4 h-4 text-teal-700" />
               </button>
             </div>

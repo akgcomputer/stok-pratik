@@ -131,7 +131,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenDemoModal }) => {
                 onClick={onOpenDemoModal}
                 className="inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-xl bg-gradient-to-r from-teal-600 via-teal-700 to-cyan-700 text-white font-bold text-base shadow-lg shadow-teal-600/25 hover:shadow-xl hover:shadow-teal-600/35 hover:-translate-y-0.5 active:translate-y-0 transition-all cursor-pointer"
               >
-                <span>Hemen Dene - 14 Gün Ücretsiz Demo</span>
+                <span>Hemen Dene - 1 Ay Tam Sürüm Ücretsiz (Kredi Kartı Gerekmez)</span>
                 <ArrowRight className="w-5 h-5" />
               </button>
 

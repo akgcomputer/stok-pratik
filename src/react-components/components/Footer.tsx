@@ -156,13 +156,13 @@ export const Footer: React.FC<FooterProps> = ({ onOpenDemoModal }) => {
             </ul>
           </div>
 
-          {/* 14 Gün Ücretsiz Deneme Box */}
+          {/* 1 Ay Tam Sürüm Ücretsiz Kullanım Box */}
           <div className="lg:col-span-3 space-y-3">
             <h4 className="text-xs font-bold uppercase tracking-wider text-white">
-              14 Gün Ücretsiz Deneyin
+              1 Ay Tam Sürüm Ücretsiz Kullanım • Kredi Kartı Gerekmez
             </h4>
             <p className="text-xs text-slate-400 leading-relaxed">
-              Kredi kartı gerekmeden 14 gün boyunca tüm tekstil varyant ve çoklu depo modüllerini kullanın.
+              Kredi kartı gerekmeden 1 ay boyunca tüm tekstil varyant ve çoklu depo modüllerini kullanın.
             </p>
             <button
               onClick={onOpenDemoModal}

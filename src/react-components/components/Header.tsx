@@ -36,7 +36,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenDemoModal }) => {
         <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2">
           <div className="flex items-center gap-2">
             <span className="bg-amber-400 text-slate-900 font-bold px-2 py-0.5 rounded-full text-xs uppercase tracking-wide flex items-center gap-1 shadow-xs">
-              <Sparkles className="w-3 h-3" /> 14 Gün Ücretsiz
+              <Sparkles className="w-3 h-3" /> 1 Ay Ücretsiz
             </span>
             <span className="hidden sm:inline font-medium text-teal-100">
               Tekstil ve hazır giyim sektörüne özel renk, beden ve varyant yönetimini hemen test edin.
@@ -220,7 +220,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenDemoModal }) => {
                   }}
                   className="w-full bg-gradient-to-r from-teal-600 to-cyan-600 text-white font-bold py-2.5 rounded-xl shadow-md flex items-center justify-center gap-2"
                 >
-                  <Sparkles className="w-4 h-4" /> 14 Gün Ücretsiz Demo Başlat
+                  <Sparkles className="w-4 h-4" /> 1 Ay Tam Sürüm Ücretsiz Başlat
                 </button>
                 <a
                   href={OFFICIAL_LINKS.packages}

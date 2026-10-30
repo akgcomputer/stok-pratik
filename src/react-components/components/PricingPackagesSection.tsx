@@ -125,7 +125,7 @@ export const PricingPackagesSection: React.FC<PricingPackagesSectionProps> = ({ 
                     onClick={onOpenDemoModal}
                     className="w-full py-2.5 text-center text-xs font-bold text-teal-700 hover:text-teal-900 hover:bg-teal-50/50 rounded-lg transition-colors cursor-pointer"
                   >
-                    veya 14 Gün Ücretsiz Demo Talep Et
+                    veya 1 Ay Tam Sürüm Ücretsiz Kullanım • Kredi Kartı Gerekmez
                   </button>
                 </div>
 

@@ -102,7 +102,7 @@ export const ChallengesSection: React.FC = () => {
               Stok Pratik, tüm bu zorluklara sektöre özel çözümler sunar.
             </p>
             <p className="text-xs text-slate-600">
-              Kendi varyantlarınızı ve depolarınızı 14 gün boyunca ücretsiz deneyin.
+              Kendi varyantlarınızı ve depolarınızı 1 ay boyunca tam sürüm ücretsiz deneyin.
             </p>
           </div>
           <a

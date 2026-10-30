@@ -301,7 +301,7 @@ export const InteractiveVariantDemo: React.FC<{ onOpenDemoModal: () => void }> =
                 onClick={onOpenDemoModal}
                 className="px-4 py-2.5 rounded-xl bg-teal-600 hover:bg-teal-700 text-white font-bold text-xs shadow-xs flex items-center gap-1 transition-colors cursor-pointer"
               >
-                <span>Tüm Sistemi 14 Gün Ücretsiz Dene</span>
+                <span>Tüm Sistemi 1 Ay Tam Sürüm Ücretsiz Dene</span>
               </button>
             </div>
           </div>

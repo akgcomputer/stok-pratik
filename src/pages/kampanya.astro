@@ -1,0 +1,463 @@
+---
+// src/pages/kampanya.astro
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const promoCode = "StokPratik45Gun";
+const registerUrl = `https://erp-eticaret.stokpratik.com.tr/giris?promo=${promoCode}`;
+const whatsappUrl = `https://wa.me/+905325000999?text=Merhaba,%20StokPratik45Gun%20kampanyas%C4%B1%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum.`;
+---
+
+<BaseLayout 
+  title="45 Gün Ücretsiz Deneme Kampanyası — StokPratik ERP & E-Ticaret"
+  description="Sosyal medyaya özel fırsat: Kayıt olurken StokPratik45Gun kodunu kullanın, 30 gün yerine tam 45 GÜN ÜCRETSİZ kullanın! Kredi kartı gerekmez, taahhüt yok."
+>
+  <main class="min-h-screen bg-slate-950 text-white selection:bg-amber-400 selection:text-slate-950 relative overflow-hidden">
+    
+    {/* Ambient Glow Backdrops */}
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[500px] bg-gradient-to-b from-red-600/20 via-amber-500/10 to-transparent blur-3xl pointer-events-none"></div>
+    <div class="absolute top-[400px] -left-40 w-96 h-96 bg-amber-500/15 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="absolute top-[800px] -right-40 w-96 h-96 bg-red-600/15 rounded-full blur-3xl pointer-events-none"></div>
+
+    {/* ========================================================================= */}
+    {/* 1. HERO SECTION */}
+    {/* ========================================================================= */}
+    <section class="relative pt-12 pb-16 lg:pt-20 lg:pb-24 border-b border-slate-800">
+      <div class="container mx-auto px-4 max-w-5xl text-center relative z-10">
+        
+        {/* Top Eyebrow Badge */}
+        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-amber-500/20 to-red-500/20 border border-amber-500/40 text-amber-300 text-xs sm:text-sm font-black mb-6 shadow-lg shadow-amber-500/10 animate-pulse">
+          <span class="text-base">🎁</span>
+          <span>SOSYAL MEDYAYA ÖZEL SINIRLI SÜRE FIRSATI</span>
+        </div>
+
+        {/* Main Heading */}
+        <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-tight text-white mb-6">
+          İşletmenizi Dijitalleştirin: <br class="hidden sm:inline" />
+          StokPratik ERP & E-Ticaret Şimdi 30 Gün Değil, <br class="hidden sm:inline" />
+          <span class="bg-gradient-to-r from-amber-400 via-yellow-300 to-amber-500 bg-clip-text text-transparent underline decoration-amber-400/50 decoration-wavy decoration-2">
+            Tam 45 GÜN ÜCRETSİZ!
+          </span>
+          <span class="block text-xl sm:text-2xl lg:text-3xl font-bold text-slate-300 mt-3">
+            (Kredi Kartı Gerekmez)
+          </span>
+        </h1>
+
+        {/* Subtitle */}
+        <p class="text-slate-300 text-base sm:text-xl max-w-3xl mx-auto leading-relaxed mb-8">
+          Kredi kartı gerekmez, taahhüt yok! Kayıt olurken <strong class="text-amber-400 font-extrabold">{promoCode}</strong> kampanya kodunu kullanın, tüm modülleri <strong>45 gün boyunca sınırsız</strong> deneyin.
+        </p>
+
+        {/* Interactive Promo Code Box & Primary CTA */}
+        <div class="max-w-2xl mx-auto bg-slate-900/90 border-2 border-amber-400/40 rounded-3xl p-6 sm:p-8 shadow-2xl shadow-amber-500/10 backdrop-blur-xl relative">
+          
+          <div class="flex flex-col sm:flex-row items-center justify-between gap-4 p-3 bg-slate-950/90 border border-slate-700/80 rounded-2xl mb-6">
+            <div class="flex items-center gap-3 text-left pl-2">
+              <span class="text-2xl">🏷️</span>
+              <div>
+                <span class="text-[11px] font-bold uppercase tracking-wider text-slate-400 block">Resmi Kampanya Kodunuz</span>
+                <span id="promoCodeDisplay" class="text-2xl sm:text-3xl font-black text-amber-400 font-mono tracking-wider">{promoCode}</span>
+              </div>
+            </div>
+
+            <button 
+              id="copyPromoBtn"
+              type="button"
+              class="w-full sm:w-auto px-5 py-3 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-black text-sm flex items-center justify-center gap-2 transition-all active:scale-95 shadow-md shadow-amber-400/20 cursor-pointer"
+            >
+              <svg id="copyIcon" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+              </svg>
+              <span id="copyText">Kodu Kopyala</span>
+            </button>
+          </div>
+
+          {/* Primary Action Button */}
+          <a 
+            href={registerUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="group w-full inline-flex items-center justify-center gap-3 px-8 py-5 rounded-2xl bg-gradient-to-r from-red-600 via-rose-600 to-red-600 hover:from-red-500 hover:to-rose-500 text-white font-black text-lg sm:text-xl shadow-xl shadow-red-600/30 hover:scale-[1.02] active:scale-[0.98] transition-all"
+          >
+            <span>Kodu Uygula ve Hemen 45 Gün Ücretsiz Başla</span>
+            <svg class="w-6 h-6 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+            </svg>
+          </a>
+
+          {/* Trust Guarantees */}
+          <div class="mt-5 flex flex-wrap items-center justify-center gap-4 sm:gap-6 text-xs sm:text-sm text-slate-400">
+            <span class="flex items-center gap-1.5 text-emerald-400">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+              Kredi Kartı İstenmez
+            </span>
+            <span class="flex items-center gap-1.5 text-emerald-400">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+              15 Saniyede Anında Kurulum
+            </span>
+            <span class="flex items-center gap-1.5 text-emerald-400">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+              Taahhüt veya Gizli Masraf Yok
+            </span>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    {/* ========================================================================= */}
+    {/* 2. SARI / ALTIN VURGULU ÖZEL KART: ARKADAŞINI GETİR KAMPANYASI */}
+    {/* ========================================================================= */}
+    <section class="py-16 sm:py-20 relative bg-slate-900/60 border-b border-slate-800">
+      <div class="container mx-auto px-4 max-w-5xl">
+        
+        <div class="rounded-3xl bg-gradient-to-br from-amber-500/20 via-yellow-500/10 to-amber-600/20 border-2 border-amber-400/60 p-8 sm:p-12 shadow-2xl shadow-amber-500/20 relative overflow-hidden">
+          
+          <div class="absolute -right-16 -bottom-16 w-64 h-64 bg-amber-400/20 rounded-full blur-3xl pointer-events-none"></div>
+
+          <div class="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8 relative z-10">
+            
+            <div class="max-w-2xl">
+              <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-400 text-slate-950 text-xs font-black uppercase tracking-wider mb-3">
+                Çift Taraflı Kazanç Programı
+              </div>
+              <h2 class="text-2xl sm:text-4xl font-black text-white mb-4 tracking-tight leading-snug">
+                🎁 Arkadaşını Getir — Her Davette <br class="hidden sm:inline" />
+                <span class="text-amber-400">+1 Ay Ücretsiz Kullanım Kazan!</span>
+              </h2>
+              <p class="text-slate-300 text-sm sm:text-base leading-relaxed mb-6">
+                StokPratik'i kullanmaya başladıktan sonra kendi davet kodunuzla esnaf veya işletme arkadaşlarınızı davet edin:
+              </p>
+
+              <div class="space-y-3.5 text-sm sm:text-base text-slate-200">
+                <div class="flex items-start gap-3 bg-slate-950/60 p-3.5 rounded-xl border border-amber-400/30">
+                  <span class="text-xl shrink-0">🤝</span>
+                  <div>
+                    <strong class="text-amber-300 block">Arkadaşınız Kazansın:</strong>
+                    <span>Davet ettiğiniz arkadaşınız 30 gün yerine <strong>45 Gün Ücretsiz</strong> başlasın!</span>
+                  </div>
+                </div>
+
+                <div class="flex items-start gap-3 bg-slate-950/60 p-3.5 rounded-xl border border-amber-400/30">
+                  <span class="text-xl shrink-0">⚡</span>
+                  <div>
+                    <strong class="text-amber-300 block">Siz Anında Kazanın:</strong>
+                    <span>Arkadaşınız sistemini aktif kullanmaya başladığında (en az 5 stok kartı + 3 fatura/satış işlemi yaptığında) <strong>SİZİN HESABINIZA OTOMATİK +30 GÜN (1 AY) ÜCRETSİZ KULLANIM EKLENSİN!</strong></span>
+                  </div>
+                </div>
+
+                <div class="flex items-start gap-3 bg-slate-950/60 p-3.5 rounded-xl border border-amber-400/30">
+                  <span class="text-xl shrink-0">🎯</span>
+                  <div>
+                    <strong class="text-amber-300 block">Sınırsız Birikim:</strong>
+                    <span>Yılda 12 arkadaşınızı davet ederek StokPratik'i <strong>1 YIL BOYUNCA TAMAMEN ÜCRETSİZ</strong> kullanabilirsiniz!</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Right Card CTA */}
+            <div class="lg:w-80 w-full shrink-0 flex flex-col gap-3">
+              <a 
+                href={registerUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="w-full text-center px-6 py-4 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-black text-base shadow-xl shadow-amber-400/20 transition-all hover:scale-105 active:scale-95"
+              >
+                Hemen 45 Gün Ücretsiz Başla →
+              </a>
+              <a 
+                href="/arkadasini-getir-kampanyasi" 
+                class="w-full text-center px-6 py-3 rounded-xl bg-slate-950/80 hover:bg-slate-950 text-amber-300 border border-amber-400/40 font-bold text-xs sm:text-sm transition-all"
+              >
+                Arkadaşını Getir Detayları →
+              </a>
+              <p class="text-center text-[11px] text-slate-400">
+                Hem siz kazanın, hem çevreniz kazansın!
+              </p>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    {/* ========================================================================= */}
+    {/* 3. ÖNE ÇIKARILACAK STOKPRATİK ÖZELLİKLERİ (BENTO GRID) */}
+    {/* ========================================================================= */}
+    <section class="py-16 sm:py-24 relative border-b border-slate-800">
+      <div class="container mx-auto px-4 max-w-6xl">
+        
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <span class="text-amber-400 font-extrabold uppercase tracking-wider text-xs">Tek Panel, Sınırsız Verim</span>
+          <h2 class="text-3xl sm:text-5xl font-black text-white mt-2 mb-4 tracking-tight">
+            45 Gün Boyunca Tüm Güç Sizinle
+          </h2>
+          <p class="text-slate-400 text-sm sm:text-base">
+            StokPratik, bir muhasebe programından çok daha fazlasıdır. İşletmenizin tüm omurgasını birbirine bağlar.
+          </p>
+        </div>
+
+        {/* Bento Grid (9 Özellik Kartı) */}
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          
+          {/* 1. e-Fatura & GİB */}
+          <div class="p-6 rounded-3xl bg-slate-900/80 border border-slate-800 hover:border-amber-400/50 transition-all group">
+            <div class="w-12 h-12 rounded-2xl bg-amber-400/10 text-amber-400 flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition-transform">
+              ⚡
+            </div>
+            <h3 class="text-lg font-bold text-white mb-2">e-Fatura, e-Arşiv & e-İrsaliye</h3>
+            <p class="text-slate-400 text-sm leading-relaxed">
+              GİB tam uyumlu resmi fatura kesimi, gelen/giden e-belgeler, tevkifatlı faturalar ve anlık kalan kontör takibi.
+            </p>
+          </div>
+
+          {/* 2. Kontör Tasarrufu & Ceza Kalkanı */}
+          <div class="p-6 rounded-3xl bg-slate-900/80 border border-slate-800 hover:border-amber-400/50 transition-all group">
+            <div class="w-12 h-12 rounded-2xl bg-rose-500/10 text-rose-400 flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition-transform">
+              🛡️
+            </div>
+            <h3 class="text-lg font-bold text-white mb-2">Kontör Tasarrufu & 7 Gün Ceza Kalkanı</h3>
+            <p class="text-slate-400 text-sm leading-relaxed">
+              Gün içindeki Nihai Tüketici (11111111111) satışlarınızı tek tuşla birleştirip tek faturada (1 kontörle) GİB'e kesin; ceza riskini sıfırlayın.
+            </p>
+          </div>
+
+          {/* 3. Pazaryeri & E-Ticaret */}
+          <div class="p-6 rounded-3xl bg-slate-900/80 border border-slate-800 hover:border-amber-400/50 transition-all group">
+            <div class="w-12 h-12 rounded-2xl bg-blue-500/10 text-blue-400 flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition-transform">
+              🛒
+            </div>
+            <h3 class="text-lg font-bold text-white mb-2">Pazaryeri & E-Ticaret Entegrasyonu</h3>
+            <p class="text-slate-400 text-sm leading-relaxed">
+              Trendyol, Hepsiburada ve e-ticaret sitenizin stok, fiyat ve siparişlerini tek merkezden, 20 dakikada bir otomatik senkronize edin.
+            </p>
+          </div>
+
+          {/* 4. Barkodlu POS & Cari */}
+          <div class="p-6 rounded-3xl bg-slate-900/80 border border-slate-800 hover:border-amber-400/50 transition-all group">
+            <div class="w-12 h-12 rounded-2xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition-transform">
+              📦
+            </div>
+            <h3 class="text-lg font-bold text-white mb-2">Barkodlu Hızlı POS, Stok & Cari</h3>
+            <p class="text-slate-400 text-sm leading-relaxed">
+              Tezgahta ışık hızında dokunmatik barkodlu satış, anlık depo düşümü ve WhatsApp'tan müşteriye tek tıkla fatura/ekstre iletimi.
+            </p>
+          </div>
+
+          {/* 5. Mali Müşavir Portalı */}
+          <div class="p-6 rounded-3xl bg-slate-900/80 border border-slate-800 hover:border-amber-400/50 transition-all group">
+            <div class="w-12 h-12 rounded-2xl bg-indigo-500/10 text-indigo-400 flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition-transform">
+              👨‍💼
+            </div>
+            <h3 class="text-lg font-bold text-white mb-2">Mali Müşavir (SMMM) Portalı</h3>
+            <p class="text-slate-400 text-sm leading-relaxed">
+              Ay sonu evrak koşturmacasına son! Muhasebecinize ücretsiz salt-okunur portal erişimi verin, evraklarınızı tek tıkla Excel/XML paylaşın.
+            </p>
+          </div>
+
+          {/* 6. Mağazacılık Sistemi */}
+          <div class="p-6 rounded-3xl bg-slate-900/80 border border-slate-800 hover:border-amber-400/50 transition-all group">
+            <div class="w-12 h-12 rounded-2xl bg-purple-500/10 text-purple-400 flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition-transform">
+              🏪
+            </div>
+            <h3 class="text-lg font-bold text-white mb-2">Çok Şubeli Mağazacılık Sistemi</h3>
+            <p class="text-slate-400 text-sm leading-relaxed">
+              İster tek mağaza ister zincir şubeler; şubeler arası transfer, ortak kasa kontrolü, sahada araç içi sıcak satış veya online sipariş yönetimi.
+            </p>
+          </div>
+
+          {/* 7. Lojistik Yönetimi */}
+          <div class="p-6 rounded-3xl bg-slate-900/80 border border-slate-800 hover:border-amber-400/50 transition-all group">
+            <div class="w-12 h-12 rounded-2xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition-transform">
+              🚚
+            </div>
+            <h3 class="text-lg font-bold text-white mb-2">Lojistik & Depo Yönetimi (WMS)</h3>
+            <p class="text-slate-400 text-sm leading-relaxed">
+              Depo raf adresleme, rotalı sipariş toplama, koli/palet bazlı sevkiyat ve kargo entegrasyonu ile sıfır sevk hatası.
+            </p>
+          </div>
+
+          {/* 8. ERP & Üretim Modülü */}
+          <div class="p-6 rounded-3xl bg-slate-900/80 border border-slate-800 hover:border-amber-400/50 transition-all group">
+            <div class="w-12 h-12 rounded-2xl bg-amber-500/10 text-amber-400 flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition-transform">
+              ⚙️
+            </div>
+            <h3 class="text-lg font-bold text-white mb-2">ERP, Üretim & Reçete Maliyeti</h3>
+            <p class="text-slate-400 text-sm leading-relaxed">
+              İmalat reçeteleri (BOM), fire hesaplama, otomatik hammadde düşüşü ve işçilik dahil kuruşu kuruşuna gerçek birim maliyet hesabı.
+            </p>
+          </div>
+
+          {/* 9. CRM & Müşteri İlişkileri */}
+          <div class="p-6 rounded-3xl bg-slate-900/80 border border-slate-800 hover:border-amber-400/50 transition-all group">
+            <div class="w-12 h-12 rounded-2xl bg-pink-500/10 text-pink-400 flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition-transform">
+              👥
+            </div>
+            <h3 class="text-lg font-bold text-white mb-2">CRM & Müşteri Sadakat Yönetimi</h3>
+            <p class="text-slate-400 text-sm leading-relaxed">
+              Müşteri geçmişi, satış hunisi (pipeline), tekliften tek tıkla siparişe dönüşüm ve puan/kampanya yönetimi.
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    {/* ========================================================================= */}
+    {/* 4. FİYAT GİZLİLİĞİ KURALINA UYGUN AVANTAJ KARTLARI (KESİNLİKLE TL FİYAT YOK) */}
+    {/* ========================================================================= */}
+    <section class="py-16 sm:py-20 bg-slate-900/40 border-b border-slate-800">
+      <div class="container mx-auto px-4 max-w-5xl">
+        
+        <div class="text-center max-w-2xl mx-auto mb-12">
+          <span class="text-amber-400 font-extrabold uppercase tracking-wider text-xs">Şeffaf & Esnek Seçenekler</span>
+          <h2 class="text-2xl sm:text-4xl font-black text-white mt-1 mb-3">
+            Lisanslama & Başlangıç Seçenekleri
+          </h2>
+          <p class="text-slate-400 text-xs sm:text-sm">
+            Tüm paketlerimiz 45 gün boyunca taahhütsüz test edilebilir.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          
+          {/* 1. Kart: 45 Gün Ücretsiz Deneme */}
+          <div class="p-6 rounded-3xl bg-slate-950 border-2 border-amber-400/50 shadow-xl shadow-amber-500/10 flex flex-col justify-between">
+            <div>
+              <div class="inline-flex px-3 py-1 rounded-full bg-amber-400/20 text-amber-300 font-bold text-xs mb-4">
+                Sıfır Risk Başlangıç
+              </div>
+              <h3 class="text-xl font-extrabold text-white mb-3">45 Gün Ücretsiz Deneme</h3>
+              <p class="text-slate-400 text-xs sm:text-sm leading-relaxed mb-6">
+                Tüm modüller açık, sınırsız fatura kesimi, e-ticaret bağlantısı ve uzman teknik destek. Kredi kartı istenmez.
+              </p>
+            </div>
+            <a 
+              href={registerUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="w-full py-3.5 px-4 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-black text-center text-sm transition-all"
+            >
+              Hemen Başla →
+            </a>
+          </div>
+
+          {/* 2. Kart: Arkadaşını Getir (+1 Ay Hediye) */}
+          <div class="p-6 rounded-3xl bg-slate-950 border border-slate-800 hover:border-slate-700 flex flex-col justify-between">
+            <div>
+              <div class="inline-flex px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 font-bold text-xs mb-4">
+                Tavsiye Programı
+              </div>
+              <h3 class="text-xl font-extrabold text-white mb-3">Arkadaşını Getir (+1 Ay Hediye)</h3>
+              <p class="text-slate-400 text-xs sm:text-sm leading-relaxed mb-6">
+                Her aktif davetinizde hesabınıza +30 gün ekleyin. 12 davetle sisteminizi 1 yıl boyunca tamamen ücretsiz kullanın.
+              </p>
+            </div>
+            <a 
+              href="/arkadasini-getir-kampanyasi"
+              class="w-full py-3.5 px-4 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-bold text-center text-sm transition-all"
+            >
+              Kampanyayı İncele →
+            </a>
+          </div>
+
+          {/* 3. Kart: 1, 2, 3 Yıllık Avantajlı Lisanslama */}
+          <div class="p-6 rounded-3xl bg-slate-950 border border-slate-800 hover:border-slate-700 flex flex-col justify-between">
+            <div>
+              <div class="inline-flex px-3 py-1 rounded-full bg-blue-500/20 text-blue-300 font-bold text-xs mb-4">
+                Uzun Vadeli Güvence
+              </div>
+              <h3 class="text-xl font-extrabold text-white mb-3">1, 2, 3 Yıllık Avantajlı Lisanslama</h3>
+              <p class="text-slate-400 text-xs sm:text-sm leading-relaxed mb-6">
+                Enflasyona karşı fiyat koruması, çok yıllı lisans indirimleri ve özel müşteri temsilcisi atanması avantajları.
+              </p>
+            </div>
+            <a 
+              href={whatsappUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="w-full py-3.5 px-4 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-bold text-center text-sm transition-all"
+            >
+              Uzmanla Görüşün →
+            </a>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    {/* ========================================================================= */}
+    {/* 5. FINAL CALL TO ACTION */}
+    {/* ========================================================================= */}
+    <section class="py-16 sm:py-20 relative">
+      <div class="container mx-auto px-4 max-w-4xl text-center">
+        
+        <div class="p-8 sm:p-12 rounded-3xl bg-gradient-to-r from-red-600 via-rose-600 to-amber-600 text-white shadow-2xl relative overflow-hidden">
+          <div class="relative z-10">
+            <h2 class="text-2xl sm:text-4xl font-black mb-4 tracking-tight">
+              45 Gün Boyunca İşinizi Birlikte Büyütelim!
+            </h2>
+            <p class="text-red-100 text-sm sm:text-base max-w-xl mx-auto mb-8 font-medium">
+              StokPratik45Gun kampanya kodunuz hazır. Kredi kartsız hemen kaydolun, canlı ekibimiz ilk kurulumunuzu dakikalar içinde yapsın.
+            </p>
+
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+              <a 
+                href={registerUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="w-full sm:w-auto px-8 py-4 rounded-xl bg-white hover:bg-slate-100 text-slate-950 font-black text-base shadow-xl transition-all hover:scale-105 active:scale-95"
+              >
+                🚀 45 Gün Ücretsiz Başla (Kredi Kartsız)
+              </a>
+
+              <a 
+                href={whatsappUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="w-full sm:w-auto px-8 py-4 rounded-xl bg-slate-950/40 hover:bg-slate-950/60 text-white border border-white/30 font-bold text-base transition-all"
+              >
+                💬 WhatsApp ile Bilgi Alın
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  {/* Client script for 1-click copy feedback */}
+  <script is:inline define:vars={{ promoCode }}>
+    document.addEventListener('DOMContentLoaded', () => {
+      const copyBtn = document.getElementById('copyPromoBtn');
+      const copyText = document.getElementById('copyText');
+      const copyIcon = document.getElementById('copyIcon');
+
+      if (copyBtn) {
+        copyBtn.addEventListener('click', async () => {
+          try {
+            await navigator.clipboard.writeText(promoCode);
+            if (copyText) copyText.textContent = "Kopyalandı! 🎉";
+            copyBtn.classList.remove('bg-amber-400', 'hover:bg-amber-300');
+            copyBtn.classList.add('bg-emerald-400', 'text-slate-950');
+            
+            setTimeout(() => {
+              if (copyText) copyText.textContent = "Kodu Kopyala";
+              copyBtn.classList.remove('bg-emerald-400');
+              copyBtn.classList.add('bg-amber-400', 'hover:bg-amber-300');
+            }, 3000);
+          } catch (err) {
+            console.error('Kopyalama hatası:', err);
+          }
+        });
+      }
+    });
+  </script>
+</BaseLayout>

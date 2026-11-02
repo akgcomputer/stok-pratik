@@ -1,6 +1,7 @@
 ---
 // src/pages/kampanya.astro
 import BaseLayout from '../layouts/BaseLayout.astro';
+import SocialFeedGallery from '../components/SocialFeedGallery.astro';
 
 const promoCode = "StokPratik45Gun";
 const registerUrl = `https://erp-eticaret.stokpratik.com.tr/giris?promo=${promoCode}`;
@@ -430,8 +431,8 @@ const whatsappUrl = `https://wa.me/+905325000999?text=Merhaba,%20StokPratik45Gun
           </div>
         </div>
 
-        <div class="bg-slate-950/80 border border-slate-800 rounded-3xl p-4 sm:p-6 shadow-2xl">
-          <figure data-behold-id="aqk1LlwnSuTE6SDhTCCY" class="w-full"></figure>
+        <div>
+          <SocialFeedGallery initialLimit={3} showFilters={false} showLoadMore={false} />
         </div>
       </div>
     </section>
@@ -504,15 +505,5 @@ const whatsappUrl = `https://wa.me/+905325000999?text=Merhaba,%20StokPratik45Gun
         });
       }
     });
-
-    // Behold Widget Loader
-    (() => {
-      if (window.__bhldScript) return;
-      window.__bhldScript = true;
-      const d = document, s = d.createElement("script");
-      s.type = "module";
-      s.src = "https://w.behold.so/widget.js";
-      setTimeout(() => { d.head.append(s); }, 0);
-    })();
   </script>
 </BaseLayout>

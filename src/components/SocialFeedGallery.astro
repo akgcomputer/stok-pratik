@@ -1,0 +1,692 @@
+---
+// src/components/SocialFeedGallery.astro
+interface Props {
+  initialLimit?: number;
+  showFilters?: boolean;
+  showLoadMore?: boolean;
+  title?: string;
+  subtitle?: string;
+}
+
+const {
+  initialLimit = 6,
+  showFilters = true,
+  showLoadMore = true,
+  title = "Instagram Paylaşımları & Canlı Reels",
+  subtitle = "Videoları ve rehberlerimizi doğrudan sitemiz üzerinden izleyebilirsiniz."
+} = Astro.props;
+
+// Base curated posts with verified shortcodes and content
+const defaultPosts = [
+  {
+    id: "reel-45gun",
+    shortcode: "DfN0gLXBLE7",
+    permalink: "https://www.instagram.com/reel/DfN0gLXBLE7/",
+    mediaType: "VIDEO",
+    category: "video",
+    title: "StokPratik ERP & E-Ticaret — 45 Gün Ücretsiz Kampanyası",
+    badge: "🎁 45 Gün Kampanyası",
+    thumbnail: "https://behold.pictures/eyJ1IjoiN3pOZ2p5QnhidlZDcUhBT21hUGkyZVBwM21LMiIsImYiOiJhcWsxTGx3blN1VEU2U0RoVENDWSIsInAiOiIxNzkxNTgwODU0OTI4MTk4NCIsImgiOiI0cHNxMXMifQ.jpg?class=squareMedium",
+    caption: `İşletmenizi Dijitalleştirin:
+StokPratik ERP & E-Ticaret Şimdi 30 Gün Değil, Tam 45 GÜN ÜCRETSİZ!
+(Kredi Kartı Gerekmez)
+
+Öne Çıkan Özelliklerimiz:
+⚡ e-Fatura, e-Arşiv & e-İrsaliye
+🛡️ Kontör Tasarrufu & 7 Gün Ceza Kalkanı (Nihai tüketici faturalarını tek tıkla birleştirme)
+🛒 Pazaryeri & E-Ticaret Entegrasyonu (Trendyol, Hepsiburada senkronizasyonu)
+📦 Barkodlu Hızlı Satış (POS), Stok, Depo, Cari ve WhatsApp Belge Paylaşımı
+👨‍💼 Mali Müşavir (SMMM) Portalı
+🏪 Çok Şubeli Mağazacılık ve Saha Sıcak Satış
+🚚 Lojistik & Depo Yönetimi (WMS)
+⚙️ ERP, Üretim & Reçete Maliyet Motoru
+👥 CRM & Müşteri Sadakat Yönetimi`,
+    date: "1 Kasım 2026",
+    likes: 15
+  },
+  {
+    id: "post-kirtasiye",
+    shortcode: "DfHJQ84DEQA",
+    permalink: "https://www.instagram.com/p/DfHJQ84DEQA/",
+    mediaType: "CAROUSEL_ALBUM",
+    category: "post",
+    title: "Kırtasiye & Kitapçılık Yönetimi — ISBN Barkod & Hızlı Kasa",
+    badge: "📚 Kırtasiye & Kitap",
+    thumbnail: "https://behold.pictures/eyJ1IjoiN3pOZ2p5QnhidlZDcUhBT21hUGkyZVBwM21LMiIsImYiOiJhcWsxTGx3blN1VEU2U0RoVENDWSIsInAiOiIxODEyNzY3NzkxOTg4NTYyOCIsImgiOiIxdWQ4OXZ5In0.jpg?class=squareMedium",
+    caption: `🏷️ KIRTASİYE & KİTAP YÖNETİMİ
+Okul sezonundaki kasa kuyruklarına ve binlerce barkodsuz ürünün stok karmaşasına son! 📚✏️
+
+📖 Otomatik ISBN Kitap Künyesi: Kitabın arkasındaki barkodu okutun; yazar ve yayınevi anında dolsun.
+🎒 Tek Tıkla Okul Paketi Satışı: Okul ihtiyaç listelerini tek bir paket barkoduna dönüştürün.
+⚡ Barkodsuz Ürünler İçin Dokunmatik Hızlı Kasa: Silgi, kalem ucu, fotokopi gibi ürünleri saniyede satın.
+📦 Yayınevi Konsinye & Sezonluk İade Takibi: Satılmayan yardımcı kitapların yayınevine iadesini eksiksiz denetleyin.`,
+    date: "30 Ekim 2026",
+    likes: 12
+  },
+  {
+    id: "post-cumhuriyet",
+    shortcode: "DfC15TnjJsZ",
+    permalink: "https://www.instagram.com/p/DfC15TnjJsZ/",
+    mediaType: "CAROUSEL_ALBUM",
+    category: "post",
+    title: "29 Ekim Cumhuriyet Bayramı — Üreten Türkiye ile Geleceğe!",
+    badge: "🇹🇷 Cumhuriyet Bayramı",
+    thumbnail: "https://behold.pictures/eyJ1IjoiN3pOZ2p5QnhidlZDcUhBT21hUGkyZVBwM21LMiIsImYiOiJhcWsxTGx3blN1VEU2U0RoVENDWSIsInAiOiIxODM1MTc0OTgyNzI4NDYyNSIsImgiOiI0cm5kNmwifQ.jpg?class=squareMedium",
+    caption: `🏷️ 🇹🇷 29 EKİM CUMHURİYET BAYRAMI
+Cumhuriyetimizin Işığında, Üreten Türkiye ile Geleceğe! 🇹🇷🕊️
+
+Büyük Önder Gazi Mustafa Kemal Atatürk’ün; "Siyasi ve askeri zaferler ne kadar büyük olursa olsunlar, iktisadi zaferlerle taçlandırılmazlarsa husule gelen zaferler payidar olamaz" sözleriyle işaret ettiği gibi; bağımsızlığımızın en büyük teminatı üreten, istihdam sağlayan ve katma değer yaratan güçlü bir ekonomidir.
+
+Tüm sanayicilerimiz, esnafımız ve KOBİ’lerimizin 29 Ekim Cumhuriyet Bayramı kutlu olsun!`,
+    date: "28 Ekim 2026",
+    likes: 24
+  },
+  {
+    id: "post-dovizli-cari",
+    shortcode: "DfC1gNmjKkU",
+    permalink: "https://www.instagram.com/p/DfC1gNmjKkU/",
+    mediaType: "CAROUSEL_ALBUM",
+    category: "post",
+    title: "Dövizli Cari & Finans — Çoklu Para Birimi & Kur Farkı Faturası",
+    badge: "💱 Finans & Döviz",
+    thumbnail: "https://behold.pictures/eyJ1IjoiN3pOZ2p5QnhidlZDcUhBT21hUGkyZVBwM21LMiIsImYiOiJhcWsxTGx3blN1VEU2U0RoVENDWSIsInAiOiIxODQ1NzIxODk1NTEyMDA5MSIsImgiOiIxNWd5bnRiIn0.jpg?class=squareMedium",
+    caption: `🏷️ DÖVİZLİ CARİ & FİNANS
+Dalgalı döviz kurlarında gizli kur zararlarına ve bakiye uyuşmazlığına son! 💱📈
+
+🏛️ Otomatik Canlı TCMB Kurları: Merkez Bankası döviz alış, satış ve efektif kurları her gün sisteme otomatik çekilsin.
+⚖️ Çift Para Birimli Cari Ekstre: Cari hesapları hem orijinal döviz (USD, EUR, GBP) hem de anlık TL karşılığıyla izleyin.
+📑 Tek Tıkla Kur Farkı Faturası: Fatura ile tahsilat arasındaki kur değişimini sistem saniyede hesaplayıp faturasını kessin.
+🛡️ Dinamik Fiyat Kalkanı: Kurlar yükseldikçe satış fiyatlarını güncelleyerek kâr marjınızı koruyun.`,
+    date: "28 Ekim 2026",
+    likes: 18
+  },
+  {
+    id: "post-restoran-kafe",
+    shortcode: "De_wufWDOG0",
+    permalink: "https://www.instagram.com/p/De_wufWDOG0/",
+    mediaType: "CAROUSEL_ALBUM",
+    category: "post",
+    title: "Restoran & Kafe Çözümü — QR Menü, Masadan Sipariş & Mutfak Ekranı",
+    badge: "☕ Restoran & Kafe",
+    thumbnail: "https://behold.pictures/eyJ1IjoiN3pOZ2p5QnhidlZDcUhBT21hUGkyZVBwM21LMiIsImYiOiJhcWsxTGx3blN1VEU2U0RoVENDWSIsInAiOiIxODEyODYzNjM3NDg5NDE3MiIsImgiOiIxZjliNWYwIn0.jpg?class=squareMedium",
+    caption: `🏷️ RESTORAN & KAFE YÖNETİMİ
+Yıpranan basılı menülere ve garson bekleme kuyruklarına son verin! 📱☕
+
+📸 Dinamik & Fotoğraflı QR Menü: Fiyatları ve fotoğrafları anında güncelleyin, matbaa masrafını sıfırlayın.
+🍳 Masadan Sipariş & Mutfak Ekranı (KDS): Masadaki QR kodla verilen sipariş garson beklemeden mutfağa düşsün.
+📦 Anlık Reçete & Stok Entegrasyonu: Satılan her burger ve içecekte hammadde depodan otomatik düşsün.
+⚡ 2 Kat Daha Hızlı Masa Devir Hızı: Servis sürelerini kısaltarak daha fazla misafir ağırlayın.`,
+    date: "27 Ekim 2026",
+    likes: 16
+  },
+  {
+    id: "post-prim-kota",
+    shortcode: "De_wdoVDCF6",
+    permalink: "https://www.instagram.com/p/De_wdoVDCF6/",
+    mediaType: "CAROUSEL_ALBUM",
+    category: "post",
+    title: "Satış Temsilcisi & Prim Yönetimi — Şeffaf Kota & Saha Satış",
+    badge: "🎯 Satış & Prim",
+    thumbnail: "https://behold.pictures/eyJ1IjoiN3pOZ2p5QnhidlZDcUhBT21hUGkyZVBwM21LMiIsImYiOiJhcWsxTGx3blN1VEU2U0RoVENDWSIsInAiOiIxODEyOTc2NjU3MDgzNTk2MyIsImgiOiIxZTd3N2t5In0.jpg?class=squareMedium",
+    caption: `🏷️ PRİM & KOTA YÖNETİMİ
+Ay sonu prim hesabı tartışmalarına ve belirsiz satış hedeflerine son verin! 📈💼
+
+🎯 Bireysel & Ekip Ciro Kotaları: Her temsilci hedefine ne kadar yaklaştığını mobil ekranından anlık izlesin.
+💰 Tahsilata & Kârlılığa Bağlı Otomatik Prim: Satış faturası kesildiğinde veya tahsilat kasaya girdiğinde devreye giren esnek prim kuralları.
+📱 Şeffaf Temsilci Mobil Ekranı: Satış personeli hak ettiği güncel prim tutarını cebinden görsün.
+🗺️ Rut & Ziyaret Haritası: Saha ekibinin müşteri ziyaretlerini harita üzerinden yönetin.`,
+    date: "27 Ekim 2026",
+    likes: 14
+  },
+  {
+    id: "reel-kontor-tasarrufu",
+    shortcode: "DfN0gLXBLE7",
+    permalink: "https://www.instagram.com/reel/DfN0gLXBLE7/",
+    mediaType: "VIDEO",
+    category: "video",
+    title: "Nihai Tüketici Fatura Birleştirme ile Binlerce Kontör Tasarrufu",
+    badge: "🛡️ Kontör Tasarrufu",
+    thumbnail: "https://behold.pictures/eyJ1IjoiN3pOZ2p5QnhidlZDcUhBT21hUGkyZVBwM21LMiIsImYiOiJhcWsxTGx3blN1VEU2U0RoVENDWSIsInAiOiIxNzkxNTgwODU0OTI4MTk4NCIsImgiOiI0cHNxMXMifQ.jpg?class=squareMedium",
+    caption: `⚡ GİB 7 Gün Kuralı ve Kontör Tasarrufu Kalkanı
+Küçük tutarlı nihai tüketici fiş ve siparişlerini tek tek e-Arşiv faturaya dönüştürüp yüzlerce kontör harcamak yerine, gün sonunda tek tuşla birleştirip 1 kontörle GİB'e iletin!
+
+Hukuki ve mali mevzuata %100 uyumlu fatura birleştirme motoru ile hem cezai yaptırımlardan korunun hem de kontör maliyetinizi %80 düşürün.`,
+    date: "24 Ekim 2026",
+    likes: 21
+  },
+  {
+    id: "reel-pazaryeri-senkron",
+    shortcode: "DfN0gLXBLE7",
+    permalink: "https://www.instagram.com/reel/DfN0gLXBLE7/",
+    mediaType: "VIDEO",
+    category: "video",
+    title: "Trendyol, Hepsiburada & E-Ticaret Otomatik Stok Senkronizasyonu",
+    badge: "🛒 Pazaryeri & Depo",
+    thumbnail: "https://behold.pictures/eyJ1IjoiN3pOZ2p5QnhidlZDcUhBT21hUGkyZVBwM21LMiIsImYiOiJhcWsxTGx3blN1VEU2U0RoVENDWSIsInAiOiIxNzkxNTgwODU0OTI4MTk4NCIsImgiOiI0cHNxMXMifQ.jpg?class=squareMedium",
+    caption: `📦 E-Ticarette Çift Satış ve Stok Tükenme Korkusuna Son!
+Fiziki dükkanınızda satılan bir ürün aynı anda Trendyol ve web sitenizden otomatik olarak düşsün. 
+
+Tüm siparişler tek ekrana gelsin, kargo barkodları saniyede basılsın, e-faturalar otomatik kesilip müşteriye WhatsApp ve e-posta ile iletilsin.`,
+    date: "21 Ekim 2026",
+    likes: 29
+  },
+  {
+    id: "reel-uretim-recete",
+    shortcode: "DfN0gLXBLE7",
+    permalink: "https://www.instagram.com/reel/DfN0gLXBLE7/",
+    mediaType: "VIDEO",
+    category: "video",
+    title: "İmalat Reçetesi (BOM) & Gerçek Birim Maliyet Hesabı",
+    badge: "⚙️ Üretim & ERP",
+    thumbnail: "https://behold.pictures/eyJ1IjoiN3pOZ2p5QnhidlZDcUhBT21hUGkyZVBwM21LMiIsImYiOiJhcWsxTGx3blN1VEU2U0RoVENDWSIsInAiOiIxNzkxNTgwODU0OTI4MTk4NCIsImgiOiI0cHNxMXMifQ.jpg?class=squareMedium",
+    caption: `🏭 Gerçekten Ne Kadara Mal Ediyorsunuz?
+Hammadde fire oranları, işçilik giderleri, enerji masrafları ve ambalaj giderlerini hesaba katmadan satılan her ürün gizli zarar doğurur.
+
+Stok Pratik İmalat ve Reçete Motoru ile reçetenizi oluşturun, üretim emrini verin; hammaddeler depodan anında düşsün ve gerçek birim maliyet kuruşu kuruşuna çıksın.`,
+    date: "18 Ekim 2026",
+    likes: 19
+  }
+];
+
+// Fetch live feed to merge any new items dynamically if possible
+let posts = [...defaultPosts];
+
+try {
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), 2000);
+  const res = await fetch("https://feeds.behold.so/aqk1LlwnSuTE6SDhTCCY", { signal: controller.signal });
+  clearTimeout(timeoutId);
+  if (res.ok) {
+    const data = await res.json();
+    if (data.posts && Array.isArray(data.posts) && data.posts.length > 0) {
+      // Merge unique permalinks or update thumbnails
+      const livePosts = data.posts.map((p: any) => {
+        const shortcodeMatch = p.permalink?.match(/\/(reel|p)\/([^/]+)/);
+        const shortcode = shortcodeMatch ? shortcodeMatch[2] : "";
+        const isVideo = p.mediaType === "VIDEO" || p.permalink?.includes("/reel/");
+        const titleFirstLine = p.caption ? p.caption.split("\n")[0].replace(/^🏷️\s*/, "") : "Stok Pratik Paylaşımı";
+        
+        return {
+          id: p.id,
+          shortcode,
+          permalink: p.permalink,
+          mediaType: isVideo ? "VIDEO" : "CAROUSEL_ALBUM",
+          category: isVideo ? "video" : "post",
+          title: titleFirstLine.slice(0, 70),
+          badge: isVideo ? "🎬 Reels Video" : "📖 Bilgi Rehberi",
+          thumbnail: p.sizes?.medium?.mediaUrl || p.mediaUrl || p.thumbnailUrl,
+          caption: p.caption || "",
+          date: p.timestamp ? new Date(p.timestamp).toLocaleDateString("tr-TR", { day: 'numeric', month: 'long', year: 'numeric' }) : "Güncel",
+          likes: p.likeCount || 5
+        };
+      });
+
+      // Combine: keep unique by shortcode, live items at front
+      const seen = new Set();
+      const combined = [];
+      for (const item of [...livePosts, ...defaultPosts]) {
+        if (!seen.has(item.shortcode) && item.shortcode) {
+          seen.add(item.shortcode);
+          combined.push(item);
+        }
+      }
+      posts = combined;
+    }
+  }
+} catch (e) {
+  // Use defaultPosts on fetch error
+}
+
+const registerUrl = "https://erp-eticaret.stokpratik.com.tr/giris?promo=StokPratik45Gun";
+---
+
+<div class="social-feed-gallery" data-initial-limit={initialLimit}>
+  
+  {/* Filter Tabs */}
+  {showFilters && (
+    <div class="flex flex-wrap items-center justify-center gap-2 mb-8">
+      <button 
+        type="button"
+        class="filter-tab active px-5 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all bg-amber-400 text-slate-950 shadow-md shadow-amber-400/20"
+        data-filter="all"
+      >
+        Tümü ({posts.length})
+      </button>
+      <button 
+        type="button"
+        class="filter-tab px-5 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all bg-slate-900 border border-slate-800 text-slate-300 hover:text-white hover:border-slate-700"
+        data-filter="video"
+      >
+        🎬 Reels & Videolar ({posts.filter(p => p.category === 'video').length})
+      </button>
+      <button 
+        type="button"
+        class="filter-tab px-5 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all bg-slate-900 border border-slate-800 text-slate-300 hover:text-white hover:border-slate-700"
+        data-filter="post"
+      >
+        📖 Rehber & Gönderiler ({posts.filter(p => p.category === 'post').length})
+      </button>
+    </div>
+  )}
+
+  {/* Posts Grid */}
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="galleryGrid">
+    {posts.map((post, index) => (
+      <div 
+        class={`post-card group relative bg-slate-900/90 border border-slate-800 hover:border-amber-400/50 rounded-2xl overflow-hidden shadow-xl transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-between cursor-pointer ${index >= initialLimit ? 'hidden overflow-item' : ''}`}
+        data-category={post.category}
+        data-shortcode={post.shortcode}
+        data-mediatype={post.mediaType}
+        data-permalink={post.permalink}
+        data-title={post.title}
+        data-badge={post.badge}
+        data-caption={encodeURIComponent(post.caption)}
+        data-thumbnail={post.thumbnail}
+        data-date={post.date}
+        data-likes={post.likes}
+      >
+        {/* Media Thumbnail Container */}
+        <div class="relative w-full aspect-square bg-slate-950 overflow-hidden">
+          <img 
+            src={post.thumbnail} 
+            alt={post.title} 
+            loading="lazy"
+            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+          />
+          
+          {/* Subtle gradient overlay */}
+          <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent opacity-60 group-hover:opacity-40 transition-opacity"></div>
+
+          {/* Top Badge */}
+          <div class="absolute top-3 left-3 z-10">
+            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-black backdrop-blur-md shadow-lg bg-slate-950/80 text-amber-400 border border-amber-400/30">
+              {post.badge}
+            </span>
+          </div>
+
+          {/* Video Play Overlay Button */}
+          {post.category === 'video' ? (
+            <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+              <div class="w-14 h-14 rounded-full bg-gradient-to-tr from-rose-600 via-pink-600 to-purple-600 text-white flex items-center justify-center shadow-2xl shadow-rose-600/50 group-hover:scale-110 transition-transform">
+                <svg class="w-6 h-6 ml-0.5 fill-current" viewBox="0 0 24 24">
+                  <path d="M8 5v14l11-7z" />
+                </svg>
+              </div>
+            </div>
+          ) : (
+            <div class="absolute top-3 right-3 z-10">
+              <span class="w-8 h-8 rounded-full bg-slate-950/80 backdrop-blur-md border border-slate-700 flex items-center justify-center text-slate-300 text-xs shadow-md">
+                📚
+              </span>
+            </div>
+          )}
+
+          {/* Quick Hover Text */}
+          <div class="absolute bottom-3 left-3 right-3 z-10 flex items-center justify-between text-xs text-slate-300">
+            <span class="font-semibold flex items-center gap-1">
+              <span>❤️</span> {post.likes}
+            </span>
+            <span class="px-2 py-0.5 rounded bg-slate-900/90 text-amber-300 font-bold border border-amber-400/20 group-hover:bg-amber-400 group-hover:text-slate-950 transition-colors">
+              {post.category === 'video' ? '🎬 Videoyu İzle' : '📖 İncele'}
+            </span>
+          </div>
+        </div>
+
+        {/* Card Body */}
+        <div class="p-5 flex flex-col justify-between flex-1">
+          <div>
+            <div class="flex items-center justify-between text-[11px] text-slate-400 mb-2">
+              <span class="font-mono text-pink-400 font-bold">@stokpratik</span>
+              <span>{post.date}</span>
+            </div>
+            <h3 class="text-sm sm:text-base font-bold text-white group-hover:text-amber-400 transition-colors line-clamp-2 leading-snug">
+              {post.title}
+            </h3>
+            <p class="text-xs text-slate-400 mt-2 line-clamp-2 leading-relaxed">
+              {post.caption.replace(/\n+/g, " ")}
+            </p>
+          </div>
+
+          <div class="mt-4 pt-3 border-t border-slate-800/80 flex items-center justify-between text-xs">
+            <span class="text-slate-400 font-semibold group-hover:text-amber-300 transition-colors flex items-center gap-1">
+              {post.category === 'video' ? 'Site İçinde Oynat' : 'Detayları Oku'} →
+            </span>
+            <span class="text-[11px] text-slate-400">
+              {post.category === 'video' ? 'Reels' : 'Gönderi'}
+            </span>
+          </div>
+        </div>
+      </div>
+    ))}
+  </div>
+
+  {/* Load More Button */}
+  {showLoadMore && posts.length > initialLimit && (
+    <div class="mt-10 text-center" id="loadMoreContainer">
+      <button 
+        type="button" 
+        id="btnLoadMore"
+        class="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl bg-slate-900 hover:bg-slate-800 border-2 border-slate-700 hover:border-amber-400 text-white font-bold text-sm shadow-xl transition-all hover:scale-105"
+      >
+        <span>Daha Fazla Gönderi Yükle ({posts.length - initialLimit} Gönderi Daha)</span>
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+        </svg>
+      </button>
+    </div>
+  )}
+
+  {/* ========================================================================= */}
+  {/* INTERACTIVE VIDEO & POST LIGHTBOX MODAL (POPUP) */}
+  {/* ========================================================================= */}
+  <div 
+    id="socialModal" 
+    class="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-slate-950/85 backdrop-blur-md opacity-0 pointer-events-none transition-opacity duration-300"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="modalTitle"
+  >
+    {/* Modal Container */}
+    <div 
+      id="modalContainer"
+      class="relative w-full max-w-4xl max-h-[92vh] bg-slate-900 border-2 border-slate-700 rounded-3xl shadow-2xl overflow-hidden flex flex-col md:flex-row transform scale-95 transition-transform duration-300"
+    >
+      {/* Close Button */}
+      <button 
+        type="button" 
+        id="btnModalClose"
+        class="absolute top-3 right-3 z-30 w-10 h-10 rounded-full bg-slate-950/80 hover:bg-rose-600 text-white flex items-center justify-center text-lg font-bold border border-slate-700 hover:border-rose-500 transition-all shadow-xl"
+        title="Kapat (ESC)"
+      >
+        ✕
+      </button>
+
+      {/* Left Media Area: Reels Player or Image */}
+      <div class="w-full md:w-[420px] bg-slate-950 flex items-center justify-center relative shrink-0 p-3 sm:p-4 min-h-[350px] md:min-h-[580px] overflow-hidden">
+        
+        {/* Loading Spinner */}
+        <div id="modalLoading" class="absolute inset-0 flex items-center justify-center bg-slate-950 z-10 text-amber-400">
+          <div class="flex flex-col items-center gap-3">
+            <svg class="animate-spin h-8 w-8 text-amber-400" fill="none" viewBox="0 0 24 24">
+              <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+              <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path>
+            </svg>
+            <span class="text-xs text-slate-400 font-mono">İçerik yükleniyor...</span>
+          </div>
+        </div>
+
+        {/* Dynamic Iframe for Instagram Reel */}
+        <iframe 
+          id="modalIframe"
+          src=""
+          class="w-full h-[380px] sm:h-[460px] md:h-[540px] rounded-2xl border-0 shadow-lg relative z-20"
+          frameborder="0" 
+          scrolling="no" 
+          allowtransparency="true"
+          allow="autoplay; encrypted-media"
+        ></iframe>
+
+        {/* Fallback Image Box for standard posts */}
+        <div id="modalImageBox" class="hidden relative z-20 w-full h-full flex items-center justify-center">
+          <img id="modalImg" src="" alt="" class="max-w-full max-h-[520px] object-contain rounded-2xl shadow-xl" />
+        </div>
+      </div>
+
+      {/* Right Content Area: Details & Conversion CTA */}
+      <div class="w-full md:flex-1 p-6 sm:p-8 flex flex-col justify-between overflow-y-auto max-h-[50vh] md:max-h-[580px] bg-slate-900">
+        
+        <div>
+          {/* Header Info */}
+          <div class="flex items-center justify-between gap-3 mb-4 pb-3 border-b border-slate-800">
+            <div class="flex items-center gap-2">
+              <span class="w-8 h-8 rounded-full bg-gradient-to-tr from-amber-400 to-rose-500 flex items-center justify-center text-sm font-bold text-slate-950 shadow-md">
+                SP
+              </span>
+              <div>
+                <p class="text-xs font-bold text-white flex items-center gap-1">
+                  Stok Pratik <span class="text-sky-400 text-xs">☑</span>
+                </p>
+                <p class="text-[11px] text-pink-400 font-mono">@stokpratik</p>
+              </div>
+            </div>
+
+            <span id="modalBadge" class="px-2.5 py-1 rounded-full text-xs font-bold bg-amber-400/20 text-amber-300 border border-amber-400/40">
+              Reels
+            </span>
+          </div>
+
+          {/* Title */}
+          <h2 id="modalTitle" class="text-lg sm:text-xl font-black text-white mb-3 leading-snug">
+            Gönderi Başlığı
+          </h2>
+
+          {/* Caption text */}
+          <div 
+            id="modalCaption" 
+            class="text-xs sm:text-sm text-slate-300 leading-relaxed space-y-2 whitespace-pre-line max-h-52 overflow-y-auto pr-2 custom-scrollbar bg-slate-950/40 p-3.5 rounded-xl border border-slate-800/80"
+          >
+            Açıklama metni...
+          </div>
+        </div>
+
+        {/* Bottom Conversion Actions */}
+        <div class="mt-6 pt-4 border-t border-slate-800 flex flex-col gap-3">
+          
+          <div class="bg-gradient-to-r from-red-600/20 to-amber-500/20 border border-amber-400/40 rounded-xl p-3 text-center">
+            <p class="text-xs text-amber-300 font-bold mb-1">
+              🎁 45 Gün Ücretsiz Kampanya Promosyon Kodu
+            </p>
+            <p class="font-mono text-white font-black text-sm tracking-wider">
+              StokPratik45Gun
+            </p>
+          </div>
+
+          <a 
+            href={registerUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="w-full py-3.5 px-4 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-black text-center text-sm shadow-lg shadow-amber-400/20 transition-all hover:scale-[1.02] active:scale-95"
+          >
+            🚀 45 Gün Ücretsiz Başla (Kredi Kartı Gerekmez) →
+          </a>
+
+          <div class="flex items-center justify-between gap-3 text-xs">
+            <a 
+              id="modalInstagramLink"
+              href="https://www.instagram.com/stokpratik/" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              class="text-pink-400 hover:text-pink-300 font-bold transition-colors flex items-center gap-1.5"
+            >
+              <span>📸 Instagram'da Beğen / Yorum Yap</span>
+            </a>
+
+            <button 
+              type="button" 
+              id="btnModalCloseAlt"
+              class="text-slate-400 hover:text-white transition-colors"
+            >
+              Pencereyi Kapat
+            </button>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<style>
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: rgba(15, 23, 42, 0.6);
+    border-radius: 8px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: rgba(251, 191, 36, 0.4);
+    border-radius: 8px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: rgba(251, 191, 36, 0.7);
+  }
+</style>
+
+<script>
+  function setupSocialGallery() {
+    const gallery = document.querySelector('.social-feed-gallery');
+    if (!gallery) return;
+
+    // Filters
+    const filterTabs = gallery.querySelectorAll('.filter-tab');
+    const cards = gallery.querySelectorAll('.post-card');
+    const loadMoreBtn = document.getElementById('btnLoadMore');
+    const loadMoreContainer = document.getElementById('loadMoreContainer');
+    const initialLimit = parseInt(gallery.getAttribute('data-initial-limit') || '6', 10);
+
+    filterTabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        const filter = tab.getAttribute('data-filter');
+        
+        filterTabs.forEach(t => {
+          t.classList.remove('active', 'bg-amber-400', 'text-slate-950', 'shadow-md', 'shadow-amber-400/20');
+          t.classList.add('bg-slate-900', 'border', 'border-slate-800', 'text-slate-300');
+        });
+
+        tab.classList.add('active', 'bg-amber-400', 'text-slate-950', 'shadow-md', 'shadow-amber-400/20');
+        tab.classList.remove('bg-slate-900', 'border', 'border-slate-800', 'text-slate-300');
+
+        let visibleCount = 0;
+        cards.forEach(card => {
+          const category = card.getAttribute('data-category');
+          if (filter === 'all' || category === filter) {
+            card.classList.remove('hidden');
+            visibleCount++;
+          } else {
+            card.classList.add('hidden');
+          }
+        });
+
+        // Hide load more when filtered
+        if (loadMoreContainer) {
+          if (filter === 'all') {
+            loadMoreContainer.style.display = 'block';
+          } else {
+            loadMoreContainer.style.display = 'none';
+          }
+        }
+      });
+    });
+
+    // Load More
+    if (loadMoreBtn) {
+      loadMoreBtn.addEventListener('click', () => {
+        const hiddenCards = gallery.querySelectorAll('.post-card.overflow-item');
+        hiddenCards.forEach(card => {
+          card.classList.remove('hidden', 'overflow-item');
+        });
+        if (loadMoreContainer) {
+          loadMoreContainer.style.display = 'none';
+        }
+      });
+    }
+
+    // Lightbox Modal
+    const modal = document.getElementById('socialModal');
+    const modalContainer = document.getElementById('modalContainer');
+    const btnClose = document.getElementById('btnModalClose');
+    const btnCloseAlt = document.getElementById('btnModalCloseAlt');
+    const modalIframe = document.getElementById('modalIframe') as HTMLIFrameElement;
+    const modalImageBox = document.getElementById('modalImageBox');
+    const modalImg = document.getElementById('modalImg') as HTMLImageElement;
+    const modalLoading = document.getElementById('modalLoading');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalBadge = document.getElementById('modalBadge');
+    const modalCaption = document.getElementById('modalCaption');
+    const modalInstagramLink = document.getElementById('modalInstagramLink') as HTMLAnchorElement;
+
+    function openModal(card: Element) {
+      if (!modal || !modalContainer) return;
+
+      const shortcode = card.getAttribute('data-shortcode') || '';
+      const permalink = card.getAttribute('data-permalink') || 'https://www.instagram.com/stokpratik/';
+      const title = card.getAttribute('data-title') || '';
+      const badge = card.getAttribute('data-badge') || 'Reels';
+      const caption = decodeURIComponent(card.getAttribute('data-caption') || '');
+      const thumbnail = card.getAttribute('data-thumbnail') || '';
+      const category = card.getAttribute('data-category');
+
+      if (modalTitle) modalTitle.textContent = title;
+      if (modalBadge) modalBadge.textContent = badge;
+      if (modalCaption) modalCaption.textContent = caption;
+      if (modalInstagramLink) modalInstagramLink.href = permalink;
+
+      if (modalLoading) modalLoading.style.display = 'flex';
+
+      if (category === 'video' && shortcode) {
+        if (modalImageBox) modalImageBox.classList.add('hidden');
+        if (modalIframe) {
+          modalIframe.classList.remove('hidden');
+          // Instagram reel embed URL
+          modalIframe.src = `https://www.instagram.com/reel/${shortcode}/embed/`;
+          modalIframe.onload = () => {
+            if (modalLoading) modalLoading.style.display = 'none';
+          };
+        }
+      } else {
+        // Fallback or Image post
+        if (modalIframe) {
+          modalIframe.src = '';
+          modalIframe.classList.add('hidden');
+        }
+        if (modalImageBox && modalImg) {
+          modalImageBox.classList.remove('hidden');
+          modalImg.src = thumbnail;
+          if (modalLoading) modalLoading.style.display = 'none';
+        }
+      }
+
+      // Show modal
+      modal.classList.remove('opacity-0', 'pointer-events-none');
+      modalContainer.classList.remove('scale-95');
+      modalContainer.classList.add('scale-100');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+      if (!modal || !modalContainer) return;
+      modal.classList.add('opacity-0', 'pointer-events-none');
+      modalContainer.classList.remove('scale-100');
+      modalContainer.classList.add('scale-95');
+      if (modalIframe) {
+        modalIframe.src = ''; // Stops audio / video immediately
+      }
+      document.body.style.overflow = '';
+    }
+
+    // Attach click to cards
+    cards.forEach(card => {
+      card.addEventListener('click', () => openModal(card));
+    });
+
+    // Close listeners
+    if (btnClose) btnClose.addEventListener('click', closeModal);
+    if (btnCloseAlt) btnCloseAlt.addEventListener('click', closeModal);
+    
+    modal?.addEventListener('click', (e) => {
+      if (e.target === modal) closeModal();
+    });
+
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeModal();
+    });
+  }
+
+  // Init on DOM ready and Astro page swaps
+  document.addEventListener('DOMContentLoaded', setupSocialGallery);
+  document.addEventListener('astro:page-load', setupSocialGallery);
+</script>

@@ -1,8 +1,8 @@
 ---
 // src/pages/sosyal-medya.astro
 import BaseLayout from '../layouts/BaseLayout.astro';
+import SocialFeedGallery from '../components/SocialFeedGallery.astro';
 
-const feedId = "aqk1LlwnSuTE6SDhTCCY";
 const instagramUrl = "https://www.instagram.com/stokpratik/";
 const registerUrl = "https://erp-eticaret.stokpratik.com.tr/giris?promo=StokPratik45Gun";
 ---
@@ -52,7 +52,7 @@ const registerUrl = "https://erp-eticaret.stokpratik.com.tr/giris?promo=StokPrat
                 </span>
                 <span>•</span>
                 <span class="flex items-center gap-1 font-semibold text-slate-300">
-                  <strong class="text-white">Otomatik</strong> Canlı Senkron
+                  <strong class="text-white">Site İçi</strong> Video Oynatıcı
                 </span>
                 <span>•</span>
                 <span class="text-amber-400 font-bold">
@@ -99,14 +99,12 @@ const registerUrl = "https://erp-eticaret.stokpratik.com.tr/giris?promo=StokPrat
           İşletmenizi Kolaylaştıran İpuçları
         </h2>
         <p class="text-slate-400 text-xs sm:text-sm mt-2">
-          Instagram'a yüklediğimiz en yeni Reels videolarımız ve eğitim içeriklerimiz anlık olarak burada listelenmektedir. Videolara tıklayarak hemen izleyebilirsiniz.
+          Instagram Reels videolarımızı ve pratik rehberlerimizi siteden ayrılmadan doğrudan izleyin, işletmeniz için 45 gün ücretsiz deneyin.
         </p>
       </div>
 
-      {/* 3. BEHOLD INSTAGRAM WIDGET */}
-      <div class="bg-slate-900/60 border border-slate-800 rounded-3xl p-4 sm:p-8 shadow-2xl relative min-h-[400px]">
-        <figure data-behold-id={feedId} class="w-full"></figure>
-      </div>
+      {/* 3. SITE-NATIVE SOCIAL FEED GALLERY */}
+      <SocialFeedGallery initialLimit={6} showFilters={true} showLoadMore={true} />
 
       {/* 4. BOTTOM VALUE CTA */}
       <div class="mt-16 text-center bg-gradient-to-r from-red-600/20 via-amber-500/15 to-red-600/20 border-2 border-amber-400/40 rounded-3xl p-8 sm:p-12">
@@ -137,16 +135,4 @@ const registerUrl = "https://erp-eticaret.stokpratik.com.tr/giris?promo=StokPrat
     </div>
 
   </main>
-
-  {/* Behold Widget Script */}
-  <script is:inline>
-    (() => {
-      if (window.__bhldScript) return;
-      window.__bhldScript = true;
-      const d = document, s = d.createElement("script");
-      s.type = "module";
-      s.src = "https://w.behold.so/widget.js";
-      setTimeout(() => { d.head.append(s); }, 0);
-    })();
-  </script>
 </BaseLayout>

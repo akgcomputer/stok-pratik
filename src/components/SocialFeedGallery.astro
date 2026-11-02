@@ -291,7 +291,7 @@ let posts = [...defaultPosts];
 
 try {
   const controller = new AbortController();
-  const timeoutId = setTimeout(() => controller.abort(), 2000);
+  const timeoutId = setTimeout(() => controller.abort(), 4000);
   const res = await fetch("https://feeds.behold.so/aqk1LlwnSuTE6SDhTCCY", { signal: controller.signal });
   clearTimeout(timeoutId);
   if (res.ok) {

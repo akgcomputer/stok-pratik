@@ -399,6 +399,44 @@ const whatsappUrl = `https://wa.me/+905325000999?text=Merhaba,%20StokPratik45Gun
     </section>
 
     {/* ========================================================================= */}
+    {/* CANLI INSTAGRAM & REELS İÇERİKLERİMİZ */}
+    {/* ========================================================================= */}
+    <section class="py-16 sm:py-20 relative bg-slate-900/50 border-b border-slate-800">
+      <div class="container mx-auto px-4 max-w-6xl">
+        <div class="flex flex-col sm:flex-row items-center justify-between gap-4 mb-8">
+          <div>
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-pink-500/10 border border-pink-500/30 text-pink-400 text-xs font-black uppercase tracking-wider mb-2">
+              <span>🎬</span> Canlı Reels & Sosyal Medya
+            </div>
+            <h2 class="text-2xl sm:text-3xl font-black text-white">
+              Instagram'da Stok Pratik
+            </h2>
+          </div>
+          <div class="flex items-center gap-3">
+            <a 
+              href="/sosyal-medya" 
+              class="px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold text-xs sm:text-sm transition-all"
+            >
+              Tüm Videoları Gör →
+            </a>
+            <a 
+              href="https://www.instagram.com/stokpratik/" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-purple-600 via-pink-600 to-amber-600 hover:from-purple-500 hover:to-amber-500 text-white font-bold text-xs sm:text-sm shadow-md transition-all hover:scale-105"
+            >
+              @stokpratik Takip Et →
+            </a>
+          </div>
+        </div>
+
+        <div class="bg-slate-950/80 border border-slate-800 rounded-3xl p-4 sm:p-6 shadow-2xl">
+          <figure data-behold-id="aqk1LlwnSuTE6SDhTCCY" class="w-full"></figure>
+        </div>
+      </div>
+    </section>
+
+    {/* ========================================================================= */}
     {/* 5. FINAL CALL TO ACTION */}
     {/* ========================================================================= */}
     <section class="py-16 sm:py-20 relative">
@@ -466,5 +504,15 @@ const whatsappUrl = `https://wa.me/+905325000999?text=Merhaba,%20StokPratik45Gun
         });
       }
     });
+
+    // Behold Widget Loader
+    (() => {
+      if (window.__bhldScript) return;
+      window.__bhldScript = true;
+      const d = document, s = d.createElement("script");
+      s.type = "module";
+      s.src = "https://w.behold.so/widget.js";
+      setTimeout(() => { d.head.append(s); }, 0);
+    })();
   </script>
 </BaseLayout>

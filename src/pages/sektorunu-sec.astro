@@ -1,0 +1,918 @@
+---
+// src/pages/sektorunu-sec.astro
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+// 26 Sektörün eksiksiz listesi ve sektöre özel kritik çözümleri
+const sectors = [
+  {
+    id: "e-ticaret",
+    name: "E-ticaret",
+    category: "perakende",
+    icon: "🛒",
+    badge: "Pazaryeri Entegre",
+    features: [
+      "Trendyol, Hepsiburada, Amazon ve web sitenizle 20 dakikada bir otomatik stok ve sipariş senkronizasyonu.",
+      "Gelen tüm siparişler için tek tıkla e-Fatura, e-Arşiv ve kargo fişi oluşturma.",
+      "İptal ve iade süreçlerinde ürünün depoya otomatik geri girişi ve cari bakiye düzenlemesi."
+    ],
+    timeSaving: "Sektörünüzde ayda ortalama 35+ saat manuel fatura kesme ve stok güncelleme mesaisinden tasarruf edin.",
+    readySetup: "Hesabınız açıldığında pazaryeri kargo şablonları, e-ticaret KDV oranları ve desi hesaplama birimleri otomatik hazır gelir."
+  },
+  {
+    id: "toptan-ticaret",
+    name: "Toptan Ticaret",
+    category: "toptan",
+    icon: "📦",
+    badge: "B2B & CariNET",
+    features: [
+      "Müşteri bazlı özel iskonto oranları, vadeli bakiye limitleri ve çek/senet risk takibi.",
+      "Bayilerinize 7/24 online sipariş verebilecekleri özel B2B sipariş portalı.",
+      "Dövizli cari hesap, TCMB canlı kurları ve tek tıkla otomatik kur farkı faturası."
+    ],
+    timeSaving: "Sektörünüzde ayda ortalama 25+ saat mutabakat ve tahsilat takibi karmaşasından tasarruf edin.",
+    readySetup: "Hesabınız açıldığında toptan fiyat listeleri, vadeli cari ekstre şablonları ve koli/palet birimleri otomatik tanımlı gelir."
+  },
+  {
+    id: "magaza-butik",
+    name: "Mağaza / Butik",
+    category: "perakende",
+    icon: "👗",
+    badge: "Renk-Beden Matrisi",
+    features: [
+      "Tek bir ana stok kartı altında sınırsız renk, beden, kalıp ve numara varyant yönetimi.",
+      "Dokunmatik ekran ve barkod okuyucuyla kasada saniyeler içinde hızlı perakende satış.",
+      "WhatsApp ile müşteriye anında dijital satış fişi ve e-arşiv fatura gönderme."
+    ],
+    timeSaving: "Sektörünüzde ayda ortalama 20+ saat kasa kuyruğu ve varyant karmaşasından tasarruf edin.",
+    readySetup: "Hesabınız açıldığında hazır giyim beden tabloları (S, M, L, XL vb.), kumaş türleri ve barkod etiket şablonları anında kurulur."
+  },
+  {
+    id: "lojistik-kargo",
+    name: "Lojistik / Kargo",
+    category: "hizmet",
+    icon: "🚚",
+    badge: "Rota & İrsaliye",
+    features: [
+      "Araç, şoför ve plaka bazlı sevk irsaliyeleri ile dijital e-İrsaliye teslimat onayları.",
+      "Dinamik depo raf ve koridor adresleme (WMS) ile hızlı ürün toplama.",
+      "Desi, ağırlık ve mesafe bazlı taşıma maliyeti hesaplama ve kâr marjı kontrolü."
+    ],
+    timeSaving: "Sektörünüzde ayda ortalama 30+ saat kargo takibi ve irsaliye yazışmasından tasarruf edin.",
+    readySetup: "Hesabınız açıldığında resmi e-İrsaliye şablonları, araç kabul formları ve depo lokasyonları otomatik hazırlanır."
+  },
+  {
+    id: "otomotiv-yedek-parca",
+    name: "Otomotiv / Yedek Parça",
+    category: "perakende",
+    icon: "🚗",
+    badge: "OEM Kod Arama",
+    features: [
+      "Orijinal parça numarası (OEM), marka, model ve muadil kodla anlık stok sorgulama.",
+      "Raf ve göz adresleme sistemiyle depoda aranan parçayı saniyede bulma.",
+      "Sanayi ustaları ve yetkili servislere özel vadeli cari hesap ve parça iskonto listeleri."
+    ],
+    timeSaving: "Sektörünüzde ayda ortalama 25+ saat parça arama ve uyumluluk teyidinden tasarruf edin.",
+    readySetup: "Hesabınız açıldığında otomotiv marka-model ağacı, OEM arama filtreleri ve parça raf adresleme şablonu hazır gelir."
+  },
+  {
+    id: "servis-tamir",
+    name: "Servis / Tamir",
+    category: "hizmet",
+    icon: "🔧",
+    badge: "İş Emri & SMS",
+    features: [
+      "Cihaz veya araç kabul kartı açma, arıza tespiti ve müşteri onaylı iş emri oluşturma.",
+      "Cihazın aşamalarını müşteriye canlı WhatsApp ve SMS durum linkiyle bildirme.",
+      "Kullanılan yedek parça ve usta işçiliğini tek faturada otomatik birleştirme."
+    ],
+    timeSaving: "Sektörünüzde ayda ortalama 20+ saat 'cihazım ne oldu?' telefon trafiğinden tasarruf edin.",
+    readySetup: "Hesabınız açıldığında teknik servis iş emri formları, durum bildirim şablonları ve garanti takip modülü anında devreye girer."
+  },
+  {
+    id: "eczane-kozmetik",
+    name: "Eczane / Kozmetik",
+    category: "perakende",
+    icon: "💄",
+    badge: "ÜTS & SKT Takibi",
+    features: [
+      "Parti, lot ve son kullanma tarihi (SKT) takibi ile yaklaşan ürünlerde erken uyarı sistemi.",
+      "Tıbbi ve dermokozmetik ürünlerde Sağlık Bakanlığı ÜTS bildirimi uyumluluğu.",
+      "Marka, cilt tipi ve kullanım amacına göre dokunmatik hızlı kasa arama motoru."
+    ],
+    timeSaving: "Sektörünüzde ayda ortalama 18+ saat son kullanma tarihi denetimi ve raf sayımından tasarruf edin.",
+    readySetup: "Hesabınız açıldığında kozmetik ürün kategorileri, SKT uyarı parametreleri ve lot takip şablonları hazır kurulur."
+  },
+  {
+    id: "zuccaciye-hediyelik",
+    name: "Züccaciye / Hediyelik",
+    category: "perakende",
+    icon: "🎁",
+    badge: "Set & Paket Satış",
+    features: [
+      "Çok parçalı yemek takımı, çeyiz ve hediye sepetlerini tek paket barkoduyla satma.",
+      "Kırılabilir ürün firelerini tek tıkla depodan düşme ve gerçek envanter tutarlılığı.",
+      "Barkodsuz hediyelik ürünler için dokunmatik görselli hızlı satış ekranı."
+    ],
+    timeSaving: "Sektörünüzde ayda ortalama 20+ saat paket bozma ve tek tek barkod okutma karmaşasından tasarruf edin.",
+    readySetup: "Hesabınız açıldığında züccaciye kategori ağacı, hediye paketi birimleri ve özel barkod etiket şablonları otomatik gelir."
+  },
+  {
+    id: "kuyumcu-saat",
+    name: "Kuyumcu / Saat",
+    category: "perakende",
+    icon: "💎",
+    badge: "Milyem & Canlı Kur",
+    features: [
+      "24, 22, 18 ve 14 ayar altın, milyem, gram ve işçilik maliyetlerini anlık hesaplama.",
+      "Serbest piyasa ve Harem canlı altın/döviz kurları ile satış fiyatlarını otomatik güncelleme.",
+      "Hurda alımı, emanet altın defteri ve garanti sertifikası basımı."
+    ],
+    timeSaving: "Sektörünüzde ayda ortalama 22+ saat hesap makinesiyle kur ve işçilik hesaplama riskinden tasarruf edin.",
+    readySetup: "Hesabınız açıldığında ayar ve milyem hesaplayıcısı, emanet defteri ve ziynet kategorileri hazır açılır."
+  },
+  {
+    id: "tekstil-konfeksiyon",
+    name: "Tekstil / Konfeksiyon",
+    category: "uretim",
+    icon: "🧵",
+    badge: "Top Kumaş & Pastal",
+    features: [
+      "Metre, top kumaş, pastal planı ve dikim fire oranlarını kuruşu kuruşuna hesaplama.",
+      "Fason atölyelere giden kumaş, aksesuar (fermuar, düğme vb.) ve bitmiş ürün sevkiyat takibi.",
+      "Sezonluk koleksiyon, model kodu ve asorti bazlı sipariş yönetimi."
+    ],
+    timeSaving: "Sektörünüzde ayda ortalama 30+ saat fason hesaplaşması ve kumaş firesi takibinden tasarruf edin.",
+    readySetup: "Hesabınız açıldığında tekstil hammadde reçeteleri, fason iş emri formları ve asorti matrisi otomatik kurulur."
+  },
+  {
+    id: "ayakkabi-canta",
+    name: "Ayakkabı / Çanta",
+    category: "perakende",
+    icon: "👠",
+    badge: "Numara Asortisi",
+    features: [
+      "Tek tıkla numara asortili koli alımı ve tekli ayakkabı satışında otomatik stok düşüşü.",
+      "Kutulu ürün raf adresleme sistemi ile depoda aranan çifti 5 saniyede bulma.",
+      "Sezon sonu indirimlerinde çoklu fiyat güncelleme ve kampanya tanımlama."
+    ],
+    timeSaving: "Sektörünüzde ayda ortalama 18+ saat numara sayımı ve eş arama karmaşasından tasarruf edin.",
+    readySetup: "Hesabınız açıldığında kadın/erkek/çocuk numara serileri (36-45), kutu barkodları ve sezon şablonları hazır gelir."
+  },
+  {
+    id: "mobilya-dekorasyon",
+    name: "Mobilya / Dekorasyon",
+    category: "uretim",
+    icon: "🛋️",
+    badge: "Montaj & Teslimat",
+    features: [
+      "Özel ölçülü siparişlerde ahşap, kumaş, sünger ve hammadde maliyetini anında hesaplama.",
+      "Müşteri montaj ve teslimat randevu takvimi oluşturma; ekibe sevk emri iletme.",
+      "Sipariş anında kapora alma ve teslimatta bakiye tahsilatını otomatik kapatma."
+    ],
+    timeSaving: "Sektörünüzde ayda ortalama 22+ saat teslimat gecikmesi ve kapora uyuşmazlığından tasarruf edin.",
+    readySetup: "Hesabınız açıldığında mobilya parça reçeteleri, montaj servis formları ve kaporalı sipariş sözleşmesi hazır gelir."
+  },
+  {
+    id: "manav-bakkal",
+    name: "Manav / Bakkal",
+    category: "gida",
+    icon: "🍏",
+    badge: "Terazi & Veresiye",
+    features: [
+      "Barkodlu elektronik terazilerle %100 entegre gramajlı ve adetli süper hızlı satış.",
+      "Mahalle veresiye defterini dijitale taşıma; tek tıkla SMS ile bakiye hatırlatma.",
+      "Hal alış faturaları ve günlük çürük/fire kayıtları ile gerçek net kâr analizi."
+    ],
+    timeSaving: "Sektörünüzde ayda ortalama 25+ saat elle veresiye yazma ve terazi hesaplama zahmetinden tasarruf edin.",
+    readySetup: "Hesabınız açıldığında terazi barkod protokolleri, hal faturası KDV oranları ve veresiye modülü hazır açılır."
+  },
+  {
+    id: "market-sarkuteri",
+    name: "Market / Şarküteri",
+    category: "gida",
+    icon: "🧀",
+    badge: "Hızlı Kasa & Vardiya",
+    features: [
+      "50.000+ hazır ürün barkod veritabanı sayesinde ürün adı yazmadan barkodu okut ve sat.",
+      "Vardiya bazlı kasiyer kasa devri, eksik/fazla tespiti ve gün sonu Z raporu mutabakatı.",
+      "Peynir, zeytin, şarküteri gibi gramajlı ürünlerde dara düşme ve etiketli terazi entegrasyonu."
+    ],
+    timeSaving: "Sektörünüzde ayda ortalama 30+ saat ürün kartı açma ve vardiya kasa hesabından tasarruf edin.",
+    readySetup: "Hesabınız açıldığında hazır market ürün kütüphanesi, şarküteri KDV ayarları ve kasiyer yetki şablonu kurulur."
+  },
+  {
+    id: "restoran-kafe",
+    name: "Restoran / Kafe",
+    category: "gida",
+    icon: "☕",
+    badge: "QR Menü & KDS",
+    features: [
+      "Dinamik fotoğraflı QR menü ve masadan sipariş ile garson bekleme sürelerini sıfırlama.",
+      "Masadan gelen siparişlerin anında mutfak ekranına (KDS) ve bar yazıcısına düşmesi.",
+      "Satılan her kahve, tatlı ve yemekte reçetedeki malzemelerin depodan otomatik düşmesi."
+    ],
+    timeSaving: "Sektörünüzde ayda ortalama 30+ saat matbaa menü basımı ve sipariş kargaşasından tasarruf edin.",
+    readySetup: "Hesabınız açıldığında masa yerleşim planı, porsiyon reçete şablonları ve dinamik QR menü motoru hazır gelir."
+  },
+  {
+    id: "firin-pastane",
+    name: "Fırın / Pastane",
+    category: "gida",
+    icon: "🥐",
+    badge: "Un & Sarfiyat Reçetesi",
+    features: [
+      "Çuval un, maya, şeker ve yağ sarfiyatına göre günlük ekmek ve pasta birim maliyet hesabı.",
+      "Bakkal ve bayilere yapılan sabah/akşam ekmek dağıtım irsaliyeleri ve kasa mutabakatı.",
+      "Gün sonu bayat/iade ekmek takibi ve imalat net verimlilik raporu."
+    ],
+    timeSaving: "Sektörünüzde ayda ortalama 20+ saat bayi ekmek defteri ve un hesabı tutmaktan tasarruf edin.",
+    readySetup: "Hesabınız açıldığında fırın imalat reçeteleri, bayi dağıtım sevk çizelgeleri ve un fire hesaplayıcısı kurulur."
+  },
+  {
+    id: "nalbur-hirdavat",
+    name: "Nalbur / Hırdavat",
+    category: "perakende",
+    icon: "🔨",
+    badge: "Çoklu Birim & Metraj",
+    features: [
+      "Kablo, boru, vida, boya gibi ürünlerde metre, kilogram, adet ve koli birimlerini birbirine çevirme.",
+      "İnşaat ustaları ve taşeronlara özel vadeli açık hesap ve iskonto baremleri.",
+      "Marka, model ve teknik özelliklere göre hızlı arama ve barkodsuz hırdavat etiketleme."
+    ],
+    timeSaving: "Sektörünüzde ayda ortalama 24+ saat birim dönüşümü ve açık hesap karmaşasından tasarruf edin.",
+    readySetup: "Hesabınız açıldığında hırdavat birim kütüphanesi (mt, kg, adet, lt), usta cari şablonları ve hazır etiketler yüklenir."
+  },
+  {
+    id: "kirtasiye-ofis",
+    name: "Kırtasiye / Ofis",
+    category: "perakende",
+    icon: "📚",
+    badge: "ISBN & Okul Paketi",
+    features: [
+      "Kitabın arkasındaki ISBN barkodunu okutarak yazar, yayınevi ve künye bilgilerini otomatik doldurma.",
+      "Okul ihtiyaç listelerini tek bir paket barkoduna dönüştürüp kasada saniyede satma.",
+      "Yayınevleriyle konsinye kitap sözleşmesi ve sezon sonu iade irsaliyesi takibi."
+    ],
+    timeSaving: "Sektörünüzde ayda ortalama 28+ saat okul sezonu kasa kuyruğu ve kitap künyesi girmekten tasarruf edin.",
+    readySetup: "Hesabınız açıldığında ISBN kütüphanesi, fotokopi ve küçük kırtasiye hızlı dokunmatik butonları hazır gelir."
+  },
+  {
+    id: "bilisim-elektronik",
+    name: "Bilişim / Elektronik",
+    category: "perakende",
+    icon: "💻",
+    badge: "Seri No & IMEI",
+    features: [
+      "Her cihaz için benzersiz Seri No (SN) ve IMEI takibi ile tedarikçiden son kullanıcıya izlenebilirlik.",
+      "Garantisi devam eden ürünlerin servis kayıtları ve distribütör iade/değişim süreçleri.",
+      "İkinci el cihaz alım-satım sözleşmesi, test kontrol formu ve KDV tevkifat yönetimi."
+    ],
+    timeSaving: "Sektörünüzde ayda ortalama 22+ saat garanti takibi ve seri no eşleştirmesinden tasarruf edin.",
+    readySetup: "Hesabınız açıldığında seri no/IMEI takip alanları, teknik servis kabul protokolleri ve garanti şablonları hazır gelir."
+  },
+  {
+    id: "spor-outdoor",
+    name: "Spor / Outdoor",
+    category: "perakende",
+    icon: "⚽",
+    badge: "Kulüp & Sezonluk",
+    features: [
+      "Forma, ayakkabı ve spor ekipmanlarında numara, beden ve teknik kumaş varyant matrisi.",
+      "Spor kulüpleri, okullar ve ekiplere toplu alımlarda özel iskonto ve teklif hazırlama.",
+      "Kiralanabilir spor ekipmanları (kamp, kayak vb.) için depozito ve teslimat takibi."
+    ],
+    timeSaving: "Sektörünüzde ayda ortalama 18+ saat toplu teklif hazırlama ve ekipman takibinden tasarruf edin.",
+    readySetup: "Hesabınız açıldığında spor giyim beden serileri, kulüp teklif şablonları ve depozito takip modülü hazır kurulur."
+  },
+  {
+    id: "tarim-hayvancilik",
+    name: "Tarım / Hayvancılık",
+    category: "uretim",
+    icon: "🌾",
+    badge: "Müstahsil & Gübre",
+    features: [
+      "Çiftçiden doğrudan ürün alımında resmi e-Müstahsil Makbuzu kesimi ve stopaj/SGK kesintisi.",
+      "Gübre, tohum ve zirai ilaçlarda parti, lot ve Bakanlık GTS (Gübre Takip) uyumluluğu.",
+      "Sezonluk hasat maliyetleri, traktör yakıt giderleri ve vadeli tahsilat takvimi."
+    ],
+    timeSaving: "Sektörünüzde ayda ortalama 24+ saat müstahsil hesaplaması ve gübre takip bürokrasisinden tasarruf edin.",
+    readySetup: "Hesabınız açıldığında e-Müstahsil makbuzu şablonları, zirai ilaç lot takip parametreleri ve hal entegrasyonu hazır gelir."
+  },
+  {
+    id: "insaat-yapi",
+    name: "İnşaat / Yapı",
+    category: "hizmet",
+    icon: "🏗️",
+    badge: "Şantiye & Hakediş",
+    features: [
+      "Şantiye ve proje bazlı malzeme sevkleri, taşeron hakedişleri ve anlık harcama kontrolü.",
+      "Demir, çimento, hazır beton gibi ana malzemelerin alım sözleşmeleri ve irsaliye mutabakatı.",
+      "Daire/dükkan satış sözleşmesi, senetli ödeme planı ve daire takas (barter) takibi."
+    ],
+    timeSaving: "Sektörünüzde ayda ortalama 30+ saat şantiye harcamalarını birleştirmek ve hakediş hesaplamaktan tasarruf edin.",
+    readySetup: "Hesabınız açıldığında şantiye maliyet merkezleri, taşeron sözleşme şablonları ve vadeli senet modülü hazır açılır."
+  },
+  {
+    id: "toptanci",
+    name: "Toptancı",
+    category: "toptan",
+    icon: "🏢",
+    badge: "Plasiyer & Rut",
+    features: [
+      "Saha plasiyerlerinin tablet ve cep telefonundan anlık müşteri ziyareti yapması ve sipariş girmesi.",
+      "Merkez depodaki stokların sahaya canlı görünmesi sayesinde 'olmayan malı satma' riskinin bitmesi.",
+      "Saha ekibinin yaptığı tahsilata ve müşteri kârlılığına bağlı otomatik prim hesaplama."
+    ],
+    timeSaving: "Sektörünüzde ayda ortalama 32+ saat akşamları siparişleri elle merkeze girmekten tasarruf edin.",
+    readySetup: "Hesabınız açıldığında saha sıcak/soğuk satış ekranları, plasiyer prim kuralları ve rut haritası anında kurulur."
+  },
+  {
+    id: "uretim-atolye",
+    name: "Üretim / Atölye",
+    category: "uretim",
+    icon: "⚙️",
+    badge: "Canlı BOM Reçetesi",
+    features: [
+      "Çok katmanlı mamul reçetesi (BOM) ile imalat emri verildiğinde hammaddelerin depodan anında düşmesi.",
+      "Hammadde fireleri, usta işçilik saatleri ve elektrik/genel giderler dahil net birim maliyet hesabı.",
+      "İstasyon ve tezgâh bazlı iş emirleri ile üretimin hangi aşamada olduğunu canlı izleme."
+    ],
+    timeSaving: "Sektörünüzde ayda ortalama 35+ saat gizli maliyet zararları ve üretim hesaplamalarından tasarruf edin.",
+    readySetup: "Hesabınız açıldığında canlı ürün reçetesi motoru, fire oranları tablosu ve üretim iş emri şablonu kurulur."
+  },
+  {
+    id: "berber-kuafor",
+    name: "Berber / Kuaför",
+    category: "hizmet",
+    icon: "✂️",
+    badge: "Randevu & Personel Primi",
+    features: [
+      "Müşteri randevu takvimi oluşturma, WhatsApp ile otomatik randevu saati hatırlatıcı gönderme.",
+      "Hizmeti veren personele göre anlık prim ve bahşiş hak edişini kuruşu kuruşuna hesaplama.",
+      "Salonda satılan saç bakım, şampuan ve kozmetik ürünlerinin hızlı dokunmatik satışı."
+    ],
+    timeSaving: "Sektörünüzde ayda ortalama 16+ saat randevu karmaşası ve gün sonu kuaför prim hesabından tasarruf edin.",
+    readySetup: "Hesabınız açıldığında salon hizmet menüsü (saç, sakal, bakım), personel prim yüzdeleri ve randevu şablonu hazır gelir."
+  },
+  {
+    id: "diger",
+    name: "Diğer İşletmeler",
+    category: "hizmet",
+    icon: "🌟",
+    badge: "Modüler & Esnek",
+    features: [
+      "İş modelinize göre açıp kapatabileceğiniz modüler yapı (sadece ihtiyacınız olan menüleri görün).",
+      "GİB tam uyumlu e-Fatura, e-Arşiv, e-İrsaliye kesimi ve gelir-gider takibi.",
+      "Bulut altyapısıyla cep telefonu, tablet ve bilgisayardan kurulumsuz, güvenli 7/24 erişim."
+    ],
+    timeSaving: "Sektörünüzde ayda ortalama 20+ saat genel ön muhasebe ve evrak işlerinden tasarruf edin.",
+    readySetup: "Hesabınız açıldığında standart KOBİ hesap planı, e-fatura tasarımı ve temel gelir-gider kategorileri hazır gelir."
+  }
+];
+
+// Sıkça Sorulan Sorular
+const faqs = [
+  {
+    q: "Eski programımdaki ürün ve müşteri verilerimi aktarabilir miyim?",
+    a: "Evet, kesinlikle! Mevcut programınızdan dışa aktardığınız Excel ürün, stok miktarı ve müşteri/tedarikçi cari listenizi Stok Pratik'e tek tıkla yükleyebilirsiniz. Alanları otomatik eşleştirir ve 1 dakika içinde tüm verileriniz eksiksiz içeri aktarılır."
+  },
+  {
+    q: "Programı kullanmak için ek donanım veya özel cihaz almam gerekir mi?",
+    a: "Hayır, hiçbir ek donanım zorunlu değildir. Cep telefonunuzun veya tabletinizin kamerası bile süper hızlı barkod okuyucu olarak çalışır. Eğer işletmenizde mevcut barkod okuyucu, dokunmatik ekran, terazi veya fiş yazıcı varsa onları da doğrudan bağlayıp kullanabilirsiniz."
+  },
+  {
+    q: "14 günlük ücretsiz deneme süresi bitince ne olur?",
+    a: "Kayıt olurken kredi kartı istemediğimiz için deneme süresi bittiğinde sizden hiçbir ücret çekilmez ve otomatik fatura çıkmaz. Programı beğenirseniz dilediğiniz zaman ihtiyacınıza uygun paketi seçerek kaldığınız yerden kesintisiz devam edebilirsiniz."
+  },
+  {
+    q: "İnternet bağlantım koptuğunda satış yapmaya devam edebilir miyim?",
+    a: "Evet! Stok Pratik Hızlı Satış (POS) modülü çevrimdışı (offline) çalışma yeteneğine sahiptir. İnternetiniz kopsa dahi kasanızda satış yapmaya ve fiş kesmeye devam edersiniz; internet tekrar bağlandığı an tüm kayıtlar merkeze otomatik senkronize edilir."
+  },
+  {
+    q: "Birden fazla şube, depo veya kullanıcı tanımlayabilir miyim?",
+    a: "Evet! Dilediğiniz kadar şube, depo ve çalışan kullanıcısı açabilirsiniz. Çalışanlarınıza özel yetki tanımlayabilir (örneğin sadece satış görsün, maliyetleri göremesin), şubeler arası tek tıkla irsaliyeli stok transferi yapabilirsiniz."
+  }
+];
+---
+
+<BaseLayout
+  title="İşletmeniz Hangi Alanda? 1 Tıkla Sektörünüze Özel Hazırlansın — Stok Pratik"
+  description="Karmaşık menülerle vakit kaybetmeyin. Sektörünüzü seçin; hazır ürün şablonları, e-fatura ve stok altyapınız anında kurulsun. 14 gün ücretsiz deneyin, kredi kartı gerekmez."
+>
+  <main class="min-h-screen bg-slate-50/50 text-slate-800 selection:bg-emerald-500 selection:text-white pb-20">
+    
+    {/* ========================================================================= */}
+    {/* 1. HERO BÖLÜMÜ */}
+    {/* ========================================================================= */}
+    <section class="relative pt-12 pb-10 sm:pt-16 sm:pb-14 bg-white border-b border-slate-200/80 overflow-hidden">
+      
+      {/* Hafif estetik arka plan ışıkları */}
+      <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[350px] bg-gradient-to-b from-indigo-50/80 via-emerald-50/40 to-transparent blur-3xl pointer-events-none"></div>
+      
+      <div class="container mx-auto px-4 max-w-5xl text-center relative z-10">
+        
+        {/* Üst Küçük Rozet */}
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-indigo-50 border border-indigo-200/80 text-indigo-900 text-xs sm:text-sm font-bold shadow-sm mb-5">
+          <span class="text-base leading-none">🚀</span>
+          <span>Sektörel Akıllı Kurulum Sihirbazı</span>
+        </div>
+
+        {/* Ana Başlık */}
+        <h1 class="text-2xl sm:text-4xl lg:text-[42px] font-extrabold text-slate-900 tracking-tight leading-snug sm:leading-tight max-w-4xl mx-auto">
+          İşletmeniz Hangi Alanda? <br class="hidden sm:inline" />
+          <span class="bg-gradient-to-r from-indigo-900 via-indigo-700 to-teal-700 bg-clip-text text-transparent">
+            1 Tıkla Sektörünüze Özel Hazırlansın.
+          </span>
+        </h1>
+
+        {/* Alt Başlık */}
+        <p class="mt-4 text-slate-600 text-sm sm:text-base lg:text-lg max-w-2xl mx-auto leading-relaxed">
+          Karmaşık menülerle vakit kaybetmeyin. Sektörünüzü seçin; hazır ürün şablonları, e-fatura ve stok altyapınız anında kurulsun.
+        </p>
+
+        {/* Güven Rozetleri */}
+        <div class="mt-6 flex flex-wrap items-center justify-center gap-2.5 sm:gap-4 text-xs sm:text-sm font-semibold text-slate-700">
+          <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-100 border border-slate-200">
+            <span class="text-emerald-600 font-bold">✓</span> Kredi Kartı Gerekmez
+          </span>
+          <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-emerald-50 border border-emerald-200 text-emerald-900">
+            <span class="text-emerald-600 font-bold">⏱️</span> 14 Gün Ücretsiz
+          </span>
+          <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-100 border border-slate-200">
+            <span class="text-indigo-600 font-bold">📊</span> Excel'den 1 Tıkla Veri Aktarımı
+          </span>
+        </div>
+
+      </div>
+    </section>
+
+    {/* ========================================================================= */}
+    {/* 2. İNTERAKTİF SEKTÖR SEÇİM IZGARASI (GRID) */}
+    {/* ========================================================================= */}
+    <section class="py-10 sm:py-14" id="sektorler-alani">
+      <div class="container mx-auto px-4 max-w-6xl">
+        
+        {/* Arama & Kategori Filtreleme Barı */}
+        <div class="bg-white rounded-2xl p-4 sm:p-5 border border-slate-200 shadow-sm mb-8 flex flex-col md:flex-row items-center justify-between gap-4">
+          
+          {/* Arama Kutusu */}
+          <div class="relative w-full md:w-80">
+            <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 1114 0z" />
+              </svg>
+            </div>
+            <input 
+              type="text" 
+              id="sectorSearchInput"
+              placeholder="Sektörünüzü arayın (örn. Butik, Market, Servis...)"
+              class="w-full pl-10 pr-4 py-2.5 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white text-slate-800 placeholder-slate-400 text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all"
+            />
+          </div>
+
+          {/* Kategori Filtre Sekmeleri */}
+          <div class="flex items-center gap-1.5 overflow-x-auto w-full md:w-auto pb-1 md:pb-0 custom-scrollbar">
+            <button type="button" class="category-tab active px-3.5 py-1.5 rounded-lg text-xs font-bold transition-all bg-indigo-900 text-white shadow-sm shrink-0" data-cat="all">
+              Tümü (26)
+            </button>
+            <button type="button" class="category-tab px-3.5 py-1.5 rounded-lg text-xs font-semibold transition-all bg-slate-100 hover:bg-slate-200 text-slate-700 shrink-0" data-cat="perakende">
+              🛍️ Perakende & Mağaza
+            </button>
+            <button type="button" class="category-tab px-3.5 py-1.5 rounded-lg text-xs font-semibold transition-all bg-slate-100 hover:bg-slate-200 text-slate-700 shrink-0" data-cat="gida">
+              🍏 Gıda & Yeme-İçme
+            </button>
+            <button type="button" class="category-tab px-3.5 py-1.5 rounded-lg text-xs font-semibold transition-all bg-slate-100 hover:bg-slate-200 text-slate-700 shrink-0" data-cat="toptan">
+              📦 Toptan & Dağıtım
+            </button>
+            <button type="button" class="category-tab px-3.5 py-1.5 rounded-lg text-xs font-semibold transition-all bg-slate-100 hover:bg-slate-200 text-slate-700 shrink-0" data-cat="hizmet">
+              🔧 Hizmet & Servis
+            </button>
+            <button type="button" class="category-tab px-3.5 py-1.5 rounded-lg text-xs font-semibold transition-all bg-slate-100 hover:bg-slate-200 text-slate-700 shrink-0" data-cat="uretim">
+              ⚙️ Üretim & İmalat
+            </button>
+          </div>
+
+        </div>
+
+        {/* 26 Sektör Kartı (Grid) */}
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3 sm:gap-4" id="sectorGrid">
+          {sectors.map((sector, index) => (
+            <button
+              type="button"
+              class={`sector-card group relative p-3.5 sm:p-4 rounded-xl border bg-white text-left transition-all duration-200 hover:-translate-y-1 hover:shadow-md cursor-pointer flex flex-col justify-between min-h-[115px] sm:min-h-[125px] ${index === 0 ? 'active border-indigo-600 ring-2 ring-indigo-500/20 bg-indigo-50/40 shadow-sm' : 'border-slate-200/90 hover:border-indigo-300'}`}
+              data-id={sector.id}
+              data-name={sector.name}
+              data-category={sector.category}
+              data-features={JSON.stringify(sector.features)}
+              data-timesaving={sector.timeSaving}
+              data-readysetup={sector.readySetup}
+              data-badge={sector.badge}
+              data-icon={sector.icon}
+            >
+              {/* Üst Kısım: İkon ve Seçim Tiki */}
+              <div class="flex items-center justify-between w-full mb-2">
+                <span class="text-2xl sm:text-3xl p-1 rounded-lg bg-slate-50 group-hover:bg-indigo-50 transition-colors">
+                  {sector.icon}
+                </span>
+                
+                {/* Seçim İndikatörü */}
+                <span class={`check-badge w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-bold transition-all ${index === 0 ? 'bg-indigo-600 text-white' : 'border border-slate-300 text-transparent group-hover:border-indigo-400'}`}>
+                  ✓
+                </span>
+              </div>
+
+              {/* Alt Kısım: Sektör İsmi ve Mikro Rozet */}
+              <div>
+                <h3 class="text-xs sm:text-sm font-bold text-slate-900 group-hover:text-indigo-900 transition-colors leading-tight line-clamp-2">
+                  {sector.name}
+                </h3>
+                <span class="inline-block text-[10px] text-slate-500 group-hover:text-indigo-600 font-medium mt-1">
+                  {sector.badge}
+                </span>
+              </div>
+            </button>
+          ))}
+        </div>
+
+        {/* ========================================================================= */}
+        {/* 3. DİNAMİK CANLI ÖNİZLEME ALANI (MAGIC REVEAL) */}
+        {/* ========================================================================= */}
+        <div id="magicRevealBox" class="mt-8 scroll-mt-24 transition-all duration-300">
+          
+          <div class="relative bg-gradient-to-br from-indigo-900 via-slate-900 to-slate-950 text-white rounded-3xl p-6 sm:p-10 shadow-2xl border border-indigo-700/50 overflow-hidden">
+            
+            {/* Arka plan süslemeleri */}
+            <div class="absolute -right-20 -top-20 w-80 h-80 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="absolute -left-20 -bottom-20 w-80 h-80 bg-indigo-500/15 rounded-full blur-3xl pointer-events-none"></div>
+
+            <div class="relative z-10">
+              
+              {/* Başlık ve Sektör Rozeti */}
+              <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-slate-800">
+                <div class="flex items-center gap-3.5">
+                  <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-white/10 border border-white/20 flex items-center justify-center text-3xl shadow-inner shrink-0" id="revealIcon">
+                    🛒
+                  </div>
+                  <div>
+                    <div class="flex items-center gap-2">
+                      <span class="text-xs font-bold text-emerald-400 uppercase tracking-wider">Sektörünüze Özel Paket Hazır</span>
+                      <span class="inline-block w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping"></span>
+                    </div>
+                    <h2 class="text-xl sm:text-2xl lg:text-3xl font-black text-white tracking-tight mt-0.5" id="revealTitle">
+                      E-ticaret İçin Özel Altyapı
+                    </h2>
+                  </div>
+                </div>
+
+                <div class="flex items-center gap-2 self-start sm:self-auto">
+                  <span class="px-3 py-1 rounded-full text-xs font-bold bg-amber-400/20 text-amber-300 border border-amber-400/30" id="revealBadge">
+                    Pazaryeri Entegre
+                  </span>
+                  <span class="px-3 py-1 rounded-full text-xs font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+                    Tam Uyumlu
+                  </span>
+                </div>
+              </div>
+
+              {/* Orta Kısım: 3 Kritik Özellik */}
+              <div class="py-6">
+                <h3 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-4">
+                  Sektörünüze Özel Açılacak 3 Temel Güç:
+                </h3>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4" id="revealFeaturesList">
+                  {/* Dinamik Olarak JavaScript ile Doldurulacak */}
+                  <div class="p-4 rounded-2xl bg-slate-800/60 border border-slate-700/80">
+                    <span class="text-emerald-400 text-lg font-bold block mb-1.5">⚡ 1. Senkronizasyon</span>
+                    <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+                      Trendyol, Hepsiburada, Amazon ve web sitenizle 20 dakikada bir otomatik stok ve sipariş senkronizasyonu.
+                    </p>
+                  </div>
+                  <div class="p-4 rounded-2xl bg-slate-800/60 border border-slate-700/80">
+                    <span class="text-emerald-400 text-lg font-bold block mb-1.5">🧾 2. e-Fatura & Kargo</span>
+                    <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+                      Gelen tüm siparişler için tek tıkla e-Fatura, e-Arşiv ve kargo fişi oluşturma.
+                    </p>
+                  </div>
+                  <div class="p-4 rounded-2xl bg-slate-800/60 border border-slate-700/80">
+                    <span class="text-emerald-400 text-lg font-bold block mb-1.5">🔄 3. İade Yönetimi</span>
+                    <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+                      İptal ve iade süreçlerinde ürünün depoya otomatik geri girişi ve cari bakiye düzenlemesi.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Zaman Tasarrufu & Hazır Kurulum Bilgi Çubukları */}
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2 pb-6 border-b border-slate-800 text-xs sm:text-sm">
+                <div class="flex items-start gap-2.5 p-3 rounded-xl bg-slate-800/40 border border-slate-700/50">
+                  <span class="text-amber-400 text-base shrink-0">⏳</span>
+                  <div>
+                    <strong class="text-amber-300 block font-bold">Zaman Tasarrufu Garantisi:</strong>
+                    <span class="text-slate-300" id="revealTimeSaving">
+                      Sektörünüzde ayda ortalama 35+ saat manuel fatura kesme ve stok güncelleme mesaisinden tasarruf edin.
+                    </span>
+                  </div>
+                </div>
+
+                <div class="flex items-start gap-2.5 p-3 rounded-xl bg-slate-800/40 border border-slate-700/50">
+                  <span class="text-emerald-400 text-base shrink-0">🎁</span>
+                  <div>
+                    <strong class="text-emerald-300 block font-bold">Hazır Kurulum Müjdesi:</strong>
+                    <span class="text-slate-300" id="revealReadySetup">
+                      Hesabınız açıldığında pazaryeri kargo şablonları, e-ticaret KDV oranları ve desi hesaplama birimleri otomatik hazır gelir.
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              {/* ========================================================================= */}
+              {/* 4. ÇAĞRI BUTONU (CTA) */}
+              {/* ========================================================================= */}
+              <div class="mt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+                
+                <div class="w-full sm:w-auto">
+                  <a 
+                    id="sectorCtaBtn"
+                    href="https://erp-eticaret.stokpratik.com.tr/?sektor=e-ticaret"
+                    class="w-full sm:w-auto px-8 py-4 rounded-xl bg-gradient-to-r from-emerald-500 via-teal-500 to-emerald-600 hover:from-emerald-400 hover:to-teal-400 text-slate-950 font-black text-sm sm:text-base text-center shadow-lg shadow-emerald-500/25 transition-all hover:scale-[1.02] active:scale-95 flex items-center justify-center gap-3"
+                  >
+                    <span>Seçtiğim Sektörle Ücretsiz Başla</span>
+                    <span class="text-lg">→</span>
+                  </a>
+                  <p class="text-[11px] sm:text-xs text-slate-400 text-center sm:text-left mt-2">
+                    Kurulum gerekmez, internet olan her yerden cep telefonu ve bilgisayarla anında kullanın.
+                  </p>
+                </div>
+
+                {/* Alternatif WhatsApp Destek */}
+                <div class="w-full sm:w-auto flex flex-col items-center sm:items-end">
+                  <a 
+                    id="sectorWhatsappBtn"
+                    href="https://wa.me/+905325000999?text=Merhaba,%20E-ticaret%20sekt%C3%B6r%C3%BC%20i%C3%A7in%20Stok%20Pratik%20kurulumu%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum."
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="px-5 py-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 hover:text-white font-bold text-xs sm:text-sm border border-slate-700 transition-colors flex items-center gap-2"
+                  >
+                    <span>💬 Sektör Danışmanına Soru Sor</span>
+                  </a>
+                  <span class="text-[11px] text-slate-400 mt-1">Canlı destek ekibi 1 dakikada yanıtlar</span>
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    {/* ========================================================================= */}
+    {/* 5. SIKÇA SORULAN SORULAR (AKORDEON) */}
+    {/* ========================================================================= */}
+    <section class="py-12 sm:py-16 bg-white border-t border-slate-200">
+      <div class="container mx-auto px-4 max-w-4xl">
+        
+        <div class="text-center mb-10">
+          <span class="text-xs font-bold text-indigo-600 uppercase tracking-wider">Aklınıza Takılanlar</span>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 mt-1">
+            Sıkça Sorulan Sorular
+          </h2>
+          <p class="text-slate-500 text-xs sm:text-sm mt-1.5">
+            Geçiş süreci ve kullanım hakkında en çok merak edilen konular.
+          </p>
+        </div>
+
+        {/* Akordeon Listesi */}
+        <div class="space-y-3" id="faqAccordion">
+          {faqs.map((faq, idx) => (
+            <div class="faq-item rounded-2xl border border-slate-200 bg-slate-50/50 overflow-hidden transition-all duration-200">
+              <button 
+                type="button"
+                class="faq-trigger w-full px-5 py-4 text-left font-bold text-slate-800 hover:text-indigo-900 flex items-center justify-between gap-4 text-sm sm:text-base focus:outline-none cursor-pointer"
+                aria-expanded={idx === 0 ? "true" : "false"}
+              >
+                <span>{faq.q}</span>
+                <span class="faq-icon w-6 h-6 rounded-full bg-slate-200/80 text-slate-600 flex items-center justify-center text-xs font-bold shrink-0 transition-transform duration-200">
+                  {idx === 0 ? "−" : "+"}
+                </span>
+              </button>
+              
+              <div class={`faq-content px-5 pb-4 text-xs sm:text-sm text-slate-600 leading-relaxed ${idx === 0 ? 'block' : 'hidden'}`}>
+                {faq.a}
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Alt Güvence Notu */}
+        <div class="mt-10 p-6 rounded-2xl bg-indigo-50/70 border border-indigo-100 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
+          <div class="flex items-center gap-3">
+            <span class="text-3xl">🛡️</span>
+            <div>
+              <h3 class="text-sm font-bold text-slate-900">Sıfır Risk, Kesintisiz Başlangıç</h3>
+              <p class="text-xs text-slate-600">Beğenmezseniz hiçbir taahhüdünüz veya ödemeniz bulunmaz.</p>
+            </div>
+          </div>
+          
+          <a 
+            href="#sektorler-alani"
+            class="px-5 py-2.5 rounded-xl bg-indigo-900 hover:bg-indigo-800 text-white font-bold text-xs sm:text-sm transition-colors shrink-0"
+          >
+            Sektörünü Seç ↑
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+</BaseLayout>
+
+<script>
+  function setupSectorSelector() {
+    const cards = document.querySelectorAll('.sector-card');
+    const searchInput = document.getElementById('sectorSearchInput') as HTMLInputElement;
+    const categoryTabs = document.querySelectorAll('.category-tab');
+    
+    // Reveal Box Elements
+    const revealIcon = document.getElementById('revealIcon');
+    const revealTitle = document.getElementById('revealTitle');
+    const revealBadge = document.getElementById('revealBadge');
+    const revealFeaturesList = document.getElementById('revealFeaturesList');
+    const revealTimeSaving = document.getElementById('revealTimeSaving');
+    const revealReadySetup = document.getElementById('revealReadySetup');
+    const sectorCtaBtn = document.getElementById('sectorCtaBtn') as HTMLAnchorElement;
+    const sectorWhatsappBtn = document.getElementById('sectorWhatsappBtn') as HTMLAnchorElement;
+    const magicRevealBox = document.getElementById('magicRevealBox');
+
+    let activeFilter = 'all';
+
+    function selectSector(card: Element, smoothScroll = false) {
+      // Remove active from all cards
+      cards.forEach(c => {
+        c.classList.remove('active', 'border-indigo-600', 'ring-2', 'ring-indigo-500/20', 'bg-indigo-50/40', 'shadow-sm');
+        c.classList.add('border-slate-200/90');
+        const badge = c.querySelector('.check-badge');
+        if (badge) {
+          badge.classList.remove('bg-indigo-600', 'text-white');
+          badge.classList.add('border', 'border-slate-300', 'text-transparent');
+        }
+      });
+
+      // Add active to selected
+      card.classList.add('active', 'border-indigo-600', 'ring-2', 'ring-indigo-500/20', 'bg-indigo-50/40', 'shadow-sm');
+      card.classList.remove('border-slate-200/90');
+      const badge = card.querySelector('.check-badge');
+      if (badge) {
+        badge.classList.add('bg-indigo-600', 'text-white');
+        badge.classList.remove('border', 'border-slate-300', 'text-transparent');
+      }
+
+      // Read data attributes
+      const id = card.getAttribute('data-id') || 'genel';
+      const name = card.getAttribute('data-name') || '';
+      const icon = card.getAttribute('data-icon') || '✨';
+      const cardBadge = card.getAttribute('data-badge') || 'Tam Uyumlu';
+      const timeSaving = card.getAttribute('data-timesaving') || '';
+      const readySetup = card.getAttribute('data-readysetup') || '';
+      let features: string[] = [];
+      try {
+        features = JSON.parse(card.getAttribute('data-features') || '[]');
+      } catch (e) {
+        features = [];
+      }
+
+      // Update Reveal Box
+      if (revealIcon) revealIcon.textContent = icon;
+      if (revealTitle) revealTitle.textContent = `${name} İçin Özel Altyapı`;
+      if (revealBadge) revealBadge.textContent = cardBadge;
+      if (revealTimeSaving) revealTimeSaving.textContent = timeSaving;
+      if (revealReadySetup) revealReadySetup.textContent = readySetup;
+
+      if (revealFeaturesList) {
+        revealFeaturesList.innerHTML = features.map((feat, i) => `
+          <div class="p-4 rounded-2xl bg-slate-800/60 border border-slate-700/80 transition-all hover:bg-slate-800">
+            <span class="text-emerald-400 text-sm font-bold block mb-1.5">⚡ ${i + 1}. Özellik</span>
+            <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">${feat}</p>
+          </div>
+        `).join('');
+      }
+
+      // Update CTA Link
+      const targetUrl = `https://erp-eticaret.stokpratik.com.tr/?sektor=${encodeURIComponent(id)}`;
+      if (sectorCtaBtn) {
+        sectorCtaBtn.href = targetUrl;
+        const span = sectorCtaBtn.querySelector('span:first-child');
+        if (span) span.textContent = `${name} İle Ücretsiz Başla`;
+      }
+
+      if (sectorWhatsappBtn) {
+        const message = `Merhaba, ${name} sektörü için Stok Pratik kurulumu ve 14 gün ücretsiz deneme hakkında bilgi almak istiyorum.`;
+        sectorWhatsappBtn.href = `https://wa.me/+905325000999?text=${encodeURIComponent(message)}`;
+      }
+
+      // Optional smooth scroll to reveal on mobile
+      if (smoothScroll && window.innerWidth < 768 && magicRevealBox) {
+        magicRevealBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+    }
+
+    // Attach Click Events to Cards
+    cards.forEach(card => {
+      card.addEventListener('click', () => {
+        selectSector(card, true);
+      });
+    });
+
+    // Search Filtering
+    function filterCards() {
+      const query = (searchInput?.value || '').toLowerCase().trim();
+
+      cards.forEach(card => {
+        const name = (card.getAttribute('data-name') || '').toLowerCase();
+        const category = card.getAttribute('data-category') || '';
+        const badge = (card.getAttribute('data-badge') || '').toLowerCase();
+
+        const matchesQuery = !query || name.includes(query) || badge.includes(query);
+        const matchesCategory = activeFilter === 'all' || category === activeFilter;
+
+        if (matchesQuery && matchesCategory) {
+          (card as HTMLElement).style.display = 'flex';
+        } else {
+          (card as HTMLElement).style.display = 'none';
+        }
+      });
+    }
+
+    if (searchInput) {
+      searchInput.addEventListener('input', filterCards);
+    }
+
+    // Category Tabs Filtering
+    categoryTabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        const cat = tab.getAttribute('data-cat') || 'all';
+        activeFilter = cat;
+
+        categoryTabs.forEach(t => {
+          t.classList.remove('active', 'bg-indigo-900', 'text-white', 'shadow-sm');
+          t.classList.add('bg-slate-100', 'text-slate-700');
+        });
+
+        tab.classList.add('active', 'bg-indigo-900', 'text-white', 'shadow-sm');
+        tab.classList.remove('bg-slate-100', 'text-slate-700');
+
+        filterCards();
+      });
+    });
+
+    // Check URL parameters for initial selection (e.g. ?sektor=butik)
+    const urlParams = new URLSearchParams(window.location.search);
+    const initialSector = urlParams.get('sektor');
+    if (initialSector) {
+      const matchCard = Array.from(cards).find(c => c.getAttribute('data-id') === initialSector);
+      if (matchCard) {
+        selectSector(matchCard, false);
+      }
+    }
+
+    // FAQ Accordion Toggle
+    const faqItems = document.querySelectorAll('.faq-item');
+    faqItems.forEach(item => {
+      const trigger = item.querySelector('.faq-trigger');
+      const content = item.querySelector('.faq-content');
+      const icon = item.querySelector('.faq-icon');
+
+      trigger?.addEventListener('click', () => {
+        const isOpen = content?.classList.contains('block');
+
+        // Close all
+        faqItems.forEach(other => {
+          const otherContent = other.querySelector('.faq-content');
+          const otherIcon = other.querySelector('.faq-icon');
+          const otherTrigger = other.querySelector('.faq-trigger');
+          otherContent?.classList.remove('block');
+          otherContent?.classList.add('hidden');
+          if (otherIcon) otherIcon.textContent = '+';
+          if (otherTrigger) otherTrigger.setAttribute('aria-expanded', 'false');
+        });
+
+        // Toggle clicked
+        if (!isOpen) {
+          content?.classList.remove('hidden');
+          content?.classList.add('block');
+          if (icon) icon.textContent = '−';
+          trigger.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+  }
+
+  // Execute on load & Astro transitions
+  document.addEventListener('DOMContentLoaded', setupSectorSelector);
+  document.addEventListener('astro:page-load', setupSectorSelector);
+</script>

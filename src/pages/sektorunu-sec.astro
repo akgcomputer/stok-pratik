@@ -381,7 +381,7 @@ const faqs = [
     a: "Hayır, hiçbir ek donanım zorunlu değildir. Cep telefonunuzun veya tabletinizin kamerası bile süper hızlı barkod okuyucu olarak çalışır. Eğer işletmenizde mevcut barkod okuyucu, dokunmatik ekran, terazi veya fiş yazıcı varsa onları da doğrudan bağlayıp kullanabilirsiniz."
   },
   {
-    q: "14 günlük ücretsiz deneme süresi bitince ne olur?",
+    q: "30 günlük ücretsiz deneme süresi bitince ne olur?",
     a: "Kayıt olurken kredi kartı istemediğimiz için deneme süresi bittiğinde sizden hiçbir ücret çekilmez ve otomatik fatura çıkmaz. Programı beğenirseniz dilediğiniz zaman ihtiyacınıza uygun paketi seçerek kaldığınız yerden kesintisiz devam edebilirsiniz."
   },
   {
@@ -397,7 +397,7 @@ const faqs = [
 
 <BaseLayout
   title="İşletmeniz Hangi Alanda? 1 Tıkla Sektörünüze Özel Hazırlansın — Stok Pratik"
-  description="Karmaşık menülerle vakit kaybetmeyin. Sektörünüzü seçin; hazır ürün şablonları, e-fatura ve stok altyapınız anında kurulsun. 14 gün ücretsiz deneyin, kredi kartı gerekmez."
+  description="Karmaşık menülerle vakit kaybetmeyin. Sektörünüzü seçin; hazır ürün şablonları, e-fatura ve stok altyapınız anında kurulsun. 30 gün ücretsiz deneyin, kredi kartı gerekmez."
 >
   <main class="min-h-screen bg-slate-50/50 text-slate-800 selection:bg-emerald-500 selection:text-white pb-20">
     
@@ -431,14 +431,14 @@ const faqs = [
         </p>
 
         {/* Güven Rozetleri */}
-        <div class="mt-6 flex flex-wrap items-center justify-center gap-2.5 sm:gap-4 text-xs sm:text-sm font-semibold text-slate-700">
-          <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-100 border border-slate-200">
-            <span class="text-emerald-600 font-bold">✓</span> Kredi Kartı Gerekmez
+        <div class="mt-6 flex flex-wrap items-center justify-center gap-2.5 sm:gap-4 text-xs sm:text-sm font-semibold">
+          <span class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-red-600 border border-red-700 text-white font-bold shadow-sm">
+            <span>💳</span> Kredi Kartı Gerekmez
           </span>
-          <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-emerald-50 border border-emerald-200 text-emerald-900">
-            <span class="text-emerald-600 font-bold">⏱️</span> 14 Gün Ücretsiz
+          <span class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-emerald-600 border border-emerald-700 text-white font-bold shadow-sm">
+            <span>⏱️</span> 30 Gün Ücretsiz
           </span>
-          <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-100 border border-slate-200">
+          <span class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-slate-100 border border-slate-300 text-slate-800 font-semibold shadow-sm">
             <span class="text-indigo-600 font-bold">📊</span> Excel'den 1 Tıkla Veri Aktarımı
           </span>
         </div>
@@ -452,46 +452,15 @@ const faqs = [
     <section class="py-10 sm:py-14" id="sektorler-alani">
       <div class="container mx-auto px-4 max-w-6xl">
         
-        {/* Arama & Kategori Filtreleme Barı */}
-        <div class="bg-white rounded-2xl p-4 sm:p-5 border border-slate-200 shadow-sm mb-8 flex flex-col md:flex-row items-center justify-between gap-4">
-          
-          {/* Arama Kutusu */}
-          <div class="relative w-full md:w-80">
-            <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 1114 0z" />
-              </svg>
-            </div>
-            <input 
-              type="text" 
-              id="sectorSearchInput"
-              placeholder="Sektörünüzü arayın (örn. Butik, Market, Servis...)"
-              class="w-full pl-10 pr-4 py-2.5 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white text-slate-800 placeholder-slate-400 text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all"
-            />
-          </div>
-
-          {/* Kategori Filtre Sekmeleri */}
-          <div class="flex items-center gap-1.5 overflow-x-auto w-full md:w-auto pb-1 md:pb-0 custom-scrollbar">
-            <button type="button" class="category-tab active px-3.5 py-1.5 rounded-lg text-xs font-bold transition-all bg-indigo-900 text-white shadow-sm shrink-0" data-cat="all">
-              Tümü (26)
-            </button>
-            <button type="button" class="category-tab px-3.5 py-1.5 rounded-lg text-xs font-semibold transition-all bg-slate-100 hover:bg-slate-200 text-slate-700 shrink-0" data-cat="perakende">
-              🛍️ Perakende & Mağaza
-            </button>
-            <button type="button" class="category-tab px-3.5 py-1.5 rounded-lg text-xs font-semibold transition-all bg-slate-100 hover:bg-slate-200 text-slate-700 shrink-0" data-cat="gida">
-              🍏 Gıda & Yeme-İçme
-            </button>
-            <button type="button" class="category-tab px-3.5 py-1.5 rounded-lg text-xs font-semibold transition-all bg-slate-100 hover:bg-slate-200 text-slate-700 shrink-0" data-cat="toptan">
-              📦 Toptan & Dağıtım
-            </button>
-            <button type="button" class="category-tab px-3.5 py-1.5 rounded-lg text-xs font-semibold transition-all bg-slate-100 hover:bg-slate-200 text-slate-700 shrink-0" data-cat="hizmet">
-              🔧 Hizmet & Servis
-            </button>
-            <button type="button" class="category-tab px-3.5 py-1.5 rounded-lg text-xs font-semibold transition-all bg-slate-100 hover:bg-slate-200 text-slate-700 shrink-0" data-cat="uretim">
-              ⚙️ Üretim & İmalat
-            </button>
-          </div>
-
+        {/* Bölüm Başlığı & Açıklaması */}
+        <div class="text-center mb-8">
+          <span class="text-xs font-bold text-indigo-600 uppercase tracking-wider">Hızlı Başlangıç</span>
+          <h2 class="text-xl sm:text-2xl lg:text-3xl font-black text-slate-900 mt-1">
+            Aşağıdan Sektörünüzü Seçin
+          </h2>
+          <p class="text-slate-500 text-xs sm:text-sm mt-1">
+            Sektörünüze tıkladığınızda özel modülleriniz ve kurulum paketiniz anında aşağıda hazırlanır.
+          </p>
         </div>
 
         {/* 26 Sektör Kartı (Grid) */}
@@ -499,7 +468,7 @@ const faqs = [
           {sectors.map((sector, index) => (
             <button
               type="button"
-              class={`sector-card group relative p-3.5 sm:p-4 rounded-xl border bg-white text-left transition-all duration-200 hover:-translate-y-1 hover:shadow-md cursor-pointer flex flex-col justify-between min-h-[115px] sm:min-h-[125px] ${index === 0 ? 'active border-indigo-600 ring-2 ring-indigo-500/20 bg-indigo-50/40 shadow-sm' : 'border-slate-200/90 hover:border-indigo-300'}`}
+              class={`sector-card group relative p-3.5 sm:p-4 rounded-xl border bg-white text-left transition-all duration-200 hover:-translate-y-1 hover:shadow-lg cursor-pointer flex flex-col justify-between min-h-[135px] sm:min-h-[140px] ${index === 0 ? 'active border-indigo-600 ring-2 ring-indigo-500/20 bg-indigo-50/50 shadow-md' : 'border-slate-200/90 hover:border-indigo-400'}`}
               data-id={sector.id}
               data-name={sector.name}
               data-category={sector.category}
@@ -511,7 +480,7 @@ const faqs = [
             >
               {/* Üst Kısım: İkon ve Seçim Tiki */}
               <div class="flex items-center justify-between w-full mb-2">
-                <span class="text-2xl sm:text-3xl p-1 rounded-lg bg-slate-50 group-hover:bg-indigo-50 transition-colors">
+                <span class="text-2xl sm:text-3xl p-1.5 rounded-xl bg-slate-50 group-hover:bg-indigo-50 group-hover:scale-110 transition-all">
                   {sector.icon}
                 </span>
                 
@@ -530,6 +499,12 @@ const faqs = [
                   {sector.badge}
                 </span>
               </div>
+
+              {/* Tıkla & İncele Yönlendirme İpucu */}
+              <div class="mt-2.5 pt-2 border-t border-slate-100 flex items-center justify-between text-[11px] font-bold text-indigo-600 group-hover:text-indigo-800 transition-colors">
+                <span>Paketi Aç</span>
+                <span class="text-xs font-black transition-transform group-hover:translate-y-0.5">↓</span>
+              </div>
             </button>
           ))}
         </div>
@@ -537,9 +512,9 @@ const faqs = [
         {/* ========================================================================= */}
         {/* 3. DİNAMİK CANLI ÖNİZLEME ALANI (MAGIC REVEAL) */}
         {/* ========================================================================= */}
-        <div id="magicRevealBox" class="mt-8 scroll-mt-24 transition-all duration-300">
+        <div id="magicRevealBox" class="mt-10 scroll-mt-20 transition-all duration-300">
           
-          <div class="relative bg-gradient-to-br from-indigo-900 via-slate-900 to-slate-950 text-white rounded-3xl p-6 sm:p-10 shadow-2xl border border-indigo-700/50 overflow-hidden">
+          <div class="relative bg-gradient-to-br from-indigo-950 via-slate-900 to-slate-950 text-white rounded-3xl p-6 sm:p-10 shadow-2xl border border-indigo-700/50 overflow-hidden">
             
             {/* Arka plan süslemeleri */}
             <div class="absolute -right-20 -top-20 w-80 h-80 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none"></div>
@@ -574,29 +549,31 @@ const faqs = [
                 </div>
               </div>
 
-              {/* Orta Kısım: 3 Kritik Özellik */}
+              {/* Orta Kısım: 3 Renkli Kritik Özellik Kartı (Hardal Sarı, Kırmızı, Turuncu) */}
               <div class="py-6">
                 <h3 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-4">
                   Sektörünüze Özel Açılacak 3 Temel Güç:
                 </h3>
                 
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-4" id="revealFeaturesList">
-                  {/* Dinamik Olarak JavaScript ile Doldurulacak */}
-                  <div class="p-4 rounded-2xl bg-slate-800/60 border border-slate-700/80">
-                    <span class="text-emerald-400 text-lg font-bold block mb-1.5">⚡ 1. Senkronizasyon</span>
-                    <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+                  {/* 1. Özellik: Hardal Sarı Zeminli */}
+                  <div class="p-5 rounded-2xl bg-amber-400 text-slate-950 border border-amber-500 shadow-md">
+                    <span class="text-slate-950 text-base font-black block mb-2">⚡ 1. Senkronizasyon</span>
+                    <p class="text-slate-900 text-xs sm:text-sm leading-relaxed font-semibold">
                       Trendyol, Hepsiburada, Amazon ve web sitenizle 20 dakikada bir otomatik stok ve sipariş senkronizasyonu.
                     </p>
                   </div>
-                  <div class="p-4 rounded-2xl bg-slate-800/60 border border-slate-700/80">
-                    <span class="text-emerald-400 text-lg font-bold block mb-1.5">🧾 2. e-Fatura & Kargo</span>
-                    <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+                  {/* 2. Özellik: Kırmızı Zeminli */}
+                  <div class="p-5 rounded-2xl bg-red-600 text-white border border-red-700 shadow-md">
+                    <span class="text-white text-base font-black block mb-2">🧾 2. e-Fatura & Kargo</span>
+                    <p class="text-red-50 text-xs sm:text-sm leading-relaxed font-medium">
                       Gelen tüm siparişler için tek tıkla e-Fatura, e-Arşiv ve kargo fişi oluşturma.
                     </p>
                   </div>
-                  <div class="p-4 rounded-2xl bg-slate-800/60 border border-slate-700/80">
-                    <span class="text-emerald-400 text-lg font-bold block mb-1.5">🔄 3. İade Yönetimi</span>
-                    <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+                  {/* 3. Özellik: Turuncu Zeminli */}
+                  <div class="p-5 rounded-2xl bg-orange-500 text-white border border-orange-600 shadow-md">
+                    <span class="text-white text-base font-black block mb-2">🔄 3. İade Yönetimi</span>
+                    <p class="text-orange-50 text-xs sm:text-sm leading-relaxed font-medium">
                       İptal ve iade süreçlerinde ürünün depoya otomatik geri girişi ve cari bakiye düzenlemesi.
                     </p>
                   </div>
@@ -735,8 +712,6 @@ const faqs = [
 <script>
   function setupSectorSelector() {
     const cards = document.querySelectorAll('.sector-card');
-    const searchInput = document.getElementById('sectorSearchInput') as HTMLInputElement;
-    const categoryTabs = document.querySelectorAll('.category-tab');
     
     // Reveal Box Elements
     const revealIcon = document.getElementById('revealIcon');
@@ -749,12 +724,29 @@ const faqs = [
     const sectorWhatsappBtn = document.getElementById('sectorWhatsappBtn') as HTMLAnchorElement;
     const magicRevealBox = document.getElementById('magicRevealBox');
 
-    let activeFilter = 'all';
+    // 3 Renkli Kart Şablonu: 1. Hardal Sarı, 2. Kırmızı, 3. Turuncu
+    const colorStyles = [
+      {
+        box: 'bg-amber-400 text-slate-950 border border-amber-500 shadow-md',
+        title: 'text-slate-950 font-black',
+        text: 'text-slate-900 font-semibold'
+      },
+      {
+        box: 'bg-red-600 text-white border border-red-700 shadow-md',
+        title: 'text-white font-black',
+        text: 'text-red-50 font-medium'
+      },
+      {
+        box: 'bg-orange-500 text-white border border-orange-600 shadow-md',
+        title: 'text-white font-black',
+        text: 'text-orange-50 font-medium'
+      }
+    ];
 
-    function selectSector(card: Element, smoothScroll = false) {
+    function selectSector(card: Element, triggerScroll = false) {
       // Remove active from all cards
       cards.forEach(c => {
-        c.classList.remove('active', 'border-indigo-600', 'ring-2', 'ring-indigo-500/20', 'bg-indigo-50/40', 'shadow-sm');
+        c.classList.remove('active', 'border-indigo-600', 'ring-2', 'ring-indigo-500/20', 'bg-indigo-50/50', 'shadow-md');
         c.classList.add('border-slate-200/90');
         const badge = c.querySelector('.check-badge');
         if (badge) {
@@ -764,7 +756,7 @@ const faqs = [
       });
 
       // Add active to selected
-      card.classList.add('active', 'border-indigo-600', 'ring-2', 'ring-indigo-500/20', 'bg-indigo-50/40', 'shadow-sm');
+      card.classList.add('active', 'border-indigo-600', 'ring-2', 'ring-indigo-500/20', 'bg-indigo-50/50', 'shadow-md');
       card.classList.remove('border-slate-200/90');
       const badge = card.querySelector('.check-badge');
       if (badge) {
@@ -794,12 +786,15 @@ const faqs = [
       if (revealReadySetup) revealReadySetup.textContent = readySetup;
 
       if (revealFeaturesList) {
-        revealFeaturesList.innerHTML = features.map((feat, i) => `
-          <div class="p-4 rounded-2xl bg-slate-800/60 border border-slate-700/80 transition-all hover:bg-slate-800">
-            <span class="text-emerald-400 text-sm font-bold block mb-1.5">⚡ ${i + 1}. Özellik</span>
-            <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">${feat}</p>
-          </div>
-        `).join('');
+        revealFeaturesList.innerHTML = features.map((feat, i) => {
+          const style = colorStyles[i % colorStyles.length];
+          return `
+            <div class="p-5 rounded-2xl ${style.box} transition-all hover:scale-[1.01]">
+              <span class="${style.title} text-base block mb-2">⚡ ${i + 1}. Özellik</span>
+              <p class="${style.text} text-xs sm:text-sm leading-relaxed">${feat}</p>
+            </div>
+          `;
+        }).join('');
       }
 
       // Update CTA Link
@@ -811,13 +806,13 @@ const faqs = [
       }
 
       if (sectorWhatsappBtn) {
-        const message = `Merhaba, ${name} sektörü için Stok Pratik kurulumu ve 14 gün ücretsiz deneme hakkında bilgi almak istiyorum.`;
+        const message = `Merhaba, ${name} sektörü için Stok Pratik kurulumu ve 30 gün ücretsiz deneme hakkında bilgi almak istiyorum.`;
         sectorWhatsappBtn.href = `https://wa.me/+905325000999?text=${encodeURIComponent(message)}`;
       }
 
-      // Optional smooth scroll to reveal on mobile
-      if (smoothScroll && window.innerWidth < 768 && magicRevealBox) {
-        magicRevealBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      // Tıklanınca otomatik olarak aşağıya (Özel Paket Hazır kutusuna) yumuşak geçiş yap
+      if (triggerScroll && magicRevealBox) {
+        magicRevealBox.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
     }
 
@@ -825,48 +820,6 @@ const faqs = [
     cards.forEach(card => {
       card.addEventListener('click', () => {
         selectSector(card, true);
-      });
-    });
-
-    // Search Filtering
-    function filterCards() {
-      const query = (searchInput?.value || '').toLowerCase().trim();
-
-      cards.forEach(card => {
-        const name = (card.getAttribute('data-name') || '').toLowerCase();
-        const category = card.getAttribute('data-category') || '';
-        const badge = (card.getAttribute('data-badge') || '').toLowerCase();
-
-        const matchesQuery = !query || name.includes(query) || badge.includes(query);
-        const matchesCategory = activeFilter === 'all' || category === activeFilter;
-
-        if (matchesQuery && matchesCategory) {
-          (card as HTMLElement).style.display = 'flex';
-        } else {
-          (card as HTMLElement).style.display = 'none';
-        }
-      });
-    }
-
-    if (searchInput) {
-      searchInput.addEventListener('input', filterCards);
-    }
-
-    // Category Tabs Filtering
-    categoryTabs.forEach(tab => {
-      tab.addEventListener('click', () => {
-        const cat = tab.getAttribute('data-cat') || 'all';
-        activeFilter = cat;
-
-        categoryTabs.forEach(t => {
-          t.classList.remove('active', 'bg-indigo-900', 'text-white', 'shadow-sm');
-          t.classList.add('bg-slate-100', 'text-slate-700');
-        });
-
-        tab.classList.add('active', 'bg-indigo-900', 'text-white', 'shadow-sm');
-        tab.classList.remove('bg-slate-100', 'text-slate-700');
-
-        filterCards();
       });
     });
 

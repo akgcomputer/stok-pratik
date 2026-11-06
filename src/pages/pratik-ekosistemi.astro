@@ -1,0 +1,697 @@
+---
+// src/pages/pratik-ekosistemi.astro - Pratik Ürün Ailesi & FinansPratik Ana Çatı Hub Sayfası
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const products = [
+  {
+    id: "musavirpratik",
+    name: "MüşavirPratik",
+    badge: "🏛️ SMMM ÖZEL ŞİFRE",
+    title: "SMMM Mali Müşavir Portalı & Canlı KDV Pusulası",
+    desc: "Müşavirinize kendi şirket yönetim şifrenizi vermeyin. CariNET modeliyle özel şifre üretin; resmi evraklarınızı, 102 banka ekstrelerinizi ve Luca/Zirve/Mikro fişlerini tek tıkla çeksin.",
+    points: [
+      "CariNET Modeliyle Müşavire Özel Kullanıcı & Şifre",
+      "Canlı KDV & Vergi Pusulası (391 Hesaplanan vs 191 İndirilecek)",
+      "Luca, Zirve, Mikro, Eta & Resmi XML/ZIP Tek Tıkla Aktarım",
+      "Otomatik Masraf Fişi & İkincil Entegratör Tekilleştirme"
+    ],
+    detailUrl: "/urunler/musavirpratik",
+    portalUrl: "https://erp-eticaret.stokpratik.com.tr/smmm/giris",
+    image: "/images/ekosistem/departman_portallari_b2b_smmm_hero_1793942223136.jpg",
+    theme: {
+      gradient: "from-amber-500 to-red-600",
+      border: "border-amber-200",
+      badge: "bg-amber-500/10 text-amber-400 border-amber-500/20"
+    }
+  },
+  {
+    id: "carinet",
+    name: "CariNET B2B",
+    badge: "🌐 B2B CARİ & SİPARİŞ",
+    title: "Müşteri & Bayi Self-Servis Sipariş ve 3D Tahsilat Portalı",
+    desc: "Müşterileriniz ekstre istemek için sizi aramasın. 7/24 canlı bakiyelerini görsünler, 3D Secure kredi kartıyla borçlarını ödesinler ve özel iskontolarla sipariş versinler.",
+    points: [
+      "Canlı Cari Ekstre & Fatura PDF İndirme",
+      "3D Secure Kredi Kartı ile Anında Bakiye Kapama",
+      "Cariye Özel İskontolu B2B Katalog & Sipariş Sepeti",
+      "Self-Servis İade (RMA) Talebi & Mutabakat Onayı"
+    ],
+    detailUrl: "/urunler/carinet",
+    portalUrl: "https://erp-eticaret.stokpratik.com.tr/carinet",
+    image: "/images/ekosistem/carinet_crm_servis_portallari_hero_1793942256908.jpg",
+    theme: {
+      gradient: "from-blue-600 to-cyan-600",
+      border: "border-blue-200",
+      badge: "bg-blue-500/10 text-blue-400 border-blue-500/20"
+    }
+  },
+  {
+    id: "finanspratik",
+    name: "FinansPratik",
+    badge: "💎 5 MODÜL 1 ARADA",
+    title: "Açık Bankacılık, TahsilatRobotu & POS Hazine Üssü",
+    desc: "Türkiye'nin 25 bankasındaki hesaplarınızı tek ekranda birleştirin, gelen EFT/FAST'leri cari hesaplara otomatik eşleyin, WhatsApp TahsilatRobotu ile alacakları toplayın.",
+    points: [
+      "BankaPratik: 25 Banka Canlı Ekstre & Akıllı IBAN Eşleştirme",
+      "TahsilatRobotu: 3 Farklı Tonla WhatsApp Vade Hatırlatma & 3D Link",
+      "POSPratik: Banka POS Komisyon Kesintisi Denetçisi & Valör Radarı",
+      "ÖdemePratik & NakitPratik: Toplu EFT/FAST & 30 Günlük Likidite Simülatörü"
+    ],
+    detailUrl: "/urunler/finanspratik",
+    portalUrl: "https://erp-eticaret.stokpratik.com.tr/finanspratik",
+    image: "/images/ekosistem/finanspratik_acik_bankacilik_hero_1793942210288.jpg",
+    theme: {
+      gradient: "from-emerald-500 to-teal-700",
+      border: "border-emerald-200",
+      badge: "bg-emerald-500/10 text-emerald-400 border-emerald-500/20"
+    }
+  },
+  {
+    id: "mutabakatpratik",
+    name: "MutabakatPratik",
+    badge: "🤝 ŞİFRESİZ ONAY",
+    title: "Şifresiz Cari Bakiye & BA/BS Dijital Mutabakat Portalı",
+    desc: "Müşteri ve tedarikçilerinize şifresiz WhatsApp ve e-posta onay linki gönderin. Karşı taraf üye olmadan tek tıkla onaylasın; fark varsa yapay zeka ekstredeki eksik faturayı bulsun.",
+    points: [
+      "Şifresiz Tek Tıkla WhatsApp & E-Posta Onay Linki",
+      "Yapay Zeka Destekli Otomatik Ekstre Fark Bulucu",
+      "5651 Sayılı Kanuna Uygun Zaman Damgalı Hukuki Delil",
+      "Excel Mizan ile Başka Muhasebeden Toplu Gönderim"
+    ],
+    detailUrl: "/urunler/mutabakatpratik",
+    portalUrl: "https://erp-eticaret.stokpratik.com.tr/mutabakat",
+    image: "/images/ekosistem/departman_portallari_b2b_smmm_hero_1793942223136.jpg",
+    theme: {
+      gradient: "from-fuchsia-600 to-indigo-700",
+      border: "border-fuchsia-200",
+      badge: "bg-fuchsia-500/10 text-fuchsia-400 border-fuchsia-500/20"
+    }
+  },
+  {
+    id: "e-ticaretpratik",
+    name: "e-TicaretPratik",
+    badge: "🛍️ OMNICHANNEL ÜS",
+    title: "Pazaryeri & E-Ticaret Operasyon Yönetimi ve Net Kar Simülatörü",
+    desc: "Trendyol, Hepsiburada, Amazon ve kendi web sitenizi tek merkezden yönetin. Komisyon, baremli kargo ve stopaj düştükten sonra cebinize kalan gerçek net karı sipariş anında görün.",
+    points: [
+      "Pazaryeri Komisyon, Kargo & Net Cep Karı Simülatörü",
+      "Tek Tıkla Toplu e-Fatura/e-Arşiv & Otomatik PDF İletimi",
+      "Ortak Kargo Barkodu (ZPL / PDF Etiket Basımı)",
+      "20 Dakikada Otomatik Çift Yönlü Stok & Fiyat Eşitleme"
+    ],
+    detailUrl: "/urunler/e-ticaretpratik",
+    portalUrl: "https://erp-eticaret.stokpratik.com.tr/ticaretpratik",
+    image: "/images/ekosistem/eticaret_lojistik_uretim_portallari_hero_1793942246499.jpg",
+    theme: {
+      gradient: "from-amber-600 to-yellow-600",
+      border: "border-yellow-200",
+      badge: "bg-amber-500/10 text-amber-400 border-amber-500/20"
+    }
+  },
+  {
+    id: "lojistikpratik",
+    name: "LojistikPratik",
+    badge: "🚚 FİYATSIZ DEPO & İHALE",
+    title: "WMS Depo, Sevkiyat & Tedarik İhale Üssü",
+    desc: "Depo personeli ürün fiyatlarını ve şirket cirosunu görmeden barkod, raf ve adet üzerinden sevkiyat yapar. Kritik stoğa düşen ürünler için 3 tedarikçiden otomatik ihale teklifi toplanır.",
+    points: [
+      "Finansal Verisiz (Fiyatsız) İzole Depo ve Raf Modu",
+      "Cep Telefonu Kamerası & El Terminali ile Barkodlu Mal Kabul",
+      "TedarikPratik: 3 Tedarikçili Satın Alma İhalesi (RFQ)",
+      "Çoklu Depo, Şube & Koridor/Raf Lokasyon Haritası"
+    ],
+    detailUrl: "/urunler/lojistikpratik",
+    portalUrl: "https://erp-eticaret.stokpratik.com.tr/lojistikpratik",
+    image: "/images/ekosistem/eticaret_lojistik_uretim_portallari_hero_1793942246499.jpg",
+    theme: {
+      gradient: "from-sky-500 to-indigo-700",
+      border: "border-sky-200",
+      badge: "bg-sky-500/10 text-sky-400 border-sky-500/20"
+    }
+  },
+  {
+    id: "uretimpratik",
+    name: "ÜretimPratik",
+    badge: "⚙️ FABRİKA & BOM ÜSSÜ",
+    title: "Atölye, Reçete (BOM) & MRP Planlama Portalı",
+    desc: "Tekstil, metal, mobilya, kimya ve gıda sektörlerine özel hazır fabrika reçeteleriyle üretime hemen başlayın. Ustabaşı ekranında maliyet gizliliğiyle iş emirlerini ve sarfiyatları takip edin.",
+    points: [
+      "Finansal Verisiz Ustabaşı & Atölye Terminali",
+      "Çok Kademeli Ürün Ağacı (BOM) & Otomatik Stok Düşümü",
+      "Hazır Sektörel Fabrika Şablonları (Tekstil, Metal, Kimya)",
+      "MRP (Malzeme İhtiyaç Planlaması) & Fire Analizi"
+    ],
+    detailUrl: "/urunler/uretimpratik",
+    portalUrl: "https://erp-eticaret.stokpratik.com.tr/uretimpratik",
+    image: "/images/ekosistem/eticaret_lojistik_uretim_portallari_hero_1793942246499.jpg",
+    theme: {
+      gradient: "from-indigo-600 to-cyan-700",
+      border: "border-indigo-200",
+      badge: "bg-indigo-500/10 text-indigo-400 border-indigo-500/20"
+    }
+  },
+  {
+    id: "crmpratik",
+    name: "CRMPratik",
+    badge: "🎯 SAHA SATIŞ & PROFORMA",
+    title: "Saha Satış, Müşteri 360° & Teklif Üssü",
+    desc: "Saha plasiyerleriniz müşterinin yanındayken 30 saniyede kurumsal proforma teklif hazırlayıp WhatsApp'tan göndersin. Müşteri onayladığı an tek tuşla e-Fatura'ya dönüşsün.",
+    points: [
+      "TeklifPratik: WhatsApp Online Fiyat Teklifi & Proforma",
+      "Tek Tıkla Tekliften Satış Faturasına Dönüşüm",
+      "Müşteri 360° Görüşme Notları & Ziyaret Zaman Tüneli",
+      "Satış Hunisi (Pipeline) & Temsilci Prim/Kota Takibi"
+    ],
+    detailUrl: "/urunler/crmpratik",
+    portalUrl: "https://erp-eticaret.stokpratik.com.tr/crmpratik",
+    image: "/images/ekosistem/carinet_crm_servis_portallari_hero_1793942256908.jpg",
+    theme: {
+      gradient: "from-pink-600 to-purple-700",
+      border: "border-pink-200",
+      badge: "bg-pink-500/10 text-pink-400 border-pink-500/20"
+    }
+  },
+  {
+    id: "personelpratik",
+    name: "PersonelPratik",
+    badge: "👥 15SN QR-PDKS & İK",
+    title: "Dinamik QR-PDKS, GPS & Puantaj Yönetim Portalı",
+    desc: "Pahalı parmak izi cihazlarını ve KVKK ceza riskini unutun! Tabletten 15 saniyede bir değişen dinamik QR kod ve GPS şube sınırı ile personel giriş-çıkışını ve 45 saatlik SGK puantajını yönetin.",
+    points: [
+      "15 Saniyede Bir Yenilenen Kopyalanamaz Kiosk QR Kodu",
+      "GPS Şube Çemberi (Geofencing) Konum Doğrulaması",
+      "4857 Sayılı Kanun 45 Saat Mesai & Fazla Çalışma Puantajı",
+      "Dijital İzin, Avans & Zimmet Talep ve Onay Sistemi"
+    ],
+    detailUrl: "/urunler/personelpratik",
+    portalUrl: "https://erp-eticaret.stokpratik.com.tr/personelpratik",
+    image: "/images/ekosistem/departman_portallari_b2b_smmm_hero_1793942223136.jpg",
+    theme: {
+      gradient: "from-rose-600 to-amber-600",
+      border: "border-rose-200",
+      badge: "bg-rose-500/10 text-rose-400 border-rose-500/20"
+    }
+  },
+  {
+    id: "servispratik",
+    name: "ServisPratik",
+    badge: "🛠️ CİHAZ KABUL & RMA",
+    title: "Teknik Servis, Cihaz Kabul & Garanti Üssü",
+    desc: "Cihazı seri no ve IMEI ile teslim alın, barkodlu servis kabul fişi basın, onarımda kullanılan yedek parçaları stoktan otomatik düşün ve müşteriye WhatsApp'tan canlı takip linki gönderin.",
+    points: [
+      "Barkodlu Cihaz/RMA Kabul Fişi & Seri No / IMEI Hafızası",
+      "WhatsApp Canlı Onarım Durumu & Müşteri Fiyat Onayı",
+      "Yedek Parça + İşçilikten Tek Tıkla Satış Faturasına Dönüşüm",
+      "Garanti Süresi & Periyodik Bakım Sözleşmesi Hatırlatıcı"
+    ],
+    detailUrl: "/urunler/servispratik",
+    portalUrl: "https://erp-eticaret.stokpratik.com.tr/servispratik",
+    image: "/images/ekosistem/carinet_crm_servis_portallari_hero_1793942256908.jpg",
+    theme: {
+      gradient: "from-teal-600 to-cyan-700",
+      border: "border-teal-200",
+      badge: "bg-teal-500/10 text-teal-400 border-teal-500/20"
+    }
+  }
+];
+---
+
+<BaseLayout
+  title="Pratik Ürün Ailesi & FinansPratik | 10 Bağımsız Bulut İşletme Portalı — StokPratik"
+  description="FinansPratik açık bankacılık üssü ve MüşavirPratik, CariNET B2B, MutabakatPratik, e-TicaretPratik dahil 10 bağımsız kurumsal bulut ürününü keşfedin. İhtiyacınız olan modülü seçin, aynı gün kullanmaya başlayın."
+>
+  <main class="min-h-screen bg-slate-950 text-slate-100 selection:bg-emerald-500 selection:text-slate-950 pb-24">
+    
+    {/* ========================================================================= */}
+    {/* 1. HERO BÖLÜMÜ */}
+    {/* ========================================================================= */}
+    <section class="relative pt-16 pb-16 sm:pt-24 sm:pb-20 overflow-hidden border-b border-slate-800">
+      
+      {/* Arka Plan Glow Efektleri */}
+      <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[400px] bg-gradient-to-b from-emerald-500/15 via-indigo-600/10 to-transparent blur-3xl pointer-events-none"></div>
+      
+      <div class="container mx-auto px-4 max-w-6xl text-center relative z-10">
+        
+        {/* Üst Rozet */}
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs sm:text-sm font-bold shadow-sm mb-6">
+          <span>🚀</span>
+          <span>YENİ NESİL MODÜLER BULUT MİMARİSİ</span>
+        </div>
+
+        {/* Ana Başlık */}
+        <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight leading-tight max-w-5xl mx-auto">
+          Karmaşık ERP Ekranlarına Son: <br class="hidden sm:inline" />
+          <span class="bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-400 bg-clip-text text-transparent">
+            Her Departmana Özel 10 Bağımsız Uzman Ürün!
+          </span>
+        </h1>
+
+        {/* Alt Başlık */}
+        <p class="mt-6 text-slate-300 text-sm sm:text-base lg:text-lg max-w-3xl mx-auto leading-relaxed">
+          Depocunuz ciro görmesin, mali müşaviriniz fatura peşinde koşmasın, finans müdürünüz 25 bankayı tek ekrandan yönetsin. StokPratik ana omurgasıyla %100 canlı senkronize çalışan <strong class="text-white">Pratik Ürün Ailesi</strong> ile tanışın.
+        </p>
+
+        {/* CTA Butonları */}
+        <div class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
+          <a 
+            href="/firma-kaydi"
+            class="w-full sm:w-auto px-8 py-4 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 text-slate-950 font-black text-sm sm:text-base shadow-lg shadow-emerald-500/25 transition-all hover:scale-105"
+          >
+            🚀 Ücretsiz Hesabınızı Açın — 10 Ürünü Hemen Deneyin
+          </a>
+
+          <button 
+            type="button"
+            class="open-request-modal w-full sm:w-auto px-7 py-4 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-sm sm:text-base border border-slate-700 transition-all hover:border-emerald-500/50 flex items-center justify-center gap-2 cursor-pointer"
+            data-package="Pratik Ekosistemi Full Paket"
+          >
+            <span>💎</span>
+            <span>Lisans & Paket Talebi Oluştur</span>
+          </button>
+        </div>
+
+        {/* Vitrin Banner Görseli */}
+        <div class="mt-12 sm:mt-16 rounded-3xl overflow-hidden border border-slate-800 shadow-2xl bg-slate-900">
+          <img 
+            src="/images/ekosistem/pratik_ekosistem_10_urun_vitrini_1793942198523.jpg" 
+            alt="StokPratik Pratik Ürün Ailesi 10 Bağımsız Portal Vitrini"
+            class="w-full h-auto object-cover"
+            loading="eager"
+          />
+        </div>
+
+      </div>
+    </section>
+
+    {/* ========================================================================= */}
+    {/* 2. NEDEN PRATİK ÜRÜN AİLESİ FARKIDIR? (3 TEMEL AVANTAJ) */}
+    {/* ========================================================================= */}
+    <section class="py-16 sm:py-20 bg-slate-900/60 border-b border-slate-800">
+      <div class="container mx-auto px-4 max-w-6xl">
+        
+        <div class="text-center max-w-3xl mx-auto mb-12">
+          <span class="text-xs font-bold text-emerald-400 uppercase tracking-wider">Benzersiz Mimari</span>
+          <h2 class="text-2xl sm:text-4xl font-extrabold text-white mt-1">
+            Neden "Pratik Ürün Ailesi" Farklıdır?
+          </h2>
+          <p class="text-slate-400 text-xs sm:text-sm mt-2">
+            Geleneksel hantal ERP programlarının yarattığı veri karmaşasını ve yetki açıklarını ortadan kaldıran 3 temel mimari sütun:
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          
+          {/* Avantaj 1 */}
+          <div class="p-6 sm:p-8 rounded-2xl bg-slate-900 border border-slate-800 hover:border-emerald-500/40 transition-all group">
+            <div class="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 flex items-center justify-center text-2xl mb-5 group-hover:scale-110 transition-transform">
+              🔒
+            </div>
+            <h3 class="text-lg font-bold text-white mb-2">
+              1. Departman Bazlı Tam Veri Gizliliği
+            </h3>
+            <p class="text-slate-400 text-xs sm:text-sm leading-relaxed">
+              Üretimdeki ustabaşı veya depodaki sevkiyat personeli ana muhasebe ekranlarına girmez. Kendi portalında (<strong class="text-slate-200">ÜretimPratik</strong> / <strong class="text-slate-200">LojistikPratik</strong>) sadece adet, barkod ve iş emrini görür; maliyet ve ciro bilgilerinize asla erişemez.
+            </p>
+          </div>
+
+          {/* Avantaj 2 */}
+          <div class="p-6 sm:p-8 rounded-2xl bg-slate-900 border border-slate-800 hover:border-blue-500/40 transition-all group">
+            <div class="w-12 h-12 rounded-xl bg-blue-500/10 border border-blue-500/20 text-blue-400 flex items-center justify-center text-2xl mb-5 group-hover:scale-110 transition-transform">
+              🔑
+            </div>
+            <h3 class="text-lg font-bold text-white mb-2">
+              2. Tek Şifre (SSO) veya Paydaşa Özel Şifre
+            </h3>
+            <p class="text-slate-400 text-xs sm:text-sm leading-relaxed">
+              İşletme yöneticisi tek şifreyle tüm portallara geçiş yapabilirken; müşterinize <strong class="text-slate-200">CariNET B2B</strong> şifresi, mali müşavirinize <strong class="text-slate-200">MüşavirPratik</strong> şifresi üretebilirsiniz. Müşteriniz ve tedarikçiniz ise <strong class="text-slate-200">MutabakatPratik</strong> linklerini şifresiz tek tıkla onaylar.
+            </p>
+          </div>
+
+          {/* Avantaj 3 */}
+          <div class="p-6 sm:p-8 rounded-2xl bg-slate-900 border border-slate-800 hover:border-amber-500/40 transition-all group">
+            <div class="w-12 h-12 rounded-xl bg-amber-500/10 border border-amber-500/20 text-amber-400 flex items-center justify-center text-2xl mb-5 group-hover:scale-110 transition-transform">
+              💳
+            </div>
+            <h3 class="text-lg font-bold text-white mb-2">
+              3. Esnek Modüler Lisanslama (Yıllık Ödeme)
+            </h3>
+            <p class="text-slate-400 text-xs sm:text-sm leading-relaxed">
+              Kullanmadığınız modüllere para ödemeyin. İster tek bir ürünü veya tek bir FinansPratik modülünü kiralayın, ister <strong class="text-slate-200">FULL Paket (Yıllık Ödeme)</strong> avantajıyla %30 indirimli olarak tüm ekosisteme sahip olun.
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    {/* ========================================================================= */}
+    {/* 3. 10 DEPARTMAN / ÜRÜN İÇİN HIZLI YÖNLENDİRME HAPLARI (STICKY NAV) */}
+    {/* ========================================================================= */}
+    <nav class="sticky top-20 z-40 bg-slate-950/90 backdrop-blur-md border-y border-slate-800 py-3">
+      <div class="container mx-auto px-4 max-w-6xl">
+        <div class="flex items-center gap-2 overflow-x-auto pb-1 custom-scrollbar">
+          <span class="text-xs font-bold text-slate-400 shrink-0 mr-2">10 Departman:</span>
+          {products.map((p, i) => (
+            <a 
+              href={`#${p.id}`}
+              class="px-3 py-1.5 rounded-lg text-xs font-bold bg-slate-900 hover:bg-emerald-500 hover:text-slate-950 text-slate-300 border border-slate-800 shrink-0 transition-all flex items-center gap-1.5"
+            >
+              <span class="text-[10px] text-emerald-400 font-mono">0{i + 1}</span>
+              <span>{p.name}</span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </nav>
+
+    {/* ========================================================================= */}
+    {/* 4. 10 BAĞIMSIZ ÜRÜN DETAY KARTLARI (REHBERDEKİ SIRALAMA) */}
+    {/* ========================================================================= */}
+    <section class="py-16 sm:py-24">
+      <div class="container mx-auto px-4 max-w-6xl space-y-20">
+        
+        {products.map((p, idx) => (
+          <div 
+            id={p.id}
+            class="scroll-mt-36 p-6 sm:p-10 rounded-3xl bg-slate-900/80 border border-slate-800 shadow-2xl relative overflow-hidden"
+          >
+            {/* Hafif Arka Plan Gradient */}
+            <div class={`absolute -right-20 -top-20 w-80 h-80 bg-gradient-to-br ${p.theme.gradient} opacity-10 rounded-full blur-3xl pointer-events-none`}></div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
+              
+              {/* Sol 7 Kolon: Bilgiler & Özellikler */}
+              <div class="lg:col-span-7">
+                
+                {/* Üst Rozet & Sıra No */}
+                <div class="flex items-center gap-3 mb-3">
+                  <span class={`text-xs font-extrabold px-3 py-1 rounded-full border ${p.theme.badge}`}>
+                    {p.badge}
+                  </span>
+                  <span class="text-xs font-bold text-slate-500 font-mono">
+                    Bölüm 0{idx + 1} / 10
+                  </span>
+                </div>
+
+                {/* Ürün İsmi & Başlık */}
+                <h3 class="text-2xl sm:text-3xl font-black text-white tracking-tight">
+                  {p.name}
+                </h3>
+                <h4 class="text-sm sm:text-base font-bold text-emerald-400 mt-1 mb-3">
+                  {p.title}
+                </h4>
+
+                {/* Açıklama */}
+                <p class="text-slate-300 text-xs sm:text-sm leading-relaxed mb-6">
+                  {p.desc}
+                </p>
+
+                {/* 4 Öne Çıkan Madde */}
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 mb-8">
+                  {p.points.map((pt) => (
+                    <div class="flex items-start gap-2 text-xs text-slate-200 bg-slate-950/60 p-2.5 rounded-xl border border-slate-800/80">
+                      <span class="text-emerald-400 font-bold shrink-0">✓</span>
+                      <span class="font-medium">{pt}</span>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Aksiyon Butonları */}
+                <div class="flex flex-wrap items-center gap-3">
+                  <a 
+                    href={p.detailUrl}
+                    class="px-5 py-3 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 text-slate-950 font-extrabold text-xs sm:text-sm transition-all shadow-md shadow-emerald-500/20 flex items-center gap-2"
+                  >
+                    <span>{p.name} Tanıtım Sayfası</span>
+                    <span>→</span>
+                  </a>
+
+                  <a 
+                    href={p.portalUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="px-4 py-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-bold text-xs sm:text-sm border border-slate-700 transition-colors flex items-center gap-1.5"
+                  >
+                    <span>Portala Gir</span>
+                    <span class="text-xs">↗</span>
+                  </a>
+
+                  <button 
+                    type="button"
+                    class="open-request-modal px-4 py-3 rounded-xl bg-slate-950 hover:bg-slate-800 text-emerald-400 font-bold text-xs sm:text-sm border border-emerald-500/30 transition-colors cursor-pointer"
+                    data-package={`${p.name} Modüler Lisans`}
+                  >
+                    Lisans Talebi
+                  </button>
+                </div>
+
+              </div>
+
+              {/* Sağ 5 Kolon: Ürün Görseli */}
+              <div class="lg:col-span-5">
+                <a href={p.detailUrl} class="block rounded-2xl overflow-hidden border border-slate-800 shadow-xl group/img">
+                  <img 
+                    src={p.image} 
+                    alt={`${p.name} Türkçe Arayüz Görseli`}
+                    class="w-full h-auto object-cover transform group-hover/img:scale-105 transition-transform duration-500"
+                    loading="lazy"
+                  />
+                </a>
+              </div>
+
+            </div>
+          </div>
+        ))}
+
+      </div>
+    </section>
+
+    {/* ========================================================================= */}
+    {/* 5. FİNANSPRATİK FULL & MODÜLER LİSANSLAMA KARTI */}
+    {/* ========================================================================= */}
+    <section class="py-16 sm:py-20 bg-slate-900 border-t border-slate-800">
+      <div class="container mx-auto px-4 max-w-5xl">
+        
+        <div class="p-8 sm:p-12 rounded-3xl bg-gradient-to-br from-indigo-950 via-slate-950 to-slate-950 border-2 border-emerald-500/40 shadow-2xl relative overflow-hidden">
+          
+          <div class="relative z-10 text-center max-w-3xl mx-auto">
+            <span class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/20 text-emerald-300 font-black text-xs uppercase tracking-wider mb-4 border border-emerald-500/30">
+              💎 YILLIK ÖDEME AVANTAJI
+            </span>
+
+            <h2 class="text-2xl sm:text-4xl font-black text-white tracking-tight">
+              FinansPratik FULL (5 Modül Birden)
+            </h2>
+            <p class="text-base sm:text-xl font-bold text-emerald-400 mt-2">
+              5 Ürün Tek Fiyat ile %30 İndirimli kullanın
+            </p>
+
+            <p class="text-slate-300 text-xs sm:text-sm mt-4 leading-relaxed">
+              BankaPratik (25 Banka Canlı Ekstre), TahsilatRobotu (WhatsApp Vade Takibi), POSPratik (Komisyon Kesintisi Denetçisi), ÖdemePratik (Toplu EFT/FAST) ve NakitPratik (e-DBS & Likidite Simülatörü) bir arada.
+            </p>
+
+            <div class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
+              <button 
+                type="button"
+                class="open-request-modal w-full sm:w-auto px-8 py-4 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-slate-950 font-black text-sm sm:text-base shadow-xl shadow-emerald-500/30 transition-all hover:scale-105 cursor-pointer"
+                data-package="FinansPratik FULL (5 Modül Birden) Yıllık Ödeme"
+              >
+                💎 Lisans & Paket Talebi Oluştur
+              </button>
+
+              <a 
+                href="/urunler/finanspratik"
+                class="w-full sm:w-auto px-6 py-4 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-sm border border-slate-700 transition-colors"
+              >
+                FinansPratik Detaylarını İncele →
+              </a>
+            </div>
+
+            <div class="mt-4 text-[11px] text-slate-400">
+              ⚡ Yıllık ödemede ekstra 2 ay ücretsiz kullanım ve ücretsiz kurulum desteği dahildir.
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    {/* ========================================================================= */}
+    {/* 6. LİSANS & PAKET TALEP MODALI (INTERAKTİF TALEP ALTYAPISI) */}
+    {/* ========================================================================= */}
+    <div id="licenseModal" class="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm hidden items-center justify-center p-4">
+      <div class="bg-slate-900 border border-slate-700 rounded-3xl max-w-md w-full p-6 sm:p-8 shadow-2xl relative text-left">
+        
+        {/* Kapat Butonu */}
+        <button id="closeModalBtn" type="button" class="absolute top-5 right-5 text-slate-400 hover:text-white text-xl p-1">
+          ✕
+        </button>
+
+        <div class="flex items-center gap-2 mb-2">
+          <span class="text-xl">💎</span>
+          <span class="text-xs font-bold text-emerald-400 uppercase tracking-wider">Hızlı Başvuru</span>
+        </div>
+
+        <h3 class="text-xl font-extrabold text-white" id="modalTitle">
+          Lisans & Paket Talebi Oluştur
+        </h3>
+        <p class="text-xs text-slate-400 mt-1 mb-6">
+          Seçtiğiniz modül için talebiniz doğrudan yetkili yönetici paneline iletilir ve satış ekibimiz 15 dakika içinde dönüş yapar.
+        </p>
+
+        <form id="licenseRequestForm" class="space-y-4">
+          <input type="hidden" id="selectedPackageInput" name="package" value="Pratik Ekosistemi Full Paket" />
+
+          <div>
+            <label class="block text-xs font-bold text-slate-300 mb-1">Adınız Soyadınız *</label>
+            <input 
+              type="text" 
+              required
+              id="custName"
+              placeholder="Örn: Ahmet Yılmaz"
+              class="w-full px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-700 text-white placeholder-slate-500 text-xs sm:text-sm focus:outline-none focus:border-emerald-500"
+            />
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold text-slate-300 mb-1">Telefon Numaranız (WhatsApp) *</label>
+            <input 
+              type="tel" 
+              required
+              id="custPhone"
+              placeholder="05XXXXXXXXX"
+              class="w-full px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-700 text-white placeholder-slate-500 text-xs sm:text-sm focus:outline-none focus:border-emerald-500"
+            />
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold text-slate-300 mb-1">Firma Adı & E-Posta *</label>
+            <input 
+              type="email" 
+              required
+              id="custEmail"
+              placeholder="firma@sirketiniz.com"
+              class="w-full px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-700 text-white placeholder-slate-500 text-xs sm:text-sm focus:outline-none focus:border-emerald-500"
+            />
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold text-slate-300 mb-1">Ödeme Tercihi</label>
+            <select id="paymentPref" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-700 text-white text-xs sm:text-sm focus:outline-none focus:border-emerald-500">
+              <option value="Yıllık Ödeme (%30 İndirimli)">Yıllık Ödeme (%30 İndirimli Avantajlı)</option>
+              <option value="Aylık Kiralama">Aylık Kiralama</option>
+            </select>
+          </div>
+
+          <div id="formFeedback" class="hidden text-xs p-3 rounded-xl"></div>
+
+          <button 
+            type="submit"
+            id="submitRequestBtn"
+            class="w-full py-3.5 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-slate-950 font-black text-sm shadow-lg shadow-emerald-500/25 transition-all cursor-pointer"
+          >
+            Talebi Gönder
+          </button>
+        </form>
+
+      </div>
+    </div>
+
+  </main>
+</BaseLayout>
+
+<script>
+  function setupModal() {
+    const modal = document.getElementById('licenseModal');
+    const openBtns = document.querySelectorAll('.open-request-modal');
+    const closeBtn = document.getElementById('closeModalBtn');
+    const packageInput = document.getElementById('selectedPackageInput') as HTMLInputElement;
+    const modalTitle = document.getElementById('modalTitle');
+    const form = document.getElementById('licenseRequestForm') as HTMLFormElement;
+    const feedback = document.getElementById('formFeedback');
+    const submitBtn = document.getElementById('submitRequestBtn') as HTMLButtonElement;
+
+    openBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const pkg = btn.getAttribute('data-package') || 'Pratik Ekosistemi Full Paket';
+        if (packageInput) packageInput.value = pkg;
+        if (modalTitle) modalTitle.textContent = `${pkg} — Lisans Talebi`;
+        if (feedback) {
+          feedback.className = 'hidden text-xs p-3 rounded-xl';
+          feedback.textContent = '';
+        }
+        if (modal) {
+          modal.classList.remove('hidden');
+          modal.classList.add('flex');
+        }
+      });
+    });
+
+    closeBtn?.addEventListener('click', () => {
+      if (modal) {
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+      }
+    });
+
+    modal?.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+      }
+    });
+
+    form?.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      if (!submitBtn) return;
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'İletiliyor...';
+
+      const custName = (document.getElementById('custName') as HTMLInputElement)?.value || '';
+      const custPhone = (document.getElementById('custPhone') as HTMLInputElement)?.value || '';
+      const custEmail = (document.getElementById('custEmail') as HTMLInputElement)?.value || '';
+      const paymentPref = (document.getElementById('paymentPref') as HTMLSelectElement)?.value || '';
+      const pkg = packageInput?.value || '';
+
+      try {
+        // Talebi arka plana API'ye ilet
+        await fetch('/api/campaign/extend-request', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            name: custName,
+            phone: custPhone,
+            email: custEmail,
+            package: pkg,
+            paymentPref: paymentPref,
+            timestamp: new Date().toISOString()
+          })
+        }).catch(() => null);
+      } catch (err) {}
+
+      // Kullanıcıya standart onay mesajını göster
+      if (feedback) {
+        feedback.className = 'text-xs p-3 rounded-xl bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 block';
+        feedback.textContent = '✅ Talebiniz alınmıştır! Lisans ve paket talebiniz Süperadmin ekranına başarıyla iletildi.';
+      }
+
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Talebiniz Alındı ✓';
+
+      setTimeout(() => {
+        if (modal) {
+          modal.classList.add('hidden');
+          modal.classList.remove('flex');
+        }
+        form.reset();
+        submitBtn.textContent = 'Talebi Gönder';
+      }, 2500);
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', setupModal);
+  document.addEventListener('astro:page-load', setupModal);
+</script>

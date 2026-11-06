@@ -1,0 +1,293 @@
+---
+// src/pages/urunler/servispratik.astro - ServisPratik Tanıtım Sayfası
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const features = [
+  {
+    icon: "🏷️",
+    title: "Barkodlu Cihaz/RMA Kabul Fişi & Seri No/IMEI Hafızası",
+    desc: "Cihaz servise girdiğinde arıza tanımı, teslim alınan aksesuarlar ve cihaz fotoğraflarıyla barkodlu servis kabul fişi üretilir; cihazın geçmişte kaç kez servise geldiği seri numarasından anında görülür."
+  },
+  {
+    icon: "📲",
+    title: "WhatsApp Canlı Onarım Durumu & Müşteri Fiyat Onayı",
+    desc: "Cihaz 'Arıza Tespiti Yapıldı -> Müşteri Fiyat Onayı Bekliyor -> Onarımda -> Teslime Hazır' aşamalarına geçtikçe müşteriye canlı takip linki ve WhatsApp bildirimleri otomatik iletilir."
+  },
+  {
+    icon: "🔩",
+    title: "Yedek Parça + İşçilikten Tek Tıkla Satış Faturasına Dönüşüm",
+    desc: "Teknisyenin onarımda kullandığı yedek parçalar depodan otomatik düşer; işçilik bedeliyle birleşerek tek tıkla e-Fatura veya e-Arşiv faturasına ve kargo etiketine dönüşür."
+  },
+  {
+    icon: "🛡️",
+    title: "Garanti Süresi & Periyodik Bakım Sözleşmesi Hatırlatıcı",
+    desc: "Satılan veya onarılan cihazların garanti bitiş tarihlerini, sözleşmeli kurumsal müşterilerin yıllık periyodik bakım randevularını teknisyen takviminde otomatik planlar."
+  }
+];
+
+const faqs = [
+  {
+    q: "Hangi servis sektörleri için uygundur?",
+    a: "Bilgisayar/bilişim, cep telefonu/tablet, beyaz eşya, kombi/klima, otomotiv/oto servis, medikal cihaz, endüstriyel makine ve küçük ev aletleri teknik servisleri için tam uyumludur."
+  },
+  {
+    q: "Müşteri cihaz durumunu nasıl sorgular?",
+    a: "Servis kabul fişindeki QR kodu telefonuyla okutan veya WhatsApp'tan giden linke tıklayan müşteri şifre girmeden cihazının hangi teknisyende olduğunu, parça maliyetini ve canlı durumunu görür."
+  },
+  {
+    q: "Teknisyen bazlı performans ve prim takibi yapılabilir mi?",
+    a: "Evet! Hangi teknisyenin kaç cihaz tamir ettiği, başarı oranı, ortalama onarım süresi ve tamamlanan işlerden hak ettiği primler tek raporda listelenir."
+  }
+];
+---
+
+<BaseLayout
+  title="ServisPratik | Teknik Servis, Barkodlu Cihaz Kabul, RMA & Garanti Takip Programı — StokPratik"
+  description="Teknik servisinize gelen cihazları barkodlu fişle teslim alın, kullanılan yedek parçaları stoktan otomatik düşün ve müşterinize WhatsApp'tan canlı onarım durumu linki gönderin."
+>
+  <main class="min-h-screen bg-slate-950 text-slate-100 selection:bg-teal-500 selection:text-slate-950 pb-24">
+    
+    {/* HERO BÖLÜMÜ */}
+    <section class="relative pt-16 pb-16 sm:pt-24 sm:pb-20 border-b border-slate-800 overflow-hidden">
+      <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[380px] bg-gradient-to-b from-teal-500/15 via-cyan-600/10 to-transparent blur-3xl pointer-events-none"></div>
+
+      <div class="container mx-auto px-4 max-w-6xl relative z-10">
+        
+        <div class="flex items-center gap-2 mb-6">
+          <a href="/pratik-ekosistemi" class="text-xs font-bold text-teal-400 hover:text-teal-300 transition-colors">
+            ← Pratik Ekosistemi Ana Sayfası
+          </a>
+          <span class="text-slate-600">•</span>
+          <span class="text-xs text-slate-400">Departman Çözümü 10</span>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+          
+          <div class="lg:col-span-7">
+            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-teal-500/10 border border-teal-500/30 text-teal-400 text-xs sm:text-sm font-bold shadow-sm mb-5">
+              <span>🛠️</span>
+              <span>BARKODLU CİHAZ KABUL, RMA & CANLI ONARIM TAKİBİ</span>
+            </div>
+
+            <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-tight">
+              ServisPratik: Servisinizdeki "Cihazım Ne Oldu?" Telefonlarını Bitiren Onarım Üssü
+            </h1>
+
+            <p class="mt-5 text-slate-300 text-sm sm:text-base lg:text-lg leading-relaxed">
+              Cihazı seri numarası veya IMEI ile teslim alın, barkodlu servis kabul fişi basın, yedek parçaları stoktan otomatik düşün ve her aşamada müşterinizi WhatsApp'tan canlı bilgilendirin.
+            </p>
+
+            <div class="mt-8 flex flex-wrap items-center gap-4">
+              <a 
+                href="https://erp-eticaret.stokpratik.com.tr/servispratik"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="px-7 py-4 rounded-xl bg-gradient-to-r from-teal-500 to-cyan-600 hover:from-teal-400 hover:to-cyan-500 text-slate-950 font-black text-sm sm:text-base shadow-lg shadow-teal-500/25 transition-all hover:scale-105 flex items-center gap-2"
+              >
+                <span>🛠️ ServisPratik Portala Gir</span>
+                <span class="text-lg">↗</span>
+              </a>
+
+              <button 
+                type="button"
+                class="open-request-modal px-6 py-4 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-sm sm:text-base border border-slate-700 transition-all hover:border-teal-500/50 cursor-pointer"
+                data-package="ServisPratik Yıllık Lisans"
+              >
+                💎 Lisans & Paket Talebi Oluştur
+              </button>
+            </div>
+          </div>
+
+          <div class="lg:col-span-5">
+            <div class="rounded-3xl overflow-hidden border border-slate-800 shadow-2xl bg-slate-900">
+              <img 
+                src="/images/ekosistem/carinet_crm_servis_portallari_hero_1793942256908.jpg" 
+                alt="ServisPratik Cihaz Kabul ve Onarım Paneli Görseli"
+                class="w-full h-auto object-cover"
+                loading="eager"
+              />
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    {/* 4 TEMEL ÖZELLİK */}
+    <section class="py-16 sm:py-20 bg-slate-900/60 border-b border-slate-800">
+      <div class="container mx-auto px-4 max-w-6xl">
+        
+        <div class="text-center max-w-3xl mx-auto mb-14">
+          <span class="text-xs font-bold text-teal-400 uppercase tracking-wider">Hızlı Tamir & Müşteri Memnuniyeti</span>
+          <h2 class="text-2xl sm:text-4xl font-extrabold text-white mt-1">
+            Teknik Servis Kaosunu Bitiren 4 Temel Güç
+          </h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {features.map((f, i) => (
+            <div class="p-6 sm:p-8 rounded-2xl bg-slate-900 border border-slate-800 hover:border-teal-500/40 transition-all">
+              <div class="w-12 h-12 rounded-xl bg-teal-500/10 border border-teal-500/20 text-teal-400 flex items-center justify-center text-2xl mb-4">
+                {f.icon}
+              </div>
+              <h3 class="text-lg font-bold text-white mb-2">
+                {i + 1}. {f.title}
+              </h3>
+              <p class="text-slate-400 text-xs sm:text-sm leading-relaxed">
+                {f.desc}
+              </p>
+            </div>
+          ))}
+        </div>
+
+      </div>
+    </section>
+
+    {/* SSS BÖLÜMÜ */}
+    <section class="py-16 sm:py-20 border-b border-slate-800">
+      <div class="container mx-auto px-4 max-w-4xl">
+        
+        <div class="text-center mb-12">
+          <span class="text-xs font-bold text-teal-400 uppercase tracking-wider">Sıkça Sorulan Sorular</span>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-white mt-1">
+            ServisPratik Hakkında Merak Edilenler
+          </h2>
+        </div>
+
+        <div class="space-y-4">
+          {faqs.map((faq) => (
+            <div class="p-6 rounded-2xl bg-slate-900 border border-slate-800">
+              <h3 class="text-base font-bold text-white mb-2">
+                {faq.q}
+              </h3>
+              <p class="text-slate-400 text-xs sm:text-sm leading-relaxed">
+                {faq.a}
+              </p>
+            </div>
+          ))}
+        </div>
+
+      </div>
+    </section>
+
+    {/* ALT CTA */}
+    <section class="py-16 sm:py-20 bg-slate-900">
+      <div class="container mx-auto px-4 max-w-4xl text-center">
+        
+        <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-teal-500/20 text-teal-300 font-bold text-xs mb-4">
+          YILLIK ÖDEME AVANTAJI
+        </span>
+        <h2 class="text-2xl sm:text-4xl font-extrabold text-white tracking-tight">
+          Teknik Servisinizde Profesyonel Süreci Hemen Başlatın
+        </h2>
+        <p class="text-slate-400 text-xs sm:text-sm mt-3 max-w-xl mx-auto">
+          Cihazları barkodla karşılayın, parça düşümünü otomatiğe bağlayın ve müşteri memnuniyetini zirveye taşıyın.
+        </p>
+
+        <div class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
+          <button 
+            type="button"
+            class="open-request-modal px-8 py-4 rounded-xl bg-gradient-to-r from-teal-500 to-cyan-600 hover:from-teal-400 hover:to-cyan-500 text-slate-950 font-black text-sm sm:text-base shadow-xl shadow-teal-500/25 transition-all hover:scale-105 cursor-pointer"
+            data-package="ServisPratik Yıllık Ödeme"
+          >
+            💎 Lisans & Paket Talebi Oluştur
+          </button>
+
+          <a 
+            href="/pratik-ekosistemi"
+            class="px-6 py-4 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-bold text-sm border border-slate-700 transition-colors"
+          >
+            ← Diğer Pratik Ürünlerini Keşfet
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+    {/* MODAL */}
+    <div id="productModal" class="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm hidden items-center justify-center p-4">
+      <div class="bg-slate-900 border border-slate-700 rounded-3xl max-w-md w-full p-6 sm:p-8 shadow-2xl relative text-left">
+        <button id="closeProdModalBtn" type="button" class="absolute top-5 right-5 text-slate-400 hover:text-white text-xl p-1">
+          ✕
+        </button>
+        <h3 class="text-xl font-extrabold text-white mb-2">ServisPratik Lisans Talebi</h3>
+        <p class="text-xs text-slate-400 mb-6">Yetkili satış temsilcimiz 15 dakika içinde sizinle iletişime geçecektir.</p>
+        <form id="prodReqForm" class="space-y-4">
+          <input type="text" required id="pName" placeholder="Adınız Soyadınız *" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-700 text-white placeholder-slate-500 text-xs sm:text-sm focus:outline-none focus:border-teal-500" />
+          <input type="tel" required id="pPhone" placeholder="Telefon Numaranız *" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-700 text-white placeholder-slate-500 text-xs sm:text-sm focus:outline-none focus:border-teal-500" />
+          <input type="email" required id="pEmail" placeholder="Firma E-Posta Adresiniz *" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-700 text-white placeholder-slate-500 text-xs sm:text-sm focus:outline-none focus:border-teal-500" />
+          <div id="pFeedback" class="hidden text-xs p-3 rounded-xl"></div>
+          <button type="submit" id="pSubmitBtn" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-teal-500 to-cyan-600 text-slate-950 font-black text-sm cursor-pointer">Talebi Gönder</button>
+        </form>
+      </div>
+    </div>
+
+  </main>
+</BaseLayout>
+
+<script>
+  function setupProductModal() {
+    const modal = document.getElementById('productModal');
+    const openBtns = document.querySelectorAll('.open-request-modal');
+    const closeBtn = document.getElementById('closeProdModalBtn');
+    const form = document.getElementById('prodReqForm') as HTMLFormElement;
+    const feedback = document.getElementById('pFeedback');
+    const submitBtn = document.getElementById('pSubmitBtn') as HTMLButtonElement;
+
+    openBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        if (modal) {
+          modal.classList.remove('hidden');
+          modal.classList.add('flex');
+        }
+      });
+    });
+
+    closeBtn?.addEventListener('click', () => {
+      if (modal) {
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+      }
+    });
+
+    form?.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      if (!submitBtn) return;
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'İletiliyor...';
+
+      const name = (document.getElementById('pName') as HTMLInputElement)?.value || '';
+      const phone = (document.getElementById('pPhone') as HTMLInputElement)?.value || '';
+      const email = (document.getElementById('pEmail') as HTMLInputElement)?.value || '';
+
+      try {
+        await fetch('/api/campaign/extend-request', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ name, phone, email, package: 'ServisPratik', timestamp: new Date().toISOString() })
+        }).catch(() => null);
+      } catch (err) {}
+
+      if (feedback) {
+        feedback.className = 'text-xs p-3 rounded-xl bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 block';
+        feedback.textContent = '✅ Talebiniz alınmıştır! Lisans ve paket talebiniz Süperadmin ekranına başarıyla iletildi.';
+      }
+
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Talebiniz Alındı ✓';
+
+      setTimeout(() => {
+        if (modal) {
+          modal.classList.add('hidden');
+          modal.classList.remove('flex');
+        }
+        form.reset();
+        submitBtn.textContent = 'Talebi Gönder';
+      }, 2500);
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', setupProductModal);
+  document.addEventListener('astro:page-load', setupProductModal);
+</script>

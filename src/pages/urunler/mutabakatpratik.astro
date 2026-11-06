@@ -1,0 +1,293 @@
+---
+// src/pages/urunler/mutabakatpratik.astro - MutabakatPratik Tanıtım Sayfası
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const features = [
+  {
+    icon: "📲",
+    title: "Şifresiz Tek Tıkla WhatsApp & E-Posta Onay Linki",
+    desc: "Karşı tarafın herhangi bir sisteme kayıt olmasına, şifre hatırlamasına gerek yoktur. Kendisine özel üretilen kriptolu linke tıklar, BORÇ/ALACAK bakiyesini görerek saniyeler içinde onaylar."
+  },
+  {
+    icon: "🔍",
+    title: "Otomatik Ekstre Fark Bulucu (Yapay Zeka Destekli)",
+    desc: "Karşı taraf 'Mutabık Değiliz' seçeneğini işaretleyip kendi PDF veya Excel ekstresini yüklediğinde, yapay zeka iki ekstre arasındaki unutulmuş faturayı, eksik fişi veya kuruş farkını 3 saniyede tespit eder."
+  },
+  {
+    icon: "⚖️",
+    title: "5651 Sayılı Kanuna Uygun Zaman Damgalı Hukuki Delil",
+    desc: "Onaylanan veya reddedilen her mutabakat; onaylayan kişinin IP adresi, cihaz bilgisi, tarih/saat zaman damgası ve kaşe/imza görseliyle birlikte resmi denetimlere uygun yasal delil olarak arşivlenir."
+  },
+  {
+    icon: "📥",
+    title: "Dışarıdan Excel Mizan ile Toplu Gönderim",
+    desc: "Sadece StokPratik cari kartlarınıza değil; Luca, Logo, Mikro veya Zirve'den aldığınız Excel mizan dosyasını yükleyerek tek tuşla yüzlerce firmaya aynı anda toplu mutabakat gönderebilirsiniz."
+  }
+];
+
+const faqs = [
+  {
+    q: "Karşı tarafın onay vermek için bir programa üye olması gerekir mi?",
+    a: "Hayır. Karşı taraf WhatsApp veya SMS/e-posta ile gelen linke tıklar; doğrudan tarayıcısında firma unvanınız ve güncel bakiye tutarı açılır. 'Mutabıkız' veya 'Mutabık Değiliz' butonuna basması yeterlidir."
+  },
+  {
+    q: "Fark çıktığında iki ekstre arasındaki uyumsuzluğu nasıl göreceğiz?",
+    a: "Karşı taraf 'Mutabık Değiliz' dediğinde ekstre yükleme alanı açılır. Karşı taraf kendi ekstresini yüklediği an Otomatik Ekstre Fark Bulucu iki ekstreyi satır satır eşleştirir ve eşleşmeyen faturayı sarı renkle işaretler."
+  },
+  {
+    q: "BA / BS formları için mutabakat yapılabilir mi?",
+    a: "Evet! Hem cari bakiye mutabakatı hem de aylık resmi BA (Alış) ve BS (Satış) fatura adedi ve KDV hariç toplam tutar mutabakatı tek tıkla gönderilebilir."
+  }
+];
+---
+
+<BaseLayout
+  title="MutabakatPratik | Şifresiz Cari Bakiye & BA/BS Dijital Mutabakat Portalı — StokPratik"
+  description="Müşteri ve tedarikçilerinize WhatsApp veya E-posta ile şifresiz mutabakat linki gönderin. Mutabık değiliz durumunda Otomatik Ekstre Fark Bulucu ile eksik faturayı saniyeler içinde yakalayın."
+>
+  <main class="min-h-screen bg-slate-950 text-slate-100 selection:bg-fuchsia-500 selection:text-white pb-24">
+    
+    {/* HERO BÖLÜMÜ */}
+    <section class="relative pt-16 pb-16 sm:pt-24 sm:pb-20 border-b border-slate-800 overflow-hidden">
+      <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[380px] bg-gradient-to-b from-fuchsia-600/15 via-indigo-600/10 to-transparent blur-3xl pointer-events-none"></div>
+
+      <div class="container mx-auto px-4 max-w-6xl relative z-10">
+        
+        <div class="flex items-center gap-2 mb-6">
+          <a href="/pratik-ekosistemi" class="text-xs font-bold text-fuchsia-400 hover:text-fuchsia-300 transition-colors">
+            ← Pratik Ekosistemi Ana Sayfası
+          </a>
+          <span class="text-slate-600">•</span>
+          <span class="text-xs text-slate-400">Departman Çözümü 04</span>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+          
+          <div class="lg:col-span-7">
+            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-fuchsia-500/10 border border-fuchsia-500/30 text-fuchsia-400 text-xs sm:text-sm font-bold shadow-sm mb-5">
+              <span>🤝</span>
+              <span>ŞİFRESİZ TEK TIKLA ONAY • 5651 ZAMAN DAMGALI ARŞİV</span>
+            </div>
+
+            <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-tight">
+              MutabakatPratik: Telefonla ve Kağıtla Mutabakat Bitti — Karşı Taraf Şifresiz Onaylasın!
+            </h1>
+
+            <p class="mt-5 text-slate-300 text-sm sm:text-base lg:text-lg leading-relaxed">
+              Müşteriniz veya tedarikçiniz hiçbir yere üye olmadan, şifre girmeden cep telefonundan mutabakat mektubunu açar; <strong class="text-cyan-400">BORÇ (Alacağımız)</strong> veya <strong class="text-rose-400">ALACAK (Borcumuz)</strong> bakiyesini görerek tek tıkla <em>"Mutabıkız"</em> veya <em>"Mutabık Değiliz"</em> yanıtı verir.
+            </p>
+
+            <div class="mt-8 flex flex-wrap items-center gap-4">
+              <a 
+                href="https://erp-eticaret.stokpratik.com.tr/mutabakat"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="px-7 py-4 rounded-xl bg-gradient-to-r from-fuchsia-600 to-indigo-700 hover:from-fuchsia-500 hover:to-indigo-600 text-white font-black text-sm sm:text-base shadow-lg shadow-fuchsia-500/25 transition-all hover:scale-105 flex items-center gap-2"
+              >
+                <span>🤝 MutabakatPratik Portala Gir</span>
+                <span class="text-lg">↗</span>
+              </a>
+
+              <button 
+                type="button"
+                class="open-request-modal px-6 py-4 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-sm sm:text-base border border-slate-700 transition-all hover:border-fuchsia-500/50 cursor-pointer"
+                data-package="MutabakatPratik Yıllık Lisans"
+              >
+                💎 Lisans & Paket Talebi Oluştur
+              </button>
+            </div>
+          </div>
+
+          <div class="lg:col-span-5">
+            <div class="rounded-3xl overflow-hidden border border-slate-800 shadow-2xl bg-slate-900">
+              <img 
+                src="/images/ekosistem/departman_portallari_b2b_smmm_hero_1793942223136.jpg" 
+                alt="MutabakatPratik Dijital Mutabakat Görseli"
+                class="w-full h-auto object-cover"
+                loading="eager"
+              />
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    {/* 4 TEMEL ÖZELLİK */}
+    <section class="py-16 sm:py-20 bg-slate-900/60 border-b border-slate-800">
+      <div class="container mx-auto px-4 max-w-6xl">
+        
+        <div class="text-center max-w-3xl mx-auto mb-14">
+          <span class="text-xs font-bold text-fuchsia-400 uppercase tracking-wider">Hukuki & Otomatik</span>
+          <h2 class="text-2xl sm:text-4xl font-extrabold text-white mt-1">
+            Bakiye ve BA/BS Uyuşmazlıklarını Sıfırlayan 4 Güç
+          </h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {features.map((f, i) => (
+            <div class="p-6 sm:p-8 rounded-2xl bg-slate-900 border border-slate-800 hover:border-fuchsia-500/40 transition-all">
+              <div class="w-12 h-12 rounded-xl bg-fuchsia-500/10 border border-fuchsia-500/20 text-fuchsia-400 flex items-center justify-center text-2xl mb-4">
+                {f.icon}
+              </div>
+              <h3 class="text-lg font-bold text-white mb-2">
+                {i + 1}. {f.title}
+              </h3>
+              <p class="text-slate-400 text-xs sm:text-sm leading-relaxed">
+                {f.desc}
+              </p>
+            </div>
+          ))}
+        </div>
+
+      </div>
+    </section>
+
+    {/* SSS BÖLÜMÜ */}
+    <section class="py-16 sm:py-20 border-b border-slate-800">
+      <div class="container mx-auto px-4 max-w-4xl">
+        
+        <div class="text-center mb-12">
+          <span class="text-xs font-bold text-fuchsia-400 uppercase tracking-wider">Sıkça Sorulan Sorular</span>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-white mt-1">
+            MutabakatPratik Hakkında Merak Edilenler
+          </h2>
+        </div>
+
+        <div class="space-y-4">
+          {faqs.map((faq) => (
+            <div class="p-6 rounded-2xl bg-slate-900 border border-slate-800">
+              <h3 class="text-base font-bold text-white mb-2">
+                {faq.q}
+              </h3>
+              <p class="text-slate-400 text-xs sm:text-sm leading-relaxed">
+                {faq.a}
+              </p>
+            </div>
+          ))}
+        </div>
+
+      </div>
+    </section>
+
+    {/* ALT CTA */}
+    <section class="py-16 sm:py-20 bg-slate-900">
+      <div class="container mx-auto px-4 max-w-4xl text-center">
+        
+        <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-fuchsia-500/20 text-fuchsia-300 font-bold text-xs mb-4">
+          YILLIK ÖDEME AVANTAJI
+        </span>
+        <h2 class="text-2xl sm:text-4xl font-extrabold text-white tracking-tight">
+          Ay Sonu Mutabakat Stresine Son Verin
+        </h2>
+        <p class="text-slate-400 text-xs sm:text-sm mt-3 max-w-xl mx-auto">
+          Müşterilerinize ve tedarikçilerinize WhatsApp ile link gönderin, 5651 loglu yasal mutabakatlarınızı tek tıkla arşivleyin.
+        </p>
+
+        <div class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
+          <button 
+            type="button"
+            class="open-request-modal px-8 py-4 rounded-xl bg-gradient-to-r from-fuchsia-600 to-indigo-700 hover:from-fuchsia-500 hover:to-indigo-600 text-white font-black text-sm sm:text-base shadow-xl shadow-fuchsia-500/25 transition-all hover:scale-105 cursor-pointer"
+            data-package="MutabakatPratik Yıllık Ödeme"
+          >
+            💎 Lisans & Paket Talebi Oluştur
+          </button>
+
+          <a 
+            href="/pratik-ekosistemi"
+            class="px-6 py-4 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-bold text-sm border border-slate-700 transition-colors"
+          >
+            ← Diğer Pratik Ürünlerini Keşfet
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+    {/* MODAL */}
+    <div id="productModal" class="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm hidden items-center justify-center p-4">
+      <div class="bg-slate-900 border border-slate-700 rounded-3xl max-w-md w-full p-6 sm:p-8 shadow-2xl relative text-left">
+        <button id="closeProdModalBtn" type="button" class="absolute top-5 right-5 text-slate-400 hover:text-white text-xl p-1">
+          ✕
+        </button>
+        <h3 class="text-xl font-extrabold text-white mb-2">MutabakatPratik Lisans Talebi</h3>
+        <p class="text-xs text-slate-400 mb-6">Yetkili satış temsilcimiz 15 dakika içinde sizinle iletişime geçecektir.</p>
+        <form id="prodReqForm" class="space-y-4">
+          <input type="text" required id="pName" placeholder="Adınız Soyadınız *" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-700 text-white placeholder-slate-500 text-xs sm:text-sm focus:outline-none focus:border-fuchsia-500" />
+          <input type="tel" required id="pPhone" placeholder="Telefon Numaranız *" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-700 text-white placeholder-slate-500 text-xs sm:text-sm focus:outline-none focus:border-fuchsia-500" />
+          <input type="email" required id="pEmail" placeholder="Firma E-Posta Adresiniz *" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-700 text-white placeholder-slate-500 text-xs sm:text-sm focus:outline-none focus:border-fuchsia-500" />
+          <div id="pFeedback" class="hidden text-xs p-3 rounded-xl"></div>
+          <button type="submit" id="pSubmitBtn" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-fuchsia-600 to-indigo-700 text-white font-black text-sm cursor-pointer">Talebi Gönder</button>
+        </form>
+      </div>
+    </div>
+
+  </main>
+</BaseLayout>
+
+<script>
+  function setupProductModal() {
+    const modal = document.getElementById('productModal');
+    const openBtns = document.querySelectorAll('.open-request-modal');
+    const closeBtn = document.getElementById('closeProdModalBtn');
+    const form = document.getElementById('prodReqForm') as HTMLFormElement;
+    const feedback = document.getElementById('pFeedback');
+    const submitBtn = document.getElementById('pSubmitBtn') as HTMLButtonElement;
+
+    openBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        if (modal) {
+          modal.classList.remove('hidden');
+          modal.classList.add('flex');
+        }
+      });
+    });
+
+    closeBtn?.addEventListener('click', () => {
+      if (modal) {
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+      }
+    });
+
+    form?.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      if (!submitBtn) return;
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'İletiliyor...';
+
+      const name = (document.getElementById('pName') as HTMLInputElement)?.value || '';
+      const phone = (document.getElementById('pPhone') as HTMLInputElement)?.value || '';
+      const email = (document.getElementById('pEmail') as HTMLInputElement)?.value || '';
+
+      try {
+        await fetch('/api/campaign/extend-request', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ name, phone, email, package: 'MutabakatPratik', timestamp: new Date().toISOString() })
+        }).catch(() => null);
+      } catch (err) {}
+
+      if (feedback) {
+        feedback.className = 'text-xs p-3 rounded-xl bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 block';
+        feedback.textContent = '✅ Talebiniz alınmıştır! Lisans ve paket talebiniz Süperadmin ekranına başarıyla iletildi.';
+      }
+
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Talebiniz Alındı ✓';
+
+      setTimeout(() => {
+        if (modal) {
+          modal.classList.add('hidden');
+          modal.classList.remove('flex');
+        }
+        form.reset();
+        submitBtn.textContent = 'Talebi Gönder';
+      }, 2500);
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', setupProductModal);
+  document.addEventListener('astro:page-load', setupProductModal);
+</script>

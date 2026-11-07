@@ -1,5 +1,5 @@
 ---
-title: "2027 Yılında E-Fatura ve E-Defter Zorunluluk Hadleri Rehberi "
+title: "2027 Yılında E-Fatura ve E-Defter Zorunluluk Hadleri Rehberi 💻📑"
 description: "2027 yılı e-fatura ve e-defter geçiş hadleri, ciro limitleri, e-ticaret zorunlulukları ve cezai yaptırımlardan korunma yolları kapsamlı rehberde."
 author: "Mehmet Fatih"
 date: "2026-10-04"

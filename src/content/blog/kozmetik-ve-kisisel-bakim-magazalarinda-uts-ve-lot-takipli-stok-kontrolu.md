@@ -1,5 +1,5 @@
 ---
-title: "Kozmetik ve Kişisel Bakım Mağazalarında ÜTS ve Lot Takipli Stok Kontrolü ️"
+title: "Kozmetik ve Kişisel Bakım Mağazalarında ÜTS ve Lot Takipli Stok Kontrolü 💄🏷️"
 description: "Kozmetik sektöründe Sağlık Bakanlığı ÜTS bildirimleri, son kullanma tarihi (SKT), parti ve lot numarası takibiyle yasal stok yönetimi."
 author: "Mehmet Fatih"
 date: "2026-10-04"

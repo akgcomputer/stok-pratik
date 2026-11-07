@@ -1,5 +1,5 @@
 ---
-title: "Toptancılar İçin Satış Temsilcisi Prim Sistemi ve Saha Sipariş Takibi "
+title: "Toptancılar İçin Satış Temsilcisi Prim Sistemi ve Saha Sipariş Takibi 💼💰"
 description: "Saha plasiyerleri için prim hakediş kuralları, tahsilata bağlı prim sistemi, mobil sipariş alma ve rota takibi detaylı rehberi."
 author: "Mehmet Fatih"
 date: "2026-10-04"

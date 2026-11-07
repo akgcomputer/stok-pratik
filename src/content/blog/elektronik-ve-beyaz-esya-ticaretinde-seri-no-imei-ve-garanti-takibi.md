@@ -1,5 +1,5 @@
 ---
-title: "Elektronik ve Beyaz Eşya Ticaretinde Seri No (IMEI) ve Garanti Takibi "
+title: "Elektronik ve Beyaz Eşya Ticaretinde Seri No (IMEI) ve Garanti Takibi 📱🔌"
 description: "Telefon, bilgisayar ve beyaz eşya satışlarında IMEI ve seri numarası eşleştirme, distribütör garanti süresi takibi ve servis yönetimi rehberi."
 author: "Mehmet Fatih"
 date: "2026-10-04"

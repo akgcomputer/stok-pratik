@@ -1,5 +1,5 @@
 ---
-title: "Butik ve Hazır Giyim Mağazalarında Çoklu Varyant (Renk-Beden-Kalıp) Matrisi Yönetimi ️"
+title: "Butik ve Hazır Giyim Mağazalarında Çoklu Varyant (Renk-Beden-Kalıp) Matrisi Yönetimi 👗🛍️"
 description: "Tekstil ve butik işletmelerinde renk, beden ve kumaş varyant matrisi oluşturma, asorti takibi ve rafta tükenen ürünleri tespit etme rehberi."
 author: "Mehmet Fatih"
 date: "2026-10-04"

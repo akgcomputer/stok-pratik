@@ -1,5 +1,5 @@
 ---
-title: "E-Ticarette Kargo Desi ve Taşıma Maliyetlerini Düşürme Taktikleri "
+title: "E-Ticarette Kargo Desi ve Taşıma Maliyetlerini Düşürme Taktikleri 📦🚚"
 description: "E-ticaret işletmeleri için kargo desi hesaplama, hatalı kargo faturalarını denetleme, kutu optimizasyonu ve kargo maliyeti düşürme rehberi."
 author: "Mehmet Fatih"
 date: "2026-10-04"

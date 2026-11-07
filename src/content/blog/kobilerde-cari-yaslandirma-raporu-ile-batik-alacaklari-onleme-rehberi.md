@@ -1,5 +1,5 @@
 ---
-title: "KOBİ'lerde Cari Yaşlandırma Raporu ile Batık Alacakları Önleme Rehberi "
+title: "KOBİ'lerde Cari Yaşlandırma Raporu ile Batık Alacakları Önleme Rehberi 📊💰"
 description: "Vadesi geçmiş alacakları gruplandırma, cari yaşlandırma analizi ile nakit akışını koruma ve tahsilat süreçlerini hızlandırma rehberi."
 author: "Mehmet Fatih"
 date: "2026-10-04"

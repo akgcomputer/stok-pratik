@@ -1,5 +1,5 @@
 ---
-title: "E-İrsaliye ile Sevk ve Taşıma Süreçlerinde Ceza Riskini Sıfırlama Taktikleri ⚠️"
+title: "E-İrsaliye ile Sevk ve Taşıma Süreçlerinde Ceza Riskini Sıfırlama Taktikleri 🚚⚠️"
 description: "2027 yılı e-irsaliye zorunlulukları, yol denetimlerinde karekodlu belge ibrazı, taşıyıcı bilgileri ve ceza almamak için pratik kurallar."
 author: "Mehmet Fatih"
 date: "2026-10-04"

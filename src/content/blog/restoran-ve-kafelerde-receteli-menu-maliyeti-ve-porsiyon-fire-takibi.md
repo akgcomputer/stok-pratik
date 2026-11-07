@@ -1,5 +1,5 @@
 ---
-title: "Restoran ve Kafelerde Reçeteli Menü Maliyeti ve Porsiyon Fire Takibi "
+title: "Restoran ve Kafelerde Reçeteli Menü Maliyeti ve Porsiyon Fire Takibi 🍔📊"
 description: "Restoran ve kafeler için reçete bazlı hammadde maliyeti hesaplama, porsiyon gramaj kontrolü ve mutfak firelerini sıfırlama rehberi."
 author: "Mehmet Fatih"
 date: "2026-10-04"

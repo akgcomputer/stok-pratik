@@ -1,3 +1,3 @@
 ---
-name: 'Magazacilik Yazilimi'
+name: 'Mağazacılık Yazılımı'
 ---

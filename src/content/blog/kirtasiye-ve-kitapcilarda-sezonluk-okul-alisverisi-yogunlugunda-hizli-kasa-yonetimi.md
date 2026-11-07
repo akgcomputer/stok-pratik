@@ -1,5 +1,5 @@
 ---
-title: "Kırtasiye ve Kitapçılarda Sezonluk Okul Alışverişi Yoğunluğunda Hızlı Kasa Yönetimi ⚡"
+title: "Kırtasiye ve Kitapçılarda Sezonluk Okul Alışverişi Yoğunluğunda Hızlı Kasa Yönetimi 📚⚡"
 description: "Kırtasiye ve kitapçılarda okul açılış dönemlerinde kasa kuyruklarını eritme, ISBN barkod okuma ve fotokopi-kırtasiye sepet yönetimi."
 author: "Mehmet Fatih"
 date: "2026-10-04"

@@ -1,5 +1,5 @@
 ---
-title: "Çok Depolu Şirketlerde Konsinye Ürün ve Şubeler Arası İrsaliyeli Sevk Yönetimi "
+title: "Çok Depolu Şirketlerde Konsinye Ürün ve Şubeler Arası İrsaliyeli Sevk Yönetimi 📦🔍"
 description: "Merkez depo, şubeler ve konsinye noktaları arasında irsaliyeli ürün transferi, kayıp-kaçak önleme ve anlık stok sayımı yönetimi."
 author: "Mehmet Fatih"
 date: "2026-10-04"

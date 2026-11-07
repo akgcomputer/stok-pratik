@@ -1,5 +1,5 @@
 ---
-title: "2027 Yılında E-Ticarette KDV İadeleri ve Tevkifatlı Fatura Süreçleri "
+title: "2027 Yılında E-Ticarette KDV İadeleri ve Tevkifatlı Fatura Süreçleri 📑💰"
 description: "2027 yılı e-ticaret KDV tevkifat oranları, pazar yeri kesintileri, indirimli oran KDV iadesi ve mahsup talep adımları detaylı rehberde."
 author: "Mehmet Fatih"
 date: "2026-10-04"

@@ -1,5 +1,5 @@
 ---
-title: "B2B Bayi Sipariş Sistemi ile Toptan Satış Süreçlerini Otomatikleştirme ⚡"
+title: "B2B Bayi Sipariş Sistemi ile Toptan Satış Süreçlerini Otomatikleştirme 🏢⚡"
 description: "Toptan çalışan işletmeler için B2B bayi sipariş portalı kurma, cari limitli sipariş toplama ve stok senkronizasyonu rehberi."
 author: "Mehmet Fatih"
 date: "2026-10-04"

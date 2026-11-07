@@ -1,5 +1,5 @@
 ---
-title: "Kuyumcular İçin Gram ve Milyem Esaslı Barkodlu Stok Takibi "
+title: "Kuyumcular İçin Gram ve Milyem Esaslı Barkodlu Stok Takibi 💎💍"
 description: "Kuyumculuk sektöründe gramaj, milyem ve taş ağırlığı bazlı barkodlu stok takibi, hurda altın yönetimi ve anlık kurlarla değerleme."
 author: "Mehmet Fatih"
 date: "2026-10-04"

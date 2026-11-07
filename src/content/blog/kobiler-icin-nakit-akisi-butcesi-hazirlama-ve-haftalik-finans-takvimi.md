@@ -1,5 +1,5 @@
 ---
-title: "KOBİ'ler İçin Nakit Akışı Bütçesi Hazırlama ve Haftalık Finans Takvimi "
+title: "KOBİ'ler İçin Nakit Akışı Bütçesi Hazırlama ve Haftalık Finans Takvimi 📅💵"
 description: "Küçük işletmeler için haftalık nakit akışı tablosu oluşturma, tahmini gelir-gider dengesi, vergi takvimi ve likidite yönetimi rehberi."
 author: "Mehmet Fatih"
 date: "2026-10-04"

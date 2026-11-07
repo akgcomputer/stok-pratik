@@ -1,5 +1,5 @@
 ---
-title: "Petshop ve Veteriner Kliniklerinde Aşı Takvimi ve Mama SKT Yönetimi ⏳"
+title: "Petshop ve Veteriner Kliniklerinde Aşı Takvimi ve Mama SKT Yönetimi 🐾⏳"
 description: "Veteriner ve petshoplar için hasta takip kartı, aşı hatırlatma SMS'leri, açık mama tartımı ve SKT bazlı stok yönetimi rehberi."
 author: "Mehmet Fatih"
 date: "2026-10-04"

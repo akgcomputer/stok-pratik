@@ -1,5 +1,5 @@
 ---
-title: "Hepsiburada ve Trendyol Entegrasyonunda Otomatik Fiyat ve Stok Senkronizasyonu "
+title: "Hepsiburada ve Trendyol Entegrasyonunda Otomatik Fiyat ve Stok Senkronizasyonu 🛒🔄"
 description: "Pazaryerlerinde çift satış ve stok tükenme krizlerini önleyen anlık stok eşitleme, dinamik fiyat güncelleme ve toplu sipariş yönetimi."
 author: "Mehmet Fatih"
 date: "2026-10-04"

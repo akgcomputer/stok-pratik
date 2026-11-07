@@ -1,5 +1,5 @@
 ---
-title: "Mobilya ve Dekorasyon Mağazalarında Sipariş Bazlı Özel Üretim ve Montaj Takibi ️"
+title: "Mobilya ve Dekorasyon Mağazalarında Sipariş Bazlı Özel Üretim ve Montaj Takibi 🛋️🔨"
 description: "Mobilya sektöründe özel sipariş yönetimi, kumaş-ahşap reçetesi, atölye üretim aşamaları, teslimat ve montaj ekibi planlama rehberi."
 author: "Mehmet Fatih"
 date: "2026-10-04"

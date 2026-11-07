@@ -1,5 +1,5 @@
 ---
-title: "2027 Yılında KOBİ'ler İçin Asgari Geçim ve Personel Bordro Hesaplama "
+title: "2027 Yılında KOBİ'ler İçin Asgari Geçim ve Personel Bordro Hesaplama 💵📊"
 description: "2027 yılı personel bordro hesaplama parametreleri, gelir vergisi dilimleri, SGK işveren maliyeti ve KOBİ'ler için teşvik yönetimi rehberi."
 author: "Mehmet Fatih"
 date: "2026-10-04"

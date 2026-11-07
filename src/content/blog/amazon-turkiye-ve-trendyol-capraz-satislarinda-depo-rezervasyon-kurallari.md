@@ -1,5 +1,5 @@
 ---
-title: "Amazon Türkiye ve Trendyol Çapraz Satışlarında Depo Rezervasyon Kuralları "
+title: "Amazon Türkiye ve Trendyol Çapraz Satışlarında Depo Rezervasyon Kuralları 🛒📦"
 description: "Amazon TR ve Trendyol'da aynı anda satış yapanlar için emniyet stoğu, depo rezervasyon kuralları ve kampanya yönetimi detaylı rehberi."
 author: "Mehmet Fatih"
 date: "2026-10-04"

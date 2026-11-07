@@ -1,5 +1,5 @@
 ---
-title: "Çok Şubeli Perakende Zincirlerinde Ortak Kasa ve Merkezi Fiyat Güncelleme ⚡"
+title: "Çok Şubeli Perakende Zincirlerinde Ortak Kasa ve Merkezi Fiyat Güncelleme 🏢⚡"
 description: "Birden fazla mağazası olan işletmeler için merkezden anlık fiyat değiştirme, şubeler arası ortak müşteri kartı ve konsolide ciro takibi."
 author: "Mehmet Fatih"
 date: "2026-10-04"

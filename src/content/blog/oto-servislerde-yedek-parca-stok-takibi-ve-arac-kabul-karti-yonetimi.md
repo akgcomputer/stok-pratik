@@ -1,5 +1,5 @@
 ---
-title: "Oto Servislerde Yedek Parça Stok Takibi ve Araç Kabul Kartı Yönetimi "
+title: "Oto Servislerde Yedek Parça Stok Takibi ve Araç Kabul Kartı Yönetimi 🚗🔧"
 description: "Oto servis ve tamirhaneler için araç kabul kartı açma, plaka bazlı geçmiş takibi ve yedek parça stok yönetimi püf noktaları."
 author: "Mehmet Fatih"
 date: "2026-10-04"

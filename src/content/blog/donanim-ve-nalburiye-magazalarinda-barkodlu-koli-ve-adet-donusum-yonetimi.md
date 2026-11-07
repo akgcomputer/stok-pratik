@@ -1,5 +1,5 @@
 ---
-title: "Donanım ve Nalburiye Mağazalarında Barkodlu Koli ve Adet Dönüşüm Yönetimi ️"
+title: "Donanım ve Nalburiye Mağazalarında Barkodlu Koli ve Adet Dönüşüm Yönetimi 🔩🛠️"
 description: "Nalburiye ve hırdavat sektöründe koli, paket ve adet bazlı çoklu birim barkod takibi, vida-civata kilo dönüşümü ve stok sayım tüyoları."
 author: "Mehmet Fatih"
 date: "2026-10-04"

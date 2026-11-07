@@ -1,5 +1,5 @@
 ---
-title: "E-Ticarette Çapraz Satış (Cross-Selling) ile Ortalama Sepet Tutarını Artırma "
+title: "E-Ticarette Çapraz Satış (Cross-Selling) ile Ortalama Sepet Tutarını Artırma 🛒📈"
 description: "E-ticarette çapraz satış ve üst satış teknikleri, tamamlayıcı ürün eşleştirme, sepet tutarını artırma ve kargo baremi stratejileri."
 author: "Mehmet Fatih"
 date: "2026-10-04"

@@ -1,5 +1,5 @@
 ---
-title: "Hızlı Tüketim ve Market İşletmelerinde Hızlı Kasa Satış ve Terazi Barkodu Entegrasyonu ⚡"
+title: "Hızlı Tüketim ve Market İşletmelerinde Hızlı Kasa Satış ve Terazi Barkodu Entegrasyonu 🏪⚡"
 description: "Market ve şarküteriler için dokunmatik hızlı kasa satışı, terazi barkodu çözme, açık ürün takibi ve vardiya kasa sayımı rehberi."
 author: "Mehmet Fatih"
 date: "2026-10-04"

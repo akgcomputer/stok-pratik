@@ -1,5 +1,5 @@
 ---
-title: "Medikal ve Tıbbi Cihaz Satıcıları İçin ÜTS Bildirimi ve Barkodlu Takip "
+title: "Medikal ve Tıbbi Cihaz Satıcıları İçin ÜTS Bildirimi ve Barkodlu Takip 🏥💉"
 description: "Medikal ve tıbbi sarf malzeme firmaları için Sağlık Bakanlığı ÜTS bildirimleri, tekil ürün takibi, karekod doğrulama ve stok yönetimi rehberi."
 author: "Mehmet Fatih"
 date: "2026-10-04"

@@ -1,5 +1,5 @@
 ---
-title: "Optik ve Gözlükçüler İçin SGK Medula ve Karekodlu Cam-Çerçeve Takibi "
+title: "Optik ve Gözlükçüler İçin SGK Medula ve Karekodlu Cam-Çerçeve Takibi 👓🔍"
 description: "Optisyenlik müesseseleri için SGK Medula reçete kaydı, karekodlu çerçeve ve cam stok takibi, aks ve diyoptri yönetimi rehberi."
 author: "Mehmet Fatih"
 date: "2026-10-04"

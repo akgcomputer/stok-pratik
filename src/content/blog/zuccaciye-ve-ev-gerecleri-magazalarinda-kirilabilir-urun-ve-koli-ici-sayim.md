@@ -1,5 +1,5 @@
 ---
-title: "Züccaciye ve Ev Gereçleri Mağazalarında Kırılabilir Ürün ve Koli İçi Sayım ️"
+title: "Züccaciye ve Ev Gereçleri Mağazalarında Kırılabilir Ürün ve Koli İçi Sayım 🍽️📦"
 description: "Züccaciye ve porselen mağazalarında kırılma zayiatı takibi, set bozma ve parça tamamlama, koli içi adet barkodu ve raf sayımı rehberi."
 author: "Mehmet Fatih"
 date: "2026-10-04"

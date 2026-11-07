@@ -1,5 +1,5 @@
 ---
-title: "KOBİ'lerde Vadeli Satışlarda Kur Riski Yönetimi ve Dövizli Fatura Takibi "
+title: "KOBİ'lerde Vadeli Satışlarda Kur Riski Yönetimi ve Dövizli Fatura Takibi 💱💼"
 description: "KOBİ'ler için dövizli fatura kesme kuralları, kur farkı faturası hesaplama, kur riski yönetimi ve TCMB kurlarıyla otomatik değerleme."
 author: "Mehmet Fatih"
 date: "2026-10-04"

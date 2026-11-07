@@ -1,5 +1,5 @@
 ---
-title: "E-Ticarette İade Yönetimi: Hasarlı ve Kusurlu Ürünleri Ayırma Stratejileri "
+title: "E-Ticarette İade Yönetimi: Hasarlı ve Kusurlu Ürünleri Ayırma Stratejileri 📦🚨"
 description: "E-ticarette iade kargo maliyetlerini düşürme, hasarlı ürün tutanağı tutma, tekrar satışa uygun stokları ayırma ve iade faturası rehberi."
 author: "Mehmet Fatih"
 date: "2026-10-04"

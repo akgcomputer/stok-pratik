@@ -1,0 +1,126 @@
+---
+// src/pages/meetwork.astro - MeetWork B2B İhale, Ortak Alım & Hibe/Teşvik Radarı
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const pillars = [
+  {
+    icon: "🤝",
+    title: "Alım İhalesi & Ortak Alım Havuzu",
+    desc: "Birden fazla işletmeyle güçlerinizi birleştirerek hammadde ve sarf malzemelerini fabrika çıkış fiyatına satın alın; ya da kendi satın alma ihaleniz için onaylı tedarikçilerden kapalı zarf teklif toplayın."
+  },
+  {
+    icon: "📦",
+    title: "Toptan Fazla Stok Vitrini & 2. El Makine Pazarı",
+    desc: "Deponuzda bekleyen atıl stokları, sezon sonu malları ve revize edilen endüstriyel makineleri MeetWork B2B ağında komisyonsuz, doğrudan sanayiciye ve toptancıya nakde dönüştürün."
+  },
+  {
+    icon: "🎯",
+    title: "KOSGEB, TÜBİTAK & Bakanlık Hibe / Teşvik Radarı",
+    desc: "Şirketinizin NACE kodu ve sektörüne uygun devlet desteklerini, faizsiz KGF kredilerini ve ihracat hibelerini anlık tarayın; başvuru takvimlerini kaçırmayın."
+  },
+  {
+    icon: "🪪",
+    title: "2+1 B2B Eşleşme, Dijital Kartvizit & Teşvikli İK",
+    desc: "Doğrulanmış şirketlerle güvenli ticari eşleşmeler kurun, dijital kartvizitinizi paylaşın ve İŞKUR/SGK teşvikli nitelikli personel aday havuzundan anında istifade edin."
+  }
+];
+
+const faqs = [
+  {
+    q: "MeetWork ağına katılmak için ek bir üyelik ücreti ödenir mi?",
+    a: "StokPratik kullanıcıları için MeetWork B2B vitrini ve ihale takip merkezi doğrudan ERP menüsü içerisinden erişilebilir ve ücretsizdir."
+  },
+  {
+    q: "Ortak alım ihalelerinde ödeme ve faturalandırma nasıl yapılıyor?",
+    a: "Ortak alım havuzunda biriken sipariş hacmi doğrudan üretici fabrikaya iletilir; her işletmeye kendi sipariş payı kadar doğrudan üretici tarafından e-Fatura kesilir ve sevkiyat yapılır."
+  },
+  {
+    q: "2. el makinelerimizi veya fazla stoklarımızı nasıl satışa çıkarabiliriz?",
+    a: "StokPratik içerisindeki 'MeetWork' sekmesinden ürün veya makine fotoğraflarını, teknik özelliklerini ve toptan satış fiyatını girerek tek tıkla binlerce B2B alıcının vitrinine yayınlayabilirsiniz."
+  }
+];
+---
+
+<BaseLayout
+  title="MeetWork | B2B İhale, Ortak Alım, Fazla Stok Vitrini & Hibe Teşvik Radarı — StokPratik"
+  description="İşletmeler arası ortak alım ihaleleri, fazla stok ve 2. el makine vitrini, KOSGEB/TÜBİTAK hibe radarı ve B2B iş ortaklığı ağı MeetWork ile işletmenizi büyütün."
+>
+  <main class="min-h-screen bg-slate-950 text-slate-100 selection:bg-cyan-500 selection:text-slate-950 pb-24">
+    
+    {/* HERO BÖLÜMÜ */}
+    <section class="relative pt-16 pb-16 sm:pt-24 sm:pb-20 border-b border-slate-800 overflow-hidden">
+      <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[380px] bg-gradient-to-b from-cyan-500/15 via-blue-600/10 to-transparent blur-3xl pointer-events-none"></div>
+
+      <div class="container mx-auto px-4 max-w-6xl relative z-10 text-center">
+        
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 text-xs sm:text-sm font-bold shadow-sm mb-6">
+          <span>🌍</span>
+          <span>B2B TİCARİ İŞ BİRLİĞİ, ORTAK ALIM & HİBE RADARI</span>
+        </div>
+
+        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-tight max-w-4xl mx-auto">
+          MeetWork: Ortak Alım İhaleleri, Fazla Stok Vitrini ve Devlet Teşvikleri Radarı
+        </h1>
+
+        <p class="mt-5 text-slate-300 text-sm sm:text-base lg:text-lg max-w-3xl mx-auto leading-relaxed">
+          KOBİ'lerin satın alma gücünü birleştiren, atıl stokları ve 2. el makineleri komisyonsuz nakde çeviren ve KOSGEB/Bakanlık hibelerini radar gibi tarayan yeni nesil B2B iş ağı.
+        </p>
+
+        <div class="mt-8 flex flex-wrap items-center justify-center gap-4">
+          <a 
+            href="https://erp-eticaret.stokpratik.com.tr/meetwork"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="px-8 py-4 rounded-xl bg-gradient-to-r from-cyan-500 via-blue-600 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 text-white font-black text-sm sm:text-base shadow-lg shadow-cyan-500/25 transition-all hover:scale-105 flex items-center gap-2"
+          >
+            <span>🌍 MeetWork B2B Paneline Gir</span>
+            <span class="text-lg">↗</span>
+          </a>
+
+          <a 
+            href="/firma-kaydi"
+            class="px-6 py-4 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-sm sm:text-base border border-slate-700 transition-all hover:border-cyan-500/50"
+          >
+            Ücretsiz Kayıt Ol & İncele
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+    {/* 4 TEMEL SÜTUN */}
+    <section class="py-16 sm:py-20 border-b border-slate-800">
+      <div class="container mx-auto px-4 max-w-6xl">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
+          {pillars.map((p) => (
+            <div class="p-6 sm:p-8 rounded-2xl bg-slate-900 border border-slate-800 hover:border-cyan-500/40 transition-all">
+              <div class="w-12 h-12 rounded-xl bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 flex items-center justify-center text-2xl mb-4">
+                {p.icon}
+              </div>
+              <h3 class="text-lg sm:text-xl font-bold text-white mb-2">{p.title}</h3>
+              <p class="text-slate-400 text-sm leading-relaxed">{p.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    {/* SSS */}
+    <section class="py-16 sm:py-20">
+      <div class="container mx-auto px-4 max-w-4xl">
+        <div class="text-center mb-12">
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-white">Sıkça Sorulan Sorular</h2>
+        </div>
+        <div class="space-y-4">
+          {faqs.map((f) => (
+            <div class="rounded-2xl border border-slate-800 bg-slate-900/40 p-5 sm:p-6">
+              <h3 class="text-base sm:text-lg font-bold text-cyan-400 mb-2">{f.q}</h3>
+              <p class="text-slate-300 text-sm sm:text-base leading-relaxed">{f.a}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+  </main>
+</BaseLayout>

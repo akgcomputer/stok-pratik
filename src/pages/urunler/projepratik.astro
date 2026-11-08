@@ -1,0 +1,358 @@
+---
+// src/pages/urunler/projepratik.astro - ProjePratik Tanıtım Sayfası (11. Bağımsız Bulut Portalı)
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const features = [
+  {
+    icon: "📐",
+    title: "Metraj Cetveli, Yeşil Defter & Periyodik Hakediş Motoru",
+    desc: "Poz ve iş kalemi bazlı imalat ilerlemelerini sahada anlık kaydedin; taşeron ve işveren hakediş kapaklarını, yasal teminatları, ceza ve ihzarat kesintilerini tek tıkla hatasız hesaplayın."
+  },
+  {
+    icon: "👷",
+    title: "Taşeron Sözleşme, Avans & Kesinti Takip Üssü",
+    desc: "Her taşeron firmanın sözleşme bedelini, sahada verilen malzeme ve nakit avansları, SGK prim/stopaj kesintilerini canlı izleyin; bakiye aşımı ve mükerrer hakediş ödemesini sistem otomatik engellesin."
+  },
+  {
+    icon: "🧱",
+    title: "Şantiye Depo, Malzeme Sarfiyatı & Masraf Merkezi",
+    desc: "Şantiyeye sevk edilen demir, beton, çimento, iş makinesi akaryakıtı ve şantiye personeli masraflarını proje bazlı maliyet merkezlerine otomatik işleyin; birim imalat maliyetinizi gerçek zamanlı kontrol edin."
+  },
+  {
+    icon: "🔑",
+    title: "StokPratik SSO (Tek Tıkla Doğrudan Geçiş)",
+    desc: "StokPratik hesabınıza giriş yapılmışsa tekrar kullanıcı adı ve şifre girmeden tek tıkla https://pratikproje.stokpratik.com.tr/ adresine geçin; şantiye hakediş faturalarını resmi muhasebeye otomatik aktarın."
+  }
+];
+
+const faqs = [
+  {
+    q: "ProjePratik hangi sektörler ve iş kolları için uygundur?",
+    a: "İnşaat müteahhitleri, alt yükleniciler/taşeronlar, taahhüt firmaları, elektrik/mekanik tesisat projeleri, altyapı, çevre düzenleme, iç mimarlık ve dekorasyon şantiyeleri için %100 uyumludur."
+  },
+  {
+    q: "Taşeronlara verilen malzeme avansları hakedişten otomatik kesilir mi?",
+    a: "Evet. Şantiye deposundan taşerona teslim edilen malzemeler veya şirketin taşeron adına ödediği nakit/akaryakıt avansları periyodik hakediş kapağında otomatik 'Malzeme & Avans Kesintisi' olarak hakediş tutarından düşülür."
+  },
+  {
+    q: "Şantiye personeli veya şantiye şefi cep telefonundan metraj girebilir mi?",
+    a: "Kesinlikle! ProjePratik tamamen bulut tabanlı ve mobil uyumludur. Şantiye şefi sahadayken cep telefonu veya tabletiyle tamamlanan iş kalemlerinin metrajını girebilir, imalat fotoğraflarını yeşil deftere ekleyebilir."
+  },
+  {
+    q: "Kesilen hakediş faturası StokPratik resmi muhasebesine nasıl yansır?",
+    a: "StokPratik SSO entegrasyonu sayesinde onaylanan hakediş tutarı tek tıkla Alış veya Satış Faturası olarak ana ERP'ye işlenir; tevkifatlı faturalar, KDV ve cari borç/alacak bakiyeleri anında güncellenir."
+  }
+];
+---
+
+<BaseLayout
+  title="ProjePratik | Şantiye, Taahhüt, Metraj & Hakediş Yönetim Portalı — StokPratik"
+  description="İnşaat ve taahhüt projelerinizde poz bazlı metraj cetveli, yeşil defter, taşeron sözleşmeleri ve periyodik hakediş kapaklarını sıfır hatayla yönetin. StokPratik SSO ile anında bağlanın."
+>
+  <main class="min-h-screen bg-slate-950 text-slate-100 selection:bg-amber-500 selection:text-slate-950 pb-24">
+    
+    {/* HERO BÖLÜMÜ */}
+    <section class="relative pt-16 pb-16 sm:pt-24 sm:pb-20 border-b border-slate-800 overflow-hidden">
+      <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[380px] bg-gradient-to-b from-amber-500/15 via-emerald-600/10 to-transparent blur-3xl pointer-events-none"></div>
+
+      <div class="container mx-auto px-4 max-w-6xl relative z-10">
+        
+        <div class="flex items-center gap-2 mb-6">
+          <a href="/pratik-ekosistemi" class="text-xs font-bold text-amber-400 hover:text-amber-300 transition-colors">
+            ← Pratik Ekosistemi Ana Sayfası
+          </a>
+          <span class="text-slate-600">•</span>
+          <span class="text-xs text-slate-400">Departman Çözümü 11</span>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+          
+          <div class="lg:col-span-7">
+            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs sm:text-sm font-bold shadow-sm mb-5">
+              <span>🏗️</span>
+              <span>ŞANTİYE, TAAHHÜT, METRAJ & HAKEDİŞ ÜSSÜ</span>
+            </div>
+
+            <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-tight">
+              ProjePratik: Şantiye Bütçesi, Taşeron Hakedişi ve Yeşil Defter Karmaşasına Son!
+            </h1>
+
+            <p class="mt-5 text-slate-300 text-sm sm:text-base lg:text-lg leading-relaxed">
+              İnşaat, taahhüt ve mühendislik projelerinizde poz bazlı metraj cetvellerini, yeşil defter imalat kayıtlarını, taşeron sözleşmelerini ve periyodik hakediş kapaklarını sahada canlı yönetin; bütçe aşımını ve hakediş uyuşmazlıklarını sıfırlayın.
+            </p>
+
+            <div class="mt-8 flex flex-wrap items-center gap-4">
+              <a 
+                href="https://pratikproje.stokpratik.com.tr/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="px-7 py-4 rounded-xl bg-gradient-to-r from-amber-500 via-emerald-600 to-teal-600 hover:from-amber-400 hover:to-teal-500 text-slate-950 font-black text-sm sm:text-base shadow-lg shadow-amber-500/25 transition-all hover:scale-105 flex items-center gap-2"
+              >
+                <span>🏗️ ProjePratik Portala Gir</span>
+                <span class="text-lg">↗</span>
+              </a>
+
+              <button 
+                type="button"
+                class="open-request-modal px-6 py-4 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-sm sm:text-base border border-slate-700 transition-all hover:border-amber-500/50 cursor-pointer"
+                data-package="ProjePratik Yıllık Lisans"
+              >
+                💎 Lisans & Paket Talebi Oluştur
+              </button>
+            </div>
+          </div>
+
+          <div class="lg:col-span-5">
+            <div class="rounded-3xl border border-slate-800 bg-slate-900/90 p-3 shadow-2xl relative group overflow-hidden">
+              <img 
+                src="/images/ekosistem/carinet_crm_servis_portallari_hero_1793942256908.jpg" 
+                alt="ProjePratik Şantiye ve Hakediş Yönetimi Portalı Ekran Görünümü" 
+                class="w-full h-auto rounded-2xl object-cover transform group-hover:scale-105 transition-transform duration-700"
+              />
+              <div class="absolute bottom-6 left-6 right-6 p-4 rounded-xl bg-slate-950/80 backdrop-blur-md border border-slate-800 text-xs">
+                <span class="font-extrabold text-amber-400">⚡ StokPratik SSO Entegrasyonu:</span>
+                <span class="text-slate-300 block mt-0.5">Tek hesapla şifresiz giriş yapın, onaylanan hakedişleri tek tıkla resmi muhasebeye ve e-Fatura'ya aktarın.</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    {/* ÖNE ÇIKAN 4 KRİTİK GÜÇ */}
+    <section class="py-16 sm:py-20 border-b border-slate-800/80">
+      <div class="container mx-auto px-4 max-w-6xl">
+        
+        <div class="text-center max-w-3xl mx-auto mb-14">
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
+            Şantiyede ve Ofiste Sıfır Hata ile Çalışan Taahhüt Altyapısı
+          </h2>
+          <p class="text-slate-400 text-sm sm:text-base mt-3">
+            Geleneksel Excel tablolarıyla takip edilen hakedişlerdeki formül hatalarını ve unutulan avans kesintilerini ProjePratik ile tamamen ortadan kaldırın.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
+          {features.map((f) => (
+            <div class="rounded-2xl border border-slate-800 bg-slate-900/50 p-6 sm:p-8 hover:border-amber-500/40 hover:bg-slate-900/80 transition-all flex flex-col justify-start group">
+              <div class="w-12 h-12 rounded-xl bg-amber-500/10 border border-amber-500/20 text-amber-400 text-2xl flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
+                {f.icon}
+              </div>
+              <h3 class="text-lg sm:text-xl font-bold text-white mb-2">
+                {f.title}
+              </h3>
+              <p class="text-slate-400 text-sm leading-relaxed">
+                {f.desc}
+              </p>
+            </div>
+          ))}
+        </div>
+
+      </div>
+    </section>
+
+    {/* SSS BÖLÜMÜ */}
+    <section class="py-16 sm:py-20 border-b border-slate-800/80">
+      <div class="container mx-auto px-4 max-w-4xl">
+        
+        <div class="text-center mb-12">
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
+            Sıkça Sorulan Sorular
+          </h2>
+          <p class="text-slate-400 text-sm sm:text-base mt-2">
+            ProjePratik portalı ve şantiye hakediş entegrasyonu hakkında merak edilenler.
+          </p>
+        </div>
+
+        <div class="space-y-4">
+          {faqs.map((faq) => (
+            <div class="rounded-2xl border border-slate-800 bg-slate-900/40 p-5 sm:p-6">
+              <h3 class="text-base sm:text-lg font-bold text-amber-400 mb-2">
+                {faq.q}
+              </h3>
+              <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+                {faq.a}
+              </p>
+            </div>
+          ))}
+        </div>
+
+      </div>
+    </section>
+
+    {/* CTA BÖLÜMÜ */}
+    <section class="py-16 sm:py-20">
+      <div class="container mx-auto px-4 max-w-4xl text-center">
+        <div class="rounded-3xl border border-amber-500/30 bg-gradient-to-br from-slate-900 via-slate-900 to-amber-950/30 p-8 sm:p-14 shadow-2xl">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-bold mb-4">
+            <span>🏗️</span>
+            <span>ŞANTİYELERİNİZİ DİJİTAL DÖNÜŞÜME GEÇİRİN</span>
+          </div>
+
+          <h2 class="text-3xl sm:text-4xl font-black text-white tracking-tight leading-tight">
+            Şantiye ve Hakedişlerinizi Bugün Kontrol Altına Alın
+          </h2>
+          <p class="text-slate-300 text-sm sm:text-base max-w-2xl mx-auto mt-4 leading-relaxed">
+            Poz bazlı metrajdan yeşil deftere, taşeron sözleşmelerinden otomatik hakediş kapaklarına kadar tüm süreci ProjePratik ile dakikalar içinde devreye alın.
+          </p>
+
+          <div class="mt-8 flex flex-wrap items-center justify-center gap-4">
+            <a 
+              href="https://pratikproje.stokpratik.com.tr/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="px-8 py-4 rounded-xl bg-gradient-to-r from-amber-500 via-emerald-600 to-teal-600 hover:from-amber-400 hover:to-teal-500 text-slate-950 font-black text-base shadow-xl shadow-amber-500/25 transition-all hover:scale-105"
+            >
+              ProjePratik Portala Gir →
+            </a>
+            <button 
+              type="button"
+              class="open-request-modal px-8 py-4 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-base border border-slate-700 transition-all hover:border-amber-500/50 cursor-pointer"
+              data-package="ProjePratik Yıllık Lisans"
+            >
+              Lisans Teklifi İste
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  {/* LİSANS TALEP MODALI */}
+  <div id="requestModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-sm hidden opacity-0 transition-opacity duration-200">
+    <div class="relative w-full max-w-lg rounded-3xl border border-slate-800 bg-slate-900 p-6 sm:p-8 shadow-2xl text-left">
+      <button 
+        type="button" 
+        id="closeRequestModal"
+        class="absolute top-5 right-5 text-slate-400 hover:text-white text-2xl font-bold transition-colors cursor-pointer"
+        aria-label="Kapat"
+      >
+        ×
+      </button>
+
+      <div class="flex items-center gap-3 mb-4">
+        <span class="text-3xl">💎</span>
+        <div>
+          <h3 class="text-xl font-extrabold text-white">Lisans & Paket Talebi</h3>
+          <p class="text-xs text-slate-400">Bilgilerinizi bırakın, uzmanımız 15 dakikada arasın.</p>
+        </div>
+      </div>
+
+      <form id="licenseRequestForm" class="space-y-4">
+        <div>
+          <label class="block text-xs font-semibold text-slate-300 mb-1">Talep Edilen Ürün</label>
+          <input 
+            type="text" 
+            id="modalPackageName" 
+            name="package" 
+            readonly 
+            class="w-full px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-amber-400 font-bold text-sm focus:outline-none"
+          />
+        </div>
+
+        <div>
+          <label class="block text-xs font-semibold text-slate-300 mb-1">Ad Soyad *</label>
+          <input 
+            type="text" 
+            name="fullName" 
+            required 
+            placeholder="Örn: Ahmet Yılmaz" 
+            class="w-full px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-white placeholder-slate-600 text-sm focus:border-amber-500 focus:outline-none"
+          />
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div>
+            <label class="block text-xs font-semibold text-slate-300 mb-1">Telefon *</label>
+            <input 
+              type="tel" 
+              name="phone" 
+              required 
+              placeholder="05XX XXX XX XX" 
+              class="w-full px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-white placeholder-slate-600 text-sm focus:border-amber-500 focus:outline-none"
+            />
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-slate-300 mb-1">E-Posta</label>
+            <input 
+              type="email" 
+              name="email" 
+              placeholder="ornek@sirket.com" 
+              class="w-full px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-white placeholder-slate-600 text-sm focus:border-amber-500 focus:outline-none"
+            />
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-xs font-semibold text-slate-300 mb-1">Şirket Adı & Şantiye Sayısı</label>
+          <input 
+            type="text" 
+            name="company" 
+            placeholder="Örn: Yılmaz İnşaat Taahhüt Ltd. (3 Şantiye)" 
+            class="w-full px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-white placeholder-slate-600 text-sm focus:border-amber-500 focus:outline-none"
+          />
+        </div>
+
+        <button 
+          type="submit" 
+          class="w-full py-3.5 rounded-xl bg-gradient-to-r from-amber-500 via-emerald-600 to-teal-600 hover:from-amber-400 hover:to-teal-500 text-slate-950 font-black text-sm sm:text-base shadow-lg shadow-amber-500/25 transition-all hover:scale-[1.02] cursor-pointer mt-2"
+        >
+          🚀 Talebi İlet & Teklif Al
+        </button>
+
+        <p id="modalFeedback" class="text-xs text-center text-emerald-400 font-semibold hidden mt-2">
+          ✓ Talebiniz alındı! Satış ekibimiz en kısa sürede sizinle iletişime geçecektir.
+        </p>
+      </form>
+    </div>
+  </div>
+
+  <script is:inline>
+    const modal = document.getElementById('requestModal');
+    const closeBtn = document.getElementById('closeRequestModal');
+    const packageNameInput = document.getElementById('modalPackageName');
+    const feedback = document.getElementById('modalFeedback');
+    const form = document.getElementById('licenseRequestForm');
+
+    function openModal(pkg) {
+      if (packageNameInput) packageNameInput.value = pkg || 'ProjePratik Yıllık Lisans';
+      if (modal) {
+        modal.classList.remove('hidden');
+        setTimeout(() => modal.classList.remove('opacity-0'), 10);
+      }
+    }
+
+    function closeModal() {
+      if (modal) {
+        modal.classList.add('opacity-0');
+        setTimeout(() => modal.classList.add('hidden'), 200);
+      }
+      if (feedback) feedback.classList.add('hidden');
+      if (form) form.reset();
+    }
+
+    document.querySelectorAll('.open-request-modal').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const pkg = btn.getAttribute('data-package');
+        openModal(pkg);
+      });
+    });
+
+    closeBtn?.addEventListener('click', closeModal);
+    modal?.addEventListener('click', (e) => {
+      if (e.target === modal) closeModal();
+    });
+
+    form?.addEventListener('submit', (e) => {
+      e.preventDefault();
+      if (feedback) {
+        feedback.classList.remove('hidden');
+        feedback.textContent = '✓ Talebiniz başarıyla kaydedildi! En kısa sürede sizinle iletişime geçeceğiz.';
+      }
+      setTimeout(() => closeModal(), 2200);
+    });
+  </script>
+</BaseLayout>

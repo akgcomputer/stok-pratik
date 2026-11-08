@@ -1,0 +1,215 @@
+---
+// src/pages/odeme-emri-listesi.astro - Ödeme Emri Listesi & Canlı Bütçe Simülatörü
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const kpiCards = [
+  {
+    title: "🎯 YAPABİLECEĞİMİZ ÖDEME",
+    desc: "Kasadaki Nakit + Bankadaki Nakit + Gelecek Tahsilatlar − Bu Ayki Genel Giderler formülüyle hesaplanan kullanılabilir net ödeme gücünüz.",
+    badge: "Ana Hedef Kartı",
+    color: "from-emerald-600 to-teal-700"
+  },
+  {
+    title: "1. Kasadaki Nakit",
+    desc: "Merkez ve şube kasalarınızdaki anlık kullanılabilir fiziki nakit toplamı.",
+    badge: "Nakit Kasa",
+    color: "from-emerald-700 to-slate-900"
+  },
+  {
+    title: "2. Bankadaki Nakit",
+    desc: "25 bankadaki TL ve döviz vadesiz ticari mevduat hesaplarınızın kullanılabilir bakiyesi.",
+    badge: "25 Banka Bakiyesi",
+    color: "from-blue-700 to-slate-900"
+  },
+  {
+    title: "3. Gelecek Tahsilatlar",
+    desc: "Vadesi gelmiş açık müşteri alacakları ve portföy çekleri (✓ Bütçeye Dahil anahtarı ile dinamik hesaplanır).",
+    badge: "Alacaklar & Çekler",
+    color: "from-amber-600 to-slate-900"
+  },
+  {
+    title: "4. Borcumuz Toplamı",
+    desc: "Listede ödeme bekleyen tüm onaylı tedarikçi alış faturalarının ve giderlerin kalan toplam tutarı.",
+    badge: "Açık Tedarikçi Borcu",
+    color: "from-slate-700 to-slate-900"
+  },
+  {
+    title: "5. Genel Giderler (Bu Ay)",
+    desc: "İçinde bulunduğunuz ayın kira, maaş, vergi ve elektrik gibi sabit işletme masrafları (✓ Bütçeden Düş anahtarı).",
+    badge: "Sabit İşletme Gideri",
+    color: "from-rose-700 to-slate-900"
+  }
+];
+
+const highlights = [
+  {
+    icon: "⭐",
+    title: "Kırmızı Yıldız ile Acil Ödeme Önceliklendirme",
+    desc: "Listede kritik veya vadesi geçmiş faturanın yanındaki yıldıza bastığınız anda satır kırmızı zemin ve beyaz yıldız alır; listenin en üstüne taşınarak nakit bütçeden ilk payı alır."
+  },
+  {
+    icon: "🔍",
+    title: "Ödeme Türü Filtreleri (Banka, Nakit, Kart, Çek)",
+    desc: "Firma arama çubuğunun hemen yanında yer alan BANKA, NAKİT, KREDİ KARTI ve ÇEK filtreleriyle yüzlerce faturayı ödeme kanalına göre saniyeler içinde süzün."
+  },
+  {
+    icon: "📄",
+    title: "25-50-100 Sayfalama & Yüksek Hacimli Liste Yönetimi",
+    desc: "Sayfa başına 25, 50 veya 100 kayıt görüntüleme seçeneği ve Sayfa 1, 2, 3... sayfalama butonlarıyla binlerce satırlık yoğun tedarikçi hesaplarını kasmadan yönetin."
+  },
+  {
+    icon: "📥",
+    title: "Alış Faturalarından Otomatik Aktarım + Banka EFT Talimatı",
+    desc: "Açık alış faturaları ve masraflar listeye kendiliğinden düşer; tek tıkla Excel'e aktarabilir veya bankaya verilecek resmi EFT/Havale ödeme talimat çıktısını alabilirsiniz."
+  }
+];
+
+const faqs = [
+  {
+    q: "Ödeme emri listesine faturaları elle mi giriyoruz?",
+    a: "Hayır. StokPratik'e girilen veya gelen e-Faturalardan oluşan açık vadeli alış faturaları ve masraflar sisteme kaydedildiği anda Ödeme Emri Listesi'ne otomatik olarak yansır."
+  },
+  {
+    q: "Gelecek tahsilatları veya genel giderleri bütçe hesabından çıkarabilir miyim?",
+    a: "Evet! Ekrandaki '✓ Bütçeye Dahil' veya '✓ Bütçeden Düş' anahtarlarını kapatarak sadece kasadaki ve bankadaki kesin nakit ile ödeme planı simülasyonu yapabilirsiniz."
+  },
+  {
+    q: "Banka EFT talimat çıktısı resmi formata uygun mudur?",
+    a: "Evet. Şirket antetiniz, tedarikçinin VKN'si, banka IBAN bilgisi ve ödenecek tutar ile kaşe/imza haneli resmi A4 Banka Ödeme Talimatı tek tıkla üretilir."
+  }
+];
+---
+
+<BaseLayout
+  title="Ödeme Emri Listesi & Canlı Bütçe Simülatörü | Stok Pratik"
+  description="'Bugün Kime, Ne Kadar Ödeme Yapabiliriz?' sorusuna saniyeler içinde cevap veren 6 canlı KPI bütçe kartı, kırmızı yıldız önceliklendirme ve banka EFT talimat motoru."
+>
+  <main class="min-h-screen bg-slate-950 text-slate-100 selection:bg-emerald-500 selection:text-slate-950 pb-24">
+    
+    {/* HERO BÖLÜMÜ */}
+    <section class="relative pt-16 pb-16 sm:pt-24 sm:pb-20 border-b border-slate-800 overflow-hidden">
+      <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[380px] bg-gradient-to-b from-emerald-500/15 via-teal-600/10 to-transparent blur-3xl pointer-events-none"></div>
+
+      <div class="container mx-auto px-4 max-w-6xl relative z-10 text-center">
+        
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs sm:text-sm font-bold shadow-sm mb-6">
+          <span>🎯</span>
+          <span>CANLI FİNANSAL BÜTÇE SİMÜLATÖRÜ & LİKİDİTE YÖNETİMİ</span>
+        </div>
+
+        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-tight max-w-4xl mx-auto">
+          "Bugün Kime, Ne Kadar Ödeme Yapabiliriz?" Sorusuna Saniyeler İçinde Net Cevap
+        </h1>
+
+        <p class="mt-5 text-slate-300 text-sm sm:text-base lg:text-lg max-w-3xl mx-auto leading-relaxed">
+          Kasadaki ve bankadaki nakdinizi, beklenen tahsilatları ve bu ayki sabit giderlerinizi anlık hesaplayarak net ödeme bütçenizi karşınıza çıkaran akıllı finansal komuta merkezi.
+        </p>
+
+        <div class="mt-8 flex flex-wrap items-center justify-center gap-4">
+          <a 
+            href="https://erp-eticaret.stokpratik.com.tr/odeme-emri-listesi"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="px-8 py-4 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 text-slate-950 font-black text-sm sm:text-base shadow-lg shadow-emerald-500/25 transition-all hover:scale-105 flex items-center gap-2"
+          >
+            <span>🎯 Ödeme Emri Listesini Canlı Aç</span>
+            <span class="text-lg">↗</span>
+          </a>
+
+          <a 
+            href="/firma-kaydi"
+            class="px-6 py-4 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-sm sm:text-base border border-slate-700 transition-all hover:border-emerald-500/50"
+          >
+            1 Ay Ücretsiz Kullanmaya Başla
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+    {/* GERÇEK EKRAN GÖRÜNTÜSÜ VİTRİNİ */}
+    <section class="py-12 border-b border-slate-800 bg-slate-900/50">
+      <div class="container mx-auto px-4 max-w-6xl">
+        <div class="rounded-3xl border border-slate-700 bg-slate-950 p-3 sm:p-5 shadow-2xl relative overflow-hidden">
+          <div class="flex items-center justify-between px-3 py-2 border-b border-slate-800 mb-3 text-xs text-slate-400 font-mono">
+            <div class="flex items-center gap-1.5">
+              <span class="w-3 h-3 rounded-full bg-red-500"></span>
+              <span class="w-3 h-3 rounded-full bg-amber-500"></span>
+              <span class="w-3 h-3 rounded-full bg-emerald-500"></span>
+            </div>
+            <span>https://erp-eticaret.stokpratik.com.tr/odeme-emri-listesi</span>
+            <span class="text-emerald-400 font-bold">✓ Canlı Sistem</span>
+          </div>
+
+          <img 
+            src="/images/screenshots/odeme-emri.png" 
+            alt="StokPratik Ödeme Emri Listesi ve Canlı Bütçe Simülatörü" 
+            class="w-full h-auto rounded-xl object-cover shadow-inner"
+            loading="eager"
+          />
+        </div>
+      </div>
+    </section>
+
+    {/* 6 CANLI KPI KARTI */}
+    <section class="py-16 sm:py-20 border-b border-slate-800">
+      <div class="container mx-auto px-4 max-w-6xl">
+        
+        <div class="text-center max-w-3xl mx-auto mb-12">
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-white">6 Canlı Finansal KPI Bütçe Kartı</h2>
+          <p class="text-slate-400 text-sm mt-2">Nakit ve borç durumunuzu tek bakışta özetleyen otomatik hesaplama mimarisi.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {kpiCards.map((k) => (
+            <div class={`p-6 rounded-2xl bg-gradient-to-br ${k.color} border border-slate-700 shadow-lg flex flex-col justify-between`}>
+              <div>
+                <span class="text-[10px] font-black uppercase tracking-wider text-slate-300 bg-black/40 px-2.5 py-1 rounded-full mb-3 inline-block">
+                  {k.badge}
+                </span>
+                <h3 class="text-lg font-black text-white mb-2">{k.title}</h3>
+                <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">{k.desc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+      </div>
+    </section>
+
+    {/* 4 ÖNE ÇIKAN GÜÇ */}
+    <section class="py-16 sm:py-20 border-b border-slate-800">
+      <div class="container mx-auto px-4 max-w-6xl">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
+          {highlights.map((h) => (
+            <div class="p-6 sm:p-8 rounded-2xl bg-slate-900 border border-slate-800 hover:border-emerald-500/40 transition-all">
+              <div class="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 flex items-center justify-center text-2xl mb-4">
+                {h.icon}
+              </div>
+              <h3 class="text-lg sm:text-xl font-bold text-white mb-2">{h.title}</h3>
+              <p class="text-slate-400 text-sm leading-relaxed">{h.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    {/* SSS */}
+    <section class="py-16 sm:py-20">
+      <div class="container mx-auto px-4 max-w-4xl">
+        <div class="text-center mb-12">
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-white">Sıkça Sorulan Sorular</h2>
+        </div>
+        <div class="space-y-4">
+          {faqs.map((f) => (
+            <div class="rounded-2xl border border-slate-800 bg-slate-900/40 p-5 sm:p-6">
+              <h3 class="text-base sm:text-lg font-bold text-emerald-400 mb-2">{f.q}</h3>
+              <p class="text-slate-300 text-sm sm:text-base leading-relaxed">{f.a}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+  </main>
+</BaseLayout>

@@ -212,13 +212,34 @@ const products = [
       border: "border-teal-200",
       badge: "bg-teal-500/10 text-teal-400 border-teal-500/20"
     }
+  },
+  {
+    id: "projepratik",
+    name: "ProjePratik",
+    badge: "🏗️ ŞANTİYE & HAKEDİŞ ÜSSÜ",
+    title: "Şantiye, Taahhüt, Metraj & Hakediş Yönetim Portalı",
+    desc: "İnşaat, taahhüt ve mühendislik projelerinde şantiye bütçesini, taşeron sözleşmelerini, poz bazlı metraj cetvelini, yeşil defteri ve periyodik hakediş kapaklarını sıfır hatayla yönetin.",
+    points: [
+      "Metraj Cetveli, Yeşil Defter & Taşeron Hakediş Dosyaları",
+      "Taşeron Sözleşme, Avans, SGK/Stopaj/Ceza Kesinti Takibi",
+      "Şantiye Depo, Malzeme Sarfiyatı & Proje Masraf Merkezi",
+      "StokPratik SSO ile Tek Tıkla Doğrudan Şifresiz Geçiş"
+    ],
+    detailUrl: "/urunler/projepratik",
+    portalUrl: "https://pratikproje.stokpratik.com.tr/",
+    image: "/images/ekosistem/carinet_crm_servis_portallari_hero_1793942256908.jpg",
+    theme: {
+      gradient: "from-amber-600 to-emerald-700",
+      border: "border-amber-200",
+      badge: "bg-amber-500/10 text-amber-400 border-amber-500/20"
+    }
   }
 ];
 ---
 
 <BaseLayout
-  title="Pratik Ürün Ailesi & FinansPratik | 10 Bağımsız Bulut İşletme Portalı — StokPratik"
-  description="FinansPratik açık bankacılık üssü ve MüşavirPratik, CariNET B2B, MutabakatPratik, e-TicaretPratik dahil 10 bağımsız kurumsal bulut ürününü keşfedin. İhtiyacınız olan modülü seçin, aynı gün kullanmaya başlayın."
+  title="Pratik Ürün Ailesi & FinansPratik | 11 Bağımsız Bulut İşletme Portalı — StokPratik"
+  description="FinansPratik açık bankacılık üssü ve ProjePratik, MüşavirPratik, CariNET B2B, MutabakatPratik dahil 11 bağımsız kurumsal bulut ürününü keşfedin. İhtiyacınız olan modülü seçin, aynı gün kullanmaya başlayın."
 >
   <main class="min-h-screen bg-slate-950 text-slate-100 selection:bg-emerald-500 selection:text-slate-950 pb-24">
     
@@ -346,18 +367,18 @@ const products = [
     </section>
 
     {/* ========================================================================= */}
-    {/* 3. 10 DEPARTMAN / ÜRÜN İÇİN HIZLI YÖNLENDİRME HAPLARI (STICKY NAV) */}
+    {/* 3. 11 DEPARTMAN / ÜRÜN İÇİN HIZLI YÖNLENDİRME HAPLARI (STICKY NAV) */}
     {/* ========================================================================= */}
     <nav class="sticky top-20 z-40 bg-slate-950/90 backdrop-blur-md border-y border-slate-800 py-3">
       <div class="container mx-auto px-4 max-w-6xl">
         <div class="flex items-center gap-2 overflow-x-auto pb-1 custom-scrollbar">
-          <span class="text-xs font-bold text-slate-400 shrink-0 mr-2">10 Departman:</span>
+          <span class="text-xs font-bold text-slate-400 shrink-0 mr-2">11 Departman:</span>
           {products.map((p, i) => (
             <a 
               href={`#${p.id}`}
               class="px-3 py-1.5 rounded-lg text-xs font-bold bg-slate-900 hover:bg-emerald-500 hover:text-slate-950 text-slate-300 border border-slate-800 shrink-0 transition-all flex items-center gap-1.5"
             >
-              <span class="text-[10px] text-emerald-400 font-mono">0{i + 1}</span>
+              <span class="text-[10px] text-emerald-400 font-mono">{i + 1 < 10 ? `0${i + 1}` : `${i + 1}`}</span>
               <span>{p.name}</span>
             </a>
           ))}
@@ -366,7 +387,7 @@ const products = [
     </nav>
 
     {/* ========================================================================= */}
-    {/* 4. 10 BAĞIMSIZ ÜRÜN DETAY KARTLARI (REHBERDEKİ SIRALAMA) */}
+    {/* 4. 11 BAĞIMSIZ ÜRÜN DETAY KARTLARI (REHBERDEKİ SIRALAMA) */}
     {/* ========================================================================= */}
     <section class="py-16 sm:py-24">
       <div class="container mx-auto px-4 max-w-6xl space-y-20">
@@ -390,7 +411,7 @@ const products = [
                     {p.badge}
                   </span>
                   <span class="text-xs font-bold text-slate-500 font-mono">
-                    Bölüm 0{idx + 1} / 10
+                    Bölüm {idx + 1 < 10 ? `0${idx + 1}` : `${idx + 1}`} / 11
                   </span>
                 </div>
 

@@ -209,7 +209,7 @@ export default function PricingCalculator() {
     lines.push('Bu paket hakkında detaylı demo ve teklif görüşmesi rica ediyorum.');
 
     const message = lines.join('\n');
-    return `https://wa.me/905325000999?text=${encodeURIComponent(message)}`;
+    return `https://wa.me/905412465429?text=${encodeURIComponent(message)}`;
   }, [calculation, core_package, currency_symbol]);
 
   // Styling presets configuration with distinct colors and tight layout

@@ -136,7 +136,7 @@ const categories = Object.keys(groupedPages).sort();
       <div class="mt-12 bg-slate-100 rounded-3xl p-8 text-center border border-slate-200">
         <h3 class="text-xl font-bold mb-2 text-slate-800">Aradığınızı bulamadınız mı?</h3>
         <p class="text-slate-500 mb-6">Destek ekibimiz size anında yardımcı olmaktan mutluluk duyar.</p>
-        <a href="https://wa.me/+905325000999" class="inline-flex items-center justify-center gap-3 px-8 py-3 bg-green-500 hover:bg-green-600 text-white font-bold rounded-xl transition-all shadow-lg hover:-translate-y-1">
+        <a href="https://wa.me/+90 541 246 54 29" class="inline-flex items-center justify-center gap-3 px-8 py-3 bg-green-500 hover:bg-green-600 text-white font-bold rounded-xl transition-all shadow-lg hover:-translate-y-1">
           WhatsApp Destek
         </a>
       </div>

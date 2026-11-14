@@ -245,7 +245,7 @@ const newJSContent = `<script>
               
               const message = \`Merhaba, Pazaryeri ve İhracat çözümleriniz için başvuru yapmak istiyorum.\\n\\n*Ad Soyad:* \${name}\\n*E-posta:* \${email}\\n*Telefon:* \${phone}\\n*İşletme Adı:* \${company}\\n*İşletme Türü:* \${type}\\n*Sektör:* \${sector}\\n*İhracat:* \${exportText}\`;
               
-              const whatsappUrl = \`https://wa.me/905325000999?text=\${encodeURIComponent(message)}\`;
+              const whatsappUrl = \`https://wa.me/905412465429?text=\${encodeURIComponent(message)}\`;
               window.open(whatsappUrl, '_blank');
             });
           </script>`;

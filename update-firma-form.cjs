@@ -6,7 +6,7 @@ text = text.replace(/<input type="url" id="website"/g, '<input type="text" id="w
 
 // 2. Change success text
 text = text.replace(
-  /<p class="text-red-800 font-medium mb-4">Aşağıdaki butona tıklayarak az önce doldurduğunuz formu WhatsApp üzerinden <strong>0532 500 09 99<\/strong> numaralı destek hattımıza gönderin.<\/p>/g,
+  /<p class="text-red-800 font-medium mb-4">Aşağıdaki butona tıklayarak az önce doldurduğunuz formu WhatsApp üzerinden <strong>0541 246 54 29<\/strong> numaralı destek hattımıza gönderin.<\/p>/g,
   '<p class="text-red-800 font-medium mb-4">Aşağıdaki butona tıklayarak az önce doldurduğunuz formu WhatsApp üzerinden destek hattımıza gönderin.</p>'
 );
 

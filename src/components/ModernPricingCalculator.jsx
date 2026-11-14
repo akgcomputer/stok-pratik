@@ -116,7 +116,7 @@ export default function ModernPricingCalculator() {
     lines.push(`💳 Yıllık Toplam: ${yearlyTotal.toLocaleString('tr-TR')} ₺ + KDV`);
     lines.push(`1 ay ücretsiz denemek ve kurulum hakkında bilgi almak istiyorum.`);
 
-    return `https://wa.me/+905325000999?text=${encodeURIComponent(lines.join('\n'))}`;
+    return `https://wa.me/+90 541 246 54 29?text=${encodeURIComponent(lines.join('\n'))}`;
   }, [selectedPkg, selectedModulesList, monthlyTotal, yearlyTotal]);
 
   return (

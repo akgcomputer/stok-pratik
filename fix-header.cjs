@@ -80,7 +80,7 @@ import SocialMedia from './SocialMedia.astro';
           </a>
         </div>
         
-        <a href="https://wa.me/+905325000999" class="inline-flex items-center justify-center px-6 py-2.5 bg-red-600 hover:bg-red-700 text-white font-bold rounded-xl transition-all shadow-md shadow-red-600/20">
+        <a href="https://wa.me/+90 541 246 54 29" class="inline-flex items-center justify-center px-6 py-2.5 bg-red-600 hover:bg-red-700 text-white font-bold rounded-xl transition-all shadow-md shadow-red-600/20">
           Demo Talep Et
         </a>
       </div>
@@ -88,7 +88,7 @@ import SocialMedia from './SocialMedia.astro';
 
     <!-- Mobile Header Actions (Hidden on Desktop) -->
     <div class="flex lg:hidden items-center gap-3">
-      <a href="https://wa.me/+905325000999" class="px-4 py-2 bg-red-600 text-white font-bold rounded-lg text-sm shadow-sm">Demo</a>
+      <a href="https://wa.me/+90 541 246 54 29" class="px-4 py-2 bg-red-600 text-white font-bold rounded-lg text-sm shadow-sm">Demo</a>
       
       <button id="mobileMenuBtn" class="text-slate-700 p-2 hover:bg-slate-100 rounded-lg transition-colors flex items-center justify-center">
         <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
@@ -168,7 +168,7 @@ import SocialMedia from './SocialMedia.astro';
         <div class="flex justify-center mb-6">
           <SocialMedia />
         </div>
-        <a href="https://wa.me/+905325000999" class="flex items-center justify-center w-full bg-red-600 hover:bg-red-700 text-white font-bold py-3.5 rounded-xl transition-colors shadow-lg shadow-red-600/20">
+        <a href="https://wa.me/+90 541 246 54 29" class="flex items-center justify-center w-full bg-red-600 hover:bg-red-700 text-white font-bold py-3.5 rounded-xl transition-colors shadow-lg shadow-red-600/20">
           Demo Talep Et
         </a>
       </div>

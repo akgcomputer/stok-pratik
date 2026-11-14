@@ -454,7 +454,7 @@ export default function Wizard() {
                 </div>
 
                 <div className="mt-auto flex flex-col gap-3">
-                  <a href="https://wa.me/905325000999?text=Merhaba,%20Stok%20Pratik%20hakkında%20demo%20istiyorum." target="_blank" rel="noopener noreferrer" className="w-full py-4 px-4 rounded-xl font-bold bg-red-600 text-white hover:bg-red-700 transition-colors shadow-lg shadow-red-200 flex items-center justify-center gap-2 text-lg">
+                  <a href="https://wa.me/905412465429?text=Merhaba,%20Stok%20Pratik%20hakkında%20demo%20istiyorum." target="_blank" rel="noopener noreferrer" className="w-full py-4 px-4 rounded-xl font-bold bg-red-600 text-white hover:bg-red-700 transition-colors shadow-lg shadow-red-200 flex items-center justify-center gap-2 text-lg">
                     15 Dk Hızlı Demoyu Başlat <ArrowRight className="w-5 h-5" />
                   </a>
                   <a href="/paketlerimiz" className="w-full py-3 px-4 rounded-xl font-semibold bg-white border border-slate-200 text-slate-600 hover:bg-slate-50 transition-colors text-center text-sm flex items-center justify-center gap-2">

@@ -1,5 +1,5 @@
 # Stok Pratik — Bulut ERP, E-Ticaret, POS, B2B ve Sektörel Ticaret İşletim Sistemi Tam Dokümantasyonu (LLM Full Reference)
-> Versiyon: 2026.1 | Web: https://stokpratik.com.tr | İletişim: 0532 500 09 99
+> Versiyon: 2026.1 | Web: https://stokpratik.com.tr | İletişim: 0541 246 54 29
 
 ## 1. GENEL BAKIŞ VE MİMARİ
 Stok Pratik, Türkiye'deki küçük, orta ve büyük ölçekli işletmelerin (KOBİ ve kurumsal) operasyonel, finansal ve lojistik süreçlerini tek bir platformda birleştiren bulut tabanlı bir Kurumsal Kaynak Planlama (ERP) ve Ticaret İşletim Sistemidir.
@@ -98,5 +98,5 @@ Stok Pratik, Türkiye'deki küçük, orta ve büyük ölçekli işletmelerin (KO
 - **Site Haritası (Tüm Sayfalar):** https://stokpratik.com.tr/sitemap
 - **Yararlı Bilgiler & SEO Kataloğu:** https://stokpratik.com.tr/yararli-bilgiler
 - **Bayilik & Çözüm Ortaklığı:** https://stokpratik.com.tr/bayilik
-- **Müşteri Hizmetleri & Telefon:** 0532 500 09 99
+- **Müşteri Hizmetleri & Telefon:** 0541 246 54 29
 - **Resmi Web Sitesi:** https://stokpratik.com.tr/

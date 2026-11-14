@@ -1,0 +1,90 @@
+---
+export const prerender = false;
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const konu = Astro.url.searchParams.get('konu');
+const isBayilik = konu === 'bayilik';
+const phone = '905412465429';
+
+const pageTitle = isBayilik
+  ? 'Stok Pratik Bayilik ve Çözüm Ortaklığı | WhatsApp Destek Hattı'
+  : 'Stok Pratik 45 Gün Ücretsiz Deneme | WhatsApp Destek Hattı';
+
+const pageDescription = isBayilik
+  ? 'Stok Pratik Çözüm Ortaklığı ve Yazılım Bayiliği şartları hakkında WhatsApp üzerinden hemen bilgi alın.'
+  : 'Stok Pratik bulut ERP ve ön muhasebe 45 gün ücretsiz deneme şifrenizi WhatsApp üzerinden hemen alın.';
+
+const headingText = isBayilik
+  ? 'Stok Pratik Bayilik WhatsApp Hattına Bağlanılıyor...'
+  : 'Stok Pratik WhatsApp Destek Hattına Bağlanılıyor...';
+
+const subText = isBayilik
+  ? 'Çözüm ortaklığı ve bayilik şartları için resmi WhatsApp hattımıza yönlendiriliyorsunuz.'
+  : '45 Gün Ücretsiz Deneme (StokPratik45Gun) şifreniz için resmi WhatsApp hattımıza yönlendiriliyorsunuz.';
+
+const initialMessage = isBayilik
+  ? 'Merhaba, Stok Pratik Bayilik ve Çözüm Ortaklığı şartları hakkında bilgi almak istiyorum.'
+  : 'Merhaba, Stok Pratik 45 Gün Ücretsiz Deneme (StokPratik45Gun) şifremi almak istiyorum.';
+
+const initialWaUrl = `https://api.whatsapp.com/send?phone=${phone}&text=${encodeURIComponent(initialMessage)}`;
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <section class="min-h-[70vh] flex items-center justify-center bg-slate-950 text-white px-4 py-16">
+    <div class="max-w-lg w-full bg-slate-900 border border-slate-800 rounded-3xl p-8 md:p-10 text-center shadow-2xl">
+      <div class="mx-auto w-16 h-16 rounded-2xl bg-emerald-500/15 border border-emerald-500/30 flex items-center justify-center mb-6">
+        <span class="w-8 h-8 rounded-full border-4 border-emerald-400 border-t-transparent animate-spin" aria-hidden="true"></span>
+      </div>
+
+      <h1 id="wa-heading" class="text-2xl md:text-3xl font-extrabold text-white mb-3">
+        {headingText}
+      </h1>
+      <p id="wa-subtext" class="text-slate-300 text-sm md:text-base mb-8 leading-relaxed">
+        {subText}
+      </p>
+
+      <a
+        id="wa-btn"
+        href={initialWaUrl}
+        rel="noopener noreferrer"
+        class="inline-flex items-center justify-center gap-3 w-full sm:w-auto px-7 py-4 rounded-2xl bg-emerald-500 hover:bg-emerald-600 text-white font-bold text-base shadow-lg shadow-emerald-500/25 transition"
+      >
+        <span>WhatsApp ile Devam Et (0541 246 54 29)</span>
+      </a>
+
+      <p class="text-xs text-slate-500 mt-5">
+        Otomatik yönlendirme başlamazsa yukarıdaki yeşil butona tıklayın.
+      </p>
+    </div>
+  </section>
+
+  <script is:inline>
+    (function () {
+      var params = new URLSearchParams(window.location.search);
+      var konuParam = params.get('konu');
+      var phone = '905412465429';
+      var msg =
+        konuParam === 'bayilik'
+          ? 'Merhaba, Stok Pratik Bayilik ve Çözüm Ortaklığı şartları hakkında bilgi almak istiyorum.'
+          : 'Merhaba, Stok Pratik 45 Gün Ücretsiz Deneme (StokPratik45Gun) şifremi almak istiyorum.';
+
+      var waUrl = 'https://api.whatsapp.com/send?phone=' + phone + '&text=' + encodeURIComponent(msg);
+
+      var btn = document.getElementById('wa-btn');
+      if (btn) btn.href = waUrl;
+
+      var heading = document.getElementById('wa-heading');
+      var subtext = document.getElementById('wa-subtext');
+      if (konuParam === 'bayilik') {
+        if (heading) heading.textContent = 'Stok Pratik Bayilik WhatsApp Hattına Bağlanılıyor...';
+        if (subtext) subtext.textContent = 'Çözüm ortaklığı ve bayilik şartları için resmi WhatsApp hattımıza yönlendiriliyorsunuz.';
+      }
+
+      try {
+        window.location.replace(waUrl);
+      } catch (err) {
+        window.location.href = waUrl;
+      }
+    })();
+  </script>
+</BaseLayout>

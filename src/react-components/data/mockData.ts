@@ -8,8 +8,8 @@ export const OFFICIAL_LINKS = {
   testimonials: 'https://stokpratik.com.tr/referanslarimiz',
   demo: 'https://stokpratik.com.tr/demo',
   blog: 'https://stokpratik.com.tr/blog',
-  phone: 'tel:08503080000',
-  whatsapp: 'https://wa.me/908503080000?text=Merhaba,%20Tekstil%20ve%20Haz%C4%B1r%20Giyim%20Stok%20Pratik%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum.'
+  phone: 'tel:+905412465429',
+  whatsapp: 'https://wa.me/905412465429?text=Merhaba,%20Tekstil%20ve%20Haz%C4%B1r%20Giyim%20Stok%20Pratik%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum.'
 };
 
 export const PACKAGES: PackagePlan[] = [

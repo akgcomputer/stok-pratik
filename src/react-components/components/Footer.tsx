@@ -33,7 +33,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenDemoModal }) => {
               <div className="flex items-center gap-2">
                 <Phone className="w-4 h-4 text-teal-400" />
                 <a href={OFFICIAL_LINKS.phone} className="hover:text-white transition-colors">
-                  0850 308 00 00
+                  0541 246 54 29
                 </a>
               </div>
               <div className="flex items-center gap-2">

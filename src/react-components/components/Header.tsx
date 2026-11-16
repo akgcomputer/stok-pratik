@@ -52,7 +52,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenDemoModal }) => {
               className="flex items-center gap-1.5 hover:text-amber-300 transition-colors"
             >
               <PhoneCall className="w-3.5 h-3.5 text-amber-300" />
-              <span>0850 308 00 00</span>
+              <span>0541 246 54 29</span>
             </a>
             <span className="hidden md:inline-block text-teal-300/60">|</span>
             <span className="hidden md:inline-flex items-center gap-1 text-emerald-300">

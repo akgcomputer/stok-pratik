@@ -88,7 +88,7 @@ export const CtaSection: React.FC<CtaSectionProps> = ({ onOpenDemoModal }) => {
                 className="px-5 py-3 rounded-xl bg-white/10 hover:bg-white/20 border border-white/20 text-white font-bold text-xs sm:text-sm flex items-center gap-2 transition-colors"
               >
                 <PhoneCall className="w-4 h-4 text-amber-300" />
-                <span>Hemen Ara: 0850 308 00 00</span>
+                <span>Hemen Ara: 0541 246 54 29</span>
               </a>
 
               <a

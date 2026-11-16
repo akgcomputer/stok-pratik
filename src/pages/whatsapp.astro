@@ -1,90 +1,296 @@
 ---
 export const prerender = false;
-import BaseLayout from '../layouts/BaseLayout.astro';
 
 const konu = Astro.url.searchParams.get('konu');
 const isBayilik = konu === 'bayilik';
 const phone = '905412465429';
+const pixelId = '2019909158684223';
 
 const pageTitle = isBayilik
-  ? 'Stok Pratik Bayilik ve Çözüm Ortaklığı | WhatsApp Destek Hattı'
+  ? 'Stok Pratik Çözüm Ortaklığı & Yazılım Bayiliği | WhatsApp Destek'
   : 'Stok Pratik 45 Gün Ücretsiz Deneme | WhatsApp Destek Hattı';
 
 const pageDescription = isBayilik
-  ? 'Stok Pratik Çözüm Ortaklığı ve Yazılım Bayiliği şartları hakkında WhatsApp üzerinden hemen bilgi alın.'
+  ? 'Stok Pratik Çözüm Ortaklığı ve Yazılım Bayiliği gelir modeli ve şartları hakkında WhatsApp üzerinden hemen bilgi alın.'
   : 'Stok Pratik bulut ERP ve ön muhasebe 45 gün ücretsiz deneme şifrenizi WhatsApp üzerinden hemen alın.';
+
+const badgeText = isBayilik
+  ? 'Çözüm Ortaklığı & Yazılım Bayiliği Başvurusu'
+  : '45 Gün Ücretsiz Tam Sürüm • Kredi Kartı Gerekmez';
 
 const headingText = isBayilik
   ? 'Stok Pratik Bayilik WhatsApp Hattına Bağlanılıyor...'
   : 'Stok Pratik WhatsApp Destek Hattına Bağlanılıyor...';
 
 const subText = isBayilik
-  ? 'Çözüm ortaklığı ve bayilik şartları için resmi WhatsApp hattımıza yönlendiriliyorsunuz.'
-  : '45 Gün Ücretsiz Deneme (StokPratik45Gun) şifreniz için resmi WhatsApp hattımıza yönlendiriliyorsunuz.';
+  ? 'Çözüm ortaklığı, yüksek komisyon ve bayilik şartları için doğrudan resmi WhatsApp hattımıza yönlendiriliyorsunuz.'
+  : '45 Gün Ücretsiz Deneme (StokPratik45Gun) şifreniz için doğrudan resmi WhatsApp hattımıza yönlendiriliyorsunuz.';
 
 const initialMessage = isBayilik
   ? 'Merhaba, Stok Pratik Bayilik ve Çözüm Ortaklığı şartları hakkında bilgi almak istiyorum.'
   : 'Merhaba, Stok Pratik 45 Gün Ücretsiz Deneme (StokPratik45Gun) şifremi almak istiyorum.';
 
-const initialWaUrl = `https://api.whatsapp.com/send?phone=${phone}&text=${encodeURIComponent(initialMessage)}`;
+const initialWebWaUrl = `https://wa.me/${phone}?text=${encodeURIComponent(initialMessage)}`;
+const initialAppWaUrl = `whatsapp://send?phone=${phone}&text=${encodeURIComponent(initialMessage)}`;
+const ogImage = 'https://stokpratik.com.tr/images/site-foto/fav-stok-pratik-2.png';
 ---
 
-<BaseLayout title={pageTitle} description={pageDescription}>
-  <section class="min-h-[70vh] flex items-center justify-center bg-slate-950 text-white px-4 py-16">
-    <div class="max-w-lg w-full bg-slate-900 border border-slate-800 rounded-3xl p-8 md:p-10 text-center shadow-2xl">
-      <div class="mx-auto w-16 h-16 rounded-2xl bg-emerald-500/15 border border-emerald-500/30 flex items-center justify-center mb-6">
-        <span class="w-8 h-8 rounded-full border-4 border-emerald-400 border-t-transparent animate-spin" aria-hidden="true"></span>
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={pageDescription} />
+    <link rel="canonical" href="https://stokpratik.com.tr/whatsapp" />
+    <link rel="icon" type="image/png" href="/images/site-foto/fav-stok-pratik-2.png" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://stokpratik.com.tr/whatsapp" />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={pageDescription} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:site_name" content="Stok Pratik" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:title" content={pageTitle} />
+    <meta property="twitter:description" content={pageDescription} />
+    <meta property="twitter:image" content={ogImage} />
+
+    <!-- Meta Pixel Code -->
+    <script is:inline define:vars={{ pixelId }}>
+      !(function (f, b, e, v, n, t, s) {
+        if (f.fbq) return;
+        n = f.fbq = function () {
+          n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments);
+        };
+        if (!f._fbq) f._fbq = n;
+        n.push = n;
+        n.loaded = !0;
+        n.version = '2.0';
+        n.queue = [];
+        t = b.createElement(e);
+        t.async = !0;
+        t.src = v;
+        s = b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t, s);
+      })(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', pixelId);
+      fbq('track', 'PageView');
+    </script>
+    <noscript>
+      <img
+        height="1"
+        width="1"
+        style="display:none"
+        src={`https://www.facebook.com/tr?id=${pixelId}&ev=PageView&noscript=1`}
+        alt=""
+      />
+    </noscript>
+    <!-- End Meta Pixel Code -->
+
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: radial-gradient(circle at top, #0f172a 0%, #020617 70%);
+        color: #f8fafc;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        padding: 16px;
+      }
+      .card {
+        width: 100%;
+        max-width: 480px;
+        background: rgba(15, 23, 42, 0.96);
+        border: 1px solid rgba(148, 163, 184, 0.22);
+        border-radius: 24px;
+        padding: 32px 24px;
+        text-align: center;
+        box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55);
+      }
+      .badge {
+        display: inline-block;
+        background: rgba(245, 158, 11, 0.14);
+        border: 1px solid rgba(245, 158, 11, 0.4);
+        color: #fcd34d;
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.02em;
+        padding: 6px 14px;
+        border-radius: 999px;
+        margin-bottom: 20px;
+      }
+      .spinner-wrap {
+        width: 60px;
+        height: 60px;
+        margin: 0 auto 18px;
+        border-radius: 18px;
+        background: rgba(16, 185, 129, 0.14);
+        border: 1px solid rgba(16, 185, 129, 0.35);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .spinner {
+        width: 28px;
+        height: 28px;
+        border: 3.5px solid #34d399;
+        border-top-color: transparent;
+        border-radius: 50%;
+        animation: spin 0.8s linear infinite;
+      }
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+      h1 {
+        font-size: 22px;
+        line-height: 1.3;
+        font-weight: 800;
+        color: #ffffff;
+        margin-bottom: 10px;
+      }
+      p.desc {
+        font-size: 14px;
+        line-height: 1.55;
+        color: #cbd5e1;
+        margin-bottom: 24px;
+      }
+      .btn-wa {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        width: 100%;
+        padding: 16px 20px;
+        border-radius: 16px;
+        background: #10b981;
+        color: #ffffff;
+        font-size: 16px;
+        font-weight: 800;
+        text-decoration: none;
+        box-shadow: 0 10px 25px rgba(16, 185, 129, 0.35);
+        margin-bottom: 12px;
+      }
+      .btn-wa:hover {
+        background: #059669;
+      }
+      .btn-tel {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        width: 100%;
+        padding: 13px 18px;
+        border-radius: 14px;
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        color: #f8fafc;
+        font-size: 14px;
+        font-weight: 700;
+        text-decoration: none;
+        margin-bottom: 14px;
+      }
+      .btn-tel:hover {
+        background: rgba(255, 255, 255, 0.14);
+      }
+      .fallback {
+        font-size: 12px;
+        color: #94a3b8;
+        line-height: 1.5;
+      }
+      .fallback a {
+        color: #34d399;
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="card">
+      <div id="wa-badge" class="badge">{badgeText}</div>
+
+      <div class="spinner-wrap" aria-hidden="true">
+        <span class="spinner"></span>
       </div>
 
-      <h1 id="wa-heading" class="text-2xl md:text-3xl font-extrabold text-white mb-3">
-        {headingText}
-      </h1>
-      <p id="wa-subtext" class="text-slate-300 text-sm md:text-base mb-8 leading-relaxed">
-        {subText}
-      </p>
+      <h1 id="wa-heading">{headingText}</h1>
+      <p id="wa-subtext" class="desc">{subText}</p>
 
-      <a
-        id="wa-btn"
-        href={initialWaUrl}
-        rel="noopener noreferrer"
-        class="inline-flex items-center justify-center gap-3 w-full sm:w-auto px-7 py-4 rounded-2xl bg-emerald-500 hover:bg-emerald-600 text-white font-bold text-base shadow-lg shadow-emerald-500/25 transition"
-      >
+      <a id="wa-btn" href={initialAppWaUrl} data-web-href={initialWebWaUrl} class="btn-wa" rel="noopener noreferrer">
         <span>WhatsApp ile Devam Et (0541 246 54 29)</span>
       </a>
 
-      <p class="text-xs text-slate-500 mt-5">
-        Otomatik yönlendirme başlamazsa yukarıdaki yeşil butona tıklayın.
+      <a id="tel-btn" href="tel:+905412465429" class="btn-tel">
+        <span>📞 Hemen Telefonla Ara: 0541 246 54 29</span>
+      </a>
+
+      <p class="fallback">
+        WhatsApp otomatik açılmazsa yukarıdaki yeşil butona dokunun veya
+        <a id="wa-web-link" href={initialWebWaUrl} rel="noopener noreferrer">tarayıcı bağlantısından devam edin</a>.
       </p>
-    </div>
-  </section>
+    </main>
 
-  <script is:inline>
-    (function () {
-      var params = new URLSearchParams(window.location.search);
-      var konuParam = params.get('konu');
-      var phone = '905412465429';
-      var msg =
-        konuParam === 'bayilik'
-          ? 'Merhaba, Stok Pratik Bayilik ve Çözüm Ortaklığı şartları hakkında bilgi almak istiyorum.'
-          : 'Merhaba, Stok Pratik 45 Gün Ücretsiz Deneme (StokPratik45Gun) şifremi almak istiyorum.';
+    <script is:inline define:vars={{ initialMessage }}>
+      (function () {
+        var params = new URLSearchParams(window.location.search);
+        var konuParam = params.get('konu') || '45gun';
+        var phone = '905412465429';
+        var msg = initialMessage;
+        var encodedMsg = encodeURIComponent(msg);
+        var appWaUrl = 'whatsapp://send?phone=' + phone + '&text=' + encodedMsg;
+        var webWaUrl = 'https://wa.me/' + phone + '?text=' + encodedMsg;
+        var isMobile = /Android|iPhone|iPad|iPod|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        var primaryUrl = isMobile ? appWaUrl : webWaUrl;
 
-      var waUrl = 'https://api.whatsapp.com/send?phone=' + phone + '&text=' + encodeURIComponent(msg);
+        var btn = document.getElementById('wa-btn');
+        var webLink = document.getElementById('wa-web-link');
+        var telBtn = document.getElementById('tel-btn');
 
-      var btn = document.getElementById('wa-btn');
-      if (btn) btn.href = waUrl;
+        if (btn) {
+          btn.href = primaryUrl;
+          btn.addEventListener('click', function () {
+            if (typeof window.fbq === 'function') {
+              window.fbq('track', 'Contact', { content_name: konuParam, content_category: 'WhatsApp' });
+            }
+          });
+        }
+        if (webLink) {
+          webLink.href = webWaUrl;
+          webLink.addEventListener('click', function () {
+            if (typeof window.fbq === 'function') {
+              window.fbq('track', 'Contact', { content_name: konuParam + '_web', content_category: 'WhatsApp' });
+            }
+          });
+        }
+        if (telBtn) {
+          telBtn.addEventListener('click', function () {
+            if (typeof window.fbq === 'function') {
+              window.fbq('track', 'Contact', { content_name: konuParam + '_tel', content_category: 'Phone' });
+            }
+          });
+        }
 
-      var heading = document.getElementById('wa-heading');
-      var subtext = document.getElementById('wa-subtext');
-      if (konuParam === 'bayilik') {
-        if (heading) heading.textContent = 'Stok Pratik Bayilik WhatsApp Hattına Bağlanılıyor...';
-        if (subtext) subtext.textContent = 'Çözüm ortaklığı ve bayilik şartları için resmi WhatsApp hattımıza yönlendiriliyorsunuz.';
-      }
-
-      try {
-        window.location.replace(waUrl);
-      } catch (err) {
-        window.location.href = waUrl;
-      }
-    })();
-  </script>
-</BaseLayout>
+        setTimeout(function () {
+          if (typeof window.fbq === 'function') {
+            window.fbq('track', 'Contact', { content_name: konuParam, content_category: 'WhatsApp_Auto' });
+          }
+          try {
+            window.location.href = primaryUrl;
+          } catch (err) {
+            window.location.href = webWaUrl;
+          }
+        }, 280);
+      })();
+    </script>
+  </body>
+</html>

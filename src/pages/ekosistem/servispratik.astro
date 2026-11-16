@@ -1,0 +1,421 @@
+---
+// İzole Tanıtım Sayfası - ServisPratik Barkodlu Teknik Servis Portalı | StokPratik Ekosistemi
+// Bu sayfa mevcut site stillerinden tamamen bağımsız çalışır.
+---
+<!DOCTYPE html><html lang="tr"><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0" name="viewport"><meta content="web_standard" name="shell-type"><title>ServisPratik Barkodlu Teknik Servis Portalı | StokPratik Ekosistemi</title><link href="https://fonts.googleapis.com" rel="preconnect"><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&amp;display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"on-primary":"#ffffff","inverse-on-surface":"#eef0ff","on-tertiary-fixed-variant":"#005320","on-secondary-fixed":"#00164e","on-primary-fixed-variant":"#93000b","outline":"#916f6b","on-tertiary":"#ffffff","secondary-container":"#8fa7fe","surface-container-highest":"#dae2fd","surface-tint":"#bf0715","on-tertiary-container":"#e7ffe4","primary":"#b70011","inverse-primary":"#ffb4ab","secondary":"#4059aa","on-primary-fixed":"#410002","secondary-fixed-dim":"#b6c4ff","primary-fixed-dim":"#ffb4ab","tertiary-container":"#008438","surface-dim":"#d2d9f4","on-error-container":"#93000a","surface":"#faf8ff","error":"#ba1a1a","on-secondary-fixed-variant":"#264191","surface-container-high":"#e2e7ff","on-surface":"#131b2e","on-background":"#131b2e","surface-variant":"#dae2fd","tertiary-fixed":"#7ffc97","on-error":"#ffffff","surface-bright":"#faf8ff","tertiary":"#00682b","tertiary-fixed-dim":"#62df7d","primary-fixed":"#ffdad6","on-surface-variant":"#5c403c","on-primary-container":"#fff6f5","error-container":"#ffdad6","surface-container-low":"#f2f3ff","on-secondary-container":"#1d3989","inverse-surface":"#283044","surface-container-lowest":"#ffffff","primary-container":"#dc2626","on-tertiary-fixed":"#002109","outline-variant":"#e6bdb8","on-secondary":"#ffffff","surface-container":"#eaedff","background":"#faf8ff","secondary-fixed":"#dce1ff"},borderRadius:{DEFAULT:"0.25rem",lg:"0.5rem",xl:"0.75rem",full:"9999px"},spacing:{"space-3xl":"4rem","space-md":"1rem","space-sm":"0.75rem","space-xs":"0.5rem",gutter:"1.5rem",margin:"2rem","gutter-sm":"1rem","margin-sm":"1rem","margin-lg":"3rem","space-2xs":"0.25rem","space-lg":"1.5rem","space-xl":"2rem","gutter-lg":"2rem","space-2xl":"3rem"},fontFamily:{"body-lg":["Plus Jakarta Sans"],"headline-lg":["Plus Jakarta Sans"],"headline-sm":["Plus Jakarta Sans"],"display-lg":["Plus Jakarta Sans"],"label-sm":["Plus Jakarta Sans"],"label-lg":["Plus Jakarta Sans"],"label-md":["Plus Jakarta Sans"],"numeric-table":["Plus Jakarta Sans"],"display-lg-mobile":["Plus Jakarta Sans"],"headline-md":["Plus Jakarta Sans"],"body-md":["Plus Jakarta Sans"],"body-sm":["Plus Jakarta Sans"],"headline-xl":["Plus Jakarta Sans"],"headline-xl-mobile":["Plus Jakarta Sans"]},fontSize:{"body-lg":["16px",{lineHeight:"26px",letterSpacing:"-0.005em",fontWeight:"400"}],"headline-lg":["24px",{lineHeight:"32px",letterSpacing:"-0.02em",fontWeight:"700"}],"headline-sm":["16px",{lineHeight:"24px",letterSpacing:"-0.01em",fontWeight:"600"}],"display-lg":["40px",{lineHeight:"48px",letterSpacing:"-0.03em",fontWeight:"800"}],"label-sm":["11px",{lineHeight:"14px",letterSpacing:"0.04em",fontWeight:"700"}],"label-lg":["14px",{lineHeight:"20px",letterSpacing:"0.01em",fontWeight:"600"}],"label-md":["12px",{lineHeight:"16px",letterSpacing:"0.02em",fontWeight:"600"}],"numeric-table":["13px",{lineHeight:"18px",letterSpacing:"-0.01em",fontWeight:"600"}],"display-lg-mobile":["30px",{lineHeight:"38px",letterSpacing:"-0.02em",fontWeight:"800"}],"headline-md":["20px",{lineHeight:"28px",letterSpacing:"-0.015em",fontWeight:"600"}],"body-md":["14px",{lineHeight:"22px",letterSpacing:"0em",fontWeight:"400"}],"body-sm":["12px",{lineHeight:"18px",letterSpacing:"0.005em",fontWeight:"400"}],"headline-xl":["32px",{lineHeight:"40px",letterSpacing:"-0.025em",fontWeight:"700"}],"headline-xl-mobile":["24px",{lineHeight:"32px",letterSpacing:"-0.02em",fontWeight:"700"}]}}}};</script>
+    <meta name="description" content="Cihaz kabul, barkodlu servis fişi, WhatsApp üzerinden canlı durum sorgulama, yedek parça ve garanti takip portalı." />
+    <link rel="canonical" href="https://stokpratik.com.tr/ekosistem/servispratik" />
+    <meta property="og:title" content="ServisPratik Barkodlu Teknik Servis Portalı | StokPratik Ekosistemi" />
+    <meta property="og:description" content="Cihaz kabul, barkodlu servis fişi, WhatsApp üzerinden canlı durum sorgulama, yedek parça ve garanti takip portalı." />
+    <meta property="og:url" content="https://stokpratik.com.tr/ekosistem/servispratik" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="StokPratik" />
+    <meta property="og:image" content="https://lh3.googleusercontent.com/aida-public/AB6AXuDRPclUgpTX-_PXtrOjndC2Cvk8Gq2wsHXQQSlAzt7lJBpxmUI7rPK2thEXYlri_uoIfF3y4w1R8jb2wUgjvW2ziR--7rVsrT6sFS9y7qse9P0FluS6Y6KQudffk_tQ9b0RghVXu-MH74g1NO9doR-4ZlLE5EVWm3H0PZpINMRh3abzWEcVH9xYT4JD7eHBW6wAqGeqYM1D0CDMilN-ag3PIAZzlXLbUj2HudCzn5ei" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="ServisPratik Barkodlu Teknik Servis Portalı | StokPratik Ekosistemi" />
+    <meta name="twitter:description" content="Cihaz kabul, barkodlu servis fişi, WhatsApp üzerinden canlı durum sorgulama, yedek parça ve garanti takip portalı." />
+    <meta name="twitter:image" content="https://lh3.googleusercontent.com/aida-public/AB6AXuDRPclUgpTX-_PXtrOjndC2Cvk8Gq2wsHXQQSlAzt7lJBpxmUI7rPK2thEXYlri_uoIfF3y4w1R8jb2wUgjvW2ziR--7rVsrT6sFS9y7qse9P0FluS6Y6KQudffk_tQ9b0RghVXu-MH74g1NO9doR-4ZlLE5EVWm3H0PZpINMRh3abzWEcVH9xYT4JD7eHBW6wAqGeqYM1D0CDMilN-ag3PIAZzlXLbUj2HudCzn5ei" />
+  
+</head><body class="bg-surface font-body-md text-body-md text-on-surface antialiased selection:bg-primary selection:text-on-primary"><header class="fixed top-0 left-0 right-0 z-50 bg-surface/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-20 max-w-7xl mx-auto px-6 lg:px-12 flex items-center justify-between gap-space-md"><div class="flex items-center gap-space-sm shrink-0"><div class="w-11 h-11 rounded-xl bg-surface-container flex items-center justify-center relative overflow-hidden shadow-[0_1px_2px_rgba(15,23,42,0.04)]"><span class="material-symbols-outlined text-secondary absolute -left-1 text-[24px]">build</span><span class="material-symbols-outlined text-primary absolute -right-0.5 text-[26px]">verified_user</span></div><div class="flex flex-col"><span class="font-headline-lg text-headline-sm tracking-tight text-on-surface leading-none">Servis<span class="text-primary">Pratik</span></span><span class="font-label-sm text-label-sm text-on-surface-variant tracking-normal mt-1">Teknik Servis &amp; Barkodlu Takip</span></div></div><nav class="hidden xl:flex items-center gap-1" data-active-classes="bg-surface-container-high text-on-surface font-bold rounded-lg"><a aria-current="page" class="px-space-sm py-space-xs transition-colors bg-surface-container-high text-on-surface font-bold rounded-lg" data-path="barkodlu-cihaz-kabul" href="#">Barkodlu Cihaz Kabul</a><a class="px-space-sm py-space-xs font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface transition-colors rounded-lg" data-path="whatsapp-canli-takip" href="#">WhatsApp Canlı Takip</a><a class="px-space-sm py-space-xs font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface transition-colors rounded-lg" data-path="yedek-parca-stok" href="#">Yedek Parça &amp; Stok</a><a class="px-space-sm py-space-xs font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface transition-colors rounded-lg" data-path="garanti-takibi" href="#">Garanti Takibi</a><a class="px-space-sm py-space-xs font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface transition-colors rounded-lg" data-path="nasil-calisir" href="#">Nasıl Çalışır?</a></nav><div class="flex items-center gap-space-sm shrink-0"><a class="hidden sm:inline-flex items-center gap-space-2xs px-space-md py-space-xs rounded-full bg-surface-container-lowest text-tertiary font-label-md text-label-md shadow-[0_1px_2px_rgba(15,23,42,0.04)] hover:bg-surface-container-low transition-all" href="https://wa.me/905412465429?text=Merhaba%2C%20ServisPratik%20Barkodlu%20Teknik%20Servis%20Portal%C4%B1%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum." target="_blank" rel="noopener noreferrer"><span class="material-symbols-outlined text-[18px]">chat</span><span>WhatsApp ile Soru Sor</span></a><a class="inline-flex items-center gap-space-2xs px-space-md py-space-xs rounded-xl bg-primary-container text-on-primary-container font-label-lg text-label-lg shadow-[0_4px_12px_rgba(220,38,38,0.28)] hover:brightness-105 transition-all" href="https://erp-eticaret.stokpratik.com.tr/" target="_blank" rel="noopener noreferrer"><span>45 Gün Ücretsiz Başla</span><span class="material-symbols-outlined text-[18px]">arrow_forward</span></a><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center shrink-0"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="w-full pt-20 bg-surface min-h-[calc(100vh-80px)]"><div class="flex flex-col w-full">
+<!-- ================= 1. HERO SECTION ================= -->
+<section class="w-full bg-surface-container-lowest py-space-xl lg:py-space-3xl overflow-hidden relative">
+<div class="max-w-7xl mx-auto px-6 lg:px-12">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-xl lg:gap-space-2xl items-center">
+<!-- Left Column -->
+<div class="lg:col-span-7 flex flex-col gap-space-md">
+<!-- Category Badge -->
+<div class="inline-flex items-center gap-space-xs px-space-sm py-space-2xs rounded-full bg-surface-container-high text-secondary font-label-md text-label-md w-fit shadow-sm">
+<span class="material-symbols-outlined text-[18px]">build</span>
+<span class="tracking-wide uppercase">TEKNİK SERVİS, CİHAZ KABUL &amp; GARANTİ TAKİP ÜSSÜ</span>
+</div>
+<!-- Main Headline -->
+<h1 class="font-display-lg text-display-lg-mobile lg:text-display-lg text-on-surface leading-tight font-extrabold tracking-tight">
+            “Cihazım Ne Zaman Biter?” Telefonlarına Son! 
+            <span class="text-primary-container">Barkodlu Kabul</span> ve WhatsApp'tan Canlı Onarım Takibi.
+          </h1>
+<!-- Subheadline -->
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">
+            Müşterinizin cihazını barkodla teslim alın; durum güncellendikçe müşteriye otomatik WhatsApp bilgilendirmesi gitsin. Kullanılan yedek parça ve işçilik tek tıkla faturaya ve stoğa işlensin.
+          </p>
+<!-- Promotional Hook Box -->
+<div class="p-space-md rounded-xl bg-error-container/30 text-on-surface flex items-start sm:items-center gap-space-sm shadow-sm">
+<span class="material-symbols-outlined text-primary text-[28px] shrink-0">featured_seasonal_and_gifts</span>
+<p class="font-label-lg text-label-lg font-semibold text-on-surface">
+              45 Gün Boyunca Tüm Teknik Servis ve Garanti Modüllerini Kredi Kartsız, Taahhütsüz Ücretsiz Kullanın!
+            </p>
+</div>
+<!-- Trust Badges Row -->
+<div class="flex flex-wrap items-center gap-x-space-md gap-y-space-xs text-on-surface font-label-md text-label-md pt-space-xs">
+<div class="flex items-center gap-1.5 text-tertiary">
+<span class="material-symbols-outlined text-[18px]">check_circle</span>
+<span class="text-on-surface">45 Gün Sınırsız Kullanım</span>
+</div>
+<div class="flex items-center gap-1.5 text-tertiary">
+<span class="material-symbols-outlined text-[18px]">qr_code_scanner</span>
+<span class="text-on-surface">Barkodlu Cihaz &amp; Parça Takibi</span>
+</div>
+<div class="flex items-center gap-1.5 text-tertiary">
+<span class="material-symbols-outlined text-[18px]">credit_card_off</span>
+<span class="text-on-surface">Kart Bilgisi İstenmez</span>
+</div>
+</div>
+<!-- Dual Hero Action Buttons -->
+<div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-space-sm pt-space-xs">
+<a class="px-space-xl py-space-md rounded-xl bg-gradient-to-r from-orange-600 to-red-600 text-on-primary font-headline-sm text-headline-sm shadow-lg hover:shadow-xl hover:brightness-105 transition-all flex items-center justify-center gap-space-xs" href="https://erp-eticaret.stokpratik.com.tr/" target="_blank" rel="noopener noreferrer">
+<span class="material-symbols-outlined text-[20px]">local_fire_department</span>
+<span>45 Gün Ücretsiz Başla (Firma Kaydı)</span>
+<span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+</a>
+<a class="px-space-lg py-space-md rounded-xl bg-tertiary-container hover:bg-tertiary text-on-tertiary font-headline-sm text-headline-sm shadow-md transition-all flex items-center justify-center gap-space-xs" href="https://api.whatsapp.com/send?phone=908508851000&amp;text=ServisPratik%20Hakk%C4%B1nda%20Bilgi%20Almak%20Istiyorum" rel="noopener noreferrer" target="_blank">
+<span class="material-symbols-outlined text-[22px]">chat</span>
+<span>WhatsApp ile Soru Sor</span>
+</a>
+</div>
+</div>
+<!-- Right Column (Hero Visual + Overlays) -->
+<div class="lg:col-span-5 relative mt-space-md lg:mt-0">
+<!-- Background Glow Element -->
+<div class="absolute -inset-4 bg-secondary/10 rounded-2xl filter blur-2xl -z-10"></div>
+<div class="relative rounded-2xl overflow-hidden shadow-xl bg-surface-container-high aspect-[16/10] sm:aspect-[1.79/1]">
+<img alt="Modern Servis Karşılama Tezgahı ve Canlı Servis Takip Ekranı" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDnpDaIgmyIMRqtcLLzsdRSUXACxXEY6oIkcnwBYBfcwoCrElPVr1jsIpBrwvO8TGuhHPhGqhF9EIJuavRQ94lrsDbodbVC2KUwRHsbkJ2xJp_kRVtMIR-gOPQMwC8eNLseIxvOHBLE3I6zfG3x3bacXmQi8xq7Xotp2poE5fDFambSGUTKVVSkyz-inQ19e3FCO_I4bzuKiJsw-_YR-PwjpADLRJrABmP24j4a4d0o">
+<div class="absolute inset-0 bg-gradient-to-t from-slate-900/40 via-transparent to-transparent"></div>
+<!-- Overlaid Floating Badge 1 (Top Right) -->
+<div class="absolute top-4 right-4 bg-surface-container-lowest/95 backdrop-blur-md px-space-sm py-space-2xs rounded-xl shadow-lg flex items-center gap-2 max-w-[85%]">
+<span class="w-2.5 h-2.5 rounded-full bg-tertiary animate-pulse shrink-0"></span>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant leading-tight">Servis Formu: #SRV-1049</span>
+<span class="font-label-md text-label-md font-bold text-tertiary leading-tight">ONARIM TAMAMLANDI ✅</span>
+</div>
+</div>
+<!-- Overlaid Floating Badge 2 (Bottom Left) -->
+<div class="absolute bottom-4 left-4 bg-surface-container-lowest/95 backdrop-blur-md px-space-sm py-space-2xs rounded-xl shadow-lg flex items-center gap-2 max-w-[90%]">
+<span class="material-symbols-outlined text-tertiary text-[20px] shrink-0">mark_chat_read</span>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant leading-tight">Müşteri Bilgilendirme</span>
+<span class="font-label-md text-label-md font-bold text-on-surface leading-tight">WhatsApp Mesajı İletildi 💬</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ================= 2. STATS & OPERATION TRUST BAR ================= -->
+<section class="w-full bg-surface-container-lowest py-space-xl border-t border-b border-surface-container-high">
+<div class="max-w-7xl mx-auto px-6 lg:px-12">
+<div class="grid grid-cols-2 lg:grid-cols-4 gap-space-lg lg:gap-space-xl">
+<div class="flex flex-col items-center lg:items-start p-space-sm rounded-xl bg-surface-container-low">
+<span class="font-headline-xl text-headline-xl text-primary font-extrabold tracking-tight">450.000+</span>
+<span class="font-label-md text-label-md text-on-surface-variant font-medium mt-1">Tamamlanan Servis Fişi</span>
+</div>
+<div class="flex flex-col items-center lg:items-start p-space-sm rounded-xl bg-surface-container-low">
+<span class="font-headline-xl text-headline-xl text-secondary font-extrabold tracking-tight">15 Saniye</span>
+<span class="font-label-md text-label-md text-on-surface-variant font-medium mt-1">Termal Barkod Basım Süresi</span>
+</div>
+<div class="flex flex-col items-center lg:items-start p-space-sm rounded-xl bg-surface-container-low">
+<span class="font-headline-xl text-headline-xl text-tertiary font-extrabold tracking-tight">%98</span>
+<span class="font-label-md text-label-md text-on-surface-variant font-medium mt-1">WhatsApp Müşteri Memnuniyeti</span>
+</div>
+<div class="flex flex-col items-center lg:items-start p-space-sm rounded-xl bg-surface-container-low">
+<span class="font-headline-xl text-headline-xl text-on-surface font-extrabold tracking-tight">0 TL</span>
+<span class="font-label-md text-label-md text-on-surface-variant font-medium mt-1">Yedek Parça Kaybı &amp; Kaçağı</span>
+</div>
+</div>
+</div>
+</section>
+<!-- ================= 3. TEKNİK SERVİS KARMAŞASINI BİTİREN 3 BÜYÜK GÜÇ ================= -->
+<section class="w-full bg-surface-container-low py-space-3xl">
+<div class="max-w-7xl mx-auto px-6 lg:px-12">
+<div class="text-center max-w-3xl mx-auto mb-space-2xl">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary font-bold">Maksimum Operasyonel Hız</span>
+<h2 class="font-headline-xl text-headline-xl text-on-surface font-bold tracking-tight mt-1">
+          Teknik Servis Karmaşasını Bitiren 3 Büyük Güç
+        </h2>
+<p class="font-body-md text-body-md text-on-surface-variant mt-2">
+          Atölye ve müşteri arasındaki bilgi akışını standartlaştırın; kayıp cihazları, onaylanmayan fiyatları ve eksik parçaları unutun.
+        </p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-lg">
+<!-- Card 1 -->
+<div class="bg-surface-container-lowest rounded-2xl p-space-xl flex flex-col justify-between shadow-sm hover:shadow-md transition-all">
+<div class="flex flex-col gap-space-md">
+<div class="w-14 h-14 rounded-xl bg-primary-fixed flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[32px]">label</span>
+</div>
+<h3 class="font-headline-lg text-headline-sm font-bold text-on-surface">
+              Barkodlu Cihaz Kabul &amp; Termal Etiket
+            </h3>
+<p class="font-body-md text-body-md text-on-surface-variant">
+              Cihaz geldiğinde arıza notu, seri numarası ve müşteri bilgisiyle anında barkodlu etiket ve teslim fişi basın; hangi cihaz kime ait karışıklığını sıfırlayın. Termal yazıcıdan 1 saniyede çıkan çift etiket (biri cihaza, biri müşteriye).
+            </p>
+</div>
+<div class="mt-space-lg pt-space-sm border-t border-surface-container flex items-center gap-2 text-primary font-label-md text-label-md">
+<span class="material-symbols-outlined text-[18px]">print</span>
+<span>Hızlı Termal ESC/POS Entegrasyonu</span>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="bg-surface-container-lowest rounded-2xl p-space-xl flex flex-col justify-between shadow-sm hover:shadow-md transition-all">
+<div class="flex flex-col gap-space-md">
+<div class="w-14 h-14 rounded-xl bg-tertiary-fixed flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined text-[32px]">forum</span>
+</div>
+<h3 class="font-headline-lg text-headline-sm font-bold text-on-surface">
+              WhatsApp Canlı Onarım &amp; Fiyat Onayı
+            </h3>
+<p class="font-body-md text-body-md text-on-surface-variant">
+              Müşteri arayıp sormadan, “Cihazınız incelendi, parça bedeli 1.200 TL, onaylıyor musunuz?” linki WhatsApp'tan gitsin; müşteri cep telefonundan tek tuşla arıza tespitini ve fiyatı onaylasın.
+            </p>
+</div>
+<div class="mt-space-lg pt-space-sm border-t border-surface-container flex items-center gap-2 text-tertiary font-label-md text-label-md">
+<span class="material-symbols-outlined text-[18px]">verified</span>
+<span>Çift Taraflı Şeffaf Dijital Onay</span>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="bg-surface-container-lowest rounded-2xl p-space-xl flex flex-col justify-between shadow-sm hover:shadow-md transition-all">
+<div class="flex flex-col gap-space-md">
+<div class="w-14 h-14 rounded-xl bg-secondary-fixed flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[32px]">inventory_2</span>
+</div>
+<h3 class="font-headline-lg text-headline-sm font-bold text-on-surface">
+              Otomatik Yedek Parça &amp; Seri No / Garanti
+            </h3>
+<p class="font-body-md text-body-md text-on-surface-variant">
+              Serviste kullanılan ekran, batarya veya yedek parça depodan otomatik düşsün; cihazın garanti süresi ve geçmiş tüm servis müdahaleleri seri numarasından tek tıkla çıksın.
+            </p>
+</div>
+<div class="mt-space-lg pt-space-sm border-t border-surface-container flex items-center gap-2 text-secondary font-label-md text-label-md">
+<span class="material-symbols-outlined text-[18px]">sync_alt</span>
+<span>StokPratik ERP ile Canlı Senkron</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ================= 4. CANLI SERVİS & WHATSAPP TAKİP SİMÜLASYONU ================= -->
+<section class="w-full bg-surface-container-lowest py-space-3xl overflow-hidden">
+<div class="max-w-7xl mx-auto px-6 lg:px-12">
+<div class="max-w-3xl mb-space-2xl">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-primary font-bold">Gerçek Zamanlı Süreç Deneyimi</span>
+<h2 class="font-headline-xl text-headline-xl text-on-surface font-bold tracking-tight mt-1">
+          Canlı Onarım Aşaması &amp; WhatsApp Durum Takip Simülasyonu
+        </h2>
+<p class="font-body-md text-body-md text-on-surface-variant mt-2">
+          Gelen her cihazın her anını teknisyen masasından müşterinin cep ekranına kadar dijitalleştiriyoruz.
+        </p>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-xl items-center">
+<!-- Left: Image showing workbench, thermal printer and WhatsApp tracking -->
+<div class="lg:col-span-6 rounded-2xl overflow-hidden shadow-lg bg-surface-container-high aspect-[1.79/1]">
+<img alt="Elektronik Tamir Tezgahında Termal Barkod Yazıcı ve WhatsApp Takip Arayüzü" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBpl66sStxL_J3gAp4GKk_V86pnF5qYfddUgXB_tKumGkF2zc0tXE1olv6haOyFEFSFHAuIEFr0r57B5h6e5Ih3MUHLPOYE6aeEe4i-rqXoqeaboh9kirDQiCtsWNzufob4fj3qhwlY6WS2hnrK-6h67C2Tdt6uf3wvnQv0g-Y7K39SzD0ororBqqHjJ2aHldxjlTUBeoNGcOujnnKhmNVxDM0NkDYoo6WgUIV4NTAH">
+</div>
+<!-- Right: Interactive Live Mockup Ticket Card -->
+<div class="lg:col-span-6 bg-surface-container-lowest rounded-2xl shadow-xl p-space-lg sm:p-space-xl flex flex-col gap-space-md border border-surface-container-high">
+<!-- Mockup Header -->
+<div class="flex flex-wrap items-center justify-between gap-space-xs pb-space-sm border-b border-surface-container">
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant block">Servis Kaydı</span>
+<span class="font-headline-sm text-headline-sm font-bold text-on-surface">#SP-94012</span>
+</div>
+<div class="text-right">
+<span class="font-label-sm text-label-sm text-on-surface-variant block">Cihaz Modeli</span>
+<span class="font-label-lg text-label-lg font-semibold text-secondary">Apple MacBook Pro M2</span>
+</div>
+</div>
+<!-- Customer info line -->
+<div class="flex items-center justify-between text-body-sm text-on-surface-variant py-1 bg-surface-container-low px-3 rounded-lg">
+<span><strong>Müşteri:</strong> Selin Yılmaz</span>
+<span><strong>İletişim:</strong> 0532 *** ** 44</span>
+</div>
+<!-- Live Timeline Steps -->
+<div class="flex flex-col gap-3 my-1">
+<!-- Step 1 -->
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-tertiary text-[20px] shrink-0 mt-0.5">check_circle</span>
+<div class="flex-1 flex justify-between items-baseline">
+<span class="font-body-md text-body-md text-on-surface font-medium">Cihaz Kabul &amp; Barkod Basıldı</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">10:15</span>
+</div>
+</div>
+<!-- Step 2 -->
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-tertiary text-[20px] shrink-0 mt-0.5">check_circle</span>
+<div class="flex-1 flex justify-between items-baseline">
+<span class="font-body-md text-body-md text-on-surface font-medium">Teknisyen Teşhisi: Ekran Değişimi &amp; Macun</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">11:30</span>
+</div>
+</div>
+<!-- Step 3 -->
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-tertiary text-[20px] shrink-0 mt-0.5">thumb_up</span>
+<div class="flex-1 flex justify-between items-baseline">
+<span class="font-body-md text-body-md text-on-surface font-medium">WhatsApp Üzerinden 3.450 ₺ Fiyat Onayı Alındı</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">11:42</span>
+</div>
+</div>
+<!-- Step 4 (Current) -->
+<div class="flex items-start gap-3 bg-secondary-fixed/20 p-2.5 rounded-lg">
+<span class="material-symbols-outlined text-secondary text-[20px] shrink-0 mt-0.5 animate-spin">sync</span>
+<div class="flex-1">
+<span class="font-body-md text-body-md text-on-surface font-bold block">İşlemde: Orijinal Parça Takıldı, Kalite Testi Yapılıyor</span>
+<span class="font-label-sm text-label-sm text-secondary font-medium">Teknisyen: Murat K. (Masa #4)</span>
+</div>
+</div>
+</div>
+<!-- Bottom Inventory & Guarantee Details -->
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-space-xs pt-space-xs">
+<div class="bg-surface-container-low p-space-xs rounded-lg flex items-center gap-2">
+<span class="material-symbols-outlined text-tertiary text-[18px]">inventory</span>
+<span class="font-label-sm text-label-sm text-on-surface">1x Retina Panel (Raftan Düşüldü ✅)</span>
+</div>
+<div class="bg-surface-container-low p-space-xs rounded-lg flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[18px]">verified_user</span>
+<span class="font-label-sm text-label-sm text-on-surface">6 Ay Servis Güvencesi Aktif 🛡️</span>
+</div>
+</div>
+<!-- Simulated Action Button -->
+<div class="pt-space-xs">
+<button class="w-full py-space-sm px-space-md rounded-xl bg-tertiary-container hover:bg-tertiary text-on-tertiary font-label-lg text-label-lg transition-all flex items-center justify-center gap-2 shadow-sm" type="button">
+<span class="material-symbols-outlined text-[18px]">send</span>
+<span>Müşteriye Canlı Konum ve Hazır Mesajı Gönder</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ================= 5. 45 GÜNLÜK ÖZEL TANITIM ŞERİDİ ================= -->
+<section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 my-space-lg w-full">
+<div class="relative overflow-hidden rounded-3xl bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 text-on-primary p-space-xl lg:p-space-2xl shadow-2xl">
+<!-- Ambient background decoration -->
+<div class="absolute -right-20 -bottom-20 w-80 h-80 rounded-full bg-primary/20 filter blur-3xl pointer-events-none"></div>
+<div class="relative z-10 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-space-xl">
+<div class="flex flex-col gap-space-sm max-w-3xl">
+<div class="inline-flex items-center gap-1.5 px-space-sm py-1 rounded-full bg-white/10 text-on-primary font-label-sm text-label-sm uppercase tracking-wider w-fit">
+<span>🌟</span>
+<span>REKLAM ZİYARETÇİLERİMİZE ÖZEL KAMPANYA</span>
+</div>
+<h2 class="font-headline-xl text-headline-xl font-extrabold tracking-tight text-white leading-tight">
+            45 GÜN BOYUNCA SERVİSPRATİK TAMAMEN ÜCRETSİZ!
+          </h2>
+<p class="font-body-md text-body-md text-surface-container-high leading-relaxed">
+            Tüm teknisyenlerinizi, şubelerinizi ve yedek parça deponuzu sisteme tanımlayın; 45 gün boyunca sınırsız servis fişi açıp WhatsApp takibini test edin. Kredi kartı istenmez, hiçbir taahhüt taşımaz.
+          </p>
+</div>
+<div class="shrink-0 w-full lg:w-auto">
+<a class="w-full lg:w-auto px-space-xl py-space-md rounded-xl bg-gradient-to-r from-orange-500 to-red-600 text-white font-headline-sm text-headline-sm shadow-xl hover:brightness-110 transition-all flex items-center justify-center gap-space-xs text-center" href="https://erp-eticaret.stokpratik.com.tr/" target="_blank" rel="noopener noreferrer">
+<span>Firma Kaydını Oluştur &amp; 45 Gün Ücretsiz Başla</span>
+<span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+</section>
+<!-- ================= 6. CANLI DESTEK & WHATSAPP DANIŞMA BÖLÜMÜ ================= -->
+<section class="w-full bg-surface-container-low py-space-2xl">
+<div class="max-w-4xl mx-auto px-6">
+<div class="bg-surface-container-lowest rounded-2xl p-space-xl shadow-sm flex flex-col sm:flex-row items-center gap-space-lg text-center sm:text-left">
+<!-- Consultant Avatar Icon -->
+<div class="w-20 h-20 rounded-2xl bg-secondary-fixed flex items-center justify-center text-secondary shrink-0 relative">
+<span class="material-symbols-outlined text-[44px]">support_agent</span>
+<span class="w-4 h-4 rounded-full bg-tertiary absolute -bottom-1 -right-1 ring-4 ring-white"></span>
+</div>
+<!-- Text Block -->
+<div class="flex flex-col gap-space-xs flex-1">
+<h3 class="font-headline-lg text-headline-md font-bold text-on-surface">
+            Sektörünüze Özel Servis Formlarını Birlikte Kuralım
+          </h3>
+<p class="font-body-md text-body-md text-on-surface-variant">
+            Sektörünüze (telefon, bilgisayar, beyaz eşya, kombi, oto servis, medikal vb.) özel servis formlarını nasıl uyarlayacağınızı teknik danışmanımıza WhatsApp'tan 2 dakikada danışın.
+          </p>
+</div>
+<!-- Green Action Button -->
+<div class="shrink-0 w-full sm:w-auto">
+<a class="w-full px-space-lg py-space-md rounded-xl bg-tertiary-container hover:bg-tertiary text-on-tertiary font-label-lg text-label-lg shadow-md transition-all flex items-center justify-center gap-2" href="https://api.whatsapp.com/send?phone=908508851000&amp;text=ServisPratik%20Kurulum%20Danismanligi%20Istiyorum" rel="noopener noreferrer" target="_blank">
+<span class="material-symbols-outlined text-[20px]">chat</span>
+<span>WhatsApp'tan Soru Sor</span>
+</a>
+</div>
+</div>
+</div>
+</section>
+<!-- ================= 7. SIKÇA SORULAN SORULAR ================= -->
+<section class="w-full bg-surface-container-lowest py-space-3xl">
+<div class="max-w-7xl mx-auto px-6 lg:px-12">
+<div class="text-center max-w-2xl mx-auto mb-space-2xl">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary font-bold">Merak Edilenler</span>
+<h2 class="font-headline-xl text-headline-xl text-on-surface font-bold tracking-tight mt-1">
+          Sıkça Sorulan Sorular
+        </h2>
+<p class="font-body-md text-body-md text-on-surface-variant mt-2">
+          ServisPratik sistemi, kurulum süreci ve ücretsiz deneme hakkında aklınıza takılan sorular.
+        </p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-lg">
+<!-- Q1 -->
+<div class="p-space-lg rounded-2xl bg-surface-container-low flex flex-col gap-space-xs">
+<div class="flex items-center gap-2 text-on-surface font-headline-sm text-headline-sm font-bold">
+<span class="material-symbols-outlined text-primary text-[22px]">help</span>
+<h4>Farklı sektörlerdeki servis tiplerine uyar mı?</h4>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant pl-7">
+            Evet. Elektronik, cep telefonu/bilgisayar, oto servis, beyaz eşya, kombi/klima, küçük ev aletleri, bisiklet/motor ve endüstriyel tüm teknik servis süreçlerine %100 uyumludur.
+          </p>
+</div>
+<!-- Q2 -->
+<div class="p-space-lg rounded-2xl bg-surface-container-low flex flex-col gap-space-xs">
+<div class="flex items-center gap-2 text-on-surface font-headline-sm text-headline-sm font-bold">
+<span class="material-symbols-outlined text-primary text-[22px]">help</span>
+<h4>Kaç teknisyen ve servis fişi açabilirim?</h4>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant pl-7">
+            45 günlük ücretsiz kullanım süresince sınırsız sayıda teknisyen, usta ve atölye personeli tanımlayabilir; dilediğiniz kadar barkodlu cihaz kabul fişi düzenleyebilirsiniz.
+          </p>
+</div>
+<!-- Q3 -->
+<div class="p-space-lg rounded-2xl bg-surface-container-low flex flex-col gap-space-xs">
+<div class="flex items-center gap-2 text-on-surface font-headline-sm text-headline-sm font-bold">
+<span class="material-symbols-outlined text-primary text-[22px]">help</span>
+<h4>Yedek parça stokları ve kâr marjı takip edilebilir mi?</h4>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant pl-7">
+            Kesinlikle. Servise giren her parçanın alış ve satış fiyatı tutulur; servis formu kapandığında yedek parça depodan otomatik düşer ve kâr/zarar raporlanır.
+          </p>
+</div>
+<!-- Q4 -->
+<div class="p-space-lg rounded-2xl bg-surface-container-low flex flex-col gap-space-xs">
+<div class="flex items-center gap-2 text-on-surface font-headline-sm text-headline-sm font-bold">
+<span class="material-symbols-outlined text-primary text-[22px]">help</span>
+<h4>45 gün bittiğinde kartımdan para kesilir mi?</h4>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant pl-7">
+            Asla! Firma kaydı oluştururken kredi kartı veya ödeme bilgisi talep edilmez. 45 gün sonunda memnun kalırsanız uygun paketi seçebilirsiniz.
+          </p>
+</div>
+</div>
+</div>
+</section>
+<!-- ================= 8. RESPONSIVE STICKY FOOTER BAR ================= -->
+<aside aria-label="Hızlı Erişim Çubuğu" class="fixed bottom-0 left-0 right-0 z-40 bg-surface-container-lowest/95 backdrop-blur-md shadow-[0_-4px_16px_rgba(0,0,0,0.08)] py-space-xs px-4 sm:px-6">
+<div class="max-w-7xl mx-auto flex items-center justify-between gap-space-xs sm:gap-space-md">
+<div class="hidden md:flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-tertiary animate-ping"></span>
+<span class="font-label-md text-label-md text-on-surface font-semibold">45 Gün Kredi Kartsız Sınırsız Deneme</span>
+</div>
+<div class="flex items-center gap-2 sm:gap-space-sm w-full md:w-auto justify-end">
+<a class="flex-1 sm:flex-initial px-space-sm sm:px-space-md py-2.5 rounded-xl bg-tertiary-container hover:bg-tertiary text-on-tertiary font-label-md text-label-md transition-all flex items-center justify-center gap-1.5 whitespace-nowrap shadow-sm" href="https://api.whatsapp.com/send?phone=908508851000&amp;text=ServisPratik%20Hakk%C4%B1nda%20Bilgi%20Almak%20Istiyorum" rel="noopener noreferrer" target="_blank">
+<span class="material-symbols-outlined text-[18px]">chat</span>
+<span>WhatsApp Soru Sor</span>
+</a>
+<a class="flex-1 sm:flex-initial px-space-sm sm:px-space-md py-2.5 rounded-xl bg-gradient-to-r from-orange-600 to-red-600 text-on-primary font-label-md text-label-md shadow-md hover:brightness-105 transition-all flex items-center justify-center gap-1.5 whitespace-nowrap" href="https://erp-eticaret.stokpratik.com.tr/" target="_blank" rel="noopener noreferrer">
+<span>🔥 45 Gün Ücretsiz Başla</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+</div>
+</div>
+</aside>
+</div></main><footer class="w-full bg-surface-container-lowest shadow-[0_-1px_8px_rgba(0,0,0,0.02)]"><div class="max-w-7xl mx-auto px-6 lg:px-12 pt-space-2xl pb-space-xl"><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-space-xl pb-space-2xl"><div class="lg:col-span-2 flex flex-col gap-space-sm"><div class="flex items-center gap-space-sm"><div class="w-9 h-9 rounded-lg bg-surface-container flex items-center justify-center relative overflow-hidden"><span class="material-symbols-outlined text-secondary absolute -left-1 text-[20px]">build</span><span class="material-symbols-outlined text-primary absolute -right-0.5 text-[22px]">verified_user</span></div><span class="font-headline-lg text-headline-sm text-on-surface">Servis<span class="text-primary">Pratik</span></span></div><p class="font-body-md text-body-md text-on-surface-variant max-w-sm">Servis operasyonlarını barkodlayın, müşterilerinizi WhatsApp üzerinden canlı bildirimlerle anlık bilgilendirin. Stok, yedek parça ve garanti süreçleri tek merkezde.</p><div class="flex flex-wrap items-center gap-space-xs mt-space-xs"><span class="inline-flex items-center gap-1 px-space-xs py-space-2xs rounded-full bg-surface-container-high text-on-surface font-label-sm text-label-sm"><span class="material-symbols-outlined text-[14px] text-tertiary">shield</span> ISO 27001</span><span class="inline-flex items-center gap-1 px-space-xs py-space-2xs rounded-full bg-surface-container-high text-on-surface font-label-sm text-label-sm"><span class="material-symbols-outlined text-[14px] text-tertiary">policy</span> KVKK Uyumlu</span><span class="inline-flex items-center gap-1 px-space-xs py-space-2xs rounded-full bg-secondary-fixed text-on-secondary-fixed font-label-sm text-label-sm"><span class="material-symbols-outlined text-[14px]">hub</span> StokPratik Altyapısı</span></div></div><div class="flex flex-col gap-space-xs"><h4 class="font-label-lg text-label-lg text-on-surface uppercase tracking-wider">Modüller</h4><nav class="flex flex-col gap-space-xs" data-active-classes="text-primary font-bold"><a aria-current="page" class="transition-colors text-primary font-bold" data-path="barkodlu-cihaz-kabul" href="#">Barkodlu Cihaz Kabul</a><a class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface transition-colors" data-path="whatsapp-canli-takip" href="#">WhatsApp Canlı Takip</a><a class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface transition-colors" data-path="yedek-parca-stok" href="#">Yedek Parça &amp; Stok</a><a class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface transition-colors" data-path="garanti-takibi" href="#">Garanti &amp; İade Portalı</a></nav></div><div class="flex flex-col gap-space-xs"><h4 class="font-label-lg text-label-lg text-on-surface uppercase tracking-wider">Kurumsal</h4><nav class="flex flex-col gap-space-xs" data-active-classes="text-primary font-bold"><a class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface transition-colors" data-path="nasil-calisir" href="#">Nasıl Çalışır?</a><a class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface transition-colors" data-path="fiyatlandirma" href="#">Fiyatlandırma</a><a class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface transition-colors" data-path="kvkk-ve-aydinlatma" href="#">KVKK ve Aydınlatma Metni</a><a class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface transition-colors" data-path="gizlilik-politikasi" href="#">Gizlilik Politikası</a></nav></div><div class="flex flex-col gap-space-xs"><h4 class="font-label-lg text-label-lg text-on-surface uppercase tracking-wider">Hızlı Erişim</h4><div class="flex flex-col gap-space-xs"><a class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface transition-colors" href="https://erp-eticaret.stokpratik.com.tr/" target="_blank" rel="noopener noreferrer">StokPratik ERP Girişi</a><a class="font-body-md text-body-md text-tertiary hover:underline transition-colors flex items-center gap-1" href="https://wa.me/905412465429?text=Merhaba%2C%20ServisPratik%20Barkodlu%20Teknik%20Servis%20Portal%C4%B1%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum." target="_blank" rel="noopener noreferrer"><span class="material-symbols-outlined text-[16px]">forum</span> Canlı WhatsApp Destek</a><span class="font-body-sm text-body-sm text-on-surface-variant mt-2">Hafta içi 09:00 - 18:30 kesintisiz kurumsal teknik destek.</span></div></div></div></div></footer>
+
+</body></html>

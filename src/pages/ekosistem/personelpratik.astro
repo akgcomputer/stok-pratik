@@ -1,0 +1,873 @@
+---
+// İzole Tanıtım Sayfası - PersonelPratik Dinamik QR PDKS Portalı | StokPratik Ekosistemi
+// Bu sayfa mevcut site stillerinden tamamen bağımsız çalışır.
+---
+<!DOCTYPE html><html class="scroll-smooth" lang="tr"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<meta content="web_standard" name="shell-type">
+<title>PersonelPratik Dinamik QR PDKS Portalı | StokPratik Ekosistemi</title>
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<style>
+    @layer base {
+      html, body { margin: 0; padding: 0; }
+      body { overscroll-behavior: none; }
+      main > :first-child { margin-top: 0 !important; }
+      main > :last-child { margin-bottom: 0 !important; }
+    }
+    ::-webkit-scrollbar { display: none; }
+  </style>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "on-tertiary-fixed-variant": "#005320",
+            "primary-fixed-dim": "#ffb4ab",
+            "background": "#faf8ff",
+            "on-surface": "#131b2e",
+            "surface": "#faf8ff",
+            "on-surface-variant": "#5c403c",
+            "tertiary": "#00682b",
+            "secondary-fixed": "#dce1ff",
+            "on-secondary-fixed": "#00164e",
+            "secondary-fixed-dim": "#b6c4ff",
+            "on-secondary-container": "#1d3989",
+            "on-tertiary": "#ffffff",
+            "on-primary-fixed-variant": "#93000b",
+            "on-tertiary-fixed": "#002109",
+            "surface-tint": "#bf0715",
+            "tertiary-fixed": "#7ffc97",
+            "on-primary-fixed": "#410002",
+            "error": "#ba1a1a",
+            "secondary-container": "#8fa7fe",
+            "surface-variant": "#dae2fd",
+            "surface-bright": "#faf8ff",
+            "secondary": "#4059aa",
+            "on-tertiary-container": "#e7ffe4",
+            "inverse-surface": "#283044",
+            "error-container": "#ffdad6",
+            "surface-container-lowest": "#ffffff",
+            "surface-container-low": "#f2f3ff",
+            "surface-container-high": "#e2e7ff",
+            "on-primary": "#ffffff",
+            "primary": "#b70011",
+            "on-secondary": "#ffffff",
+            "on-background": "#131b2e",
+            "primary-container": "#dc2626",
+            "surface-dim": "#d2d9f4",
+            "primary-fixed": "#ffdad6",
+            "tertiary-fixed-dim": "#62df7d",
+            "outline-variant": "#e6bdb8",
+            "inverse-on-surface": "#eef0ff",
+            "on-error-container": "#93000a",
+            "surface-container": "#eaedff",
+            "tertiary-container": "#008438",
+            "surface-container-highest": "#dae2fd",
+            "on-error": "#ffffff",
+            "on-primary-container": "#fff6f5",
+            "outline": "#916f6b",
+            "inverse-primary": "#ffb4ab",
+            "on-secondary-fixed-variant": "#264191"
+          },
+          borderRadius: {
+            DEFAULT: "0.25rem",
+            lg: "0.5rem",
+            xl: "0.75rem",
+            full: "9999px"
+          },
+          spacing: {
+            "margin-sm": "1rem",
+            gutter: "1.5rem",
+            "space-sm": "0.75rem",
+            margin: "2rem",
+            "space-md": "1rem",
+            "space-xl": "2rem",
+            "gutter-lg": "2rem",
+            "space-3xl": "4rem",
+            "space-xs": "0.5rem",
+            "space-2xl": "3rem",
+            "gutter-sm": "1rem",
+            "margin-lg": "3rem",
+            "space-lg": "1.5rem",
+            "space-2xs": "0.25rem"
+          },
+          fontFamily: {
+            "display-lg": ["Plus Jakarta Sans"],
+            "headline-sm": ["Plus Jakarta Sans"],
+            "body-lg": ["Plus Jakarta Sans"],
+            "label-sm": ["Plus Jakarta Sans"],
+            "body-md": ["Plus Jakarta Sans"],
+            "headline-xl-mobile": ["Plus Jakarta Sans"],
+            "display-lg-mobile": ["Plus Jakarta Sans"],
+            "headline-xl": ["Plus Jakarta Sans"],
+            "headline-lg": ["Plus Jakarta Sans"],
+            "body-sm": ["Plus Jakarta Sans"],
+            "headline-md": ["Plus Jakarta Sans"],
+            "label-md": ["Plus Jakarta Sans"],
+            "label-lg": ["Plus Jakarta Sans"],
+            "numeric-table": ["Plus Jakarta Sans"]
+          },
+          fontSize: {
+            "display-lg": ["40px", { lineHeight: "48px", letterSpacing: "-0.03em", fontWeight: "800" }],
+            "headline-sm": ["16px", { lineHeight: "24px", letterSpacing: "-0.01em", fontWeight: "600" }],
+            "body-lg": ["16px", { lineHeight: "26px", letterSpacing: "-0.005em", fontWeight: "400" }],
+            "label-sm": ["11px", { lineHeight: "14px", letterSpacing: "0.04em", fontWeight: "700" }],
+            "body-md": ["14px", { lineHeight: "22px", letterSpacing: "0em", fontWeight: "400" }],
+            "headline-xl-mobile": ["24px", { lineHeight: "32px", letterSpacing: "-0.02em", fontWeight: "700" }],
+            "display-lg-mobile": ["30px", { lineHeight: "38px", letterSpacing: "-0.02em", fontWeight: "800" }],
+            "headline-xl": ["32px", { lineHeight: "40px", letterSpacing: "-0.025em", fontWeight: "700" }],
+            "headline-lg": ["24px", { lineHeight: "32px", letterSpacing: "-0.02em", fontWeight: "700" }],
+            "body-sm": ["12px", { lineHeight: "18px", letterSpacing: "0.005em", fontWeight: "400" }],
+            "headline-md": ["20px", { lineHeight: "28px", letterSpacing: "-0.015em", fontWeight: "600" }],
+            "label-md": ["12px", { lineHeight: "16px", letterSpacing: "0.02em", fontWeight: "600" }],
+            "label-lg": ["14px", { lineHeight: "20px", letterSpacing: "0.01em", fontWeight: "600" }],
+            "numeric-table": ["13px", { lineHeight: "18px", letterSpacing: "-0.01em", fontWeight: "600" }]
+          }
+        }
+      }
+    };
+  </script>
+
+    <meta name="description" content="Cihaz masrafı olmadan konum doğrulamalı dinamik QR kodla personel giriş-çıkış takibi, izin yönetimi ve tek tıkla SGK uyumlu puantaj cetveli." />
+    <link rel="canonical" href="https://stokpratik.com.tr/ekosistem/personelpratik" />
+    <meta property="og:title" content="PersonelPratik Dinamik QR PDKS Portalı | StokPratik Ekosistemi" />
+    <meta property="og:description" content="Cihaz masrafı olmadan konum doğrulamalı dinamik QR kodla personel giriş-çıkış takibi, izin yönetimi ve tek tıkla SGK uyumlu puantaj cetveli." />
+    <meta property="og:url" content="https://stokpratik.com.tr/ekosistem/personelpratik" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="StokPratik" />
+    <meta property="og:image" content="https://lh3.googleusercontent.com/aida-public/AB6AXuDRPclUgpTX-_PXtrOjndC2Cvk8Gq2wsHXQQSlAzt7lJBpxmUI7rPK2thEXYlri_uoIfF3y4w1R8jb2wUgjvW2ziR--7rVsrT6sFS9y7qse9P0FluS6Y6KQudffk_tQ9b0RghVXu-MH74g1NO9doR-4ZlLE5EVWm3H0PZpINMRh3abzWEcVH9xYT4JD7eHBW6wAqGeqYM1D0CDMilN-ag3PIAZzlXLbUj2HudCzn5ei" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="PersonelPratik Dinamik QR PDKS Portalı | StokPratik Ekosistemi" />
+    <meta name="twitter:description" content="Cihaz masrafı olmadan konum doğrulamalı dinamik QR kodla personel giriş-çıkış takibi, izin yönetimi ve tek tıkla SGK uyumlu puantaj cetveli." />
+    <meta name="twitter:image" content="https://lh3.googleusercontent.com/aida-public/AB6AXuDRPclUgpTX-_PXtrOjndC2Cvk8Gq2wsHXQQSlAzt7lJBpxmUI7rPK2thEXYlri_uoIfF3y4w1R8jb2wUgjvW2ziR--7rVsrT6sFS9y7qse9P0FluS6Y6KQudffk_tQ9b0RghVXu-MH74g1NO9doR-4ZlLE5EVWm3H0PZpINMRh3abzWEcVH9xYT4JD7eHBW6wAqGeqYM1D0CDMilN-ag3PIAZzlXLbUj2HudCzn5ei" />
+  
+</head>
+<body class="bg-surface font-body-md text-on-surface antialiased flex flex-col min-h-screen selection:bg-primary selection:text-on-primary">
+<!-- ================= 1. ÜST BAR & NAVİGASYON ================= -->
+<header class="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-xl border-b border-slate-200 shadow-[0_1px_8px_rgba(0,0,0,0.03)]">
+<!-- Mini Announcement Header -->
+<div class="w-full bg-surface-container-high py-1 px-gutter border-b border-surface-variant/40">
+<div class="max-w-7xl mx-auto flex items-center justify-between text-label-sm font-label-sm text-on-surface">
+<div class="flex items-center gap-space-xs">
+<span class="inline-flex items-center justify-center w-4 h-4 rounded-full bg-primary text-on-primary text-[10px]">★</span>
+<span class="font-bold text-primary tracking-wide uppercase">Yeni Nesil İK Teknolojisi:</span>
+<span class="text-on-surface-variant hidden md:inline">Pahalı biyometrik cihazlar yerine 15 saniyelik dinamik QR &amp; GPS doğrulama</span>
+</div>
+<div class="flex items-center gap-space-md text-[12px]">
+<span class="flex items-center gap-1 text-tertiary font-bold">
+<span class="material-symbols-outlined text-[15px]">verified</span>
+            Kredi Kartsız Kurulum
+          </span>
+<span class="text-slate-300 hidden sm:inline">|</span>
+<span class="text-on-surface font-semibold hidden sm:inline">15 Dakikada Canlıya Alın</span>
+</div>
+</div>
+</div>
+<!-- Main Navigation Bar -->
+<div class="h-20 max-w-7xl mx-auto px-gutter flex items-center justify-between gap-space-md">
+<!-- Logo & Subtitle -->
+<a class="flex items-center gap-space-sm group" href="#">
+<div class="w-10 h-10 rounded-xl bg-gradient-to-br from-primary to-primary-container text-on-primary flex items-center justify-center shadow-md shadow-primary/20 group-hover:scale-105 transition-transform">
+<span class="material-symbols-outlined text-[24px]">verified_user</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-space-2xs">
+<span class="font-headline-md text-headline-md tracking-tight font-extrabold text-on-surface">Personel<span class="text-primary-container">Pratik</span></span>
+<span class="bg-tertiary-container text-on-tertiary font-label-sm text-[10px] px-1.5 py-0.5 rounded-full uppercase tracking-wider font-bold">v2.6</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-medium -mt-0.5">15sn Dinamik QR-PDKS &amp; İK</span>
+</div>
+</a>
+<!-- Center Menu -->
+<nav class="hidden xl:flex items-center gap-space-xs" data-active-classes="bg-surface-container text-primary font-bold">
+<a aria-current="page" class="px-space-sm py-2 rounded-lg font-label-lg text-label-lg text-primary font-bold bg-surface-container/60 transition-colors" data-path="dinamik-qr-pdks" href="#">Dinamik QR-PDKS</a>
+<a class="px-space-sm py-2 rounded-lg font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors" data-path="hilesiz-gps-dogrulama" href="#">Hilesiz GPS Doğrulama</a>
+<a class="px-space-sm py-2 rounded-lg font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors" data-path="sgk-puantaj" href="#">SGK Puantaj</a>
+<a class="px-space-sm py-2 rounded-lg font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors" data-path="izin-ve-avans" href="#">İzin &amp; Avans</a>
+<a class="px-space-sm py-2 rounded-lg font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors" data-path="nasil-calisir" href="#">Nasıl Çalışır?</a>
+</nav>
+<!-- Right Action CTAs -->
+<div class="flex items-center gap-space-sm">
+<a class="hidden md:inline-flex items-center gap-space-2xs px-space-md py-2.5 rounded-xl border border-tertiary/30 bg-tertiary/5 text-tertiary hover:bg-tertiary hover:text-on-tertiary font-label-lg text-label-lg font-semibold transition-all shadow-sm" href="https://wa.me/905412465429?text=Merhaba%2C%20PersonelPratik%20Dinamik%20QR%20PDKS%20Portal%C4%B1%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum." target="_blank" rel="noopener noreferrer">
+<span class="material-symbols-outlined text-[18px]">chat</span>
+<span>WhatsApp ile Soru Sor</span>
+</a>
+<a class="inline-flex items-center gap-space-2xs px-space-lg py-2.5 rounded-xl bg-gradient-to-r from-[#ea580c] to-[#dc2626] text-on-primary font-label-lg text-label-lg font-bold shadow-[0_4px_16px_rgba(220,38,38,0.28)] hover:brightness-105 active:scale-[0.99] transition-all" href="https://erp-eticaret.stokpratik.com.tr/" target="_blank" rel="noopener noreferrer">
+<span>45 Gün Ücretsiz Başla</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</a>
+<div class="w-8 h-8 rounded-full bg-slate-100 border border-slate-200 text-slate-700 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[18px]">person</span>
+</div>
+</div>
+</div>
+</header>
+<!-- ================= MAIN CONTENT ================= -->
+<main class="w-full pt-28 bg-surface flex-grow">
+<div class="flex flex-col w-full">
+<!-- ================= 2. HERO SECTION ================= -->
+<section class="w-full bg-surface-container-lowest py-space-2xl md:py-space-3xl relative overflow-hidden">
+<!-- Ambient subtle background blur -->
+<div class="absolute -top-24 -left-24 w-96 h-96 rounded-full bg-primary-container/5 blur-3xl pointer-events-none"></div>
+<div class="absolute top-1/2 -right-32 w-[500px] h-[500px] rounded-full bg-secondary/5 blur-3xl pointer-events-none"></div>
+<div class="max-w-7xl mx-auto px-gutter grid grid-cols-1 lg:grid-cols-12 gap-gutter-lg items-center relative z-10">
+<!-- Left Column: Copy & High-Intent Conversion Triggers -->
+<div class="lg:col-span-7 flex flex-col items-start gap-space-md">
+<!-- Category Pill -->
+<div class="inline-flex items-center gap-space-xs px-3.5 py-1.5 rounded-full bg-secondary-fixed text-on-secondary-fixed font-label-md text-label-md shadow-sm">
+<span class="material-symbols-outlined text-secondary text-[18px]">group</span>
+<span class="font-bold tracking-wide uppercase text-[11px]">15 SN DİNAMİK QR-PDKS • GPS &amp; SGK PUANTAJ MERKEZİ</span>
+</div>
+<!-- Headline -->
+<h1 class="font-headline-xl text-headline-xl md:text-[40px] md:leading-[48px] tracking-tight text-on-surface font-extrabold">
+              Pahalı Parmak İzi ve Kartlı Cihazlara Son! <span class="text-primary-container">15 Saniyede Bir Değişen</span>&nbsp;<div>Cihazsız, Hilesiz QR-PDKS.
+            </div></h1>
+<!-- Subheadline -->
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl leading-relaxed">
+              Personel ekran görüntüsü alıp arkadaşına gönderemez; QR her 15 saniyede bir şifreli olarak yenilenir ve GPS konumuyla doğrulanır. Ay sonunda saatlerce uğraşmadan tek tıkla resmi SGK puantaj cetvelinizi alın.
+            </p>
+<!-- Campaign Banner Card -->
+<div class="w-full bg-surface-container-low border border-surface-container p-space-md rounded-2xl shadow-sm flex items-start gap-space-sm">
+<div class="w-11 h-11 rounded-xl bg-primary-container text-on-primary flex items-center justify-center shrink-0 shadow-sm mt-0.5">
+<span class="material-symbols-outlined text-[24px]">card_giftcard</span>
+</div>
+<div class="flex flex-col">
+<div class="font-label-lg text-label-lg text-on-surface font-bold">
+                  🎁 45 Gün Boyunca Tüm Şubelerinizde ve Sınırsız Personelle Kredi Kartsız,&nbsp;<div>Taahhütsüz Ücretsiz Kullanın!
+                </div></div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1 leading-normal">
+                  Kredi kartı gerekmez, taahhüt veya gizli kurulum ücreti yoktur.&nbsp;<div>45 gün sonra otomatik iptal endişesi taşımadan tüm şubelerinizde test edin.
+                </div></p>
+</div>
+</div>
+<!-- 3 Trust Check Badges -->
+<div class="flex flex-wrap items-center gap-space-sm font-label-md text-label-md text-on-surface pt-space-2xs">
+<span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-surface-container-low text-on-surface shadow-sm">
+<span class="material-symbols-outlined text-tertiary text-[18px]">check_circle</span>
+                45 Gün Sınırsız Kullanım
+              </span>
+<span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-surface-container-low text-on-surface shadow-sm">
+<span class="material-symbols-outlined text-tertiary text-[18px]">devices</span>
+                Cihaz Masrafı Yok (Telefon Yeterli)
+              </span>
+<span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-surface-container-low text-on-surface shadow-sm">
+<span class="material-symbols-outlined text-tertiary text-[18px]">credit_card_off</span>
+                Kart Bilgisi İstenmez
+              </span>
+</div>
+<!-- Dual Action CTA Buttons -->
+<div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-space-sm w-full pt-space-xs">
+<a class="h-[54px] px-space-xl rounded-xl bg-gradient-to-r from-[#ea580c] to-[#dc2626] text-on-primary font-headline-sm text-headline-sm font-bold flex items-center justify-center gap-space-xs shadow-[0_6px_20px_rgba(220,38,38,0.32)] hover:brightness-105 active:scale-[0.99] transition-all" href="https://erp-eticaret.stokpratik.com.tr/" target="_blank" rel="noopener noreferrer">
+<span class="material-symbols-outlined text-[22px]">local_fire_department</span>
+<span>🔥 45 Gün Ücretsiz Başla (Firma Kaydı)</span>
+<span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+</a>
+<a class="h-[54px] px-space-lg rounded-xl bg-tertiary text-on-tertiary font-headline-sm text-headline-sm font-bold flex items-center justify-center gap-space-xs shadow-[0_4px_14px_rgba(0,104,43,0.22)] hover:brightness-105 active:scale-[0.99] transition-all" href="https://wa.me/905412465429?text=Merhaba%2C%20PersonelPratik%20Dinamik%20QR%20PDKS%20Portal%C4%B1%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum." target="_blank" rel="noopener noreferrer">
+<span class="material-symbols-outlined text-[22px]">chat</span>
+<span>WhatsApp ile Soru Sor</span>
+</a>
+</div>
+</div>
+<!-- Right Column: Visual Showcase with Image 7 -->
+<div class="lg:col-span-5 relative mt-6 lg:mt-0">
+<div class="relative w-full rounded-2xl overflow-hidden shadow-2xl bg-surface-container-lowest p-2 border border-surface-container">
+<img alt="PersonelPratik turnike girişinde dinamik QR okutan çalışan ve resepsiyon desk ekranı" class="w-full h-[460px] object-cover rounded-xl" src="https://lh3.googleusercontent.com/aida/ALJJyrDGXRth2HU6IwIm2fh7_NKyM4IYCYqx4JkhwqIRHzDgFQTDM81BJUcLBoMCRMFein9_Z4lQ18pC8Wg-yX5rTIfgrUGhDxruW5i4m8C1KVCu0y_flQ4A2GQZ6BtpOpRz8kCRwIOPy93cACz2LQ6zSYFGKr9y8fGOhxDoW1xL6tKikQ-F7-IVhnpTaDEjRFqBKU2tCg3Qz-PpbFIeAULHFa6NOfLIc8gKcJabTmlh-dtRCw">
+<!-- Ambient Scrim -->
+<div class="absolute inset-0 bg-gradient-to-t from-on-surface/50 via-transparent to-transparent pointer-events-none rounded-xl"></div>
+<!-- Floating Badge 1 (Top Left): Mesai Girişi Check-in -->
+<div class="absolute top-6 left-6 max-w-xs bg-surface-container-lowest/95 backdrop-blur-md p-space-sm rounded-xl shadow-xl border border-surface-container flex items-center gap-space-xs">
+<div class="w-9 h-9 rounded-lg bg-tertiary-fixed text-on-tertiary-fixed flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[20px]">verified_user</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant font-semibold">Mesai Girişi: 08:58:14</span>
+<span class="font-headline-sm text-[13px] leading-[18px] text-tertiary font-extrabold">HİLESİZ QR &amp; GPS DOĞRULANDI ✅</span>
+</div>
+</div>
+<!-- Floating Badge 2 (Bottom Right): Live SGK Puantaj Calculation -->
+<div class="absolute bottom-6 right-6 max-w-sm bg-surface-container-lowest/95 backdrop-blur-md p-space-sm rounded-xl shadow-xl border border-surface-container flex items-center justify-between gap-space-sm">
+<div class="flex items-center gap-space-xs">
+<div class="w-9 h-9 rounded-lg bg-secondary text-on-secondary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[20px]">table_chart</span>
+</div>
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-medium">Otomatik Ay Sonu Puantajı</span>
+<div class="font-headline-sm text-[13px] leading-[18px] text-on-surface font-extrabold">FAZLA MESAİ HESAPLANDI ⏱️</div>
+</div>
+</div>
+<span class="px-2.5 py-1 rounded-full bg-surface-container-high text-secondary text-label-sm font-bold uppercase tracking-wider shrink-0">
+                  SGK UYUMLU
+                </span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ================= 3. İSTATİSTİK & GÜVEN BANDI ================= -->
+<section class="w-full bg-surface-container-low py-space-xl border-y border-surface-container">
+<div class="max-w-7xl mx-auto px-gutter">
+<div class="grid grid-cols-2 md:grid-cols-4 gap-gutter">
+<!-- Metric 1 -->
+<div class="bg-surface-container-lowest p-space-lg rounded-2xl shadow-sm border border-surface-container flex flex-col justify-between">
+<div class="flex items-center justify-between text-on-surface-variant mb-space-xs">
+<span class="font-label-md text-label-md uppercase tracking-wider font-semibold">Günlük İşlem Hacmi</span>
+<span class="material-symbols-outlined text-primary text-[22px]">qr_code_scanner</span>
+</div>
+<div>
+<div class="font-headline-xl text-headline-xl text-on-surface font-extrabold tracking-tight">180.000+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Günlük Hilesiz QR Okutma</p>
+</div>
+</div>
+<!-- Metric 2 -->
+<div class="bg-surface-container-lowest p-space-lg rounded-2xl shadow-sm border border-surface-container flex flex-col justify-between">
+<div class="flex items-center justify-between text-on-surface-variant mb-space-xs">
+<span class="font-label-md text-label-md uppercase tracking-wider font-semibold">Şifreli Yenilenme</span>
+<span class="material-symbols-outlined text-secondary text-[22px]">update</span>
+</div>
+<div>
+<div class="font-headline-xl text-headline-xl text-secondary font-extrabold tracking-tight">15 Sn</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Dinamik QR Yenilenme Periyodu</p>
+</div>
+</div>
+<!-- Metric 3 -->
+<div class="bg-surface-container-lowest p-space-lg rounded-2xl shadow-sm border border-surface-container flex flex-col justify-between">
+<div class="flex items-center justify-between text-on-surface-variant mb-space-xs">
+<span class="font-label-md text-label-md uppercase tracking-wider font-semibold">Donanım Harcaması</span>
+<span class="material-symbols-outlined text-tertiary text-[22px]">savings</span>
+</div>
+<div>
+<div class="font-headline-xl text-headline-xl text-tertiary font-extrabold tracking-tight">0 TL</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Donanım Yatırımı (Tablet/Telefon)</p>
+</div>
+</div>
+<!-- Metric 4 -->
+<div class="bg-surface-container-lowest p-space-lg rounded-2xl shadow-sm border border-surface-container flex flex-col justify-between">
+<div class="flex items-center justify-between text-on-surface-variant mb-space-xs">
+<span class="font-label-md text-label-md uppercase tracking-wider font-semibold">Yasal Güvenlik</span>
+<span class="material-symbols-outlined text-on-secondary-container text-[22px]">verified</span>
+</div>
+<div>
+<div class="font-headline-xl text-headline-xl text-on-surface font-extrabold tracking-tight">%100</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">SGK &amp; 4857 Sayılı Kanuna Uygun</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ================= 4. İŞLETMENİZİ CİHAZ VE PUANTAJ DERDİNDEN KURTARAN 3 GÜÇ ================= -->
+<section class="w-full bg-surface py-space-3xl">
+<div class="max-w-7xl mx-auto px-gutter flex flex-col gap-space-2xl">
+<div class="flex flex-col items-center text-center max-w-3xl mx-auto gap-space-xs">
+<div class="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-surface-container text-primary font-label-sm text-label-sm uppercase tracking-wider font-bold">
+<span class="material-symbols-outlined text-[16px]">verified</span>
+<span>Sıfır Donanım, Maksimum Kontrol</span>
+</div>
+<h2 class="font-headline-xl text-headline-xl text-on-surface font-extrabold">
+              İşletmenizi Cihaz ve Puantaj&nbsp;<div>Derdinden Kurtaran 3 Güç
+            </div></h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">
+              PersonelPratik, geleneksel PDKS sistemlerinin tüm donanım ve yazılım açıklarını tek platformda ortadan kaldırır.
+            </p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<!-- Card 1 -->
+<div class="bg-surface-container-lowest p-space-xl rounded-2xl shadow-sm border border-surface-container flex flex-col justify-between hover:shadow-md transition-shadow group">
+<div class="flex flex-col gap-space-md">
+<div class="w-14 h-14 rounded-2xl bg-surface-container text-primary flex items-center justify-center group-hover:scale-105 transition-transform">
+<span class="material-symbols-outlined text-[32px]">timer</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="font-label-sm text-label-sm px-2 py-0.5 rounded bg-surface-container text-on-surface-variant font-bold">Modül 01</span>
+<span class="font-label-sm text-label-sm text-tertiary font-bold">%100 Hilesiz</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface font-bold">
+                  15 Saniyede Bir Değişen Dinamik QR Kiosk
+                </h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+                  Ekran görüntüsü alıp arkadaşına WhatsApp'tan atarak yerine kart basma devri tamamen kapandı. Duvardaki herhangi bir tablet veya bilgisayar ekranında QR kod her 15 saniyede bir kriptografik olarak yenilenir. Personel kendi akıllı telefonuyla sadece 1 saniyede okutur.
+                </p>
+</div>
+<div class="mt-space-lg pt-space-md bg-surface-container-low p-space-sm rounded-xl">
+<div class="flex items-center gap-space-xs text-[13px] font-label-md text-on-surface font-semibold">
+<span class="material-symbols-outlined text-primary text-[18px]">do_not_disturb_on</span>
+<span>Ekran görüntüsü (Screenshot) geçersizdir</span>
+</div>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="bg-surface-container-lowest p-space-xl rounded-2xl shadow-sm border border-surface-container flex flex-col justify-between hover:shadow-md transition-shadow group">
+<div class="flex flex-col gap-space-md">
+<div class="w-14 h-14 rounded-2xl bg-surface-container text-secondary flex items-center justify-center group-hover:scale-105 transition-transform">
+<span class="material-symbols-outlined text-[32px]">location_on</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="font-label-sm text-label-sm px-2 py-0.5 rounded bg-surface-container text-on-surface-variant font-bold">Modül 02</span>
+<span class="font-label-sm text-label-sm text-secondary font-bold">Mock GPS Korumalı</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface font-bold">
+                  Akıllı GPS &amp; Şube Konum Doğrulama
+                </h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+                  Saha personeli, şantiye çalışanı veya mağaza personeli belirlenen şube sınırları (metre yarıçapı) dışındaysa sistem okutmaya izin vermez. Mock/Fake GPS uygulamaları anında tespit edilerek kimin gerçekten iş yerinde olduğu harita üstünde kesinleşir.
+                </p>
+</div>
+<div class="mt-space-lg pt-space-md bg-surface-container-low p-space-sm rounded-xl">
+<div class="flex items-center gap-space-xs text-[13px] font-label-md text-on-surface font-semibold">
+<span class="material-symbols-outlined text-secondary text-[18px]">my_location</span>
+<span>5 ila 500 metre arası hassas şube çiti</span>
+</div>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="bg-surface-container-lowest p-space-xl rounded-2xl shadow-sm border border-surface-container flex flex-col justify-between hover:shadow-md transition-shadow group">
+<div class="flex flex-col gap-space-md">
+<div class="w-14 h-14 rounded-2xl bg-surface-container text-tertiary flex items-center justify-center group-hover:scale-105 transition-transform">
+<span class="material-symbols-outlined text-[32px]">description</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="font-label-sm text-label-sm px-2 py-0.5 rounded bg-surface-container text-on-surface-variant font-bold">Modül 03</span>
+<span class="font-label-sm text-label-sm text-primary font-bold">Sıfır Hata</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface font-bold">
+                  Tek Tıkla 45 Saatlik SGK Puantaj Cetveli
+                </h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+                  Kim kaç saat çalıştı, ne kadar fazla mesai yaptı, izin veya devamsızlık saatleri tek tuşla mevzuata uygun hesaplanır. Ay sonu bordro hazırlarken günlerce Excel formülleriyle boğuşmaya son; bordro programınıza veya muhasebecinize doğrudan Excel aktarımı yapın.
+                </p>
+</div>
+<div class="mt-space-lg pt-space-md bg-surface-container-low p-space-sm rounded-xl">
+<div class="flex items-center gap-space-xs text-[13px] font-label-md text-on-surface font-semibold">
+<span class="material-symbols-outlined text-tertiary text-[18px]">verified</span>
+<span>4857 Sayılı İş Kanunu denetimine %100 hazır</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ================= 5. CANLI İNTERAKTİF SİMÜLASYON VİTRİNİ ================= -->
+<section class="w-full bg-surface-container-low py-space-3xl border-y border-surface-container">
+<div class="max-w-7xl mx-auto px-gutter flex flex-col gap-space-2xl">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-space-md">
+<div class="flex flex-col gap-space-xs max-w-2xl">
+<span class="text-primary font-label-sm text-label-sm uppercase tracking-wider font-bold">CANLI ÇALIŞMA SİMÜLASYONU</span>
+<h2 class="font-headline-xl text-headline-xl text-on-surface font-extrabold">
+                Dinamik QR-PDKS ve Hilesiz Giriş Ekranı
+              </h2>
+<p class="font-body-md text-body-md text-on-surface-variant">
+                Tablet kiosk ekranı, cep telefonu GPS doğrulaması ve canlı puantaj senkronizasyonu gerçek zamanlı işler.
+              </p>
+</div>
+<div class="flex items-center gap-space-xs font-label-md text-label-md text-on-surface bg-surface-container-lowest px-space-md py-space-xs rounded-xl shadow-sm border border-surface-container">
+<span class="w-2.5 h-2.5 rounded-full bg-tertiary animate-pulse"></span>
+<span class="font-bold">Canlı Sunucu Bağlantısı Aktif</span>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter-lg items-center">
+<!-- Left: Real Photo Setup (IMAGE_6) -->
+<div class="lg:col-span-6 flex flex-col gap-space-sm">
+<div class="relative rounded-2xl overflow-hidden shadow-lg bg-surface-container-lowest p-2 border border-surface-container">
+<img alt="PersonelPratik masaüstü tablet dinamik QR kodu, telefon GPS onayı ve laptop SGK puantaj tablosu" class="w-full h-[410px] object-cover rounded-xl" src="https://lh3.googleusercontent.com/aida/ALJJyrCzYiEUYklsro9cfJMVISxFAd5fzqSX0_VoO1dMey7MM5mjy12RX4_SimY0GXXFz-ckid4yj3F1efj0eQMly193VXNfQB0aN_tVco-sKPuAk4l1KNPPqjhpeo30oc5CwfoAt3gXaqny8chGCpmxEuuCOvPUpomZL9-70bsxSbkGH4QZHtO7uLZG1GtCRDZ_3Wwe1cLDWYAQZNcZMLLBPmmBCm9D7Ej_pDFg0BIqXKaWVw">
+<div class="absolute bottom-5 left-5 right-5 bg-surface-container-lowest/90 backdrop-blur-md p-space-sm rounded-xl flex items-center justify-between shadow border border-surface-container">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary-container text-[22px]">devices</span>
+<span class="font-label-sm text-label-sm text-on-surface font-bold">Tablet Kiosk + Akıllı Telefon + Web Puantaj Konsolu</span>
+</div>
+<span class="px-2.5 py-0.5 rounded-full bg-tertiary-fixed text-on-tertiary-fixed text-[11px] font-bold">Tam Senkron</span>
+</div>
+</div>
+</div>
+<!-- Right: Interactive Live Kiosk Simulator -->
+<div class="lg:col-span-6 bg-surface-container-lowest p-space-xl rounded-2xl shadow-md border border-surface-container flex flex-col gap-space-md">
+<!-- Kiosk Header -->
+<div class="flex items-center justify-between pb-space-sm border-b border-surface-container">
+<div class="flex items-center gap-space-xs">
+<span class="w-3 h-3 rounded-full bg-error"></span>
+<span class="w-3 h-3 rounded-full bg-secondary-container"></span>
+<span class="w-3 h-3 rounded-full bg-tertiary"></span>
+<span class="font-label-md text-label-md text-on-surface font-bold ml-2">İstanbul Merkez Ofis - Kiosk #1</span>
+</div>
+<span class="font-numeric-table text-numeric-table text-on-surface-variant font-mono font-bold bg-surface-container-low px-2 py-1 rounded" id="live-clock">23:09:23</span>
+</div>
+<!-- Simulator Box -->
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-space-md items-center py-space-xs">
+<!-- Interactive Animated Ring -->
+<div class="flex flex-col items-center justify-center p-space-md bg-surface-container-low rounded-xl text-center border border-surface-container">
+<div class="relative w-32 h-32 flex items-center justify-center mb-space-xs">
+<svg class="w-full h-full transform -rotate-90" viewBox="0 0 100 100">
+<circle class="text-surface-container-high" cx="50" cy="50" fill="none" r="42" stroke="currentColor" stroke-width="6"></circle>
+<circle class="text-primary-container transition-all duration-1000 ease-linear" cx="50" cy="50" fill="none" id="qr-progress-ring" r="42" stroke="currentColor" stroke-dasharray="264" stroke-dashoffset="105" stroke-linecap="round" stroke-width="6" style="stroke-dashoffset: 211.2;"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="material-symbols-outlined text-[32px] text-on-surface">qr_code_2</span>
+<div class="font-headline-sm text-headline-sm font-extrabold text-primary-container" id="qr-countdown">03s</div>
+</div>
+</div>
+<span class="font-label-sm text-[11px] text-on-surface-variant font-medium">15 saniyede bir kriptolu değişir</span>
+<button class="mt-1.5 inline-flex items-center gap-1 font-label-sm text-[11px] text-secondary hover:underline font-bold" onclick="refreshSimulatedQR()">
+<span class="material-symbols-outlined text-[13px]">cached</span> Manuel Yenile
+                  </button>
+</div>
+<!-- GPS Status -->
+<div class="flex flex-col gap-space-xs">
+<div class="p-space-sm bg-surface-container-low rounded-xl border border-surface-container">
+<span class="font-label-sm text-[10px] text-on-surface-variant uppercase font-bold tracking-wider">Konum Doğrulama</span>
+<div class="flex items-center gap-1 text-tertiary font-label-md text-label-md font-bold mt-0.5">
+<span class="material-symbols-outlined text-[18px]">verified</span>
+<span>Ofis İçi: 8.5 Metre - Güvenli Alan ✅</span>
+</div>
+<p class="font-body-sm text-[11px] text-on-surface-variant mt-1">
+                      Cihaz koordinatı şube poligonuyla tam eşleşti.
+                    </p>
+</div>
+<div class="p-space-sm bg-surface-container-low rounded-xl border border-surface-container">
+<span class="font-label-sm text-[10px] text-on-surface-variant uppercase font-bold tracking-wider">Sahte GPS Algılayıcı</span>
+<div class="flex items-center gap-1 text-on-surface font-label-md text-label-md font-bold mt-0.5">
+<span class="material-symbols-outlined text-tertiary text-[18px]">security</span>
+<span>Mock-Proof Koruma: Aktif (Temiz)</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Live Turnstile Records Feed -->
+<div>
+<div class="flex items-center justify-between mb-space-xs">
+<span class="font-label-md text-label-md text-on-surface font-bold">Anlık Turnike &amp; Kiosk Giriş Kayıtları</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-semibold">Bugün: 42/45 Giriş</span>
+</div>
+<div class="space-y-2">
+<div class="flex items-center justify-between p-2.5 rounded-xl bg-surface-container-low text-on-surface font-body-sm text-body-sm border border-surface-container">
+<div class="flex items-center gap-space-xs">
+<div class="w-7 h-7 rounded-full bg-tertiary-container text-on-tertiary flex items-center justify-center text-[12px] font-bold">AY</div>
+<div>
+<span class="font-semibold text-on-surface">Ahmet Yılmaz</span>
+<span class="text-on-surface-variant text-[11px] ml-1.5 hidden sm:inline">(Satış Departmanı)</span>
+</div>
+</div>
+<div class="flex items-center gap-space-sm">
+<span class="font-numeric-table text-numeric-table font-semibold">08:52:14</span>
+<span class="px-2 py-0.5 rounded-full bg-tertiary-fixed text-on-tertiary-fixed font-label-sm text-[11px] font-bold">Zamanında</span>
+</div>
+</div>
+<div class="flex items-center justify-between p-2.5 rounded-xl bg-surface-container-low text-on-surface font-body-sm text-body-sm border border-surface-container">
+<div class="flex items-center gap-space-xs">
+<div class="w-7 h-7 rounded-full bg-secondary text-on-secondary flex items-center justify-center text-[12px] font-bold">MK</div>
+<div>
+<span class="font-semibold text-on-surface">Merve Kaya</span>
+<span class="text-on-surface-variant text-[11px] ml-1.5 hidden sm:inline">(İnsan Kaynakları)</span>
+</div>
+</div>
+<div class="flex items-center gap-space-sm">
+<span class="font-numeric-table text-numeric-table font-semibold">08:56:40</span>
+<span class="px-2 py-0.5 rounded-full bg-tertiary-fixed text-on-tertiary-fixed font-label-sm text-[11px] font-bold">Zamanında</span>
+</div>
+</div>
+<div class="flex items-center justify-between p-2.5 rounded-xl bg-surface-container-low text-on-surface font-body-sm text-body-sm border border-surface-container">
+<div class="flex items-center gap-space-xs">
+<div class="w-7 h-7 rounded-full bg-outline-variant text-on-surface flex items-center justify-center text-[12px] font-bold">CT</div>
+<div>
+<span class="font-semibold text-on-surface">Can Torun</span>
+<span class="text-on-surface-variant text-[11px] ml-1.5 hidden sm:inline">(Yazılım &amp; BT)</span>
+</div>
+</div>
+<div class="flex items-center gap-space-sm">
+<span class="font-numeric-table text-numeric-table font-semibold">09:02:05</span>
+<span class="px-2 py-0.5 rounded-full bg-error-container text-error font-label-sm text-[11px] font-bold">+12dk Gecikme</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ================= 6. 45 GÜNLÜK ÖZEL TANITIM ŞERİDİ ================= -->
+<section class="w-full bg-inverse-surface py-space-3xl text-inverse-on-surface relative overflow-hidden">
+<div class="absolute -right-24 -bottom-24 w-96 h-96 rounded-full bg-primary-container/20 blur-3xl pointer-events-none"></div>
+<div class="max-w-7xl mx-auto px-gutter relative z-10 flex flex-col lg:flex-row items-center justify-between gap-space-xl">
+<div class="flex flex-col gap-space-sm max-w-3xl">
+<div class="inline-flex items-center gap-space-2xs px-3.5 py-1 rounded-full bg-secondary text-inverse-on-surface font-label-sm text-label-sm font-bold tracking-wider uppercase w-fit shadow-md">
+<span class="material-symbols-outlined text-[16px]">celebration</span>
+<span>REKLAM ZİYARETÇİLERİMİZE ÖZEL: 45 GÜN BOYUNCA PERSONELPRATİK TAMAMEN ÜCRETSİZ!</span>
+</div>
+<h2 class="font-headline-xl text-headline-xl md:text-[36px] font-extrabold tracking-tight text-inverse-on-surface">
+              45 Gün Boyunca PersonelPratik Tamamen Ücretsiz!
+            </h2>
+<p class="font-body-lg text-body-lg text-surface-variant leading-relaxed">
+              Tüm personelinizi, şubelerinizi ve mesai vardiyalarınızı sisteme tanımlayın; 45 gün boyunca sıfır cihaz maliyetiyle canlı PDKS'yi test edin. Kredi kartı istenmez, hiçbir taahhüt taşımaz.
+            </p>
+<div class="flex flex-wrap items-center gap-space-md pt-space-2xs text-surface-variant font-label-md text-label-md">
+<span class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-tertiary-fixed text-[18px]">check_circle</span>
+                Otomatik Hesap Aktivasyonu
+              </span>
+<span class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-tertiary-fixed text-[18px]">check_circle</span>
+                Excel Personel Listesi İçe Aktarma
+              </span>
+<span class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-tertiary-fixed text-[18px]">check_circle</span>
+                Sınırsız Şube Tanımlama
+              </span>
+</div>
+</div>
+<div class="flex flex-col items-center lg:items-end justify-center w-full lg:w-auto shrink-0">
+<a class="w-full sm:w-auto h-[54px] px-space-xl rounded-xl bg-gradient-to-r from-[#ea580c] to-[#dc2626] text-on-primary font-headline-sm text-headline-sm font-bold flex items-center justify-center gap-space-xs shadow-[0_6px_20px_rgba(220,38,38,0.4)] hover:brightness-110 active:scale-[0.99] transition-all text-center" href="https://erp-eticaret.stokpratik.com.tr/" target="_blank" rel="noopener noreferrer">
+<span>Firma Kaydını Oluştur &amp; 45 Gün Ücretsiz Başla</span>
+<span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+</a>
+<span class="text-inverse-on-surface/60 font-body-sm text-[12px] mt-2 text-center">
+              Kurulum ortalama 4 dakika sürer • Kredi kartı gerekmez
+            </span>
+</div>
+</div>
+</section>
+<!-- ================= 7. CANLI WHATSAPP DESTEK KARTI ================= -->
+<section class="w-full py-space-2xl bg-surface">
+<div class="max-w-4xl mx-auto px-gutter">
+<div class="bg-surface-container-low rounded-2xl p-space-xl border border-surface-container shadow-sm flex flex-col md:flex-row items-center justify-between gap-space-lg">
+<div class="flex items-center gap-space-md">
+<div class="relative shrink-0">
+<div class="w-16 h-16 rounded-2xl bg-tertiary-container text-on-tertiary flex items-center justify-center shadow-md">
+<span class="material-symbols-outlined text-[36px]">support_agent</span>
+</div>
+<span class="absolute bottom-0 right-0 w-4 h-4 rounded-full bg-tertiary ring-2 ring-white"></span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-1.5">
+<span class="font-headline-md text-headline-md font-bold text-on-surface">Pelin Demir</span>
+<span class="material-symbols-outlined text-secondary text-[18px]">verified</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant font-medium">İK &amp; PDKS Danışmanı</p>
+<div class="flex items-center gap-1 text-tertiary font-label-sm text-label-sm font-bold mt-0.5">
+<span class="w-2 h-2 rounded-full bg-tertiary animate-pulse"></span>
+<span>Çevrimiçi • ~2 dk içinde yanıt</span>
+</div>
+</div>
+</div>
+<div class="flex-grow md:px-space-md">
+<p class="font-body-md text-body-md text-on-surface-variant">
+                İş yerinizde veya şubelerinizde tablet/telefonla QR-PDKS kurulumunun nasıl 5 dakikada yapılacağını İK danışmanımıza WhatsApp'tan danışın.
+              </p>
+</div>
+<a class="shrink-0 h-[48px] px-space-lg rounded-xl bg-tertiary text-on-tertiary font-label-lg text-label-lg font-bold flex items-center justify-center gap-space-xs shadow-[0_4px_14px_rgba(0,104,43,0.22)] hover:brightness-105 transition-all w-full md:w-auto" href="https://wa.me/905412465429?text=Merhaba%2C%20PersonelPratik%20Dinamik%20QR%20PDKS%20Portal%C4%B1%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum." target="_blank" rel="noopener noreferrer">
+<span class="material-symbols-outlined text-[20px]">chat</span>
+<span>💬 WhatsApp'tan <br>İK Danışmanına Soru Sor</span>
+</a>
+</div>
+</div>
+</section>
+<!-- ================= 8. SIKÇA SORULAN SORULAR ================= -->
+<section class="w-full bg-surface-container-low py-space-3xl border-t border-surface-container">
+<div class="max-w-6xl mx-auto px-gutter flex flex-col gap-space-2xl">
+<div class="flex flex-col items-center text-center max-w-2xl mx-auto gap-space-2xs">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-primary font-bold">AKLINIZDA SORU İŞARETİ KALMASIN</span>
+<h2 class="font-headline-xl text-headline-xl text-on-surface font-extrabold">Sıkça Sorulan Sorular</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">
+              PersonelPratik sistemine geçiş ve kullanım süreciyle ilgili merak edilen tüm detaylar.
+            </p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-md">
+<!-- Question 1 -->
+<div class="bg-surface-container-lowest p-space-md rounded-2xl border border-surface-container shadow-sm flex flex-col gap-space-xs">
+<div class="flex items-center gap-space-2xs text-primary font-bold">
+<span class="material-symbols-outlined text-[22px]">help</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Pahalı parmak izi veya yüz tanıma cihazı almam gerekiyor mu?</h3>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed pl-7">
+                Asla! Herhangi bir eski iPad, Android tablet ya da resepsiyondaki bir bilgisayar ekranı dinamik QR kiosk olarak kullanılabilir. Binlerce liralık parmak izi okuyucu, kart basma makinesi, kablolama ve bakım masraflarınız tamamen sıfırlanır.
+              </p>
+</div>
+<!-- Question 2 -->
+<div class="bg-surface-container-lowest p-space-md rounded-2xl border border-surface-container shadow-sm flex flex-col gap-space-xs">
+<div class="flex items-center gap-space-2xs text-secondary font-bold">
+<span class="material-symbols-outlined text-[22px]">help</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Kaç personel ve şube ekleyebilirim?</h3>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed pl-7">
+                Sınırsız! 45 günlük ücretsiz kullanım süresince dilediğiniz kadar mağaza, fabrika, depo veya saha ofisi açabilir; 5 personelden 5.000 personele kadar tüm çalışan kadronuzu sisteme tanımlayabilirsiniz.
+              </p>
+</div>
+<!-- Question 3 -->
+<div class="bg-surface-container-lowest p-space-md rounded-2xl border border-surface-container shadow-sm flex flex-col gap-space-xs">
+<div class="flex items-center gap-space-2xs text-tertiary font-bold">
+<span class="material-symbols-outlined text-[22px]">help</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Personel evden veya yoldan QR okutabilir mi?</h3>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed pl-7">
+                Hayır, okutamaz. Dinamik QR kod her 15 saniyede bir şifrelenerek yenilendiği için ekran görüntüsüyle başkasına iletilemez. Ayrıca akıllı GPS metre yarıçap kontrolü sayesinde yalnızca iş yeri alanında fiziki olarak bulunan personel okutma yapabilir.
+              </p>
+</div>
+<!-- Question 4 -->
+<div class="bg-surface-container-lowest p-space-md rounded-2xl border border-surface-container shadow-sm flex flex-col gap-space-xs">
+<div class="flex items-center gap-space-2xs text-primary-container font-bold">
+<span class="material-symbols-outlined text-[22px]">help</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">45 gün bittiğinde kartımdan para kesilir mi?</h3>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed pl-7">
+                Asla! Firma kaydı oluştururken sizden kredi kartı bilgisi talep edilmez. 45 günlük deneme süresi bittiğinde sistem otomatik olarak durur; devam etmek isterseniz sadece kullanmak istediğiniz personel adedine göre fatura oluşturulur.
+              </p>
+</div>
+</div>
+</div>
+</section>
+<!-- ================= FINAL CTA CLOSURE ================= -->
+<section class="w-full bg-surface-container-lowest py-space-2xl border-t border-surface-container text-center">
+<div class="max-w-4xl mx-auto px-gutter flex flex-col items-center gap-space-md">
+<div class="w-12 h-12 rounded-2xl bg-primary-container text-on-primary flex items-center justify-center shadow-md">
+<span class="material-symbols-outlined text-[26px]">rocket_launch</span>
+</div>
+<h2 class="font-headline-xl text-headline-xl text-on-surface font-extrabold">
+            İşletmenizi Bugün Modern QR-PDKS ile Donatın
+          </h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl">
+            Ekip giriş çıkışlarını şeffaflaştırın, mesai kayıplarını sonlandırın ve resmi SGK puantaj cetvellerinizi zahmetsizce hazırlayın.
+          </p>
+<div class="flex flex-col sm:flex-row items-center gap-space-sm pt-space-xs w-full sm:w-auto">
+<a class="w-full sm:w-auto h-[52px] px-space-xl rounded-xl bg-gradient-to-r from-[#ea580c] to-[#dc2626] text-on-primary font-headline-sm text-headline-sm font-bold flex items-center justify-center gap-space-xs shadow-[0_4px_16px_rgba(220,38,38,0.32)] hover:brightness-105 transition-all" href="https://erp-eticaret.stokpratik.com.tr/" target="_blank" rel="noopener noreferrer">
+<span>45 Gün Ücretsiz Başla (Kartsız)</span>
+<span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+</a>
+<a class="w-full sm:w-auto h-[52px] px-space-lg rounded-xl bg-surface-container text-on-surface font-headline-sm text-headline-sm font-bold flex items-center justify-center gap-space-xs hover:bg-surface-container-high transition-all border border-surface-container" href="https://wa.me/905412465429?text=Merhaba%2C%20PersonelPratik%20Dinamik%20QR%20PDKS%20Portal%C4%B1%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum." target="_blank" rel="noopener noreferrer">
+<span class="material-symbols-outlined text-tertiary text-[22px]">chat</span>
+<span>WhatsApp Bilgi Hattı</span>
+</a>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- ================= 9. FOOTER ================= -->
+<footer class="w-full bg-surface-container-low text-on-surface border-t border-surface-container pt-space-3xl pb-space-2xl">
+<div class="max-w-7xl mx-auto px-gutter">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-space-xl pb-space-2xl">
+<!-- Brand Info -->
+<div class="lg:col-span-2 flex flex-col gap-space-md">
+<div class="flex items-center gap-space-sm">
+<div class="w-9 h-9 rounded-xl bg-primary text-on-primary flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-[20px]">verified_user</span>
+</div>
+<span class="font-headline-md text-headline-md font-bold tracking-tight text-on-surface">Personel<span class="text-primary-container">Pratik</span></span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-sm">
+            Kart basma kuyruklarını ve sahte konum manipülasyonlarını bitiren 15 saniyelik dinamik QR-kod ve mock GPS korumalı bulut İK PDKS platformu.
+          </p>
+<div class="flex flex-wrap items-center gap-space-sm pt-space-xs">
+<div class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-surface-container-lowest text-on-surface shadow-sm font-label-sm text-label-sm border border-surface-container">
+<span class="material-symbols-outlined text-tertiary text-[16px]">verified</span>
+<span>ISO 27001 Bilgi Güvenliği</span>
+</div>
+<div class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-surface-container-lowest text-on-surface shadow-sm font-label-sm text-label-sm border border-surface-container">
+<span class="material-symbols-outlined text-secondary text-[16px]">lock</span>
+<span>KVKK %100 Uyumlu</span>
+</div>
+</div>
+</div>
+<!-- Links 1 -->
+<div class="flex flex-col gap-space-sm">
+<h3 class="font-label-lg text-label-lg text-on-surface uppercase tracking-wider font-bold">PDKS Modülleri</h3>
+<ul class="flex flex-col gap-space-xs font-body-md text-body-md text-on-surface-variant">
+<li><a class="hover:text-on-surface transition-colors" data-path="dinamik-qr-pdks" href="#">Dinamik QR Kod Okuyucu</a></li>
+<li><a class="hover:text-on-surface transition-colors" data-path="hilesiz-gps-dogrulama" href="#">Mock-Proof GPS Doğrulama</a></li>
+<li><a class="hover:text-on-surface transition-colors" data-path="sgk-puantaj" href="#">Otomatik SGK Puantaj</a></li>
+<li><a class="hover:text-on-surface transition-colors" data-path="izin-ve-avans" href="#">İzin ve Avans Yönetimi</a></li>
+<li><a class="hover:text-on-surface transition-colors" data-path="nasil-calisir" href="#">Vardiya &amp; Fazla Mesai</a></li>
+</ul>
+</div>
+<!-- Links 2 -->
+<div class="flex flex-col gap-space-sm">
+<h3 class="font-label-lg text-label-lg text-on-surface uppercase tracking-wider font-bold">Kurumsal &amp; Güvenlik</h3>
+<ul class="flex flex-col gap-space-xs font-body-md text-body-md text-on-surface-variant">
+<li><a class="hover:text-on-surface transition-colors" data-path="guvenlik-ve-kvkk" href="#">KVKK Aydınlatma Metni</a></li>
+<li><a class="hover:text-on-surface transition-colors" data-path="guvenlik-ve-kvkk" href="#">Bilgi Güvenliği Politikası</a></li>
+<li><a class="hover:text-on-surface transition-colors" data-path="guvenlik-ve-kvkk" href="#">Açık Rıza Beyanları</a></li>
+<li><a class="hover:text-on-surface transition-colors" data-path="fiyatlandirma" href="#">Fiyatlandırma</a></li>
+<li><a class="hover:text-on-surface transition-colors" data-path="entegrasyonlar" href="#">ERP &amp; Muhasebe Entegrasyonu</a></li>
+</ul>
+</div>
+<!-- Support Info -->
+<div class="flex flex-col gap-space-sm">
+<h3 class="font-label-lg text-label-lg text-on-surface uppercase tracking-wider font-bold">Hızlı İletişim</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+            Sorularınız için kurumsal destek ekibimiz dakikalar içinde yanıt versin.
+          </p>
+<a class="inline-flex items-center gap-space-2xs px-space-md py-2.5 rounded-xl bg-tertiary-container text-on-tertiary font-label-md text-label-md hover:brightness-105 transition-all shadow-sm w-fit" href="https://wa.me/905412465429?text=Merhaba%2C%20PersonelPratik%20Dinamik%20QR%20PDKS%20Portal%C4%B1%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum." target="_blank" rel="noopener noreferrer">
+<span class="material-symbols-outlined text-[18px]">forum</span>
+<span>Canlı WhatsApp Destek</span>
+</a>
+</div>
+</div>
+<!-- Copyright Subbar -->
+
+</div>
+</footer>
+<!-- ================= STICKY MOBILE BOTTOM ACTION BAR ================= -->
+<div class="fixed bottom-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-t border-slate-200 p-space-xs shadow-xl flex md:hidden items-center gap-space-xs">
+<a class="flex-1 h-11 px-2 rounded-xl bg-surface-container text-tertiary font-label-md text-label-md font-bold flex items-center justify-center gap-1.5 shadow-sm" href="https://wa.me/905412465429?text=Merhaba%2C%20PersonelPratik%20Dinamik%20QR%20PDKS%20Portal%C4%B1%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum." target="_blank" rel="noopener noreferrer">
+<span class="material-symbols-outlined text-[18px]">chat</span>
+<span>WhatsApp ile Soru Sor</span>
+</a>
+<a class="flex-1 h-11 px-2 rounded-xl bg-gradient-to-r from-[#ea580c] to-[#dc2626] text-on-primary font-label-md text-label-md font-bold flex items-center justify-center gap-1 shadow-md" href="https://erp-eticaret.stokpratik.com.tr/" target="_blank" rel="noopener noreferrer">
+<span>🔥 45 Gün Ücretsiz Başla</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+</div>
+<!-- Interactive JavaScript -->
+<script>
+    // Live Clock Simulation
+    function updateClock() {
+      const now = new Date();
+      const hours = String(now.getHours()).padStart(2, '0');
+      const minutes = String(now.getMinutes()).padStart(2, '0');
+      const seconds = String(now.getSeconds()).padStart(2, '0');
+      const clockEl = document.getElementById('live-clock');
+      if (clockEl) {
+        clockEl.textContent = hours + ':' + minutes + ':' + seconds;
+      }
+    }
+    setInterval(updateClock, 1000);
+    updateClock();
+
+    // 15-Second QR Dynamic Countdown Animation
+    let countdownVal = 9;
+    const totalDuration = 15;
+    const ringPerimeter = 264;
+
+    function runQRTimer() {
+      const countdownEl = document.getElementById('qr-countdown');
+      const ringEl = document.getElementById('qr-progress-ring');
+
+      countdownVal--;
+      if (countdownVal <= 0) {
+        countdownVal = 15;
+      }
+
+      if (countdownEl) {
+        countdownEl.textContent = String(countdownVal).padStart(2, '0') + 's';
+      }
+
+      if (ringEl) {
+        const offset = ringPerimeter - (ringPerimeter * (countdownVal / totalDuration));
+        ringEl.style.strokeDashoffset = offset;
+      }
+    }
+
+    let qrInterval = setInterval(runQRTimer, 1000);
+
+    function refreshSimulatedQR() {
+      countdownVal = 15;
+      const countdownEl = document.getElementById('qr-countdown');
+      const ringEl = document.getElementById('qr-progress-ring');
+      if (countdownEl) countdownEl.textContent = '15s';
+      if (ringEl) ringEl.style.strokeDashoffset = 0;
+    }
+  </script>
+
+
+</body></html>

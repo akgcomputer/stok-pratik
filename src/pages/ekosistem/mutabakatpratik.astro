@@ -1,0 +1,705 @@
+---
+// İzole Tanıtım Sayfası - MutabakatPratik BA/BS & Cari Mutabakat Portalı | StokPratik Ekosistemi
+// Bu sayfa mevcut site stillerinden tamamen bağımsız çalışır.
+---
+<!DOCTYPE html><html lang="tr"><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0" name="viewport"><meta content="web_standard" name="shell-type"><title>MutabakatPratik BA/BS & Cari Mutabakat Portalı | StokPratik Ekosistemi</title><link href="https://fonts.googleapis.com" rel="preconnect"><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+          "on-primary-fixed-variant": "#93000b",
+          "inverse-surface": "#283044",
+          "secondary-fixed-dim": "#b6c4ff",
+          "on-tertiary-container": "#e7ffe4",
+          "on-error": "#ffffff",
+          "outline-variant": "#e6bdb8",
+          "on-primary-container": "#fff6f5",
+          "primary": "#b70011",
+          "tertiary": "#00682b",
+          "secondary-fixed": "#dce1ff",
+          "primary-fixed-dim": "#ffb4ab",
+          "background": "#faf8ff",
+          "outline": "#916f6b",
+          "on-secondary-fixed-variant": "#264191",
+          "surface-variant": "#dae2fd",
+          "tertiary-fixed-dim": "#62df7d",
+          "on-surface-variant": "#5c403c",
+          "on-primary-fixed": "#410002",
+          "on-surface": "#131b2e",
+          "on-secondary": "#ffffff",
+          "secondary-container": "#8fa7fe",
+          "tertiary-fixed": "#7ffc97",
+          "on-secondary-container": "#1d3989",
+          "error-container": "#ffdad6",
+          "surface": "#faf8ff",
+          "surface-bright": "#faf8ff",
+          "surface-container-low": "#f2f3ff",
+          "inverse-primary": "#ffb4ab",
+          "on-error-container": "#93000a",
+          "secondary": "#4059aa",
+          "surface-container": "#eaedff",
+          "surface-tint": "#bf0715",
+          "on-tertiary": "#ffffff",
+          "error": "#ba1a1a",
+          "primary-container": "#dc2626",
+          "on-tertiary-fixed": "#002109",
+          "tertiary-container": "#008438",
+          "surface-container-high": "#e2e7ff",
+          "on-background": "#131b2e",
+          "surface-container-highest": "#dae2fd",
+          "on-primary": "#ffffff",
+          "inverse-on-surface": "#eef0ff",
+          "surface-dim": "#d2d9f4",
+          "surface-container-lowest": "#ffffff",
+          "on-tertiary-fixed-variant": "#005320",
+          "primary-fixed": "#ffdad6",
+          "on-secondary-fixed": "#00164e"
+        },
+        "borderRadius": {
+          "DEFAULT": "0.25rem",
+          "lg": "0.5rem",
+          "xl": "0.75rem",
+          "full": "9999px"
+        },
+        "spacing": {
+          "space-xl": "2rem",
+          "space-3xl": "4rem",
+          "gutter": "1.5rem",
+          "margin": "2rem",
+          "space-lg": "1.5rem",
+          "space-xs": "0.5rem",
+          "space-2xl": "3rem",
+          "gutter-lg": "2rem",
+          "space-2xs": "0.25rem",
+          "space-md": "1rem",
+          "space-sm": "0.75rem",
+          "gutter-sm": "1rem",
+          "margin-sm": "1rem",
+          "margin-lg": "3rem"
+        },
+        "fontFamily": {
+          "headline-lg": [
+            "Plus Jakarta Sans"
+          ],
+          "headline-sm": [
+            "Plus Jakarta Sans"
+          ],
+          "body-lg": [
+            "Plus Jakarta Sans"
+          ],
+          "display-lg": [
+            "Plus Jakarta Sans"
+          ],
+          "label-lg": [
+            "Plus Jakarta Sans"
+          ],
+          "label-sm": [
+            "Plus Jakarta Sans"
+          ],
+          "display-lg-mobile": [
+            "Plus Jakarta Sans"
+          ],
+          "label-md": [
+            "Plus Jakarta Sans"
+          ],
+          "headline-md": [
+            "Plus Jakarta Sans"
+          ],
+          "headline-xl": [
+            "Plus Jakarta Sans"
+          ],
+          "body-md": [
+            "Plus Jakarta Sans"
+          ],
+          "body-sm": [
+            "Plus Jakarta Sans"
+          ],
+          "numeric-table": [
+            "Plus Jakarta Sans"
+          ],
+          "headline-xl-mobile": [
+            "Plus Jakarta Sans"
+          ]
+        },
+        "fontSize": {
+          "headline-lg": [
+            "24px",
+            {
+              "lineHeight": "32px",
+              "letterSpacing": "-0.02em",
+              "fontWeight": "700"
+            }
+          ],
+          "headline-sm": [
+            "16px",
+            {
+              "lineHeight": "24px",
+              "letterSpacing": "-0.01em",
+              "fontWeight": "600"
+            }
+          ],
+          "body-lg": [
+            "16px",
+            {
+              "lineHeight": "26px",
+              "letterSpacing": "-0.005em",
+              "fontWeight": "400"
+            }
+          ],
+          "display-lg": [
+            "40px",
+            {
+              "lineHeight": "48px",
+              "letterSpacing": "-0.03em",
+              "fontWeight": "800"
+            }
+          ],
+          "label-lg": [
+            "14px",
+            {
+              "lineHeight": "20px",
+              "letterSpacing": "0.01em",
+              "fontWeight": "600"
+            }
+          ],
+          "label-sm": [
+            "11px",
+            {
+              "lineHeight": "14px",
+              "letterSpacing": "0.04em",
+              "fontWeight": "700"
+            }
+          ],
+          "display-lg-mobile": [
+            "30px",
+            {
+              "lineHeight": "38px",
+              "letterSpacing": "-0.02em",
+              "fontWeight": "800"
+            }
+          ],
+          "label-md": [
+            "12px",
+            {
+              "lineHeight": "16px",
+              "letterSpacing": "0.02em",
+              "fontWeight": "600"
+            }
+          ],
+          "headline-md": [
+            "20px",
+            {
+              "lineHeight": "28px",
+              "letterSpacing": "-0.015em",
+              "fontWeight": "600"
+            }
+          ],
+          "headline-xl": [
+            "32px",
+            {
+              "lineHeight": "40px",
+              "letterSpacing": "-0.025em",
+              "fontWeight": "700"
+            }
+          ],
+          "body-md": [
+            "14px",
+            {
+              "lineHeight": "22px",
+              "letterSpacing": "0em",
+              "fontWeight": "400"
+            }
+          ],
+          "body-sm": [
+            "12px",
+            {
+              "lineHeight": "18px",
+              "letterSpacing": "0.005em",
+              "fontWeight": "400"
+            }
+          ],
+          "numeric-table": [
+            "13px",
+            {
+              "lineHeight": "18px",
+              "letterSpacing": "-0.01em",
+              "fontWeight": "600"
+            }
+          ],
+          "headline-xl-mobile": [
+            "24px",
+            {
+              "lineHeight": "32px",
+              "letterSpacing": "-0.02em",
+              "fontWeight": "700"
+            }
+          ]
+        }
+      },
+    },
+  };</script>
+    <meta name="description" content="Tek tıkla yüzlerce cariye WhatsApp ve SMS ile interaktif mutabakat mektubu gönderin. Otomatik onay, itiraz ve ekstre karşılaştırma." />
+    <link rel="canonical" href="https://stokpratik.com.tr/ekosistem/mutabakatpratik" />
+    <meta property="og:title" content="MutabakatPratik BA/BS & Cari Mutabakat Portalı | StokPratik Ekosistemi" />
+    <meta property="og:description" content="Tek tıkla yüzlerce cariye WhatsApp ve SMS ile interaktif mutabakat mektubu gönderin. Otomatik onay, itiraz ve ekstre karşılaştırma." />
+    <meta property="og:url" content="https://stokpratik.com.tr/ekosistem/mutabakatpratik" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="StokPratik" />
+    <meta property="og:image" content="https://lh3.googleusercontent.com/aida-public/AB6AXuDRPclUgpTX-_PXtrOjndC2Cvk8Gq2wsHXQQSlAzt7lJBpxmUI7rPK2thEXYlri_uoIfF3y4w1R8jb2wUgjvW2ziR--7rVsrT6sFS9y7qse9P0FluS6Y6KQudffk_tQ9b0RghVXu-MH74g1NO9doR-4ZlLE5EVWm3H0PZpINMRh3abzWEcVH9xYT4JD7eHBW6wAqGeqYM1D0CDMilN-ag3PIAZzlXLbUj2HudCzn5ei" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="MutabakatPratik BA/BS & Cari Mutabakat Portalı | StokPratik Ekosistemi" />
+    <meta name="twitter:description" content="Tek tıkla yüzlerce cariye WhatsApp ve SMS ile interaktif mutabakat mektubu gönderin. Otomatik onay, itiraz ve ekstre karşılaştırma." />
+    <meta name="twitter:image" content="https://lh3.googleusercontent.com/aida-public/AB6AXuDRPclUgpTX-_PXtrOjndC2Cvk8Gq2wsHXQQSlAzt7lJBpxmUI7rPK2thEXYlri_uoIfF3y4w1R8jb2wUgjvW2ziR--7rVsrT6sFS9y7qse9P0FluS6Y6KQudffk_tQ9b0RghVXu-MH74g1NO9doR-4ZlLE5EVWm3H0PZpINMRh3abzWEcVH9xYT4JD7eHBW6wAqGeqYM1D0CDMilN-ag3PIAZzlXLbUj2HudCzn5ei" />
+  
+</head><body class="bg-surface font-body-md text-body-md text-on-surface antialiased"><header class="fixed top-0 left-0 w-full z-50 bg-surface-container-lowest/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-20 max-w-[1440px] mx-auto px-margin flex items-center justify-between gap-space-md"><div class="flex items-center gap-space-sm"><div class="w-10 h-10 rounded-xl bg-gradient-to-br from-primary to-primary-container flex items-center justify-center shadow-[0_4px_12px_rgba(183,0,17,0.25)]"><span class="material-symbols-outlined text-on-primary text-[22px]">verified</span></div><div class="flex flex-col"><span class="font-headline-md text-headline-md tracking-tight text-on-surface">Mutabakat<span class="text-primary">Pratik</span></span><span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary">Dijital Mutabakat &amp; BA/BS</span></div></div><nav class="hidden xl:flex items-center gap-space-lg" data-active-classes="text-primary font-bold"><a class="font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface transition-colors" data-path="sifresiz-onay" href="#">Şifresiz Onay</a><a class="font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface transition-colors" data-path="cari-mutabakat" href="#">Cari Mutabakat</a><a class="font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface transition-colors" data-path="ba-bs-modulu" href="#">BA/BS Modülü</a><a class="font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface transition-colors" data-path="fark-bulucu" href="#">Fark Bulucu</a><a class="font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface transition-colors" data-path="nasil-calisir" href="#">Nasıl Çalışır?</a></nav><div class="flex items-center gap-space-sm"><a class="hidden sm:inline-flex items-center gap-space-xs px-space-md h-11 rounded-xl bg-tertiary-container text-on-tertiary font-label-lg text-label-lg shadow-[0_4px_12px_rgba(0,132,56,0.22)] hover:opacity-95 transition-all" href="https://wa.me/905412465429?text=Merhaba%2C%20MutabakatPratik%20Dijital%20Mutabakat%20Portal%C4%B1%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum." target="_blank" rel="noopener noreferrer"><span class="material-symbols-outlined text-[18px]">chat</span><span>WhatsApp ile Soru Sor</span></a><a class="inline-flex items-center gap-space-xs px-space-md h-11 rounded-xl bg-gradient-to-r from-primary to-primary-container text-on-primary font-label-lg text-label-lg shadow-[0_4px_14px_rgba(220,38,38,0.3)] hover:brightness-105 transition-all" href="https://erp-eticaret.stokpratik.com.tr/" target="_blank" rel="noopener noreferrer"><span>45 Gün Ücretsiz Başla</span><span class="material-symbols-outlined text-[18px]">arrow_forward</span></a><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center ml-space-2xs"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="w-full pt-20 bg-surface min-h-[calc(100vh-80px)]"><div class="flex flex-col w-full">
+<!-- SECTION 1: HERO SECTION -->
+<section class="w-full bg-surface-container-lowest py-space-xl lg:py-space-2xl">
+<div class="max-w-[1440px] mx-auto px-margin">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter-lg items-center">
+<!-- Left Column: High-Impact Typography & Conversion Focus -->
+<div class="lg:col-span-7 flex flex-col items-start gap-space-md">
+<!-- Top Badge -->
+<div class="inline-flex items-center gap-space-2xs px-space-sm py-1.5 rounded-full bg-surface-container text-secondary font-label-md text-label-md">
+<span class="material-symbols-outlined text-[16px] text-secondary">handshake</span>
+<span class="tracking-wide">DİJİTAL CARİ BAKİYE &amp; BA/BS MUTABAKAT ÜSSÜ</span>
+</div>
+<!-- Main Headline -->
+<h1 class="font-headline-xl text-headline-xl text-on-surface tracking-tight">
+            Telefon ve E-Posta Trafiğine Son!&nbsp;<div>Yüzlerce Cariyle <span class="text-primary">Şifresiz, Tek Tıkla</span>&nbsp;</div><div>Dijital Mutabakat.
+          </div></h1>
+<!-- Subheadline -->
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">
+            Müşteri ve tedarikçilerinize SMS veya e-posta ile link gönderin; şifre gerekmeden cep telefonlarından ekstreyi incelesinler, tek tıkla onaylasın veya farkı bildirsinler.
+          </p>
+<!-- Core Promotional Hook Card -->
+<div class="w-full p-space-md rounded-xl bg-surface-container-low border border-surface-container-high flex items-start gap-space-sm shadow-sm">
+<div class="w-9 h-9 rounded-lg bg-primary-fixed flex items-center justify-center shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-primary text-[20px]">redeem</span>
+</div>
+<div>
+<p class="font-headline-sm text-headline-sm text-on-surface">
+                45 Gün Boyunca Tüm Carilerinizle Sınırsız Mutabakat
+              </p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                Kredi kartı bilgisi girmeden, herhangi bir taahhüt altına girmeden hemen firma kaydınızı oluşturup tam kapasite kullanın.
+              </p>
+</div>
+</div>
+<!-- Trust Badges Row -->
+<div class="flex flex-wrap items-center gap-y-2 gap-x-space-md text-on-surface-variant font-label-sm text-label-sm">
+<div class="flex items-center gap-1.5 text-tertiary">
+<span class="material-symbols-outlined text-[18px]">verified</span>
+<span class="text-on-surface font-semibold">45 Gün Sınırsız Mutabakat</span>
+</div>
+<div class="flex items-center gap-1.5 text-tertiary">
+<span class="material-symbols-outlined text-[18px]">policy</span>
+<span class="text-on-surface font-semibold">5651 Kanununa Uygun Log</span>
+</div>
+<div class="flex items-center gap-1.5 text-tertiary">
+<span class="material-symbols-outlined text-[18px]">credit_card_off</span>
+<span class="text-on-surface font-semibold">Kart Bilgisi İstenmez</span>
+</div>
+</div>
+<!-- Dual Hero Action Buttons -->
+<div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-space-sm w-full sm:w-auto pt-space-xs">
+<a class="h-[54px] px-space-lg rounded-xl bg-gradient-to-r from-[#EA580C] to-primary-container text-on-primary font-headline-sm text-headline-sm inline-flex items-center justify-center gap-space-xs shadow-md hover:brightness-105 transition-all" href="https://erp-eticaret.stokpratik.com.tr/" target="_blank" rel="noopener noreferrer">
+<span class="material-symbols-outlined text-[20px]">local_fire_department</span>
+<span>45 Gün Ücretsiz Başla (Firma Kaydı)</span>
+</a>
+<a class="h-[54px] px-space-md rounded-xl bg-tertiary-container text-on-tertiary font-headline-sm text-headline-sm inline-flex items-center justify-center gap-space-xs shadow-sm hover:opacity-95 transition-all" href="https://wa.me/905412465429?text=Merhaba%2C%20MutabakatPratik%20Dijital%20Mutabakat%20Portal%C4%B1%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum." target="_blank" rel="noopener noreferrer">
+<span class="material-symbols-outlined text-[20px]">chat</span>
+<span>WhatsApp ile Soru Sor</span>
+</a>
+</div>
+</div>
+<!-- Right Column: Visual Composition with Floating UI Badges -->
+<div class="lg:col-span-5 relative mt-space-md lg:mt-0">
+<div class="relative rounded-2xl overflow-hidden shadow-xl bg-surface-container">
+<img class="w-full h-[420px] lg:h-[480px] object-cover" data-alt="Professional female Turkish chief accountant smiling warmly while managing digital account reconciliations on a sleek laptop at a modern corporate office desk overlooking an Istanbul city skyline, daylight enterprise setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBdUv-Hqt_DKGoUXFobHlPOsDZQHEeQidw8BkfeBn_VmdrU4mBqmu09V0jnW8EJ51EBELtiukd37LJd4bbpVrTGAhJm-6X5Gjig6KcLMN8l-LDz_Cm0XGuNM9ASx9kAxgtxTUZnCQ7UblMkM-jFsD5fP9ClL1LNu24-MjllN3V0-l49XceojfOOYoyt4bxFNc9N0R_gXIEWCzRF0EGjdJYe2H3FK3oSWOpJAhlY6-DD">
+<div class="absolute inset-0 bg-gradient-to-t from-on-surface/40 via-transparent to-transparent"></div>
+</div>
+<!-- Top-Right Floating Metric Card -->
+<div class="absolute -top-4 -right-2 sm:right-4 p-space-sm rounded-xl bg-surface-container-lowest/95 backdrop-blur-md shadow-lg border border-surface-container flex items-center gap-space-sm animate-pulse">
+<div class="w-12 h-12 relative flex items-center justify-center">
+<svg class="w-12 h-12 -rotate-90" viewBox="0 0 36 36">
+<path class="text-surface-container-high" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-width="3"></path>
+<path class="text-tertiary" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-dasharray="94, 100" stroke-linecap="round" stroke-width="3.2"></path>
+</svg>
+<span class="absolute font-numeric-table text-numeric-table text-on-surface font-bold">%94</span>
+</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface font-semibold">Onay Oranı: %94</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">48 / 51 Cari Tamamlandı</p>
+</div>
+</div>
+<!-- Bottom-Left Floating Activity Card -->
+<div class="absolute -bottom-5 -left-2 sm:left-4 p-space-sm rounded-xl bg-surface-container-lowest shadow-lg border border-surface-container flex items-center gap-space-sm max-w-[280px] sm:max-w-xs">
+<div class="w-9 h-9 rounded-full bg-tertiary/15 text-tertiary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[20px]">check_circle</span>
+</div>
+<div class="min-w-0">
+<div class="flex items-center gap-1.5">
+<span class="font-label-sm text-label-sm text-tertiary uppercase font-bold">MUTABIK KALINDI</span>
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+</div>
+<p class="font-label-md text-label-md text-on-surface truncate font-semibold">TEKNOSA GENEL MD.</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant text-[11px]">Şifresiz SMS Onayı (14:32:08)</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 2: METRICS & COMPLIANCE PROOF BAND -->
+<section class="w-full bg-surface-container-low py-space-lg">
+<div class="max-w-[1440px] mx-auto px-margin">
+<div class="grid grid-cols-2 md:grid-cols-4 gap-gutter text-center md:text-left">
+<!-- Stat 1 -->
+<div class="flex flex-col items-center md:items-start p-space-xs">
+<span class="font-headline-xl text-headline-xl text-primary font-extrabold tracking-tight">500.000+</span>
+<span class="font-label-lg text-label-lg text-on-surface mt-1">Mutabakat Gönderimi</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Türkiye geneli cari hacmi</span>
+</div>
+<!-- Stat 2 -->
+<div class="flex flex-col items-center md:items-start p-space-xs">
+<span class="font-headline-xl text-headline-xl text-tertiary font-extrabold tracking-tight">%96</span>
+<span class="font-label-lg text-label-lg text-on-surface mt-1">İlk 24 Saatte Yanıt</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Otomatik hatırlatma desteği</span>
+</div>
+<!-- Stat 3 -->
+<div class="flex flex-col items-center md:items-start p-space-xs">
+<span class="font-headline-xl text-headline-xl text-secondary font-extrabold tracking-tight">1 Dakika</span>
+<span class="font-label-lg text-label-lg text-on-surface mt-1">Ortalama Onay Süresi</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Şifresiz mobil link ile</span>
+</div>
+<!-- Stat 4 -->
+<div class="flex flex-col items-center md:items-start p-space-xs">
+<span class="font-headline-xl text-headline-xl text-on-surface font-extrabold tracking-tight">5651 Sayılı</span>
+<span class="font-label-lg text-label-lg text-on-surface mt-1">Yasal Zaman Damgası</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Mahkemede resmi delil gücü</span>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 3: CORE PROBLEM SOLVING CAPABILITIES -->
+<section class="w-full bg-surface-container-lowest py-space-2xl">
+<div class="max-w-[1440px] mx-auto px-margin">
+<div class="text-center max-w-3xl mx-auto mb-space-xl">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary font-bold">Zaman &amp; İş Gücü Tasarrufu</span>
+<h2 class="font-headline-xl text-headline-xl text-on-surface mt-space-2xs">
+          Ay Sonu Muhasebe Krizini Çözen 3 Akıllı Özellik
+        </h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant mt-space-xs">
+          Saatler süren faks takipleri, ulaşılamayan muhasebeciler ve Excel karmaşasını tek bir merkezi platformla tarihe gömün.
+        </p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<!-- Card 1 -->
+<div class="p-space-lg rounded-2xl bg-surface border border-surface-container flex flex-col justify-between hover:shadow-md transition-shadow">
+<div>
+<div class="w-12 h-12 rounded-xl bg-secondary-fixed flex items-center justify-center mb-space-md text-secondary">
+<span class="material-symbols-outlined text-[24px]">phonelink_ring</span>
+</div>
+<div class="inline-flex px-space-xs py-1 rounded-full bg-surface-container text-secondary font-label-sm text-label-sm font-semibold mb-space-xs">
+              SMS &amp; WhatsApp &amp; E-Posta Entegre
+            </div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-space-xs">
+              Şifresiz &amp; Zahmetsiz Onay Linki
+            </h3>
+<p class="font-body-md text-body-md text-on-surface-variant">
+              Karşı tarafın sisteme üye olmasına veya şifre hatırlamasına gerek yoktur; SMS veya e-postadaki tek kullanımlık güvenli bağlantıya tıklayarak akıllı telefondan saniyeler içinde mutabakatı onaylar.
+            </p>
+</div>
+<div class="pt-space-md mt-space-md flex items-center gap-space-2xs text-secondary font-label-md text-label-md">
+<span class="material-symbols-outlined text-[18px]">bolt</span>
+<span>0 Kayıt Formu, Doğrudan Erişim</span>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="p-space-lg rounded-2xl bg-surface border border-surface-container flex flex-col justify-between hover:shadow-md transition-shadow">
+<div>
+<div class="w-12 h-12 rounded-xl bg-primary-fixed flex items-center justify-center mb-space-md text-primary">
+<span class="material-symbols-outlined text-[24px]">troubleshoot</span>
+</div>
+<div class="inline-flex px-space-xs py-1 rounded-full bg-surface-container text-primary font-label-sm text-label-sm font-semibold mb-space-xs">
+              Fatura &amp; Dekont Eşleme
+            </div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-space-xs">
+              Otomatik Ekstre Fark Bulucu
+            </h3>
+<p class="font-body-md text-body-md text-on-surface-variant">
+              Bakiye uyuşmadığında iki tarafın ekstresini yapay zeka ve kural motoruyla yan yana eşleştirir; hangi fatura veya havale eksikse sarı renkle işaretleyip uyuşmazlığı dakikalar içinde çözmenizi sağlar.
+            </p>
+</div>
+<div class="pt-space-md mt-space-md flex items-center gap-space-2xs text-primary font-label-md text-label-md">
+<span class="material-symbols-outlined text-[18px]">find_in_page</span>
+<span>Tek Tıkla Satır Satır Çapraz Eşleme</span>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="p-space-lg rounded-2xl bg-surface border border-surface-container flex flex-col justify-between hover:shadow-md transition-shadow">
+<div>
+<div class="w-12 h-12 rounded-xl bg-tertiary-fixed flex items-center justify-center mb-space-md text-tertiary">
+<span class="material-symbols-outlined text-[24px]">gavel</span>
+</div>
+<div class="inline-flex px-space-xs py-1 rounded-full bg-surface-container text-tertiary font-label-sm text-label-sm font-semibold mb-space-xs">
+              Hukuken Geçerli Mühür
+            </div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-space-xs">
+              5651 Sayılı Kanuna Uygun Hukuki Kasası
+            </h3>
+<p class="font-body-md text-body-md text-on-surface-variant">
+              Verilen tüm onaylar IP adresi, tarih, saat ve tarayıcı kullanıcı bilgisiyle kriptografik olarak mühürlenir; mahkemelerde, icra takiplerinde ve vergi denetimlerinde kesin delil niteliği taşır.
+            </p>
+</div>
+<div class="pt-space-md mt-space-md flex items-center gap-space-2xs text-tertiary font-label-md text-label-md">
+<span class="material-symbols-outlined text-[18px]">encrypted</span>
+<span>Değiştirilemez Kriptografik İmza</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 4: INTERACTIVE FEATURE SHOWCASE (DIFFERENCE DETECTOR) -->
+<section class="w-full bg-surface-container-low py-space-2xl">
+<div class="max-w-[1440px] mx-auto px-margin">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter-lg items-center">
+<!-- Interactive Tablet / Comparison UI Preview -->
+<div class="lg:col-span-7 flex flex-col gap-space-sm order-2 lg:order-1">
+<!-- Comparison Panel Mockup -->
+<div class="rounded-2xl bg-surface-container-lowest p-space-md shadow-lg border border-surface-container">
+<div class="flex flex-wrap items-center justify-between gap-space-xs pb-space-sm mb-space-sm border-b border-surface-container">
+<div class="flex items-center gap-space-2xs">
+<span class="w-3 h-3 rounded-full bg-error"></span>
+<span class="w-3 h-3 rounded-full bg-yellow-400"></span>
+<span class="w-3 h-3 rounded-full bg-tertiary"></span>
+<span class="font-label-md text-label-md text-on-surface font-semibold ml-2">Canlı Ekstre Eşleştirme Motoru</span>
+</div>
+<span class="px-space-xs py-0.5 rounded bg-surface-container text-on-surface-variant font-label-sm text-label-sm">Akıllı Algoritma Aktif</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-sm">
+<!-- Left: Company Ledger -->
+<div class="p-space-xs rounded-xl bg-surface border border-surface-container">
+<p class="font-label-sm text-label-sm uppercase tracking-wide text-secondary font-bold mb-space-xs flex items-center justify-between">
+<span>Şirketiniz Kayıtları</span>
+<span class="text-on-surface-variant">Bakiye: ₺246.850,00</span>
+</p>
+<div class="space-y-1.5 text-body-sm font-numeric-table">
+<div class="p-2 rounded bg-surface-container-lowest flex justify-between items-center text-on-surface">
+<span>FT-2024-889 Mal Bedeli</span>
+<span class="text-tertiary font-semibold">+₺85.000,00</span>
+</div>
+<div class="p-2 rounded bg-surface-container-lowest flex justify-between items-center text-on-surface">
+<span>FT-2024-890 Hizmet Faturası</span>
+<span class="text-tertiary font-semibold">+₺47.600,00</span>
+</div>
+<!-- Discrepancy line -->
+<div class="p-2 rounded bg-yellow-100/90 border border-yellow-300 flex justify-between items-center text-on-surface">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-amber-700">warning</span>
+<span class="font-semibold text-amber-900">FT-2024-891 İthalat Fat.</span>
+</div>
+<span class="font-bold text-amber-900">+₺14.250,00</span>
+</div>
+<div class="p-2 rounded bg-surface-container-lowest flex justify-between items-center text-on-surface">
+<span>HV-092 Havale / EFT</span>
+<span class="text-primary font-semibold">-₺100.000,00</span>
+</div>
+</div>
+</div>
+<!-- Right: Counterparty Ledger -->
+<div class="p-space-xs rounded-xl bg-surface border border-surface-container">
+<p class="font-label-sm text-label-sm uppercase tracking-wide text-secondary font-bold mb-space-xs flex items-center justify-between">
+<span>Müşteri / Tedarikçi Ekstresi</span>
+<span class="text-on-surface-variant">Bakiye: ₺232.600,00</span>
+</p>
+<div class="space-y-1.5 text-body-sm font-numeric-table">
+<div class="p-2 rounded bg-surface-container-lowest flex justify-between items-center text-on-surface">
+<span>FT-2024-889 Mal Bedeli</span>
+<span class="text-tertiary font-semibold">+₺85.000,00</span>
+</div>
+<div class="p-2 rounded bg-surface-container-lowest flex justify-between items-center text-on-surface">
+<span>FT-2024-890 Hizmet Faturası</span>
+<span class="text-tertiary font-semibold">+₺47.600,00</span>
+</div>
+<!-- Missing record indicator -->
+<div class="p-2 rounded bg-error-container/60 border border-error/30 flex justify-between items-center text-error">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">cancel</span>
+<span class="font-semibold">[Kayıt Bulunamadı]</span>
+</div>
+<span class="font-bold">₺0,00</span>
+</div>
+<div class="p-2 rounded bg-surface-container-lowest flex justify-between items-center text-on-surface">
+<span>HV-092 Havale / EFT</span>
+<span class="text-primary font-semibold">-₺100.000,00</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Auto Notification Callout -->
+<div class="mt-space-sm p-space-xs rounded-xl bg-amber-50 border border-amber-200 flex items-center justify-between gap-space-xs">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-amber-700 text-[20px]">notifications_active</span>
+<span class="font-body-sm text-body-sm text-amber-950 font-semibold">
+                  FT-2024-891 nolu fatura karşı taraf cari kartına işlenmemiş (Fark: ₺14.250,00)
+                </span>
+</div>
+<span class="font-label-sm text-label-sm px-2 py-0.5 rounded bg-amber-200/80 text-amber-900 font-bold shrink-0">Otomatik Tespit Edildi</span>
+</div>
+</div>
+</div>
+<!-- Right: Storytelling & Action Column -->
+<div class="lg:col-span-5 flex flex-col gap-space-sm order-1 lg:order-2">
+<div class="relative rounded-2xl overflow-hidden shadow-md">
+<img class="w-full h-56 object-cover" data-alt="Two corporate colleagues, a man and a woman in professional business attire, joyfully pointing at a tablet screen together while comparing balance statements in a sunlit conference room" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAfeGlgFoBd2NZcBObOIC00Tm2p4iVCuU99ymPOEcRSRlj6A3dBLZ-ZqHX2eKALHjs_VefGwWKUxch7-35QKOLkj90Gnkwr9LdhzQo0YH3kGHoSUi75wqley42sY-_6FKtPI9rRJt06QpC0h1qGgwRryC-OYVCfRzm6nHn6sunYQ3yaqqiqQ6WMKBos8gCWB9xkNrzLGe80yCA2GmSHQwhvLtgc0wG5qbSI50yC1gG7">
+</div>
+<div>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-primary font-bold">Akıllı Yapay Zeka Eşleme</span>
+<h3 class="font-headline-lg text-headline-lg text-on-surface mt-1">
+              Satır Satır Ekstre Okumayı Bırakın, Farkları Sistem Önünüze Döksün
+            </h3>
+<p class="font-body-md text-body-md text-on-surface-variant mt-space-xs">
+              Her iki taraftan yüklenen Excel veya PDF ekstreleri saniyeler içinde analiz edilir. Tutarı, tarihi veya fatura numarası tutmayan her hareket renkli olarak işaretlenir.
+            </p>
+</div>
+<div class="pt-space-xs">
+<a class="h-12 px-space-md rounded-xl bg-gradient-to-r from-[#EA580C] to-primary-container text-on-primary font-headline-sm text-headline-sm inline-flex items-center justify-center gap-space-xs shadow-md hover:brightness-105 transition-all" href="https://erp-eticaret.stokpratik.com.tr/" target="_blank" rel="noopener noreferrer">
+<span>Fark Bulucuyu 45 Gün Ücretsiz Dene</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 5: 45 GÜNLÜK ÖZEL TANITIM ŞERİDİ (CAMPAIGN BANNER) -->
+<section class="w-full bg-[#0F172A] text-on-primary py-space-xl">
+<div class="max-w-[1440px] mx-auto px-margin">
+<div class="rounded-2xl bg-gradient-to-r from-[#1E293B] to-[#0F172A] p-space-lg lg:p-space-xl flex flex-col lg:flex-row items-center justify-between gap-space-lg shadow-xl">
+<div class="flex-1 space-y-space-xs text-center lg:text-left">
+<div class="inline-flex items-center gap-space-2xs px-space-sm py-1 rounded-full bg-amber-500/20 text-amber-300 font-label-md text-label-md font-bold">
+<span class="material-symbols-outlined text-[18px]">bolt</span>
+<span>REKLAM ZİYARETÇİLERİMİZE ÖZEL: 45 GÜN BOYUNCA SINIRSIZ MUTABAKAT!</span>
+</div>
+<h2 class="font-headline-xl text-headline-xl text-white font-extrabold tracking-tight">
+            Tüm Carilerinizi Tek Ekrandan Yönetin, Ay Sonunu Dakikalar İçinde Kapatın.
+          </h2>
+<p class="font-body-lg text-body-lg text-slate-300 max-w-2xl">
+            Tüm müşteri ve tedarikçilerinize sınırsız mutabakat mektubu gönderin, otomatik fark bulucuyu test edin. 45 gün boyunca hiçbir ücret, kredi kartı veya taahhüt ödemezsiniz.
+          </p>
+</div>
+<div class="flex flex-col sm:flex-row lg:flex-col xl:flex-row items-stretch gap-space-sm w-full lg:w-auto shrink-0">
+<a class="h-[52px] px-space-lg rounded-xl bg-gradient-to-r from-[#EA580C] to-primary-container text-white font-headline-sm text-headline-sm inline-flex items-center justify-center gap-space-xs shadow-lg hover:brightness-110 transition-all text-center" href="https://erp-eticaret.stokpratik.com.tr/" target="_blank" rel="noopener noreferrer">
+<span>Firma Kaydını Oluştur &amp; 45 Gün Ücretsiz Başla</span>
+<span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+</a>
+<a class="h-[52px] px-space-md rounded-xl bg-tertiary-container text-white font-headline-sm text-headline-sm inline-flex items-center justify-center gap-space-xs hover:opacity-95 transition-all text-center" href="https://wa.me/905412465429?text=Merhaba%2C%20MutabakatPratik%20Dijital%20Mutabakat%20Portal%C4%B1%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum." target="_blank" rel="noopener noreferrer">
+<span class="material-symbols-outlined text-[20px]">chat</span>
+<span>WhatsApp ile Kampanya Bilgisi Al</span>
+</a>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 6: CANLI DESTEK & WHATSAPP ADVISOR SECTION -->
+<section class="w-full bg-surface-container-lowest py-space-2xl">
+<div class="max-w-[1440px] mx-auto px-margin">
+<div class="p-space-lg lg:p-space-xl rounded-2xl bg-surface border border-surface-container flex flex-col md:flex-row items-center justify-between gap-space-lg shadow-sm">
+<div class="flex items-center gap-space-md">
+<div class="w-16 h-16 rounded-2xl bg-tertiary-fixed flex items-center justify-center text-tertiary shrink-0 shadow-sm">
+<span class="material-symbols-outlined text-[32px]">support_agent</span>
+</div>
+<div>
+<div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-tertiary/15 text-tertiary font-label-sm text-label-sm font-bold mb-1">
+<span class="w-2 h-2 rounded-full bg-tertiary animate-ping"></span>
+<span>⚡ Ortalama Yanıt Süresi: ~2 Dakika</span>
+</div>
+<h3 class="font-headline-lg text-headline-lg text-on-surface">
+              Aklınızda Soru Mu Var? Canlı Destek Ekibimiz Yanınızda
+            </h3>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-2xl mt-1">
+              Mevcut carilerinizi sisteme nasıl aktaracağınızı veya karşı tarafın nasıl onay vereceğini mi merak ediyorsunuz? WhatsApp'tan uzmanımıza danışın, 2 dakikada canlı gösterelim.
+            </p>
+</div>
+</div>
+<a class="h-[52px] px-space-lg rounded-xl bg-tertiary-container text-on-tertiary font-headline-sm text-headline-sm inline-flex items-center justify-center gap-space-xs shadow-md hover:opacity-95 transition-all shrink-0 w-full md:w-auto" href="https://wa.me/905412465429?text=Merhaba%2C%20MutabakatPratik%20Dijital%20Mutabakat%20Portal%C4%B1%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum." target="_blank" rel="noopener noreferrer">
+<span class="material-symbols-outlined text-[22px]">chat</span>
+<span>WhatsApp'tan Uzmana Soru Sor</span>
+</a>
+</div>
+</div>
+</section>
+<!-- SECTION 7: SIKÇA SORULAN SORULAR (FAQ) -->
+<section class="w-full bg-surface-container-low py-space-2xl">
+<div class="max-w-[1440px] mx-auto px-margin">
+<div class="text-center max-w-2xl mx-auto mb-space-xl">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary font-bold">Merak Edilenler</span>
+<h2 class="font-headline-xl text-headline-xl text-on-surface mt-space-2xs">
+          Sıkça Sorulan Sorular
+        </h2>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1">
+          MutabakatPratik dijital onay süreçleri ve 45 günlük deneme hakkında tüm detaylar.
+        </p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<!-- Q1 -->
+<div class="p-space-md rounded-2xl bg-surface-container-lowest border border-surface-container shadow-sm space-y-space-xs">
+<div class="flex items-center gap-space-2xs text-secondary">
+<span class="material-symbols-outlined text-[22px]">help</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Karşı tarafın programı kullanması şart mı?</h3>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">
+            Hayır, karşı tarafın sisteme üye olmasına gerek yoktur. Cep telefonlarına veya e-postalarına gelen güvenli bağlantıya tıklayarak hiçbir şifre girmeden anında onay verir veya ekstre yükleyerek itiraz ederler.
+          </p>
+</div>
+<!-- Q2 -->
+<div class="p-space-md rounded-2xl bg-surface-container-lowest border border-surface-container shadow-sm space-y-space-xs">
+<div class="flex items-center gap-space-2xs text-secondary">
+<span class="material-symbols-outlined text-[22px]">all_inclusive</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Kaç cariye mutabakat gönderebilirim?</h3>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">
+            45 günlük deneme süreniz boyunca sınırsız sayıda müşteri ve tedarikçinize dilediğiniz kadar Cari Bakiye ve BA/BS mutabakat mektubu gönderebilirsiniz. Hiçbir kota kısıtı uygulanmaz.
+          </p>
+</div>
+<!-- Q3 -->
+<div class="p-space-md rounded-2xl bg-surface-container-lowest border border-surface-container shadow-sm space-y-space-xs">
+<div class="flex items-center gap-space-2xs text-secondary">
+<span class="material-symbols-outlined text-[22px]">credit_card_off</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">45 gün sonunda otomatik para kesilir mi?</h3>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">
+            Asla. Kayıt aşamasında sizden kredi kartı bilgisi talep edilmez. Deneme süresi bittiğinde yalnızca memnun kalırsanız paket seçimi yapar, istemezseniz hiçbir ücret ödemeden ayrılabilirsiniz.
+          </p>
+</div>
+<!-- Q4 -->
+<div class="p-space-md rounded-2xl bg-surface-container-lowest border border-surface-container shadow-sm space-y-space-xs">
+<div class="flex items-center gap-space-2xs text-secondary">
+<span class="material-symbols-outlined text-[22px]">sync_alt</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">ERP veya muhasebe programımızla uyumlu mu?</h3>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">
+            Evet; Logo, Mikro, Zirve, Netsis, Luca, StokPratik ve modern REST API mimarisi sayesinde tüm kurumsal muhasebe sistemleriyle çift yönlü Excel veya doğrudan API aktarımıyla tam entegre çalışır.
+          </p>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 8: BOTTOM STICKY CONVERSION BAR (TABLET & MOBILE) -->
+<div class="fixed bottom-0 left-0 w-full z-40 bg-surface-container-lowest/95 backdrop-blur-md border-t border-surface-container p-3 md:hidden shadow-lg">
+<div class="flex items-center gap-2 max-w-md mx-auto">
+<a class="flex-1 h-11 rounded-xl bg-tertiary-container text-on-tertiary font-label-md text-label-md flex items-center justify-center gap-1.5 shadow-sm" href="https://wa.me/905412465429?text=Merhaba%2C%20MutabakatPratik%20Dijital%20Mutabakat%20Portal%C4%B1%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum." target="_blank" rel="noopener noreferrer">
+<span class="material-symbols-outlined text-[18px]">chat</span>
+<span>WhatsApp Sor</span>
+</a>
+<a class="flex-1 h-11 rounded-xl bg-gradient-to-r from-[#EA580C] to-primary-container text-on-primary font-label-md text-label-md flex items-center justify-center gap-1 shadow-md" href="https://erp-eticaret.stokpratik.com.tr/" target="_blank" rel="noopener noreferrer">
+<span>45 Gün Ücretsiz</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+</div>
+</div>
+</div></main><footer class="w-full bg-surface-container-low mt-space-3xl"><div class="max-w-[1440px] mx-auto px-margin py-space-2xl"><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-space-xl pb-space-2xl"><div class="space-y-space-sm"><div class="flex items-center gap-space-xs"><div class="w-8 h-8 rounded-lg bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">verified</span></div><span class="font-headline-sm text-headline-sm text-on-surface">Mutabakat<span class="text-primary">Pratik</span></span></div><p class="font-body-sm text-body-sm text-on-surface-variant">Cari bakiye ve BA/BS mutabakatlarını saniyeler içinde şifresiz, güvenli ve 5651 zaman damgasıyla tamamlayan kurumsal otomasyon portalı.</p><div class="flex items-center gap-space-xs text-tertiary font-label-sm text-label-sm"><span class="material-symbols-outlined text-[16px]">lock</span><span>Bulut Tabanlı Yasal Güvence</span></div></div><div class="space-y-space-sm"><h4 class="font-label-lg text-label-lg text-on-surface uppercase tracking-wider">Ürün &amp; Modüller</h4><ul class="space-y-space-xs"><li class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface"><a data-path="cari-mutabakat" href="#">Cari Mutabakat</a></li><li class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface"><a data-path="ba-bs-modulu" href="#">BA/BS Bildirimleri</a></li><li class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface"><a data-path="fark-bulucu" href="#">Ekstre Karşılaştırma &amp; Fark Bulucu</a></li><li class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface"><a data-path="nasil-calisir" href="#">5651 Log Kasası</a></li></ul></div><div class="space-y-space-sm"><h4 class="font-label-lg text-label-lg text-on-surface uppercase tracking-wider">Yasal &amp; Kurumsal</h4><ul class="space-y-space-xs"><li class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface"><a href="#">KVKK Aydınlatma Metni</a></li><li class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface"><a href="#">Gizlilik Politikası</a></li><li class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface"><a href="#">Kullanıcı Sözleşmesi</a></li><li class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface"><a href="#">Hizmet Seviyesi Taahhüdü (SLA)</a></li></ul></div><div class="space-y-space-sm"><h4 class="font-label-lg text-label-lg text-on-surface uppercase tracking-wider">Güvenlik &amp; Sertifikasyon</h4><div class="space-y-space-xs"><div class="flex items-center gap-space-xs p-space-xs rounded-xl bg-surface-container-lowest shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><span class="material-symbols-outlined text-secondary text-[20px]">verified_user</span><div><p class="font-label-sm text-label-sm text-on-surface">5651 Zaman Damgası</p><p class="font-body-sm text-body-sm text-on-surface-variant">Yasal Delil Nitelikli Loglama</p></div></div><div class="flex items-center gap-space-xs p-space-xs rounded-xl bg-surface-container-lowest shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><span class="material-symbols-outlined text-tertiary text-[20px]">security</span><div><p class="font-label-sm text-label-sm text-on-surface">256-Bit SSL Şifreleme</p><p class="font-body-sm text-body-sm text-on-surface-variant">Bankacılık Düzeyi Güvenlik</p></div></div><div class="flex items-center gap-space-xs p-space-xs rounded-xl bg-surface-container-lowest shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><span class="material-symbols-outlined text-primary text-[20px]">workspace_premium</span><div><p class="font-label-sm text-label-sm text-on-surface">ISO 27001 Standartları</p><p class="font-body-sm text-body-sm text-on-surface-variant">Bilgi Güvenliği Yönetimi</p></div></div></div></div></div></div></footer><div class="fixed bottom-0 left-0 w-full z-40 bg-surface-container-lowest/95 backdrop-blur-md shadow-[0_-2px_12px_rgba(0,0,0,0.06)] p-space-sm md:hidden"><div class="flex items-center gap-space-xs"><a class="flex-1 flex items-center justify-center gap-space-2xs h-10 rounded-xl bg-tertiary-container text-on-tertiary font-label-md text-label-md" href="https://wa.me/905412465429?text=Merhaba%2C%20MutabakatPratik%20Dijital%20Mutabakat%20Portal%C4%B1%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum." target="_blank" rel="noopener noreferrer"><span class="material-symbols-outlined text-[16px]">chat</span><span>WhatsApp</span></a><a class="flex-1 flex items-center justify-center gap-space-2xs h-10 rounded-xl bg-gradient-to-r from-primary to-primary-container text-on-primary font-label-md text-label-md" href="https://erp-eticaret.stokpratik.com.tr/" target="_blank" rel="noopener noreferrer"><span>45 Gün Ücretsiz</span><span class="material-symbols-outlined text-[16px]">arrow_forward</span></a></div></div>
+
+</body></html>

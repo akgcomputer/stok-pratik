@@ -1,0 +1,406 @@
+---
+// İzole Tanıtım Sayfası - LojistikPratik WMS Akıllı Depo Portalı | StokPratik Ekosistemi
+// Bu sayfa mevcut site stillerinden tamamen bağımsız çalışır.
+---
+<!DOCTYPE html><html lang="tr"><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0" name="viewport"><meta content="web_standard" name="shell-type"><title>LojistikPratik WMS Akıllı Depo Portalı | StokPratik Ekosistemi</title><link href="https://fonts.googleapis.com" rel="preconnect"><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"><style>@layer base { html, body { margin: 0; padding: 0; } body { overscroll-behavior: none; } main > :first-child { margin-top: 0 !important; } main > :last-child { margin-bottom: 0 !important; } } ::-webkit-scrollbar { display: none; }</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { colors: { "background": "#faf8ff", "inverse-on-surface": "#eef0ff", "on-primary-fixed": "#410002", "secondary-container": "#8fa7fe", "primary": "#b70011", "on-tertiary-fixed": "#002109", "on-secondary-fixed-variant": "#264191", "surface-container-high": "#e2e7ff", "on-secondary-container": "#1d3989", "surface-container-low": "#f2f3ff", "surface-container-lowest": "#ffffff", "on-secondary": "#ffffff", "on-secondary-fixed": "#00164e", "on-surface-variant": "#5c403c", "surface-tint": "#bf0715", "error": "#ba1a1a", "on-error": "#ffffff", "secondary-fixed-dim": "#b6c4ff", "surface-dim": "#d2d9f4", "primary-container": "#dc2626", "outline-variant": "#e6bdb8", "secondary": "#4059aa", "surface-bright": "#faf8ff", "on-tertiary": "#ffffff", "on-primary-fixed-variant": "#93000b", "inverse-surface": "#283044", "on-primary": "#ffffff", "on-primary-container": "#fff6f5", "inverse-primary": "#ffb4ab", "surface-variant": "#dae2fd", "error-container": "#ffdad6", "on-surface": "#131b2e", "tertiary-container": "#008438", "surface-container-highest": "#dae2fd", "surface-container": "#eaedff", "outline": "#916f6b", "on-tertiary-container": "#e7ffe4", "on-background": "#131b2e", "primary-fixed-dim": "#ffb4ab", "secondary-fixed": "#dce1ff", "primary-fixed": "#ffdad6", "on-tertiary-fixed-variant": "#005320", "tertiary": "#00682b", "surface": "#faf8ff", "tertiary-fixed": "#7ffc97", "on-error-container": "#93000a", "tertiary-fixed-dim": "#62df7d" }, borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, spacing: { "gutter-sm": "1rem", "space-3xl": "4rem", "gutter-lg": "2rem", "space-lg": "1.5rem", "space-2xl": "3rem", "space-xs": "0.5rem", "margin-sm": "1rem", "space-sm": "0.75rem", "margin-lg": "3rem", "gutter": "1.5rem", "margin": "2rem", "space-xl": "2rem", "space-md": "1rem", "space-2xs": "0.25rem" }, fontFamily: { "numeric-table": ["Plus Jakarta Sans"], "headline-lg": ["Plus Jakarta Sans"], "label-sm": ["Plus Jakarta Sans"], "body-sm": ["Plus Jakarta Sans"], "label-lg": ["Plus Jakarta Sans"], "headline-xl": ["Plus Jakarta Sans"], "body-lg": ["Plus Jakarta Sans"], "headline-xl-mobile": ["Plus Jakarta Sans"], "label-md": ["Plus Jakarta Sans"], "display-lg": ["Plus Jakarta Sans"], "display-lg-mobile": ["Plus Jakarta Sans"], "headline-sm": ["Plus Jakarta Sans"], "headline-md": ["Plus Jakarta Sans"], "body-md": ["Plus Jakarta Sans"] }, fontSize: { "numeric-table": ["13px", { "lineHeight": "18px", "letterSpacing": "-0.01em", "fontWeight": "600" }], "headline-lg": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "700" }], "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.04em", "fontWeight": "700" }], "body-sm": ["12px", { "lineHeight": "18px", "letterSpacing": "0.005em", "fontWeight": "400" }], "label-lg": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }], "headline-xl": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.025em", "fontWeight": "700" }], "body-lg": ["16px", { "lineHeight": "26px", "letterSpacing": "-0.005em", "fontWeight": "400" }], "headline-xl-mobile": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "700" }], "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600" }], "display-lg": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.03em", "fontWeight": "800" }], "display-lg-mobile": ["30px", { "lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "800" }], "headline-sm": ["16px", { "lineHeight": "24px", "letterSpacing": "-0.01em", "fontWeight": "600" }], "headline-md": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.015em", "fontWeight": "600" }], "body-md": ["14px", { "lineHeight": "22px", "letterSpacing": "0em", "fontWeight": "400" }] } } } };</script>
+    <meta name="description" content="Fiyatsız kör depo sevkiyatı, akıllı adresli raf yönetimi, el terminali ve barkodlu toplama ile sıfır hatalı depo operasyonu." />
+    <link rel="canonical" href="https://stokpratik.com.tr/ekosistem/lojistikpratik" />
+    <meta property="og:title" content="LojistikPratik WMS Akıllı Depo Portalı | StokPratik Ekosistemi" />
+    <meta property="og:description" content="Fiyatsız kör depo sevkiyatı, akıllı adresli raf yönetimi, el terminali ve barkodlu toplama ile sıfır hatalı depo operasyonu." />
+    <meta property="og:url" content="https://stokpratik.com.tr/ekosistem/lojistikpratik" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="StokPratik" />
+    <meta property="og:image" content="https://lh3.googleusercontent.com/aida-public/AB6AXuDRPclUgpTX-_PXtrOjndC2Cvk8Gq2wsHXQQSlAzt7lJBpxmUI7rPK2thEXYlri_uoIfF3y4w1R8jb2wUgjvW2ziR--7rVsrT6sFS9y7qse9P0FluS6Y6KQudffk_tQ9b0RghVXu-MH74g1NO9doR-4ZlLE5EVWm3H0PZpINMRh3abzWEcVH9xYT4JD7eHBW6wAqGeqYM1D0CDMilN-ag3PIAZzlXLbUj2HudCzn5ei" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="LojistikPratik WMS Akıllı Depo Portalı | StokPratik Ekosistemi" />
+    <meta name="twitter:description" content="Fiyatsız kör depo sevkiyatı, akıllı adresli raf yönetimi, el terminali ve barkodlu toplama ile sıfır hatalı depo operasyonu." />
+    <meta name="twitter:image" content="https://lh3.googleusercontent.com/aida-public/AB6AXuDRPclUgpTX-_PXtrOjndC2Cvk8Gq2wsHXQQSlAzt7lJBpxmUI7rPK2thEXYlri_uoIfF3y4w1R8jb2wUgjvW2ziR--7rVsrT6sFS9y7qse9P0FluS6Y6KQudffk_tQ9b0RghVXu-MH74g1NO9doR-4ZlLE5EVWm3H0PZpINMRh3abzWEcVH9xYT4JD7eHBW6wAqGeqYM1D0CDMilN-ag3PIAZzlXLbUj2HudCzn5ei" />
+  
+</head><body class="bg-surface font-body-md text-body-md text-on-surface antialiased"><header class="fixed top-0 left-0 right-0 z-50 bg-surface-container-lowest/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-20 max-w-7xl mx-auto px-margin flex items-center justify-between gap-space-md"><div class="flex items-center gap-space-md"><a class="flex items-center gap-space-xs" data-path="anasayfa" href="#"><div class="w-10 h-10 rounded-xl bg-gradient-to-br from-primary-container to-primary flex items-center justify-center text-on-primary shadow-[0_4px_12px_rgba(220,38,38,0.28)]"><span class="material-symbols-outlined text-[22px]">local_shipping</span></div><div class="flex flex-col"><div class="flex items-center"><span class="font-headline-md text-headline-md tracking-tight text-on-surface">Lojistik</span><span class="font-headline-md text-headline-md tracking-tight text-primary-container">Pratik</span></div><span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider -mt-1">WMS &amp; Sevkiyat</span></div></a></div><nav class="hidden xl:flex items-center gap-space-xs" data-active-classes="bg-surface-container text-on-surface font-semibold rounded-lg"><a class="px-space-sm py-space-xs rounded-lg font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors" data-path="fiyatsiz-depo" href="#">Fiyatsız Depo</a><a class="px-space-sm py-space-xs rounded-lg font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors" data-path="raf-ve-adresleme" href="#">Raf &amp; Adresleme</a><a class="px-space-sm py-space-xs rounded-lg font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors" data-path="barkodlu-sevkiyat" href="#">Barkodlu Sevkiyat</a><a class="px-space-sm py-space-xs rounded-lg font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors" data-path="tedarik-ihalesi-rfq" href="#">Tedarik İhalesi (RFQ)</a><a class="px-space-sm py-space-xs rounded-lg font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors" data-path="nasil-calisir" href="#">Nasıl Çalışır?</a></nav><div class="flex items-center gap-space-sm"><a class="hidden md:inline-flex items-center gap-space-2xs px-space-md py-space-xs rounded-xl bg-surface-container-lowest text-tertiary font-label-lg text-label-lg shadow-[0_1px_4px_rgba(0,0,0,0.06)] hover:bg-tertiary-fixed hover:text-on-tertiary-fixed-variant transition-all" href="https://wa.me/905412465429?text=Merhaba%2C%20LojistikPratik%20WMS%20Ak%C4%B1ll%C4%B1%20Depo%20Portal%C4%B1%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum." target="_blank" rel="noopener noreferrer"><span class="material-symbols-outlined text-[18px]">chat</span><span>WhatsApp ile Soru Sor</span></a><a class="inline-flex items-center gap-space-2xs px-space-md py-space-xs rounded-xl bg-gradient-to-br from-primary-container to-primary text-on-primary font-label-lg text-label-lg shadow-[0_4px_12px_rgba(220,38,38,0.28)] hover:brightness-105 transition-all" href="https://erp-eticaret.stokpratik.com.tr/" target="_blank" rel="noopener noreferrer"><span>45 Gün Ücretsiz Başla</span><span class="material-symbols-outlined text-[18px]">arrow_forward</span></a><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="w-full pt-20 bg-surface"><div class="flex flex-col w-full">
+<!-- Top Announcement Bar -->
+<section class="w-full bg-secondary text-on-secondary py-space-xs px-margin">
+<div class="max-w-7xl mx-auto flex items-center justify-between text-label-md font-label-md">
+<div class="flex items-center gap-space-xs truncate">
+<span class="inline-flex items-center justify-center w-5 h-5 rounded-full bg-primary-container text-on-primary text-[11px] font-bold">!</span>
+<span class="truncate">Tanıtım Dönemi: WMS Akıllı Raf, Fiyatsız Kör Depo &amp; Lojistik İhale Motoru <strong>45 Gün Boyunca Ücretsiz</strong>.</span>
+</div>
+<a class="hidden sm:inline-flex items-center gap-1 font-bold underline hover:opacity-90 transition-opacity text-surface-bright shrink-0" href="https://erp-eticaret.stokpratik.com.tr/" target="_blank" rel="noopener noreferrer">
+<span>Taahhütsüz Dene</span>
+<span class="material-symbols-outlined text-[15px]">arrow_outward</span>
+</a>
+</div>
+</section>
+<!-- Hero Section -->
+<section class="w-full py-space-xl lg:py-space-3xl px-margin">
+<div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-gutter-lg items-center">
+<!-- Left Column -->
+<div class="lg:col-span-7 flex flex-col gap-space-md">
+<div class="inline-flex items-center gap-space-2xs px-space-sm py-space-2xs rounded-full bg-surface-container text-secondary font-label-md text-label-md w-fit shadow-sm">
+<span class="material-symbols-outlined text-[18px]">local_shipping</span>
+<span>AKILLI WMS DEPO, RAF &amp; FİYATSIZ SEVKİYAT ÜSSÜ</span>
+</div>
+<h1 class="font-display-lg text-display-lg text-on-surface tracking-tight">
+          Deponuzda Kayıp ve Yanlış Ürün Gönderimine Son! <span class="text-primary-container">Fiyatsız Depo Modu</span> ve Barkodlu Raf Sistemi.
+        </h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">
+          Depo personeliniz ürünlerin maliyetini veya kâr marjınızı görmesin; sadece raf adresini, barkodunu ve adetini görüp sıfır hatayla toplasın. Tedarikçilerinizden 3'lü ihale teklifi alın, en uygun fiyata satın alın.
+        </p>
+<!-- Promotional Highlight Box -->
+<div class="p-space-md rounded-xl bg-surface-container-low border border-surface-container flex items-start gap-space-sm shadow-sm">
+<span class="material-symbols-outlined text-primary-container text-[26px] shrink-0 mt-0.5">featured_seasonal_and_gifts</span>
+<div class="flex flex-col">
+<span class="font-label-lg text-label-lg text-on-surface font-bold">45 Gün Sınırsız WMS Deneyimi</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Tüm depo, raf adresleme, kör sevkiyat ve lojistik ihale modüllerini kredi kartsız, taahhütsüz ve sınırsız personelle hemen kullanmaya başlayın.</span>
+</div>
+</div>
+<!-- Trust Badges Row -->
+<div class="flex flex-wrap items-center gap-space-sm pt-space-2xs">
+<div class="inline-flex items-center gap-1.5 px-space-sm py-space-2xs rounded-lg bg-surface-container-lowest text-on-surface shadow-sm font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-tertiary text-[16px]">check_circle</span>
+<span>45 Gün Sınırsız Kullanım</span>
+</div>
+<div class="inline-flex items-center gap-1.5 px-space-sm py-space-2xs rounded-lg bg-surface-container-lowest text-on-surface shadow-sm font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-tertiary text-[16px]">smartphone</span>
+<span>El Terminali &amp; Telefon Uyumlu</span>
+</div>
+<div class="inline-flex items-center gap-1.5 px-space-sm py-space-2xs rounded-lg bg-surface-container-lowest text-on-surface shadow-sm font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-tertiary text-[16px]">credit_card_off</span>
+<span>Kart Bilgisi İstenmez</span>
+</div>
+</div>
+<!-- Dual Action CTA Buttons -->
+<div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-space-sm pt-space-xs">
+<a class="h-[54px] px-8 rounded-xl bg-gradient-to-r from-[#EA580C] to-primary-container text-on-primary font-label-lg text-label-lg font-bold flex items-center justify-center gap-2 shadow-[0_4px_16px_rgba(220,38,38,0.28)] hover:brightness-105 transition-all" href="https://erp-eticaret.stokpratik.com.tr/" target="_blank" rel="noopener noreferrer">
+<span>🔥 45 Gün Ücretsiz Başla (Firma Kaydı)</span>
+<span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+</a>
+<a class="h-[54px] px-6 rounded-xl bg-tertiary text-on-tertiary font-label-lg text-label-lg font-semibold flex items-center justify-center gap-2 shadow-[0_4px_14px_rgba(0,104,43,0.22)] hover:brightness-105 transition-all" href="https://wa.me/905412465429?text=Merhaba%2C%20LojistikPratik%20WMS%20Ak%C4%B1ll%C4%B1%20Depo%20Portal%C4%B1%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum." target="_blank" rel="noopener noreferrer">
+<span class="material-symbols-outlined text-[20px]">chat</span>
+<span>WhatsApp ile Soru Sor</span>
+</a>
+</div>
+</div>
+<!-- Right Column: Hero Visual Container -->
+<div class="lg:col-span-5 relative mt-6 lg:mt-0">
+<div class="relative rounded-2xl overflow-hidden shadow-2xl bg-surface-container-lowest p-2">
+<img class="w-full h-[460px] object-cover rounded-xl" data-alt="Warehouse manager holding a digital rugged tablet displaying active shelf slots and inventory management system inside a modern distribution logistics center with forklifts and organized pallet racks" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBFdODwq_VbWY03zOu8y4UFweYEtqbu5fEvtfQmvR1w1zrdlLtI3mWYZ3iQWE6Ihe1X7MUi_s-cPouveg5ej14X-kF2b_9WNa7eYyVJqIUkFL0Rx4IFoELqROaGvshHxyWXfUAK6h92GnfeG4EUaDWQ3TeTKuJ2M6UsCZJzC5EpMReiASdYb1GndztAY29cqB72T-HAdNmdD3PorUKFYmzja38CEEmGo1ud0PGw1-mW">
+<!-- Floating Status Badge 1 (Top Left) -->
+<div class="absolute top-6 left-6 max-w-xs bg-surface-container-lowest/95 backdrop-blur-md p-space-sm rounded-xl shadow-lg border border-surface-container flex items-center gap-space-xs">
+<div class="w-8 h-8 rounded-lg bg-tertiary-fixed flex items-center justify-center text-on-tertiary-fixed-variant shrink-0">
+<span class="material-symbols-outlined text-[20px]">check_circle</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Hedef Raf Konumu</span>
+<span class="font-label-md text-label-md font-bold text-on-surface">A-04-02 <span class="text-tertiary">[DOĞRU OKUTULDU]</span></span>
+</div>
+</div>
+<!-- Floating Status Badge 2 (Bottom Right) -->
+<div class="absolute bottom-6 right-6 max-w-xs bg-surface-container-lowest/95 backdrop-blur-md p-space-sm rounded-xl shadow-lg border border-surface-container flex items-center gap-space-xs">
+<div class="w-8 h-8 rounded-lg bg-surface-container-high flex items-center justify-center text-secondary shrink-0">
+<span class="material-symbols-outlined text-[20px]">lock</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Depocu Görünümü</span>
+<span class="font-label-md text-label-md font-bold text-on-surface">Maliyet: <span class="text-primary-container font-mono">0.00 TL [MASKELEME AKTİF]</span></span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Metric Trust Bar -->
+<section class="w-full bg-surface-container-low py-space-xl px-margin border-y border-surface-container">
+<div class="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-gutter">
+<div class="flex flex-col items-center md:items-start text-center md:text-left gap-1">
+<span class="font-display-lg text-headline-xl text-on-surface font-extrabold tracking-tight">50.000+</span>
+<span class="font-label-md text-label-md text-on-surface-variant">Günlük Barkodlu Sevkiyat</span>
+</div>
+<div class="flex flex-col items-center md:items-start text-center md:text-left gap-1">
+<span class="font-display-lg text-headline-xl text-tertiary font-extrabold tracking-tight">%99.98</span>
+<span class="font-label-md text-label-md text-on-surface-variant">Sevkiyat Doğruluk Oranı</span>
+</div>
+<div class="flex flex-col items-center md:items-start text-center md:text-left gap-1">
+<span class="font-display-lg text-headline-xl text-secondary font-extrabold tracking-tight">0 TL</span>
+<span class="font-label-md text-label-md text-on-surface-variant">El Terminali (Kamera Tarama)</span>
+</div>
+<div class="flex flex-col items-center md:items-start text-center md:text-left gap-1">
+<span class="font-display-lg text-headline-xl text-primary-container font-extrabold tracking-tight">%40</span>
+<span class="font-label-md text-label-md text-on-surface-variant">Depo Alanı Tasarrufu</span>
+</div>
+</div>
+</section>
+<!-- 3 Core WMS Pillars Section -->
+<section class="w-full py-space-3xl px-margin bg-surface">
+<div class="max-w-7xl mx-auto flex flex-col gap-space-2xl">
+<div class="flex flex-col items-center text-center gap-space-xs max-w-3xl mx-auto">
+<div class="inline-flex items-center gap-1.5 px-space-sm py-1 rounded-full bg-surface-container text-secondary font-label-sm text-label-sm uppercase tracking-wider">
+<span class="material-symbols-outlined text-[16px]">warehouse</span>
+<span>Depo Verimlilik Sistemi</span>
+</div>
+<h2 class="font-headline-xl text-headline-xl text-on-surface font-bold">Depo Kaosunu Bitiren 3 Büyük WMS Özelliği</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Klasik ERP'lerin hantal arayüzlerini unutun. Personelin dakikalar içinde öğrendiği, fiyat sızıntısını engelleyen yeni nesil operasyon platformu.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<!-- Card 1 -->
+<div class="bg-surface-container-lowest p-space-lg rounded-2xl shadow-sm border border-surface-container flex flex-col justify-between hover:shadow-md transition-shadow">
+<div class="flex flex-col gap-space-md">
+<div class="w-12 h-12 rounded-xl bg-surface-container flex items-center justify-center text-primary-container">
+<span class="material-symbols-outlined text-[28px]">lock_reset</span>
+</div>
+<div class="flex flex-col gap-space-2xs">
+<span class="w-fit px-2 py-0.5 rounded text-[11px] font-bold bg-primary-fixed text-on-primary-fixed">Maliyet &amp; Fiyat Maskeleme</span>
+<h3 class="font-headline-md text-headline-md text-on-surface font-bold">Fiyatsız Depocu &amp; Sevkiyat Modu</h3>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">
+              Depo ve paketleme personeline özel açılan ekranda ürün alış/satış fiyatları ve kâr marjı tamamen gizlenir. Personel sadece ürün adı, rafı ve sevk miktarını görür; ticari sırlarınız ve maliyetleriniz güvende kalır.
+            </p>
+</div>
+<div class="pt-space-md flex items-center text-label-md font-label-md text-primary font-semibold gap-1">
+<span>Kör kabul ve sevk protokolü</span>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="bg-surface-container-lowest p-space-lg rounded-2xl shadow-sm border border-surface-container flex flex-col justify-between hover:shadow-md transition-shadow">
+<div class="flex flex-col gap-space-md">
+<div class="w-12 h-12 rounded-xl bg-surface-container flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[28px]">qr_code_scanner</span>
+</div>
+<div class="flex flex-col gap-space-2xs">
+<span class="w-fit px-2 py-0.5 rounded text-[11px] font-bold bg-secondary-fixed text-on-secondary-fixed">Sıfır Donanım Maliyeti</span>
+<h3 class="font-headline-md text-headline-md text-on-surface font-bold">Akıllı Raf Adresleme &amp; Kameralı Barkod</h3>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">
+              Deponuzu koridor, raf ve kat olarak adresleyin. Pahalı el terminali almanıza gerek kalmadan her personel cep telefonu kamerasıyla saniyede barkod okutup doğru ürünü doğru raftan alsın.
+            </p>
+</div>
+<div class="pt-space-md flex items-center text-label-md font-label-md text-secondary font-semibold gap-1">
+<span>Dinamik matris haritası</span>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="bg-surface-container-lowest p-space-lg rounded-2xl shadow-sm border border-surface-container flex flex-col justify-between hover:shadow-md transition-shadow">
+<div class="flex flex-col gap-space-md">
+<div class="w-12 h-12 rounded-xl bg-surface-container flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined text-[28px]">gavel</span>
+</div>
+<div class="flex flex-col gap-space-2xs">
+<span class="w-fit px-2 py-0.5 rounded text-[11px] font-bold bg-tertiary-fixed text-on-tertiary-fixed">En Uygun Satın Alma Garantisi</span>
+<h3 class="font-headline-md text-headline-md text-on-surface font-bold">TedarikPratik (3'lü Teklif &amp; İhale)</h3>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">
+              Alacağınız hammadde veya ürün için tek tıkla 3 farklı tedarikçiden kapalı teklif toplayın; sistem en uygun vade ve birim fiyatı kıyaslayarak kârınızı ve satın alma verimliliğinizi artırsın.
+            </p>
+</div>
+<div class="pt-space-md flex items-center text-label-md font-label-md text-tertiary font-semibold gap-1">
+<span>Tersine açık artırma motoru</span>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Interactive Product Showcase / Live Terminal Simulation -->
+<section class="w-full py-space-3xl px-margin bg-surface-container-low border-t border-surface-container">
+<div class="max-w-7xl mx-auto flex flex-col gap-space-2xl">
+<div class="flex flex-col items-center text-center gap-space-2xs max-w-2xl mx-auto">
+<span class="font-label-sm text-label-sm text-primary uppercase font-bold tracking-wider">Canlı Simülasyon</span>
+<h2 class="font-headline-xl text-headline-xl text-on-surface font-bold">Fiyatsız Depo &amp; Barkodlu Toplama Vitrini</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Sevkiyat masasında gerçek operasyonel hız. Personel fiyatsız ekranla sadece hedefe odaklanır, sistem hata payını sıfırlar.</p>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter-lg items-center">
+<!-- Left Column: Actual Packaging Setup Photo -->
+<div class="lg:col-span-6 flex flex-col gap-space-sm">
+<div class="relative rounded-2xl overflow-hidden shadow-lg bg-surface-container-lowest p-2 border border-surface-container">
+<img class="w-full h-[400px] object-cover rounded-xl" data-alt="Warehouse packaging counter with thermal barcode printer, shipping label on desktop, wireless barcode reader and smartphone showing order details in clean daylight environment" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDICfxs2XH6OrgOL7T5wa-tm6aP1HgcS5UUmexhIZDqGi-xfPxG0xtaaSMTJKZyqRAzYjQKzumrt13q8gqHC58JJZarqxBDgw6I-SZ9I_BE88DbvvuDZ0d8VY89FiAr7_uhso45Qi5GeIWsjY8IazIUVB8dddP-SnbiA4hP46QPDq5qenY4TwxAJvFcfS57Zcr8Nfg9HzHOOah2-r811oD5qU40zy_LUUDmCt5VB8hr">
+<div class="absolute bottom-5 left-5 right-5 bg-surface-container-lowest/90 backdrop-blur-md p-space-sm rounded-xl flex items-center justify-between shadow">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary-container text-[22px]">print</span>
+<span class="font-label-sm text-label-sm text-on-surface font-semibold">Termal Yazıcı &amp; Barkod Doğrulama Masası</span>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-tertiary-fixed text-on-tertiary-fixed text-[11px] font-bold">Hazır</span>
+</div>
+</div>
+</div>
+<!-- Right Column: Simulated Warehouse Picking Screen -->
+<div class="lg:col-span-6 bg-surface-container-lowest rounded-2xl p-space-lg shadow-md border border-surface-container flex flex-col gap-space-md">
+<div class="flex items-center justify-between pb-space-sm border-b border-surface-container">
+<div class="flex items-center gap-space-xs">
+<span class="w-3 h-3 rounded-full bg-tertiary animate-pulse"></span>
+<span class="font-label-lg text-label-lg font-bold text-on-surface">Depo Personeli Toplama Ekranı</span>
+</div>
+<span class="px-2.5 py-1 rounded-full bg-surface-container text-on-surface-variant font-numeric-table text-numeric-table">Sipariş: #SP-89412</span>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-space-sm">
+<div class="p-space-sm rounded-xl bg-surface-container-low flex flex-col gap-0.5">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Toplama Görevlisi</span>
+<span class="font-label-md text-label-md font-bold text-on-surface">Ahmet K. (Yetki: Fiyatsız Depo)</span>
+</div>
+<div class="p-space-sm rounded-xl bg-surface-container-low flex flex-col gap-0.5">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Öncelik Seviyesi</span>
+<span class="font-label-md text-label-md font-bold text-primary-container">Aynı Gün Hızlı Kargo</span>
+</div>
+</div>
+<!-- Product Picking Detail Box -->
+<div class="p-space-md rounded-xl bg-surface-container border border-surface-container flex flex-col gap-space-sm">
+<div class="flex items-start justify-between">
+<div>
+<span class="font-label-sm text-label-sm text-secondary font-bold">Stok Kodu: TRK-99812</span>
+<h4 class="font-headline-sm text-headline-sm font-bold text-on-surface">Endüstriyel Sensör X-200</h4>
+</div>
+<div class="text-right">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Miktar</span>
+<div class="font-display-lg text-headline-lg font-extrabold text-on-surface">4 <span class="text-label-md font-normal text-on-surface-variant">Adet</span></div>
+</div>
+</div>
+<!-- Target Location & Masked Price -->
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-space-sm pt-space-2xs">
+<div class="p-space-xs rounded-lg bg-surface-container-lowest flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-secondary text-[22px]">pin_drop</span>
+<div class="flex flex-col">
+<span class="font-label-sm text-[10px] text-on-surface-variant uppercase">Hedef Raf Konumu</span>
+<span class="font-label-md text-label-md font-bold text-on-surface">B-12-04 (Koridor B, Kat 4)</span>
+</div>
+</div>
+<div class="p-space-xs rounded-lg bg-surface-container-lowest flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary-container text-[22px]">visibility_off</span>
+<div class="flex flex-col">
+<span class="font-label-sm text-[10px] text-on-surface-variant uppercase">Birim Maliyet / Satış</span>
+<span class="font-label-md text-label-md font-bold text-primary-container font-mono">[GİZLENDİ - YÖNETİCİ 🔒]</span>
+</div>
+</div>
+</div>
+<!-- Verification Progress Bar -->
+<div class="flex flex-col gap-1.5 pt-space-xs">
+<div class="flex justify-between items-center text-label-sm font-label-sm">
+<span class="text-on-surface font-semibold">Barkod Tarama Kontrolü</span>
+<span class="text-tertiary font-bold">%100 Doğrulandı</span>
+</div>
+<div class="w-full h-2.5 bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-tertiary rounded-full w-full"></div>
+</div>
+</div>
+</div>
+<div class="flex items-center justify-between pt-space-2xs">
+<div class="flex items-center gap-2 text-tertiary font-label-sm text-label-sm font-semibold">
+<span class="material-symbols-outlined text-[18px]">verified</span>
+<span>Barkod Eşleşti: Kutuya Yerleştirildi</span>
+</div>
+<a class="px-space-md py-2.5 rounded-xl bg-surface-container-highest text-on-surface font-label-md text-label-md font-bold hover:bg-surface-container transition-colors inline-flex items-center gap-1" href="https://erp-eticaret.stokpratik.com.tr/" target="_blank" rel="noopener noreferrer">
+<span>Deponuzda Deneyin</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 45 Days Special Promotion Full-Width Banner -->
+<section class="w-full py-space-3xl px-margin bg-inverse-surface text-inverse-on-surface relative overflow-hidden">
+<div class="absolute -right-20 -bottom-20 w-96 h-96 rounded-full bg-primary-container/10 filter blur-3xl pointer-events-none"></div>
+<div class="max-w-5xl mx-auto flex flex-col items-center text-center gap-space-md relative z-10">
+<div class="inline-flex items-center gap-2 px-space-sm py-1 rounded-full bg-[#EA580C]/20 border border-[#EA580C]/40 text-[#ffb4ab] font-label-sm text-label-sm font-bold tracking-wide uppercase">
+<span class="material-symbols-outlined text-[16px]">celebration</span>
+<span>REKLAM ZİYARETÇİLERİMİZE ÖZEL: 45 GÜN BOYUNCA WMS DEPO VE LOJİSTİK TAMAMEN ÜCRETSİZ!</span>
+</div>
+<h2 class="font-display-lg text-display-lg font-extrabold tracking-tight max-w-4xl text-surface-bright">
+        Deponuzu Hemen Adresleyin, Hatalı Gönderimleri ve Fazla Maliyetleri Bugün Bitirin.
+      </h2>
+<p class="font-body-lg text-body-lg text-inverse-on-surface/80 max-w-3xl">
+        Tüm depolarınızı, raf adreslerinizi ve sınırsız personelinizi 45 gün boyunca ücretsiz sisteme tanımlayın, hatasız sevkiyatı canlı test edin. Kredi kartı gerekmez, hiçbir taahhüt taşımaz.
+      </p>
+<div class="pt-space-sm flex flex-col sm:flex-row items-center gap-space-sm w-full sm:w-auto">
+<a class="w-full sm:w-auto h-[54px] px-10 rounded-xl bg-gradient-to-r from-[#EA580C] to-primary-container text-on-primary font-label-lg text-label-lg font-bold flex items-center justify-center gap-2 shadow-[0_4px_20px_rgba(220,38,38,0.4)] hover:brightness-110 transition-all" href="https://erp-eticaret.stokpratik.com.tr/" target="_blank" rel="noopener noreferrer">
+<span>Firma Kaydını Oluştur &amp; 45 Gün Ücretsiz Başla</span>
+<span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+</a>
+</div>
+</div>
+</section>
+<!-- Live WhatsApp Consultation Section -->
+<section class="w-full py-space-2xl px-margin bg-surface">
+<div class="max-w-4xl mx-auto rounded-3xl bg-surface-container p-space-xl border border-surface-container-high flex flex-col md:flex-row items-center justify-between gap-space-lg shadow-sm">
+<div class="flex flex-col gap-space-xs text-center md:text-left">
+<div class="flex items-center justify-center md:justify-start gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-tertiary animate-ping"></span>
+<span class="font-label-sm text-label-sm text-tertiary font-bold uppercase tracking-wider">Lojistik Danışmanı Çevrimiçi (~2 Dakika Yanıt)</span>
+</div>
+<h3 class="font-headline-lg text-headline-lg font-bold text-on-surface">Aklınızda soru mu var? Lojistik uzmanımız canlı yanıtlansın.</h3>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-xl">
+          Mevcut deponuzun raf düzenini sisteme nasıl aktaracağınızı veya telefonla barkod okutmanın nasıl çalıştığını mı merak ediyorsunuz? Lojistik uzmanımıza WhatsApp'tan yazın, 2 dakikada canlı gösterelim.
+        </p>
+</div>
+<a class="shrink-0 h-[52px] px-8 rounded-xl bg-tertiary text-on-tertiary font-label-lg text-label-lg font-bold flex items-center gap-2 shadow-[0_4px_14px_rgba(0,104,43,0.25)] hover:brightness-105 transition-all" href="https://wa.me/905412465429?text=Merhaba%2C%20LojistikPratik%20WMS%20Ak%C4%B1ll%C4%B1%20Depo%20Portal%C4%B1%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum." target="_blank" rel="noopener noreferrer">
+<span class="material-symbols-outlined text-[22px]">chat</span>
+<span>WhatsApp'tan Canlı Sor</span>
+</a>
+</div>
+</section>
+<!-- FAQ Section (Sıkça Sorulan Sorular) -->
+<section class="w-full py-space-3xl px-margin bg-surface-container-low border-t border-surface-container">
+<div class="max-w-6xl mx-auto flex flex-col gap-space-2xl">
+<div class="flex flex-col items-center text-center gap-space-2xs">
+<span class="font-label-sm text-label-sm text-secondary uppercase font-bold tracking-wider">Aklınıza Takılanlar</span>
+<h2 class="font-headline-xl text-headline-xl text-on-surface font-bold">Sıkça Sorulan Sorular</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">LojistikPratik kurulumu ve fiyatsız depo işleyişi hakkında merak edilen tüm detaylar.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-md">
+<!-- FAQ 1 -->
+<div class="bg-surface-container-lowest p-space-md rounded-2xl border border-surface-container shadow-sm flex flex-col gap-space-xs">
+<div class="flex items-center gap-space-2xs text-secondary font-bold">
+<span class="material-symbols-outlined text-[20px]">help</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Pahalı el terminalleri almak zorunda mıyım?</h3>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">
+            Kesinlikle hayır. Herhangi bir Android veya iPhone telefonun kamerasıyla barkodlar saniyesinde taranır. Dilerseniz mevcut Bluetooth veya USB el terminallerinizi de bağlayabilirsiniz.
+          </p>
+</div>
+<!-- FAQ 2 -->
+<div class="bg-surface-container-lowest p-space-md rounded-2xl border border-surface-container shadow-sm flex flex-col gap-space-xs">
+<div class="flex items-center gap-space-2xs text-secondary font-bold">
+<span class="material-symbols-outlined text-[20px]">help</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Kaç depo ve personel ekleyebilirim?</h3>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">
+            Merkez depo, şubeler, fason depolar ve sınırsız sayıda depo personeli ekleyebilirsiniz. Her personele farklı roller ve fiyatsız ekran yetkileri tanımlayabilirsiniz.
+          </p>
+</div>
+<!-- FAQ 3 -->
+<div class="bg-surface-container-lowest p-space-md rounded-2xl border border-surface-container shadow-sm flex flex-col gap-space-xs">
+<div class="flex items-center gap-space-2xs text-secondary font-bold">
+<span class="material-symbols-outlined text-[20px]">help</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Personel ürün maliyetlerini veya kârımızı görebilir mi?</h3>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">
+            Hayır. LojistikPratik'in özel "Fiyatsız Depo Modu" sayesinde personel sadece ürün kodu, rafı ve adetini görür; hiçbir fiyat veya kâr marjı bilgisi personele yansımaz.
+          </p>
+</div>
+<!-- FAQ 4 -->
+<div class="bg-surface-container-lowest p-space-md rounded-2xl border border-surface-container shadow-sm flex flex-col gap-space-xs">
+<div class="flex items-center gap-space-2xs text-secondary font-bold">
+<span class="material-symbols-outlined text-[20px]">help</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">45 gün bittiğinde para kesilir mi?</h3>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">
+            Asla. Kayıt esnasında kredi kartı bilgisi talep edilmez. Deneme süreniz bittiğinde yalnızca memnun kalırsanız lisanslama yaparak devam edersiniz.
+          </p>
+</div>
+</div>
+</div>
+</section>
+<!-- Sticky Bottom Bar for Mobile Devices -->
+<div class="fixed bottom-0 left-0 right-0 z-50 bg-surface-container-lowest border-t border-surface-container p-space-xs shadow-xl flex md:hidden items-center gap-space-xs">
+<a class="flex-1 h-11 px-2 rounded-xl bg-surface-container text-tertiary font-label-md text-label-md font-bold flex items-center justify-center gap-1.5 shadow-sm" href="https://wa.me/905412465429?text=Merhaba%2C%20LojistikPratik%20WMS%20Ak%C4%B1ll%C4%B1%20Depo%20Portal%C4%B1%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum." target="_blank" rel="noopener noreferrer">
+<span class="material-symbols-outlined text-[18px]">chat</span>
+<span>WhatsApp</span>
+</a>
+<a class="flex-1 h-11 px-2 rounded-xl bg-gradient-to-r from-[#EA580C] to-primary-container text-on-primary font-label-md text-label-md font-bold flex items-center justify-center gap-1 shadow-md" href="https://erp-eticaret.stokpratik.com.tr/" target="_blank" rel="noopener noreferrer">
+<span>🔥 45 Gün Ücretsiz</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+</div>
+</div></main><div class="fixed bottom-0 left-0 right-0 z-40 bg-surface-container-lowest/95 backdrop-blur-md p-space-xs shadow-[0_-4px_16px_rgba(0,0,0,0.08)] md:hidden"><div class="flex items-center gap-space-xs max-w-lg mx-auto"><a class="flex-1 inline-flex items-center justify-center gap-space-2xs py-space-xs px-space-xs rounded-xl bg-surface-container text-tertiary font-label-md text-label-md shadow-[0_1px_3px_rgba(0,0,0,0.05)]" href="https://wa.me/905412465429?text=Merhaba%2C%20LojistikPratik%20WMS%20Ak%C4%B1ll%C4%B1%20Depo%20Portal%C4%B1%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum." target="_blank" rel="noopener noreferrer"><span class="material-symbols-outlined text-[16px]">chat</span><span>WhatsApp</span></a><a class="flex-1 inline-flex items-center justify-center gap-space-2xs py-space-xs px-space-xs rounded-xl bg-gradient-to-br from-primary-container to-primary text-on-primary font-label-md text-label-md shadow-[0_4px_12px_rgba(220,38,38,0.25)]" href="https://erp-eticaret.stokpratik.com.tr/" target="_blank" rel="noopener noreferrer"><span class="material-symbols-outlined text-[16px]">local_fire_department</span><span>45 Gün Başla</span></a></div></div><footer class="w-full bg-surface-container-low pt-space-3xl pb-space-2xl"><div class="max-w-7xl mx-auto px-margin"><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-space-xl pb-space-2xl"><div class="lg:col-span-2 flex flex-col gap-space-md"><div class="flex items-center gap-space-xs"><div class="w-9 h-9 rounded-xl bg-gradient-to-br from-primary-container to-primary flex items-center justify-center text-on-primary shadow-[0_4px_12px_rgba(220,38,38,0.28)]"><span class="material-symbols-outlined text-[20px]">local_shipping</span></div><span class="font-headline-md text-headline-md tracking-tight text-on-surface">Lojistik<span class="text-primary-container">Pratik</span></span></div><p class="font-body-md text-body-md text-on-surface-variant max-w-sm">Akıllı depo raf barkodlama, fiyatsız kör sevkiyat süreçleri ve kurumsal tedarikçi navlun ihale (RFQ) motoru ile uçtan uca B2B depo operasyon altyapısı.</p><div class="flex flex-wrap items-center gap-space-sm pt-space-xs"><div class="inline-flex items-center gap-space-2xs px-space-sm py-space-2xs rounded-lg bg-surface-container text-on-surface font-label-sm text-label-sm"><span class="material-symbols-outlined text-tertiary text-[16px]">verified_user</span><span>ISO 27001 Bilgi Güvenliği</span></div><div class="inline-flex items-center gap-space-2xs px-space-sm py-space-2xs rounded-lg bg-surface-container text-on-surface font-label-sm text-label-sm"><span class="material-symbols-outlined text-secondary text-[16px]">lock</span><span>256-Bit SSL Sertifikalı</span></div></div></div><div class="flex flex-col gap-space-sm"><h3 class="font-label-lg text-label-lg text-on-surface uppercase tracking-wider">WMS Modülleri</h3><ul class="flex flex-col gap-space-xs font-body-md text-body-md text-on-surface-variant"><li class="hover:text-on-surface"><a data-path="fiyatsiz-depo" href="#">Fiyatsız Depo &amp; Kör Kabul</a></li><li class="hover:text-on-surface"><a data-path="raf-ve-adresleme" href="#">Dinamik Raf &amp; Koridor Adresleme</a></li><li class="hover:text-on-surface"><a data-path="barkodlu-sevkiyat" href="#">El Terminali Barkodlu Sevkiyat</a></li><li class="hover:text-on-surface"><a data-path="tedarik-ihalesi-rfq" href="#">Lojistik &amp; Navlun RFQ İhalesi</a></li><li class="hover:text-on-surface"><a data-path="nasil-calisir" href="#">ERP &amp; Pazaryeri Entegrasyonu</a></li></ul></div><div class="flex flex-col gap-space-sm"><h3 class="font-label-lg text-label-lg text-on-surface uppercase tracking-wider">Kurumsal &amp; Destek</h3><ul class="flex flex-col gap-space-xs font-body-md text-body-md text-on-surface-variant"><li class="hover:text-on-surface"><a data-path="nasil-calisir" href="#">Nasıl Çalışır?</a></li><li class="hover:text-on-surface"><a data-path="sss-ve-yardim" href="#">Sıkça Sorulan Sorular</a></li><li class="hover:text-on-surface"><a href="https://erp-eticaret.stokpratik.com.tr/" target="_blank" rel="noopener noreferrer">Bulut ERP Girişi</a></li><li class="hover:text-on-surface"><a href="https://wa.me/905412465429?text=Merhaba%2C%20LojistikPratik%20WMS%20Ak%C4%B1ll%C4%B1%20Depo%20Portal%C4%B1%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum." target="_blank" rel="noopener noreferrer">Teknik Canlı Destek</a></li><li class="hover:text-on-surface"><a data-path="iletisim" href="#">İletişim &amp; Bayilik</a></li></ul></div><div class="flex flex-col gap-space-sm"><h3 class="font-label-lg text-label-lg text-on-surface uppercase tracking-wider">Yasal Mevzuat</h3><ul class="flex flex-col gap-space-xs font-body-md text-body-md text-on-surface-variant"><li class="hover:text-on-surface"><a data-path="kvkk-ve-gizlilik" href="#">KVKK Aydınlatma Metni</a></li><li class="hover:text-on-surface"><a data-path="hizmet-sozlesmesi" href="#">Hizmet &amp; Abonelik Sözleşmesi</a></li><li class="hover:text-on-surface"><a data-path="cerez-politikasi" href="#">Çerez (Cookie) Politikası</a></li><li class="hover:text-on-surface"><a data-path="veri-guvenligi" href="#">Veri Güvenliği &amp; SLA</a></li></ul></div></div></div></footer>
+
+</body></html>

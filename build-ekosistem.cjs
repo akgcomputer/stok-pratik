@@ -17,7 +17,8 @@ const PORTALS = [
     title: 'StokPratik ERP & E-Ticaret Ekosistemi | 11 Departman Tek Yazılımda',
     description: 'Ön muhasebe, B2B bayi, açık bankacılık, akıllı WMS depo, şantiye, QR-PDKS ve 50+ pazaryeri entegrasyonu tek çatıda. 45 gün kredi kartsız ücretsiz deneyin.',
     waText: 'Merhaba, StokPratik ERP & E-Ticaret Ekosistemi hakkında detaylı bilgi ve demo talep ediyorum.',
-    ogImage: 'https://lh3.googleusercontent.com/aida-public/AB6AXuC4iv-vI5AXqVNcNKj_b8E8yhq2kggHKzo1rK6GXrdJq_dRJp5VyNGWsU1h6UHNG7swSXfFzz8Zdjt6OCCFM7qenpFptxi5dNQuej8YvtI6WE1nfTmFt0G1fXOEBmFJOzrrNXseUdyEy7bEDBVb2os29dAfp7HWpl2vMAVR0H1xsTmPwiAPEs7Ka-S0I7tbOXWv4IJ16RTv9JMFfvJR5ZOfB9VyNk4bmm-x-U1y4Vru'
+    ogImage: 'https://lh3.googleusercontent.com/aida-public/AB6AXuC4iv-vI5AXqVNcNKj_b8E8yhq2kggHKzo1rK6GXrdJq_dRJp5VyNGWsU1h6UHNG7swSXfFzz8Zdjt6OCCFM7qenpFptxi5dNQuej8YvtI6WE1nfTmFt0G1fXOEBmFJOzrrNXseUdyEy7bEDBVb2os29dAfp7HWpl2vMAVR0H1xsTmPwiAPEs7Ka-S0I7tbOXWv4IJ16RTv9JMFfvJR5ZOfB9VyNk4bmm-x-U1y4Vru',
+    pixelName: 'ekosistem-ana'
   },
   {
     folder: 'carinet_b2b_m_teri_bayi_self_servis_portal',
@@ -27,7 +28,8 @@ const PORTALS = [
     title: 'CariNet B2B Müşteri & Bayi Portalı | StokPratik Ekosistemi',
     description: 'Bayileriniz 7/24 cari ekstresini incelesin, bakiye mutabakatı yapsın, online 3D Secure kredi kartı ile ödeme yapsın ve B2B sipariş versin.',
     waText: 'Merhaba, CariNet B2B Müşteri & Bayi Portalı hakkında detaylı bilgi almak istiyorum.',
-    ogImage: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDRPclUgpTX-_PXtrOjndC2Cvk8Gq2wsHXQQSlAzt7lJBpxmUI7rPK2thEXYlri_uoIfF3y4w1R8jb2wUgjvW2ziR--7rVsrT6sFS9y7qse9P0FluS6Y6KQudffk_tQ9b0RghVXu-MH74g1NO9doR-4ZlLE5EVWm3H0PZpINMRh3abzWEcVH9xYT4JD7eHBW6wAqGeqYM1D0CDMilN-ag3PIAZzlXLbUj2HudCzn5ei'
+    ogImage: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDRPclUgpTX-_PXtrOjndC2Cvk8Gq2wsHXQQSlAzt7lJBpxmUI7rPK2thEXYlri_uoIfF3y4w1R8jb2wUgjvW2ziR--7rVsrT6sFS9y7qse9P0FluS6Y6KQudffk_tQ9b0RghVXu-MH74g1NO9doR-4ZlLE5EVWm3H0PZpINMRh3abzWEcVH9xYT4JD7eHBW6wAqGeqYM1D0CDMilN-ag3PIAZzlXLbUj2HudCzn5ei',
+    pixelName: 'ekosistem-carinet'
   },
   {
     folder: 'crmpratik_saha_sat_whatsapp_online_teklif_f_rsat_boru_hatt_portal',
@@ -37,7 +39,8 @@ const PORTALS = [
     title: 'CRMPratik Saha Satış & Müşteri Portalı | StokPratik Ekosistemi',
     description: 'Saha satış ekibiniz için WhatsApp entegreli online teklif sunumu, müşteri görüşme takibi, satış hunisi (pipeline) ve anlık sipariş kapatma portalı.',
     waText: 'Merhaba, CRMPratik Saha Satış ve Müşteri Portalı hakkında bilgi almak istiyorum.',
-    ogImage: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBg6Ir1dh98m1-jeBfUW9EBZZ3xt1bTzeXndmj-hGU3YtmGR7qpDU9f7Srtej99dVHjWDw5BGyddsgu__Izefkmu8ilfTVkwtuIgYlKXeoT-qR_Ws27UtMRQh3lK72VTL6G2C7vsn2qaTbLcmrAl3r73LGXXiCnfqSfOGNo6Hul5R8eheGKisOiZVQdKd3NWw6IEjlWhLFglrPneuTG1m1_UY0j8hpkannlVL-UWk_A'
+    ogImage: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBg6Ir1dh98m1-jeBfUW9EBZZ3xt1bTzeXndmj-hGU3YtmGR7qpDU9f7Srtej99dVHjWDw5BGyddsgu__Izefkmu8ilfTVkwtuIgYlKXeoT-qR_Ws27UtMRQh3lK72VTL6G2C7vsn2qaTbLcmrAl3r73LGXXiCnfqSfOGNo6Hul5R8eheGKisOiZVQdKd3NWw6IEjlWhLFglrPneuTG1m1_UY0j8hpkannlVL-UWk_A',
+    pixelName: 'ekosistem-crmpratik'
   },
   {
     folder: 'e_ticaretpratik_omnichannel_pazaryeri_e_ticaret_operasyon_y_netim_ss',
@@ -47,7 +50,8 @@ const PORTALS = [
     title: 'e-TicaretPratik Omnichannel & Pazaryeri Portalı | StokPratik Ekosistemi',
     description: 'Trendyol, Hepsiburada, Amazon ve 50+ pazaryeri ile web sitenizi tek merkezden yönetin. Anlık stok, otomatik fatura ve kargo barkodu senkronizasyonu.',
     waText: 'Merhaba, e-TicaretPratik Pazaryeri ve E-Ticaret Portalı hakkında bilgi almak istiyorum.',
-    ogImage: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBnHn6B41Jet4uXz55ZlzuI3LnWbNPWZs20Rn1bJjPydgcNIgJgzeCB8tvPpE5jLbWsmfglvmBE73exwhUsDTrBeHjTp_OLsuVuf8HeU4pT5RD_59zCpRRNWYxhpHkFR57a9J_SRBdrT-UG3Q4rnwUFkBYMOK3FiQoLxvFpGIUI0HsdRREtTKyv4jN_3F8GD05lNqjaNO5njpi6fsxkGEH2_J6R6EJuA3R-4MLafyuV'
+    ogImage: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBnHn6B41Jet4uXz55ZlzuI3LnWbNPWZs20Rn1bJjPydgcNIgJgzeCB8tvPpE5jLbWsmfglvmBE73exwhUsDTrBeHjTp_OLsuVuf8HeU4pT5RD_59zCpRRNWYxhpHkFR57a9J_SRBdrT-UG3Q4rnwUFkBYMOK3FiQoLxvFpGIUI0HsdRREtTKyv4jN_3F8GD05lNqjaNO5njpi6fsxkGEH2_J6R6EJuA3R-4MLafyuV',
+    pixelName: 'ekosistem-eticaret'
   },
   {
     folder: 'finanspratik_a_k_bankac_l_k_tahsilat_portal',
@@ -57,7 +61,8 @@ const PORTALS = [
     title: 'FinansPratik Açık Bankacılık & Tahsilat Portalı | StokPratik Ekosistemi',
     description: '30+ banka hesabı tek ekranda. Canlı hesap hareketleri, otomatik cari fiş işleme, sanal POS ve linkle 3D Secure tahsilat altyapısı.',
     waText: 'Merhaba, FinansPratik Açık Bankacılık ve Tahsilat Portalı hakkında bilgi almak istiyorum.',
-    ogImage: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDRPclUgpTX-_PXtrOjndC2Cvk8Gq2wsHXQQSlAzt7lJBpxmUI7rPK2thEXYlri_uoIfF3y4w1R8jb2wUgjvW2ziR--7rVsrT6sFS9y7qse9P0FluS6Y6KQudffk_tQ9b0RghVXu-MH74g1NO9doR-4ZlLE5EVWm3H0PZpINMRh3abzWEcVH9xYT4JD7eHBW6wAqGeqYM1D0CDMilN-ag3PIAZzlXLbUj2HudCzn5ei'
+    ogImage: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDRPclUgpTX-_PXtrOjndC2Cvk8Gq2wsHXQQSlAzt7lJBpxmUI7rPK2thEXYlri_uoIfF3y4w1R8jb2wUgjvW2ziR--7rVsrT6sFS9y7qse9P0FluS6Y6KQudffk_tQ9b0RghVXu-MH74g1NO9doR-4ZlLE5EVWm3H0PZpINMRh3abzWEcVH9xYT4JD7eHBW6wAqGeqYM1D0CDMilN-ag3PIAZzlXLbUj2HudCzn5ei',
+    pixelName: 'ekosistem-finans'
   },
   {
     folder: 'lojistikpratik_wms_ak_ll_depo_raf_y_netimi_fiyats_z_sevkiyat_portal',
@@ -67,7 +72,8 @@ const PORTALS = [
     title: 'LojistikPratik WMS Akıllı Depo Portalı | StokPratik Ekosistemi',
     description: 'Fiyatsız kör depo sevkiyatı, akıllı adresli raf yönetimi, el terminali ve barkodlu toplama ile sıfır hatalı depo operasyonu.',
     waText: 'Merhaba, LojistikPratik WMS Akıllı Depo Portalı hakkında bilgi almak istiyorum.',
-    ogImage: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDRPclUgpTX-_PXtrOjndC2Cvk8Gq2wsHXQQSlAzt7lJBpxmUI7rPK2thEXYlri_uoIfF3y4w1R8jb2wUgjvW2ziR--7rVsrT6sFS9y7qse9P0FluS6Y6KQudffk_tQ9b0RghVXu-MH74g1NO9doR-4ZlLE5EVWm3H0PZpINMRh3abzWEcVH9xYT4JD7eHBW6wAqGeqYM1D0CDMilN-ag3PIAZzlXLbUj2HudCzn5ei'
+    ogImage: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDRPclUgpTX-_PXtrOjndC2Cvk8Gq2wsHXQQSlAzt7lJBpxmUI7rPK2thEXYlri_uoIfF3y4w1R8jb2wUgjvW2ziR--7rVsrT6sFS9y7qse9P0FluS6Y6KQudffk_tQ9b0RghVXu-MH74g1NO9doR-4ZlLE5EVWm3H0PZpINMRh3abzWEcVH9xYT4JD7eHBW6wAqGeqYM1D0CDMilN-ag3PIAZzlXLbUj2HudCzn5ei',
+    pixelName: 'ekosistem-lojistik'
   },
   {
     folder: 'mutabakatpratik_cari_bakiye_ba_bs_dijital_mutabakat_portal',
@@ -77,7 +83,8 @@ const PORTALS = [
     title: 'MutabakatPratik BA/BS & Cari Mutabakat Portalı | StokPratik Ekosistemi',
     description: 'Tek tıkla yüzlerce cariye WhatsApp ve SMS ile interaktif mutabakat mektubu gönderin. Otomatik onay, itiraz ve ekstre karşılaştırma.',
     waText: 'Merhaba, MutabakatPratik Dijital Mutabakat Portalı hakkında bilgi almak istiyorum.',
-    ogImage: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDRPclUgpTX-_PXtrOjndC2Cvk8Gq2wsHXQQSlAzt7lJBpxmUI7rPK2thEXYlri_uoIfF3y4w1R8jb2wUgjvW2ziR--7rVsrT6sFS9y7qse9P0FluS6Y6KQudffk_tQ9b0RghVXu-MH74g1NO9doR-4ZlLE5EVWm3H0PZpINMRh3abzWEcVH9xYT4JD7eHBW6wAqGeqYM1D0CDMilN-ag3PIAZzlXLbUj2HudCzn5ei'
+    ogImage: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDRPclUgpTX-_PXtrOjndC2Cvk8Gq2wsHXQQSlAzt7lJBpxmUI7rPK2thEXYlri_uoIfF3y4w1R8jb2wUgjvW2ziR--7rVsrT6sFS9y7qse9P0FluS6Y6KQudffk_tQ9b0RghVXu-MH74g1NO9doR-4ZlLE5EVWm3H0PZpINMRh3abzWEcVH9xYT4JD7eHBW6wAqGeqYM1D0CDMilN-ag3PIAZzlXLbUj2HudCzn5ei',
+    pixelName: 'ekosistem-mutabakat'
   },
   {
     folder: 'm_avirpratik_smmm_mali_m_avir_m_kellef_portal',
@@ -87,7 +94,8 @@ const PORTALS = [
     title: 'MüşavirPratik SMMM & Mali Müşavir Portalı | StokPratik Ekosistemi',
     description: 'Mali müşavir ve mükellef arasında evrak karmaşasına son. Z-raporları, banka ekstreleri ve e-faturalar tek tıkla Luca, Zirve ve GİB formatında hazır.',
     waText: 'Merhaba, MüşavirPratik SMMM & Mali Müşavir Portalı hakkında bilgi almak istiyorum.',
-    ogImage: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDRPclUgpTX-_PXtrOjndC2Cvk8Gq2wsHXQQSlAzt7lJBpxmUI7rPK2thEXYlri_uoIfF3y4w1R8jb2wUgjvW2ziR--7rVsrT6sFS9y7qse9P0FluS6Y6KQudffk_tQ9b0RghVXu-MH74g1NO9doR-4ZlLE5EVWm3H0PZpINMRh3abzWEcVH9xYT4JD7eHBW6wAqGeqYM1D0CDMilN-ag3PIAZzlXLbUj2HudCzn5ei'
+    ogImage: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDRPclUgpTX-_PXtrOjndC2Cvk8Gq2wsHXQQSlAzt7lJBpxmUI7rPK2thEXYlri_uoIfF3y4w1R8jb2wUgjvW2ziR--7rVsrT6sFS9y7qse9P0FluS6Y6KQudffk_tQ9b0RghVXu-MH74g1NO9doR-4ZlLE5EVWm3H0PZpINMRh3abzWEcVH9xYT4JD7eHBW6wAqGeqYM1D0CDMilN-ag3PIAZzlXLbUj2HudCzn5ei',
+    pixelName: 'ekosistem-musavir'
   },
   {
     folder: 'personelpratik_dinamik_qr_pdks_sgk_puantaj_portal',
@@ -97,7 +105,8 @@ const PORTALS = [
     title: 'PersonelPratik Dinamik QR PDKS Portalı | StokPratik Ekosistemi',
     description: 'Cihaz masrafı olmadan konum doğrulamalı dinamik QR kodla personel giriş-çıkış takibi, izin yönetimi ve tek tıkla SGK uyumlu puantaj cetveli.',
     waText: 'Merhaba, PersonelPratik Dinamik QR PDKS Portalı hakkında bilgi almak istiyorum.',
-    ogImage: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDRPclUgpTX-_PXtrOjndC2Cvk8Gq2wsHXQQSlAzt7lJBpxmUI7rPK2thEXYlri_uoIfF3y4w1R8jb2wUgjvW2ziR--7rVsrT6sFS9y7qse9P0FluS6Y6KQudffk_tQ9b0RghVXu-MH74g1NO9doR-4ZlLE5EVWm3H0PZpINMRh3abzWEcVH9xYT4JD7eHBW6wAqGeqYM1D0CDMilN-ag3PIAZzlXLbUj2HudCzn5ei'
+    ogImage: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDRPclUgpTX-_PXtrOjndC2Cvk8Gq2wsHXQQSlAzt7lJBpxmUI7rPK2thEXYlri_uoIfF3y4w1R8jb2wUgjvW2ziR--7rVsrT6sFS9y7qse9P0FluS6Y6KQudffk_tQ9b0RghVXu-MH74g1NO9doR-4ZlLE5EVWm3H0PZpINMRh3abzWEcVH9xYT4JD7eHBW6wAqGeqYM1D0CDMilN-ag3PIAZzlXLbUj2HudCzn5ei',
+    pixelName: 'ekosistem-personel'
   },
   {
     folder: 'projepratik_antiye_i_n_aat_ta_eron_hakedi_y_netim_portal',
@@ -107,7 +116,8 @@ const PORTALS = [
     title: 'ProjePratik Şantiye & Taşeron Hakediş Portalı | StokPratik Ekosistemi',
     description: 'İnşaat ve taahhüt projelerinizde taşeron sözleşmeleri, metraj girişleri, hakediş kesintileri ve şantiye malzeme stoklarını canlı takip edin.',
     waText: 'Merhaba, ProjePratik Şantiye & Taşeron Hakediş Portalı hakkında bilgi almak istiyorum.',
-    ogImage: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDRPclUgpTX-_PXtrOjndC2Cvk8Gq2wsHXQQSlAzt7lJBpxmUI7rPK2thEXYlri_uoIfF3y4w1R8jb2wUgjvW2ziR--7rVsrT6sFS9y7qse9P0FluS6Y6KQudffk_tQ9b0RghVXu-MH74g1NO9doR-4ZlLE5EVWm3H0PZpINMRh3abzWEcVH9xYT4JD7eHBW6wAqGeqYM1D0CDMilN-ag3PIAZzlXLbUj2HudCzn5ei'
+    ogImage: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDRPclUgpTX-_PXtrOjndC2Cvk8Gq2wsHXQQSlAzt7lJBpxmUI7rPK2thEXYlri_uoIfF3y4w1R8jb2wUgjvW2ziR--7rVsrT6sFS9y7qse9P0FluS6Y6KQudffk_tQ9b0RghVXu-MH74g1NO9doR-4ZlLE5EVWm3H0PZpINMRh3abzWEcVH9xYT4JD7eHBW6wAqGeqYM1D0CDMilN-ag3PIAZzlXLbUj2HudCzn5ei',
+    pixelName: 'ekosistem-proje'
   },
   {
     folder: 'retimpratik_at_lye_r_n_re_etesi_bom_i_malat_y_netim_portal',
@@ -117,7 +127,8 @@ const PORTALS = [
     title: 'ÜretimPratik BOM Ürün Reçetesi & İmalat Portalı | StokPratik Ekosistemi',
     description: 'Çok seviyeli ürün ağacı (BOM), fason iş takibi, iş istasyonları, hammadde sarfiyatı ve net birim maliyet hesaplama motoru.',
     waText: 'Merhaba, ÜretimPratik Üretim ve BOM İmalat Portalı hakkında bilgi almak istiyorum.',
-    ogImage: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDRPclUgpTX-_PXtrOjndC2Cvk8Gq2wsHXQQSlAzt7lJBpxmUI7rPK2thEXYlri_uoIfF3y4w1R8jb2wUgjvW2ziR--7rVsrT6sFS9y7qse9P0FluS6Y6KQudffk_tQ9b0RghVXu-MH74g1NO9doR-4ZlLE5EVWm3H0PZpINMRh3abzWEcVH9xYT4JD7eHBW6wAqGeqYM1D0CDMilN-ag3PIAZzlXLbUj2HudCzn5ei'
+    ogImage: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDRPclUgpTX-_PXtrOjndC2Cvk8Gq2wsHXQQSlAzt7lJBpxmUI7rPK2thEXYlri_uoIfF3y4w1R8jb2wUgjvW2ziR--7rVsrT6sFS9y7qse9P0FluS6Y6KQudffk_tQ9b0RghVXu-MH74g1NO9doR-4ZlLE5EVWm3H0PZpINMRh3abzWEcVH9xYT4JD7eHBW6wAqGeqYM1D0CDMilN-ag3PIAZzlXLbUj2HudCzn5ei',
+    pixelName: 'ekosistem-uretim'
   },
   {
     folder: 'servispratik_barkodlu_cihaz_kabul_whatsapp_canl_takip_garanti_portal',
@@ -127,7 +138,8 @@ const PORTALS = [
     title: 'ServisPratik Barkodlu Teknik Servis Portalı | StokPratik Ekosistemi',
     description: 'Cihaz kabul, barkodlu servis fişi, WhatsApp üzerinden canlı durum sorgulama, yedek parça ve garanti takip portalı.',
     waText: 'Merhaba, ServisPratik Barkodlu Teknik Servis Portalı hakkında bilgi almak istiyorum.',
-    ogImage: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDRPclUgpTX-_PXtrOjndC2Cvk8Gq2wsHXQQSlAzt7lJBpxmUI7rPK2thEXYlri_uoIfF3y4w1R8jb2wUgjvW2ziR--7rVsrT6sFS9y7qse9P0FluS6Y6KQudffk_tQ9b0RghVXu-MH74g1NO9doR-4ZlLE5EVWm3H0PZpINMRh3abzWEcVH9xYT4JD7eHBW6wAqGeqYM1D0CDMilN-ag3PIAZzlXLbUj2HudCzn5ei'
+    ogImage: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDRPclUgpTX-_PXtrOjndC2Cvk8Gq2wsHXQQSlAzt7lJBpxmUI7rPK2thEXYlri_uoIfF3y4w1R8jb2wUgjvW2ziR--7rVsrT6sFS9y7qse9P0FluS6Y6KQudffk_tQ9b0RghVXu-MH74g1NO9doR-4ZlLE5EVWm3H0PZpINMRh3abzWEcVH9xYT4JD7eHBW6wAqGeqYM1D0CDMilN-ag3PIAZzlXLbUj2HudCzn5ei',
+    pixelName: 'ekosistem-servis'
   }
 ];
 
@@ -162,10 +174,19 @@ for (const portal of PORTALS) {
   html = html.replace(/style="width:\s*\d+px;\s*height:\s*\d+px;\s*overflow:\s*hidden;\s*position:\s*relative;"/gi, '');
   html = html.replace(/style="width:\s*1280px;[^"]*"/gi, '');
 
-  // 2. SEO Title & Meta Etiketleri
+  // 2. CRITICAL FIX: Astro'nun CDN Tailwind'i ve stilleri bozmaması için is:inline ekle!
+  html = html.replace(/<script src="https:\/\/cdn\.tailwindcss\.com"><\/script>/gi, '<script is:inline src="https://cdn.tailwindcss.com"></script>');
+  html = html.replace(/<script id="tailwind-config">/gi, '<script is:inline id="tailwind-config">');
+  html = html.replace(/<style>/gi, '<style is:inline>');
+
+  // 3. Olmayan sahte css linklerini temizle (varsa)
+  html = html.replace(/<link[^>]*href="\/css\/ekosistem\.min\.css"[^>]*>/gi, '');
+
+  // 4. SEO Title & Meta Etiketleri
   html = html.replace(/<title>[\s\S]*?<\/title>/i, `<title>${portal.title}</title>`);
   
   const metaTags = `
+    <link rel="icon" type="image/png" href="/images/site-foto/fav-stok-pratik-2.png" />
     <meta name="description" content="${portal.description}" />
     <link rel="canonical" href="${portal.fullUrl}" />
     <meta property="og:title" content="${portal.title}" />
@@ -178,24 +199,31 @@ for (const portal of PORTALS) {
     <meta name="twitter:title" content="${portal.title}" />
     <meta name="twitter:description" content="${portal.description}" />
     <meta name="twitter:image" content="${portal.ogImage}" />
+    <script is:inline>
+      !(function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)})(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init','2019909158684223');
+      fbq('track','PageView');
+      fbq('track','ViewContent',{content_name:'${portal.pixelName}',content_category:'ekosistem'});
+    </script>
+    <noscript><img decoding="async" height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=2019909158684223&ev=PageView&noscript=1" alt="" /></noscript>
   `;
 
   if (html.includes('</head>')) {
     html = html.replace('</head>', `${metaTags}\n</head>`);
   }
 
-  // 3. WhatsApp linklerini ve özel karşılama mesajlarını ayarla
+  // 5. WhatsApp linklerini ve özel karşılama mesajlarını ayarla
   const waEncoded = encodeURIComponent(portal.waText);
   const waFull = `${WA_BASE}?text=${waEncoded}`;
   html = html.replace(/href="https:\/\/wa\.me\/[0-9]*[^"]*"/gi, `href="${waFull}" target="_blank" rel="noopener noreferrer"`);
   html = html.replace(/href="https:\/\/wa\.me\/"/gi, `href="${waFull}" target="_blank" rel="noopener noreferrer"`);
   html = html.replace(/href="https:\/\/wa\.me"/gi, `href="${waFull}" target="_blank" rel="noopener noreferrer"`);
 
-  // 4. Firma Kaydı / Ücretsiz Başla butonlarını bağla
+  // 6. Firma Kaydı / Ücretsiz Başla butonlarını bağla
   html = html.replace(/data-path="ucretsiz-deneme-baslat"[^>]*href="[^"]*"/gi, `data-path="ucretsiz-deneme-baslat" href="${REGISTER_URL}" target="_blank" rel="noopener noreferrer"`);
   html = html.replace(/href="https:\/\/erp-eticaret\.stokpratik\.com\.tr\/"/gi, `href="${REGISTER_URL}" target="_blank" rel="noopener noreferrer"`);
 
-  // 5. Link Hiyerarşisi
+  // 7. Link Hiyerarşisi
   if (portal.url === '/ekosistem') {
     // Header sol logo tıklaması
     html = html.replace(/data-path="portal-ekosistemi-genel-bakis"[^>]*href="[^"]*"/gi, `data-path="portal-ekosistemi-genel-bakis" href="/ekosistem"`);
@@ -228,7 +256,7 @@ for (const portal of PORTALS) {
   html = html.replace(/(rel="noopener noreferrer"\s*){2,}/gi, 'rel="noopener noreferrer" ');
   html = html.replace(/target="_blank"\s*rel="noopener noreferrer"\s*target="_blank"/gi, 'target="_blank" rel="noopener noreferrer"');
 
-  // 6. Astro Frontmatter
+  // 8. Astro Frontmatter
   const astroContent = `---
 // İzole Tanıtım Sayfası - ${portal.title}
 // Bu sayfa mevcut site stillerinden tamamen bağımsız çalışır.
@@ -241,4 +269,4 @@ ${html}
   console.log(`Oluşturuldu: ${outputPath} -> ${portal.url}`);
 }
 
-console.log('Tüm 12 sayfa başarıyla oluşturuldu ve optimize edildi!');
+console.log('Tüm 12 sayfa başarıyla ve is:inline Tailwind desteğiyle güncellendi!');

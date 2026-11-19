@@ -40,47 +40,45 @@ import SocialMedia from './SocialMedia.astro';
             <svg class="w-4 h-4 text-red-500 group-hover:rotate-180 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
           </button>
           
-          <!-- Mega Menu Dropdown -->
-          <div class="absolute top-20 left-1/2 -translate-x-1/2 w-[700px] bg-white rounded-2xl shadow-[0_20px_50px_-12px_rgba(0,0,0,0.15)] border border-slate-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 p-8 grid grid-cols-2 gap-x-12 gap-y-2 cursor-default z-50">
+          <!-- Mega Menu Dropdown: 3 Dengeli Kolon & Ekran Taşmasını Önleyen Kompakt Tasarım -->
+          <div class="absolute top-20 left-1/2 -translate-x-1/2 w-[920px] max-w-[95vw] bg-white rounded-2xl shadow-[0_20px_50px_-12px_rgba(0,0,0,0.18)] border border-slate-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 p-6 grid grid-cols-3 gap-x-6 gap-y-2 cursor-default z-50 max-h-[calc(100vh-120px)] overflow-y-auto">
             
-            <!-- Sütun 1 -->
+            <!-- Sütun 1: Paketler & Çözümler -->
             <div class="flex flex-col space-y-1">
-              <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2 pl-3">Yazılım Çözümleri</h4>
-              <a href="/uts-entegrasyonu" class="flex items-center justify-between px-3 py-2 rounded-lg text-emerald-800 font-extrabold bg-emerald-50 hover:bg-emerald-100 transition-colors border border-emerald-200/60 shadow-sm">
-                <span class="flex items-center gap-1.5"><span>🩺</span><span>Sağlık Bakanlığı ÜTS</span></span>
+              <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2 pl-2">Paketler & Çözümler</h4>
+              <a href="/yesil-donusum" class="flex items-center justify-between px-3 py-2 rounded-lg text-emerald-950 font-extrabold bg-gradient-to-r from-emerald-100 to-teal-50 hover:from-emerald-200 hover:to-teal-100 transition-colors border border-emerald-300/80 shadow-xs">
+                <span class="flex items-center gap-1.5 text-xs sm:text-[13px]"><span>🌱</span><span>YeşilPratik (Karbon)</span></span>
+                <span class="text-[10px] bg-emerald-600 text-white font-black px-1.5 py-0.5 rounded uppercase tracking-wider">2026 SKDM</span>
               </a>
-              <a href="/fiyatlar" class="block px-3 py-2.5 rounded-lg text-red-600 font-bold bg-red-50 hover:bg-red-100 transition-colors">Fiyat Hesaplayıcı</a>
-              <a href="/sektorunu-sec" class="block px-3 py-2.5 rounded-lg text-slate-950 font-bold bg-amber-400 hover:bg-amber-300 transition-all shadow-sm">Sektörünü Seç</a>
-              <a href="/pratik-ekosistemi" class="block px-3 py-2.5 rounded-lg text-white font-bold bg-emerald-600 hover:bg-emerald-500 transition-all shadow-sm">Ekosistem</a>
-              <a href="/ozellikler" class="block px-3 py-2.5 rounded-lg text-slate-800 font-bold hover:bg-slate-50 hover:text-red-600 transition-colors">Özellikler & Modüller</a>
-              <a href="/paketlerimiz" class="block px-3 py-2.5 rounded-lg text-slate-600 font-medium hover:bg-slate-50 hover:text-red-600 transition-colors">Paket & Modül Detayları</a>
-              <a href="/arkadasini-getir-formu" class="block px-3 py-2.5 rounded-lg text-blue-700 font-bold bg-blue-50 hover:bg-blue-100 transition-colors">Arkadaşını Davet Et</a>
-              <a href="/firma-kaydi" class="block px-3 py-2.5 rounded-lg text-blue-700 font-bold bg-blue-50 hover:bg-blue-100 transition-colors">Firma Kayıt</a>
-              <a href="/masraf-gir" class="block px-3 py-2.5 rounded-lg text-slate-600 font-medium hover:bg-slate-50 hover:text-red-600 transition-colors">Masraf Gir Sistemi</a>
-              <a href="/oto-tamir-yazilimi" class="block px-3 py-2.5 rounded-lg text-slate-600 font-medium hover:bg-slate-50 hover:text-red-600 transition-colors">Oto Servis Yazılımı</a>
-              <a href="/kuyumculuk-yazilimi" class="block px-3 py-2.5 rounded-lg text-slate-600 font-medium hover:bg-slate-50 hover:text-red-600 transition-colors">Kuyumculuk Yazılımı</a>
-              <a href="/ozellikler" class="block px-3 py-2.5 rounded-lg text-slate-600 font-medium hover:bg-slate-50 hover:text-red-600 transition-colors">Butik Giyim Yazılımı</a>
-              <a href="/ozellikler" class="block px-3 py-2.5 rounded-lg text-slate-600 font-medium hover:bg-slate-50 hover:text-red-600 transition-colors">Tekstil Yazılımı</a>
-              <a href="/ozellikler" class="block px-3 py-2.5 rounded-lg text-slate-600 font-medium hover:bg-slate-50 hover:text-red-600 transition-colors">Mağazacılık (Çok Şube/Depo)</a>
-              <a href="/ozellikler" class="block px-3 py-2.5 rounded-lg text-slate-600 font-medium hover:bg-slate-50 hover:text-red-600 transition-colors">Gıda (Market) Yazılımı</a>
-              <a href="/ozellikler" class="block px-3 py-2.5 rounded-lg text-slate-600 font-medium hover:bg-slate-50 hover:text-red-600 transition-colors">Toptancılık Yazılımı</a>
-              <a href="/ozellikler" class="block px-3 py-2.5 rounded-lg text-slate-600 font-medium hover:bg-slate-50 hover:text-red-600 transition-colors">Çok Katlı Mağazacılık (AVM)</a>
+              <a href="/uts-entegrasyonu" class="flex items-center justify-between px-3 py-2 rounded-lg text-emerald-900 font-bold bg-emerald-50/70 hover:bg-emerald-100 transition-colors border border-emerald-200/50">
+                <span class="flex items-center gap-1.5 text-xs sm:text-[13px]"><span>🩺</span><span>Sağlık Bakanlığı ÜTS</span></span>
+              </a>
+              <a href="/fiyatlar" class="block px-3 py-2 rounded-lg text-red-600 font-bold bg-red-50 hover:bg-red-100 transition-colors text-xs sm:text-[13px]">💰 Fiyat Hesaplayıcı</a>
+              <a href="/sektorunu-sec" class="block px-3 py-2 rounded-lg text-slate-950 font-bold bg-amber-400 hover:bg-amber-300 transition-all shadow-xs text-xs sm:text-[13px]">🎯 Sektörünü Seç</a>
+              <a href="/pratik-ekosistemi" class="block px-3 py-2 rounded-lg text-white font-bold bg-emerald-600 hover:bg-emerald-500 transition-all shadow-xs text-xs sm:text-[13px]">🌐 Pratik Ekosistemi (12 Portal)</a>
+              <a href="/paketlerimiz" class="block px-3 py-2 rounded-lg text-slate-700 font-medium hover:bg-slate-50 hover:text-red-600 transition-colors text-xs sm:text-[13px]">📦 Paket & Modül Detayları</a>
             </div>
 
-            <!-- Sütun 2 -->
+            <!-- Sütun 2: Sektörel Çözümler -->
             <div class="flex flex-col space-y-1">
-              
-              <a href="/ozellikler" class="block px-3 py-2.5 rounded-lg text-slate-600 font-medium hover:bg-slate-50 hover:text-red-600 transition-colors">ERP - Üretim Yazılımı</a>
-              <a href="/ozellikler" class="block px-3 py-2.5 rounded-lg text-slate-600 font-medium hover:bg-slate-50 hover:text-red-600 transition-colors">CRM - Müşteri Takip</a>
-              <a href="/ozellikler" class="block px-3 py-2.5 rounded-lg text-slate-600 font-medium hover:bg-slate-50 hover:text-red-600 transition-colors">Hatırlatma Sistemi</a>
-              <a href="/referanslarimiz" class="block px-3 py-2.5 rounded-lg text-slate-600 font-medium hover:bg-slate-50 hover:text-red-600 transition-colors">Referanslar</a>
-              <a href="/neden-stok-pratik" class="block px-3 py-2.5 rounded-lg text-slate-600 font-medium hover:bg-slate-50 hover:text-red-600 transition-colors">Sıkça Sorulan Sorular</a>
-              <a href="/ekran-goruntuleri" class="block px-3 py-2.5 rounded-lg text-slate-600 font-medium hover:bg-slate-50 hover:text-red-600 transition-colors">Program Görüntüleri</a>
-              <a href="/destek-icerikleri" class="block px-3 py-2.5 rounded-lg text-green-700 font-bold bg-green-50 hover:bg-green-100 transition-colors">Destek</a>
-              <a href="/yararli-bilgiler" class="block px-3 py-2.5 rounded-lg text-slate-600 font-medium hover:bg-slate-50 hover:text-red-600 transition-colors">Yararlı Bilgiler</a>
-              <div class="my-2 border-t border-slate-100"></div>
-              <a href="/bayilik" class="block px-3 py-2.5 rounded-lg text-red-600 font-bold bg-red-50 hover:bg-red-100 transition-colors">Bayimiz Olun</a>
-              <a href="/sitemap" class="block px-3 py-2.5 rounded-lg text-slate-500 text-sm hover:bg-slate-50 hover:text-slate-800 transition-colors">Site Haritası</a>
+              <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2 pl-2">Sektörel Çözümler</h4>
+              <a href="/oto-tamir-yazilimi" class="block px-3 py-2 rounded-lg text-slate-700 font-medium hover:bg-slate-50 hover:text-red-600 transition-colors text-xs sm:text-[13px]">🚗 Oto Servis Yazılımı</a>
+              <a href="/kuyumculuk-yazilimi" class="block px-3 py-2 rounded-lg text-slate-700 font-medium hover:bg-slate-50 hover:text-red-600 transition-colors text-xs sm:text-[13px]">💎 Kuyumculuk Yazılımı</a>
+              <a href="/tekstil-ve-magazacilik-yazilimi" class="block px-3 py-2 rounded-lg text-slate-700 font-medium hover:bg-slate-50 hover:text-red-600 transition-colors text-xs sm:text-[13px]">👗 Tekstil & Butik Giyim</a>
+              <a href="/barkodlu-magaza-pos-programi" class="block px-3 py-2 rounded-lg text-slate-700 font-medium hover:bg-slate-50 hover:text-red-600 transition-colors text-xs sm:text-[13px]">🛒 Hızlı Barkod POS & Mağaza</a>
+              <a href="/gida-market-sarkuteri-yazilimi" class="block px-3 py-2 rounded-lg text-slate-700 font-medium hover:bg-slate-50 hover:text-red-600 transition-colors text-xs sm:text-[13px]">🍎 Gıda (Market & Şarküteri)</a>
+              <a href="/uretim-erp-urun-agaci-bom-ve-gercek-maliyet-motoru" class="block px-3 py-2 rounded-lg text-slate-700 font-medium hover:bg-slate-50 hover:text-red-600 transition-colors text-xs sm:text-[13px]">⚙️ ERP - Üretim Reçetesi (BOM)</a>
+            </div>
+
+            <!-- Sütun 3: Kurumsal & Destek -->
+            <div class="flex flex-col space-y-1">
+              <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2 pl-2">Kurumsal & Destek</h4>
+              <a href="/firma-kaydi" class="block px-3 py-2 rounded-lg text-blue-700 font-bold bg-blue-50 hover:bg-blue-100 transition-colors text-xs sm:text-[13px]">✨ Firma Kayıt & Ücretsiz Demo</a>
+              <a href="/masraf-gir" class="block px-3 py-2 rounded-lg text-slate-700 font-medium hover:bg-slate-50 hover:text-red-600 transition-colors text-xs sm:text-[13px]">🧾 Masraf Gir (AI OCR)</a>
+              <a href="/referanslarimiz" class="block px-3 py-2 rounded-lg text-slate-700 font-medium hover:bg-slate-50 hover:text-red-600 transition-colors text-xs sm:text-[13px]">⭐ Referanslarımız</a>
+              <a href="/neden-stok-pratik" class="block px-3 py-2 rounded-lg text-slate-700 font-medium hover:bg-slate-50 hover:text-red-600 transition-colors text-xs sm:text-[13px]">❓ Sıkça Sorulan Sorular</a>
+              <a href="/bayilik" class="block px-3 py-2 rounded-lg text-red-600 font-bold bg-red-50 hover:bg-red-100 transition-colors text-xs sm:text-[13px]">🤝 Bayimiz Olun (Pasif Gelir)</a>
+              <a href="/sitemap" class="block px-3 py-2 rounded-lg text-slate-500 text-xs hover:bg-slate-50 hover:text-slate-800 transition-colors">🗺️ Site Haritası (Sitemap)</a>
             </div>
           </div>
         </li>
@@ -160,7 +158,11 @@ import SocialMedia from './SocialMedia.astro';
             </button>
             
             <div id="mobileDropdownMenu" class="hidden flex-col gap-1 px-4 py-2 mt-1 bg-slate-50 rounded-xl">
-              <a href="/uts-entegrasyonu" class="flex items-center justify-between py-2 px-3 text-sm text-emerald-900 font-extrabold bg-emerald-100/70 rounded-lg my-1 border border-emerald-300/60 shadow-sm">
+              <a href="/yesil-donusum" class="flex items-center justify-between py-2 px-3 text-sm text-emerald-950 font-extrabold bg-gradient-to-r from-emerald-100 to-teal-100 rounded-lg my-1 border border-emerald-300 shadow-xs">
+                <span>🌱 YeşilPratik (Karbon)</span>
+                <span class="text-[10px] bg-emerald-600 text-white font-black px-1.5 py-0.5 rounded">2026 SKDM</span>
+              </a>
+              <a href="/uts-entegrasyonu" class="flex items-center justify-between py-2 px-3 text-sm text-emerald-900 font-extrabold bg-emerald-100/70 rounded-lg my-1 border border-emerald-300/60 shadow-xs">
                 <span>🩺 Sağlık Bakanlığı ÜTS</span>
               </a>
               <a href="/fiyatlar" class="block py-2.5 text-sm text-red-600 font-bold">Fiyat Hesaplayıcı</a>

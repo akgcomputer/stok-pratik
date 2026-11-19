@@ -40,6 +40,7 @@ const subText = isBayilik
   : 'İhtiyacınıza uygun seçeneğe dokunduğunuzda hazır mesajınız doğrudan WhatsApp destek ve kurulum ekibimize açılır.';
 
 const ogImage = 'https://stokpratik.com.tr/images/site-foto/fav-stok-pratik-2.png';
+const backUrl = isUts ? '/uts-entegrasyonu' : isBayilik ? '/bayilik' : '/';
 
 const options = isBayilik
   ? [
@@ -192,6 +193,7 @@ const options = isBayilik
         padding: 16px;
       }
       .card {
+        position: relative;
         width: 100%;
         max-width: 520px;
         background: rgba(15, 23, 42, 0.96);
@@ -199,6 +201,51 @@ const options = isBayilik
         border-radius: 24px;
         padding: 28px 22px;
         box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55);
+      }
+      .btn-close {
+        position: absolute;
+        top: 16px;
+        right: 16px;
+        width: 38px;
+        height: 38px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        color: #e2e8f0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 18px;
+        font-weight: 700;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        text-decoration: none;
+        z-index: 10;
+        line-height: 1;
+      }
+      .btn-close:hover {
+        background: rgba(239, 68, 68, 0.25);
+        border-color: rgba(239, 68, 68, 0.6);
+        color: #ef4444;
+        transform: scale(1.08);
+      }
+      .btn-back-link {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        margin-top: 14px;
+        font-size: 12.5px;
+        font-weight: 700;
+        color: #94a3b8;
+        text-decoration: none;
+        transition: color 0.2s;
+        width: 100%;
+        text-align: center;
+        cursor: pointer;
+      }
+      .btn-back-link:hover {
+        color: #38bdf8;
       }
       .top {
         text-align: center;
@@ -335,6 +382,17 @@ const options = isBayilik
   </head>
   <body>
     <main class="card">
+      {/* Sağ Üst Kapat (X) Butonu */}
+      <a 
+        href={backUrl} 
+        id="close-btn" 
+        class="btn-close" 
+        title="Kapat ve Sayfaya Geri Dön" 
+        aria-label="Kapat"
+      >
+        ✕
+      </a>
+
       <div class="top">
         <div class="badge">{badgeText}</div>
         <h1>{headingText}</h1>
@@ -381,10 +439,38 @@ const options = isBayilik
       <p class="foot-note">
         Resmi WhatsApp &amp; Destek Hattı: 0541 246 54 29
       </p>
+
+      {/* Alt Geri Dön Linki */}
+      <a href={backUrl} id="back-link" class="btn-back-link">
+        ← Web Sitesine Geri Dön
+      </a>
     </main>
 
-    <script is:inline define:vars={{ conversionSendTo, konu: konu || (isBayilik ? 'bayilik' : '45gun') }}>
+    <script is:inline define:vars={{ conversionSendTo, konu: konu || (isBayilik ? 'bayilik' : '45gun'), backUrl }}>
       (function () {
+        function handleClose(e) {
+          if (e) e.preventDefault();
+          if (window.opener && !window.opener.closed) {
+            window.close();
+          } else if (document.referrer && document.referrer.indexOf(window.location.host) !== -1) {
+            window.history.back();
+          } else {
+            window.location.href = backUrl;
+          }
+        }
+
+        var closeBtn = document.getElementById('close-btn');
+        if (closeBtn) closeBtn.addEventListener('click', handleClose);
+
+        var backLink = document.getElementById('back-link');
+        if (backLink) backLink.addEventListener('click', handleClose);
+
+        window.addEventListener('keydown', function(e) {
+          if (e.key === 'Escape' || e.keyCode === 27) {
+            handleClose();
+          }
+        });
+
         function trackAction(key, kind) {
           try {
             if (typeof window.fbq === 'function') {

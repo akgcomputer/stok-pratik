@@ -3,36 +3,115 @@ export const prerender = false;
 
 const konu = Astro.url.searchParams.get('konu');
 const isBayilik = konu === 'bayilik';
+const isUts = konu === 'uts';
 const phone = '905412465429';
 const pixelId = '2019909158684223';
+const googleTagId = 'AW-746045909';
+const conversionSendTo = 'AW-746045909/5tHJCLWU8rkdENWD3-MC';
 
 const pageTitle = isBayilik
-  ? 'Stok Pratik Çözüm Ortaklığı & Yazılım Bayiliği | WhatsApp Destek'
-  : 'Stok Pratik 45 Gün Ücretsiz Deneme | WhatsApp Destek Hattı';
+  ? 'Stok Pratik Çözüm Ortaklığı & Yazılım Bayiliği | WhatsApp Bilgi Hattı'
+  : isUts
+  ? 'Sağlık Bakanlığı ÜTS Entegrasyonu | WhatsApp Canlı Demo Hattı'
+  : 'Stok Pratik 45 Gün Ücretsiz Deneme | WhatsApp Hızlı Destek';
 
 const pageDescription = isBayilik
   ? 'Stok Pratik Çözüm Ortaklığı ve Yazılım Bayiliği gelir modeli ve şartları hakkında WhatsApp üzerinden hemen bilgi alın.'
-  : 'Stok Pratik bulut ERP ve ön muhasebe 45 gün ücretsiz deneme şifrenizi WhatsApp üzerinden hemen alın.';
+  : isUts
+  ? 'Sağlık Bakanlığı ÜTS doğrudan REST API entegrasyonu, token kurulumu ve canlı demo için WhatsApp uzmanımıza anında bağlanın.'
+  : 'Stok Pratik bulut ERP, e-ticaret ve ön muhasebe için 45 gün deneme şifrenizi ve canlı kurulum desteğini WhatsApp üzerinden hemen alın.';
 
 const badgeText = isBayilik
-  ? 'Çözüm Ortaklığı & Yazılım Bayiliği Başvurusu'
-  : '45 Gün Ücretsiz Tam Sürüm • Kredi Kartı Gerekmez';
+  ? 'ÇÖZÜM ORTAKLIĞI & YAZILIM BAYİLİĞİ'
+  : isUts
+  ? 'T.C. SAĞLIK BAKANLIĞI TİTCK ÜTS'
+  : 'BULUT ERP, ÖN MUHASEBE & E-TİCARET';
 
 const headingText = isBayilik
-  ? 'Stok Pratik Bayilik WhatsApp Hattına Bağlanılıyor...'
-  : 'Stok Pratik WhatsApp Destek Hattına Bağlanılıyor...';
+  ? 'Hangi Bayilik Konusunda Bilgi Almak İstersiniz?'
+  : isUts
+  ? 'Sağlık Bakanlığı ÜTS İçin Nasıl Yardımcı Olalım?'
+  : 'Size Nasıl Yardımcı Olalım? Konuyu Seçip Tek Tıkla Başlayın';
 
 const subText = isBayilik
-  ? 'Çözüm ortaklığı, yüksek komisyon ve bayilik şartları için doğrudan resmi WhatsApp hattımıza yönlendiriliyorsunuz.'
-  : '45 Gün Ücretsiz Deneme (StokPratik45Gun) şifreniz için doğrudan resmi WhatsApp hattımıza yönlendiriliyorsunuz.';
+  ? 'Aşağıdan ilgilendiğiniz iş ortaklığı başlığını seçtiğinizde hazır mesajınız doğrudan resmi WhatsApp hattımızda açılır.'
+  : isUts
+  ? 'Aşağıdan ÜTS bildirim veya kurulum ihtiyacınızı seçtiğinizde hazır mesajınız doğrudan medikal entegrasyon uzmanımızın WhatsApp ekranında açılır.'
+  : 'İhtiyacınıza uygun seçeneğe dokunduğunuzda hazır mesajınız doğrudan WhatsApp destek ve kurulum ekibimize açılır.';
 
-const initialMessage = isBayilik
-  ? 'Merhaba, Stok Pratik Bayilik ve Çözüm Ortaklığı şartları hakkında bilgi almak istiyorum.'
-  : 'Merhaba, Stok Pratik 45 Gün Ücretsiz Deneme (StokPratik45Gun) şifremi almak istiyorum.';
-
-const initialWebWaUrl = `https://wa.me/${phone}?text=${encodeURIComponent(initialMessage)}`;
-const initialAppWaUrl = `whatsapp://send?phone=${phone}&text=${encodeURIComponent(initialMessage)}`;
 const ogImage = 'https://stokpratik.com.tr/images/site-foto/fav-stok-pratik-2.png';
+
+const options = isBayilik
+  ? [
+      {
+        key: 'bayilik_komisyon',
+        icon: '🤝',
+        title: '1. Yazılım Bayiliği & Komisyon Oranları',
+        desc: 'Tekrarlayan gelir modeli, karlılık ve bayilik başvuru şartları',
+        msg: 'Merhaba, Stok Pratik Yazılım Bayiliği ve yüksek komisyon oranları hakkında detaylı bilgi almak istiyorum.'
+      },
+      {
+        key: 'cozum_ortakligi',
+        icon: '🏢',
+        title: '2. Kurumsal Çözüm Ortaklığı & Portföy İş Birliği',
+        desc: 'Muhasebe, danışmanlık ve teknoloji firmalarına özel ortaklık',
+        msg: 'Merhaba, Kurumsal Çözüm Ortaklığı ve portföy iş birliği şartlarınızı görüşmek istiyorum.'
+      },
+      {
+        key: 'bayilik_demo',
+        icon: '💼',
+        title: '3. Bayi Paneli & Canlı Sunum Talebi',
+        desc: 'Müşteri yönetimi, lisanslama ve demo toplantı planlaması',
+        msg: 'Merhaba, Stok Pratik bayi yönetim paneli ve canlı tanıtım toplantısı için bilgi almak istiyorum.'
+      }
+    ]
+  : isUts
+  ? [
+      {
+        key: 'uts_canli_demo',
+        icon: '🩺',
+        title: '1. Canlı ÜTS Entegrasyon Demosu İncelemek İstiyorum',
+        desc: 'Fatura keserken tek tıkla verme-alma bildirimi ve BİD günlüğü canlı sunumu',
+        msg: 'Merhaba, T.C. Sağlık Bakanlığı ÜTS entegrasyonu hakkında canlı demo ve tanıtım rica ediyorum.'
+      },
+      {
+        key: 'uts_token_destek',
+        icon: '🔑',
+        title: '2. Sistem Tokenı & KNO Kurulum Desteği Almak İstiyorum',
+        desc: 'ÜTS portalından Sistem Tokenı üretimi ve 5 dakikada bağlantı yardımı',
+        msg: 'Merhaba, Sağlık Bakanlığı ÜTS Sistem Tokenı ve Kurum Numarası (KNO) ile StokPratik bağlantısı için destek rica ediyorum.'
+      },
+      {
+        key: 'uts_fiyat_gecis',
+        icon: '⚡',
+        title: '3. Kontörsüz Doğrudan API Geçişi & Paket Bilgisi',
+        desc: 'Aracı entegratör masrafı olmadan doğrudan TİTCK bağlantısına geçiş şartları',
+        msg: 'Merhaba, aracı entegratör ve kontör masrafı olmadan doğrudan Sağlık Bakanlığı ÜTS entegrasyonuna geçiş şartlarını ve fiyatları öğrenmek istiyorum.'
+      }
+    ]
+  : [
+      {
+        key: '45gun_sifre',
+        icon: '🚀',
+        title: '1. 45 Gün Ücretsiz Şifremi Hemen Al (StokPratik45Gun)',
+        desc: 'Kredi kartı olmadan 45 gün sınırsız tam sürüm aktivasyonu',
+        msg: 'Merhaba, Stok Pratik 45 Gün Ücretsiz Deneme (StokPratik45Gun) şifremi ve kurulum linkini almak istiyorum.'
+      },
+      {
+        key: 'pazaryeri_eticaret',
+        icon: '🛒',
+        title: '2. E-Ticaret & 50+ Pazaryeri Entegrasyonu Bilgisi',
+        desc: 'Trendyol, Hepsiburada, Amazon stok ve otomatik e-fatura akışı',
+        msg: 'Merhaba, E-Ticaret ve 50+ Pazaryeri Entegrasyonu hakkında bilgi ve demo talep ediyorum.'
+      },
+      {
+        key: 'erp_onmuhasebe_kurulum',
+        icon: '📊',
+        title: '3. Ön Muhasebe, Depo & ERP Canlı Kurulum Talebi',
+        desc: '5 dakikada telefon veya uzaktan bağlantıyla anahtar teslim kurulum',
+        msg: 'Merhaba, Ön Muhasebe, Depo ve ERP canlı kurulumu için bilgi ve destek almak istiyorum.'
+      }
+    ];
 ---
 
 <!doctype html>
@@ -59,8 +138,14 @@ const ogImage = 'https://stokpratik.com.tr/images/site-foto/fav-stok-pratik-2.pn
     <meta property="twitter:description" content={pageDescription} />
     <meta property="twitter:image" content={ogImage} />
 
-    <!-- Meta Pixel Code -->
-    <script is:inline define:vars={{ pixelId }}>
+    <!-- Google Tag (AW-746045909) & Meta Pixel (2019909158684223) -->
+    <script is:inline async src={`https://www.googletagmanager.com/gtag/js?id=${googleTagId}`}></script>
+    <script is:inline define:vars={{ pixelId, googleTagId }}>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', googleTagId);
+
       !(function (f, b, e, v, n, t, s) {
         if (f.fbq) return;
         n = f.fbq = function () {
@@ -89,7 +174,6 @@ const ogImage = 'https://stokpratik.com.tr/images/site-foto/fav-stok-pratik-2.pn
         alt=""
       />
     </noscript>
-    <!-- End Meta Pixel Code -->
 
     <style>
       * {
@@ -109,81 +193,101 @@ const ogImage = 'https://stokpratik.com.tr/images/site-foto/fav-stok-pratik-2.pn
       }
       .card {
         width: 100%;
-        max-width: 480px;
+        max-width: 520px;
         background: rgba(15, 23, 42, 0.96);
-        border: 1px solid rgba(148, 163, 184, 0.22);
+        border: 1px solid rgba(148, 163, 184, 0.24);
         border-radius: 24px;
-        padding: 32px 24px;
-        text-align: center;
+        padding: 28px 22px;
         box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55);
+      }
+      .top {
+        text-align: center;
+        margin-bottom: 18px;
       }
       .badge {
         display: inline-block;
         background: rgba(245, 158, 11, 0.14);
-        border: 1px solid rgba(245, 158, 11, 0.4);
+        border: 1px solid rgba(245, 158, 11, 0.42);
         color: #fcd34d;
-        font-size: 12px;
-        font-weight: 700;
-        letter-spacing: 0.02em;
+        font-size: 11px;
+        font-weight: 800;
+        letter-spacing: 0.04em;
         padding: 6px 14px;
         border-radius: 999px;
-        margin-bottom: 20px;
-      }
-      .spinner-wrap {
-        width: 60px;
-        height: 60px;
-        margin: 0 auto 18px;
-        border-radius: 18px;
-        background: rgba(16, 185, 129, 0.14);
-        border: 1px solid rgba(16, 185, 129, 0.35);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-      .spinner {
-        width: 28px;
-        height: 28px;
-        border: 3.5px solid #34d399;
-        border-top-color: transparent;
-        border-radius: 50%;
-        animation: spin 0.8s linear infinite;
-      }
-      @keyframes spin {
-        to {
-          transform: rotate(360deg);
-        }
+        margin-bottom: 14px;
       }
       h1 {
-        font-size: 22px;
+        font-size: 21px;
         line-height: 1.3;
         font-weight: 800;
         color: #ffffff;
-        margin-bottom: 10px;
+        margin-bottom: 8px;
       }
       p.desc {
-        font-size: 14px;
-        line-height: 1.55;
+        font-size: 13.5px;
+        line-height: 1.5;
         color: #cbd5e1;
-        margin-bottom: 24px;
       }
-      .btn-wa {
+      .options {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-bottom: 14px;
+      }
+      .opt-btn {
         display: flex;
         align-items: center;
-        justify-content: center;
-        gap: 10px;
+        gap: 12px;
         width: 100%;
-        padding: 16px 20px;
+        padding: 14px 16px;
         border-radius: 16px;
-        background: #10b981;
+        background: rgba(30, 41, 59, 0.85);
+        border: 1px solid rgba(16, 185, 129, 0.35);
         color: #ffffff;
-        font-size: 16px;
-        font-weight: 800;
         text-decoration: none;
-        box-shadow: 0 10px 25px rgba(16, 185, 129, 0.35);
-        margin-bottom: 12px;
+        transition: all 0.18s ease;
       }
-      .btn-wa:hover {
-        background: #059669;
+      .opt-btn.primary {
+        background: linear-gradient(135deg, #059669, #10b981);
+        border-color: #34d399;
+        box-shadow: 0 10px 24px rgba(16, 185, 129, 0.3);
+      }
+      .opt-btn:hover {
+        transform: translateY(-1px);
+        border-color: #34d399;
+      }
+      .opt-icon {
+        font-size: 24px;
+        line-height: 1;
+        flex-shrink: 0;
+      }
+      .opt-body {
+        flex: 1;
+        text-align: left;
+      }
+      .opt-title {
+        display: block;
+        font-size: 14.5px;
+        font-weight: 800;
+        color: #ffffff;
+        margin-bottom: 2px;
+      }
+      .opt-sub {
+        display: block;
+        font-size: 12px;
+        color: rgba(241, 245, 249, 0.86);
+        line-height: 1.35;
+      }
+      .opt-arrow {
+        font-size: 18px;
+        font-weight: 800;
+        color: #ffffff;
+        flex-shrink: 0;
+      }
+      .actions-row {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
       }
       .btn-tel {
         display: flex;
@@ -194,102 +298,129 @@ const ogImage = 'https://stokpratik.com.tr/images/site-foto/fav-stok-pratik-2.pn
         padding: 13px 18px;
         border-radius: 14px;
         background: rgba(255, 255, 255, 0.08);
-        border: 1px solid rgba(255, 255, 255, 0.18);
+        border: 1px solid rgba(255, 255, 255, 0.2);
         color: #f8fafc;
         font-size: 14px;
         font-weight: 700;
         text-decoration: none;
-        margin-bottom: 14px;
       }
       .btn-tel:hover {
         background: rgba(255, 255, 255, 0.14);
       }
-      .fallback {
-        font-size: 12px;
-        color: #94a3b8;
-        line-height: 1.5;
+      .btn-register {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        width: 100%;
+        padding: 13px 18px;
+        border-radius: 14px;
+        background: rgba(245, 158, 11, 0.16);
+        border: 1px solid rgba(245, 158, 11, 0.45);
+        color: #fde68a;
+        font-size: 14px;
+        font-weight: 800;
+        text-decoration: none;
       }
-      .fallback a {
-        color: #34d399;
-        text-decoration: underline;
+      .btn-register:hover {
+        background: rgba(245, 158, 11, 0.24);
+      }
+      .foot-note {
+        margin-top: 12px;
+        text-align: center;
+        font-size: 11.5px;
+        color: #94a3b8;
       }
     </style>
   </head>
   <body>
     <main class="card">
-      <div id="wa-badge" class="badge">{badgeText}</div>
-
-      <div class="spinner-wrap" aria-hidden="true">
-        <span class="spinner"></span>
+      <div class="top">
+        <div class="badge">{badgeText}</div>
+        <h1>{headingText}</h1>
+        <p class="desc">{subText}</p>
       </div>
 
-      <h1 id="wa-heading">{headingText}</h1>
-      <p id="wa-subtext" class="desc">{subText}</p>
+      <div class="options">
+        {options.map((opt, idx) => (
+          <a
+            href={`https://wa.me/${phone}?text=${encodeURIComponent(opt.msg)}`}
+            data-wa-key={opt.key}
+            target="_blank"
+            rel="noopener noreferrer"
+            class={`opt-btn ${idx === 0 ? 'primary' : ''}`}
+          >
+            <span class="opt-icon" aria-hidden="true">{opt.icon}</span>
+            <span class="opt-body">
+              <span class="opt-title">{opt.title}</span>
+              <span class="opt-sub">{opt.desc}</span>
+            </span>
+            <span class="opt-arrow" aria-hidden="true">→</span>
+          </a>
+        ))}
+      </div>
 
-      <a id="wa-btn" href={initialAppWaUrl} data-web-href={initialWebWaUrl} class="btn-wa" rel="noopener noreferrer">
-        <span>WhatsApp ile Devam Et (0541 246 54 29)</span>
-      </a>
+      <div class="actions-row">
+        <a id="tel-btn" href="tel:+905412465429" class="btn-tel">
+          <span>📞 Hemen Telefonla Görüş: 0541 246 54 29</span>
+        </a>
 
-      <a id="tel-btn" href="tel:+905412465429" class="btn-tel">
-        <span>📞 Hemen Telefonla Ara: 0541 246 54 29</span>
-      </a>
+        {!isBayilik && (
+          <a
+            id="register-btn"
+            href="https://erp-eticaret.stokpratik.com.tr/giris?promo=StokPratik45Gun"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn-register"
+          >
+            <span>⚡ Beklemeden Online Kayıt Ol (StokPratik45Gun)</span>
+          </a>
+        )}
+      </div>
 
-      <p class="fallback">
-        WhatsApp otomatik açılmazsa yukarıdaki yeşil butona dokunun veya
-        <a id="wa-web-link" href={initialWebWaUrl} rel="noopener noreferrer">tarayıcı bağlantısından devam edin</a>.
+      <p class="foot-note">
+        Resmi WhatsApp &amp; Destek Hattı: 0541 246 54 29
       </p>
     </main>
 
-    <script is:inline define:vars={{ initialMessage }}>
+    <script is:inline define:vars={{ conversionSendTo, konu: konu || (isBayilik ? 'bayilik' : '45gun') }}>
       (function () {
-        var params = new URLSearchParams(window.location.search);
-        var konuParam = params.get('konu') || '45gun';
-        var phone = '905412465429';
-        var msg = initialMessage;
-        var encodedMsg = encodeURIComponent(msg);
-        var appWaUrl = 'whatsapp://send?phone=' + phone + '&text=' + encodedMsg;
-        var webWaUrl = 'https://wa.me/' + phone + '?text=' + encodedMsg;
-        var isMobile = /Android|iPhone|iPad|iPod|IEMobile|Opera Mini/i.test(navigator.userAgent);
-        var primaryUrl = isMobile ? appWaUrl : webWaUrl;
+        function trackAction(key, kind) {
+          try {
+            if (typeof window.fbq === 'function') {
+              if (kind === 'trial') {
+                window.fbq('track', 'StartTrial', { content_name: key, currency: 'TRY', value: 0 });
+                window.fbq('track', 'Lead', { content_name: key });
+              } else {
+                window.fbq('track', 'Contact', { content_name: key, content_category: kind });
+                window.fbq('track', 'Lead', { content_name: key });
+              }
+            }
+            if (typeof window.gtag === 'function') {
+              window.gtag('event', 'conversion', { send_to: conversionSendTo });
+            }
+          } catch (err) {}
+        }
 
-        var btn = document.getElementById('wa-btn');
-        var webLink = document.getElementById('wa-web-link');
+        document.querySelectorAll('[data-wa-key]').forEach(function (el) {
+          el.addEventListener('click', function () {
+            trackAction(el.getAttribute('data-wa-key') || konu, 'WhatsApp');
+          });
+        });
+
         var telBtn = document.getElementById('tel-btn');
-
-        if (btn) {
-          btn.href = primaryUrl;
-          btn.addEventListener('click', function () {
-            if (typeof window.fbq === 'function') {
-              window.fbq('track', 'Contact', { content_name: konuParam, content_category: 'WhatsApp' });
-            }
-          });
-        }
-        if (webLink) {
-          webLink.href = webWaUrl;
-          webLink.addEventListener('click', function () {
-            if (typeof window.fbq === 'function') {
-              window.fbq('track', 'Contact', { content_name: konuParam + '_web', content_category: 'WhatsApp' });
-            }
-          });
-        }
         if (telBtn) {
           telBtn.addEventListener('click', function () {
-            if (typeof window.fbq === 'function') {
-              window.fbq('track', 'Contact', { content_name: konuParam + '_tel', content_category: 'Phone' });
-            }
+            trackAction(konu + '_tel', 'Phone');
           });
         }
 
-        setTimeout(function () {
-          if (typeof window.fbq === 'function') {
-            window.fbq('track', 'Contact', { content_name: konuParam, content_category: 'WhatsApp_Auto' });
-          }
-          try {
-            window.location.href = primaryUrl;
-          } catch (err) {
-            window.location.href = webWaUrl;
-          }
-        }, 280);
+        var regBtn = document.getElementById('register-btn');
+        if (regBtn) {
+          regBtn.addEventListener('click', function () {
+            trackAction('whatsapp_sayfasi_online_kayit', 'trial');
+          });
+        }
       })();
     </script>
   </body>

@@ -50,6 +50,39 @@ const canonicalURL = new URL(Astro.url.pathname, 'https://stokpratik.com.tr');
     <link rel="shortcut icon" type="image/png" href="/images/site-foto/fav-stok-pratik-2.png">
     <link rel="apple-touch-icon" href="/images/site-foto/fav-stok-pratik-2.png">
     <link rel="sitemap" href="/sitemap-index.xml" />
+
+    <!-- Google Tag (AW-746045909) & Meta Pixel (2019909158684223) -->
+    <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=AW-746045909"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-746045909');
+
+      !(function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)})(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init','2019909158684223');
+      fbq('track','PageView');
+
+      window.__spTrackConversion = function(actionName, kind) {
+        try {
+          var label = actionName || window.location.pathname || '/';
+          if (typeof window.fbq === 'function') {
+            if (kind === 'trial') {
+              window.fbq('track', 'StartTrial', { content_name: label, currency: 'TRY', value: 0 });
+              window.fbq('track', 'Lead', { content_name: label });
+            } else if (kind === 'lead') {
+              window.fbq('track', 'Lead', { content_name: label });
+            } else {
+              window.fbq('track', 'Contact', { content_name: label });
+            }
+          }
+          if (typeof window.gtag === 'function') {
+            window.gtag('event', 'conversion', { send_to: 'AW-746045909/5tHJCLWU8rkdENWD3-MC' });
+          }
+        } catch (err) {}
+      };
+    </script>
+    <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=2019909158684223&ev=PageView&noscript=1" alt="" /></noscript>
   </head>
   
   <body>
@@ -190,11 +223,42 @@ const canonicalURL = new URL(Astro.url.pathname, 'https://stokpratik.com.tr');
       }
 
       // Initialize all scripts when DOM is loaded
-      
+      function initTrackingAndUtm() {
+        try {
+          var inParams = new URLSearchParams(window.location.search);
+          var passKeys = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term', 'gclid', 'fbclid'];
+          document.querySelectorAll('a[href*="erp-eticaret.stokpratik.com.tr"]').forEach(function(a) {
+            try {
+              var u = new URL(a.href, window.location.origin);
+              if (!u.searchParams.has('promo')) u.searchParams.set('promo', 'StokPratik45Gun');
+              passKeys.forEach(function(k) {
+                if (inParams.has(k) && !u.searchParams.has(k)) u.searchParams.set(k, inParams.get(k));
+              });
+              a.href = u.toString();
+            } catch (e) {}
+            if (!a.dataset.spBound) {
+              a.dataset.spBound = '1';
+              a.addEventListener('click', function() {
+                window.__spTrackConversion && window.__spTrackConversion(window.location.pathname, 'trial');
+              });
+            }
+          });
+          document.querySelectorAll('a[href*="wa.me"], a[href*="api.whatsapp.com"], a[href^="/whatsapp"], a[href^="tel:"]').forEach(function(a) {
+            if (!a.dataset.spBound) {
+              a.dataset.spBound = '1';
+              a.addEventListener('click', function() {
+                window.__spTrackConversion && window.__spTrackConversion(window.location.pathname + ':' + (a.getAttribute('href') || '').slice(0, 40), 'contact');
+              });
+            }
+          });
+        } catch (err) {}
+      }
+
       function initAll() {
         initMobileMenu();
         initSmoothScroll();
         initLightbox();
+        initTrackingAndUtm();
       }
 
       document.addEventListener('DOMContentLoaded', initAll);

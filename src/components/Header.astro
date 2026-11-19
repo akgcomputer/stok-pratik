@@ -6,7 +6,7 @@ import SocialMedia from './SocialMedia.astro';
 <!-- Top Announcement Bar: Koyu/Altın Kontrastlı 45 Gün Kampanyası -->
 <div class="bg-gradient-to-r from-slate-950 via-slate-900 to-slate-950 text-white text-xs sm:text-sm py-2 sm:py-2.5 px-4 text-center border-b border-amber-500/30 font-medium relative overflow-hidden flex items-center justify-center shadow-inner">
   <div class="container mx-auto flex items-center justify-center flex-wrap gap-1.5 sm:gap-2">
-    <span class="text-amber-400 font-extrabold flex items-center gap-1">🎁 Sosyal Medyaya Özel Fırsat:</span>
+    <span class="text-amber-400 font-extrabold flex items-center gap-1">🎁 Sınırlı Süre Fırsatı:</span>
     <span class="text-slate-200">
       Kayıt olurken <strong class="text-amber-300 font-mono font-black px-1.5 py-0.5 bg-amber-400/15 rounded border border-amber-400/30">StokPratik45Gun</strong> koduyla 30 gün yerine <strong class="text-amber-300 font-black">45 GÜN ÜCRETSİZ</strong> başlayın! (Kredi Kartı Gerekmez)
     </span>
@@ -46,6 +46,10 @@ import SocialMedia from './SocialMedia.astro';
             <!-- Sütun 1 -->
             <div class="flex flex-col space-y-1">
               <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2 pl-3">Yazılım Çözümleri</h4>
+              <a href="/uts-entegrasyonu" class="flex items-center justify-between px-3 py-2 rounded-lg text-emerald-800 font-extrabold bg-emerald-50 hover:bg-emerald-100 transition-colors border border-emerald-200/60 shadow-sm">
+                <span class="flex items-center gap-1.5"><span>🩺</span><span>Sağlık Bakanlığı ÜTS</span></span>
+                <span class="text-[10px] bg-emerald-600 text-white font-black px-1.5 py-0.5 rounded uppercase tracking-wider">YENİ</span>
+              </a>
               <a href="/fiyatlar" class="block px-3 py-2.5 rounded-lg text-red-600 font-bold bg-red-50 hover:bg-red-100 transition-colors">Fiyat Hesaplayıcı</a>
               <a href="/sektorunu-sec" class="block px-3 py-2.5 rounded-lg text-slate-950 font-bold bg-amber-400 hover:bg-amber-300 transition-all shadow-sm">Sektörünü Seç</a>
               <a href="/pratik-ekosistemi" class="block px-3 py-2.5 rounded-lg text-white font-bold bg-emerald-600 hover:bg-emerald-500 transition-all shadow-sm">Ekosistem</a>
@@ -157,6 +161,10 @@ import SocialMedia from './SocialMedia.astro';
             </button>
             
             <div id="mobileDropdownMenu" class="hidden flex-col gap-1 px-4 py-2 mt-1 bg-slate-50 rounded-xl">
+              <a href="/uts-entegrasyonu" class="flex items-center justify-between py-2 px-3 text-sm text-emerald-900 font-extrabold bg-emerald-100/70 rounded-lg my-1 border border-emerald-300/60 shadow-sm">
+                <span>🩺 Sağlık Bakanlığı ÜTS</span>
+                <span class="text-[10px] bg-emerald-600 text-white font-black px-1.5 py-0.5 rounded">YENİ</span>
+              </a>
               <a href="/fiyatlar" class="block py-2.5 text-sm text-red-600 font-bold">Fiyat Hesaplayıcı</a>
               <a href="/sektorunu-sec" class="block py-2.5 px-3 text-sm text-slate-950 font-bold bg-amber-400 hover:bg-amber-300 rounded-lg transition-colors my-1 shadow-sm">Sektörünü Seç</a>
               <a href="/pratik-ekosistemi" class="block py-2.5 px-3 text-sm text-white font-bold bg-emerald-600 hover:bg-emerald-500 rounded-lg transition-colors my-1 shadow-sm">Ekosistem</a>

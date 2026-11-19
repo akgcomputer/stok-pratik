@@ -11,128 +11,9 @@
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
-<style is:inline>
-    @layer base {
-      html, body { margin: 0; padding: 0; }
-      body { overscroll-behavior: none; }
-      main > :first-child { margin-top: 0 !important; }
-      main > :last-child { margin-bottom: 0 !important; }
-    }
-    ::-webkit-scrollbar { display: none; }
-  </style>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<script is:inline id="tailwind-config">
-    tailwind.config = {
-      darkMode: "class",
-      theme: {
-        extend: {
-          colors: {
-            "on-tertiary-fixed-variant": "#005320",
-            "primary-fixed-dim": "#ffb4ab",
-            "background": "#faf8ff",
-            "on-surface": "#131b2e",
-            "surface": "#faf8ff",
-            "on-surface-variant": "#5c403c",
-            "tertiary": "#00682b",
-            "secondary-fixed": "#dce1ff",
-            "on-secondary-fixed": "#00164e",
-            "secondary-fixed-dim": "#b6c4ff",
-            "on-secondary-container": "#1d3989",
-            "on-tertiary": "#ffffff",
-            "on-primary-fixed-variant": "#93000b",
-            "on-tertiary-fixed": "#002109",
-            "surface-tint": "#bf0715",
-            "tertiary-fixed": "#7ffc97",
-            "on-primary-fixed": "#410002",
-            "error": "#ba1a1a",
-            "secondary-container": "#8fa7fe",
-            "surface-variant": "#dae2fd",
-            "surface-bright": "#faf8ff",
-            "secondary": "#4059aa",
-            "on-tertiary-container": "#e7ffe4",
-            "inverse-surface": "#283044",
-            "error-container": "#ffdad6",
-            "surface-container-lowest": "#ffffff",
-            "surface-container-low": "#f2f3ff",
-            "surface-container-high": "#e2e7ff",
-            "on-primary": "#ffffff",
-            "primary": "#b70011",
-            "on-secondary": "#ffffff",
-            "on-background": "#131b2e",
-            "primary-container": "#dc2626",
-            "surface-dim": "#d2d9f4",
-            "primary-fixed": "#ffdad6",
-            "tertiary-fixed-dim": "#62df7d",
-            "outline-variant": "#e6bdb8",
-            "inverse-on-surface": "#eef0ff",
-            "on-error-container": "#93000a",
-            "surface-container": "#eaedff",
-            "tertiary-container": "#008438",
-            "surface-container-highest": "#dae2fd",
-            "on-error": "#ffffff",
-            "on-primary-container": "#fff6f5",
-            "outline": "#916f6b",
-            "inverse-primary": "#ffb4ab",
-            "on-secondary-fixed-variant": "#264191"
-          },
-          borderRadius: {
-            DEFAULT: "0.25rem",
-            lg: "0.5rem",
-            xl: "0.75rem",
-            full: "9999px"
-          },
-          spacing: {
-            "margin-sm": "1rem",
-            gutter: "1.5rem",
-            "space-sm": "0.75rem",
-            margin: "2rem",
-            "space-md": "1rem",
-            "space-xl": "2rem",
-            "gutter-lg": "2rem",
-            "space-3xl": "4rem",
-            "space-xs": "0.5rem",
-            "space-2xl": "3rem",
-            "gutter-sm": "1rem",
-            "margin-lg": "3rem",
-            "space-lg": "1.5rem",
-            "space-2xs": "0.25rem"
-          },
-          fontFamily: {
-            "display-lg": ["Plus Jakarta Sans"],
-            "headline-sm": ["Plus Jakarta Sans"],
-            "body-lg": ["Plus Jakarta Sans"],
-            "label-sm": ["Plus Jakarta Sans"],
-            "body-md": ["Plus Jakarta Sans"],
-            "headline-xl-mobile": ["Plus Jakarta Sans"],
-            "display-lg-mobile": ["Plus Jakarta Sans"],
-            "headline-xl": ["Plus Jakarta Sans"],
-            "headline-lg": ["Plus Jakarta Sans"],
-            "body-sm": ["Plus Jakarta Sans"],
-            "headline-md": ["Plus Jakarta Sans"],
-            "label-md": ["Plus Jakarta Sans"],
-            "label-lg": ["Plus Jakarta Sans"],
-            "numeric-table": ["Plus Jakarta Sans"]
-          },
-          fontSize: {
-            "display-lg": ["40px", { lineHeight: "48px", letterSpacing: "-0.03em", fontWeight: "800" }],
-            "headline-sm": ["16px", { lineHeight: "24px", letterSpacing: "-0.01em", fontWeight: "600" }],
-            "body-lg": ["16px", { lineHeight: "26px", letterSpacing: "-0.005em", fontWeight: "400" }],
-            "label-sm": ["11px", { lineHeight: "14px", letterSpacing: "0.04em", fontWeight: "700" }],
-            "body-md": ["14px", { lineHeight: "22px", letterSpacing: "0em", fontWeight: "400" }],
-            "headline-xl-mobile": ["24px", { lineHeight: "32px", letterSpacing: "-0.02em", fontWeight: "700" }],
-            "display-lg-mobile": ["30px", { lineHeight: "38px", letterSpacing: "-0.02em", fontWeight: "800" }],
-            "headline-xl": ["32px", { lineHeight: "40px", letterSpacing: "-0.025em", fontWeight: "700" }],
-            "headline-lg": ["24px", { lineHeight: "32px", letterSpacing: "-0.02em", fontWeight: "700" }],
-            "body-sm": ["12px", { lineHeight: "18px", letterSpacing: "0.005em", fontWeight: "400" }],
-            "headline-md": ["20px", { lineHeight: "28px", letterSpacing: "-0.015em", fontWeight: "600" }],
-            "label-md": ["12px", { lineHeight: "16px", letterSpacing: "0.02em", fontWeight: "600" }],
-            "label-lg": ["14px", { lineHeight: "20px", letterSpacing: "0.01em", fontWeight: "600" }],
-            "numeric-table": ["13px", { lineHeight: "18px", letterSpacing: "-0.01em", fontWeight: "600" }]
-          }
-        }
-      }
-    };
-  </script>
+
+
+
 
     <link rel="icon" type="image/png" href="/images/site-foto/fav-stok-pratik-2.png" />
     <meta name="description" content="Cihaz masrafı olmadan konum doğrulamalı dinamik QR kodla personel giriş-çıkış takibi, izin yönetimi ve tek tıkla SGK uyumlu puantaj cetveli." />
@@ -142,19 +23,27 @@
     <meta property="og:url" content="https://stokpratik.com.tr/ekosistem/personelpratik" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="StokPratik" />
-    <meta property="og:image" content="https://lh3.googleusercontent.com/aida-public/AB6AXuDRPclUgpTX-_PXtrOjndC2Cvk8Gq2wsHXQQSlAzt7lJBpxmUI7rPK2thEXYlri_uoIfF3y4w1R8jb2wUgjvW2ziR--7rVsrT6sFS9y7qse9P0FluS6Y6KQudffk_tQ9b0RghVXu-MH74g1NO9doR-4ZlLE5EVWm3H0PZpINMRh3abzWEcVH9xYT4JD7eHBW6wAqGeqYM1D0CDMilN-ag3PIAZzlXLbUj2HudCzn5ei" />
+    <meta property="og:image" content="https://stokpratik.com.tr/images/ekosistem/og-personelpratik.jpg" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="PersonelPratik Dinamik QR PDKS Portalı | StokPratik Ekosistemi" />
     <meta name="twitter:description" content="Cihaz masrafı olmadan konum doğrulamalı dinamik QR kodla personel giriş-çıkış takibi, izin yönetimi ve tek tıkla SGK uyumlu puantaj cetveli." />
-    <meta name="twitter:image" content="https://lh3.googleusercontent.com/aida-public/AB6AXuDRPclUgpTX-_PXtrOjndC2Cvk8Gq2wsHXQQSlAzt7lJBpxmUI7rPK2thEXYlri_uoIfF3y4w1R8jb2wUgjvW2ziR--7rVsrT6sFS9y7qse9P0FluS6Y6KQudffk_tQ9b0RghVXu-MH74g1NO9doR-4ZlLE5EVWm3H0PZpINMRh3abzWEcVH9xYT4JD7eHBW6wAqGeqYM1D0CDMilN-ag3PIAZzlXLbUj2HudCzn5ei" />
-    <script is:inline>
-      !(function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)})(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
-      fbq('init','2019909158684223');
-      fbq('track','PageView');
-      fbq('track','ViewContent',{content_name:'ekosistem-personel',content_category:'ekosistem'});
-    </script>
-    <noscript><img decoding="async" height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=2019909158684223&ev=PageView&noscript=1" alt="" /></noscript>
+    <meta name="twitter:image" content="https://stokpratik.com.tr/images/ekosistem/og-personelpratik.jpg" />
+    
   
+<!-- Ekosistem Opt Head -->
+<link rel="stylesheet" href="/css/ekosistem.min.css" />
+<script is:inline async src="https://www.googletagmanager.com/gtag/js?id=AW-746045909"></script>
+<script is:inline>
+window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','AW-746045909');
+</script>
+<script is:inline>
+!(function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)})(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','2019909158684223');
+fbq('track','PageView');
+fbq('track','ViewContent',{content_name:'personelpratik',content_category:'ekosistem'});
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=2019909158684223&ev=PageView&noscript=1" alt="" /></noscript>
+<!-- /Ekosistem Opt Head -->
 </head>
 <body class="bg-surface font-body-md text-on-surface antialiased flex flex-col min-h-screen selection:bg-primary selection:text-on-primary">
 <!-- ================= 1. ÜST BAR & NAVİGASYON ================= -->
@@ -285,7 +174,7 @@
 <!-- Right Column: Visual Showcase with Image 7 -->
 <div class="lg:col-span-5 relative mt-6 lg:mt-0">
 <div class="relative w-full rounded-2xl overflow-hidden shadow-2xl bg-surface-container-lowest p-2 border border-surface-container">
-<img alt="PersonelPratik turnike girişinde dinamik QR okutan çalışan ve resepsiyon desk ekranı" class="w-full h-[460px] object-cover rounded-xl" src="https://lh3.googleusercontent.com/aida/ALJJyrDGXRth2HU6IwIm2fh7_NKyM4IYCYqx4JkhwqIRHzDgFQTDM81BJUcLBoMCRMFein9_Z4lQ18pC8Wg-yX5rTIfgrUGhDxruW5i4m8C1KVCu0y_flQ4A2GQZ6BtpOpRz8kCRwIOPy93cACz2LQ6zSYFGKr9y8fGOhxDoW1xL6tKikQ-F7-IVhnpTaDEjRFqBKU2tCg3Qz-PpbFIeAULHFa6NOfLIc8gKcJabTmlh-dtRCw">
+<img alt="PersonelPratik turnike girişinde dinamik QR okutan çalışan ve resepsiyon desk ekranı" class="w-full h-[460px] object-cover rounded-xl" src="/images/ekosistem/img-23.webp" fetchpriority="high" decoding="async">
 <!-- Ambient Scrim -->
 <div class="absolute inset-0 bg-gradient-to-t from-on-surface/50 via-transparent to-transparent pointer-events-none rounded-xl"></div>
 <!-- Floating Badge 1 (Top Left): Mesai Girişi Check-in -->
@@ -481,7 +370,7 @@
 <!-- Left: Real Photo Setup (IMAGE_6) -->
 <div class="lg:col-span-6 flex flex-col gap-space-sm">
 <div class="relative rounded-2xl overflow-hidden shadow-lg bg-surface-container-lowest p-2 border border-surface-container">
-<img alt="PersonelPratik masaüstü tablet dinamik QR kodu, telefon GPS onayı ve laptop SGK puantaj tablosu" class="w-full h-[410px] object-cover rounded-xl" src="https://lh3.googleusercontent.com/aida/ALJJyrCzYiEUYklsro9cfJMVISxFAd5fzqSX0_VoO1dMey7MM5mjy12RX4_SimY0GXXFz-ckid4yj3F1efj0eQMly193VXNfQB0aN_tVco-sKPuAk4l1KNPPqjhpeo30oc5CwfoAt3gXaqny8chGCpmxEuuCOvPUpomZL9-70bsxSbkGH4QZHtO7uLZG1GtCRDZ_3Wwe1cLDWYAQZNcZMLLBPmmBCm9D7Ej_pDFg0BIqXKaWVw">
+<img alt="PersonelPratik masaüstü tablet dinamik QR kodu, telefon GPS onayı ve laptop SGK puantaj tablosu" class="w-full h-[410px] object-cover rounded-xl" src="/images/ekosistem/img-24.webp" loading="lazy" decoding="async">
 <div class="absolute bottom-5 left-5 right-5 bg-surface-container-lowest/90 backdrop-blur-md p-space-sm rounded-xl flex items-center justify-between shadow border border-surface-container">
 <div class="flex items-center gap-space-xs">
 <span class="material-symbols-outlined text-primary-container text-[22px]">devices</span>
@@ -752,7 +641,7 @@
 </div>
 </main>
 <!-- ================= 9. FOOTER ================= -->
-<footer class="w-full bg-surface-container-low text-on-surface border-t border-surface-container pt-space-3xl pb-space-2xl">
+<footer class="w-full bg-surface-container-low text-on-surface border-t border-surface-container pt-space-3xl pb-24 xl:pb-12">
 <div class="max-w-7xl mx-auto px-gutter">
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-space-xl pb-space-2xl">
 <!-- Brand Info -->
@@ -816,18 +705,9 @@
 </div>
 </footer>
 <!-- ================= STICKY MOBILE BOTTOM ACTION BAR ================= -->
-<div class="fixed bottom-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-t border-slate-200 p-space-xs shadow-xl flex md:hidden items-center gap-space-xs">
-<a class="flex-1 h-11 px-2 rounded-xl bg-surface-container text-tertiary font-label-md text-label-md font-bold flex items-center justify-center gap-1.5 shadow-sm" href="https://wa.me/905412465429?text=Merhaba%2C%20PersonelPratik%20Dinamik%20QR%20PDKS%20Portal%C4%B1%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum." target="_blank" rel="noopener noreferrer">
-<span class="material-symbols-outlined text-[18px]">chat</span>
-<span>WhatsApp ile Soru Sor</span>
-</a>
-<a class="flex-1 h-11 px-2 rounded-xl bg-gradient-to-r from-[#ea580c] to-[#dc2626] text-on-primary font-label-md text-label-md font-bold flex items-center justify-center gap-1 shadow-md" href="https://erp-eticaret.stokpratik.com.tr/" target="_blank" rel="noopener noreferrer">
-<span>🔥 45 Gün Ücretsiz Başla</span>
-<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
-</a>
-</div>
+
 <!-- Interactive JavaScript -->
-<script>
+<script is:inline>
     // Live Clock Simulation
     function updateClock() {
       const now = new Date();
@@ -878,4 +758,53 @@
   </script>
 
 
+<!-- Ekosistem Sticky CTA & Tracking -->
+<div id="sp-sticky-cta" class="xl:hidden fixed bottom-0 left-0 right-0 z-50 bg-surface-container-lowest/95 backdrop-blur-lg shadow-[0_-4px_16px_rgba(0,0,0,0.10)] px-4 py-2.5 flex items-center gap-2.5">
+  <a href="https://wa.me/905412465429?text=Merhaba%2C%20PersonelPratik%20Dinamik%20QR%20PDKS%20Portal%C4%B1%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum." target="_blank" rel="noopener noreferrer" class="flex-1 h-11 rounded-xl bg-tertiary text-on-tertiary font-label-md text-label-md font-bold flex items-center justify-center gap-1.5 shadow-sm">
+    <span class="material-symbols-outlined text-[18px]">chat</span>
+    <span>WhatsApp'tan Sor</span>
+  </a>
+  <a href="https://erp-eticaret.stokpratik.com.tr/" target="_blank" rel="noopener noreferrer" class="flex-1 h-11 rounded-xl bg-gradient-to-r from-[#EA580C] to-[#DC2626] text-on-primary font-label-md text-label-md font-bold flex items-center justify-center gap-1.5 shadow-md">
+    <span class="material-symbols-outlined text-[18px]">rocket_launch</span>
+    <span>45 Gün Ücretsiz</span>
+  </a>
+</div>
+<script is:inline>
+(function(){
+  var portalSlug = 'personelpratik';
+  var inParams = new URLSearchParams(window.location.search);
+  var passKeys = ['utm_source','utm_medium','utm_campaign','utm_content','utm_term','gclid','fbclid'];
+  document.querySelectorAll('a[href*="erp-eticaret.stokpratik.com.tr"]').forEach(function(a){
+    try {
+      var u = new URL(a.href);
+      if (!u.searchParams.has('promo')) u.searchParams.set('promo', 'StokPratik45Gun');
+      if (!u.searchParams.has('kaynak')) u.searchParams.set('kaynak', portalSlug);
+      passKeys.forEach(function(k){
+        if (inParams.has(k) && !u.searchParams.has(k)) u.searchParams.set(k, inParams.get(k));
+      });
+      a.href = u.toString();
+    } catch(e) {}
+    a.addEventListener('click', function(){
+      try {
+        if (window.fbq) {
+          window.fbq('track', 'StartTrial', { content_name: portalSlug, currency: 'TRY', value: 0 });
+          window.fbq('track', 'Lead', { content_name: portalSlug });
+        }
+        if (window.gtag) {
+          window.gtag('event', 'generate_lead', { portal: portalSlug }); window.gtag('event', 'conversion', { send_to: 'AW-746045909/5tHJCLWU8rkdENWD3-MC' });
+        }
+      } catch(e) {}
+    });
+  });
+  document.querySelectorAll('a[href*="wa.me/905412465429"]').forEach(function(a){
+    a.addEventListener('click', function(){
+      try {
+        if (window.fbq) window.fbq('track', 'Contact', { content_name: portalSlug });
+        if (window.gtag) window.gtag('event', 'contact_whatsapp', { portal: portalSlug }); window.gtag('event', 'conversion', { send_to: 'AW-746045909/5tHJCLWU8rkdENWD3-MC' });
+      } catch(e) {}
+    });
+  });
+})();
+</script>
+<!-- /Ekosistem Sticky CTA & Tracking -->
 </body></html>

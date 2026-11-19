@@ -1,0 +1,507 @@
+---
+// src/pages/uts-entegrasyonu.astro - T.C. Sağlık Bakanlığı ÜTS Entegre Ön Muhasebe & Tıbbi Cihaz Stok Takibi
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const pageTitle = "Sağlık Bakanlığı ÜTS Entegre Ön Muhasebe Programı | StokPratik";
+const pageDescription = "Tıbbi cihaz, optik ve kozmetik firmaları için T.C. Sağlık Bakanlığı TİTCK ÜTS entegrasyonu StokPratik'te! Aracısız ÜTS verme-alma bildirimi, karekodlu barkod doğrulama ve ön muhasebe tek panelde.";
+const canonicalUrl = "https://stokpratik.com.tr/uts-entegrasyonu";
+
+// WhatsApp Direct Support URL
+const whatsappNumber = "905412465429";
+const defaultWhatsappMessage = encodeURIComponent("Merhaba, T.C. Sağlık Bakanlığı ÜTS Entegrasyonu hakkında canlı demo ve bilgi almak istiyorum.");
+const directWhatsappUrl = `https://wa.me/${whatsappNumber}?text=${defaultWhatsappMessage}`;
+const whatsappSelectorUrl = "/whatsapp?konu=uts";
+const registerUrl = "https://erp-eticaret.stokpratik.com.tr/giris?promo=StokPratik45Gun";
+
+// 6 Core ÜTS Powers
+const utsFeatures = [
+  {
+    icon: "⚡",
+    badge: "SIFIR KONTÖR / ARACISIZ",
+    title: "Aracısız Doğrudan TİTCK REST API Bağlantısı",
+    desc: "Piyasadaki diğer çözümler gibi pahalı aracı entegratörlere veya ekstra işlem kontör ücretlerine gerek kalmadan, doğrudan T.C. Sağlık Bakanlığı sunucularıyla güvenli REST API üzerinden haberleşir.",
+    color: "from-emerald-500/20 to-teal-500/10",
+    border: "border-emerald-500/30",
+    textColor: "text-emerald-400"
+  },
+  {
+    icon: "🔑",
+    badge: "1 DAKİKADA AKTİF",
+    title: "Tek Tıkla Sistem Tokenı ve KNO Kurulumu",
+    desc: "ÜTS portalından e-imzanızla oluşturduğunuz Sistem Tokenı ve KNO (Kurum Numarası) bilgisini StokPratik ayarlarınıza yapıştırın; saatler süren teknik kurulum gerekmeden saniyeler içinde canlıya geçin.",
+    color: "from-blue-500/20 to-indigo-500/10",
+    border: "border-blue-500/30",
+    textColor: "text-blue-400"
+  },
+  {
+    icon: "🔍",
+    badge: "CANLI BAKANLIK VERİTABANI",
+    title: "Canlı Ürün & Barkod Doğrulama Aracı",
+    desc: "Barkodu okuttuğunuz anda ürünün T.C. Sağlık Bakanlığı sisteminde kayıtlı olup olmadığını, ürün tıbbi sınıfını (Sınıf I, IIa, IIb, III), marka-modelini ve geçerli izin belgelerini anlık teyit eder.",
+    color: "from-amber-500/20 to-orange-500/10",
+    border: "border-amber-500/30",
+    textColor: "text-amber-400"
+  },
+  {
+    icon: "📤",
+    badge: "OTOMATİK BİLDİRİM",
+    title: "Tek Tıkla Verme (Satış) & Alma (Alış) Bildirimi",
+    desc: "Alış veya satış faturası kesildiği anda parti/lot, seri numarası ve alıcı kurumun KNO numarası otomatik doldurularak resmi ÜTS bildirimi tek tıkla tamamlanır. Çifte veri girişine son verin.",
+    color: "from-teal-500/20 to-cyan-500/10",
+    border: "border-teal-500/30",
+    textColor: "text-teal-400"
+  },
+  {
+    icon: "📋",
+    badge: "DENETİM GÜVENCESİ",
+    title: "BİD (Bildirim ID) Takip Günlüğü & Resmi Log",
+    desc: "Yapılan tüm bildirimler Bakanlık Bildirim Numarası (BİD), zaman damgası ve durum koduyla kayıt altına alınır. Sağlık Bakanlığı denetimlerinde tek tıkla geriye dönük resmi döküm ve rapor sunar.",
+    color: "from-purple-500/20 to-fuchsia-500/10",
+    border: "border-purple-500/30",
+    textColor: "text-purple-400"
+  },
+  {
+    icon: "🧪",
+    badge: "RİSKSİZ TEST",
+    title: "Test (Sandbox) ve Canlı Ortam Desteği",
+    desc: "Kullanıcılar ve personel, Bakanlığın test ortamında fatura ve bildirim denemelerini sıfır riskle yapabilir; hazır olduklarında tek bir anahtarla gerçek canlı üretime geçiş yapabilirler.",
+    color: "from-rose-500/20 to-pink-500/10",
+    border: "border-rose-500/30",
+    textColor: "text-rose-400"
+  }
+];
+
+// Target Audience / Sectors
+const targetSectors = [
+  {
+    title: "Tıbbi Cihaz İmalatçıları & İthalatçıları",
+    desc: "Üretilen veya ithal edilen cihazların karekod, seri no, lot takibi ve ilk piyasaya arz (üretim/ithalat) bildirimleri.",
+    icon: "🏭",
+    badge: "Zorunlu Mevzuat"
+  },
+  {
+    title: "Medikal Bayiler & Medikal Marketler",
+    desc: "Hastanelere, kliniklere ve perakende hastalara satışta fatura bazlı ÜTS verme bildirimi ve stok kabul alma bildirimleri.",
+    icon: "🏥",
+    badge: "Hastanelere Satış"
+  },
+  {
+    title: "Optik Müesseseleri",
+    desc: "Gözlük camı, optik çerçeve ve kontakt lenslerin Sağlık Bakanlığı karekod doğrulaması ve perakende satış bildirimleri.",
+    icon: "👓",
+    badge: "Optik Uyumlu"
+  },
+  {
+    title: "Kozmetik & Kişisel Bakım Firmaları",
+    desc: "Ürün Takip Sistemi (ÜTS) kozmetik ürün bildirimleri, formülasyon kayıtları ve piyasaya arz süreçleri.",
+    icon: "💄",
+    badge: "Kozmetik Kayıt"
+  },
+  {
+    title: "Diş Depoları & Dental Malzeme Satıcıları",
+    desc: "İmplant, dolgu, ortodonti ve dental cihazların parti/lot numarasıyla kliniklere satışında anlık bildirim.",
+    icon: "🦷",
+    badge: "Dental Çözüm"
+  },
+  {
+    title: "Ecza Depoları & Eczaneler",
+    desc: "Tıbbi sarf malzeme, ortopedi ürünleri ve dermokozmetik kalemlerinin ÜTS üzerinden güvenli transferi ve kontrolü.",
+    icon: "💊",
+    badge: "Depo & Transfer"
+  }
+];
+
+// 3-Step Flow
+const workflowSteps = [
+  {
+    step: "01",
+    title: "Tokenınızı Tanımlayın",
+    desc: "T.C. Sağlık Bakanlığı ÜTS portalından e-imzanızla oluşturduğunuz Sistem Tokenını ve KNO numaranızı StokPratik paneline yapıştırın. Sistem 60 saniyede canlıya hazır.",
+    icon: "🔐"
+  },
+  {
+    step: "02",
+    title: "Barkodu Okutun",
+    desc: "Ürünlerinizi el terminali, barkod tabancası veya kamera ile okutun; ürünün Bakanlık kaydı, tıbbi risk sınıfı ve izinleri ekranda anında doğrulansın.",
+    icon: "📱"
+  },
+  {
+    step: "03",
+    title: "Faturayla Tek Tıkta Gönderin",
+    desc: "Satış faturanızı onayladığınız anda ÜTS verme bildirimi Bakanlığa otomatik iletilir, resmi BİD numarası faturanın üzerine mühürlenir.",
+    icon: "🚀"
+  }
+];
+
+// FAQ
+const faqs = [
+  {
+    q: "ÜTS entegrasyonu için aracı bir entegratörle anlaşmam gerekir mi?",
+    a: "Hayır. StokPratik, T.C. Sağlık Bakanlığı TİTCK sistemine doğrudan REST API ile bağlanır. Hiçbir aracı kuruma veya üçüncü parti yazılıma ihtiyaç duymazsınız."
+  },
+  {
+    q: "Her bildirim için ekstra kontör veya işlem ücreti öder miyim?",
+    a: "Kesinlikle hayır. StokPratik'te bildirim başı kontör ücreti YOKTUR. Paketinize dahil olarak sınırsız sayıda verme, alma ve doğrulama bildirimi yapabilirsiniz."
+  },
+  {
+    q: "Kozmetik ve kişisel bakım ürünlerini de kapsıyor mu?",
+    a: "Evet. Tıbbi cihazların yanı sıra Sağlık Bakanlığı mevzuatına tabi tüm kozmetik, parfümeri ve kişisel bakım ürünlerinin ÜTS bildirimleri ve kayıt kontrolleri tam desteklenir."
+  },
+  {
+    q: "e-Fatura ve e-İrsaliye ile entegre çalışıyor mu?",
+    a: "Tamamen entegredir. StokPratik üzerinden e-Fatura veya e-İrsaliye oluşturduğunuzda sistem parti/lot ve seri numaralarını faturaya yansıtır ve onayınızla birlikte ÜTS verme bildirimini saniyeler içinde tamamlar."
+  },
+  {
+    q: "Bakanlık denetimlerinde nasıl rapor alabilirim?",
+    a: "StokPratik BİD Takip Günlüğü ekranından tarih aralığı, müşteri KNO'su veya parti/lot numarasına göre filtreleme yaparak resmi denetim çıktısını Excel veya PDF formatında tek tıkla alabilirsiniz."
+  },
+  {
+    q: "Kurulumu kendimiz yapabilir miyiz, destek veriyor musunuz?",
+    a: "Sistem Tokenı ve KNO bilgilerinizi panele girmeniz yeterlidir. Dilerseniz uzman destek ekibimiz WhatsApp veya uzaktan bağlantı ile 5 dakika içinde ilk kurulumunuzu ve test bildiriminizi ücretsiz yapar."
+  }
+];
+
+// Schema JSON-LD
+const schemaJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "StokPratik Sağlık Bakanlığı ÜTS Entegrasyonu",
+  "operatingSystem": "Web, Windows, macOS, iOS, Android",
+  "applicationCategory": "BusinessApplication",
+  "description": pageDescription,
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "TRY",
+    "description": "45 Gün Koşulsuz Ücretsiz Deneme"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "StokPratik",
+    "url": "https://stokpratik.com.tr",
+    "telephone": "+905412465429"
+  }
+};
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <main class="bg-slate-950 text-slate-100 min-h-screen selection:bg-emerald-500 selection:text-slate-950">
+    
+    {/* JSON-LD Schema */}
+    <script type="application/ld+json" set:html={JSON.stringify(schemaJsonLd)} />
+
+    {/* ========================================================================= */}
+    {/* 1. HERO SECTION */}
+    {/* ========================================================================= */}
+    <section class="relative pt-12 pb-20 lg:pt-20 lg:pb-28 overflow-hidden border-b border-slate-800">
+      
+      {/* Arka Plan Glow Efektleri */}
+      <div class="absolute -top-40 left-1/2 -translate-x-1/2 w-[900px] h-[500px] bg-gradient-to-b from-emerald-500/25 via-teal-500/10 to-transparent blur-3xl pointer-events-none"></div>
+      <div class="absolute top-1/3 -right-40 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none"></div>
+      <div class="absolute bottom-10 -left-40 w-96 h-96 bg-emerald-600/10 rounded-full blur-3xl pointer-events-none"></div>
+
+      <div class="container mx-auto px-4 max-w-6xl relative z-10 text-center">
+        
+        {/* Üst Rozet */}
+        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500/15 border border-emerald-500/40 text-emerald-300 text-xs sm:text-sm font-extrabold mb-6 shadow-lg shadow-emerald-500/10">
+          <span class="text-base">🩺</span>
+          <span>T.C. SAĞLIK BAKANLIĞI TİTCK DOĞRUDAN REST API ENTEGRASYONU</span>
+          <span class="bg-emerald-500 text-slate-950 text-[10px] font-black uppercase px-2 py-0.5 rounded-full ml-1">CANLI</span>
+        </div>
+
+        {/* Ana Başlık */}
+        <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight text-white leading-tight sm:leading-tight max-w-4xl mx-auto mb-6">
+          Sağlık Bakanlığı <span class="bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-400 bg-clip-text text-transparent">ÜTS Entegre</span> Ön Muhasebe & Tıbbi Cihaz Takibi
+        </h1>
+
+        {/* Alt Açıklama */}
+        <p class="text-slate-300 text-base sm:text-xl max-w-3xl mx-auto leading-relaxed mb-8">
+          Tıbbi cihaz, optik ve kozmetik işletmeleriniz için fatura keserken <strong class="text-white font-bold">ÜTS verme ve alma bildirimlerinizi</strong> tek panelden, aracısız ve <strong class="text-emerald-400 font-bold">sıfır kontör masrafıyla</strong> saniyeler içinde tamamlayın.
+        </p>
+
+        {/* Hızlı Dönüşüm Butonları */}
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4 max-w-xl mx-auto mb-10">
+          
+          {/* WhatsApp Canlı Demo Butonu (Öncelikli) */}
+          <a 
+            href={whatsappSelectorUrl}
+            class="w-full sm:w-auto flex-1 inline-flex items-center justify-center gap-3 px-8 py-4 rounded-2xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black text-base shadow-xl shadow-emerald-500/25 transition-all hover:scale-[1.02] active:scale-[0.98] group"
+          >
+            <span class="text-xl">💬</span>
+            <span>WhatsApp'tan Demo İsteyin</span>
+            <span class="group-hover:translate-x-1 transition-transform">→</span>
+          </a>
+
+          {/* 45 Gün Ücretsiz Başla Butonu */}
+          <a 
+            href={registerUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-4 rounded-2xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-base border border-slate-700 hover:border-emerald-500/50 transition-all shadow-lg"
+          >
+            <span>14 Gün Ücretsiz Deneyin</span>
+          </a>
+
+        </div>
+
+        {/* Güven Rozetleri */}
+        <div class="flex flex-wrap items-center justify-center gap-4 sm:gap-8 text-xs sm:text-sm text-slate-400 pt-4 border-t border-slate-800/80 max-w-3xl mx-auto">
+          <span class="flex items-center gap-1.5 text-emerald-400 font-semibold">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+            Aracı Entegratör Masrafı Yok
+          </span>
+          <span class="flex items-center gap-1.5 text-emerald-400 font-semibold">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+            Sıfır Kontör Ücreti
+          </span>
+          <span class="flex items-center gap-1.5 text-emerald-400 font-semibold">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+            TİTCK Canlı Mevzuat Uyumu
+          </span>
+        </div>
+
+      </div>
+    </section>
+
+    {/* ========================================================================= */}
+    {/* 2. 6 BÜYÜK ÜTS YETENEĞİ */}
+    {/* ========================================================================= */}
+    <section class="py-16 sm:py-24 border-b border-slate-800 relative">
+      <div class="container mx-auto px-4 max-w-6xl">
+        
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <span class="text-emerald-400 font-black text-xs uppercase tracking-wider bg-emerald-500/10 px-3 py-1 rounded-full border border-emerald-500/20">
+            GÜÇLÜ ÖZELLİK MATRİSİ
+          </span>
+          <h2 class="text-2xl sm:text-4xl font-extrabold text-white mt-3 mb-4">
+            StokPratik ÜTS Entegrasyonu ile Neler Yapabilirsiniz?
+          </h2>
+          <p class="text-slate-400 text-sm sm:text-base">
+            Geleneksel muhasebe programlarının sunamadığı doğrudan Sağlık Bakanlığı REST API gücü, işletmenizin tüm yasal bildirim yükünü sıfırlar.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+          {utsFeatures.map((feat) => (
+            <div class={`bg-slate-900/90 rounded-2xl p-6 sm:p-7 border ${feat.border} hover:border-emerald-500/60 transition-all duration-300 flex flex-col justify-between group hover:-translate-y-1 shadow-lg shadow-black/40`}>
+              <div>
+                <div class="flex items-center justify-between mb-4">
+                  <span class="text-3xl p-3 rounded-xl bg-slate-800/80 border border-slate-700/60 group-hover:scale-110 transition-transform">
+                    {feat.icon}
+                  </span>
+                  <span class={`text-[10px] font-black uppercase px-2.5 py-1 rounded-full bg-slate-800 border border-slate-700 ${feat.textColor}`}>
+                    {feat.badge}
+                  </span>
+                </div>
+                <h3 class="text-lg font-bold text-white group-hover:text-emerald-400 transition-colors mb-2.5">
+                  {feat.title}
+                </h3>
+                <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                  {feat.desc}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+      </div>
+    </section>
+
+    {/* ========================================================================= */}
+    {/* 3. 3 ADIMDA NASIL ÇALIŞIR? */}
+    {/* ========================================================================= */}
+    <section class="py-16 sm:py-24 bg-slate-900/50 border-b border-slate-800">
+      <div class="container mx-auto px-4 max-w-6xl">
+        
+        <div class="text-center max-w-3xl mx-auto mb-14">
+          <span class="text-cyan-400 font-black text-xs uppercase tracking-wider bg-cyan-500/10 px-3 py-1 rounded-full border border-cyan-500/20">
+            KOLAY VE HIZLI KURULUM
+          </span>
+          <h2 class="text-2xl sm:text-4xl font-extrabold text-white mt-3 mb-4">
+            3 Kolay Adımda ÜTS Otomasyonu
+          </h2>
+          <p class="text-slate-400 text-sm sm:text-base">
+            Günler süren entegrasyon süreçlerini unutun. Sistem Tokenınızı girin ve fatura kesmeye başlayın.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
+          {workflowSteps.map((s, idx) => (
+            <div class="bg-slate-900 rounded-2xl p-7 border border-slate-800 hover:border-emerald-500/40 transition-all relative group">
+              <div class="flex items-center justify-between mb-6">
+                <span class="text-4xl p-3 rounded-2xl bg-slate-950 border border-slate-800 group-hover:scale-110 transition-transform">
+                  {s.icon}
+                </span>
+                <span class="text-2xl font-black text-slate-700 font-mono group-hover:text-emerald-500/40 transition-colors">
+                  {s.step}
+                </span>
+              </div>
+              <h3 class="text-lg font-bold text-white mb-2 group-hover:text-emerald-400 transition-colors">
+                {s.title}
+              </h3>
+              <p class="text-xs sm:text-sm text-slate-400 leading-relaxed">
+                {s.desc}
+              </p>
+            </div>
+          ))}
+        </div>
+
+      </div>
+    </section>
+
+    {/* ========================================================================= */}
+    {/* 4. HEDEF KİTLE / SEKTÖRLER */}
+    {/* ========================================================================= */}
+    <section class="py-16 sm:py-24 border-b border-slate-800">
+      <div class="container mx-auto px-4 max-w-6xl">
+        
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <span class="text-teal-400 font-black text-xs uppercase tracking-wider bg-teal-500/10 px-3 py-1 rounded-full border border-teal-500/20">
+            KİMLER KULLANMAK ZORUNDA?
+          </span>
+          <h2 class="text-2xl sm:text-4xl font-extrabold text-white mt-3 mb-4">
+            Sağlık Bakanlığı Mevzuatına Tabi Sektörler
+          </h2>
+          <p class="text-slate-400 text-sm sm:text-base">
+            TİTCK mevzuatı uyarınca Ürün Takip Sistemi bildirimi yapmakla yükümlü tüm işletmeler için hazır altyapı.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {targetSectors.map((sec) => (
+            <div class="bg-slate-900/80 rounded-2xl p-6 border border-slate-800 hover:border-slate-700 transition-all flex items-start gap-4">
+              <span class="text-3xl shrink-0 p-2.5 rounded-xl bg-slate-950 border border-slate-800">
+                {sec.icon}
+              </span>
+              <div>
+                <div class="flex items-center gap-2 mb-1.5">
+                  <h3 class="text-base font-bold text-white">
+                    {sec.title}
+                  </h3>
+                </div>
+                <span class="inline-block text-[10px] font-bold text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/20 mb-2">
+                  {sec.badge}
+                </span>
+                <p class="text-xs text-slate-400 leading-relaxed">
+                  {sec.desc}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+      </div>
+    </section>
+
+    {/* ========================================================================= */}
+    {/* 5. ÖZEL WHATSAPP DANIŞMA & KURULUM BANDI (YÜKSEK DÖNÜŞÜM) */}
+    {/* ========================================================================= */}
+    <section class="py-14 bg-gradient-to-r from-emerald-950/60 via-slate-900 to-teal-950/60 border-b border-emerald-500/30">
+      <div class="container mx-auto px-4 max-w-5xl">
+        <div class="flex flex-col lg:flex-row items-center justify-between gap-8 p-8 sm:p-10 rounded-3xl bg-slate-950/90 border border-emerald-500/40 shadow-2xl relative overflow-hidden">
+          
+          <div class="flex-1 text-center lg:text-left">
+            <span class="inline-flex items-center gap-1.5 text-xs font-bold text-emerald-400 bg-emerald-500/10 px-3 py-1 rounded-full border border-emerald-500/30 mb-3">
+              <span>🩺</span>
+              <span>Ücretsiz Kurulum ve Token Desteği</span>
+            </span>
+            <h3 class="text-xl sm:text-3xl font-extrabold text-white mb-2">
+              ÜTS Sistem Tokenınızı Nasıl Alacağınızı Bilmiyor Musunuz?
+            </h3>
+            <p class="text-sm sm:text-base text-slate-300 max-w-xl">
+              Medikal entegrasyon uzmanımız WhatsApp üzerinden <strong class="text-emerald-400">5 dakikada</strong> uzaktan bağlantıyla sisteminizi sıfır hata ile kursun ve ilk test bildiriminizi birlikte yapsın.
+            </p>
+          </div>
+
+          <div class="shrink-0 flex flex-col sm:flex-row items-center gap-3 w-full lg:w-auto">
+            <a 
+              href={whatsappSelectorUrl}
+              class="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black text-sm sm:text-base shadow-xl shadow-emerald-500/30 transition-all hover:scale-[1.02] active:scale-[0.98]"
+            >
+              <span class="text-xl">💬</span>
+              <span>WhatsApp Uzmanına Bağlan</span>
+            </a>
+            
+            <a 
+              href="tel:+905412465429"
+              class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-4 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-sm border border-slate-700 transition-all"
+            >
+              <svg class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
+              <span>0541 246 54 29</span>
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    {/* ========================================================================= */}
+    {/* 6. SIKÇA SORULAN SORULAR (SSS) */}
+    {/* ========================================================================= */}
+    <section class="py-16 sm:py-24 border-b border-slate-800">
+      <div class="container mx-auto px-4 max-w-4xl">
+        
+        <div class="text-center mb-14">
+          <span class="text-emerald-400 font-black text-xs uppercase tracking-wider bg-emerald-500/10 px-3 py-1 rounded-full border border-emerald-500/20">
+            MERAK EDİLENLER
+          </span>
+          <h2 class="text-2xl sm:text-4xl font-extrabold text-white mt-3 mb-4">
+            ÜTS Entegrasyonu Sıkça Sorulan Sorular
+          </h2>
+          <p class="text-slate-400 text-sm">
+            Sağlık Bakanlığı TİTCK entegrasyonu hakkında en çok sorulan soruların net yanıtları.
+          </p>
+        </div>
+
+        <div class="space-y-4">
+          {faqs.map((faq, i) => (
+            <details class="group bg-slate-900 rounded-2xl border border-slate-800 overflow-hidden transition-all duration-200">
+              <summary class="flex items-center justify-between p-5 sm:p-6 cursor-pointer font-bold text-white text-base sm:text-lg hover:text-emerald-400 select-none">
+                <span>{faq.q}</span>
+                <span class="ml-4 shrink-0 text-slate-500 group-open:rotate-180 transition-transform duration-200 text-xl">
+                  ▼
+                </span>
+              </summary>
+              <div class="px-5 pb-5 sm:px-6 sm:pb-6 text-slate-300 text-sm sm:text-base leading-relaxed border-t border-slate-800/80 pt-4">
+                {faq.a}
+              </div>
+            </details>
+          ))}
+        </div>
+
+      </div>
+    </section>
+
+    {/* ========================================================================= */}
+    {/* 7. BOTTOM CTA SECTION */}
+    {/* ========================================================================= */}
+    <section class="py-20 text-center relative overflow-hidden">
+      <div class="container mx-auto px-4 max-w-4xl relative z-10">
+        <h2 class="text-3xl sm:text-5xl font-black text-white mb-6">
+          Sağlık Bakanlığı Bildirimlerinizi <br class="hidden sm:inline" />
+          <span class="text-emerald-400">Otopilota Almaya Hazır Mısınız?</span>
+        </h2>
+        <p class="text-slate-300 text-base sm:text-lg max-w-2xl mx-auto mb-8">
+          Kredi kartı gerekmeden 45 gün boyunca sınırsız deneyin. Medikal ekibimiz kurulumunuzu hemen tamamlasın.
+        </p>
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <a 
+            href={whatsappSelectorUrl}
+            class="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black text-base shadow-xl shadow-emerald-500/25 transition-all hover:scale-[1.02]"
+          >
+            <span>💬 WhatsApp'tan Canlı Demo İncele</span>
+          </a>
+          <a 
+            href={registerUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-base border border-slate-700 transition-all"
+          >
+            <span>Hemen Ücretsiz Başla →</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</BaseLayout>

@@ -145,6 +145,19 @@ const ecosystemProducts = [
     badgeBg: "bg-amber-100 text-amber-900 border-amber-300 font-extrabold",
     detailUrl: "/urunler/projepratik",
     portalUrl: "https://pratikproje.stokpratik.com.tr/"
+  },
+  {
+    id: "uts-entegrasyonu",
+    name: "Sağlık Bakanlığı ÜTS",
+    badge: "🩺 TİTCK DOĞRUDAN API",
+    subtitle: "Tıbbi Cihaz, Optik & Kozmetik ÜTS Üssü",
+    point1: "Aracısız & Sıfır Kontörlü Doğrudan TİTCK API",
+    point2: "Tek Tıkla Verme/Alma Bildirimi & BİD Takibi",
+    gradient: "from-emerald-600 to-teal-700",
+    borderClass: "border-emerald-200 hover:border-emerald-500 ring-2 ring-emerald-500/20",
+    badgeBg: "bg-emerald-100 text-emerald-900 border-emerald-300 font-extrabold",
+    detailUrl: "/uts-entegrasyonu",
+    portalUrl: "https://stokpratik.com.tr/uts-entegrasyonu"
   }
 ];
 
@@ -659,10 +672,10 @@ const reasons = [
           <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/20 to-transparent flex items-end justify-between p-6 sm:p-10 pointer-events-none">
             <div>
               <span class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-emerald-500 text-slate-950 font-black text-xs uppercase tracking-wider mb-2">
-                11 Bağımsız Portal
+                12 Bağımsız Bulut Çözümü
               </span>
               <h3 class="text-xl sm:text-3xl font-extrabold text-white">
-                Pratik Ürün Ailesi & FinansPratik
+                Pratik Ürün Ailesi & ÜTS Entegrasyonu
               </h3>
             </div>
             <span class="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white text-slate-950 font-black text-sm shadow-xl">
@@ -673,8 +686,8 @@ const reasons = [
         </a>
       </div>
 
-      <!-- 10 Ürün Kartı Grid (Resmi Sıralama) -->
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4 sm:gap-5">
+      <!-- 12 Ürün Kartı Grid (Resmi Sıralama - 4 Kolon Dengeli Yerleşim) -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
         {ecosystemProducts.map((p, idx) => (
           <div class={`bg-white rounded-2xl p-5 border ${p.borderClass} shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group hover:-translate-y-1 relative overflow-hidden`}>
             

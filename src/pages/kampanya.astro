@@ -10,7 +10,7 @@ const whatsappUrl = "/whatsapp?konu=45gun";
 
 <BaseLayout 
   title="45 Gün Ücretsiz Deneme Kampanyası — StokPratik ERP & E-Ticaret"
-  description="Sosyal medyaya özel fırsat: Kayıt olurken StokPratik45Gun kodunu kullanın, 30 gün yerine tam 45 GÜN ÜCRETSİZ kullanın! Kredi kartı gerekmez, taahhüt yok."
+  description="Sınırlı süre özel lansman fırsatı: Kayıt olurken StokPratik45Gun kodunu kullanın, 30 gün yerine tam 45 GÜN ÜCRETSİZ kullanın! Kredi kartı gerekmez, taahhüt yok."
 >
   <main class="min-h-screen bg-slate-950 text-white selection:bg-amber-400 selection:text-slate-950 relative overflow-hidden">
     
@@ -28,7 +28,7 @@ const whatsappUrl = "/whatsapp?konu=45gun";
         {/* Top Eyebrow Badge */}
         <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-amber-500/20 to-red-500/20 border border-amber-500/40 text-amber-300 text-xs sm:text-sm font-black mb-6 shadow-lg shadow-amber-500/10 animate-pulse">
           <span class="text-base">🎁</span>
-          <span>SOSYAL MEDYAYA ÖZEL SINIRLI SÜRE FIRSATI</span>
+          <span id="campaignChannelBadge">SINIRLI SÜRE ÖZEL LANSMAN FIRSATI</span>
         </div>
 
         {/* Main Heading */}
@@ -106,6 +106,63 @@ const whatsappUrl = "/whatsapp?konu=45gun";
               <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
               Taahhüt veya Gizli Masraf Yok
             </span>
+          </div>
+
+          {/* 5 Dakikada Hızlı Kurulum & Geri Arama Kutusu */}
+          <div class="mt-6 pt-5 border-t border-slate-800/90 text-left">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">
+              <div>
+                <p class="text-sm sm:text-base font-extrabold text-amber-300">
+                  📞 5 Dakikada Sizi Arayıp Ücretsiz Kuralım
+                </p>
+                <p class="text-xs text-slate-400">
+                  Numaranızı bırakın uzman ekibimiz hesabınızı hemen kursun veya tek tıkla WhatsApp&apos;tan bağlanın.
+                </p>
+              </div>
+              <a
+                href="tel:+905412465429"
+                class="shrink-0 inline-flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 border border-slate-600 text-xs font-bold text-white transition-all"
+              >
+                <span>0541 246 54 29</span>
+              </a>
+            </div>
+
+            <form id="spQuickForm" class="grid grid-cols-1 sm:grid-cols-12 gap-2.5" novalidate>
+              <input
+                id="spQuickName"
+                type="text"
+                placeholder="Ad Soyad / Firma Adı (Opsiyonel)"
+                autocomplete="name"
+                class="sm:col-span-4 px-3.5 py-3 rounded-xl bg-slate-950 border border-slate-700 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-amber-400"
+              />
+              <input
+                id="spQuickPhone"
+                type="tel"
+                required
+                placeholder="Cep Telefonunuz (05XX ...)"
+                autocomplete="tel"
+                class="sm:col-span-4 px-3.5 py-3 rounded-xl bg-slate-950 border border-slate-700 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-amber-400"
+              />
+              <button
+                type="submit"
+                class="sm:col-span-4 px-4 py-3 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black text-sm transition-all active:scale-95 cursor-pointer"
+              >
+                📞 Beni Arayın &amp; Kurun
+              </button>
+            </form>
+
+            <div id="spQuickStatus" class="hidden mt-2.5 text-xs font-semibold rounded-xl px-3.5 py-2.5"></div>
+
+            <div class="mt-3 flex flex-col sm:flex-row items-center justify-center gap-2.5 text-xs">
+              <a
+                href="https://wa.me/905412465429?text=Merhaba%2C%20StokPratik45Gun%20koduyla%2045%20g%C3%BCn%20%C3%BCcretsiz%20deneme%20ve%20h%C4%B1zl%C4%B1%20kurulum%20istiyorum."
+                target="_blank"
+                rel="noopener noreferrer"
+                class="w-full sm:w-auto inline-flex items-center justify-center gap-1.5 px-4 py-2 rounded-xl bg-emerald-500/15 hover:bg-emerald-500/25 border border-emerald-500/40 text-emerald-300 font-bold transition-all"
+              >
+                <span>💬 Doğrudan WhatsApp İle Yaz (0541 246 54 29)</span>
+              </a>
+            </div>
           </div>
 
         </div>
@@ -480,12 +537,24 @@ const whatsappUrl = "/whatsapp?konu=45gun";
 
   </main>
 
-  {/* Client script for 1-click copy feedback */}
+  {/* Client script for 1-click copy, channel badge & quick setup form */}
   <script is:inline define:vars={{ promoCode }}>
     document.addEventListener('DOMContentLoaded', () => {
+      try {
+        const params = new URLSearchParams(window.location.search);
+        const src = (params.get('utm_source') || '').toLowerCase();
+        const badgeEl = document.getElementById('campaignChannelBadge');
+        if (badgeEl) {
+          if (params.has('gclid') || src.includes('google')) {
+            badgeEl.textContent = 'GOOGLE ARAMA ÖZEL 45 GÜN ÜCRETSİZ FIRSATI';
+          } else if (params.has('fbclid') || /(^|\b)(ig|fb|meta|instagram|facebook)(\b|$)/i.test(src)) {
+            badgeEl.textContent = 'SOSYAL MEDYAYA ÖZEL SINIRLI SÜRE FIRSATI';
+          }
+        }
+      } catch (e) {}
+
       const copyBtn = document.getElementById('copyPromoBtn');
       const copyText = document.getElementById('copyText');
-      const copyIcon = document.getElementById('copyIcon');
 
       if (copyBtn) {
         copyBtn.addEventListener('click', async () => {
@@ -503,6 +572,56 @@ const whatsappUrl = "/whatsapp?konu=45gun";
           } catch (err) {
             console.error('Kopyalama hatası:', err);
           }
+        });
+      }
+
+      const quickForm = document.getElementById('spQuickForm');
+      const quickName = document.getElementById('spQuickName');
+      const quickPhone = document.getElementById('spQuickPhone');
+      const quickStatus = document.getElementById('spQuickStatus');
+
+      if (quickForm && quickPhone && quickStatus) {
+        quickForm.addEventListener('submit', (e) => {
+          e.preventDefault();
+          const nameVal = quickName ? quickName.value.trim() : '';
+          const phoneVal = quickPhone.value.trim();
+          const digits = phoneVal.replace(/\D/g, '');
+
+          if (digits.length < 10) {
+            quickStatus.className = 'mt-2.5 text-xs font-semibold rounded-xl px-3.5 py-2.5 bg-red-500/20 border border-red-500/40 text-red-200 block';
+            quickStatus.textContent = 'Lütfen geçerli bir cep telefonu numarası girin (Örn: 05XX XXX XX XX).';
+            quickPhone.focus();
+            return;
+          }
+
+          if (typeof window.__spTrackConversion === 'function') {
+            window.__spTrackConversion('kampanya_5dk_kurulum_formu', 'lead');
+          }
+
+          const msgParts = [
+            'Merhaba, 5 dakikada kurulum ve 45 Gün Ücretsiz Deneme (StokPratik45Gun) için geri arama talep ediyorum.'
+          ];
+          if (nameVal) msgParts.push('Ad / Firma: ' + nameVal);
+          msgParts.push('Telefon: ' + phoneVal);
+          const waHref = 'https://wa.me/905412465429?text=' + encodeURIComponent(msgParts.join(' | '));
+
+          quickStatus.className = 'mt-2.5 text-xs font-semibold rounded-xl px-3.5 py-2.5 bg-emerald-500/20 border border-emerald-500/40 text-emerald-200 block';
+          quickStatus.innerHTML = '';
+          const msgSpan = document.createElement('span');
+          msgSpan.textContent = 'Talebiniz alındı! Uzman ekibimiz kısa sürede sizi arayacaktır. Hemen görüşmek için ';
+          const fallbackA = document.createElement('a');
+          fallbackA.href = waHref;
+          fallbackA.target = '_blank';
+          fallbackA.rel = 'noopener noreferrer';
+          fallbackA.className = 'underline text-amber-300 font-bold';
+          fallbackA.textContent = 'buradan WhatsApp sohbetini açabilirsiniz.';
+          quickStatus.appendChild(msgSpan);
+          quickStatus.appendChild(fallbackA);
+
+          try {
+            window.open(waHref, '_blank', 'noopener,noreferrer');
+          } catch (err) {}
+          quickForm.reset();
         });
       }
     });

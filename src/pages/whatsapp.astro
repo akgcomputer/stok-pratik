@@ -4,6 +4,7 @@ export const prerender = false;
 const konu = Astro.url.searchParams.get('konu');
 const isBayilik = konu === 'bayilik';
 const isUts = konu === 'uts';
+const isKobi2Yil = konu === '2yil' || konu === '2-yil-ucretsiz' || konu === 'kobi-destek';
 const phone = '905412465429';
 const pixelId = '2019909158684223';
 const googleTagId = 'AW-746045909';
@@ -13,34 +14,44 @@ const pageTitle = isBayilik
   ? 'Stok Pratik Çözüm Ortaklığı & Yazılım Bayiliği | WhatsApp Bilgi Hattı'
   : isUts
   ? 'Sağlık Bakanlığı ÜTS Entegrasyonu | WhatsApp Canlı Demo Hattı'
+  : isKobi2Yil
+  ? 'Yeni KOBİ Teknoloji Desteği (2 Yıl Ücretsiz) | WhatsApp Başvuru Hattı'
   : 'Stok Pratik 45 Gün Ücretsiz Deneme | WhatsApp Hızlı Destek';
 
 const pageDescription = isBayilik
   ? 'Stok Pratik Çözüm Ortaklığı ve Yazılım Bayiliği gelir modeli ve şartları hakkında WhatsApp üzerinden hemen bilgi alın.'
   : isUts
   ? 'Sağlık Bakanlığı ÜTS doğrudan REST API entegrasyonu, token kurulumu ve canlı demo için WhatsApp uzmanımıza anında bağlanın.'
+  : isKobi2Yil
+  ? 'Son 2 yılda kurulan işletmelere ve yeni girişimcilere 2 Yıl ücretsiz StokPratik Giriş Paketi tanımlaması için WhatsApp hattımızdan hemen başvurun.'
   : 'Stok Pratik bulut ERP, e-ticaret ve ön muhasebe için 45 gün deneme şifrenizi ve canlı kurulum desteğini WhatsApp üzerinden hemen alın.';
 
 const badgeText = isBayilik
   ? 'ÇÖZÜM ORTAKLIĞI & YAZILIM BAYİLİĞİ'
   : isUts
   ? 'T.C. SAĞLIK BAKANLIĞI TİTCK ÜTS'
+  : isKobi2Yil
+  ? 'YENİ KOBİ & GİRİŞİMCİ TEŞVİK PROGRAMI'
   : 'BULUT ERP, ÖN MUHASEBE & E-TİCARET';
 
 const headingText = isBayilik
   ? 'Hangi Bayilik Konusunda Bilgi Almak İstersiniz?'
   : isUts
   ? 'Sağlık Bakanlığı ÜTS İçin Nasıl Yardımcı Olalım?'
+  : isKobi2Yil
+  ? '2 Yıl Ücretsiz StokPratik Lisansı İçin Başvurun'
   : 'Size Nasıl Yardımcı Olalım? Konuyu Seçip Tek Tıkla Başlayın';
 
 const subText = isBayilik
   ? 'Aşağıdan ilgilendiğiniz iş ortaklığı başlığını seçtiğinizde hazır mesajınız doğrudan resmi WhatsApp hattımızda açılır.'
   : isUts
   ? 'Aşağıdan ÜTS bildirim veya kurulum ihtiyacınızı seçtiğinizde hazır mesajınız doğrudan medikal entegrasyon uzmanımızın WhatsApp ekranında açılır.'
+  : isKobi2Yil
+  ? 'Vergi levhanızı veya kuruluş durumunuzu WhatsApp üzerinden ilettiğinizde müşteri temsilcimiz 2 yıllık ücretsiz lisans tanımlamanızı aynı gün tamamlar.'
   : 'İhtiyacınıza uygun seçeneğe dokunduğunuzda hazır mesajınız doğrudan WhatsApp destek ve kurulum ekibimize açılır.';
 
 const ogImage = 'https://stokpratik.com.tr/images/site-foto/fav-stok-pratik-2.png';
-const backUrl = isUts ? '/uts-entegrasyonu' : isBayilik ? '/bayilik' : '/';
+const backUrl = isUts ? '/uts-entegrasyonu' : isBayilik ? '/bayilik' : isKobi2Yil ? '/2-yil-ucretsiz-kullan' : '/';
 
 const options = isBayilik
   ? [
@@ -88,6 +99,30 @@ const options = isBayilik
         title: '3. Kontörsüz Doğrudan API Geçişi & Paket Bilgisi',
         desc: 'Aracı entegratör masrafı olmadan doğrudan TİTCK bağlantısına geçiş şartları',
         msg: 'Merhaba, aracı entegratör ve kontör masrafı olmadan doğrudan Sağlık Bakanlığı ÜTS entegrasyonuna geçiş şartlarını ve fiyatları öğrenmek istiyorum.'
+      }
+    ]
+  : isKobi2Yil
+  ? [
+      {
+        key: 'kobi_vergi_levhasi',
+        icon: '📄',
+        title: '1. Vergi Levhamı Gönderip 2 Yıl Ücretsiz Lisansımı Başlatmak İstiyorum',
+        desc: 'Resmi vergi levhası ibrazı ile 24 ay bedelsiz Giriş Paketi aktivasyonu',
+        msg: 'Merhaba, Yeni KOBİ Teknoloji Desteği kapsamında vergi levhamı ileterek 2 Yıl Ücretsiz StokPratik Giriş Paketi lisansımı başlatmak istiyorum.'
+      },
+      {
+        key: 'kobi_kurulus_asamasi',
+        icon: '🌱',
+        title: '2. Henüz Şirketim Yok, Kuruluş Aşamasındayım (45 Gün Deneme)',
+        desc: 'Şirketleşme sürecindeki girişimcilere özel 45 gün ücretsiz deneme ve destek',
+        msg: 'Merhaba, yeni bir girişim/şirket kurma aşamasındayım. 45 gün ücretsiz deneme ve Yeni KOBİ Desteği süreci hakkında bilgi almak istiyorum.'
+      },
+      {
+        key: 'kobi_modul_bilgi',
+        icon: '📦',
+        title: '3. Kampanya Kapsamı ve Modüller Hakkında Soru Sormak İstiyorum',
+        desc: 'Giriş paketindeki stok, cari, POS, e-Fatura modülleri ve şartlar',
+        msg: 'Merhaba, 2 Yıl Ücretsiz Kullanım programının modül kapsamı ve katılım şartları hakkında detaylı bilgi almak istiyorum.'
       }
     ]
   : [

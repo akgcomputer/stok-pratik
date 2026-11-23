@@ -41,9 +41,29 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <h2 class="text-3xl md:text-5xl font-extrabold text-white mb-6 leading-tight">
           Yazılım masrafınızı sıfırlamaya hazır mısınız?
         </h2>
-        <p class="text-red-100 text-lg md:text-xl mb-12 max-w-2xl mx-auto font-medium">
+        <p class="text-red-100 text-lg md:text-xl mb-8 max-w-2xl mx-auto font-medium">
           İşletmeci çevrenizi Stok Pratik kolaylığıyla tanıştırın, hemen kazanmaya başlayın.
         </p>
+
+        {/* Mini Alan: Son 2 Yılda Kurulan Firmalara 2 Yıl Ücretsiz Kullanım Tanıtımı */}
+        <div class="mb-10 max-w-xl mx-auto bg-black/25 backdrop-blur-md border border-white/30 rounded-2xl p-4 sm:p-5 text-left shadow-2xl text-white hover:bg-black/35 transition-all">
+          <div class="flex items-center justify-between flex-wrap gap-2 mb-2">
+            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-black bg-amber-400 text-slate-950 uppercase tracking-wide">
+              <span>🌱</span> Yeni KOBİ & Girişimci Teşviki
+            </span>
+            <span class="text-xs text-amber-200 font-semibold">24 Ay Lisans Bedelsiz</span>
+          </div>
+          <p class="text-sm sm:text-base font-bold text-white mb-2 leading-snug">
+            Son 2 yılda kurulan veya kuruluş aşamasındaki işletmelere 2 Yıl StokPratik Giriş Paketi tamamen ücretsiz!
+          </p>
+          <a 
+            href="/2-yil-ucretsiz-kullan" 
+            class="inline-flex items-center gap-1.5 text-xs sm:text-sm font-extrabold text-yellow-300 hover:text-white underline underline-offset-4 transition-colors"
+          >
+            <span>2 Yıl Ücretsiz Kullanım Şartları ve Başvuru Detayları</span>
+            <span>→</span>
+          </a>
+        </div>
         
         <a href="/arkadasini-getir-formu" class="btn-glow inline-flex flex-col items-center justify-center rounded-full bg-yellow-500 hover:bg-yellow-600 text-black shadow-2xl shadow-yellow-600/50 px-10 py-5 transition-transform hover:scale-105 active:scale-95 group border border-yellow-400">
           <span class="text-xs uppercase tracking-widest font-bold opacity-80 group-hover:opacity-100 mb-1">arkadaşını getir</span>

@@ -1,0 +1,626 @@
+---
+// src/pages/2-yil-ucretsiz-kullan.astro - Yeni KOBİ Teknoloji Desteği ve Girişimci Teşvik Programı
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const pageTitle = "Yeni KOBİ Teknoloji Desteği: 2 Yıl Ücretsiz Kullan | StokPratik";
+const pageDescription = "Son 2 yılda kurulan işletmelere ve girişimcilere 24 Ay (2 Yıl) boyunca StokPratik Giriş Paketi lisans bedelsiz! Stok, cari, POS ve e-Fatura tek panelde.";
+const canonicalUrl = "https://stokpratik.com.tr/2-yil-ucretsiz-kullan";
+
+const registerUrl = "https://erp-eticaret.stokpratik.com.tr/giris?promo=StokPratik45Gun";
+const whatsappUrl = "/whatsapp?konu=2yil";
+const directWhatsappUrl = "https://wa.me/905412465429?text=" + encodeURIComponent("Merhaba, Yeni KOBİ Teknoloji Desteği kapsamında vergi levhamı ileterek 2 Yıl Ücretsiz StokPratik lisansı başlatmak istiyorum.");
+
+// Included Modules in Giriş Paketi
+const includedModules = [
+  {
+    icon: "📦",
+    title: "Stok ve Depo Yönetimi",
+    desc: "Sınırsız ürün kartı açma, kritik stok seviye uyarıları, birim tanımlama (adet, kg, metre) ve barkodlu anlık depo takibi."
+  },
+  {
+    icon: "👥",
+    title: "Cari Hesap Yönetimi",
+    desc: "Müşteri ve tedarikçi borç/alacak hesapları, tahsilat ve ödeme takibi, tek tıkla WhatsApp veya e-posta bakiye ekstresi paylaşımı."
+  },
+  {
+    icon: "⚡",
+    title: "Barkodlu Hızlı Satış (Kasa / POS)",
+    desc: "Mağaza içi USB/Bluetooth barkod okuyucu veya mobil telefon kamerası ile saniyeler içinde perakende satış, nakit ve pos tahsilatı."
+  },
+  {
+    icon: "📄",
+    title: "E-Fatura & E-Arşiv Fatura Modülü",
+    desc: "Gelir İdaresi Başkanlığı (GİB) standartlarında faturanızı tek tıkla kesme, müşterinize gönderme ve resmi arşivleme (Yazılım modülü 2 yıl bedelsizdir)."
+  }
+];
+
+// FAQs for Structured Data
+const faqs = [
+  {
+    q: "Hangi işletmeler bu destekten yararlanabilir?",
+    a: "Resmi kuruluş tarihi başvurduğu günden en fazla 2 yıl önce olan tüm Şahıs, Limited ve Anonim şirketler güncel vergi levhası ibraz ederek 24 ay boyunca ücretsiz lisans hakkından yararlanabilir."
+  },
+  {
+    q: "Henüz şirket kurmadım, yine de başvurabilir miyim?",
+    a: "Evet. Şirketleşme hazırlığındaki girişimciler sistemi 45 gün boyunca ücretsiz deneyimleyebilir. 45 gün içinde şirket kuruluşu tamamlanıp vergi levhası iletildiğinde 2 yıllık ücretsiz kullanım hakkı kaldığı yerden devam eder."
+  },
+  {
+    q: "2 yılın sonunda herhangi bir cayma bedeli veya zorunlu taahhüt var mı?",
+    a: "Kesinlikle hayır! StokPratik taahhütsüzdür. 2 yılın sonunda dilediğiniz uygun bir paketle devam edebilir veya tek kuruş ödemeden tüm verilerinizi Excel/XML formatında dışa aktararak ayrılabilirsiniz. Verileriniz asla rehin tutulmaz."
+  },
+  {
+    q: "E-Fatura gönderimlerinde kontör ücreti ödeyecek miyim?",
+    a: "Yazılım lisans bedeli 2 yıl boyunca 0 TL'dir. Yasal e-Fatura/e-Arşiv gönderimleri GİB ve Entegratör sunucu maliyetine tabi olduğundan, yalnızca harcadığınız resmi kontörleri uygun paketlerle temin edersiniz."
+  },
+  {
+    q: "Destek ve eğitim almak zorunda mıyım?",
+    a: "Hayır. Destek ve eğitim hizmetleri opsiyonel ve ücretlidir; destek veya eğitim talep etmezseniz hiçbir ücret ödemeden StokPratik'i 2 yıl boyunca kullanmaya devam edebilirsiniz."
+  }
+];
+---
+
+<BaseLayout 
+  title={pageTitle}
+  description={pageDescription}
+  canonical={canonicalUrl}
+>
+  <main class="min-h-screen bg-slate-950 text-white selection:bg-amber-400 selection:text-slate-950 relative overflow-hidden">
+    
+    {/* Ambient Glows */}
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[1100px] h-[550px] bg-gradient-to-b from-emerald-600/20 via-amber-500/10 to-transparent blur-3xl pointer-events-none"></div>
+    <div class="absolute top-[500px] -left-40 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="absolute top-[900px] -right-40 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+    {/* ========================================================================= */}
+    {/* 1. HERO SECTION */}
+    {/* ========================================================================= */}
+    <section class="relative pt-12 pb-16 lg:pt-20 lg:pb-24 border-b border-slate-800/80">
+      <div class="container mx-auto px-4 max-w-5xl text-center relative z-10">
+        
+        {/* Eyebrow Badge */}
+        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-emerald-300 text-xs sm:text-sm font-black mb-6 shadow-lg shadow-emerald-500/10">
+          <span class="text-base">📢</span>
+          <span>YENİ KOBİ TEKNOLOJİ DESTEĞİ & GİRİŞİMCİ TEŞVİK PROGRAMI</span>
+        </div>
+
+        {/* Main Heading */}
+        <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-tight text-white mb-6">
+          <span class="block text-slate-300 text-xl sm:text-3xl lg:text-4xl font-extrabold mb-2">
+            Yeni Kurulan İşletmelere Can Suyu:
+          </span>
+          <span>StokPratik Giriş Paketi</span>
+          <span class="block bg-gradient-to-r from-emerald-400 via-teal-300 to-amber-300 bg-clip-text text-transparent mt-2">
+            Tam 2 Yıl (24 Ay) Lisans Bedelsiz!
+          </span>
+        </h1>
+
+        {/* Subtitle */}
+        <p class="text-slate-300 text-base sm:text-xl max-w-3xl mx-auto font-medium leading-relaxed mb-8">
+          Türkiye'nin üreten ve büyüyen yeni işletmelerinin başlangıç yazılım ve altyapı maliyetlerini sıfırlıyoruz. 
+          Stok, cari, kasa/POS ve GİB uyumlu e-Fatura süreçlerinizi 2 yıl boyunca ücretsiz yönetin, nakit akışınızı koruyun.
+        </p>
+
+        {/* Trust Badges Bar */}
+        <div class="flex flex-wrap items-center justify-center gap-3 sm:gap-6 text-xs sm:text-sm font-bold text-slate-300 mb-10">
+          <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-900 border border-slate-800">
+            <span class="text-emerald-400 font-black">✓</span> 0 TL Yazılım Lisans Bedeli
+          </span>
+          <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-900 border border-slate-800">
+            <span class="text-emerald-400 font-black">✓</span> 24 Ay Kesintisiz Kullanım
+          </span>
+          <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-900 border border-slate-800">
+            <span class="text-emerald-400 font-black">✓</span> Kredi Kartı & Taahhüt Yok
+          </span>
+          <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-900 border border-slate-800">
+            <span class="text-emerald-400 font-black">✓</span> Veri Taşıma Özgürlüğü
+          </span>
+        </div>
+
+        {/* Dual Primary CTA Buttons */}
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4 max-w-xl mx-auto">
+          <a 
+            href={registerUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="w-full sm:w-auto flex-1 px-8 py-4 rounded-2xl bg-gradient-to-r from-amber-400 via-yellow-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 text-slate-950 font-black text-base shadow-xl shadow-amber-500/20 transition-all hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-2"
+          >
+            <span>Hemen Ücretsiz Başla (Kayıt Ol)</span>
+            <span>→</span>
+          </a>
+
+          <a 
+            href={whatsappUrl}
+            class="w-full sm:w-auto flex-1 px-8 py-4 rounded-2xl bg-emerald-600 hover:bg-emerald-500 text-white font-black text-base shadow-xl shadow-emerald-600/20 transition-all hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-2"
+          >
+            <span>💬 Vergi Levhanı WhatsApp'tan İlet</span>
+            <span>→</span>
+          </a>
+        </div>
+
+        <p class="text-xs text-slate-400 mt-4">
+          * Kayıt olduktan sonra WhatsApp hattımıza vergi levhanızı ileterek 2 yıllık lisansınızı aynı gün içinde aktif edebilirsiniz.
+        </p>
+
+      </div>
+    </section>
+
+    {/* ========================================================================= */}
+    {/* 2. PROGRAMIN AMACI */}
+    {/* ========================================================================= */}
+    <section class="py-16 lg:py-20 bg-slate-900/60 border-b border-slate-800">
+      <div class="container mx-auto px-4 max-w-4xl">
+        <div class="bg-gradient-to-br from-slate-900 via-slate-900/90 to-emerald-950/40 border border-emerald-500/20 rounded-3xl p-6 sm:p-10 shadow-2xl relative overflow-hidden">
+          <div class="absolute top-0 right-0 w-64 h-64 bg-emerald-500/5 rounded-full blur-3xl pointer-events-none"></div>
+
+          <div class="flex items-center gap-3 mb-4">
+            <span class="text-3xl">📢</span>
+            <h2 class="text-2xl sm:text-3xl font-black text-white">Programın Amacı</h2>
+          </div>
+
+          <p class="text-slate-300 text-base sm:text-lg leading-relaxed mb-6">
+            StokPratik olarak, Türkiye'nin üreten, istihdam sağlayan ve büyüyen yeni işletmelerine can suyu olmak istiyoruz. 
+            Yeni bir şirket kurmanın getirdiği yüksek başlangıç yazılım ve altyapı maliyetlerini sıfırlayarak işletmelerimizin 
+            nakit akışlarını korumak amacıyla <strong>"Yeni KOBİ Teknoloji Desteği"</strong> programını başlatmış bulunuyoruz.
+          </p>
+
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-4 border-t border-slate-800 text-center sm:text-left">
+            <div class="p-4 rounded-xl bg-slate-950/60 border border-slate-800">
+              <div class="text-2xl font-black text-amber-400 mb-1">0 TL</div>
+              <div class="text-xs font-semibold text-slate-300">Yazılım Lisans Maliyeti</div>
+            </div>
+            <div class="p-4 rounded-xl bg-slate-950/60 border border-slate-800">
+              <div class="text-2xl font-black text-emerald-400 mb-1">24 Ay</div>
+              <div class="text-xs font-semibold text-slate-300">Kesintisiz Destek Süresi</div>
+            </div>
+            <div class="p-4 rounded-xl bg-slate-950/60 border border-slate-800">
+              <div class="text-2xl font-black text-teal-400 mb-1">%100</div>
+              <div class="text-xs font-semibold text-slate-300">Bulut Tabanlı & Özgür</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {/* ========================================================================= */}
+    {/* 3. KATILIM ŞARTLARI VE UYGUNLUK KRİTERLERİ */}
+    {/* ========================================================================= */}
+    <section class="py-16 lg:py-24 border-b border-slate-800 relative">
+      <div class="container mx-auto px-4 max-w-6xl">
+        
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-300 text-xs font-black uppercase tracking-wider mb-3">
+            📋 ŞEFFAF VE AÇIK KRİTERLER
+          </div>
+          <h2 class="text-2xl sm:text-4xl font-black text-white mb-4">
+            Katılım Şartları ve Uygunluk Kriterleri
+          </h2>
+          <p class="text-slate-400 text-sm sm:text-base">
+            Girişimciler ve yeni kurulan şirketler için iki farklı esnek başvuru yolu sunuyoruz.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
+          
+          {/* Kriter 1: Faal İşletmeler (Son 2 Yıl Kuralı) */}
+          <div class="bg-slate-900/90 border-2 border-emerald-500/40 rounded-3xl p-6 sm:p-8 flex flex-col justify-between shadow-xl relative overflow-hidden group hover:border-emerald-400 transition-all">
+            <div class="absolute top-0 right-0 bg-emerald-500 text-slate-950 text-[11px] font-black uppercase px-4 py-1 rounded-bl-xl tracking-wider">
+              24 AY TAM LİSANS
+            </div>
+
+            <div>
+              <div class="flex items-center gap-3 mb-4">
+                <span class="p-3 bg-emerald-500/20 text-emerald-400 rounded-2xl text-2xl">🏢</span>
+                <div>
+                  <h3 class="text-xl font-bold text-white">Faal İşletmeler İçin</h3>
+                  <span class="text-xs font-semibold text-emerald-400">Son 2 Yıl Kuralı</span>
+                </div>
+              </div>
+
+              <ul class="space-y-3.5 text-sm text-slate-300 mb-6">
+                <li class="flex items-start gap-2.5">
+                  <span class="text-emerald-400 font-black mt-0.5">✓</span>
+                  <span><strong>Resmi Kuruluş Tarihi:</strong> Başvuru yapacak işletmenin (Şahıs, Limited veya Anonim Şirket) resmi kuruluş tarihi, başvurduğu günden en fazla <strong>2 yıl önce veya sonrası</strong> olmalıdır.</span>
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <span class="text-emerald-400 font-black mt-0.5">✓</span>
+                  <span><strong>24 Ay Bedelsiz Lisans:</strong> Güncel Vergi Levhası ibraz eden tüm yeni işletmelere 24 Ay boyunca StokPratik Giriş Paketi lisans bedelsiz olarak tahsis edilir.</span>
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <span class="text-emerald-400 font-black mt-0.5">✓</span>
+                  <span><strong>1 VKN / TCKN Kuralı:</strong> Her vergi numarası bu destekten yalnızca bir (1) defa yararlanabilir. Lisans devredilemez, satılamaz ve kiralanamaz.</span>
+                </li>
+              </ul>
+            </div>
+
+            {/* Örnek Senaryo Kutusu */}
+            <div class="p-4 rounded-2xl bg-slate-950 border border-emerald-500/20 text-xs text-slate-300 leading-relaxed">
+              <strong class="text-amber-400 block mb-1">💡 Örnek Senaryo:</strong>
+              Örneğin 2027 Ocak ayında başvuran bir işletme sahibi vergi levhasında açılış tarihi olarak en fazla 2025 yazabilir; 2024 ve daha eski tarihler bu destek kapsamı dışındadır.
+            </div>
+          </div>
+
+          {/* Kriter 2: Kurulum Aşamasındaki Girişimciler */}
+          <div class="bg-slate-900/90 border-2 border-amber-500/40 rounded-3xl p-6 sm:p-8 flex flex-col justify-between shadow-xl relative overflow-hidden group hover:border-amber-400 transition-all">
+            <div class="absolute top-0 right-0 bg-amber-500 text-slate-950 text-[11px] font-black uppercase px-4 py-1 rounded-bl-xl tracking-wider">
+              45 GÜN + 2 YIL
+            </div>
+
+            <div>
+              <div class="flex items-center gap-3 mb-4">
+                <span class="p-3 bg-amber-500/20 text-amber-400 rounded-2xl text-2xl">🌱</span>
+                <div>
+                  <h3 class="text-xl font-bold text-white">Kurulum Aşamasındaki Girişimciler</h3>
+                  <span class="text-xs font-semibold text-amber-400">Henüz Şirketi Olmayanlar</span>
+                </div>
+              </div>
+
+              <ul class="space-y-3.5 text-sm text-slate-300 mb-6">
+                <li class="flex items-start gap-2.5">
+                  <span class="text-amber-400 font-black mt-0.5">✓</span>
+                  <span><strong>45 Gün Ön Deneyim:</strong> Şirket kuruluş süreci devam eden girişimciler, sistemi 45 gün boyunca ücretsiz olarak deneyimleyebilir.</span>
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <span class="text-amber-400 font-black mt-0.5">✓</span>
+                  <span><strong>Vergi Levhası Süreci:</strong> 45 günlük sürenin sonunda resmi vergi levhası ibraz edilemezse, sistem güvenliği ve veri bütünlüğü gereği hesap otomatik olarak askıya alınır veya kapatılır.</span>
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <span class="text-amber-400 font-black mt-0.5">✓</span>
+                  <span><strong>Kaldığı Yerden Devam:</strong> Şirketleşme tamamlandığında vergi levhası iletilerek 2 yıllık haktan kalan süreden kalınan yerden devam edilebilir.</span>
+                </li>
+              </ul>
+            </div>
+
+            {/* Girişimci Not Kutusu */}
+            <div class="p-4 rounded-2xl bg-slate-950 border border-amber-500/20 text-xs text-slate-300 leading-relaxed">
+              <strong class="text-emerald-400 block mb-1">🚀 Girişimciye Tavsiye:</strong>
+              Şirketinizin tescil süreci tamamlanır tamamlanmaz vergi levhanızı iletin; 45 günlük deneme süreniz anında 24 aylık tam ücretsiz pakete yükseltilsin.
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    {/* ========================================================================= */}
+    {/* 4. DESTEK KAPSAMINDAKİ MODÜLLER (NELER DAHİL?) */}
+    {/* ========================================================================= */}
+    <section class="py-16 lg:py-24 bg-slate-900/40 border-b border-slate-800">
+      <div class="container mx-auto px-4 max-w-6xl">
+        
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 text-xs font-black uppercase tracking-wider mb-3">
+            📦 GİRİŞ PAKETİ KAPSAMI
+          </div>
+          <h2 class="text-2xl sm:text-4xl font-black text-white mb-4">
+            Destek Kapsamındaki Modüller (Neler Dahil?)
+          </h2>
+          <p class="text-slate-400 text-sm sm:text-base">
+            Bir işletmenin günlük tüm temel operasyonunu eksiksiz ve hatasız yönetebileceği ana omurga modüller ücretsiz sunulur.
+          </p>
+        </div>
+
+        {/* 4 Dahil Modül Kartı */}
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+          {includedModules.map((item) => (
+            <div class="p-6 rounded-2xl bg-slate-900/90 border border-slate-800 hover:border-emerald-500/40 transition-all flex flex-col justify-between">
+              <div>
+                <div class="text-3xl mb-4">{item.icon}</div>
+                <h3 class="text-lg font-bold text-white mb-2">{item.title}</h3>
+                <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">{item.desc}</p>
+              </div>
+              <div class="mt-4 pt-3 border-t border-slate-800 flex items-center justify-between text-xs font-bold text-emerald-400">
+                <span>Dahil</span>
+                <span>2 Yıl 0 TL</span>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Diğer Modüller Hakkında Bilgilendirme */}
+        <div class="p-6 sm:p-8 rounded-3xl bg-slate-950 border border-amber-500/30 shadow-xl">
+          <div class="flex items-start gap-4">
+            <span class="text-3xl shrink-0 p-2 bg-amber-400/10 border border-amber-400/30 rounded-2xl">ℹ️</span>
+            <div>
+              <h4 class="text-lg font-bold text-white mb-2">
+                Diğer Modüller Hakkında Bilgilendirme (50+ Entegrasyon)
+              </h4>
+              <p class="text-sm text-slate-300 leading-relaxed">
+                StokPratik bünyesinde yer alan <strong>50+ gelişmiş entegrasyon modülü</strong> (Pazaryeri Entegrasyonları: Trendyol, Hepsiburada, Amazon; E-Ticaret ve Kargo Entegrasyonları, Üretim/Reçete BOM, B2B Bayi Portalı vb.) bu ücretsiz başlangıç paketine dahil değildir. 
+                İşletmeniz büyüdükçe ihtiyaç duyduğunuz ilave modülleri dilediğiniz zaman resmi liste fiyatı üzerinden paketinize ekleyebilirsiniz.
+              </p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    {/* ========================================================================= */}
+    {/* 5. E-DÖNÜŞÜM VE KONTÖR ESASLARI */}
+    {/* ========================================================================= */}
+    <section class="py-16 lg:py-20 border-b border-slate-800 bg-slate-950">
+      <div class="container mx-auto px-4 max-w-5xl">
+        <div class="bg-gradient-to-br from-slate-900 to-slate-900/60 border border-slate-800 rounded-3xl p-6 sm:p-10 shadow-2xl">
+          
+          <div class="flex items-center gap-3 mb-6">
+            <span class="text-3xl">💳</span>
+            <h2 class="text-2xl sm:text-3xl font-black text-white">E-Dönüşüm ve Kontör Esasları</h2>
+          </div>
+
+          <div class="space-y-4 text-sm sm:text-base text-slate-300 leading-relaxed">
+            <div class="p-4 rounded-2xl bg-slate-950/80 border border-slate-800 flex items-start gap-3">
+              <span class="text-emerald-400 font-bold">1.</span>
+              <p>
+                <strong>45 Gün Test Altyapısı:</strong> Sisteme ilk kayıtta e-Fatura ve e-Arşiv süreçlerini test edebilmeniz için 45 gün boyunca test/deneme altyapısı sağlanır.
+              </p>
+            </div>
+
+            <div class="p-4 rounded-2xl bg-slate-950/80 border border-slate-800 flex items-start gap-3">
+              <span class="text-amber-400 font-bold">2.</span>
+              <p>
+                <strong>Yasal Fatura Trafiği ve Kontör Tüketimi:</strong> Yasal e-Fatura ve e-Arşiv gönderimleri Gelir İdaresi Başkanlığı (GİB) ve Özel Entegratör sunucu trafiğine tabidir. 45 günlük deneme süresinin ardından veya gerçek ticari fatura kesimlerinde harcanan e-Fatura / e-Arşiv kontörleri işletmenin kendi tüketimine aittir ve kontör paketleri üzerinden temin edilmelidir (Yazılımın kendisi için lisans ücreti alınmaz, yalnızca harcanan kontör ödenir).
+              </p>
+            </div>
+
+            <div class="p-4 rounded-2xl bg-slate-950/80 border border-slate-800 flex items-start gap-3">
+              <span class="text-teal-400 font-bold">3.</span>
+              <p>
+                <strong>Ücretsiz GİB Aktivasyon Desteği:</strong> Mevcut e-Fatura mükellefleri veya yeni geçiş yapacaklar için GİB aktivasyon desteği ücretsiz sağlanır.
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    {/* ========================================================================= */}
+    {/* 6. YASAL, TEKNİK VE GÜVENLİK BİLGİLENDİRMELERİ */}
+    {/* ========================================================================= */}
+    <section class="py-16 lg:py-24 border-b border-slate-800 bg-slate-900/50">
+      <div class="container mx-auto px-4 max-w-6xl">
+        
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-800 border border-slate-700 text-slate-300 text-xs font-black uppercase tracking-wider mb-3">
+            ⚖️ HUKUKİ & TEKNİK GÜVENCE
+          </div>
+          <h2 class="text-2xl sm:text-4xl font-black text-white mb-4">
+            Yasal, Teknik ve Güvenlik Bilgilendirmeleri
+          </h2>
+          <p class="text-slate-400 text-sm sm:text-base">
+            Haklarınızı koruyan, şeffaf, taahhütsüz ve yüksek güvenlikli kurumsal altyapı esasları.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          
+          {/* 1. Mali Mühür ve E-İmza */}
+          <div class="p-6 rounded-2xl bg-slate-900 border border-slate-800">
+            <div class="text-2xl mb-3">🔐</div>
+            <h3 class="text-base font-bold text-white mb-2">Mali Mühür ve E-İmza Sorumluluğu</h3>
+            <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+              GİB mevzuatı uyarınca fatura düzenleyebilmek için gerekli olan E-İmza (Şahıs firmaları için) veya Mali Mühür (LTD/A.Ş. için) temini mükellefin yasal yükümlülüğündedir.
+            </p>
+          </div>
+
+          {/* 2. Veri Mülkiyeti ve KVKK */}
+          <div class="p-6 rounded-2xl bg-slate-900 border border-slate-800">
+            <div class="text-2xl mb-3">🛡️</div>
+            <h3 class="text-base font-bold text-white mb-2">Veri Mülkiyeti ve Güvenlik (KVKK)</h3>
+            <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+              StokPratik sistemine girilen tüm ürün, cari, stok ve finansal hareket verileri münhasıran işletmeye aittir. Veriler 256-bit SSL şifreleme ve günlük güvenli bulut yedeklemeyle korunur; KVKK kapsamında asla 3. taraflarla paylaşılmaz.
+            </p>
+          </div>
+
+          {/* 3. Destek ve Eğitim */}
+          <div class="p-6 rounded-2xl bg-slate-900 border border-slate-800">
+            <div class="text-2xl mb-3">💡</div>
+            <h3 class="text-base font-bold text-white mb-2">Destek ve Eğitim Esasları</h3>
+            <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+              <strong>Destek ve Eğitim Ücretlidir.</strong> Destek ve eğitim talep edilmez ise hiçbir ücret ödemeden kullanılmaya devam edilebilir. Destek ve Eğitim zorunlu değildir.
+            </p>
+          </div>
+
+          {/* 4. Taahhütsüzlük */}
+          <div class="p-6 rounded-2xl bg-slate-900 border border-slate-800">
+            <div class="text-2xl mb-3">🕊️</div>
+            <h3 class="text-base font-bold text-white mb-2">Taahhütsüzlük (Veri Taşıma Özgürlüğü)</h3>
+            <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+              İster 1. ay ister 20. ay fark etmez; süre bittiğinde işletme dilerse abonelikle devam eder, dilerse hiçbir cezai şart ödemeksizin tüm verilerini Excel/XML/PDF olarak alıp ayrılabilir. <em>StokPratik veriyi asla rehin tutmaz.</em>
+            </p>
+          </div>
+
+          {/* 5. Kullanıcı Tanımı ve Donanım */}
+          <div class="p-6 rounded-2xl bg-slate-900 border border-slate-800">
+            <div class="text-2xl mb-3">💻</div>
+            <h3 class="text-base font-bold text-white mb-2">Kullanıcı Tanımı ve Donanım</h3>
+            <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+              Destek paketi 1 ana yönetici (admin) kullanıcı lisansını kapsar. Daha çok kullanıcı için ek kullanıcı ödemesi yapılmalıdır. Sistem bulut tabanlı olup bilgisayar, tablet ve akıllı telefonlardan donanım yatırımı olmadan çalışır.
+            </p>
+          </div>
+
+          {/* 6. Kontenjan ve Değişiklik Hakkı */}
+          <div class="p-6 rounded-2xl bg-slate-900 border border-slate-800">
+            <div class="text-2xl mb-3">📜</div>
+            <h3 class="text-base font-bold text-white mb-2">Kontenjan ve Değişiklik Hakkı</h3>
+            <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+              StokPratik, teknoloji destek programının kontenjanını, başvuru tarihlerini ve koşullarını suistimalleri önlemek amacıyla önceden web sitesinde ilan etmek kaydıyla güncelleme hakkını saklı tutar.
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    {/* ========================================================================= */}
+    {/* 7. NASIL BAŞVURULUR? (3 ADIMDA BAŞVURU REHBERİ) */}
+    {/* ========================================================================= */}
+    <section class="py-16 lg:py-24 border-b border-slate-800 bg-slate-950">
+      <div class="container mx-auto px-4 max-w-5xl">
+        
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-300 text-xs font-black uppercase tracking-wider mb-3">
+            🚀 3 DAKİKADA AKTİVASYON
+          </div>
+          <h2 class="text-2xl sm:text-4xl font-black text-white mb-4">
+            Nasıl Başvurulur?
+          </h2>
+          <p class="text-slate-400 text-sm sm:text-base">
+            Uzun onay süreçleri veya bürokrasi yok; 3 adımda sisteminizi hemen kullanmaya başlayın.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 relative">
+          
+          {/* Adım 1 */}
+          <div class="p-6 rounded-3xl bg-slate-900/90 border border-slate-800 flex flex-col justify-between shadow-lg">
+            <div>
+              <div class="w-12 h-12 rounded-2xl bg-amber-400/20 border border-amber-400/30 text-amber-300 font-black text-xl flex items-center justify-center mb-4">
+                1
+              </div>
+              <h3 class="text-lg font-bold text-white mb-2">Kayıt Olun & Başlayın</h3>
+              <p class="text-xs sm:text-sm text-slate-300 leading-relaxed mb-4">
+                Giriş ve kayıt ekranımızdan hesabınızı açarak sistemi anında kullanmaya başlayın.
+              </p>
+            </div>
+            <a 
+              href={registerUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="w-full py-2.5 px-4 bg-amber-400 hover:bg-amber-300 text-slate-950 font-black text-xs rounded-xl text-center shadow-md transition-all flex items-center justify-center gap-1"
+            >
+              <span>Hemen Kayıt Ol</span>
+              <span>→</span>
+            </a>
+          </div>
+
+          {/* Adım 2 */}
+          <div class="p-6 rounded-3xl bg-slate-900/90 border border-slate-800 flex flex-col justify-between shadow-lg">
+            <div>
+              <div class="w-12 h-12 rounded-2xl bg-emerald-500/20 border border-emerald-500/30 text-emerald-400 font-black text-xl flex items-center justify-center mb-4">
+                2
+              </div>
+              <h3 class="text-lg font-bold text-white mb-2">Vergi Levhanızı İletin</h3>
+              <p class="text-xs sm:text-sm text-slate-300 leading-relaxed mb-4">
+                WhatsApp destek hattımızdan güncel vergi levhanızı (kurulum aşamasındaysanız şirket planınızı) gönderin.
+              </p>
+            </div>
+            <a 
+              href={whatsappUrl}
+              class="w-full py-2.5 px-4 bg-emerald-600 hover:bg-emerald-500 text-white font-black text-xs rounded-xl text-center shadow-md transition-all flex items-center justify-center gap-1"
+            >
+              <span>💬 WhatsApp'tan Gönder</span>
+              <span>→</span>
+            </a>
+          </div>
+
+          {/* Adım 3 */}
+          <div class="p-6 rounded-3xl bg-slate-900/90 border border-slate-800 flex flex-col justify-between shadow-lg">
+            <div>
+              <div class="w-12 h-12 rounded-2xl bg-teal-500/20 border border-teal-500/30 text-teal-400 font-black text-xl flex items-center justify-center mb-4">
+                3
+              </div>
+              <h3 class="text-lg font-bold text-white mb-2">2 Yıllık Lisans Aktif!</h3>
+              <p class="text-xs sm:text-sm text-slate-300 leading-relaxed mb-4">
+                Müşteri temsilcimiz aynı gün içinde 2 yıl ücretsiz lisans tanımlamanızı tamamlayarak süre sınırını kaldırır.
+              </p>
+            </div>
+            <div class="w-full py-2.5 px-4 bg-slate-800 text-emerald-400 font-black text-xs rounded-xl text-center flex items-center justify-center gap-1">
+              <span>✓ Aynı Gün Onay</span>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    {/* ========================================================================= */}
+    {/* 8. SIKÇA SORULAN SORULAR (FAQ) */}
+    {/* ========================================================================= */}
+    <section class="py-16 lg:py-24 border-b border-slate-800 bg-slate-900/40">
+      <div class="container mx-auto px-4 max-w-4xl">
+        
+        <div class="text-center max-w-2xl mx-auto mb-12">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-800 border border-slate-700 text-slate-300 text-xs font-black uppercase tracking-wider mb-3">
+            ❓ AKLINIZA TAKILANLAR
+          </div>
+          <h2 class="text-2xl sm:text-4xl font-black text-white mb-3">
+            Sıkça Sorulan Sorular
+          </h2>
+          <p class="text-slate-400 text-sm">
+            Yeni KOBİ Teknoloji Desteği ve 2 Yıl Ücretsiz Kullanım hakkında merak edilenler.
+          </p>
+        </div>
+
+        <div class="space-y-4">
+          {faqs.map((faq) => (
+            <details class="group bg-slate-900/80 border border-slate-800 rounded-2xl p-5 [&_summary::-webkit-details-marker]:hidden transition-all">
+              <summary class="flex items-center justify-between cursor-pointer font-bold text-white text-sm sm:text-base">
+                <span>{faq.q}</span>
+                <span class="ml-4 shrink-0 text-slate-400 group-open:rotate-180 transition-transform">
+                  ▼
+                </span>
+              </summary>
+              <p class="mt-3 text-xs sm:text-sm text-slate-300 leading-relaxed border-t border-slate-800/80 pt-3">
+                {faq.a}
+              </p>
+            </details>
+          ))}
+        </div>
+
+      </div>
+    </section>
+
+    {/* ========================================================================= */}
+    {/* 9. BOTTOM CONVERSION BANNER */}
+    {/* ========================================================================= */}
+    <section class="py-16 lg:py-20 relative overflow-hidden bg-gradient-to-b from-slate-950 via-emerald-950/30 to-slate-950">
+      <div class="container mx-auto px-4 max-w-4xl text-center relative z-10">
+        
+        <h2 class="text-2xl sm:text-4xl font-black text-white mb-4">
+          İşletmenizin Altyapısını Bugün Güçlendirin
+        </h2>
+        <p class="text-slate-300 text-sm sm:text-base max-w-2xl mx-auto mb-8">
+          Başlangıç maliyeti olmadan, 2 yıl boyunca StokPratik Giriş Paketi ile büyüyün. Hemen kayıt olun, vergi levhanızı ileterek avantajınızı başlatın.
+        </p>
+
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4 max-w-md mx-auto">
+          <a 
+            href={registerUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="w-full sm:w-auto flex-1 px-8 py-3.5 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-black text-sm shadow-xl transition-all"
+          >
+            Hemen Kayıt Ol →
+          </a>
+          <a 
+            href={whatsappUrl}
+            class="w-full sm:w-auto flex-1 px-8 py-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-black text-sm shadow-xl transition-all"
+          >
+            💬 WhatsApp Destek Hattı
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  {/* Structured Data: FAQPage */}
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqs.map(f => ({
+      "@type": "Question",
+      "name": f.q,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": f.a
+      }
+    }))
+  })} />
+
+</BaseLayout>
